@@ -1,0 +1,39 @@
+#! /usr/bin/perl
+
+$module = shift;
+
+open (MODULE, "$module") || die "couldn't open $module: $!\n";
+
+
+$outfile = $module;
+$outfile =~ s/rdf/fo/;
+
+print "Starting . . .\n";
+
+print "Step 1: Running pulltogether.xsl\n";
+system("saxon -o PROC.xml $module pulltogether.xsl");
+print "\tDone\n";
+
+print "Step2: Running numbering.xsl\n";
+system("saxon -o PROC.fo PROC.xml numbering.xsl\n");
+print "\tDone\n";
+#system("rm PROC.xml");
+
+print "Step 3: Running page.xsl (and module.xsl)\n";
+system("saxon -o PROC2.fo PROC.fo page.xsl");
+print "\tDone\n";
+#system("rm PROC.fo");
+
+print "Step 4: Running index.xsl\n";
+system("saxon -o $outfile PROC2.fo index.xsl");
+print "\tDone\n";
+#system("rm PROC2.fo");
+
+print "Step 5: Running xmltex\n";
+system("xmltex $outfile ");
+print "\tDone\n";
+
+print "Step 6: Running xmltex to get references correct\n";
+system("xmltex $outfile");
+print "\tDone\n";
+print "Complete.\n";
