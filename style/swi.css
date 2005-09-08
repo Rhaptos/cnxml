@@ -1,0 +1,69 @@
+a:link=#0066cc;
+a:visited=#000000;
+
+body {
+  background-color:white !important;
+  color:#333333;
+}
+
+
+h2 {
+  color:#220088;
+  font-weight: normal;
+  margin-bottom: 0px;
+}
+
+
+h3 {
+  margin-top: 0px;
+}
+
+
+table.main {
+  background-color:white;
+  width:99%;
+  border:0;
+}
+
+
+table.left {
+  margin-left: auto;
+  margin-right: auto;
+  background-color:black;
+  border:solid thin black;
+  width:200px;
+}
+
+
+table.center {
+  background-color:black;
+  border:solid thin black;
+  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+th.titlebar {
+  background-color:navy;
+  color: white;
+  font-weight: bold;
+  font-family: arial, helvetica;	
+  font-size: larger;
+  padding: 0.2em;
+}
+
+table.left td.box {
+  background-color:#cccccc;
+  font-size: smaller;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
+
+
+table.center td.box {
+  background-color:white;
+  padding: 1em;
+}
+
