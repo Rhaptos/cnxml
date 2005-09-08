@@ -1,0 +1,598 @@
+
+
+/* ******* MODULE ****************** */
+module, html {font-family: Arial, blue highway, Gill Sans, avantgarde, lucida, Rockwell, Arial;
+    font-size: 10pt;
+    font-weight: normal;
+    background-color: #ffffff; 
+    font-color: #000000;
+    }
+
+module > name, h1 {display: block;
+    margin-top: 7px;
+    margin-left: 7px;
+
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+    padding-left: 10pt;
+    padding-right: 10px;
+    text-align: right;
+   
+    background-color: grey;
+    background-image: url("../bw_fade.gif");    
+    color: #ffffff;
+    font-size: 20pt;
+    font-weight: bold; 
+    } 
+
+h1 > span.name-box {display: block;  
+    margin-left: 60%;
+    }
+
+/* ******************* METADATA **************** */
+
+div.metadata{
+display: none;
+}
+
+keyword, author, maintainer, abstract,
+objectives, div.author, div.maintainer, div.objectives 
+	   {display: none;
+    }
+
+div.abstract-objectives{
+display: block;
+margin-right: 15px;
+margin-left: 15px;
+margin-bottom: 30px;
+margin-top: 0px;
+border: 0px #000000 solid;
+border-bottom-width: 3px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+div.abstract:before,
+abstract:before{
+display: compact;
+content: "Summary: ";
+}
+
+div.abstract,
+abstract{
+display: block;
+margin: 0px;
+margin-top: 3px;
+margin-bottom: 3px;
+padding: 0px;
+border-style: none;
+}
+
+/* ======= AUTHORS ======== */
+
+div.authorlist-maintainerlist{
+margin: 15px;
+margin-top: 30px;
+margin-bottom: 0px;
+border: 0px #cc9900 solid;
+border-top-width: 2px;
+padding-top: 10px;
+padding-bottom: 10px;
+font-size: 10px;
+}
+
+div.authorlist:before, div.maintainerlist:before,
+authorlist:before, maintainerlist:before{
+display: block;
+padding: 0px;
+margin: 0px;
+margin-left: -36px;
+}
+
+div.authorlist:before,
+authorlist:before{
+content: "Written by: ";
+display: inline;
+}
+
+div.maintainerlist:before,
+maintainerlist:before{
+content: "Maintained by: ";
+display: inline;
+}
+
+div.authorlist, div.maintainerlist,
+authorlist, maintainerlist{
+display: block;
+margin: 0px;
+margin-left: 36px;
+}
+
+a.homepage:before{
+content: " (";
+}
+
+a.homepage:after{
+content: ")";
+}
+
+a.homepage:before, a.homepage:after{
+color: #000000;
+font-weight: normal;
+}
+
+a.homepage,
+author[homepage]:after, maintainer[homepage]:after{
+color: #996600;
+text-decoration: none;
+}
+
+a.email:before,
+email:before{
+display: inline;
+content: " (";
+text-decoration: none;
+color: #000000;
+font-weight: normal;
+}
+
+a.email:after,
+email:after{
+display: inline;
+content: ")";
+text-decoration: none;
+color: #000000;
+}
+
+a.email,
+email{
+display: inline;
+color: #996600;
+text-decoration: none;
+}
+
+a.questions-comments{
+color: #996600;
+}
+
+a.license-link{
+color: #996600;
+white-space: nowrap
+}
+
+.license{
+display: none;
+text-align: right;
+font-size: 80%;
+}
+
+/* *********** SECTION AND NAMES ********************** */
+section, div.section  {display: block;
+    margin-top: 20px;
+    margin-left: 30pt;
+
+    padding-top: 2px;
+    border-top-width: 3pt;
+    border-top-color: 555555;
+    border-top-style: solid;
+    }
+
+section > name, h2 {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #777777;
+    }
+
+h2[id="toc"] {margin-left: 30pt;
+    text-decoration: underline;
+    }
+
+section > section, div.section > div.section {display: block;
+    margin-top: 4pt;
+    margin-bottom: 4pt;
+    margin-left: 24px;
+    border-top-width: 2px;
+    border-top-color: #666666;
+    border-top-style: solid;
+    }
+
+section > section > name, h3, h4, h5, h6 {font-size: 13pt;
+    font-weight: bold;
+    color: #888888;
+    }
+
+/* ** html fix ** */
+h2, h3, h4, h5 {margin-top: 0pt;
+    padding-top: 0pt;
+    }
+
+/* ************** SPEC HEADER ******************* */
+div.header {margin-left: 38pt;
+    }
+
+
+
+/* ***************** PARAGRAPH ***************** */
+
+h3 + p.para, h2 + p.para, h4 + p.para, h5 + p.para {margin-top: 7px;
+    }
+
+para, p.para {display: block;
+    margin-top: 10pt;
+    margin-right: 30pt;
+    margin-left: 30pt;
+    margin-bottom: 10pt;
+    font-weight: normal;
+    text-indent: 20px;
+    }
+
+/* *************** MISC ENHANCEMENT ************** */
+emphasis {font-style: italic;
+    text-indent: 0pt;
+    }
+
+cite, span.cite {font-style: italic;
+    text-indent: 0pt;
+    }
+
+
+/* **************** LIST ******************* */
+list, ul, ol {display: block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 5pt;
+    margin-right: 5pt;
+    text-indent: 0px;
+    }
+
+item {display: list-item;
+    margin-left: 10pt;
+    margin-right: 10pt;
+    }
+
+li {display: list-item;
+    margin-left: 8px;
+    margin-right: 8px;
+    padding: 0px;
+    }
+
+item > list > item, li > ul > li {display: list-item;
+    list-style-type: circle;
+    margin-left: -23px;
+    margin-right: -23px;
+    }
+   
+li > ul >li > ul> li {list-style-type: square;
+    margin-left: -23px;
+    margin-right: -23px;
+    }
+
+span.list-name {display: block;
+    font-weight: bold;
+    }
+
+list[type="enumerated"] > item, ol > li {display: list-item;
+    list-style-type: decimal;
+    }
+
+ol td.name, ul td.name {align:left;}
+
+ol table.equation, ul table.equation {padding-top: 0px;
+    align: left;
+    }
+
+ol td, ul td {width: 0px;
+    align:left;
+    }
+
+
+    
+
+
+
+/* *************** CODE ***************** */
+codeline, code {display: inline;
+
+    margin: 0pt;
+    font-family: courier, monospace;
+    font-size: 10pt;
+    font-weight: normal;
+    white-space: pre;
+    text-indent: 0pt;
+    }
+
+codeblock, pre {display: block;
+    background-color: #e8e8e8;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+    margin-left: 7pt;
+    margin-right: 7pt;
+    padding: 3pt;
+
+    font-family: courier, monospace;
+    font-size: 10pt;
+    white-space: pre;
+    text-indent: 0pt;
+    }
+
+
+
+/* ***************** EXAMPLE ****************** */
+example:before, div.example:before {content: "Example: ";
+    font-size: 9pt;
+    font-weight: bold;
+    }
+
+example, div.example {display: block;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+
+    padding: 6px;
+
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 3px;
+    border-style: double;
+    text-indent: 0pt;
+    }
+
+example para {text-indent: 0pt;
+    } 
+
+/* ******************* EXERCISE ***************** */
+exercise:before {content: "Exercise: ";
+    font-size: 9pt;
+    font-weight: bold;
+    }
+
+
+exercise, div.exercise {display: block;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 6px;
+
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 3px;
+    border-style: double;
+    text-indent: 0pt;
+    }
+
+/* PROBLEM */
+problem, div.problem {display: block;
+    }
+
+span.problem {font-size: 9pt;
+    font-weight: bold;
+    }
+    
+
+span.button-text {display: block;
+    text-align: center;
+    font-size: 9pt;
+    font-weight: bold;
+    }
+
+/* SOLUTION */
+solution:before, div.solution:before {content: "Solution: ";
+    display: block;
+    font-weight: bold;
+    font-size: 9pt;
+    background-color: #c4c4c4;
+    }              
+
+
+solution, div.solution {display: none;
+    }
+    
+
+
+/* *************** NOTE *********************** */
+note[type="warning"]:before, div.note[title="warning"]:before {content: "Warning: ";
+    font-weight: bold;
+    color: red;
+    }
+
+note[type="footnote"]:before, div.note[title="footnote"]:before {content: "*";
+    display: inline;
+    vertical-align: text-top;
+    }
+
+/*note:before {content: attr(type)": ";
+    font-weight: bold;
+    }*/
+
+div.note:before {content: attr(title)": ";
+    text-transform: capitalize;
+    font-weight:bold;
+    }
+
+note, div.note {display: block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
+
+    padding: 4pt;
+    text-indent: 0pt;
+    }
+
+note[type="warning"], div.note[title="warning"] {border-width: 2pt;
+    border-color: black;
+    border-style: groove;
+    font-size: 11pt;
+    }
+
+note[type="footnote"], div.note[title="footnote"] {font-size: 9pt;
+    }
+
+
+/* ******************** RULE *************** */
+rule, div.rule {display: block;
+    margin: 5pt;
+    padding: 5pt;
+    background-color: #bababa;
+    text-indent: 0pt;
+    }
+
+rule:before, div.rule:before {content: attr(type) ": ";
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 12pt;
+    } 
+
+rule > name, div.rule > span.name {display: inline;
+    font-size: 12pt;
+    }
+
+rule > statement, div.rule > div.statement {display: list-item;
+    list-style-type: square;
+    margin-left: 14pt;
+    padding: 2pt;
+    }
+
+statement > para, div.statement > p.para {margin: 0pt;
+    padding: 0pt;
+    text-indent: 0pt;  
+    }
+
+proof:before, div.proof:before {content: "Proof: ";
+    font-size: 9pt;
+    font-weight: bold;
+    } 
+
+proof, div.proof {display: block;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+
+    padding: 6px;
+    
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 2pt;
+    border-style: double;
+    }
+
+/* *************** DEFINITION ****************** */
+definition, div.definition {display: block;
+    margin: 5pt;
+    padding: 5pt;
+    background-color: #bababa;
+    text-indent: 0px;
+    }
+
+definition:before, div.definition:before {content: "Definition: ";
+    font-weight: bold;
+    font-size: 12pt;
+    } 
+
+definition > term, div.definition>span.term {display: inline;
+    font-size: 12pt;
+    font-weight: normal;
+    }
+
+definition > meaning, div.definition>div.meaning {display: list-item;
+    list-style-type: square;
+    margin-left: 14pt;
+    padding: 2pt;
+    }
+
+term, span.term {font-weight: bold;
+    }
+
+/* ********** FIGURE *************** */
+
+
+figure { display: block; }
+
+span.figure-name {display: block;
+    text-align: center;
+    }
+
+p.caption {display: block;
+    margin: 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    }
+
+/* ***************** TABLE ********************* */
+
+span.table-name {display: block;
+    text-align: center;
+    font-weight: bold;
+    }
+
+/* *************** LINKS ********************** */
+a.link {color: green;
+    text-indent: 0pt;
+    }
+
+a {text-indent: 0px;
+    }
+
+a.cnxn, a.cnxn0, a.cnxn1, a.cnxn2, a.cnxn3, a.cnxn4, a.cnxn5, a.cnxn6, a.cnxn7,
+    a.cnxn8, a.cnxn9 {font-weight: bold;
+    font-family: gothic l;
+    text-decoration: underline;
+    }
+
+a.cnxn[title="0"], a.cnxn[title="1"], a.cnxn0, a.cnxn1 {color: #02103a;}
+a.cnxn[title="2"], a.cnxn[title="3"], a.cnxn2, a.cnxn3 {color: #182491;}
+a.cnxn[title="4"], a.cnxn[title="5"], a.cnxn4, a.cnxn5 {color: #0014c9;}
+a.cnxn[title="6"], a.cnxn[title="7"], a.cnxn6, a.cnxn7 {color: #006eff;}
+a.cnxn[title="8"], a.cnxn[title="9"], a.cnxn8, a.cnxn9 {color: #00aeff;}
+
+/* ************* MATH ********************** */
+math, math * {color:black;
+    text-indent: 0px;
+    font-family: CMSY10, CMEX10, Symbol, Times, Lucida Sans Unicode, MT Extra, Math1, Math2, Math3, Math4, Math5;
+    }
+
+math[display="block"], math[mode="display"] {
+    display: block;
+    text-align: center;
+    }
+
+mi {color: black;
+    text-indent: 0px;
+    }
+
+/*solution mi, div.solution math * {
+    color: white;
+    }
+*/
+
+equation {display: block;
+    margin: 15pt;
+    text-align: center;
+    text-indent: 0px;
+    }
+
+table.equation {padding: 14px;
+    text-indent: 0pt;
+    text-align: center;
+    }
+
+equation > name {display: block;
+
+    padding: 10pt;
+    padding-bottom: 0px;
+
+    text-align: left;
+    font-size: 10pt;
+    font-weight: bold;
+    }
+
+td.name {
+    font-weight: bold;
+    }
+
+semantics annotation-xml{
+display: none;
+}

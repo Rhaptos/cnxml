@@ -1,0 +1,125 @@
+html {
+  background-color: #c2d8f2;
+}
+
+/* change the background color for tags that have
+   been edited */
+*[edited="true"] { 
+  background-color: #ffffdd;
+  border-color: red;
+}
+
+/* coerce mozilla to hide the things that 
+   are supposed to be hidden automatically */
+*[type="hidden"] {
+  display: none
+}
+
+/* All editable tag names have a border
+   and different background color */
+para, equation, rule, definition, exercise, ol, ul {
+ background-color: white;
+ border-style: solid;
+ border-width: 2px;
+ border-color: black;
+}
+
+#eipEditContainer {
+ background: #f9a793;
+ padding: 10px;
+ text-align: center;
+}
+
+#eipEditContainer button {
+ margin: 1em;
+ padding-left: 1em;
+ padding-right: 1em;
+}
+
+#eipXMLEditor {
+  width: 100%;
+}
+
+#eipWarningMessage {
+  text-align: left;
+  font-style: italic;
+  margin-bottom: 1ex;
+}
+
+#eipOpeningTagLabel, #eipClosingTagLabel {
+  text-align: left;
+}
+
+#eipCommitForm{
+ background: #c2d8f2;
+ position: fixed;
+ width: 100%;
+ height: 10ex;
+ z-index: 2;
+ /*border: outset 1ex #c2d8f2;*/
+ border: ridge 1ex #c2d8f2;
+ padding: 1ex;
+}
+
+#eipInstructionBox {
+  display:block;
+  height: 100%;
+  width: 25%; 
+  float: left;
+  padding-top: 2ex;
+}
+
+#eipInstructionBox span {
+  font-weight: bold;
+  font-family: sans-serif; 
+  /*vertical-align: baseline;*/
+}
+
+#eipInstructionBox span:before {
+  content: 'Instructions: ';
+  font-weight: normal;
+  font-style: italic;
+}
+
+#eipCommitBox {
+  width: 55%;
+  height: 100%;
+  float: left;
+  padding-left: 0.5em;
+}
+
+#eipCommitLabel {
+ width: 100%;
+ text-align: center;
+ font-weight: bold; 
+ font-family: sans-serif; 
+}
+
+#eipCommitText {
+  width: 100%;
+}
+
+#eipCommitButtonBox {
+  width: 15%;
+  height: 100%;
+  float: right;
+  padding-top: 1ex;
+}
+
+
+#eipCommitButtonBox button {
+  width: 100%;
+  display: block;
+  margin: 2px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  max-width: 7em;
+}
+
+module {
+  position: relative;
+  /* #c2d8f2  is old-edited color */
+  background-color: #cdcdcd;
+  top: 12ex;
+}
+

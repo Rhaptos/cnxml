@@ -1,0 +1,207 @@
+PRINT README
+Purpose of this directory:  Contains stylesheets for printing modules.
+
+slurpy.xsl--This stylesheet is a proof of concept.  The concept is
+that you can pull in multiple modules into a separate file (i.e. a course file).  
+
+
+Printing Stylesheet Overview
+============================
+The input to the stylesheet is an rdf file.
+The output is a pdf file.
+In between there are several stages that involve XSL:fo
+
+The printing stylesheet involves running four stylesheets in series,
+and then running xmltex on the output twice.  There are several
+different tasks that are performed by the stylesheets.  In large part
+these tasks are broken up among the different stylesheet.  However,
+There are some tasks that occur in pieces across the different
+stylesheets.
+
+
+PRINT.XSL	
+	1) pulls all of the content into one file.  The input is a
+	non-treed RDF file. The output is in a treed
+	out RDF format that also contains the content of the modules.
+	2) Index: pulling together a list of all of the terms and
+	keywords used in all of the modules
+	3) Authors: pulling together a list of all of the authors who
+	wrote content used in the course
+ 
+NUMBERING.XSL	
+	1) adds a number attribute to each element saying how it
+	should be numbered
+		
+PAGE.XSL(includes MODULE.XSL)	
+	1) converts the entire course (except the index and list of authors) into xsl:fo
+	   --page.xsl converts the large parts such as the table of
+	   contents, chapters, front pages
+	   --module.xsl converts the innards of the individual modules
+	2) Index: sorts the items in the index alphabetically
+	3) Author: sorts the authors by surname
+INDEX.XSL
+	1) Index: copies the rest of the course and converts the index into xsl:fo
+	2) Author: converts the list of contributing authors into
+	XSL:fo
+
+
+
+print
+=====
+Running
+	print foo.rdf
+will convert foo.rdf into a pdf called foo.pdf
+
+
+pulltogether.xsl (Run 1)
+================
+Purpose: The basic purpose of this stylesheet is to take the RDF file, which is
+not in a treed out structure, and convert it into a treed out
+structure.  This makes numbering and structuring the document much easier.
+
+The RDF exists as a series of rdf:Description tags which contain
+rdf:Seq tags which contain an ordered list of elements, rdf:li.  Each
+of the rdf:li tags has a resource attribute which refers to another
+rdf:Description.  This stylesheet starts at the top and each time it
+hits an rdf:li element it finds the new rdf:Description and copies it
+inside the rdf:li.  This occurs recursively.  
+
+The rule is as follows:
+*If I am an rdf:Description of cnx:class group, copy and
+apply-templates to all of my rdf:Seq/rdf:li.
+*If I am an rdf:Description of cnx:class pageview, copy and
+apply-templates to all of my cnx:pre/rdf:Seq/rdf:li and
+cnx:post/rdf:Seq/rdf:li and copy over the main thing you reference by the cnx:uri tag.  
+*If I am an rdf:Description of cnx:class module, copy the contents of
+the module into a content tag.
+ 
+Notes:
+Autogenerate IDs for terms and the references to terms in the index.
+Since terms don't already have IDs, you have to autogenerate them.
+The same node is guaranteed to get assigned the same id within a
+single run of a stylesheet.  So the ID on the term has to be generated
+in the same run as the ID on the reference to the term in the index.
+
+Concatenate ID of the module with the ID of the element so that
+different modules can have elements with the same ids.  This prevents
+a conflict.  
+
+The ind: namespace is used to keep track of things that are internal
+to the stylesheet.  ex. index, list of authors.
+
+
+
+numbering.xsl (Run 2)
+=============
+numbering.xsl adds number attributes to everything that would be
+numbered later.  This makes the rest of the stylesheet easier.  This
+way you don't have to recalculate the number of something everytime
+you want to reference it.
+
+This stylesheet works in large part by passing information down the
+tree.  
+
+There are two big parameters that are passed by every template.
+These are grpnumb and grptop.  grpnumb is the number of the group that
+is the nearest ancestor.  This is useful for numbering groups or modules
+within groups.  It is also good for numbering sections. grptop is the
+number of the topmost ancestor group.  This is useful when numbering
+things within a module other than sections.  For example, it is good
+for exercises, figures, subfigures, rules, definitions.
+
+The value of grpnumb and grptop are calculated in the rdf:li
+templates. This value is then passed down to the rdf:Description below
+it.  The rdf:Description template then adds the number attribute to
+the rdf:Description tag.
+
+
+
+page.xsl (Run 3)
+========
+page.xsl is pretty simple.  A vast majority of it is the page
+templates for the table of contents, the body, and the index.  Those
+are pretty self explanatory.  
+
+The interesting parts of this are the templates that print the table
+of contents and the body of the text.  This is done recursively.
+
+For the body, there is a template for modules, one for groups, and one
+for pageviews.  When a group is hit, it prints the name and applies
+templates.  When a pageview is hit, it prints the name, applies
+templates for the preceeding segues, the content portion of the main
+module, and the following segues.  When a module is hit, it applies
+templates to print the content of the module.  
+
+Something analogous happens to generate the table of contents.
+
+
+module.xsl (Run 3--pulled in by page.xsl)
+==========
+Written by Chris.  
+
+index.xsl (Run 4)
+=========
+The final part of creating the index and the list of authors.
+NOTE: list is already in alphabetical order.
+The index does two things.  It sections each part of the alphabet
+separately (refered to as the alphabet section). So it looks like this:
+
+A age
+  alphabet
+  apple
+  
+B blue
+  bonnet
+
+The second thing it does is condense multiple listings for the same
+word into one line. So,
+
+age pg 4
+age pg 26
+age pg 29
+alphabet pg 3
+apple pg 7
+
+becomes
+
+age pg4, pg 26, pg 29
+alphabet pg 3
+apple pg 7
+
+
+KNOWN BUGS
+==========
+**Do appendices work properly?  I thought they did, but the last time
+I tried it they appeared to not work.  If they don't work, look in
+numbering.xsl.
+
+**(IMPORTANT but easy) print needs to run pdfxmltex not xmltex
+
+**(IMPORTANT) keywords in pageviews are not referenced properly in the index 
+
+**(IMPORTANT) allow arbitrary uris to problemsets (and any modules?)
+  Maybe try testing for the ending / to see if it is a directory or a
+  file.  See Kay's XSLT book for end-with() function substitute.
+ 
+**Make page numbers of the front pages in lower case roman numerals
+
+**(MEDIUM) Replace the author defined name tag inside a module with the instructor defined name tag from the RDF file.
+
+**(IMPORTANT) subsection of pageviews may need to be fixed. The
+template only works for sections, I think.  There is
+code in the file, page.xsl, for it.
+
+** (MODERATELY IMPORTANT) Double check everything about pageviews in general.  
+
+**Make sure that course instructor (author) names show up on one of the beginning pages.
+
+**Do something with the copyright page.
+
+**Move index stuff so that it is only three stylesheets not 4.
+
+ASSUMPTIONS
+===========
+**keywords are not empty (Try xsl:strip-space, says Chris).
+
+**All uri's to directories end in a /
+

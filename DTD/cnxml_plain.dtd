@@ -1,0 +1,41 @@
+<!-- DTD for the Connexions Markup Language (CNXML)               -->
+<!-- version 0.4                                                  -->
+<!--                                                              -->
+<!-- This entity may be identified by the following PUBLIC        -->
+<!-- and SYSTEM identifiers                                       -->
+<!--                                                              -->
+<!-- PUBLIC:  -//CNX//DTD CNXML 0.4//EN                           -->
+<!-- SYSTEM:  http://cnx.rice.edu/cnxml/0.4/DTD/cnxml_plain.dtd   -->
+<!--                                                              -->
+<!-- CVS Version: $Revision$                                -->
+<!-- Modified: $Date$                       -->
+<!-- Maintained by the CNXML langauge team                        -->
+<!-- email: cnxml@cnx.rice.edu                                    -->
+<!--                                                              -->
+
+<!-- Bring in the CNXML qualified names -->
+<!ENTITY % cnxml-qname.mod SYSTEM "cnxml-qname-1.mod" >
+%cnxml-qname.mod;
+
+<!-- Use the default MDML prefix ("md") --> 
+<!ENTITY % MDML.prefixed "INCLUDE" >
+
+<!-- Bring in MDML qualified names -->
+<!ENTITY % mdml-qname.mod PUBLIC "-//CNX//ENTITIES MDML 0.4 Qualified Names 1.0//EN" "mdml-qname-1.mod">
+%mdml-qname.mod;
+
+<!-- Define all xmlns attributes  -->
+<!ENTITY % NS.decl.attrib "%CNXML.xmlns.extra.attrib; %MDML.xmlns.extra.attrib;">
+
+
+<!-- Bring in MDML elements  -->
+<!ENTITY % mdml.mod PUBLIC "-//CNX//ELEMENTS MDML 0.4 Elements//EN" "mdml.mod">
+%mdml.mod;
+
+<!-- Update content model for 'metadata' to match MDML  -->
+<!ENTITY % CNXML.metadata.content "%MDML.metadata.content;">
+
+<!-- Bring in CNXML elements  -->
+<!ENTITY % cnxml.mod SYSTEM "cnxml.mod" >
+%cnxml.mod;
+
