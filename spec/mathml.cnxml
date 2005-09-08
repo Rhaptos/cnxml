@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<section id='mathml'>
+  <name>Appendix A: Combining MathML and CNXML</name>
+  <section id='mathmlns'>
+     <name>The MathML Namespace</name>
+    <para id='parmath1'>
+      Combining MathML and CNXML is not difficult since both languages
+      are XML applications, and the tags for MathML and CNXML exist in
+      different <term>namespaces</term> (See also the W3C's
+      recommendation, <link
+      src="http://www.w3.org/TR/REC-xml-names/">Namespaces in
+      XML</link>).  To use MathML tags, you must declare the MathML
+      namespace in your CNXML document.  This may easily done by
+      setting the <codeline>xmlns</codeline> attribute to
+      <codeline>http://www.w3.org/1998/Math/MathML</codeline> on each
+      opening math tag.  Then all of the math tags children will be
+      assumed to be from this namespace.  Each segment of math in your
+      document should look something like this:
+    </para>
+
+    <codeblock>
+      <![CDATA[<math xmlns="http://www.w3.org/1998/Math/MathML">
+	.
+	.
+	.
+      </math>]]>
+    </codeblock>  
+
+    <para id="parmath2">
+      To simplify typing, the <cnxn target='dtd_appendix'
+      strength='8'>CNXML DTD</cnxn> provides the entity
+      <codeline>&amp;mmlns;</codeline> as a shortcut for the full
+      MathML namespace string.  A short CNXML document using this
+      entity is listed below.  <important id="dtd_note">Please note
+      that this entity should only be used if your XML parser does
+      entity expansion from an external DTD</important>
+    </para>
+      <codeblock>
+<![CDATA[<?xml version="1.0"?> 
+<!DOCTYPE module PUBLIC "-//CNX//DTD CNXML 0.2//EN"
+                        "http://cnx.rice.edu/cnxml/0.2/DTD/cnxml.dtd">
+      <module id='mathml'
+	      levelmask='0'
+	      created='2000-12-07'
+	      revised='2000-02-14'>
+        <name>Combining MathML and CNXML</name>
+	<authorlist> 
+	  <author id="jdoe">
+            <firstname>John</firstname>
+            <surname>Doe</surname>
+            <email>jdoe@anywhere.com</email>
+          </author>
+	</authorlist> 
+	<para>
+	  This is a piece of math written using MathML.  
+	  <math xmlns='&mmlns;'>
+	    <apply>
+	      <plus/>
+              <cn>2</cn>
+              <cn>3</cn>
+            </apply>
+	  </math>
+	</para>
+      </module>]]>
+      </codeblock>	
+  </section>
+  <section id='mathmleqn'>
+    <name>Places MathML is allowed</name>
+    <para id='parmath3'>
+      Formal equations and relations should be wrapped in the CNXML
+      <cnxn target='equation' strength='8'>equation</cnxn> tag.  These
+      may be given names and are easy to search for.  Additionally,
+      some presentations of CNXML may provide automatic numbering for
+      equations.
+    </para>
+
+    <para id="parmath3_5">
+      In addition to formal equations, you may include math in the
+      following CNXML tags: <cnxn strength="8"
+      target="cite">cite</cnxn>, <cnxn strength="8"
+      target="para">para</cnxn>, <cnxn strength="8"
+      target="item">item</cnxn>, <cnxn strength="8"
+      target="caption">caption</cnxn>, <cnxn strength="8"
+      target="elem">elem</cnxn>, <cnxn strength="8"
+      target="abstract">abstract</cnxn>, <cnxn strength="8"
+      target="term">term</cnxn>, and <cnxn strength="8"
+      target="meaning">meaning</cnxn>.  These should mostly be short
+      expressions or variables.
+    </para>
+    
+  </section>
+  <section id='mathmlinline'>
+    <name>Using the Inline and Display Attributes</name>
+    <para id='parmath4'>
+      If you are using math in a paragraph or a sentence be sure to
+      set the <codeline>display</codeline> attribute to
+      <codeline>"inline"</codeline> on the math tag.  If it is used
+      inside of an equation tag, set it to
+      <codeline>"block"</codeline>.
+    </para>
+  </section>
+  <section id='mathmlwrite'>
+     <name>Writing MathML</name>
+    <para id='parmath5'>
+      For information on writing MathML please refer to the <link
+      src='http://www.w3.org/TR/MathML2/'>MathML specification</link>
+      on the <link src='http://www.w3.org'>World Wide Web Consortium's
+      website</link>.
+    </para>
+  </section>
+</section>
+
+
+
+

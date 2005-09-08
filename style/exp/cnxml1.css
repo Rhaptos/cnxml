@@ -1,0 +1,483 @@
+module{
+background-color: #ffffff;
+margin: 0px;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 0px;
+padding-bottom: 10px;
+border-right-width: 0px;
+border-top-width: 0px;
+border-bottom-width: 0px;
+border-left-width: 15px;
+border-left-color: #006699;
+border-style: solid;
+}
+
+keywordlist{
+display: none;
+}
+
+keyword{
+display: none;
+}
+
+module > name{
+background-color:#6699cc;
+color: #ffffff;
+display: block;
+position: relative;
+clear: both;
+right: -10px;
+left: -10px;
+margin: 0px;
+padding-bottom: 6px;
+padding-right: 6px;
+padding-top: 6px;
+padding-left: 8px;
+border-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #cc9900;
+border-top-width: 0px;
+border-right-width: 0px;
+border-left-width: 0px;
+font-family: verdana, tahoma, sans-serif;
+font-size: 25px;
+font-variant: normal;
+font-weight: bold;
+font-stretch: normal;
+line-height: 1;
+letter-spacing: -2;
+text-align: right;
+}
+
+section > name:before{
+content: counter(section-number) ".";
+counter-increment: section-number;
+}
+
+section > name{
+color: #006699;
+display: block;
+position: relative;
+right: 0px;
+margin-bottom: 10px;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 10px;
+padding-left: 0px;
+padding-right: 0px;
+padding-bottom: 3px;
+padding-top: 0px;
+border-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #006699;
+border-top-width: 0px;
+border-right-width: 2px;
+border-right-color: #006699;
+border-left-width: 0px;
+font-family: verdana, tahoma, sans-serif;
+font-weight: bold;
+font-size: 21px;
+letter-spacing: -1;
+text-align: left;
+counter-reset: section-number;
+}
+
+section{
+display: block;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding-right: 0px;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 5px;
+border: 0px;
+}
+
+section section{
+margin-left: 30px;
+margin-right: 0px;
+}
+
+section section > name{
+border-right-width: 0px;
+font-size: 16px; 
+margin-top: 10px;
+font-weight: bold;
+text-indent: 0px;
+}
+
+list{
+display: block;
+margin: 3px;
+padding: 1px;
+border: 0px;
+}
+
+list[type="enumerated"] item{
+list-style-type: decimal;
+}
+
+item{
+display: list-item;
+list-style-position: outside;
+list-style-type: square;
+margin-left: 40px;
+margin-right: 3px;
+margin-bottom: 3px
+margin-top: 3px;
+padding: 1px;
+border: 0px;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+text-indent: 0px;
+}
+
+authorlist:before{
+display: block;
+content: "Module by: ";
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 12px;
+font-style: italic;
+padding: 5px;
+padding-left: 0px;
+margin: 0px;
+}
+
+authorlist{
+display: block;
+margin-left: 5px;
+margin-right: 10px;
+margin-bottom: 5px;
+margin-top: 10px;
+font-family: arial, helvetica, sans-serif;
+font-size: 12px;
+}
+
+author:before{
+display: list-item;
+margin-left: 0px;
+content: attr(name);
+}
+
+author{
+display: list-item;
+margin-left: 30px;
+}
+
+honorific, firstname, othername, surname, lineage{
+display: inline;
+font-family: arial, helvetica, sans-serif;
+font-size: 12px;
+font-style: normal;
+}
+
+honorific:after, firstname:after, othername:after, surname:after, lineage:after{
+content: " ";
+}
+
+email:before{
+content: " (";
+}
+
+email:after{
+content: ")";
+}
+
+email{
+display: inline;
+font-family: arial, helvetica, sans-serif;
+font-size: 12px;
+font-style: italic;
+}
+
+abstract:before{
+display: compact;
+content: "Document Summary: ";
+font-style: italic;
+font-weight: bold;
+}
+
+abstract{
+display:block;
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 12px;
+margin-left: 5px;
+margin-right: 10px;
+margin-bottom: 40px;
+margin-top: 5px;
+padding-top: 5px;
+padding-right: 5px;
+padding-left: 0px;
+padding-bottom: 10px;
+border-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #cc9900;
+border-top-width: 0px;
+border-right-width: 0px;
+border-left-width: 0px;
+}
+
+codeblock{
+display: block;
+text-indent: 0px;
+font-family: courier, courier new, monospace;
+font-size: 12px;
+white-space: pre;
+margin-left: 32px;
+margin-right: 32px;
+margin-top: 5px;
+margin-bottom: 5px;
+padding-left: 0px;
+padding-top: 0px;
+padding-bottom: 0px;
+padding-right: 0px;
+border-style: solid;
+border-left-width: 0px;
+border-bottom-width: 0px;
+border-top-width: 0px;
+border-right-width: 0px;
+border-color: #006600;
+color: #006600;
+text-align: left;
+}
+
+codeline{
+display: inline;
+font-family: courier, courier new, monospace;
+color: #006600;
+}
+
+cnxn{
+color: #660000;
+text-decoration: underline;
+font-size: .7em;
+text-transform: uppercase;
+vertical-align: middle;
+}
+
+example{
+display: block;
+margin-left: 36px;
+margin-right: 36px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding: 10px;
+color: #660033;
+font-style: normal;
+}
+
+example para{
+display: block;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 5px;
+margin-bottom: 5px;
+color: #660033;
+font-style: italic;
+}
+
+example name{
+display: block;
+font-weight: bold;
+color: #660033;
+}
+
+example math, example equation{
+font-style: normal;
+}
+
+exercise{
+display: block;
+margin: 10px;
+margin-bottom: 20px;
+}
+
+problem:before{
+display: block;
+content: "Problem: ";
+font-weight: bold;
+font-style: italic;
+}
+
+problem{
+float: left;
+display: block;
+width: 50%;
+padding: 10px;
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+}
+
+solution:before{
+display: block;
+content: "Solution: ";
+font-weight: bold;
+font-style: italic;
+}
+
+solution{
+position: relative;
+left: 50%;
+top: 1px;
+display: block;
+width: 50%;
+padding: 10px;
+color: #cc0000;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+}
+
+cite{
+font-style: italic;
+}
+
+link{
+color: #000066;
+text-decoration: underline;
+}
+
+cnxn:hover{
+font-weight: bold;
+text-decoration: none;
+}
+
+term{
+font-weight: bold;
+}
+
+definition{
+display: block;
+}
+
+definition term:before{
+content: "Term: ";
+font-weight: normal;
+font-style: normal;
+font-family: arial;
+font-size: 14px;
+}
+
+definition term{
+display: block;
+text-transform: capitalize;
+font-family: verdana;
+}
+
+meaning:before{
+content: "Definition: ";
+font-style: normal;
+font-size: 14px;
+}
+
+meaning{
+display: block;
+margin-left: 32px;
+margin-top: 5px;
+margin-right: 5px;
+margin-bottom: 5px;
+padding: 2px;
+font-style: italic;
+font-family: arial;
+}
+
+definition example:before{
+content: "Example: ";
+font-style: normal;
+font-size: 14px;
+}
+
+definition example{
+display: block;
+margin-left: 72px;
+margin-right: 0px;
+margin-top: 2px;
+margin-bottom: 2px;
+padding: 2px;
+color: #660033;
+font-style: normal;
+font-family: arial;
+}
+
+definition example para{
+display: inline;
+}
+
+emphasis{
+font-style: italic;
+}
+
+equation{display: block;
+
+}
+
+para{
+display: block;
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+text-indent: 24px;
+text-align: left;
+line-height: 1.5em;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding: 0px;
+border: 0px;
+font-style: normal;
+{
+
+codeblock emphasis, codeline emphasis{
+font-style: normal;
+font-weight: bold;
+}
+
+example emphasis, cite emphasis{
+font-style: normal;
+}
+
+important{
+color: #003366;
+font-weight: bold;
+}
+
+figure[orient="horizontal"]{
+display: inline;
+}
+
+figure[orient="vertical"]{
+display: compact;
+}
+
+subfigure{}
+
+media{
+display: block;
+}
+
+caption{
+color: #333333;
+font-family: verdana, tahoma, sans-serif;
+font-size: 10px;
+}
+
+/*
+table{}
+categories{}
+category{}
+group{}
+elem{}
+*/
+
+note{
+}
+
+
+
+

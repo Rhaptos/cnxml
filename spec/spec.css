@@ -1,0 +1,248 @@
+body{
+background-color:#f7fcff;
+/*#f3f9fb;*/
+/*#EDF2F4;*/
+margin-left:4%;
+margin-right:4%;
+}
+
+annotation-xml{
+display:none;
+}
+
+ul {
+display:block;
+list-style-position:outside;
+text-indent:0;
+}
+ol {
+display:block;
+list-style-position:outside;
+text-indent:0;
+}
+
+li{
+display:list-item;
+
+}
+
+ul.toc {
+	list-style-type: none;
+	padding-left: 0px;
+	margin-left: 10px;
+}
+
+
+ul ul {
+	margin-left: 10px;
+}
+
+pre {
+    background-color: #D6E8FF;
+    margin-left:3%;
+    margin-right:3%;
+}
+
+math, math[mode="inline"] {
+/*Change from mathml.css, other syntax did not work.*/
+  display: inline;
+}
+math {color: #FF0077;}
+mi {color: #FF0077;}
+/*This makes roman text normal.  This should really just un-italicize is
+so that things can be bold, etc. */
+[class="mathrm"] {font-style: normal}
+
+h1{
+background-color:#99AACC;
+color:#000080;
+margin-left:-4%;
+margin-right:-4%;
+font-size:24pt;
+font-family:verdana,arial;
+font-weight:bold;
+margin-bottom:0.5em;
+padding-bottom:0.5em;
+padding-top:0.5em;
+}
+
+div.problem{
+background-color: #FFFFDD;
+text-indent:0;
+margin-bottom: .25em;
+margin-top: .25em;
+margin-left: 1.5cm;
+margin-right: 1.5cm;
+}
+
+div.solution{
+display:none;
+background-color: FFDDFF;
+text-indent:0;
+margin-bottom: .25em;
+margin-top: .25em;
+margin-left: 1.5cm;
+margin-right: 1.5cm;
+}
+
+h2{
+background-color:#AACCBB;
+/*margin-left:7%;*/
+color:#606D79;
+font-size:20pt;
+font-family:verdana,arial;
+font-weight:bold;
+margin-bottom:0.4em;
+padding-bottom:0.4em;
+padding-top:0.4em;
+margin-top:0.4em;
+}
+
+h3{
+background-color:#CCCCCC;
+font-size:16pt;
+font-family:verdana,arial;
+/*margin-left:7%;*/
+font-weight:bold;
+margin-bottom:0.4em;
+padding-bottom:0.2em;
+padding-top:0.2em;
+margin-top:0.4em;
+}
+
+h4{
+background-color:#fffacd;
+
+font-size:16pt;
+font-family:verdana,arial;
+/*margin-left:7%;*/
+font-weight:bold;
+font-weight:bold;
+margin-bottom:0.4em;
+padding-bottom:0.2em;
+padding-top:0.2em;
+margin-top:0.4em;
+}
+
+
+p.para{
+font-family:verdana;
+text-indent: 2.5em;
+margin-bottom: .25em;
+margin-top: .25em;
+line-height: 125%;
+margin-left: 1.5cm;
+margin-right: 1.5cm;
+}
+
+/*Not needed anymore.*/
+/*
+p.exercise{
+text-indent:0;
+margin-bottom: .25em;
+margin-top: .25em;
+margin-left: 1.5cm;
+margin-right: 1.5cm;
+background-color: #99CCFF
+}*/
+
+p.equation{
+align:center; 
+margin:0; 
+padding:0; 
+}
+
+p.caption{
+text-indent:0;
+line-height:80%;
+margin-top:0;
+margin-bottom:0;
+margin-left: 8em;
+margin-right: 8em;
+padding-bottom:0;
+}
+
+ul{
+margin-left: 1.5cm;
+margin-right: 1.5cm;
+margin-bottom: .5em;
+margin-top: .5em;
+}
+
+ol{
+margin-left: 1.5cm;
+margin-right: 1.5cm;
+margin-bottom: .5em;
+margin-top: .5em;
+}
+
+
+span.abstract {
+display:none;
+}
+
+
+span.term {
+display:inline;
+font-weight:bold;
+background-color:inherit;
+}
+
+
+div.definition {
+display:block;
+margin:20px;
+/*padding:5px;*/
+background-color: #fffacd;
+border-color: #854513;
+/*#cd853f;*/
+border-width:2pt;
+border-style:solid;
+counter-reset:meaning 0;
+}
+div.definition>span.term{
+display:block;
+background-color: #cd853f;
+padding: 5px;
+font-weight:bold;
+}
+/*Not needed in html version.*/
+/*div.definition>span.term:before{
+content:'Definition: ';
+font-style:normal;
+font-weight:bold;
+border-width:0;
+}*/
+
+div.definition>div.meaning{
+display:block;
+list-style-position:inside;
+list-style-type:decimal;
+/*text-indent:1cm;*/
+background-color: #deb887;
+padding: 5px;
+border-style:solid;
+border-width:2pt 0 2pt 0;
+border-color: #854513;
+counter-increment:meaning;
+}
+
+/*Not needed in the html version.*/
+/*div.definition > div.example:before{
+content:'Example';
+font-weight:bold;
+border-width:0;
+}*/
+div.definition > div.example{
+display:block;
+border: thin;
+/*background-color: blue;*/
+}
+
+span.cite {
+display:inline;
+font-style:italic;
+}
+
+
+

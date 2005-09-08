@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<section id="sec_tags">
+  <name>Document Elements</name>
+
+  <section id="sec_elements">
+    <name>CNXML Elements</name>
+    
+    <para id="par_elem1">
+      CNXML documents (commonly called <term>modules</term>) are
+      comprised of a series of tags or <term>elements</term>.  Since a
+      large number of educational materials require extensive use of
+      mathematics, we have included a special section on using CNXML
+      with <link src="http://www.w3.org/Math">MathML</link>, the W3C's
+      recommendation for storing mathematics in XML.  This can be
+      found in <cnxn strength="5" target="mathml">Appendix A</cnxn>.
+    </para>
+    
+    <para id="par_elem2"> 
+      Each element may have several attributes, some of which are
+      required and some are optional.  In the following sections, each
+      element is listed with its accompanying attributes.  The
+      attributes can be one of several types (see the <link
+      src="http://www.w3.org/XML">XML specification</link> for details
+      on what these mean) :
+    
+      <list id="list_attlist">
+	<item id="item_id">ID - an identifier.  Must be unique within
+	the document</item>
+	<item id="item_idref">IDREF - refers to an ID attribute</item>
+	<item id="item_cdata">CDATA - ASCII text </item>
+      </list>
+      
+      In addition to these types, some attributes may require a
+      specific value.
+    </para>
+    
+
+  </section>
+
+  &tagsoup;
+
+</section>

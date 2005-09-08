@@ -1,0 +1,30 @@
+Use cases for CNXML DTD modules (no XHTML)
+
+1) Standalone CNXML doc. No prefix
+
+2) Standalone CNXML doc w/ prefix.
+
+3) CNXML doc w/ embedded MathML. Prefix on MathML only
+
+4) CNXML doc w/ embedded MathML. Prefix on all tags
+
+5) CNXML doc w/ embedded XLink.  Prefix on XLink only
+
+6) CNXML doc w/ embedded XLink.  Prefix on all tags
+
+7) CNXML doc w/ embedded MathML, XLink.  Prefix on MathML and XLink
+
+8) CNXML doc w/ embedded MathML, XLink.  Prefix on all tags
+	
+
+Additional use cases with XHTML:
+      
+9) CNXML doc w/ embedded XHTML.  Prefix on XHTML only
+
+10) XHTML doc w/ embedded CNXML.  Prefix on CNXML only
+
+11) CNXML doc w/ embedded XHTML.  Prefix on all tags
+
+12) CNXML doc w/ embedded XHTML, MathML.  Prefix on all tags
+
+

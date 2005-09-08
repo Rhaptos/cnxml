@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<section id="dtd_appendix">
+  <name>Appendix B: The DTD</name>
+
+  <para id="dtd">
+    This is a DTD implementing the CNXML 0.2 language.  This DTD is
+    also available from <link
+    src="http://cnx.rice.edu/cnxml/0.2/DTD/cnxml.dtd">here</link>
+  </para>
+
+  <codeblock>
+<![CDATA[<!-- DTD for the Connexions Markup Language (CNXML)          -->
+<!-- Version 0.2                                             -->
+<!--                                                         -->   
+<!-- This entity may be identified by the following PUBLIC   -->
+<!-- and SYSTEM identifiers                                  -->
+<!--                                                         -->
+<!-- PUBLIC:  -//CNX//DTD CNXML 0.2//EN                      -->
+<!-- SYSTEM:  http://cnx.rice.edu/cnxml/0.2/DTD/cnxml.dtd    -->
+<!--                                                         -->
+<!-- CVS Version: $Revision$                          -->
+<!-- Modified: $Date$                  -->
+<!-- Maintained by the CNXML langauge team                   -->
+<!-- email: cnxml@cnx.rice.edu                               -->
+<!--                                                         -->
+
+<!-- Include MathML2 DTD -->
+<!ENTITY % mathml SYSTEM "http://cnx.rice.edu/cnxml/0.2/DTD/mathml2.dtd">
+
+<!ENTITY mmlns "http://www.w3.org/1998/Math/MathML">
+<!ENTITY InvisibleTimes ""> <!ENTITY it "">
+<!ENTITY InvisibleComma ""> <!ENTITY ic "">
+<!ENTITY ApplyFunction ""> <!ENTITY af "">
+<!ENTITY ImaginaryI "j"> <!ENTITY ii "j">
+<!ENTITY ExponentialE "e"> <!ENTITY ee "e">
+<!ENTITY DifferentialD "d"> <!ENTITY dd "d">
+<!ENTITY CapitalDifferentialD "D"> <!ENTITY DD "D">
+
+%mathml;
+
+<!ELEMENT module (name, authorlist, keywordlist?, abstract, (section|para|equation|list|codeblock|figure|table|example|exercise|important|definition)+)>
+	  <!ATTLIST module id ID #REQUIRED>
+	  <!ATTLIST module levelmask CDATA #REQUIRED>
+	  <!ATTLIST module created CDATA #REQUIRED>
+	  <!ATTLIST module revised CDATA #REQUIRED>
+
+<!ELEMENT name (#PCDATA)>
+
+<!ELEMENT authorlist (author)+>
+
+<!ELEMENT author (honorific?, firstname, othername*, surname, lineage?, email?)>
+	  <!ATTLIST author id ID #REQUIRED>
+	  <!ATTLIST author homepage CDATA #IMPLIED>
+
+<!ELEMENT honorific (#PCDATA)>
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT othername (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+<!ELEMENT lineage (#PCDATA)>
+
+<!ELEMENT email (#PCDATA)>
+
+<!ELEMENT cite (#PCDATA|emphasis|%math.qname;)*>
+
+<!ELEMENT keywordlist (keyword)+>
+<!ELEMENT keyword (#PCDATA)>
+
+<!ELEMENT section (name, (section|definition|para|equation|list|codeblock|figure|table|example|exercise|important)+)>
+	  <!ATTLIST section id ID #REQUIRED>
+
+<!ELEMENT para (#PCDATA|emphasis|important|list|cnxn|link|equation|cite|definition|codeline|term|%math.qname;)*>
+	  <!ATTLIST para id ID #REQUIRED>
+
+<!ELEMENT cnxn (#PCDATA)>
+          <!ATTLIST cnxn target CDATA #IMPLIED>
+          <!ATTLIST cnxn module CDATA #IMPLIED>
+          <!ATTLIST cnxn strength (0|1|2|3|4|5|6|7|8|9) #REQUIRED>
+
+<!ELEMENT link (#PCDATA)>
+          <!ATTLIST link src CDATA #REQUIRED>
+
+<!ELEMENT equation (name?, %math.qname;)>
+	  <!ATTLIST equation id ID #REQUIRED>
+
+<!ELEMENT important ANY>
+          <!ATTLIST important id ID #REQUIRED>
+
+<!ELEMENT emphasis (#PCDATA)>
+
+<!ELEMENT list (item)+>
+          <!ATTLIST list id ID #REQUIRED>
+          <!ATTLIST list type (enumerated | bulleted) "bulleted">
+ 
+<!ELEMENT item (#PCDATA|cnxn|link|cite|definition|codeline|important|emphasis|%math.qname;|list)*>
+          <!ATTLIST item id ID #IMPLIED>
+
+<!ELEMENT codeblock (#PCDATA|cnxn|link|important|emphasis)*>
+          <!ATTLIST codeblock id ID #IMPLIED>
+
+<!ELEMENT codeline (#PCDATA|cnxn|link|important|emphasis)*>
+
+<!ELEMENT media EMPTY>
+          <!ATTLIST media type CDATA #REQUIRED>
+          <!ATTLIST media src CDATA #REQUIRED>
+
+<!ELEMENT figure (name?, ((subfigure, subfigure+)|media|table|codeblock),caption?)>
+	  <!ATTLIST figure id ID #REQUIRED>
+          <!ATTLIST figure orient (vertical|horizontal) "horizontal">
+
+<!ELEMENT subfigure (name?, (media|table|codeblock), caption?)>
+          <!ATTLIST subfigure id ID #IMPLIED>
+
+<!ELEMENT caption (#PCDATA|cnxn|codeline|link|important|emphasis|%math.qname;)*>
+
+<!ELEMENT table (categories, group+)>
+          <!ATTLIST table id ID #REQUIRED>
+          <!ATTLIST table orient (vertical|horizontal) #REQUIRED>
+
+<!ELEMENT categories (category+)>
+
+<!ELEMENT category (#PCDATA)>
+          <!ATTLIST category desc ID #REQUIRED>
+
+<!ELEMENT group (elem+)>
+
+<!ELEMENT elem (#PCDATA|cnxn|link|important|cite|codeblock|emphasis|%math.qname;)*>
+          <!ATTLIST elem id ID #IMPLIED>
+          <!ATTLIST elem desc IDREF #REQUIRED>
+
+<!ELEMENT example (para|equation|list|codeblock|figure|table|important)+>
+          <!ATTLIST example id ID #REQUIRED>       
+
+<!ELEMENT exercise (problem, solution)>
+          <!ATTLIST exercise id ID #REQUIRED>
+
+<!ELEMENT problem (cite|definition|para|equation|list|codeblock|figure|table|important)+>
+
+<!ELEMENT solution (cite|para|equation|list|codeblock|figure|table|important)+>
+
+<!ELEMENT abstract (#PCDATA|codeline|emphasis|%math.qname;)*>
+
+<!ELEMENT definition (term, (meaning, example*)+)>
+          <!ATTLIST definition id ID #REQUIRED>
+
+<!ELEMENT term (#PCDATA|codeline|%math.qname;)*>
+
+<!ELEMENT meaning (#PCDATA|codeline|emphasis|cite|link|cnxn|%math.qname;)*>]]>
+  </codeblock>
+</section>

@@ -1,0 +1,132 @@
+module {font-family: Times New Roman, Gill Sans, blue highway, avantgarde, lucida, Rockwell, Arial;
+    font-size: 12pt;
+    font-weight: normal;
+    background-color: #f4f4ff;
+		margin-top:10pt;
+    }
+
+module > name {display: block;
+    background-color: #414941;
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+    padding-left: 10pt;
+		color: #ffffff;
+    font-size: 20pt;
+    font-weight: bold; 
+    }
+
+authorlist{display: block;
+		background-color:#ffffff;
+		padding-left:10pt;
+		font-size: 9pt;
+		font-weight: normal;
+		font-style: italic;
+}
+		
+abstract{display: block;
+		background-color: #ffffff;
+    padding-left: 10pt;
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+    font-size: 12pt;
+    font-weight: normal; 
+		border-bottom-style: solid;
+		border-bottom-color: #414941;
+		border-bottom-width: 3pt;
+}
+		
+keyword {display: none;
+    }
+
+section{display: block;
+    padding-top: 10pt;
+    padding-bottom: 10pt;
+    margin-left: 10pt;
+		margin-right:30pt;
+    }
+
+section > name {display: block;
+		color: #000080;
+		font-size: 15pt;
+		font-weight: bold;
+		padding-bottom:10pt;
+    }
+
+section > section {display: block;
+		position:relative;
+		left:10pt;
+    font-weight: bold;
+    } 
+
+para {display: block;
+		padding-left: 10pt;
+    font-weight: lighter;
+    }
+
+emphasis {font-weight: bold;
+    }
+
+important {background-color: #fffd7a; 
+    }
+
+list {display: block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    }
+
+item {display: list-item;
+		margin-left:30pt;
+    }
+   
+codeblock {display: block;
+		padding-left: 10pt;
+		padding-right:10pt;
+		margin-top: 5pt;
+		margin-bottom: 5pt;
+    background-color: #ffffff;
+    font-family: courier, monospace;
+    font-size: 11pt;
+    font-weight: normal;
+    white-space: pre;
+    }
+
+codeline {display:inline;
+    font-family: courier, monospace;
+    font-size: 10pt;
+    font-weight: normal;
+		}
+
+example {display: block;
+		padding-left:10pt;
+		position: relative;
+		left: 20pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    border-left-color: #000080;
+    border-left-width: 1pt;
+    border-left-style: solid;  
+    }
+
+exercise {display: block;
+		background-color: #e2e5eF;
+		margin-right:30pt;
+		position: relative;
+		left: 20pt;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    border-color: #000080;
+    border-width: 1pt;
+    border-style: solid;  
+    }
+
+exercise > problem {display: block;
+		font-weight: bolder;
+		}
+
+exercise > solution {display: block;
+		font-style: italic;
+		margin-top:4pt;
+		margin-left:10pt;
+	}
+		
+

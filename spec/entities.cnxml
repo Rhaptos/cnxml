@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<section id='entities' name='Entities'>
+
+  <!--<section id="entities" name="Entities">-->
+  <para id="para1">
+    For rendering purposes, we've adopted some addition entities into
+    the CNXML specification.  These changes were necessary in order to
+    view certain characters in a browser.  These characters are <cnxn
+    target="cnxapos">apostrophes</cnxn>, <cnxn target="cnxleft">left
+    quote</cnxn>, <cnxn target="cnxright">right quote</cnxn> and <cnxn
+    target="cnxminus">the minus sign</cnxn>.
+  </para>
+  <section id="cnxapos" name="cnxapos">
+    <section id="cnxaposdesc" name="Description">
+      <para id="para2">&amp;cnxapos; is used to add apostrophes, where
+      appropriate, into text.</para>
+    </section>
+    <section id="cnxaposexample" name="Example">
+      <para id="para3">The code below is an example of how the
+      &amp;cnxapos; entity might be used.</para>
+      <code>
+<![CDATA[	<para id="para1">
+	    When I was a child, my brother and I rarely agreed on
+            anything.  I&cnxapos;m a Republican, and that&cnxapos;s
+            why it&cnxapos;s easy to believe that he&cnxapos;s a
+            Democrat.  It does, however, make for interesting
+            family-get-togethers and is only made worse by the fact
+            that instead of talking football and other sports like
+            normal American families that we tend to spend most of our
+            post and pre-dinner chat to the topics of the front page
+            of the daily paper.  Fortunately, Mom has a rule at her
+            table that no topics of controversy can be discussed while
+            we&cnxapos;re eating, but once dessert is over and the
+            coffee is being made, all bet's are off.
+	</para>]]>
+      </code>
+    </section>
+  </section>
+  <section id="cnxleft" name="cnxleftquote">
+    <section id="cnxleftdesc" name="Description">
+      <para id="para4">&amp;cnxleftquote; is used to add left
+      quotation marks, where appropriate, into text.</para>
+    </section>
+    <section id="cnxleftexample" name="Example">
+      <para id="para5">The code below is an example of how the
+      &amp;cnxleftquote; entity might be used.</para>
+      <code>
+<![CDATA[	<para id="p1">
+	  &cnxleftquote;I told you no!&cnxrightquote;
+	</para>
+	<para id="p2">
+	  &cnxleftquote;But I was just trying to
+	  help,&cnxrightquote; she answered in that whiny-pouty
+	  voice that made it impossible to stay mad at her.  
+	</para>
+	<para id="p3">
+	  She was
+	  trying her best bust sometimes it was just best if she
+	  left things alone.
+	  &cnxleftquote;Next time would you please do as I
+	  ask?&cnxrightquote;
+	</para>
+	<para id="p4">
+	  &cnxleftquote;Yes, I&cnxapos;m sorry.&cnxrightquote;
+	</para>]]>
+      </code>
+    </section>
+  </section>
+  <section id="cnxright" name="cnxrightquote">
+    <section id="cnxrightdesc" name="Description">
+      <para id="para6">&amp;cnxrightquote; is used to add right
+      quotation marks, where appropriate, into text.</para>
+    </section>
+    <section id="cnxrightexample" name="Example">
+      <para id="para7">The code below is an example of how the
+      &amp;cnxrightquote; entity might be used.</para>
+      <code>
+<![CDATA[
+	<para id="p1">
+	  &cnxleftquote;I told you no!&cnxrightquote;
+	</para>
+	<para id="p2">
+	  &cnxleftquote;But I was just trying to
+	  help,&cnxrightquote; she answered in that whiny-pouty
+	  voice that made it impossible to stay mad at her.  
+	</para>
+	<para id="p3">
+	  She was
+	  trying her best bust sometimes it was just best if she
+	  left things alone.
+	  &cnxleftquote;Next time would you please do as I
+	  ask?&cnxrightquote;
+	</para>
+	<para id="p4">
+	  &cnxleftquote;Yes, I&cnxapos;m sorry.&cnxrightquote;
+	</para>]]>
+      </code>
+    </section>
+  </section>
+  <section id="cnxminus" name="cnxminus">
+    <section id="cnxminusdesc" name="Description">
+      <para id="para8">&amp;cnxminus; is used for adding minus signs,
+      where appropriate, into math.</para>
+    </section>
+    <section id="cnxminusexample" name="Example">
+      <para id="para9">The code below is an example of how the
+      &amp;cnxminus; entity might be used.</para>
+      <code>
+<![CDATA[	<equation id="eqn14" name="Euler's Formula">
+	  <math xmlns="&mmlns;" mode="display">
+	    <msup>
+	      <mi>e</mi>
+	      <mrow>
+		<mi>&ImaginaryI;</mi>
+		<mo>&it;</mo>
+		<mi>&theta;</mi>
+	      </mrow>
+	    </msup>
+	    <mo>=</mo>
+	    <mi>cos</mi>
+	    <mo>&af;</mo>
+	    <mo>(</mo>
+	    <mi>&theta;</mi>
+	    <mo>)</mo>
+	    <mo>&cnxminus;</mo>
+	    <mi>&ImaginaryI;</mi>
+	    <mo>&it;</mo>
+	    <mi>sin</mi>
+	    <mo>&af;</mo>
+	    <mo>(</mo>
+	    <mi>&theta;</mi>
+	    <mo>)</mo>
+	  </math>
+	</equation>]]>
+      </code>
+    </section>
+  </section>
+</section>

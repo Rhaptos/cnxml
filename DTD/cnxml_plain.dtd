@@ -1,0 +1,23 @@
+<!-- DTD for the Connexions Markup Language (CNXML)               -->
+<!-- version 0.2                                                  -->
+<!--                                                              -->
+<!-- This entity may be identified by the following PUBLIC        -->
+<!-- and SYSTEM identifiers                                       -->
+<!--                                                              -->
+<!-- PUBLIC:  -//CNX//DTD CNXML 0.2.1//EN                         -->
+<!-- SYSTEM:  http://cnx.rice.edu/cnxml/0.2/DTD/cnxml_plain.dtd   -->
+<!--                                                              -->
+<!-- CVS Version: $Revision$                                -->
+<!-- Modified: $Date$                       -->
+<!-- Maintained by the CNXML langauge team                        -->
+<!-- email: cnxml@cnx.rice.edu                                    -->
+<!--                                                              -->
+
+<!-- Bring in the qualified names -->
+<!ENTITY % cnxml-qname.mod SYSTEM "cnxml2-qname-1.mod" >
+%cnxml-qname.mod;
+
+<!ENTITY % NS.decl.attrib "%CNXML.xmlns.extra.attrib;">
+
+<!ENTITY % cnxml.mod SYSTEM "cnxml2.mod" >
+%cnxml.mod;

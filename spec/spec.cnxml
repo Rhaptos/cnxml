@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE module PUBLIC "-//CNX//DTD CNXML 0.2//EN"
+                        "http://cnx.rice.edu/cnxml/0.2/DTD/cnxml.dtd" [
+<!ENTITY intro      SYSTEM "intro.cnxml">
+<!ENTITY doctype    SYSTEM "doctype.cnxml">
+<!ENTITY entities   SYSTEM "entities.cnxml">
+<!ENTITY mathml     SYSTEM "mathml.cnxml">
+<!ENTITY tags       SYSTEM "tags.cnxml">
+<!ENTITY tagsoup    SYSTEM "tagsoup.cnxml">
+<!ENTITY appendixa  SYSTEM "appendixa.cnxml">
+]>
+
+<module id="spec" levelmask="0" created="2000-11-20" revised="2001-02-26">
+  <name>CNXML 0.2 Language Specification</name>
+  
+  <authorlist>
+    <author id="coppin">
+      <firstname>Sarah</firstname>
+      <surname>Coppin</surname>
+    </author>
+    <author id="brentmh">
+      <firstname>Brent</firstname>
+      <surname>Hendricks</surname>
+    </author>
+    <author id="drewlin">
+      <firstname>Andrew</firstname>
+      <surname>Lin</surname>
+    </author>
+    <author id="ricky">
+      <firstname>Ricky</firstname>
+      <surname>Radaelli-Sanchez</surname>
+    </author>
+  </authorlist>
+
+  <abstract>
+    CNXML 0.2 Language Specification
+  </abstract>
+  
+  <section id="version">
+    <name>Document History</name>
+    <para id="p1">
+      Release 1.0
+    </para>
+  </section>
+  
+  &intro;
+  &doctype;
+  &tags;
+  &mathml;
+  &appendixa;
+  
+</module>
+  
+  
+
+
+

@@ -1,0 +1,2354 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<section id="structuraltags">
+  <name>Structural Tags</name>
+
+  <para id="st_par1">
+    The <cnxn target="module" strength="8">module</cnxn>, <cnxn
+    target="section" strength="8">section</cnxn>, and <cnxn
+    target="para" strength="8">para</cnxn> tags give the document it's
+    structure by separating it into logical divisions.
+  </para>
+
+  <section id="module">
+    <name>Module</name>
+    <section id="sec_moddesc">
+      <name>Description</name>
+      <para id="par_mod1">
+	The module tag is the root document element of CNXML
+	documents, commonly called "modules." 
+      </para>
+    </section>
+    
+    <section id="sec_modattr">
+      <name>Attributes</name>
+      <list id="list_modattr" type="bulleted">
+	<item>id - A unique module identifier
+	  <list type="bulleted" id="list_modattr1">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+	<item>levelmask - Currently unused, set to 0
+	    <list type="bulleted" id="list_modattr3">
+	      <item>Required</item>
+	      <item>CDATA</item>
+	    </list>
+	</item>
+	<item>created - The date on which the module was created
+	  <list type="bulleted" id="list_modattr4">
+	    <item>Required</item>
+	    <item>Should take the form YYYY-MM-DD.</item>
+	  </list>
+	</item>
+	<item>revised - The date on which the module was last edited
+	  <list type="bulleted" id="list_modattr5">
+	    <item>Required</item>
+	    <item>Should take the form YYYY-MM-DD.</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    
+    <section id="sec_modchildren">
+      <name>Children</name>
+      <para id="par_mod3">
+	<list id="list_mod1">
+	  <item>
+	    The first child of the module tag must always be a <cnxn
+	    strength="5" target="name">name</cnxn> tag containing the
+	    name of the module.
+	  </item>
+	  <item>
+	    The second child of the module tag must always be an <cnxn
+	    strength="5" target="authorlist">authorlist</cnxn> tag.
+	  </item>
+	  <item>
+	    The <cnxn strength="5"
+	    target="keywordlist">keywordlist</cnxn> tag may appear
+	    next, if it appears at all.
+	  </item>
+	  <item>
+	    The <cnxn strength="5" target="abstract">abstract</cnxn>
+	    tag must appear next, immediately preceding any content.
+	  </item>
+
+	  <item>
+	    Following that must be one or more of the following tags:
+	    <cnxn strength="5" target="section">section</cnxn>, <cnxn
+	    strength="5" target="important">important</cnxn>, <cnxn
+	    strength="5" target="para">para</cnxn>, <cnxn strength="5"
+	    target="codeblock">codeblock</cnxn>, <cnxn strength="5"    
+	    target="definition">definition</cnxn>, <cnxn strength="5"
+	    target="equation">equation</cnxn>, <cnxn strength="5"
+	    target="list">list</cnxn>, <cnxn strength="5"
+	    target="figure">figure</cnxn>, <cnxn strength="5"
+	    target="table">table</cnxn>, <cnxn strength="5"
+	    target="example">example</cnxn>, and <cnxn strength="5"
+	    target="exercise">exercise</cnxn>.
+	  </item>
+	</list>
+      </para>
+    </section>
+
+    <section id="sec_modex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<module id="spec" levelmask="0" created="2000-11-20" revised="2001-02-12">
+	  <name>CNXML 0.2 Language Specification</name>
+	  .
+	  .
+	  .
+	</module>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="section">
+    <name>Section</name>
+    <section id="secdesc">
+      <name>Description</name>
+      <para id="secp1">
+	The section tag is used to divide a module into sections,
+	as its name suggests.
+      </para>
+    </section>
+    <section id="secattr">
+      <name>Attributes</name>
+      <list id="seclist" type="bulleted">
+	<item>id - unique id
+	  <list type="bulleted" id="seclist2">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="secchild">
+      <name>Children</name>
+      <para id="secp3">
+	The section tag must contain a <cnxn strength="8"
+      target="name">name</cnxn>, followed by one or more of: <cnxn strength="8"
+      target="section">section</cnxn>, <cnxn strength="8"
+      target="definition">definition</cnxn>, <cnxn strength="8"
+      target="important">important</cnxn>, <cnxn strength="8"
+      target="para">para</cnxn>, <cnxn strength="8"
+      target="equation">equation</cnxn>, <cnxn strength="8"
+      target="list">list</cnxn>, <cnxn strength="8"
+      target="codeblock">codeblock</cnxn>, <cnxn strength="8"
+      target="figure">figure</cnxn>, <cnxn strength="8"
+      target="table">table</cnxn>, <cnxn strength="8"
+      target="example">example</cnxn>, or <cnxn strength="8"
+      target="exercise">exercise</cnxn>.
+      </para>
+    </section>
+    <section id="secex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<para id="para1">
+	  There are three ideal circuit elements.  They are the
+	  resistor, the capacitor, and the inductor.
+	</para>
+	<section id="res">
+	  <name>Resistor</name> 
+	  <para id="para2">
+	     .
+             .
+             .
+	  </para>
+	</section>
+	<section id="cap">
+	  <name>Capacitor</name>
+	  <para id="para3">
+	     .
+             .
+             .
+	  </para>
+	</section>
+	<section id="ind">
+	  <name>Inductor</name>
+	  <para id="para4">
+	     .
+             .
+             .
+	  <para>
+	</section>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="para">
+    <name>Para</name>
+    <section id="parades">
+      <name>Description</name>
+      <para id="parap1">
+	The para element contains a paragraph of possibly marked-up
+	text.
+      </para>
+    </section>
+    <section id="paraatt">
+      <name>Attributes</name>
+      <list id="paralist">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist3">
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="parachild">
+      <name>Children</name>
+      <para id="parap3">
+	A para tag may contain a mixture of plain text, math, and the
+	following tags: <cnxn strength="8"
+	target="emphasis">emphasis</cnxn>, <cnxn strength="8"
+	target="important">important</cnxn>, <cnxn strength="8"
+	target="list">list</cnxn>, <cnxn strength="8"
+	target="cnxn">cnxn</cnxn>, <cnxn strength="8"
+	target="link">link</cnxn>, <cnxn strength="8"
+	target="equation">equation</cnxn>, <cnxn strength="8"
+	target='cite'>cite</cnxn>, <cnxn strength="8"
+	target='codeline'>codeline</cnxn>, <cnxn strength="8"
+	target='definition'>definition</cnxn>, and <cnxn strength="8"
+	target='term'>term</cnxn>.  It may also contain <cnxn
+	strength="8" target="mathml">MathML</cnxn> tags.
+      </para>
+    </section>
+    <section id="paraex">
+      <name>Examples</name>
+      <para id="parap2">
+	Two paragraphs from War and Peace.
+      </para>
+      <codeblock>
+<![CDATA[      <para id="para1">
+	Prince Andrei was on duty that day and in constant attendance on the
+	Commander in Chief.
+      </para>
+      <para id="para2">
+	At six o'clock in the evening Kutuzov went to the Emperor's
+	headquarters, and after remaining but a short time with him, went to
+	the Grand Marshal of the Court, Count Tolstoy.  
+      </para>]]>
+      </codeblock>
+    </section>
+  </section>
+</section>
+
+<section id="metadatatags">
+  <name>Metadata Tags</name>
+
+  <para id="meta_par1">
+    These are tags that contain information <emphasis>about</emphasis>
+    the module, and not necessarily module content.
+  </para>
+
+  <section id="authorlist" >
+    <name>Authorlist</name>
+    <section id="sec_aldesc">
+      <name>Description</name>
+      <para id="par_al1">
+	The authorlist tag must appear immediately after the <cnxn
+	strength="5" target="name">name</cnxn> tag in a <cnxn
+	strength="5" target="module">module</cnxn>, and contains an
+	<cnxn strength="5" target="author">author</cnxn> tag for each
+	author who contributed in writing the module.
+      </para>
+    </section>
+    
+    <section id="sec_alattr">
+      <name>Attributes</name>
+      <para id="par_al2">
+	None
+      </para>
+    </section>
+
+    <section id="sec_alchildren">
+      <name>Children</name>
+      <para id="par_al4">
+	The authorlist tag must contain one or more <cnxn strength="5"
+	target="author">author</cnxn> tags.
+      </para>
+    </section>
+
+    <section id="sec_alex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<authorlist>
+	  <author id="coppin">
+	    <firstname>Sarah</firstname>
+	    <surname>Coppin</surname>
+	  </author>
+
+	  <author id="bmh">
+	    <firstname>Brent</firstname>
+	    <surname>Hendricks</surname>
+	  </author>
+
+	  <author id="drewlin">
+	    <firstname>Andrew</firstname>
+	    <surname>Lin</surname>
+	  </author>
+
+	  <author id="ricky">
+	    <firstname>Ricky</firstname>
+	    <surname>Radaelli-Sanchez</surname>
+	  </author>
+	</authorlist>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="author" >
+    <name>Author</name>
+    <section id="sec_adesc">
+      <name>Description</name>
+      <para id="par_a1">
+	The author tag gives information about a particular author of
+	the document.
+      </para>
+    </section>
+
+    <section id="sec_aattr">
+      <name>Attributes</name>
+      <list id="list_authattr" type="bulleted">
+	<item>id - The author's unique identifier within the CNX system
+	  <list type="bulleted" id="list_authattr1">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+	<item>homepage - Author's web address
+	  <list type="bulleted" id="list_authattr4">
+	    <item>Optional</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+
+    <section id="sec_achildren">
+      <name>Children</name>
+      <para id="par_a4">
+	At the very least, author must contain a <cnxn strength="5"
+	target="firstname">firstname</cnxn> tag followed by a <cnxn
+	strength="5" target="surname">surname</cnxn> tag.  The
+	optional <cnxn strength="5"
+	target="honorific">honorific</cnxn> tag may precede the first
+	name, and similarly, the optional <cnxn strength="5"
+	target="lineage">lineage</cnxn> tag may follow the surname.
+	Any number of <cnxn strength="5"
+	target="othername">othername</cnxn> tags may appear between
+	first name and surname.  Authors may also enter an email
+	address by including the <cnxn strength="5"
+	target="email">email</cnxn> tag as the last child of author.
+      </para>
+    </section>
+
+    <section id="sec_aex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<author id="ricky">
+	  <firstname>Ricky</firstname>
+	  <surname>Radaelli-Sanchez</surname>
+	</author>
+
+	<author id="obiwan">
+	  <honorific>Sir</honorific>
+	  <firstname>Alec</firstname>
+	  <surname>Guinness</surname>
+	</author>
+
+	<author id="wlw" homepage="http://www.ece.rice.edu/~wlw">
+	  <honorific>Dr.</honorific>
+	  <firstname>William</firstname>
+	  <othername>Lewis</othername>
+	  <surname>Wilson</surname>
+	  <lineage>Jr.</lineage>
+	  <email>wlw@rice.edu</email>
+	</author>]]>
+      </codeblock>
+    </section>
+
+  </section>
+
+  <section id="keywordlist">
+    <name>Keywordlist</name>
+    <section id="sec_kldesc">
+      <name>Description</name>
+      <para id="par_kl1">
+	The keywordlist tag optionally appears as the second child tag
+	of <cnxn strength="5" target="module">module</cnxn>, and
+	contains a list of the keywords or phrases relevant to the
+	module's topic.
+      </para>
+    </section>
+
+    <section id="sec_klattr">
+      <name>Attributes</name>
+      <para id="par_kl2">
+	None
+      </para>
+    </section>
+
+    <section id="sec_klchildren">
+      <name>Children</name>
+      <para id="par_kl4">
+	The keywordlist tag must contain one or more <cnxn
+	strength="5" target="keyword">keyword</cnxn> tags.
+      </para>
+    </section>
+
+    <section id="sec_klex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<keywordlist>
+	  <keyword>Sample module</keyword>
+	  <keyword>Test</keyword>
+	</keywordlist>]]>
+      </codeblock>
+    </section>
+    
+  </section>
+  
+  <section id="keyword">
+    <name>Keyword</name>
+    <section id="sec_kdesc">
+      <name>Description</name>
+      <para id="par_k1">
+	The keyword tag holds a single word or phrase relevant to the
+	module in which it appears.
+      </para>
+    </section>
+    
+    <section id="sec_kattr">
+      <name>Attributes</name>
+      <para id="par_k2">
+	None
+      </para>
+    </section>
+    
+    <section id="sec_kchildren">
+      <name>Children</name>
+      <para id="par_k4">
+	ASCII text representing the key word or phrase
+      </para>
+    </section>
+
+    <section id="sec_kex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<keyword>Fourier Series</keyword>]]>
+      </codeblock>
+    </section>
+  </section>  
+
+  <section id="abstract">
+    <name>Abstract</name>
+    <section id="sec_abstractdesc">
+      <name>Description</name>
+      <para id="par_abstract1">
+	The abstract tag holds a brief summary or abstract of the
+	document's contents.
+      </para>
+    </section>
+    
+    <section id="sec_abstractattr">
+      <name>Attributes</name>
+      <para id="par_abstract2">
+	None
+      </para>
+    </section>
+    
+    <section id="sec_abstractchildren">
+      <name>Children</name>
+      <para id="par_abstract3">
+	The abstract tag may contain a combination of plain text,
+	<cnxn strength="5" target="codeline">codeline</cnxn>, and
+	<cnxn strength="5" target="emphasis">emphasis</cnxn> tags.  It
+	may also contain <cnxn strength="8"
+	target="mathml">MathML</cnxn> tags.
+      </para>
+    </section>
+    
+      <section id="sec_abstractex">
+	<name>Examples</name>
+      <codeblock>
+	<![CDATA[<abstract>
+	  This module contains the specification for version 0.2 of
+	  the Connexions Markup Language (CNXML).  It is used for
+	  marking up educational content for the Connexions project
+	  and contains many improvements over 0.1 including a new
+	  definition tag.
+	</abstract>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="name">
+    <name>Name</name>
+    <section id="sec_namedesc">
+      <name>Description</name>
+      <para id="par_name1">
+	The name tag provides a searchable name for a particular
+	object such as a module, section or a figure.
+      </para>
+    </section>
+    
+    <section id="sec_nameattr">
+      <name>Attributes</name>
+      <para id="par_name2">
+	None
+      </para>
+    </section>
+    
+    <section id="sec_namechildren">
+      <name>Children</name>
+      <para id="par_name3">
+	ASCII text representing an object's name
+      </para>
+    </section>
+    
+    <section id="sec_nameex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<section id="intro">
+	  <name>An Introduction to CNXML</name>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="firstname">
+    <name>Firstname</name>
+    <section id="sec_firstnamedesc">
+      <name>Description</name>
+      <para id="par_firstname1">
+	The firstname tag holds the firstname of the document's author
+	in the context of an <cnxn strength="5"
+	target="author">author</cnxn> tag. It is used in conjunction
+	with <cnxn strength="5" target="honorific">honorific</cnxn>,
+	<cnxn strength="5" target="othername">othername</cnxn>, <cnxn
+	strength="5" target="surname">surname</cnxn>, and <cnxn
+	strength="5" target="lineage">lineage</cnxn> to form a
+	complete name.
+      </para>
+    </section>
+    
+    <section id="sec_firstnameattr">
+      <name>Attributes</name>
+      <para id="par_firstname2">
+	None
+      </para>
+    </section>
+    
+    <section id="sec_firstnamechildren">
+      <name>Children</name>
+      <para id="par_firstname3">
+	ASCII text representing the author's first name
+      </para>
+    </section>
+    
+    <section id="sec_firstnameex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<author id="bmh">
+	  <firstname>Brent</firstname>
+	  <surname>Hendricks</surname>
+	</author>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="othername">
+    <name>Othername</name>
+    <section id="sec_othernamedesc">
+      <name>Description</name>
+      <para id="par_othername1">
+	The othername can be used to contain middle names, nicknames,
+	or other names that the document author may wish to include in
+	the context of an <cnxn strength="5"
+	target="author">author</cnxn> tag.  It is used in conjunction
+	with <cnxn strength="5" target="honorific">honorific</cnxn>,
+	<cnxn strength="5" target="firstname">firstname</cnxn>, <cnxn
+	strength="5" target="surname">surname</cnxn>, and <cnxn
+	strength="5" target="lineage">lineage</cnxn> to form a
+	complete name.
+      </para>
+    </section>
+    
+    <section id="sec_othernameattr">
+      <name>Attributes</name>
+      <para id="par_othername2">
+	None
+      </para>
+    </section>
+    
+    <section id="sec_othernamechildren">
+      <name>Children</name>
+      <para id="par_othername3">
+	ASCII text representing authors' "other names" like middle
+	names or nicknames.
+      </para>
+    </section>
+    
+    <section id="sec_othernameex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<author id="bmh">
+	  <firstname>Brent</firstname>
+	  <othername>Michael</othername>
+	  <surname>Hendricks</surname>
+	</author>
+
+	<author id="rgb">
+	  <firstname>Rich</firstname>
+	  <othername>"The Man"</othername>
+	  <surname>Baraniuk</surname>
+	</author>]]> 
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="surname">
+    <name>Surname</name>
+    <section id="sec_surnamedesc">
+      <name>Description</name>
+      <para id="par_surname1">
+	The surname tag holds the surname or last name of the
+	document's author in the context of an <cnxn strength="5"
+	target="author">author</cnxn> tag.  It is used in conjunction
+	with <cnxn strength="5" target="honorific">honorific</cnxn>,
+	<cnxn strength="5" target="firstname">firstname</cnxn>, <cnxn
+	strength="5" target="othername">othername</cnxn>, and <cnxn
+	strength="5" target="lineage">lineage</cnxn> to form a
+	complete name.
+      </para>
+    </section>
+    
+    <section id="sec_surnameattr">
+      <name>Attributes</name>
+      <para id="par_surname2">
+	None
+      </para>
+    </section>
+    
+    <section id="sec_surnamechildren">
+      <name>Children</name>
+      <para id="par_surname3">
+	ASCII text representing the author's last name
+      </para>
+    </section>
+    
+    <section id="sec_surnameex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<author id="bmh">
+	  <firstname>Brent</firstname>
+	  <surname>Hendricks</surname>
+	</author>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="honorific">
+    <name>Honorific</name>
+    <section id="sec_honorificdesc">
+      <name>Description</name>
+      <para id="par_honorific1">
+	The honorific tag is used to hold titles such as Dr. or Sir in
+	the context of an <cnxn strength="5"
+	target="author">author</cnxn> tag.  It is used in conjunction
+	with <cnxn strength="5" target="firstname">firstname</cnxn>,
+	<cnxn strength="5" target="othername">othername</cnxn>, <cnxn
+	strength="5" target="surname">surname</cnxn>, and <cnxn
+	strength="5" target="lineage">lineage</cnxn> to form a
+	complete name.
+      </para>
+    </section>
+    
+    <section id="sec_honorificattr">
+      <name>Attributes</name>
+      <para id="par_honorific2">
+	None
+      </para>
+    </section>
+    
+    <section id="sec_honorificchildren">
+      <name>Children</name>
+      <para id="par_honorific3">
+	ASCII text representing the author's title
+      </para>
+    </section>
+    
+    <section id="sec_honorificex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<author id="wlw">
+	  <honorific>Dr.</honorific>
+	  <firstname>William</firstname>
+	  <othername>Lewis</othername>
+	  <surname>Wilson</surname>
+	  <lineage>Jr.</lineage>
+	</author>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="lineage">
+    <name>Lineage</name>
+    <section id="sec_lineagedesc">
+      <name>Description</name>
+      <para id="par_lineage1">
+	The lineage tag can be used to hold genealogical parts of the
+	author's name, such as Jr. or III.  It is used in the context
+	of an <cnxn strength="5" target="author">author</cnxn> tag in
+	conjunction with <cnxn strength="5"
+	target="honorific">honorific</cnxn>, <cnxn strength="5"
+	target="firstname">firstname</cnxn>, <cnxn strength="5"
+	target="othername">othername</cnxn>, and <cnxn strength="5"
+	target="surname">surname</cnxn> to form a complete name.
+      </para>
+    </section>
+    
+    <section id="sec_lineageattr">
+      <name>Attributes</name>
+      <para id="par_lineage2">
+	None
+      </para>
+    </section>
+    
+    <section id="sec_lineagechildren">
+      <name>Children</name>
+      <para id="par_lineage3">
+	ASCII text representing the "lineage" portion of an author's
+	name such as Jr. or III.
+      </para>
+    </section>
+    
+    <section id="sec_lineageex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<author id="wlw">
+	  <honorific>Dr.</honorific>
+	  <firstname>William</firstname>
+	  <othername>Lewis</othername>
+	  <surname>Wilson</surname>
+	  <lineage>Jr.</lineage>
+	</author>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="email">
+    <name>Email</name>
+    <section id="sec_emaildesc">
+      <name>Description</name>
+      <para id="par_email1">
+	The email tag can be used to hold the author's email address.
+      </para>
+    </section>
+    
+    <section id="sec_emailattr">
+      <name>Attributes</name>
+      <para id="par_email2">
+	None
+      </para>
+    </section>
+    
+    <section id="sec_emailchildren">
+      <name>Children</name>
+      <para id="par_email3">
+	ASCII text representing the email address
+      </para>
+    </section>
+    
+    <section id="sec_emailex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<author id="bmh">
+	  <firstname>Brent</firstname>
+	  <surname>Hendricks</surname>
+	  <email>bmh@example.com</email>
+	</author>]]>
+      </codeblock>
+    </section>
+  </section>
+
+</section>
+
+<section id="liststablesfigs">
+  <name>Lists, Tables, and Figures</name>
+  
+  <para id="lists_par1">
+    These are the tags specific to adding lists, tables, and figures
+    to the document.
+  </para>
+
+  <section id="list">
+    <name>List</name>
+    <section id="listdesc">
+      <name>Description</name>
+      <para id="listp1">
+	The list tag is used to create ordered or unordered lists of items.
+      </para>
+    </section>
+    <section id="listattr">
+      <name>Attributes</name>
+      <list id="listlist">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist16">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+	<item>
+	  type - makes the list ordered or unordered
+	  <list type="bulleted" id="attlist17">
+	    <item>Optional</item>
+	    <item>Possible values
+	      <list type="bulleted" id="attlist18">
+		<item>enumerated - numbers the
+		  list with the first item after the tag being the
+		  first element
+		</item>
+		<item>bulleted - creates a bulleted list of items
+		</item>
+	      </list>
+	    </item>
+	    <item>Default is bulleted
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="listchild">
+      <name>Children</name>
+      <para id="listp3">
+	 The list tag must contain one or more <cnxn
+	target="item" strength='8'>item</cnxn> tags.
+      </para>
+    </section>
+    <section id="listexamp">
+      <name>Examples</name>
+      <para id="listp2">
+	The code below is an example of the list tag with the type
+	attribute set to &quot;enumerated&quot;.
+      </para>
+      <codeblock>
+	<![CDATA[<list type="enumerated">
+	  <item>Milk</item> 
+	  <item>Eggs</item> 
+	  <item>Sugar</item>
+	</list>]]>
+      </codeblock>
+      <para id="extodo">
+	It might be displayed as shown here.
+	<list id="exlist" type="enumerated">
+	  <item>Milk</item> 
+	  <item>Eggs</item> 
+	  <item>Sugar</item>
+	</list>
+      </para>
+    </section>
+  </section>
+
+  <section id="item">
+    <name>Item</name>
+    <section id="itemdesc">
+      <name>Description</name>
+      <para id="itemp1">
+	The item tag is used to specify an item of a list.  It appears
+	only as the child of <cnxn target="list"
+	strength='8'>list</cnxn> tags.
+      </para>
+    </section>
+    <section id="itemattr">
+      <name>Attributes</name>
+      <list id="itemlist">
+	<item>id - unique id
+	  <list type="bulleted" id="attlist19">
+	    <item>Optional</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="itemchild">
+      <name>Children</name>
+      <para id="itemp3">
+	The item tag may contain a combination of plain text, and the
+	following tags: <cnxn target="emphasis"
+	strength='8'>emphasis</cnxn>, <cnxn target="important"
+	strength='8'>important</cnxn>, <cnxn target="link"
+	strength='8'>link</cnxn>, <cnxn target="cnxn"
+	strength='8'>cnxn</cnxn>, <cnxn target="list"
+	strength='8'>list</cnxn>, <cnxn target='codeline'
+	strength='8'>codeline</cnxn>, <cnxn target='definition'
+	strength='8'>definition</cnxn>, and <cnxn target='cite'
+	strength='8'>cite</cnxn>.  It may also contain <cnxn
+	strength="8" target="mathml">MathML</cnxn> tags.
+    </para>
+    </section>
+    <section id="itemexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<list type="enumerated">
+	  <item><link src="http://www.rice.edu">Rice University</link></item> 
+	  <item><link src="http://www.columbia.edu">Columbia University</link></item> 
+	  <item><link src="http://www.stanford.edu">Stanford University</link></item>
+	</list>]]>
+      </codeblock>
+    </section>
+  </section>
+  
+  <section id='table'>
+    <name>Table</name>
+    <section id='tabledes'>
+      <name>Description</name>
+     <para id="tablep1">
+	The table tag is used to create tables.  It is designed to be
+	a generalized table.  That is, there are not rows and columns.
+	Instead, there are two separate sets of groupings.  One set of
+	groups is defined by the <cnxn target='group'
+	strength='8'>group</cnxn> tag, which contains <cnxn
+	target='elem' strength='8'>elem</cnxn> tags or elements.  The
+	other set is defined by <cnxn target='category'
+	strength='8'>category</cnxn> tags.  Both an <cnxn
+	target='elem' strength='8'>elem</cnxn> and its <cnxn
+	target='category' strength='8'>category</cnxn> have a desc
+	attribute with the same value that links them together.
+      </para>
+      <para id="tablepnote">
+	Please note that the table tag will most likely be
+	substantially altered in future releases of CNXML.
+      </para>
+    </section>
+    <section id='tableatt'>
+      <name>Attributes</name>
+      <list id="tablelist">
+	<item>
+	  id - unique id
+	  <list type='bulleted' id='attlist9'>
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  orient - Determines which way the table is laid out.
+	  <list type='bulleted' id='attlist10'>
+	    <item>
+	      Required
+	    </item>
+	    <item>Possible values
+	      <list type='bulleted' id='attlist15'>
+		<item>
+		  horizontal - elements with the same group are on top
+		  of each other (that is, group defines a column)
+		</item>
+		<item>	      
+		  vertical - elements with the same category are on top of each
+		  other (that is, category defines a column)
+		</item>	
+	      </list>
+	    </item>
+<!--	    <item>
+	      Default is vertical.
+	    </item>
+-->
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id='tablechild'>
+      <name>Children</name>
+      <para id="tablep3">
+	The table tag contains one <cnxn target='categories'
+	strength='8'>categories</cnxn> tag followed by one or more
+	<cnxn target='group' strength='8'>group</cnxn> tags.
+      </para>
+    </section>
+    <section id='tableex'>
+      <name>Examples</name>
+      <para id="tablep2">
+	The following table has groups of items that are defined by
+	being a fruit or vegetable and by their color.  For example,
+	the first element is a red fruit.
+      </para>
+      <codeblock>
+	<![CDATA[<table id='table' orient='vertical'>
+	  <categories>
+	    <category desc='fruit'>Fruit</category>
+	    <category desc='vegetable'>Vegetables</category>
+	  </categories>
+	  <group>
+	    <elem desc='fruit'>Apple</elem>
+	    <elem desc='vegetable'>Tomato</elem>
+	  </group>
+	  <group>
+	    <elem desc='fruit'>Orange</elem>
+	    <elem desc='vegetable'>Carrot</elem>
+	  </group>
+	  <group>
+	    <elem desc='fruit'>Grape</elem>
+	    <elem desc='vegetable'>Lettuce</elem>
+	  </group>
+	</table>]]>
+      </codeblock>
+      <para id="tablep2b">
+	and it might be rendered as shown in the figure below.
+      </para>
+      <figure id='figtableexample' orient="horizontal">
+	<name>Table Example</name>
+	<table id='tableexample' orient='vertical'>
+	  <categories>
+	    <category desc='fruit'>Fruit</category>
+	    <category desc='vegetable'>Vegetables</category>
+	  </categories>
+	  <group>
+	    <elem desc='fruit'>Apple</elem>
+	    <elem desc='vegetable'>Tomato</elem>
+	  </group>
+	  <group>
+	    <elem desc='fruit'>Orange</elem>
+	    <elem desc='vegetable'>Carrot</elem>
+	  </group>
+	  <group>
+	    <elem desc='fruit'>Grape</elem>
+	    <elem desc='vegetable'>Lettuce</elem>
+	  </group>
+	</table>
+	<caption>
+	  The first element is an apple which is a red fruit.  One
+	  grouping is defined by the <cnxn
+	  target='category' strength='8'>category</cnxn> tag's desc
+	  attribute.  The other grouping is defined by the <cnxn
+	  target='group' strength='8'>group</cnxn> tag.
+	</caption>
+      </figure>
+    </section>
+  </section>
+
+  <section id='categories'>
+    <name>Categories</name>
+    <section id='catsdes'>
+      <name>Description</name>
+      <para id="catsp1">
+	The categories tag groups all of the <cnxn target='category'
+	strength='8'>category</cnxn> tags together.
+      </para>
+    </section>
+    <section id='catsatt'>
+      <name>Attributes</name>
+      <para id="catslist">
+	  None
+      </para>
+    </section>
+    <section id='catschild'>
+      <name>Children</name>
+      <para id="catsp3">
+	The categories tag must contain one or more <cnxn
+	target='category' strength='8'>category</cnxn> tags. The order
+	of the <cnxn target='category' strength='8'>category</cnxn>
+	tags within the categories tag defines what order they will be
+	displayed in.
+      </para>
+    </section>
+    <section id='catsex'>
+      <name>Examples</name>
+      <para id="catsp2">
+	See the <cnxn target='tableex' strength='8'>table
+	example</cnxn>.
+      </para>
+    </section>
+  </section>
+
+  <section id='category'>
+    <name>Category</name>
+    <section id='catdes'>
+      <name>Description</name>
+      <para id="catp1">
+	Each category tag serves to group one set of things.
+	The desc attribute, short for description, links the category
+	to the element. The content of the category will be
+	used as the header for the column or row defined by the
+	category.
+      </para>
+    </section>
+    <section id='catatt'>
+      <name>Attributes</name>
+      <list id="catlist">
+	<item>
+	  desc - The value of the attribute will be used repeatedly to
+	  link the category to specific elements (see <cnxn
+	  target="elem" strength='8'>elem</cnxn>) so it should be
+	  short.
+	  <list type='bulleted' id='attlist11'>
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id='catchild'>
+      <name>Children</name>
+      <para id="catp3">
+	It must contain plain text<!--FIX ME or math-->.
+      </para>
+    </section>
+    <section id='catex'>
+      <name>Examples</name>
+      <para id="catp2">
+	See the <cnxn target='tableex' strength='8'>table
+	example</cnxn>.
+      </para>
+    </section>
+  </section>
+  
+  <section id='group'>
+    <name>Group</name>
+    <section id='groupdes'>
+      <name>Description</name>
+      <para id="groupp1">
+	The group tag pulls together several elements, denoted by
+	<cnxn target='elem' strength='8'>elem</cnxn>.  Those elements
+	are contained within the group tag.
+      </para>
+    </section>
+    <section id='groupatt'>
+      <name>Attributes</name>
+      <para id="grouplist">
+	  None
+      </para>
+    </section>
+    <section id='groupchild'>
+      <name>Children</name>
+      <para id="groupp3">
+	The group tag must contain one or more <cnxn
+	target='elem' strength='8'>elem</cnxn> tags.
+      </para>
+    </section>
+    <section id='groupex'>
+      <name>Examples</name>
+      <para id="groupp2">
+	See the <cnxn target='tableex' strength='8'>table example</cnxn>.
+      </para>
+    </section>
+  </section>
+  
+  <section id='elem'>
+    <name>Elem</name>
+    <section id='elemdes'>
+      <name>Description</name>
+      <para id="elemp1">
+	The elem tag contains the actual information of the table.
+	Each element belongs to a group (specified by the <cnxn
+	target='group' strength='8'>group</cnxn> tag), and refers to a
+	category (specified by the <cnxn target='category'
+	strength='8'>category</cnxn> tag).
+      </para>
+    </section>
+    <section id='elematt'>
+      <name>Attributes</name>
+      <list id="elemlist">
+	<item>
+	  desc - desc is short for
+	  description.  The value of the attribute will be used to
+	  link the element to a <cnxn
+	  target='category' strength='8'>category</cnxn>.
+	  <list type='bulleted' id='attlist12'>
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      IDREF
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  id - a unique id
+	  <list type='bulleted' id='attlist13'>
+	    <item>
+	      Optional
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id='elemchild'>
+      <name>Children</name>
+      <para id="elemp3">
+	An elem tag must contain one or more of plain text, math or
+	one of the following tags: <cnxn target='cnxn'
+	strength='8'>cnxn</cnxn>, <cnxn target='link'
+	strength='8'>link</cnxn>, <cnxn target='important'
+	strength='8'>important</cnxn>, <cnxn target='emphasis'
+	strength='8'>emphasis</cnxn>, <cnxn target='codeline'
+	strength='8'>codeline</cnxn>, and <cnxn target='cite'
+	strength='8'>cite</cnxn>.  It may also contain <cnxn
+	strength="8" target="mathml">MathML</cnxn> tags.
+      </para>
+    </section>
+    <section id='elemex'>
+      <name>Examples</name>
+      <para id="elemp2">
+	See the <cnxn target='tableex' strength='8'>table
+	example</cnxn>.
+      </para>
+    </section>
+  </section>
+
+  <section id="figure">
+    <name>Figure</name>
+    <section id="figdes">
+      <name>Description</name>
+      <para id="figp1">
+	The figure tag provides the structure for creating a figure
+	within a document.  A figure could contain such things as an
+	image, or a table, or several of these.
+      </para>
+    </section>
+    <section id="figatt">
+      <name>Attributes</name>
+      <list id="figlist1">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist4">
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+	<item id="orient">
+	  orient - allows the writer to determine which way <cnxn
+	  strength="8" target="subfigure">subfigures</cnxn> should be
+	  arranged (irrelevant if there are no subfigures)
+	  <list type="bulleted" id="attlist6">
+	    <item>Optional
+	    </item>
+	    <item>Possible values
+	      <list type="bulleted" id="attlist14">
+		<item>
+		  horizontal - subfigures will be placed next to each other 
+		</item>
+		<item>	      
+		  vertical - subfigures will be placed on top of each other
+		</item>	
+	      </list>
+	    </item>
+	    <item>Default is horizontal.
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="figchild">
+      <name>Children</name>
+      <list id="figlist2">
+	<item>
+	  The <cnxn strength="8" target="name">name</cnxn> tag may
+	  appear as the first child of the figure element.
+	</item>
+	<item>
+	  Next must appear either two or more <cnxn strength="8"
+	  target="subfigure">subfigure</cnxn> tags, or a single <cnxn
+	  strength="8" target="media">media</cnxn>, <cnxn strength="8"
+	  target="table">table</cnxn>, or <cnxn strength="8"
+	  target="codeblock">codeblock</cnxn> tag.
+	</item>
+	<item>
+	  Finally, the figure tag may contain an optional <cnxn strength="8"
+	  target="caption">caption</cnxn> tag as it's last child element.
+	</item>
+      </list>
+    </section>
+    <section id="figex">
+      <name>Examples</name>
+      <para id="figp2">
+	The following code for a figure might be displayed as shown
+	below.
+      </para>
+      <codeblock>
+      <![CDATA[<figure id="fig1">
+        <name>A Happy Dog</name>
+        <media type="image" src="image1.jpg"/>
+	<caption>The dog displayed in this picture is enjoying a
+	comfortable bed.</caption>
+      </figure>]]>
+      </codeblock>
+      <figure id="fig1">
+	<name>A Happy Dog</name>
+	<media type="image" src="image1.jpg"/>
+	<caption>
+	  The dog displayed in this picture is enjoying a
+	  comfortable bed.
+	</caption>
+      </figure>
+    </section>
+
+  </section>
+  <!--
+  <section id="name">
+    <name>Name</name>
+    <section id="namedes">
+      <name>Description</name>
+      <para id="namep1">
+	A name tag is used only as the first child of its parent.  It
+	generally provides a brief title or name for the parent tag.
+      </para>
+    </section>
+    <section id="nameatt">
+      <name>Attributes</name>
+      <para id="titlelist">
+	None
+      </para>	
+    </section>
+    <section id="namechild">
+      <name>Children</name>
+      <para id="namep3">
+	The name tag must only contain plain text. 
+      </para>
+    </section>
+    <section id="nameex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<figure id="fig2" orient="horizontal">
+        <name>A Happy Dog</name>
+        <media type="image" src="image1.jpg"/>
+      </figure>]]>
+      </codeblock>
+      <para id="namep2b">
+	This might be displayed as shown in the figure.
+      </para>
+      <figure id="fig2" orient="horizontal">
+	<name>A Happy Dog</name>
+	<media type="image" src="image1.jpg"/>
+      </figure>
+    </section>
+  </section>
+-->
+  
+  <section id="subfigure">
+    <name>Subfigure</name>
+    <section id="subfigdes">
+      <name>Description</name>
+      <para id="subp1">
+	A subfigure tag is used when you want to use more than one
+	<cnxn strength="8" target="media">media</cnxn> tag or <cnxn
+	strength="8" target="table">table</cnxn> tag, etc. inside of
+	the same <cnxn strength="8" target="figure">figure</cnxn> tag.
+	It is only appropriate to use subfigures if the subfigures are
+	related in some way.  The usage of the subfigure tag is
+	similar to that of <cnxn strength="8"
+	target='figure'>figure</cnxn>, except that it cannot contain
+	another subfigure tag.
+      </para>
+    </section>
+    <section id="subfigatt">
+      <name>Attributes</name>
+      <list id="subfiglist">
+	<item>
+	  id - unique id 
+	  <list type="bulleted" id="attlist7">
+	    <item>
+	      Optional
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="subfigchild">
+      <name>Children</name>
+      <list id="subfiglist2">
+	<item>
+	  The <cnxn strength="8" target="name">name</cnxn> tag may
+	  appear as the first child of the subfigure element.
+	</item>
+	<item>
+	  Next a single <cnxn strength="8" target="media">media</cnxn>,
+	  <cnxn strength="8" target="table">table</cnxn>, or <cnxn strength="8"
+	  target="codeblock">codeblock</cnxn> tag is required.
+	</item>
+	<item>
+	  Finally, the subfigure tag may contain an optional <cnxn
+	  strength="8" target="caption">caption</cnxn> tag as its last
+	  child element.
+	</item>
+      </list>
+    </section>
+    <section id="subfigex">
+      <name>Examples</name>
+      <para id="subp2">
+	Here are two subfigures appearing in a figure whose <cnxn strength="8"
+	target="orient">orient</cnxn> attribute is set to
+	"horizontal".
+      </para>
+      <codeblock>
+	<![CDATA[<figure orient="horizontal" id="horfig">
+	  <subfigure id="subfig1">
+	    <media type="image" src="image1.jpg"/>
+	  </subfigure>
+	  <subfigure id="subfig2">
+	    <media type="image" src="image2.jpg"/>
+	  </subfigure>
+	</figure>]]>
+      </codeblock>
+      <para id="subp2b">
+	This might be rendered as in the figure below.
+      </para>
+      <figure orient="horizontal" id="horfig">
+	<subfigure id="subfig1">
+	  <media type="image" src="image1.jpg"/>
+	</subfigure>
+	<subfigure id="subfig2">
+	  <media type="image" src="image2.jpg"/>
+	</subfigure>
+      </figure>
+      <para id="subp3">
+	Similarly, here are two subfigures appearing in a figure whose
+	<cnxn strength="8" target="orient">orient</cnxn> attribute is
+	set to "vertical".
+      </para>
+      <codeblock>
+	<![CDATA[<figure orient="vertical" id="vertfig">
+	  <subfigure id="subfig3">
+	    <media type="image" src="image1.jpg"/>
+	    <caption>Dog sitting</caption>
+	  </subfigure>
+	  <subfigure id="subfig4">
+	    <media type="image" src="image2.jpg"/>
+	    <caption>Dog standing</caption>
+	  </subfigure>
+	</figure>]]>
+      </codeblock>
+      <para id="subp3b">
+	This might be rendered as in the figure below.
+      </para>
+      <figure orient="vertical" id="vertfig">
+	<subfigure id="subfig3">
+	  <media type="image" src="image1.jpg"/>
+	    <caption>Dog sitting</caption>
+	</subfigure>
+	<subfigure id="subfig4">
+	  <media type="image" src="image2.jpg"/>
+	    <caption>Dog standing</caption>
+	</subfigure>
+      </figure>
+    </section>
+  </section>  
+  
+  <section id="caption">
+    <name>Caption</name> 
+    <section id="captiondes">
+      <name>Description</name>
+      <para id="capp1">
+	Caption is only used to provide a caption for a <cnxn strength="8"
+	target="figure">figure</cnxn> or a <cnxn strength="8"
+	target="subfigure">subfigure</cnxn>.  The caption tag is
+	distinct from the <cnxn strength="8" target="name">name</cnxn> tag in
+	that it provides a possibly lengthy description of the figure
+	for the reader's use and not an over all title or name.
+      </para>
+    </section>
+    <section id="captionatt">
+      <name>Attributes</name>
+      <para id="caplist">
+	None
+      </para>
+    </section>
+    <section id="captionchild">
+      <name>Children</name>
+      <para id="capp3">
+	The caption tag may contain a combination of plain text and
+	the following tags: <cnxn strength="8"
+	target="cnxn">cnxn</cnxn>, <cnxn strength="8"
+	target="link">link</cnxn>, <cnxn strength="8"
+	target="important">important</cnxn>, <cnxn strength="8"
+	target="emphasis">emphasis</cnxn>, and <cnxn strength="8"
+	target='codeline'>codeline</cnxn>.  It may also contain <cnxn
+	strength="8" target="mathml">MathML</cnxn> tags.
+      </para>
+    </section>
+    <section id="captionex">
+      <name>Examples</name>
+      <para id="capp2">
+	In this example, notice the different roles played by the
+	<cnxn strength="8" target="name">name</cnxn> tag and the
+	caption tag.
+      </para>
+      <codeblock>
+	<![CDATA[<figure id="fig3">
+	  <name>A Happy Dog</name>
+	  <media type="image" src="image1.jpg"/>
+	  <caption>The dog displayed in this picture is enjoying a
+	    comfortable bed.</caption>
+	</figure>]]>
+      </codeblock>
+      <para id="capp2b">
+	This might be displayed as in the figure below.
+      </para>
+      <figure id="fig3">
+	<name>A Happy Dog</name>
+	<media type="image" src="image1.jpg"/>
+	<caption>The dog displayed in this picture is enjoying a
+    comfortable bed.</caption>
+      </figure>
+    </section>
+
+  </section>  
+
+  <section id="media">
+    <name>Media</name> 
+    <section id="mediadesc">
+      <name>Description</name>
+      <para id="mediap1">
+	The media tag inserts "media objects", such as images,
+	applets, movies, sounds, etc, into CNXML documents.
+      </para>
+    </section>
+    <section id="mediaattr">
+      <name>Attributes</name>
+      <list id="medialist">
+	<item>
+	  type - the type of media (i.e. sound, video, etc.) the media
+	  tag contains
+	  <list type="bulleted" id="attlist24">
+	    <item>Required</item>
+	    <item>Possible values
+	      <list type="bulleted" id="attlist25">
+		<item>
+		  image - a bitmapped image in a standard format such
+		  as gif, png, jpg, etc.</item>
+	      </list>
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  src - a relative or absolute URI indicating the path to the object.
+	  <list type="bulleted" id="attlist26">
+	    <item>Required</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="mediachild">
+      <name>Children</name>
+      <para id="mediap3">
+	None
+      </para>
+    </section>
+    <section id="mediaexamp">
+      <name>Examples</name>
+      <codeblock>
+        <![CDATA[<media type="image" src="image1.jpg"/>]]>
+      </codeblock>
+    </section>
+  </section>
+  
+</section>
+
+<section id="examplesexercises">
+  <name>Examples and Exercises</name>
+
+  <para id="exampex_par1">
+    These tags allow authors to embed examples and worked-out
+    exercises in the module.
+  </para>
+
+  <section id="example">
+    <name>Example</name>
+    <section id="examdes">
+      <name>Description</name>
+      <para id="exp1">
+	The example tag is used to contain an example of something.
+	This is especially useful in connection with the <cnxn strength="8"
+	target='definition'>definition</cnxn> tag where it can be used
+	to give an example of the <cnxn strength="8"
+	target='meaning'>meaning</cnxn> of a <cnxn strength="8"
+	target='term'>term</cnxn>.
+      </para>
+    </section>
+    <section id="examatt">
+      <name>Attributes</name>
+      <list id="examlist">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist8">
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="child">
+      <name>Children</name>
+      <para id="exp3">
+	The example tag must contain one or more of the following
+	tags: <cnxn strength="8" target="para">para</cnxn>, <cnxn strength="8"
+	target="equation">equation</cnxn>, <cnxn strength="8"
+	target="list">list</cnxn>,  <cnxn strength="8"
+	target="codeblock">codeblock</cnxn>, <cnxn strength="8"
+	target="figure">figure</cnxn>, <cnxn strength="8"
+	target="table">table</cnxn>, and <cnxn strength="8"
+	target="important">important</cnxn>.
+      </para>
+    </section>
+    <section id="ex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<example id="example">
+	  <para id="paraex1">
+	    The Lincoln Memorial is an example of a monument.
+	  </para>    
+	</example>]]>
+      </codeblock>
+      <para id="exp2">
+	This might be displayed as shown in the <cnxn strength="8"
+	target="ex_ex1">example</cnxn>.
+      </para>
+      <example id="ex_ex1">
+	<para id="paraex1">
+	  The Lincoln Memorial is an example of a monument.
+	</para>     
+      </example>
+    </section>
+  </section>
+
+  <section id="exercise">
+    <name>Exercise</name>
+    <section id="exerdesc">
+      <name>Description</name>
+      <para id="exerp1">
+	The exercise tag is used to create exercises, such as would
+	be used in a text book of a college course.  An exercise
+	consists of two parts: a <cnxn strength="5"
+	target="problem">problem</cnxn> and a <cnxn strength="5"
+	target="solution">solution</cnxn>.
+      </para>
+    </section>
+    <section id="exerattr">
+      <name>Attributes</name>
+      <list id="exerlist">
+	<item>id - unique id
+	  <list type="bulleted" id="attlist20">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="exerchild">
+      <name>Children</name>
+      <para id="exerp3">
+	An exercise must contain a single <cnxn
+	target="problem" strength='8'>problem</cnxn> followed by a single <cnxn
+	target="solution" strength='8'>solution</cnxn>.
+      </para>
+    </section>
+    <section id="exerexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<exercise id="exer1">
+          <problem>
+	    .
+            .
+            .
+          </problem>
+          <solution>
+            .
+            .
+            .
+          </solution>
+        </exercise>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="problem">
+    <name>Problem</name>
+    <section id="probdesc">
+      <name>Description</name>
+      <para id="probp1">
+	The problem tag is used to specify the problem portion of an
+	<cnxn target="exercise" strength='8'>exercise</cnxn> tag.
+      </para>
+    </section>
+    <section id="probattr">
+      <name>Attributes</name>
+      <para id="problist">
+	None
+      </para>
+    </section>
+    <section id="probchild">
+      <name>Children</name>
+      <para id="probp3">
+	The problem tag must contain one or more of the following
+	tags: <cnxn target="important" strength='8'>important</cnxn>,
+	<cnxn target="para" strength='8'>para</cnxn>, <cnxn
+	target="equation" strength='8'>equation</cnxn>, <cnxn
+	target="list" strength='8'>list</cnxn>, <cnxn
+	target="codeblock" strength='8'>codeblock</cnxn>, <cnxn
+	target='definition' strength='9'>definition</cnxn>, <cnxn
+	target="figure" strength='8'>figure</cnxn>, and <cnxn
+	target="table" strength='8'>table</cnxn>.
+      </para>
+    </section>
+    <section id="probexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<problem>
+	  <para id="prob_1">
+	    What is the capital of Texas?
+	  </para>
+	</problem>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="solution">
+    <name>Solution</name>
+    <section id="soldesc">
+      <name>Description</name>
+      <para id="solp1">
+	The solution tag is used to specify the solution portion of an
+	<cnxn target="exercise" strength='8'>exercise</cnxn> tag.
+      </para>
+    </section>
+    <section id="solattr">
+      <name>Attributes</name>
+      <para id="sollist">
+	  None
+      </para>
+    </section>
+    <section id="solchild">
+      <name>Children</name>
+      <para id="solp3">
+	The solution tag must contain one or more of the following
+	tags: <cnxn target="important" strength='8'>important</cnxn>,
+	<cnxn target="para" strength='8'>para</cnxn>, <cnxn
+	target="equation" strength='8'>equation</cnxn>, <cnxn
+	target="list" strength='8'>list</cnxn>, <cnxn target="codeblock"
+	strength='8'>codeblock</cnxn>, <cnxn target="figure"
+	strength='8'>figure</cnxn>, and <cnxn target="table"
+	strength='8'>table</cnxn>.
+      </para>
+    </section>
+    <section id="solexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<solution>
+	  <para id="prob_1">
+	    Austin is the capital of Texas.
+	  </para>
+	</solution>]]>
+      </codeblock>
+    </section>
+  </section>
+
+</section>
+
+<section id="linksrefs">
+  <name>Links and References</name>
+
+  <para id="linkref_par1">
+    The <cnxn target="cnxn" strength="8">cnxn</cnxn>, <cnxn
+    target="link" strength="8">link</cnxn>, and <cnxn target="cite"
+    strength="8">cite</cnxn> tags provide ways for a document to refer
+    to other Connexions modules, web materials, and printed works,
+    respectively.
+  </para>
+
+  <section id="cnxn">
+    <name>Cnxn</name> 
+    <section id="cnxndesc">
+      <name>Description</name>
+      <para id="cnxnp1">
+	The cnxn tag links to a tag inside a Connexions system module,
+	possibly different from the current module.
+      </para>
+    </section>
+    <section id="cnxnattr">
+      <name>Attributes</name>
+      <list id="cnxnlist">
+	<item>
+	  target - the id of the tag being linked to
+	  <list type="bulleted" id="attlist27">
+	    <item>Optional</item>
+	    <item>CDATA</item>
+	    <item>
+	      If the target attribute is omitted, the link will
+	      default to the root element of the target module.
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  module - module that is linked to
+	  <list type="bulleted" id="attlist28">
+	    <item>Optional</item>
+	    <item>CDATA</item>
+	    <item>
+	      If the module attribute is omitted, the link will
+	      default to the current module.
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  strength - strength or "relatedness" of the connection 
+	  <list type="bulleted" id="attlist29">
+	    <item>Required</item>
+	    <item>Possible values
+		<list type="bulleted" id="attlist32">
+		<item>numeric value (0-9) where 0 is the lowest strength
+		  and 9 is the highest strength.
+		</item>
+	      </list>
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="cnxnchild">
+      <name>Children</name>
+      <para id="cnxnp3">
+	ASCII text that serves as the link text.
+      </para>
+    </section>
+    <section id="cnxnexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<cnxn target="figure12" module="m7473" strength="5">Figure 12</cnxn>
+	<cnxn target="para32" strength="9">As mentioned earlier</cnxn>
+	<cnxn module="m3423" strength="0">A previous module</cnxn>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="link">
+    <name>Link</name>
+    <section id="linkdesc">
+      <name>Description</name>
+      <para id="linkp1">
+	The link tag is used to insert links to external resources.
+      </para>
+    </section>
+    <section id="linkattr">
+      <name>Attributes</name>
+      <list id="linklist">
+	<item>
+	  src - the URL of the resource being linked to
+	  <list type='bulleted' id='attlist30'>
+	    <item>Required</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="linkchild">
+      <name>Children</name>
+      <para id="linkp3">
+	The link tags must contain ASCII text to server as the link text.
+      </para>
+    </section>
+    <section id="linkexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<para id="linkexample">
+          <link src="http://www.laurynhill.com">Lauryn Hill</link> is
+	  one of the most influential R&B artists to date.  Having
+	  performed with <link src="http://www.fugees.net">The
+	  Fugees</link> and now solo, she is a defining force in
+	  worlds of Rap, Hip-Hop and R&B.  Her voice is powerful and
+	  her <link src="http://www.laurynhill.com/lyrics">lyrics</link> are
+	  moving.  It is no wonder that she set records, taking away 5
+	  awards at the 1999 Grammies.
+	</para>]]>
+      </codeblock>
+    </section>
+  </section>
+
+    <section id='cite'>
+    <name>Cite</name>
+    <section id='citedesc'>
+      <name>Description</name>
+      <para id='citep1'>
+	The cite tag is used to refer to non-electronic materials
+	(one's without a hypertext link).  It typically will contain
+	the title of the work.
+      </para>
+    </section>
+    <section id='citeattr'>
+      <name>Attributes</name>
+      <para id='citep2'>
+	None
+      </para>
+    </section>
+    <section id='citechild'>
+      <name>Children</name>
+      <para id='citep3'>
+	A cite tag can contain a combination of text and <cnxn
+	target='emphasis' strength='8'>emphasis</cnxn> tags.  It may
+	also contain <cnxn strength="8" target="mathml">MathML</cnxn>
+	tags.
+      </para>
+    </section>
+  </section>
+
+</section>
+
+<section id="miscstuff">
+  <name>Miscellaneous</name>
+
+  <para id="misc_par1">
+    These are miscellaneous tags that we could not come up with a
+    section for.
+  </para>
+
+  <section id="definition">
+    <name>Definition</name>
+    <section id="defdesc">
+      <name>Description</name>
+      <para id="defp1">
+	Definition is used to define a word or a term.   
+      </para>
+    </section>
+    <section id="defattr">
+      <name>Attributes</name>
+      <list id="deflist" type="bulleted">
+	<item>id - unique id
+	  <list type="bulleted" id="attlist2">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="defchild">
+      <name>Children</name>
+      <list id='deflist2'>
+	<item>
+	  The definition tag can contain only three type of tags:
+	  <cnxn strength="8" target='term'>term</cnxn>, <cnxn
+	  strength="8" target='meaning'>meaning</cnxn>, and <cnxn
+	  strength="8" target='example'>example</cnxn>.
+	</item>
+	<item>
+	  The <cnxn strength="8" target='term'>term</cnxn> tag is
+	  always required and is first.
+	</item>
+	<item>
+	  After that, at least one <cnxn strength="8"
+	  target='meaning'>meaning</cnxn> tag is required.  Multiple
+	  <cnxn strength="8" target='meaning'>meaning</cnxn> tags are
+	  allowed in a definition.
+	</item>
+	<item>
+	  In addition, after each <cnxn strength="8"
+	  target='meaning'>meaning</cnxn> tag you may put 0, 1, or
+	  many <cnxn strength="8" target='example'>example</cnxn>
+	  tags.  <cnxn strength="8" target='example'>examples</cnxn>
+	  should following the meaning they relate to.
+	</item>
+      </list>
+    </section>
+    <section id="defex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<definition id='quardef'>
+	  <term>quarter</term>
+
+	  <meaning>One fourth of something.</meaning>
+	  <example id='defex1'>
+	    <para id='parex1'>"He cut the pie into quarters and gave
+	      all four people a piece."</para>
+	  </example>
+
+	  <meaning>25 cents, a quarter of a dollar.</meaning>
+	  <example id='defex2'>
+	    <para id='parex2'>"The drink cost a quarter."</para>
+	  </example>
+	  <example id='defex3'>
+	    <para id='parex3'>"She picked up a roll of quarters so
+	    that she could do laundry."</para>
+	  </example>
+	</definition>]]>
+      </codeblock>
+	<para id='pardef1'>
+	This definition might be displayed as follows.
+      </para>
+      <definition id='quardef'>
+	<term>quarter</term>
+	<meaning>One fourth of something.</meaning>
+	<example id='defex1'>
+	  <para id='parex1'>
+	    "He cut the pie into quarters and gave all four
+	    people a piece."
+	  </para>
+	</example>
+	<meaning>25 cents, a quarter of a dollar.</meaning>
+	<example id='defex2'>
+	  <para id='parex2'>"The drink cost a quarter."</para>
+	</example>
+	<example id='defex3'>
+	  <para id='parex3'>
+	    "She picked up a roll of quarters so that she could
+	    do laundry."
+	  </para>
+	</example>
+      </definition>
+    </section>
+  </section>
+  
+  <section id="term">
+    <name>Term</name>
+    <section id="termdesc">
+      <name>Description</name>
+      <para id="termp1">
+	Term marks the word or phrase being defined.  It can be used
+	in either a <cnxn strength="8"
+	target='definition'>definition</cnxn> tag or in a sentence in
+	a <cnxn strength="8" target='para'>para</cnxn>.
+      </para>
+    </section>
+    <section id="termattr">
+      <name>Attributes</name>
+      <para id='termat'>
+	None
+      </para>
+    </section>
+    <section id="termchild">
+      <name>Children</name>
+      <para id='parterm'>
+	Term can contain a combination of text and <cnxn strength="8"
+	target='codeline'>codeline</cnxn> tags.  It may also contain
+	<cnxn strength="8" target="mathml">MathML</cnxn> tags.
+      </para>
+    </section>
+    <section id="termex">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<para id='parterm2'>
+	  A <term>square</term> is a rectangle with equal sides.
+	</para>]]>
+      </codeblock>
+      <para id='parterm1'>
+	This might be displayed in the next paragraph.
+      </para>
+      <para id='parterm2'>
+	A <term>square</term> is a rectangle with equal sides.
+      </para>
+      <para id='parterm3'>
+	See also <cnxn strength="8" target='defex'>definition
+	examples</cnxn>.
+      </para>
+    </section>
+  </section>
+  <section id="meaning">
+    <name>Meaning</name>
+    <section id="meandesc">
+      <name>Description</name>
+      <para id="meanp1">
+	Meaning gives one definition of the word or phrase being
+	defined in a <cnxn strength="8"
+	target='definition'>definition</cnxn>.  Each <cnxn
+	strength="8" target='definition'>definition</cnxn> tag can
+	have multiple meanings and therefore multiple meaning tags.
+      </para>
+    </section>
+    <section id="meanattr">
+      <name>Attributes</name>
+      <para id='partermat'>
+	None
+      </para>
+    </section>
+    <section id="meanchild">
+      <name>Children</name>
+      <para id='parmean1'>
+	Meaning can contain a combination of text, <cnxn strength="8"
+	target='codeline'>codeline</cnxn>, <cnxn strength="8"
+	target='emphasis'>emphasis</cnxn>, <cnxn strength="8"
+	target='cite'>cite</cnxn>, <cnxn strength="8"
+	target='link'>link</cnxn>, and <cnxn strength="8"
+	target='cnxn'>cnxn</cnxn> tags.  It may also contain <cnxn
+	strength="8" target="mathml">MathML</cnxn> tags.
+      </para>
+    </section>
+    <section id="meanex">
+      <name>Examples</name>
+      <para id='parmean2'>
+	Please see the <cnxn strength="8" target='defex'>definition
+	examples</cnxn>.
+      </para>
+    </section>
+  </section>
+
+    <section id="equation">
+    <name>Equation</name>
+    <section id="eqndesc">
+      <name>Description</name>
+      <para id="eqnp1">
+	The equation tag is used to set off equations in CNXML
+	documents.  It is meant to be used with elements from <cnxn
+	target="mathml" strength='7'>MathML</cnxn>.
+      </para>
+    </section>
+    <section id="eqnattr">
+      <name>Attributes</name>
+      <list id="eqnlist">
+	<item>id - unique id
+	  <list type="bulleted" id="attlist21">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="eqnchild">
+      <name>Children</name>
+      <para id="eqnp3">
+	The equation tag may optionally have <cnxn target='name'
+	strength='8'>name</cnxn> as the first child, to associate a
+	name with the equation.  The equation tag must also contain
+	math marked up using <cnxn target="mathml"
+	strength='7'>MathML</cnxn>.
+      </para>
+    </section>
+    <section id="eqnexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[
+        <equation id="eqn14">
+	  <name>Euler's Identity</name>
+          <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" mode="display">
+	    <m:apply>
+	      <m:eq />
+	      
+	      <m:apply>
+		<m:plus />
+
+		<m:apply>
+		  <m:power />
+		  <m:ci>&ExponentialE;</m:ci>
+		  <m:apply>
+		    <m:times />
+		    <m:ci>&ImaginaryI;</m:ci>
+		    <m:ci>&pi;</m:ci>
+		  </m:apply>
+		</m:apply>
+		
+		<m:cn>1</m:cn>
+	      </m:apply>
+
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>
+     </equation>
+	]]>
+      </codeblock>
+    </section>
+  </section>
+  
+  <section id="codeline">
+    <name>Codeline</name>
+    <section id="codelinedesc">
+      <name>Description</name>
+      <para id="codelinep1">
+	The codeline tag is used to insert a word or line of computer
+	code (for example a command) into a document.  When displayed,
+	it will often be typeset in a fixed-width font.
+      </para>
+    </section>
+    <section id="codelineattr">
+      <name>Attributes</name>
+      <para id="codelinelistp2">
+	None
+      </para>
+    </section>
+    <section id="codelinechild">
+      <name>Children</name>
+      <para id="codelinep3">
+	The codeline tag can contain a combination of plain text,
+	<cnxn target="important" strength="5">important</cnxn>, <cnxn
+	target="emphasis" strength="5">emphasis</cnxn>, <cnxn
+	target="link" strength="5">link</cnxn>, and <cnxn
+	target="cnxn" strength="5">cnxn</cnxn> tags.
+      </para>
+    </section>
+    <section id="codelineexamp">
+      <name>Examples</name>
+      <codeblock>
+	Enter the command <![CDATA[<codeline>ls /etc</codeline>]]> to
+	get a listing of configuration files.
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="codeblock">
+    <name>Codeblock</name>
+    <section id="codeblockdesc">
+      <name>Description</name>
+      <para id="codeblockp1">
+	The codeblock tag is used to insert a segment of computer code
+ 	into a document.  When displayed, it will often be typeset in
+ 	a fixed-width font and set apart from the document text.
+      </para>
+    </section>
+    <section id="codeblockattr">
+      <name>Attributes</name>
+	<list id="codeblocklist">
+	<item>
+ 	  id - unique id
+ 	  <list type="bulleted" id="attlist23">
+ 	    <item>Optional</item>
+ 	    <item>ID</item>
+ 	  </list>
+ 	</item>
+       </list>
+    </section>
+    <section id="codeblockchild">
+      <name>Children</name>
+      <para id="codeblockp3">
+	The codeblock tag can contain a combination of plain text,
+	<cnxn target="important" strength="5">important</cnxn>, <cnxn
+	target="emphasis" strength="5">emphasis</cnxn>, <cnxn
+	target="link" strength="5"> link</cnxn>, and <cnxn
+	target="cnxn" strength="5">cnxn</cnxn> tags.
+      </para>
+    </section>
+    <section id="codeblockexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<codeblock id="forloopexample">
+          for(i=0; i<size(list); i++) {
+                  total = total + list[i];
+	  }
+        </codeblock>]]>
+      </codeblock>
+    </section>
+  </section>
+</section>
+
+<section id="emphasizing">
+  <name>Emphasizing</name>
+
+  <para id="emph_par1">
+    There are two tags in this section: <cnxn target="emphasis"
+    strength="8">emphasis</cnxn> and <cnxn target="important"
+    strength="8">important</cnxn>.  While similar, these two tags are
+    used for quite different purposes.  The emphasis tag is meant to
+    convey verbal emphasis or stress (it is often presented visually
+    in boldface or italics, but should not be used just to achieve
+    that effect), while the important tag is meant to convey that a
+    particular concept or structure is a key element of the module.
+  </para>
+    
+  <section id="emphasis">
+    <name>Emphasis</name>
+    <section id="emphdesc">
+      <name>Description</name>
+      <para id="emphp1">
+	The emphasis tag is used to emphasize text in a CNXML document
+	where emphasis would be needed or desired.  It is important to
+	note that this refers to <emphasis>semantic</emphasis>
+	emphasis and not a typeface, although many stylesheets may
+	choose to render it as a change in typeface.  Note the
+	difference between the emphasis and <cnxn
+	target="important" strength="5">important</cnxn> tags.
+      </para>
+    </section>
+    <section id="emphattr">
+      <name>Attributes</name>
+      <para id="emphlist">
+	None
+      </para>
+    </section>
+    <section id="emphchild">
+      <name>Children</name>
+      <para id="emphp3">
+      The emphasis tag may only contain plain text.
+      </para>
+    </section>
+    <section id="emphexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<para id="emphexample">
+          In addition to bananas and ice cream, a proper banana split
+          requires whipped cream, nuts, <emphasis>and</emphsis>
+          cherries.  Remember that the quality of the dessert depends
+          on the ice cream, so do <emphasis>not</emphasis> use a
+          generic brand.
+	</para>]]>
+      </codeblock>
+    </section>
+  </section>
+
+  <section id="important">
+    <name>Important</name>
+    <section id="impdesc">
+      <name>Description</name>
+      <para id="impp1">
+	The important tag is used to mark something as important
+	within a CNXML document.  Note the difference between the
+	important and <cnxn target="emphasis"
+	strength="5">emphasis</cnxn> tags.
+      </para>
+    </section>
+    <section id="impattr">
+      <name>Attributes</name>
+      <list id="implist">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist31">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section id="impchild">
+      <name>Children</name>
+      <para id="impp3">
+	An important tag can contain any tag as a child element.
+      </para>
+    </section>
+    <section id="impexamp">
+      <name>Examples</name>
+      <codeblock>
+	<![CDATA[<para id="impexample">
+	  <important id="eulers">Euler's Formula</important> is an
+	  important topic in electrical engineering.  Another
+	  important topic is the <important id="fourier">Fourier
+	  Series</important>.  Important tags are good for marking
+	  important concepts within a module.  
+	</para>]]>
+      </codeblock>
+    </section>
+  </section>
+  
+</section>
