@@ -1,0 +1,135 @@
+<!-- Compatibility entities for MathML in Mozilla             -->
+<!-- Version 0.1                                              -->
+<!--                                                          -->   
+<!-- This entity may be identified by the following PUBLIC    -->
+<!-- and SYSTEM identifiers                                   -->
+<!--                                                          -->
+<!-- PUBLIC:  -//CNX//ENTITIES Mozilla Compat 0.2//EN         -->
+<!-- SYSTEM:  http://cnx.rice.edu/cnxml/0.2/DTD/mozcompat.ent -->
+<!--                                                          -->
+<!-- CVS Version: $Revision$                           -->
+<!-- Modified: $Date$                   -->
+<!-- Maintained by the CNXML langauge team                    -->
+<!-- email: cnxml@cnx.rice.edu                                -->
+<!--                                                          -->
+
+<!ENTITY InvisibleTimes ""> <!ENTITY it "">
+<!ENTITY InvisibleComma ""> <!ENTITY ic "">
+<!ENTITY ApplyFunction ""> <!ENTITY af "">
+<!ENTITY ImaginaryI "j"> <!ENTITY ii "j">
+<!ENTITY ExponentialE "e"> <!ENTITY ee "e">
+<!ENTITY DifferentialD "d"> <!ENTITY dd "d">
+<!ENTITY CapitalDifferentialD "D"> <!ENTITY DD "D">
+
+<!ENTITY % ent-isoamsa
+      PUBLIC "-//W3C//ENTITIES Added Math Symbols: Arrow Relations for MathML 2.0//EN"
+             "isoamsa.ent" >
+%ent-isoamsa;
+
+<!ENTITY % ent-isoamsb
+      PUBLIC "-//W3C//ENTITIES Added Math Symbols: Binary Operators for MathML 2.0//EN"
+             "isoamsb.ent" >
+%ent-isoamsb;
+
+<!ENTITY % ent-isoamsc
+      PUBLIC "-//W3C//ENTITIES Added Math Symbols: Delimiters for MathML 2.0//EN"
+             "isoamsc.ent" >
+%ent-isoamsc;
+
+<!ENTITY % ent-isoamsn
+      PUBLIC "-//W3C//ENTITIES Added Math Symbols: Negated Relations for MathML 2.0//EN"
+             "isoamsn.ent" >
+%ent-isoamsn;
+
+<!ENTITY % ent-isoamso
+      PUBLIC "-//W3C//ENTITIES Added Math Symbols: Ordinary for MathML 2.0//EN"
+             "isoamso.ent" >
+%ent-isoamso;
+
+<!ENTITY % ent-isoamsr
+      PUBLIC "-//W3C//ENTITIES Added Math Symbols: Relations for MathML 2.0//EN"
+             "isoamsr.ent" >
+%ent-isoamsr;
+
+<!ENTITY % ent-isogrk3
+      PUBLIC "-//W3C//ENTITIES Greek Symbols for MathML 2.0//EN"
+             "isogrk3.ent" >
+%ent-isogrk3;
+
+<!ENTITY % ent-isomfrk
+      PUBLIC "-//W3C//ENTITIES Math Alphabets: Fraktur for MathML 2.0//EN"
+             "isomfrk.ent" >
+%ent-isomfrk;
+
+<!ENTITY % ent-isomopf
+      PUBLIC "-//W3C//ENTITIES Math Alphabets: Open Face for MathML 2.0//EN"
+             "isomopf.ent" >
+%ent-isomopf;
+
+<!ENTITY % ent-isomscr
+      PUBLIC "-//W3C//ENTITIES Math Alphabets: Script for MathML 2.0//EN"
+             "isomscr.ent" >
+%ent-isomscr;
+
+<!ENTITY % ent-isotech
+      PUBLIC "-//W3C//ENTITIES General Technical for MathML 2.0//EN"
+             "isotech.ent" >
+%ent-isotech;
+
+<!-- Entity sets from informative annex to ISO 8879:1986 (SGML) ....... -->
+
+<!ENTITY % ent-isobox
+      PUBLIC "-//W3C//ENTITIES Box and Line Drawing for MathML 2.0//EN"
+             "isobox.ent" >
+%ent-isobox;
+
+<!ENTITY % ent-isocyr1
+      PUBLIC "-//W3C//ENTITIES Russian Cyrillic for MathML 2.0//EN"
+             "isocyr1.ent" >
+%ent-isocyr1;
+
+<!ENTITY % ent-isocyr2
+      PUBLIC "-//W3C//ENTITIES Non-Russian Cyrillic for MathML 2.0//EN"
+             "isocyr2.ent" >
+%ent-isocyr2;
+
+<!ENTITY % ent-isodia
+      PUBLIC "-//W3C//ENTITIES Diacritical Marks for MathML 2.0//EN"
+             "isodia.ent" >
+%ent-isodia;
+
+<!ENTITY % ent-isolat1
+      PUBLIC "-//W3C//ENTITIES Added Latin 1 for MathML 2.0//EN"
+             "isolat1.ent" >
+%ent-isolat1;
+
+<!ENTITY % ent-isolat2
+      PUBLIC "-//W3C//ENTITIES Added Latin 2 for MathML 2.0//EN"
+             "isolat2.ent" >
+%ent-isolat2;
+
+<!ENTITY % ent-isonum
+      PUBLIC "-//W3C//ENTITIES Numeric and Special Graphic for MathML 2.0//EN"
+             "isonum.ent" >
+%ent-isonum;
+
+<!ENTITY % ent-isopub
+      PUBLIC "-//W3C//ENTITIES Publishing for MathML 2.0//EN"
+             "isopub.ent" >
+%ent-isopub;
+
+<!-- New characters defined by MathML ............................ -->
+
+<!ENTITY % ent-mmlextra
+      PUBLIC "-//W3C//ENTITIES Extra for MathML 2.0//EN"
+             "mmlextra.ent" >
+%ent-mmlextra;
+
+<!-- MathML aliases for characters defined above ................. -->
+
+<!ENTITY % ent-mmlalias
+      PUBLIC "-//W3C//ENTITIES Aiases for MathML 2.0//EN"
+             "mmlalias.ent" >
+%ent-mmlalias;
+
+

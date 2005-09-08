@@ -1,0 +1,44 @@
+<!-- DTD combining CNXML and MathML modules                      -->
+<!-- Version 0.3                                                 -->
+<!--                                                             -->   
+<!-- This entity may be identified by the following PUBLIC       -->
+<!-- and SYSTEM identifiers                                      -->
+<!--                                                             -->
+<!-- PUBLIC:  -//CNX//DTD CNXML 0.3 plus QML//EN                 -->
+<!-- SYSTEM:  http://cnx.rice.edu/cnxml/0.3/DTD/cnxml_qml.dtd    -->
+<!--                                                             -->
+<!-- CVS Version: $Revision$                               -->
+<!-- Modified: $Date$                      -->
+<!-- Maintained by the CNXML langauge team                       -->
+<!-- email: cnxml@cnx.rice.edu                                   -->
+<!--                                                             -->
+
+<!-- Bring in CNXML qualified names -->
+<!ENTITY % cnxml-qname.mod SYSTEM "cnxml-qname-1.mod" >
+%cnxml-qname.mod;
+
+<!-- Use the default QML prefix ("q") --> 
+<!ENTITY % QML.prefixed "INCLUDE" >
+
+<!-- Bring in QML qualified names -->
+<!ENTITY % qml-qname.mod PUBLIC "-//W3C//ENTITIES QML 1.0 Qualified Names 1.0//EN" "qml1-qname-1.mod">
+%qml-qname.mod;
+
+<!-- Define all xmlns attributes  -->
+<!ENTITY % NS.decl.attrib "%CNXML.xmlns.extra.attrib; %QML.xmlns.extra.attrib;">
+
+<!-- Update content model for 'exercise' to allow qml -->
+<!ENTITY % CNXML.exercise.content "(%QML.item.qname;)">
+
+<!-- Update content model for QML marked up text to allow ... -->
+<!ENTITY % QML.text "(#PCDATA|%CNXML.para.qname;|%CNXML.media.qname;)*">
+
+
+<!-- Bring in CNXML elements  -->
+<!ENTITY % cnxml.mod SYSTEM "cnxml.mod" >
+%cnxml.mod;
+
+<!-- Bring in QML elements  -->
+<!ENTITY % qml.mod PUBLIC "-//W3C//DTD QML 1.0//EN" "qml1.mod">
+%qml.mod;
+

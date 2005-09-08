@@ -1,0 +1,81 @@
+<!-- DTD combining CNXML and MathML modules                          -->
+<!-- Version 0.3                                                     -->
+<!--                                                                 -->   
+<!-- This entity may be identified by the following PUBLIC           -->
+<!-- and SYSTEM identifiers                                          -->
+<!--                                                                 -->
+<!-- PUBLIC:  -//CNX//DTD CNXML 0.3 plus MathML plus QML//EN         -->
+<!-- SYSTEM:  http://cnx.rice.edu/cnxml/0.3/DTD/cnxml_mathml_qml.dtd -->
+<!--                                                                 -->
+<!-- CVS Version: $Revision$                                   -->
+<!-- Modified: $Date$                          -->
+<!-- Maintained by the CNXML langauge team                           -->
+<!-- email: cnxml@cnx.rice.edu                                       -->
+<!--                                                                 -->
+
+<!-- Bring in CNXML qualified names -->
+<!ENTITY % cnxml-qname.mod SYSTEM "cnxml-qname-1.mod" >
+%cnxml-qname.mod;
+
+<!-- Use the default MathML prefix ("m") --> 
+<!ENTITY % MATHML.prefixed "INCLUDE" >
+
+<!-- Bring in MathML qualified names -->
+<!ENTITY % mathml-qname.mod PUBLIC "-//W3C//ENTITIES MathML 2.0 Qualified Names 1.0//EN" "mathml2-qname-1.mod">
+%mathml-qname.mod;
+
+<!-- Use the default QML prefix ("q") --> 
+<!ENTITY % QML.prefixed "INCLUDE" >
+
+<!-- Bring in QML qualified names -->
+<!ENTITY % qml-qname.mod PUBLIC "-//W3C//ENTITIES QML 1.0 Qualified Names 1.0//EN" "qml1-qname-1.mod">
+%qml-qname.mod;
+
+<!-- Define all xmlns attributes  -->
+<!ENTITY % NS.decl.attrib "%CNXML.xmlns.extra.attrib; %MATHML.xmlns.attrib; %QML.xmlns.extra.attrib;">
+
+<!-- Update content model for 'para' to allow math -->
+<!ENTITY % CNXML.para.content "(#PCDATA|%CNXML.emphasis.qname;|%CNXML.list.qname;|%CNXML.cnxn.qname;|%CNXML.link.qname;|%CNXML.equation.qname;|%CNXML.cite.qname;|%CNXML.definition.qname;|%CNXML.codeline.qname;|%CNXML.term.qname;|%CNXML.note.qname;|%CNXML.rule.qname;|%math.qname;)*">
+
+<!-- Update content model for 'equation' to allow math -->
+<!ENTITY % CNXML.equation.content "((%CNXML.name.qname;)?, %math.qname;)">
+
+<!-- Update content model for 'cite' to allow math -->
+<!ENTITY % CNXML.cite.content "(#PCDATA|%CNXML.emphasis.qname;|%math.qname;)*">
+
+<!-- Update content model for 'item' to allow math -->
+<!ENTITY % CNXML.item.content "(#PCDATA|%CNXML.cnxn.qname;|%CNXML.link.qname;|%CNXML.cite.qname;|%CNXML.definition.qname;|%CNXML.codeline.qname;|%CNXML.emphasis.qname;|%CNXML.list.qname;|%CNXML.term.qname;|%CNXML.note.qname;|%CNXML.rule.qname;|%math.qname;)*">
+
+<!-- Update content model for 'caption' to allow math -->
+<!ENTITY % CNXML.caption.content "(#PCDATA|%CNXML.cnxn.qname;|%CNXML.codeline.qname;|%CNXML.link.qname;|%CNXML.emphasis.qname;|%math.qname;)*">
+
+<!-- Update content model for 'elem' to allow math -->
+<!ENTITY % CNXML.elem.content "(#PCDATA|%CNXML.cnxn.qname;|%CNXML.link.qname;|%CNXML.cite.qname;|%CNXML.codeblock.qname;|%CNXML.emphasis.qname;|%math.qname;)*">
+
+<!-- Update content model for 'abstract' to allow math -->
+<!ENTITY % CNXML.abstract.content "(#PCDATA|%CNXML.codeline.qname;|%CNXML.emphasis.qname;|%math.qname;)*">
+
+<!-- Update content model for 'term' to allow math -->
+<!ENTITY % CNXML.term.content "(#PCDATA|%CNXML.codeline.qname;|%math.qname;)*">
+
+<!-- Update content model for 'meaning' to allow math -->
+<!ENTITY % CNXML.meaning.content "(#PCDATA|%CNXML.codeline.qname;|%CNXML.emphasis.qname;|%CNXML.cite.qname;|%CNXML.link.qname;|%CNXML.cnxn.qname;|%CNXML.equation.qname;|%math.qname;)*">
+
+<!-- Update content model for 'exercise' to allow qml -->
+<!ENTITY % CNXML.exercise.content "(%QML.item.qname;)">
+
+<!-- Update content model for QML marked up text to allow ... -->
+<!ENTITY % QML.text "(#PCDATA|%CNXML.para.qname;|%CNXML.media.qname;)*">
+
+<!-- Bring in CNXML elements  -->
+<!ENTITY % cnxml.mod SYSTEM "cnxml.mod" >
+%cnxml.mod;
+
+<!-- Bring in MathML elements  -->
+<!ENTITY % mathml.mod PUBLIC "-//W3C//DTD MathML 2.0//EN" "mathml2.dtd">
+%mathml.mod;
+
+<!-- Bring in QML elements  -->
+<!ENTITY % qml.mod PUBLIC "-//W3C//DTD QML 1.0//EN" "qml1.mod">
+%qml.mod;
+

@@ -1,0 +1,1025 @@
+/* ======= MODULE TOP ======= */
+
+module{
+background-color: #ffffff;
+margin: 0px;
+padding-left: 10px;
+padding-right: 10px;
+padding-top: 0px;
+padding-bottom: 10px;
+border-right-width: 0px;
+border-top-width: 0px;
+border-bottom-width: 0px;
+border-left-width: 15px;
+border-left-color: #006699;
+border-style: solid;
+}
+
+keywordlist, keyword{
+display: none;
+}
+
+module > name{
+background-color:#6699cc;
+color: #ffffff;
+display: block;
+position: relative;
+clear: both;
+right: -10px;
+left: -10px;
+margin: 0px;
+padding-bottom: 8px;
+padding-right: 8px;
+padding-top: 6px;
+padding-left: 8px;
+border-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #cc9900;
+border-top-width: 0px;
+border-right-width: 0px;
+border-left-width: 0px;
+font-family: verdana, tahoma, century gothic, gothic l, arial, sans-serif;
+font-size: 25px;
+font-variant: normal;
+font-weight: bold;
+font-stretch: normal;
+line-height: 1;
+letter-spacing: -2;
+text-align: right;
+}
+
+/* ======== SECTION ======== */
+
+section > name:before{
+content: counter(section-number) ".";
+counter-increment: section-number;
+}
+
+section > name{
+color: #006699;
+display: block;
+position: relative;
+right: 0px;
+margin-bottom: 10px;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+padding-left: 0px;
+padding-right: 0px;
+padding-bottom: 3px;
+padding-top: 0px;
+border-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #006699;
+border-top-width: 0px;
+border-right-width: 2px;
+border-right-color: #006699;
+border-left-width: 0px;
+font-family: arial, sans-serif;
+font-weight: bold;
+font-size: 21px;
+letter-spacing: -1;
+text-align: left;
+counter-reset: section-number;
+}
+
+section{
+display: block;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding-right: 0px;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 5px;
+border: 0px;
+}
+
+section section{
+margin-left: 30px;
+margin-right: 0px;
+margin-bottom: 0px;
+}
+
+section section > name{
+border-left-width: 2px;
+border-right-width: 0px;
+font-size: 15px; 
+margin-top: 10px;
+padding-left: 5px;
+font-weight: bold;
+text-indent: 0px;
+}
+
+/* ======== LIST & ITEM ========= */
+
+list{
+display: block;
+margin: 0px;
+padding: 2px;
+border: 0px;
+}
+
+item{
+display: list-item;
+list-style-position: outside;
+list-style-type: disc;
+line-height: 1em;
+margin-right: 3px;
+margin-bottom: 3px
+margin-top: 3px;
+padding: 2px;
+border: 0px;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+text-indent: 0px;
+margin-left: 17px;
+}
+
+list[type="enumerated"] > item{
+display: list-item;
+list-style-position: outside;
+list-style-type: decimal;
+font-family: arial;
+font-size: 14px;
+}
+
+item item{
+margin-left: 30px;
+}
+
+/* ======= AUTHORS ======== */
+
+authorlist:before, maintainerlist:before{
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 10px;
+font-style: italic;
+font-weight: bold;
+padding: 5px;
+padding-left: 0px;
+margin: 0px;
+}
+
+authorlist:before{
+content: "Module by: ";
+}
+
+maintainerlist:before{
+content: "Maintained by: ";
+}
+
+authorlist, maintainerlist{
+display: block;
+margin-left: 5px;
+margin-right: 10px;
+margin-bottom: 5px;
+margin-top: 5px;
+font-family: arial, helvetica, sans-serif;
+font-size: 10px;
+}
+
+author, maintainer{
+display: block;
+margin-left: 20px;
+}
+
+author[homepage]:after, maintainer[homepage]:after{
+content: "("attr(homepage)")";
+color: #660000;
+}
+
+honorific, firstname, othername, surname, lineage{
+display: inline;
+font-family: arial, helvetica, sans-serif;
+font-size: 10px;
+font-style: normal;
+}
+
+email:before{
+content: " (";
+text-decoration: none;
+color: #000000;
+}
+
+email:after{
+content: ")";
+text-decoration: none;
+color: #000000;
+}
+
+email{
+display: inline;
+font-family: arial, helvetica, sans-serif;
+font-size: 10px;
+font-style: normal;
+color: #660000;
+text-decoration: none;
+}
+
+/* ======== PARA ========= */
+
+para + para, list + para, table + para, figure + para, example + para, exercise + para, definition + para, rule + para, equation + para, codeblock + para{ 
+text-indent: 24px;
+}
+
+para{
+display: block;
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+text-indent: 0px;
+text-align: left;
+line-height: 1.5em;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding: 0px;
+border: 0px;
+font-style: normal;
+}
+
+para[id="bug"]:before{
+display: block;
+content: "FEEDBACK: ";
+font-style: italic;
+color: #000000;
+padding-bottom: 8px;
+padding-top: 8px;
+padding-right: 0px;
+padding-left: 0px;
+font-size: 10px;
+font-family: arial, sans-serif;
+}
+
+para[id="suggestion"], para[id="bug"]{
+font-size: 12px;
+padding: 0px;
+text-indent: 0px;
+margin: 2px;
+margin-left: 0px;
+color: #660000;
+font-family: arial, sans-serif;
+line-height: 1.2em;
+}
+
+/* ======= ABSTRACT & OBJECTIVE ======== */
+
+abstract:before{
+display: compact;
+content: "Module Summary: ";
+font-style: italic;
+font-weight: bold;
+font-size: 10px;
+}
+
+abstract + section, abstract + para, abstract + codeblock, abstract + definition, abstract + equation, abstract + list, abstract + figure, abstract + table, abstract + rule, abstract + example, abstract + exercise{
+dixplay: block;
+margin-top: 5px;
+padding-top: 40px;
+border-style: solid;
+border-top-width: 2px;
+border-top-color: #cc9900;
+border-bottom-width: 0px;
+border-right-width: 0px;
+border-left-width: 0px;
+}
+
+abstract{
+display: block;
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 10px;
+margin-left: 0px;
+margin-right: 10px;
+margin-bottom: 5px;
+margin-top: 5px;
+padding-top: 5px;
+padding-right: 5px;
+padding-left: 5px;
+padding-bottom: 5px;
+border-style: none;
+}
+
+objectives:before{
+display: compact;
+content: "Objectives: ";
+font-style: italic;
+font-weight: bold;
+font-size: 10px;
+}
+
+objectives{
+display: block;
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 10px;
+margin-left: 0px;
+margin-right: 10px;
+margin-bottom: 40px;
+margin-top: 0px;
+padding-bottom: 10px;
+padding-top: 5px;
+padding-right: 5px;
+padding-left: 5px;
+border-style: solid;
+border-bottom-color: #cc9900;
+border-top-width: 0px;
+border-right-width: 0px;
+border-left-width: 0px;
+border-bottom-width: 2px;
+}
+
+abstract codeline, objectives codeline, objectives term codeline{
+font-size: 11px;
+}
+
+objectives item, objectives rule name, objectives rule para, objectives definition term, objectives definition para, objectives definition meaning, objectives note[type="warning"], objectives note[type="footnote"], objectives note[type="FOOTNOTE"], objectives note[type="footnote"]:before, objectives note, objectives rule proof name, objectives example name{ 
+font-size: 10px;
+padding-left: 0px;
+}
+
+objectives rule proof name, objectives example name{
+font-weight: bold;
+font-size: 10px;
+}
+
+objectives rule, objectives rule statement, objectives rule proof, objectives rule example, objectives definition meaning, objectives definition example, objectives list{
+padding: 0px;
+margin-bottom: 0px;
+margin-top: 0px;
+margin-left: 20px;
+}
+
+objectives definition > meaning{
+margin-top: 4px;
+}
+
+objectives rule, objectives definition, objectives note[type="warning"]{
+margin: 0px;
+border: 0px;
+}
+
+objectives rule:before, objectives rule proof:before, objectives rule example:before, objectives definition term:before, objectives definition example:before, objectives note[type="warning"]:before, objectives note:before{ 
+font-size: 9px;
+}
+
+objectives cnxn{
+vertical-align: bottom;
+}
+
+objectives note[type="footnote"]:before{
+content: "* ";
+font-size: 16px;
+vertical-align: middle;
+}
+
+objectives note{
+margin: 3px;
+}
+
+/* ======== CODE & CNXN ======== */
+
+codeblock{
+display: block;
+text-indent: 0px;
+font-family: courier, courier new, monospace;
+font-size: 12px;
+white-space: pre;
+margin-left: 32px;
+margin-right: 32px;
+margin-top: 5px;
+margin-bottom: 5px;
+padding: 0px;
+border-style: solid;
+border-width: 0px;
+border-color: #006600;
+color: #006600;
+text-align: left;
+font-style: normal;
+line-height: 1em;
+}
+
+codeline{
+display: inline;
+font-family: courier, courier new, monospace;
+color: #006600;
+font-size: 13px;
+font-style: normal;
+}
+
+caption codeline{
+font-size: 10px;
+}
+
+cnxn{
+color: #660000;
+text-decoration: underline;
+font-size: .8em;
+text-transform: uppercase;
+vertical-align: baseline;
+font-style: normal;
+}
+
+codeline cnxn, codeblock cnxn{
+font-size: 1em;
+text-transform: none;
+}
+
+cnxn:hover, cnxn:active{
+font-weight: bold;
+text-decoration: none;
+}
+
+/*
+cnxn[strength="3"], cnxn[strength="4"], cnxn[strength="9"]{
+text-decoration: underline;
+}
+
+cnxn[strength="7"], cnxn[strength="9"]{
+font-weight: bold;
+}
+
+cnxn:after{
+content: " ("attr(strength)")";
+text-decoration: none;
+vertical-align: baseline;
+font-size: .5em;	
+}
+*/
+
+/* ======== EXAMPLE ======== */
+
+example:before{
+content: "EXAMPLE: ";
+font-weight: bold;
+font-style: italic;
+font-size: 11px;
+color: #336699;
+font-family: arial;
+letter-spacing: 0px;
+}
+
+example{
+display: block;
+margin-left: 30px;
+margin-right: 30px;
+margin-top: 5px;
+margin-bottom: 5px;
+padding: 10px;
+color: #000000;
+font-style: normal;
+font-family: arial, helvetica, sans-serif;
+}
+
+example para{
+display: block;
+margin-left: 0px;
+margin-right: 0px;
+margin-top: 5px;
+margin-bottom: 5px;
+color: #000000;
+font-style: italic;
+font-family: arial, helvetica, sans-serif;
+text-indent: 0px;
+}
+
+example name{
+display: inline;
+font-weight: bold;
+color: #000000;
+font-size: 14px;
+font-family: arial, sans-serif;
+text-transform: capitalize;
+}
+
+example math, example equation{
+font-style: normal;
+}
+
+/* ======== EXERCISE ======== */
+
+exercise{
+display: block;
+margin: 10px;
+margin-bottom: 10px;
+}
+
+problem:before{
+content: "PROBLEM: ";
+font-weight: bold;
+font-style: normal;
+font-size: 11px;
+color: #336699;
+letter-spacing: 0px;
+vertical-align: middle;
+}
+
+problem para, solution para{
+display: inline;
+text-indent: 0px;
+}
+
+problem para + para, solution para + para{
+display: block;
+text-indent: 32px;
+font-family: arial, sans-serif;
+font-size: 14px;
+}
+
+problem{
+display: block;
+padding: 5px;
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+}
+
+solution:before{
+content: "SOLUTION: ";
+font-weight: bold;
+font-style: normal;
+font-size: 11px;
+color: #336699;
+letter-spacing: 0px;
+vertical-align: middle;
+}
+
+solution{
+display: block;
+padding: 5px;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+}
+
+/* ======== CITE & LINK ======== */
+
+cite, example cite emphasis{
+font-style: italic;
+}
+
+example cite{
+font-style: normal;
+}
+
+link{
+color: #660000;
+text-decoration: underline;
+}
+
+/* ======= TERM & DEFINITION ======= */
+
+term{
+font-weight: bold;
+font-style: normal;
+}
+
+term codeline{
+text-transform: none;
+font-weight: bold;
+color: #006600;
+font-size: 14px;
+}
+
+definition term codeline{
+font-size: 16px;
+}
+
+definition{
+display: block;
+margin-top: 15px;
+margin-bottom: 15px;
+text-indent: 0px;
+}
+
+definition > term:before{
+content: "TERM: ";
+font-weight: bold;
+font-style: normal;
+font-size: 11px;
+color: #336699;
+font-family: arial;
+letter-spacing: 0px;
+}
+
+definition > term{
+display: block;
+text-transform: capitalize;
+font-family: arial, verdana;
+font-size: 16px;
+}
+
+meaning:before{
+content: "";
+font-weight: bold;
+font-style: normal;
+font-size: 11px;
+color: #336699;
+font-family: arial;
+letter-spacing: 0px;
+}
+
+meaning{
+display: block;
+margin-left: 32px;
+margin-top: 5px;
+margin-right: 5px;
+margin-bottom: 5px;
+padding: 2px;
+font-style: normal;
+font-family: arial;
+font-size: 14px;
+}
+
+definition example:before{
+content: "EXAMPLE: ";
+font-weight: bold;
+font-style: italic;
+font-size: 11px;
+color: #336699;
+font-family: arial;
+letter-spacing: 0px;
+}
+
+definition example{
+display: block;
+margin-left: 32px;
+margin-right: 0px;
+margin-top: 2px;
+margin-bottom: 2px;
+padding: 2px;
+color: #000000;
+font-style: normal;
+font-family: arial;
+}
+
+definition > example para, definition > meaning para{
+display: inline;
+}
+
+definition > example para + para, definition > meaning para + para{
+display: block;
+text-indent: 32px;
+margin-top: 2px;
+margin-bottom: 2px;
+}
+
+/* ======== EMPHASIS ======== */
+
+emphasis{
+font-style: italic;
+}
+
+codeblock emphasis, codeline emphasis{
+font-style: normal;
+font-weight: bold;
+}
+
+example emphasis, cite emphasis, note[type="footnote"] emphasis, note[type="FOOTNOTE"] emphasis{
+font-style: normal;
+}
+
+/* ========= EQUATION ========= */
+
+equation{
+display: table;
+margin: 3px;
+padding: 5px;
+text-align: center;
+}
+
+equation name{
+font-weight: bold;
+font-size: 14px;
+font-family: arial, sans-serif;
+color: #000000;
+}
+
+/* ========== FIGURE ET AL. ========== */
+
+figure[orient="horizontal"]{
+display: inline;
+}
+
+figure[orient="vertical"]{
+display: compact;
+}
+
+figure name, subfigure name{
+font-weight: bold;
+font-size: 14px;
+font-family: arial, sans-serif;
+text-align: center;
+color: #000000;
+}
+
+media{
+display: block;
+}
+
+caption{
+color: #333333;
+font-family: verdana, arial, sans-serif;
+font-size: 10px;
+text-align: center;
+}
+
+table{
+border-left-width: 1px;
+border-top-width: 1px;
+border-right-width: 2px;
+border-bottom-width: 2px;
+padding: 5px;
+}
+
+elem{
+font-family: arial;
+font-size: 14px;
+}
+
+/*
+categories{}
+category{}
+group{}
+elem{}
+*/
+
+/* ======== MATH ======== */
+
+mi, math, equation{
+color: #006600;
+text-indent: 0px;
+font-style: normal;
+margin-bottom: 3px;
+margin-top: 3px;
+}
+
+math[display="block"], math[mode="display"]{
+display: block;
+font-style: normal;
+text-align: center;
+}
+
+
+/* ======== NOTE (WARNING, FOOTNOTE, ET AL) ======== */
+
+note[type="warning"]:before{
+content: "WARNING! ";
+font-weight: bold;
+color: #cc0000;
+font-size: 11px;
+}
+
+note[type="warning"]{
+border-top-width: 1px;
+border-right-width: 2px;
+border-left-width: 1px;
+border-bottom-width: 2px;
+border-color: black;
+border-style: solid;
+}
+
+note[type="footnote"]:before, note[type="FOOTNOTE"]:before{
+content: "note: ";
+text-transform: none;
+display: inline;
+vertical-align: baseline;
+font-size: 10px;
+color: #cc0000;
+}
+
+note[type="footnote"], note[type="FOOTNOTE"]{
+font-size: 12px;
+font-style: italic;
+display: inline;
+margin: 0px;
+margin-right: 10px;
+}
+
+note:before{
+content: attr(type)": ";
+font-weight: bold;
+font-style: normal;
+font-size: 11px;
+color: #cc0000;
+font-family: arial;
+letter-spacing: 0px;
+vertical-align: middle;
+text-transform: uppercase;
+}
+
+note{
+margin-top: 10px;
+margin-left: 30px;
+margin-right: 30px;
+display: block;
+font-family: arial;
+font-size: 14px;
+text-indent: 0px;
+padding-left: 6px;
+margin-bottom: 10px;
+}
+
+para note{
+display: block;
+}
+
+note para{
+display: inline;
+}
+
+note para + para{
+display: block;
+margin-top: 0px;
+margin-bottom: 0px;
+}
+
+/* ========= RULE ========= */
+
+rule{
+display: block;
+margin-top: 10px;
+}
+
+rule:before{
+content: attr(type) ": ";
+font-weight: bold;
+font-style: normal;
+font-family: arial;
+font-size: 11px;
+text-transform: uppercase;
+color: #336699;
+letter-spacing: 0px;
+vertical-align: middle;
+}
+
+rule > name{
+line-height: 1.3em;
+text-transform: capitalize;
+font-family: arial, verdana;
+font-weight: bold;
+font-size: 16px;
+}
+
+statement:before{
+content: "";
+font-weight: bold;
+font-style: normal;
+font-size: 11px;
+color: #336699;
+font-family: arial;
+letter-spacing: 0px;
+vertical-align: middle;
+}
+
+statement{
+display: block;
+margin-left: 32px;
+margin-top: 5px;
+margin-right: 5px;
+margin-bottom: 5px;
+padding: 2px;
+font-style: italic;
+font-family: arial;
+}
+
+statement > para, proof > para, rule > example > para{
+display: inline;
+}
+
+statement > para + para, proof > para + para, rule > example > para + para{
+display: block;
+margin-top: 0px;
+margin-bottom: 0px;
+text-indent: 32px;
+}
+
+/*
+rule > statement para + para, rule > proof para + para, rule > example para + para{
+display: block;
+margin-top: 0px;
+margin-bottom: 0px;
+text-indent: 32px;
+}
+
+rule > statement para, rule > proof para, rule > example para{
+display: inline;
+}
+*/
+
+rule > proof:before{
+content: "PROOF: ";
+font-weight: bold;
+font-style: normal;
+font-size: 11px;
+color: #336699;
+font-family: arial;
+letter-spacing: 0px;
+vertical-align: middle;
+}
+
+rule > proof{
+display: block;
+margin-left: 32px;
+margin-right: 0px;
+margin-top: 2px;
+margin-bottom: 2px;
+padding: 2px;
+color: #006600;
+font-style: normal;
+font-family: arial;
+}
+
+rule > proof > name{
+display: inline; 
+font-weight: bold; 
+font-size: 14px;
+font-family:arial; 
+content: " ";
+text-transform: capitalize;
+color: #000000;
+}
+
+rule > example:before{
+content: "EXAMPLE: ";
+font-weight: bold;
+font-style: italic;
+font-size: 11px;
+color: #336699;
+font-family: arial;
+letter-spacing: 0px;
+vertical-align: middle
+}
+
+rule > example{
+display: block;
+margin-left: 32px;
+margin-right: 0px;
+margin-top: 2px;
+margin-bottom: 2px;
+padding: 2px;
+color: #006600;
+font-style: normal;
+font-family: arial;
+}
+
+para > rule{
+text-indent: 0px;
+}
+
+/* ====== OLD EXAMPLE ======= */
+
+/*
+exercise{
+display: block;
+margin: 10px;
+margin-bottom: 20px;
+}
+
+problem:before{
+display: block;
+content: "PROBLEM: ";
+font-weight: bold;
+font-style: normal;
+font-size: 11px;
+color: #336699;
+font-family: arial;
+letter-spacing: 0px;
+}
+
+problem{
+float: left;
+display: block;
+width: 48%;
+padding: 10px;
+color: #000000;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+}
+
+solution:before{
+display: block;
+content: "SOLUTION: ";
+font-weight: bold;
+font-style: normal;
+font-size: 11px;
+color: #336699;
+font-family: arial;
+letter-spacing: 0px;
+}
+
+solution{
+position: relative;
+left: 50%;
+top: 1px;
+display: block;
+width: 48%;
+padding: 10px;
+color: #cc0000;
+font-family: arial, helvetica, sans-serif;
+font-size: 14px;
+}
+*/
+

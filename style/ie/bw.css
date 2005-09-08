@@ -1,0 +1,318 @@
+
+/* ******* MODULE ****************** */
+body, html {font-family: Arial, blue highway, Gill Sans, avantgarde, lucida, Rockwell, Arial;
+    font-size: 10pt;
+    font-weight: normal;
+    background-color: #ffffff; 
+    font-color: #000000;
+    }
+
+module > name, h1{display: block;
+    margin-top: 7pt;
+    margin-bottom: 7pt;
+    margin-left: 7pt;
+
+    padding-top: 5pt;
+    padding-bottom: 3pt;
+    padding-left: 10pt;
+    padding-right: 17pt;
+    
+    text-align: left;
+    color: #000000;
+    font-weight: bold;
+    font-size: 30pt;
+    } 
+
+/* ******************* METADATA **************** */
+keyword, authorlist, author, maintainerlist, maintainer, abstract,
+objectives, div.authorlist, div.author, div.maintainerlist,
+div.maintainer, div.abstract, div.objectives 
+	   {display: none;
+    }
+
+/* *********** SECTION ********************** */
+section, div.section  {display: block;
+    margin-top: 4pt;
+    margin-bottom: 4pt;
+    margin-left: 30pt;
+    border-top-width: 3pt;
+    border-top-color: 555555;
+    border-top-style: solid;
+    }
+
+section > name, h2, h3, h4, h5, h6 {content:attr(name);
+    font-size: 20pt;
+    font-weight: bold;
+    color: #777777;
+    }
+
+/*Allows section names to line up properly.*/
+h2, h3, h4, h5, h6 {
+    margin-left: 30pt;
+    margin-top: 4pt;
+    }
+
+section > section, div.section > div.section {display: block;
+    margin-top: 4pt;
+    margin-bottom: 0pt;
+    margin-left: 30pt;
+    border-top-width: 2pt;
+    border-top-color: #666666;
+    border-top-style: solid;
+    font-weight: bold;
+    } 
+
+/*trying to make the space at the top smaller.*/
+section>section{
+	margin-top: 0;
+	}
+
+/* ***************** PARAGRAPH ***************** */
+/* have not been able to indent....  */
+
+para, p.para {display: block;
+    margin-top: 10pt;
+    margin-right: 30pt;
+    margin-left: 30pt;
+    margin-bottom: 10pt;
+    font-weight: normal;
+    }
+
+/* *************** MISC ENHANCEMENT ************** */
+emphasis {font-style: italic;
+    }
+
+important {text-decoration: underline; 
+    }
+
+cite {font-style: italic;
+    }
+
+
+/* **************** LIST ******************* */
+/* Lists are displayed as is */
+
+/* *************** CODE ***************** */
+codeline, code {display: inline;
+    background-color: #e8e8e8;
+    margin: 0pt;
+    font-family: courier, monospace;
+    font-size: 8pt;
+    font-weight: normal;
+    white-space: pre;
+    }
+
+codeblock,pre {display: block;
+    border: black thin solid;
+    background-color: #e8e8e8;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+    margin-left: 7pt;
+    margin-right: 7pt;
+    font-family: courier, monospace;
+    font-size: 10pt;
+    font-weight: normal;
+    white-space: pre;
+    }
+
+
+
+/* ***************** EXAMPLE ****************** */
+
+
+example, div.example {
+    display: block;
+    margin-bottom: 10pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
+    margin-top: 10pt;
+
+    padding: 6pt;
+
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 2pt;
+    border-style: double;
+    }
+
+/* ******************* EXERCISE ***************** */
+
+exercise, div.exercise {display: block;
+    margin-bottom: 10pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
+    margin-top: 10pt;
+    padding: 6pt;
+
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 2pt;
+    border-style: double;
+    }
+
+/* PROBLEM */
+problem, div.problem {display: block;
+    }
+
+/* SOLUTION */
+solution:before, div.solution:before {content:"Hover mouse to reveal solution.";
+    display: block;
+    text-align: center;
+    color: black;
+    font-size: 8pt;
+    
+    background-color: #c4c4c4;
+    }              
+
+solution, div.solution {display: block;
+    background-color: white;
+    color: white;
+    }
+
+solution:hover, solution equation:hover, div.solution:hover {
+    background-color: black;
+    }
+
+
+/* *************** NOTE *********************** */
+note, div.note {display: block;
+    margin-top: 7pt;
+    margin-bottom: 7pt;
+    margin-left: 7pt;
+
+    padding-top: 5pt;
+    padding-bottom: 3pt;
+    padding-left: 10pt;
+    padding-right: 17pt;
+    
+    text-align: left;
+    color: #000000;
+    font-weight: bold;
+}
+
+note, div.note > warning, div.warning, WARNING, div.WARNING {font-weight: bold;
+    border-width: 2pt;
+    border-color: black;
+    border-style: groove;
+    font-size: 11pt;
+}
+
+note, div.note > footnote, div.footnote{font-size: 9pt;}
+
+
+
+
+
+/* ******************** RULE *************** */
+rule, div.rule {display: block;
+    margin: 5pt;
+    padding: 5pt;
+    border: black thin solid;
+    background-color: #bababa;
+    }
+
+rule:before, div.rule:before {content: attr(type) ": ";
+    font-weight: bold;
+    font-size: 12pt;
+    } 
+
+rule > name, div.rule > span.name {display: inline;
+    font-size: 12pt;
+    }
+
+rule > statement, div.rule > div.statement {display: list-item;
+    list-style-type: square;
+    margin-left: 14pt;
+    padding: 2pt;
+    }
+
+rule > proof, div.rule > div.proof {display: block;
+    margin-bottom: 0pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
+    margin-top: 10pt;
+
+    padding: 6pt;
+    
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 2pt;
+    border-style: double;
+    border-bottom-style: none;
+    }
+
+proof + example, div.proof + div.example {display: block;
+    margin-bottom: 10pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
+    margin-top: 0pt;
+
+    padding: 6pt;
+
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 2pt;
+    border-style: double;
+    border-top-style: none;
+    }
+    
+/* *************** DEFINITION ****************** */
+definition, div.definition {display: block;
+    margin: 5pt;
+    padding: 5pt;
+    border: black thin solid;
+    background-color: #bababa;
+    }
+
+
+
+definition > term, div.definition>span.term {display: inline;
+    font-size: 12pt;
+    font-weight: normal;
+    }
+
+definition > meaning, div.definition>div.meaning {display: list-item;
+    list-style-type: square;
+    margin-left: 14pt;
+    padding: 2pt;
+    }
+
+term, span.term {font-weight: bold;
+    }
+
+/* ********** DEPEND ON XHTML *************** */
+/* table{  */
+
+
+figure { display: block; }
+
+
+/* *************** LINKS ********************** */
+
+cnxn,span.cnxn {}
+link,span.link {}
+a {color: green;}
+
+/* ************* MATH ********************** */
+math * {color:black;}
+mi {color: black;
+    }
+
+solution math *, div.solution math * {
+    color: white;
+    }
+
+equation > name {display: block;
+
+    padding: 10pt;
+    padding-bottom: 0pt;
+
+    text-align: left;
+    font-size: 10pt;
+    font-weight: bold;
+    }
+
+equation {display: block;
+    padding: 15pt;
+    text-align: center;
+    }
