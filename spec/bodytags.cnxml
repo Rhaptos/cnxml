@@ -1,0 +1,1287 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<section id="body" name="Body Tags">
+
+  <section name="Section" id="section">
+    <section name="Description" id="secdesc">
+      <para id="secp1">
+	The section tag is used to divide a module into sections,
+	as its name suggests.
+      </para>
+    </section>
+    <section name="Attributes" id="secattr">
+      <list id="seclist" type="bulleted">
+	<item>name - name of the section
+	  <list type="bulleted" id ="attlist1">
+	    <item>Required</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+	<item>id - unique id
+	  <list type="bulleted" id="attlist2">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="secchild">
+      <para id="secp3">
+	The section tag must contain one or more of the following
+      tags: <cnxn target="section">section</cnxn>, <cnxn
+      target="cnxn">cnxn</cnxn>, <cnxn target="link">link</cnxn>,
+      <cnxn target="important">important</cnxn>, <cnxn
+      target="emphasis">emphasis</cnxn>, <cnxn
+      target="para">para</cnxn>, <cnxn
+      target="equation">equation</cnxn>, <cnxn
+      target="list">list</cnxn>, <cnxn target="code">code</cnxn>,
+      <cnxn target="figure">figure</cnxn>, <cnxn
+      target="table">table</cnxn>, <cnxn
+      target="example">example</cnxn>, or <cnxn
+      target="exercise">exercise</cnxn>.
+      </para>
+    </section>
+    <section name="Examples" id="secex">
+      <code>
+	<![CDATA[<para id="para1">
+	  There are three ideal circuit elements.  They are the
+	  resistor, the capacitor, and the inductor.
+	</para>
+	<section name="Resistor" id="res">
+	  <para id="para2">
+	     .
+             .
+             .
+	  </para>
+	</section>
+	<section name="Capacitor" id="cap">
+	  <para id="para3">
+	     .
+             .
+             .
+	  </para>
+	</section>
+	<section name="inductor" id="ind">
+	  <para id="para4">
+	     .
+             .
+             .
+	  <para>
+	</section>]]>
+      </code>
+    </section>
+
+  </section>
+
+  <section name="Para" id="para">
+    <section name="Description" id="parades">
+      <para id="parap1">
+	The para element contains a paragraph of possibly marked-up
+	text.
+      </para>
+    </section>
+    <section name="Attributes" id="paraatt">
+      <list id="paralist">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist3">
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="parachild">
+      <para id="parap3">
+	A para tag may contain a mixture of plain text and the
+      following tags: <cnxn target="emphasis">emphasis</cnxn>, <cnxn
+      target="important">important</cnxn>, <cnxn
+      target="list">list</cnxn>, <cnxn target="cnxn">cnxn</cnxn>,
+      <cnxn target="link">link</cnxn>, and <cnxn
+      target="equation">equation</cnxn>.
+      </para>
+    </section>
+    <section name="Examples" id="paraex">
+      <para id="parap2">
+	Two paragraphs from War and Peace.
+      </para>
+      <code>
+<![CDATA[      <para id="para1">
+	Prince Andrei was on duty that day and in constant attendance on the
+	Commander in Chief.
+      </para>
+      <para id="para2">
+	At six o'clock in the evening Kutuzov went to the Emperor's
+	headquarters, and after remaining but a short time with him, went to
+	the Grand Marshal of the Court, Count Tolstoy.  
+      </para>]]>
+      </code>
+    </section>
+
+  </section>
+  
+  <section name="Figure" id="figure">
+    <section name="Description" id="figdes">
+      <para id="figp1">
+	The figure tag provides the structure for creating a figure
+	within a document.  A figure could contain such things as an
+	image, or a table, or several of these.
+      </para>
+    </section>
+    <section name="Attributes" id="figatt">
+      <list id="figlist1">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist4">
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  name - a description of the figure that might help a search
+	  engine find it
+	  <list type="bulleted" id="attlist5">
+	    <item>
+	      Optional
+	    </item>
+	    <item>
+	      CDATA
+	    </item>
+	  </list>
+	</item>
+	<item id="orient">
+	  orient - allows the writer to determine which way subfigures should line up (ignored if there are no subfigures)
+	  <list type="bulleted" id="attlist6">
+	    <item>Required
+	    </item>
+	    <item>Possible values
+	      <list type="bulleted" id="attlist14">
+		<item>
+		  horizontal - subfigures will be placed next to each other 
+		</item>
+		<item>	      
+		  vertical - subfigures will be placed on top of each other
+		</item>	
+	      </list>
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="figchild">
+      <list id="figlist2">
+	<item>
+	  The optional <cnxn target="title">title</cnxn> tag may
+	  appear as the first child of the figure element.
+	</item>
+	<item>
+	  Next must appear either two or more <cnxn
+	  target="subfigure">subfigure</cnxn> tags, or a single <cnxn
+	  target="mediaobject">mediaobject</cnxn>, <cnxn
+	  target="table">table</cnxn>, or <cnxn
+	  target="code">code</cnxn> tag.
+	</item>
+	<item>
+	  The figure tag may contain an optional <cnxn
+	  target="caption">caption</cnxn> tag as it's last child element.
+	</item>
+      </list>
+    </section>
+    <section name="Examples" id="figex">
+      <para id="figp2">
+	The following code for a figure might be displayed as shown
+	below.
+      </para>
+      <code>
+      <![CDATA[<figure name="figures" id="fig1" orient="horizontal">
+        <title>A Happy Dog</title>
+        <mediaobject type="image" src="image1.jpg"/>
+	<caption>The dog displayed in this picture is enjoying a
+	comfortable bed.</caption>
+      </figure>]]>
+      </code>
+      <figure name="figures" id="fig1" orient="horizontal">
+	<title>A Happy Dog</title>
+	<mediaobject type="image" src="image1.jpg"/>
+	<caption>
+	  The dog displayed in this picture is enjoying a
+	  comfortable bed.
+	</caption>
+      </figure>
+    </section>
+
+  </section>
+  
+  <section name="Title" id="title">
+    <section name="Description" id="titledes">
+      <para id="titlep1">
+	A title tag is used only as the first child of a <cnxn
+	target="figure">figure</cnxn> tag and provides a brief title
+	for the figure suitable for inclusion in a table of
+	content. Its role is distinct from <cnxn
+	target="caption">caption</cnxn>, which provides a description
+	of the figure and may be rather lengthy.
+      </para>
+    </section>
+    <section name="Attributes" id="titleatt">
+      <para id="titlelist">
+	None
+      </para>	
+    </section>
+    <section name="Children" id="titlechild">
+      <para id="titlep3">
+	The title tag must only contain plain text. 
+      </para>
+    </section>
+    <section name="Examples" id="titleex">
+      <code>
+	<![CDATA[<figure name="figures" id="fig2" orient="horizontal">
+        <title>A Happy Dog</title>
+        <mediaobject type="image" src="image1.jpg"/>
+      </figure>]]>
+      </code>
+      <para id="titlep2b">
+	This might be displayed as shown in the figure.
+      </para>
+      <figure name="figures" id="fig2" orient="horizontal">
+	<title>A Happy Dog</title>
+	<mediaobject type="image" src="image1.jpg"/>
+      </figure>
+    </section>
+
+  </section>
+  
+  <section name="Subfigure" id="subfigure">
+    <section name="Description" id="subfigdes">
+      <para id="subp1">
+	A subfigure tag is used when you want to use more than one
+	<cnxn target="mediaobject">mediaobject</cnxn> or <cnxn
+	target="table">table</cnxn>, etc. inside of the same <cnxn
+	target="figure">figure</cnxn> tag.  The usage of subfigure tag
+	is similar to that of figure, except that it cannot contain a
+	<cnxn target="title">title</cnxn> tag or another subfigure
+	tag.
+      </para>
+    </section>
+    <section name="Attributes" id="subfigatt">
+      <list id="subfiglist">
+	<item>
+	  id - unique id 
+	  <list type="bulleted" id="attlist7">
+	    <item>
+	      Optional
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="subfigchild">
+      <para id="subp4">
+	The subfigure tag must contain a single <cnxn
+	target="mediaobject">mediaobject</cnxn>, <cnxn
+	target="table">table</cnxn>, or <cnxn
+	target="code">code</cnxn> tag. It may be followed by an
+	optional <cnxn target="caption">caption</cnxn>.
+      </para>
+    </section>
+    <section name="Examples" id="subfigex">
+      <para id="subp2">
+	Here is are two subfigure appearing in a figure whose <cnxn
+	target="orient">orient</cnxn> attribute set to
+	&cnxleftquote;horizontal&cnxrightquote;.
+      </para>
+      <code>
+	<![CDATA[<figure name="horizontal figures"  orient="horizontal" id="horfig">
+	  <subfigure id="subfig1">
+	    <mediaobject type="image" src="image1.jpg"/>
+	  </subfigure>
+	  <subfigure id="subfig2">
+	    <mediaobject type="image" src="image2.jpg"/>
+	  </subfigure>
+	</figure>]]>
+      </code>
+      <para id="subp2b">
+	This might be rendered as in the figure below.
+      </para>
+      <figure name="horizontal figures" orient="horizontal" id="horfig">
+	<subfigure id="subfig1">
+	  <mediaobject type="image" src="image1.jpg"/>
+	</subfigure>
+	<subfigure id="subfig2">
+	  <mediaobject type="image" src="image2.jpg"/>
+	</subfigure>
+      </figure>
+      <para id="subp3">
+	Similarly, here is are two subfigures appearing in a figure
+	whose <cnxn target="orient">orient</cnxn> attribute set to
+	&cnxleftquote;vertical&cnxrightquote;.
+      </para>
+      <code>
+<![CDATA[      <figure name="vertical figures" orient="vertical" id="vertfig">
+	<subfigure id="subfig3">
+	  <mediaobject type="image" src="image1.jpg"/>
+	</subfigure>
+	<subfigure id="subfig4">
+	  <mediaobject type="image" src="image2.jpg"/>
+	</subfigure>
+      </figure>]]>
+      </code>
+      <para id="subp3b">
+	This might be rendered as in the figure below.
+      </para>
+      <figure name="vertical figures" orient="vertical" id="vertfig">
+	<subfigure id="subfig3">
+	  <mediaobject type="image" src="image1.jpg"/>
+	</subfigure>
+	<subfigure id="subfig4">
+	  <mediaobject type="image" src="image2.jpg"/>
+	</subfigure>
+      </figure>
+    </section>
+
+  </section>  
+  
+  <section name="Caption" id="caption">
+    <section name="Description" id="captiondes">
+      <para id="capp1">
+	This tag is only used to provide a caption for a <cnxn
+	target="figure">figure</cnxn> or a <cnxn
+	target="subfigure">subfigure</cnxn>.  The caption tag is
+	distinct from the <cnxn target="title">title</cnxn> tag in
+	that it provides a possibly lengthy description of the figure
+	for the reader's use and not an over all title.
+      </para>
+    </section>
+    <section name="Attributes" id="captionatt">
+      <para id="caplist">
+	None
+      </para>
+    </section>
+    <section name="Children" id="captionchild">
+      <para id="capp3">
+	The caption tag may contain a combination of plain text and
+	the following tags: <cnxn target="cnxn">cnxn</cnxn>, <cnxn
+	target="link">link</cnxn>, <cnxn
+	target="important">important</cnxn>, and <cnxn
+	target="emphasis">emphasis</cnxn>.
+      </para>
+    </section>
+    <section name="Examples" id="captionex">
+      <para id="capp2">
+	In this example, notice the different roles played by the
+	<cnxn target="title">title</cnxn> tag and the
+	caption tag.
+      </para>
+      <code>
+<![CDATA[      <figure name="figures" id="fig3" orient="horizontal">
+        <title>A Happy Dog</title>
+        <mediaobject type="image" src="image1.jpg"/>
+	<caption>The dog displayed in this picture is enjoying a
+	comfortable bed.</caption>
+      </figure>]]>
+      </code>
+      <para id="capp2b">
+	This might be displayed as in the figure below.
+      </para>
+      <figure name="figures" id="fig3" orient="horizontal">
+	<title>A Happy Dog</title>
+	<mediaobject type="image" src="image1.jpg"/>
+	<caption>The dog displayed in this picture is enjoying a
+    comfortable bed.</caption>
+      </figure>
+    </section>
+
+  </section>  
+  
+  <section name="Example" id="example">
+    <section name="Description" id="examdes">
+      <para id="exp1">
+	The example tag is used to contain examples problems that are
+	worked out in the text.
+      </para>
+    </section>
+    <section name="Attributes" id="examatt">
+      <list id="examlist">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist8">
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="child">
+      <para id="exp3">
+	The example tag must contain one or more of the following tags:
+	<cnxn target="cnxn">cnxn</cnxn>, <cnxn
+	target="link">link</cnxn>, <cnxn
+	target="important">important</cnxn>, <cnxn
+	target="emphasis">emphasis</cnxn>, <cnxn
+	target="para">para</cnxn>, <cnxn
+	target="equation">equation</cnxn>, <cnxn
+	target="list">list</cnxn>, <cnxn target="code">code</cnxn>,
+	<cnxn target="figure">figure</cnxn>, <cnxn
+	target="table">table</cnxn>, and <cnxn
+	target="exercise">exercise</cnxn>.
+      </para>
+    </section>
+    <section name="Examples" id="ex">
+      <code>
+	<![CDATA[<example id="example">
+	  <para id="paraex1">
+	    Show that if x=3 then x+1=4.
+	  </para>     
+	  <para id="paraex2">
+	    x+1=(3)+1=4, as desired.
+	  </para>
+	</example>]]>
+      </code>
+      <para id="exp2">
+	This might be displayed as shown in the <cnxn
+	target="ex_ex1">example</cnxn>.
+      </para>
+      <example id="ex_ex1">
+	<para id="paraex1">
+	  Show that if x=3 then x+1=4.
+	</para>     
+	<para id="paraex2">
+	  x+1=(3)+1=4, as desired.
+	</para>
+      </example>
+    </section>
+
+  </section>
+
+  <section name="Table" id='table'>
+    <section name='Description' id='tabledes'>
+      <para id="tablep1">
+	The table tag is used to create tables.  It is designed to be
+	a generalized table.  That is, there are not rows and columns.
+	Instead, there are two separate sets of groupings.  One set of
+	groups is defined by the <cnxn
+	target='group'>group</cnxn> tag, which contains <cnxn
+	target='elem'>elem</cnxn> tags or elements.  The other
+	set is defined by <cnxn
+	target='category'>category</cnxn> tags.  Both an <cnxn
+	target='elem'>elem</cnxn> and its <cnxn
+	target='category'>category</cnxn> have a desc
+	attribute with the same value that links them together.
+      </para>
+
+      <para id="tablepnote">
+	Please note that the table tag will most likely be
+	substantially altered in future releases of CNXML.
+      </para>
+
+    </section>
+    <section name='Attributes' id='tableatt'>
+      <list id="tablelist">
+	<item>
+	  id - unique id
+	  <list type='bulleted' id='attlist9'>
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  orient - Determines which way the table is laid out.
+	  <list type='bulleted' id='attlist10'>
+	    <item>
+	      Required
+	    </item>
+
+
+	    <item>Possible values
+	      <list type='bulleted' id='attlist15'>
+		<item>
+		  horizontal - elements with the same group are on top
+	  of each other (that is, group defines a column)
+		</item>
+		<item>	      
+		  vertical - elements with the same category are on top of each
+	  other (that is, category defines a column)
+		</item>	
+	      </list>
+	    </item>
+	    <item>
+	      Default is vertical.
+	    </item>
+	  </list>
+	    </item>
+      </list>
+    </section>
+    <section name='Children' id='tablechild'>
+      <para id="tablep3">
+	The table tag contains one <cnxn
+	target='categories'>categories</cnxn> tag followed by
+	one or more <cnxn target='group'>group</cnxn> tags.
+      </para>
+    </section>
+    <section name='Examples' id='tableex'>
+      <para id="tablep2">
+	The following table has groups of items that are defined by
+	being a fruit or vegetable and by their color.  For example,
+	the first element is a red fruit.
+      </para>
+      <code>
+	<![CDATA[<table id='table' orient='vertical'>
+	  <categories>
+	    <category desc='fruit'>Fruit</category>
+	    <category desc='vegetable'>Vegetables</category>
+	  </categories>
+	  <group>
+	    <elem desc='fruit'>Apple</elem>
+	    <elem desc='vegetable'>Tomato</elem>
+	  </group>
+	  <group>
+	    <elem desc='fruit'>Orange</elem>
+	    <elem desc='vegetable'>Carrot</elem>
+	  </group>
+	  <group>
+	    <elem desc='fruit'>Grape</elem>
+	    <elem desc='vegetable'>Lettuce</elem>
+	  </group>
+	</table>]]>
+      </code>
+      <para id="tablep2b">
+	and it might be rendered as shown in the figure below.
+      </para>
+      <figure name='table example' id='figtableexample' orient="horizontal">
+	<table id='tableexample' orient='vertical'>
+	  <categories>
+	    <category desc='fruit'>Fruit</category>
+	    <category desc='vegetable'>Vegetables</category>
+	  </categories>
+	  <group>
+	    <elem desc='fruit'>Apple</elem>
+	    <elem desc='vegetable'>Tomato</elem>
+	  </group>
+	  <group>
+	    <elem desc='fruit'>Orange</elem>
+	    <elem desc='vegetable'>Carrot</elem>
+	  </group>
+	  <group>
+	    <elem desc='fruit'>Grape</elem>
+	    <elem desc='vegetable'>Lettuce</elem>
+	  </group>
+	</table>
+	<caption>
+	  The first element is an apple which is a red fruit.  One
+	  grouping is defined by the <cnxn
+	  target='category'>category</cnxn> tag's desc
+	  attribute.  The other grouping is defined by the <cnxn
+	  target='group'>group</cnxn> tag.
+	</caption>
+      </figure>
+    </section>
+
+  </section>
+  
+  <section name='Categories' id='categories'>
+    <section name='Description' id='catsdes'>
+      <para id="catsp1">
+	The categories tag groups all of the <cnxn
+	target='category'>category</cnxn> tags together.
+      </para>
+    </section>
+    <section name='Attributes' id='catsatt'>
+      <para id="catslist">
+	  None
+      </para>
+    </section>
+    <section name='Children' id='catschild'>
+      <para id="catsp3">
+	The categories tag must contain one or more <cnxn
+	target='category'>category</cnxn> tags. The order of
+	the <cnxn target='category'>category</cnxn> tags
+	within the categories tag defines what order they will
+	be displayed in.
+      </para>
+    </section>
+    <section name='Examples' id='catsex'>
+      <para id="catsp2">
+	See the <cnxn target='tableex'>table example</cnxn>.
+      </para>
+    </section>
+
+  </section>
+
+  <section name='Category' id='category'>
+    <section name='Description' id='catdes'>
+      <para id="catp1">
+	Each category tag serves to group one set of things.
+	The desc attribute, short for description, links the category
+	to the element. The content of the category will be
+	used as the header for the column or row defined by the
+	category.
+      </para>
+    </section>
+    <section name='Attributes' id='catatt'>
+      <list id="catlist">
+	<item>
+	  desc - The value of the attribute
+	  will be used repeatedly to link the category to specific
+	  elements (see <cnxn target="elem">elem</cnxn>) so it should be short.
+	  <list type='bulleted' id='attlist11'>
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name='Children' id='catchild'>
+      <para id="catp3">
+	It must contain plain text<!--FIX ME or math-->.
+      </para>
+    </section>
+    <section name='Examples' id='catex'>
+      <para id="catp2">
+	See the <cnxn target='tableex'>table example</cnxn>.
+      </para>
+    </section>
+
+  </section>
+  
+  <section name='Group' id='group'>
+    <section name='Description' id='groupdes'>
+      <para id="groupp1">
+	The group tag pulls together several elements, denoted
+	by <cnxn target='elem'>elem</cnxn>.  Those elements
+	are contained within the group tag.
+      </para>
+    </section>
+    <section name='Attributes' id='groupatt'>
+      <para id="grouplist">
+	  None
+      </para>
+    </section>
+    <section name='Children' id='groupchild'>
+      <para id="groupp3">
+	The group tag must contain one or more <cnxn
+	target='elem'>elem</cnxn> tags.
+      </para>
+    </section>
+    <section name='Examples' id='groupex'>
+      <para id="groupp2">
+	See the <cnxn target='tableex'>table example</cnxn>.
+      </para>
+    </section>
+
+  </section>
+  
+  <section name='Elem' id='elem'>
+    <section name='Description' id='elemdes'>
+      <para id="elemp1">
+	The elem, or element, tag contains the actual
+	information of the table. On the one hand it is grouped by the
+	<cnxn target='group'>group</cnxn> tag.  On the other
+	hand it is grouped by the <cnxn
+	target='category'>category</cnxn> that has the same
+	value for the desc attribute.
+      </para>
+    </section>
+    <section name='Attributes' id='elematt'>
+      <list id="elemlist">
+	<item>
+	  desc - desc is short for
+	  description.  The value of the attribute will be used to
+	  link the element to a <cnxn
+	  target='category'>category</cnxn>.
+	  <list type='bulleted' id='attlist12'>
+	    <item>
+	      Required
+	    </item>
+	    <item>
+	      IDREF
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  id - a unique id
+	  <list type='bulleted' id='attlist13'>
+	    <item>
+	      Optional
+	    </item>
+	    <item>
+	      ID
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name='Children' id='elemchild'>
+      <para id="elemp3">
+	An elem tag must contain one or more of plain text, math or
+	one of the following tags: <cnxn
+	target='cnxn'>cnxn</cnxn>, <cnxn
+	target='link'>link</cnxn>, <cnxn
+	target='important'>important</cnxn>, <cnxn
+	target='emphasis'>emphasis</cnxn>.
+      </para>
+    </section>
+    <section name='Examples' id='elemex'>
+      <para id="elemp2">
+	See the <cnxn target='tableex'>table example</cnxn>.
+      </para>
+    </section>
+
+  </section>
+
+  <section name="List" id="list">
+    <section name="Description" id="listdesc">
+      <para id="listp1">
+	The list tag is used to create ordered or unordered lists of items.
+      </para>
+    </section>
+    <section name="Attributes" id="listattr">
+      <list id="listlist">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist16">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+	<item>
+	  type - makes the list ordered or unordered
+	  <list type="bulleted" id="attlist17">
+	    <item>Optional</item>
+	    <item>Possible values
+	      <list type="bulleted" id="attlist18">
+		<item>enumerated - numbers the
+		  list with the first item after the tag being the
+		  first element
+		</item>
+		<item>bulleted - creates a bulleted list of items
+		</item>
+	      </list>
+	    </item>
+	    <item>Default is bulleted
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="listchild">
+      <para id="listp3">
+	 The list tag must contain one or more <cnxn
+	target="item">item</cnxn> tags.
+      </para>
+    </section>
+    <section name="Examples" id="listexamp">
+      <para id="listp2">
+	The code below is an example of the list tag with the type
+	attribute set to &cnxleftquote;enumerated&cnxrightquote;.
+      </para>
+      <code>
+	<![CDATA[<list type="enumerated">
+	  <item>Milk</item> 
+	  <item>Eggs</item> 
+	  <item>Sugar</item>
+	</list>
+	]]>
+      </code>
+      <para id="extodo">
+	It might be displayed as shown here.
+	<list id="exlist" type="enumerated">
+	  <item>Milk</item> 
+	  <item>Eggs</item> 
+	  <item>Sugar</item>
+	</list>
+      </para>
+    </section>
+
+  </section>
+
+  <section name="Item" id="item">
+    <section name="Description" id="itemdesc">
+      <para id="itemp1">
+	The item tag is used to specify an item of a list.  It appears
+	only as the child of <cnxn target="list">list</cnxn> tags.
+      </para>
+    </section>
+    <section name="Attributes" id="itemattr">
+      <list id="itemlist">
+	<item>id - unique id
+	  <list type="bulleted" id="attlist19">
+	    <item>Optional</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="itemchild">
+      <para id="itemp3">
+	The item tag may contain a combination of plain text, and the
+	following tags: <cnxn target="emphasis">emphasis</cnxn>, <cnxn
+	target="important">important</cnxn>, <cnxn
+	target="link">link</cnxn>, <cnxn target="cnxn">cnxn</cnxn>, and
+	<cnxn target="list">list</cnxn>.
+    </para>
+    </section>
+    <section name="Examples" id="itemexamp">
+      <code>
+	<![CDATA[<list type="enumerated">
+	  <item>Milk</item> 
+	  <item>Eggs</item> 
+	  <item>Sugar</item>
+	</list>]]>
+      </code>
+    </section>
+
+  </section>
+  
+  <section name="Exercise" id="exercise">
+    <section name="Description" id="exerdesc">
+      <para id="exerp1">
+	The exercise tag is used to create excercises, such as
+	would be used in a text book of a college course.  An exercise
+	consists of two parts: a problem and a solution.
+      </para>
+    </section>
+    <section name="Attributes" id="exerattr">
+      <list id="exerlist">
+	<item>id - unique id
+	  <list type="bulleted" id="attlist20">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="exerchild">
+      <para id="exerp3">
+	An exercise must contain a single <cnxn
+	target="problem">problem</cnxn> followed by a single <cnxn
+	target="solution">solution</cnxn>.
+      </para>
+    </section>
+    <section name="Examples" id="exerexamp">
+      <code>
+	<![CDATA[<exercise id="exer1">
+          <problem>
+	    .
+            .
+            .
+          </problem>
+          <solution>
+            .
+            .
+            .
+          </solution>
+        </exercise>]]>
+      </code>
+    </section>
+
+  </section>
+
+  <section name="Problem" id="problem">
+    <section name="Description" id="probdesc">
+      <para id="probp1">
+	The problem tag is used to specify the problem portion
+	of an <cnxn target="exercise">exercise</cnxn> tag.
+      </para>
+    </section>
+    <section name="Attributes" id="probattr">
+      <para id="problist">
+	None
+      </para>
+    </section>
+    <section name="Children" id="probchild">
+      <para id="probp3">
+	The problem tag must contain one or more of the following
+	tags: <cnxn target="cnxn">cnxn</cnxn>, <cnxn
+	target="link">link</cnxn>, <cnxn
+	target="important">important</cnxn>, <cnxn
+	target="emphasis">emphasis</cnxn>, <cnxn
+	target="para">para</cnxn>, <cnxn
+	target="equation">equation</cnxn>, <cnxn
+	target="list">list</cnxn>, <cnxn target="code">code</cnxn>,
+	<cnxn target="figure">figure</cnxn>, and <cnxn
+	target="table">table</cnxn>.
+      </para>
+    </section>
+    <section name="Examples" id="probexamp">
+      <code>
+	<![CDATA[<problem>
+	  <para id="prob_1">
+	    What is the capital of Texas?
+	  </para>
+	</problem>]]>
+      </code>
+    </section>
+
+  </section>
+
+  <section name="Solution" id="solution">
+    <section name="Description" id="soldesc">
+      <para id="solp1">
+	The solution tag is used to specify the solution
+	portion of an <cnxn target="exercise">exercise</cnxn> tag.
+      </para>
+    </section>
+    <section name="Attributes" id="solattr">
+      <para id="sollist">
+	  None
+	</para>
+    </section>
+    <section name="Children" id="solchild">
+      <para id="solp3">
+	The solution tag must contain one or more of the following
+	tags: <cnxn target="cnxn">cnxn</cnxn>, <cnxn
+	target="link">link</cnxn>, <cnxn
+	target="important">important</cnxn>, <cnxn
+	target="emphasis">emphasis</cnxn>, <cnxn
+	target="para">para</cnxn>, <cnxn
+	target="equation">equation</cnxn>, <cnxn
+	target="list">list</cnxn>, <cnxn target="code">code</cnxn>,
+	<cnxn target="figure">figure</cnxn>, and <cnxn
+	target="table">table</cnxn>.
+      </para>
+    </section>
+    <section name="Examples" id="solexamp">
+      <code>
+	<![CDATA[<solution>
+	  <para id="prob_1">
+	    Austin is the capital of Texas.
+	  </para>
+	</solution>]]>
+      </code>
+    </section>
+
+  </section>
+
+  <section name="Equation" id="equation">
+    <section name="Description" id="eqndesc">
+      <para id="eqnp1">
+	The equation tag is used to set off equations in CNXML
+	documents.  It is meant to be used with elements from <cnxn
+	target="mathml">MathML</cnxn>.
+      </para>
+    </section>
+    <section name="Attributes" id="eqnattr">
+      <list id="eqnlist">
+	<item>id - unique id
+	  <list type="bulleted" id="attlist21">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+	<item>
+	  name - the name of the equation
+	  <list type="bulleted" id="attlist22">
+	    <item>Optional</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="eqnchild">
+      <para id="eqnp3">
+	The equation tag must contain math marked up using MathML.
+	See <cnxn target="mathml">Section 6</cnxn>.
+      </para>
+    </section>
+    <section name="Examples" id="eqnexamp">
+      <code>
+	<![CDATA[<equation id="eqn14" name="Euler's Identity">
+          <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" mode="display">
+	    <m:apply>
+	      <m:eq />
+	      
+	      <m:apply>
+		<m:plus />
+
+		<m:apply>
+		  <m:power />
+		  <m:ci>&ExponentialE;</m:ci>
+		  <m:apply>
+		    <m:times />
+		    <m:ci>&ImaginaryI;</m:ci>
+		    <m:ci>&pi;</m:ci>
+		  </m:apply>
+		</m:apply>
+		
+		<m:cn>1</m:cn>
+	      </m:apply>
+
+	      <m:cn>0</m:cn>
+	    </m:apply>
+	  </m:math>
+        </equation>]]>
+      </code>
+    </section>
+
+  </section>
+  
+  <section name="Code" id="code">
+    <section name="Description" id="codedesc">
+      <para id="codep1">
+	The code tag is used to insert an example or section of
+	computer code into a document.  When displayed, it will often
+	be typeset in a fixed-width font.
+      </para>
+    </section>
+    <section name="Attributes" id="codeattr">
+      <list id="codelist">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist23">
+	    <item>Optional</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="codechild">
+      <para id="codep3">
+	The code tag can contain a combination of plain text and <cnxn
+	target="important">important</cnxn> or <cnxn
+	target="emphasis">emphasis</cnxn> tags.
+      </para>
+    </section>
+    <section name="Examples" id="codeexamp">
+      <code>
+	<![CDATA[<code id="forloopexample">
+          for(i=0; i<size(list); i++){
+                  total = total + list[i];
+	  }
+        </code>]]>
+      </code>
+    </section>
+
+  </section>
+  
+  <section name="Mediaobject" id="mediaobject">
+    <section name="Description" id="mediadesc">
+      <para id="mediap1">
+	The mediaobject tag inserts "media objects", such as images,
+	applets, movies, sounds, etc, into CNXML documents.
+      </para>
+    </section>
+    <section name="Attributes" id="mediaattr">
+      <list id="medialist">
+	<item>
+	  type - the type of media (i.e. sound, video, etc.) the mediaobject tag contains
+	  <list type="bulleted" id="attlist24">
+	    <item>Required</item>
+	    <item>Possible values
+	      <list type="bulleted" id="attlist25">
+		<item>
+		  image - a bitmapped image in a standard format such
+		  as gif, png, jpg, etc.</item>
+	      </list>
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  src - a relative or absolute URI indicating the path to the object.
+	  <list type="bulleted" id="attlist26">
+	    <item>Required</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="mediachild">
+      <para id="mediap3">
+	None
+      </para>
+    </section>
+    <section name="Examples" id="mediaexamp">
+      <code>
+        <![CDATA[<mediaobject type="image" src="image1.jpg"/>]]>
+      </code>
+    </section>
+
+  </section>
+  
+  <section name="CNXN" id="cnxn">
+    <section name="Description" id="cnxndesc">
+      <para id="cnxnp1">
+	The cnxn tag links to a tag inside a Connexions system module,
+	possibly different from the current module.
+      </para>
+    </section>
+    <section name="Attributes" id="cnxnattr">
+      <list id="cnxnlist">
+	<item>
+	  target - the id of the tag being linked to
+	  <list type="bulleted" id="attlist27">
+	    <item>Optional</item>
+	    <item>IDREF</item>
+	    <item>
+	      If the target attribute is omitted, the link will
+	      default to the root element of the target module.
+	    </item>
+	  </list>
+	</item>
+	<item>
+	  module - module that is linked to
+	  <list type="bulleted" id="attlist28">
+	    <item>Optional</item>
+	    <item>IDREF</item>
+	    <item>
+	      If the module attribute is omitted, the link will
+	      default to the current module.
+	    </item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="cnxnchild">
+      <para id="cnxnp3">
+	ASCII text that serves as the link text.
+      </para>
+    </section>
+    <section name="Examples" id="cnxnexamp">
+      <code>
+	<![CDATA[<cnxn target="figure12" module="m7473">Figure 12</cnxn>
+	<cnxn target="para32">As mentioned eariler</cnxn>
+	<cnxn module="m3423">A previous module</cnxn>]]>
+      </code>
+    </section>
+
+  </section>
+
+  <section name="Link" id="link">
+    <section name="Description" id="linkdesc">
+      <para id="linkp1">
+	The link tag is used to insert links to external resources.
+      </para>
+    </section>
+    <section name="Attributes" id="linkattr">
+      <list id="linklist">
+	<item>
+	  src - the URL of the resource being linked to
+	  <list type='bulleted' id='attlist30'>
+	    <item>Required</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="linkchild">
+      <para id="linkp3">
+	The link tags must contain ASCII text to server as the link text.
+      </para>
+    </section>
+    <section name="Examples" id="linkexamp">
+      <code>
+	<![CDATA[<para id="linkexample">
+          <link src="http://www.laurynhill.com">Lauryn Hill</link> is
+	  one of the most influential R&B artists to date.  Having
+	  performed with <link src="http://www.fugees.net">The
+	  Fugees</link> and now solo, she is a defining force in
+	  worlds of Rap, Hip-Hop and R&B.  Her voice is powerful and
+	  her <link src="http://www.laurynhill.com/lyrics">lyrics</link> are
+	  moving.  It is no wonder that she set records, taking away 5
+	  awards at the 1999 Grammies.
+	</para>]]>
+      </code>
+    </section>
+
+  </section>
+
+  <section name="Emphasis" id="emphasis">
+    <section name="Description" id="emphdesc">
+      <para id="emphp1">
+	The emphasis tag is used to emphasize text in a CNXML document
+	where emphasis would be needed or desired.  It is important to
+	note that this refers to <emphasis>semantic</emphasis>
+	emphasis and not a typeface, although many stylesheets may
+	choose to render it as a change in typeface.  Note the
+	difference between the emphasis and <cnxn
+	target="important">important</cnxn> tags.
+      </para>
+    </section>
+    <section name="Attributes" id="emphattr">
+      <para id="emphlist">
+	None
+      </para>
+    </section>
+    <section name="Children" id="emphchild">
+      <para id="emphp3">
+      The emphasis tag may only contain plain text.
+      </para>
+    </section>
+    <section name="Examples" id="emphexamp">
+      <code>
+	<![CDATA[<para id="emphexample">
+          In addition to bananas and ice cream, a proper banana split
+          requires whipped cream, nuts, <emphasis>and</emphsis>
+          cherries.  Remember that the quality of the dessert depends
+          on the ice cream, so do <emphasis>not</emphasis> use a
+          generic brand.
+	</para>]]>
+      </code>
+    </section>
+
+  </section>
+
+  <section name="Important" id="important">
+    <section name="Description" id="impdesc">
+      <para id="impp1">
+	The important tag is used to mark something as important
+	within a CNXML document.  Note the difference between the
+	important and <cnxn target="emphasis">emphasis</cnxn> tags.
+      </para>
+    </section>
+    <section name="Attributes" id="impattr">
+      <list id="implist">
+	<item>
+	  id - unique id
+	  <list type="bulleted" id="attlist29">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    <section name="Children" id="impchild">
+      <para id="impp3">
+	An important tag can contain any tag as a child element.
+      </para>
+    </section>
+    <section name="Examples" id="impexamp">
+      <code>
+      <![CDATA[<para id="impexample">
+	  <important id="eulers">Euler's Formula</important> is an
+	  important topic in electrical engineering.  Another
+	  important topic is the <important id="fourier">Fourier
+	  Series</important>.  Important tags are good for marking
+	  important concepts within a module.  
+	</para>]]>
+      </code>
+    </section>
+
+  </section>
+</section>
+
+
+
+

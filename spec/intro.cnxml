@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<section id="intro" name="Introduction">
+  <para id="par_intro1">
+    This document contains the specification for the Connexions Markup
+    Language (CNXML).  It is the definitive reference for the language
+    and takes precedence over all other documents, including the DTD.
+  </para>
+  <para id="par_intro2">
+    CNXML is an <link src="http://www.w3.org/XML">XML</link>
+    application created for the purpose of marking up educational
+    content for the <link src="http://cnx.rice.edu">Connexions
+    Project</link>.  The language is concerned with the semantic
+    content of the information and attempts to enforce separation of
+    content and presentation.  You will, therefore, see few (if any)
+    elments that deal with style or presentation.  Decisions about how
+    to display CNXML documents should be made elsewhere.
+  </para>
+</section>

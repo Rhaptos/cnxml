@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<section id='mathml' name='Appendix A: Combining MathML and CNXML'>
+  <section id='mathmlns' name='The MathML Namespace'>
+    <para id='parmath1'>
+      Combining MathML and CNXML is not difficult since both languages are
+      a type of XML.  Basically, the tags for MathML and CNXML exist in
+      different namespaces.  So you have to declare the MathML namespace
+      in your CNXML document.  This is easily done by including the
+      xmlns attribute in your opening math tag so that it looks like:
+      &lt;math xmlns="&amp;mmlns;"&gt;.  The attribute &amp;mmlns; is declared
+      in the <cnxn target='appA'>CNXML DTD</cnxn>.  
+    </para>
+    <para id='parmath2'>
+    For example, below is a short cnxml document containing math.
+    </para>
+      <code>
+<![CDATA[<?xml version="1.0"?> 
+<?xml-stylesheet type="text/xsl" href="http://cnx.rice.edu/cnxml/0.1/style/cnxml.xsl"?> 
+<!DOCTYPE module SYSTEM "http://cnx.ece.rice.edu/cnxml/0.1/DTD/cnxml.dtd">
+      <module
+	      name='Combining MathML and CNXML'
+	      id='mathml'
+	      levelmask=''
+	      dateofcreation='2000-12-07'
+	      dateoflastrevision='2000-12-07'>
+	<authorlist> 
+	  <author 
+		  name="John Doe" 
+		  id="jdoe" 
+		  email="jdoe@anywhere.com" 
+		  /> 
+	</authorlist> 
+	<para>
+	  This is a piece of math written using MathML.  
+	  <math xmlns='&mmlns;' module='inline'>
+	    <apply>
+	      <plus/>
+              <cn>2</cn>
+              <cn>3</cn>
+            </apply>
+	  </math>
+	</para>
+      </module>]]>
+      </code>	
+  </section>
+  <section id='mathmleqn' name='Using the Equation Tag'>
+    <para id='parmath3'>
+      You can include most math that you are likely to write by adding
+      the xml namespaces as described above.  However, if
+      you want to convey that the equation is especially important and
+      should be set out, it is appropriate to wrap the math in an
+      <cnxn target='equation'>equation</cnxn> tag.  For
+      example, a stylesheet might be written to set the equation out separately
+      and number it.
+    </para>
+  </section>
+  <section id='mathmlinline' name='Using the Inline and Display Attributes'>
+    <para id='parmath4'>
+      If you are using math in a paragraph or a sentence be sure to
+      set the mode attribute to "inline" on the math tag.  If it is
+      used inside of an equation tag, set mode="display".  
+    </para>
+  </section>
+  <section id='mathmlwrite' name='Writing MathML'>
+    <para id='parmath5'>
+      For information on writing MathML please refer to the <link
+      src='http://www.w3.org/Math'>MathML specification</link> on the <link src='http://www.w3.org'>World Wide Web Consortium's website</link>.
+    </para>
+  </section>
+</section>
+
+
+
+

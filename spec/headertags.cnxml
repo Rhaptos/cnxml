@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<section id="head" name="Header Tags">
+
+  <section name="Module" id="module">
+    <section name="Description" id="sec_moddesc">
+      <para id="par_mod1">
+	The module tag is the root document element of CNXML
+	documents, commonly called "modules." 
+      </para>
+    </section>
+
+    <section name="Attributes" id="sec_modattr">
+      <list id="list_modattr" type="bulleted">
+	<item>id - A unique module identifier
+	  <list type="bulleted" id="list_modattr1">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+	<item>name - The module's name or title
+	    <list type="bulleted" id="list_modattr2">
+	      <item>Required</item>
+	      <item>CDATA</item>
+	    </list>
+	</item>
+	<item>levelmask - Currently unused, set to 0
+	    <list type="bulleted" id="list_modattr3">
+	      <item>Required</item>
+	      <item>CDATA</item>
+	    </list>
+	</item>
+	<item>dateofcreation - The date on which the module was created.
+	  <list type="bulleted" id="list_modattr4">
+	    <item>Required</item>
+	    <item>Should take the form YYYY-MM-DD.</item>
+	  </list>
+	</item>
+	<item>dateoflastrevision - The date on which the module was last edited
+	  <list type="bulleted" id="list_modattr5">
+	    <item>Required</item>
+	    <item>Should take the form YYYY-MM-DD.</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+    
+    <section name="Children" id="sec_modchildren">
+      <para id="par_mod3">
+	<list id="list_mod1">
+	  <item>
+	    The first child of the module tag must always be an <cnxn
+	    target="authorlist">authorlist</cnxn> tag.
+	  </item>
+	  <item>
+	    Directly following that must be the optional <cnxn
+	    target="keywordlist">keywordlist</cnxn> tag, if it appears
+	    at all.
+	  </item>
+	  <item>
+	    Following that must be one or more of the following tags:
+	    <cnxn target="section">section</cnxn>, <cnxn
+	    target="cnxn">cnxn</cnxn>, <cnxn
+	    target="link">link</cnxn>, <cnxn
+	    target="important">important</cnxn>, <cnxn
+	    target="emphasis">emphasis</cnxn>, <cnxn
+	    target="para">para</cnxn>, <cnxn
+	    target="equation">equation</cnxn>, <cnxn
+	    target="list">list</cnxn>, <cnxn
+	    target="code">code</cnxn>, <cnxn
+	    target="figure">figure</cnxn>, <cnxn
+	    target="table">table</cnxn>, <cnxn
+	    target="example">example</cnxn>, and <cnxn
+	    target="exercise">exercise</cnxn> tags.
+	  </item>
+	</list>
+      </para>
+    </section>
+
+    <section name="Examples" id="sec_modex">
+      <code>
+	<![CDATA[<module id="spec" 
+	        name="CNXML 0.1 Language Specification" 
+	        levelmask="0" 
+	        dateofcreation="2000-11-20" 
+         	dateoflastrevision="2000-12-07">
+	.
+	.
+	.
+	</module>]]>
+      </code>
+    </section>
+    
+  </section>
+
+  <section name="Authorlist" id="authorlist" >
+    <section name="Description" id="sec_aldesc">
+      <para id="par_al1">
+	The authorlist tag must appear as the first child tag of <cnxn
+	target="module">module</cnxn>, and contains a list of the
+	authors who contributed to writing the module.
+      </para>
+    </section>
+    
+    <section name="Attributes" id="sec_alattr">
+      <para id="par_al2">
+	None
+      </para>
+    </section>
+
+    <section name="Children" id="sec_alchildren">
+      <para id="par_al4">
+	The authorlist tag must contain one or more <cnxn
+	target="author">author</cnxn> tags.
+      </para>
+    </section>
+
+    <section name="Examples" id="sec_alex">
+      <code>
+  <![CDATA[<authorlist>
+    <author id="coppin" name="Sarah Coppin" />
+    <author id="brentmh" name="Brent Hendricks" />
+    <author id="ricky" name="Ricky Radaelli-Sanchez" />
+  </authorlist>]]>
+      </code>
+    </section>
+    
+  </section>
+
+  <section name="Author" id="author" >
+    <section name="Description" id="sec_adesc">
+      <para id="par_a1">
+	The author tag gives information about a particular author of
+	the document.
+      </para>
+    </section>
+
+    <section name="Attributes" id="sec_aattr">
+      <list id="list_authattr" type="bulleted">
+	<item>id - The author's unique identifier within the CNX system
+	  <list type="bulleted" id="list_authattr1">
+	    <item>Required</item>
+	    <item>ID</item>
+	  </list>
+	</item>
+	<item>name - The author's full name
+	  <list type="bulleted" id="list_authattr2">
+	    <item>Required</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+	<item>email - Author's email address
+	  <list type="bulleted" id="list_authattr3">
+	    <item>Optional</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+	<item>homepage - Author's web address
+	  <list type="bulleted" id="list_authattr4">
+	    <item>Optional</item>
+	    <item>CDATA</item>
+	  </list>
+	</item>
+      </list>
+    </section>
+
+    <section name="Children" id="sec_achildren">
+      <para id="par_a4">
+	None
+      </para>
+    </section>
+
+    <section name="Examples" id="sec_aex">
+      <code>
+	<![CDATA[<author id="ricky" 
+		name="Ricky Radaelli-Sanchez"
+		email="ricky@rice.edu"
+		homepage="http://www.owlnet.rice.edu/~ricky"/>]]>
+      </code>
+    </section>
+
+  </section>
+
+  <section name="Keywordlist" id="keywordlist" >
+    <section name="Description" id="sec_kldesc">
+      <para id="par_kl1">
+	The keywordlist tag optionally appears as the second child tag
+	of <cnxn target="module">module</cnxn>, and contains a list of
+	the keywords or phrases relevant to the module's topic.
+      </para>
+    </section>
+
+    <section name="Attributes" id="sec_klattr">
+      <para id="par_kl2">
+	None
+      </para>
+    </section>
+
+    <section name="Children" id="sec_klchildren">
+      <para id="par_kl4">
+	The keywordlist tag must contain one or more <cnxn
+	target="keyword">keyword</cnxn> tags.
+      </para>
+    </section>
+
+    <section name="Examples" id="sec_klex">
+      <code>
+	<![CDATA[<keywordlist>
+	  <keyword>Sample module</keyword>
+	  <keyword>Test</keyword>
+	</keywordlist>]]>
+      </code>
+    </section>
+    
+  </section>
+  
+  <section name="Keyword" id="keyword" >
+    <section name="Description" id="sec_kdesc">
+      <para id="par_k1">
+	The keyword tag holds a single word or phrase relevant to the
+	module in which it appears.
+      </para>
+    </section>
+    
+    <section name="Attributes" id="sec_kattr">
+      <para id="par_k2">
+	None
+      </para>
+    </section>
+    
+    <section name="Children" id="sec_kchildren">
+      <para id="par_k4">
+	ASCII text representing the key word or phrase
+      </para>
+    </section>
+
+    <section name="Examples" id="sec_kex">
+      <code>
+	<![CDATA[<keyword>Fourier Series</keyword>]]>
+      </code>
+    </section>
+
+  </section>  
+  
+</section>

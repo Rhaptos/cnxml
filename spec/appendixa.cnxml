@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<section id='appA' name='Appendix B'>
+
+<para id="dtd">
+  A copy of the CNXML DTD for which this spec was created is shown
+  bellow:
+</para>
+<code>
+  <![CDATA[
+<!-- DTD for CNXML language                             -->
+<!-- Version 0.1                                        -->
+<!--                                                    -->
+<!-- Modified: $Date$             -->
+<!-- Maintained by Andrew Lin                           -->
+<!--                                                    -->
+
+<!-- Include MathML2 DTD -->
+<!ENTITY % mathml SYSTEM "http://cnx.rice.edu/cnxml/0.1/DTD/mathml2.dtd">
+
+<!ENTITY mmlns "http://www.w3.org/1998/Math/MathML">
+<!ENTITY cnxminus "&#x2013;"> 
+<!ENTITY cnxleftquote "&quot;"> 
+<!ENTITY cnxrightquote "&quot;"> 
+<!ENTITY cnxapos "&apos;"> 
+<!ENTITY InvisibleTimes ""> <!ENTITY it "">
+<!ENTITY InvisibleComma ""> <!ENTITY ic "">
+<!ENTITY ApplyFunction ""> <!ENTITY af "">
+<!ENTITY ImaginaryI "j"> <!ENTITY ii "j">
+<!ENTITY ExponentialE "e"> <!ENTITY ee "e">
+<!ENTITY DifferentialD "d"> <!ENTITY dd "d">
+<!ENTITY CapitalDifferentialD "D"> <!ENTITY DD "D">
+
+%mathml;
+
+<!ENTITY % inlinetags "(cnxn|link|important|emphasis|%math.qname;)">
+<!ENTITY % blocktags  "(para|equation|list|code|figure|table|example|exercise)">
+
+<!ELEMENT module (authorlist, keywordlist?, (section|%blocktags;|%inlinetags;)+)>
+	  <!ATTLIST module id ID #REQUIRED>
+	  <!ATTLIST module name CDATA #REQUIRED>
+	  <!ATTLIST module levelmask CDATA #REQUIRED>
+	  <!ATTLIST module dateofcreation CDATA #REQUIRED>
+	  <!ATTLIST module dateoflastrevision CDATA #REQUIRED>
+
+<!ELEMENT authorlist (author)+>
+
+<!ELEMENT author EMPTY>
+	  <!ATTLIST author id ID #REQUIRED>
+	  <!ATTLIST author name CDATA #REQUIRED>
+	  <!ATTLIST author email CDATA #IMPLIED>
+	  <!ATTLIST author homepage CDATA #IMPLIED>
+
+<!ELEMENT keywordlist (keyword)+>
+<!ELEMENT keyword (#PCDATA)>
+
+<!ELEMENT section (section|%blocktags;|%inlinetags;)+>
+	  <!ATTLIST section id ID #REQUIRED>
+          <!ATTLIST section name CDATA #REQUIRED>
+
+<!ELEMENT para (#PCDATA|emphasis|important|list|cnxn|link|equation|%math.qname;)*>
+	  <!ATTLIST para id ID #REQUIRED>
+
+<!ELEMENT cnxn (#PCDATA)>
+          <!ATTLIST cnxn target IDREF #IMPLIED>
+          <!ATTLIST cnxn module IDREF #IMPLIED>
+
+<!ELEMENT link (#PCDATA)>
+          <!ATTLIST link src CDATA #REQUIRED>
+
+<!ELEMENT equation (%math.qname;)>
+	<!ATTLIST equation id ID #REQUIRED>
+	<!ATTLIST equation name CDATA #IMPLIED>
+
+<!-- FIXME: should probably further restrict what important can contain -->
+<!ELEMENT important ANY>
+        <!ATTLIST important id ID #REQUIRED>
+
+<!ELEMENT emphasis (#PCDATA)>
+
+<!ELEMENT list (item)+>
+         <!ATTLIST list id ID #REQUIRED>
+         <!ATTLIST list type (enumerated | bulleted) #IMPLIED>
+ 
+<!ELEMENT item (#PCDATA|cnxn|link|important|emphasis|%math.qname;|list)*>
+         <!ATTLIST item id ID #IMPLIED>
+
+<!ELEMENT code (#PCDATA|important|emphasis)*>
+         <!ATTLIST code id ID #IMPLIED>
+
+<!ELEMENT mediaobject EMPTY>
+         <!ATTLIST mediaobject type CDATA #REQUIRED>
+         <!ATTLIST mediaobject src CDATA #REQUIRED>
+
+<!ELEMENT figure (title?,((subfigure, subfigure+)|mediaobject|table|code),caption?)>
+	 <!ATTLIST figure id ID #REQUIRED>
+         <!ATTLIST figure name CDATA #IMPLIED>
+         <!ATTLIST figure orient (vertical|horizontal) #REQUIRED>
+
+<!ELEMENT title (#PCDATA)>
+
+<!ELEMENT subfigure ((mediaobject|table|code), caption?)>
+         <!ATTLIST subfigure id ID #IMPLIED>
+
+<!ELEMENT caption (#PCDATA|cnxn|link|important|emphasis|%math.qname;)*>
+
+<!ELEMENT table (categories, group+)>
+        <!ATTLIST table id ID #REQUIRED>
+        <!ATTLIST table orient (vertical|horizontal) #REQUIRED>
+
+<!ELEMENT categories (category+)>
+
+<!ELEMENT category (#PCDATA)>
+        <!ATTLIST category desc ID #REQUIRED>
+
+<!ELEMENT group (elem+)>
+
+<!-- Note that elem can also contain math -->
+<!ELEMENT elem (#PCDATA|cnxn|link|important|emphasis|%math.qname;)*>
+        <!ATTLIST elem id ID #IMPLIED>
+        <!ATTLIST elem desc IDREF #REQUIRED>
+
+<!-- Note that examples shouldn't contain other examples -->
+<!ELEMENT example (%blocktags;|%inlinetags;)+>
+        <!ATTLIST example id ID #REQUIRED>       
+
+<!ELEMENT exercise (problem, solution)>
+        <!ATTLIST exercise id ID #REQUIRED>
+
+<!ELEMENT problem (%blocktags;|%inlinetags;)+>
+
+<!ELEMENT solution (%blocktags;|%inlinetags;)+>
+  ]]>
+</code>
+</section>

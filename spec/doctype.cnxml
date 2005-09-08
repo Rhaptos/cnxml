@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<section id="doctype" name="Document Type">
+  <para id="par_doctype1">
+    CNXML documents must be well-formed XML documents, meaning that
+    they must conform to the World Wide Web Consrtium (W3C)'s
+    definition of a valid XML document.  In order to be considered
+    valid CNXML, a document must also declare itself using the
+    following Document Type Declaration.  Thus, the first two lines of
+    every CNXML document should look something like:
+  </para>
+  <code>
+    <![CDATA[<?xml version="1.0" standalone="no"?>
+    <!DOCTYPE module SYSTEM "http://cnx.rice.edu/cnxml/0.1/DTD/cnxml.dtd">]]>
+  </code>
+    
+</section>
+
