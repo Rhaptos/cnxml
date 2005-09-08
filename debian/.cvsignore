@@ -1,0 +1,4 @@
+*.debhelper
+*.substvars
+connexions-cnxml-0.5
+files

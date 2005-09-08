@@ -1,0 +1,18 @@
+connexions-cnxml (0.5.4b2-1) unstable; urgency=low
+
+  * Fixed problem with QML problemsets in schema
+
+ -- Brent Hendricks <brentmh@rice.edu>  Tue, 16 Aug 2005 16:46:13 -0500
+
+connexions-cnxml (0.5.4b1-1) unstable; urgency=low
+
+  * Stylesheet fixes
+
+ -- Brent Hendricks <brentmh@rice.edu>  Wed, 10 Aug 2005 13:44:52 -0500
+
+connexions-cnxml (0.5-3) unstable; urgency=low
+
+  * Split source packages - see connexions-xml package for old history
+
+ -- Ross J. Reedstrom <reedstrm@rice.edu>  Tue, 09 Aug 2005 11:33:36 -0500
+
