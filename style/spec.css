@@ -1,0 +1,27 @@
+
+ul {
+ display:block;
+ list-style-position:outside;
+ text-indent:0;
+}
+
+ol {
+ display:block;
+ list-style-position:outside;
+ text-indent:0;
+ margin-left: 1.5cm;
+ margin-right: 1.5cm;
+ margin-bottom: .5em;
+ margin-top: .5em;
+
+}
+
+li{
+ display:list-item;
+}
+
+ul.toc {
+	list-style-type: none;
+	padding-left: 0px;
+	margin-left: 10px;
+}

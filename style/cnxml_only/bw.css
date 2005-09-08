@@ -1,0 +1,408 @@
+/* by chris */
+
+/* ******* MODULE ****************** */
+module {font-family: Arial, blue highway, Gill Sans, avantgarde, lucida, Rockwell, Arial;
+    font-size: 10pt;
+    font-weight: normal;
+    background-color: #ffffff; 
+    font-color: #000000;
+    }
+
+module > name {display: block;
+    margin-top: 7px;
+    margin-left: 7px;
+
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+    padding-left: 10pt;
+    padding-right: 10px;
+    text-align: right;
+  
+    background-color: grey;
+    background-image: url("bw_fade.gif");    
+ 
+    color: #ffffff;
+    font-size: 20pt;
+    font-weight: bold; 
+    } 
+ 
+name > span.namebox {display: block;  
+    margin-left: 60%;
+    }
+
+/* ******************* METADATA **************** */
+keyword, authorlist, abstract, objectives, maintainerlist {display: none;
+    }
+
+/* *********** SECTION ********************** */
+section  {display: block;
+    margin-top: 20px;
+    margin-left: 30pt;
+    
+    padding-top: 2px;
+    border-top-width: 3px;
+    border-top-color: 555555;
+    border-top-style: solid;
+    }
+
+section > name {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #777777;
+    }
+
+section > section {display: block;
+    margin-top: 4pt;
+    margin-bottom: 4pt;
+    margin-left: 30pt;
+    border-top-width: 2pt;
+    border-top-color: #666666;
+    border-top-style: solid;
+    } 
+
+section > section > name {font-size: 13pt;
+    font-weight: bold;
+    color: #888888;
+    }
+
+/* ***************** PARAGRAPH ***************** */
+
+section > name + para {margin-top: 7px;
+    }
+
+para {display: block;
+    margin-top: 10pt;
+    margin-right: 30pt;
+    margin-left: 30pt;
+    margin-bottom: 10pt;
+    font-weight: normal;
+    text-indent: 20px;
+    }
+
+para[id="bug"] {margin-bottom: 0px;
+    }
+
+para[id="suggestion"] {margin-top: 0px;
+    }
+
+/* *************** MISC ENHANCEMENT ************** */
+emphasis {font-style: italic;
+    text-indent: 0px;
+    }
+
+cite {font-style: italic;
+    text-indent: 0px;
+    }
+
+
+/* **************** LIST ******************* */
+list {display: block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 10pt;
+    margin-right: 10pt;
+    text-indent: 0pt;
+    }
+
+item {display: list-item;
+    list-style-type: square;
+    margin-left: 20pt;
+    margin-right: 20pt;
+    }
+
+item > list > item {display: list-item;
+    list-style-type: circle;
+    }
+   
+list[type="enumerated"] > item {display: list-item;
+    list-style-type: decimal;
+    }
+
+
+/* *************** CODE ***************** */
+codeline {display: inline;
+    margin: 0pt;
+
+    font-family: courier, monospace;
+    font-size: 10pt;
+    font-weight: normal;
+    white-space: pre;
+    text-indent: 0pt;
+    }
+
+codeblock {display: block;
+    background-color: #e8e8e8;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+    margin-left: 7pt;
+    margin-right: 7pt;
+    padding: 3pt;
+
+    font-family: courier, monospace;
+    font-size: 10pt;
+    white-space: pre;
+    text-indent: 0pt;
+    }
+
+
+
+/* ***************** EXAMPLE ****************** */
+
+example:before {content: "Example: ";
+    font-size: 9pt;
+    font-weight: bold;
+    }
+
+example {display: block;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+
+    padding: 6px;
+
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 3px;
+    border-style: double;
+    text-indent: 0px;
+    }
+
+example para {text-indent: 0px;
+    } 
+
+/* ******************* EXERCISE ***************** */
+exercise:before {content: "Exercise: ";
+    font-size: 9pt;
+    font-weight: bold;
+    }
+
+exercise {display: block;
+    margin-bottom: 10pxt;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 6px;
+
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 3px;
+    border-style: double;
+    text-indent: 0px;
+    }
+
+/* PROBLEM */
+problem {display: block;
+    }
+
+/* SOLUTION */
+solution:before {content:"Hover mouse to reveal solution.";
+    display: block;
+    text-align: center;
+    color: black;
+    font-size: 8pt;
+    
+    background-color: #c4c4c4;
+    }              
+
+solution {display: block;
+    background-color: white;
+    color: white;
+    }
+
+solution:hover, solution equation:hover {
+    background-color: black;
+    }
+    
+exercise para {text-indent: 0pt;
+    }
+
+/* *************** NOTE *********************** */
+note[type="warning"]:before {content: "Warning: ";
+    font-weight: bold;
+    color: red;
+    }
+
+note[type="footnote"]:before {content: "*";
+    display: inline;
+    vertical-align: text-top;
+    }
+
+note:before {content: attr(type)": ";
+    text-transform: capitalize;
+    font-weight: bold;
+    }
+
+note {display: block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 20pt;
+    margin-right: 20pt;
+
+    padding: 4pt;
+    text-indent: 0pt;
+    }
+
+note[type="warning"] {border-width: 2pt;
+    border-color: black;
+    border-style: groove;
+    font-size: 11pt;
+    }
+
+note[type="footnote"] {font-size: 9pt;
+    }
+
+
+
+/* ******************** RULE *************** */
+rule {display: block;
+    margin: 5pt;
+    padding: 5pt;
+    background-color: #bababa;
+    text-indent: 0pt;
+    }
+
+rule:before {content: attr(type) ": ";
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 12pt;
+    } 
+
+rule > name {display: inline;
+    font-size: 12pt;
+    }
+
+
+rule > statement {display: list-item;
+    list-style-type: square;
+    margin-left: 14pt;
+    padding: 2pt;
+    }
+
+statement > para {margin: 0pt;
+    padding: 0pt;
+    text-indent: 0pt;  
+    }
+
+proof:before {content: "Proof: ";
+    font-size: 9pt;
+    font-weight: bold;
+    } 
+
+proof {display: block;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+
+    padding: 6px;
+    
+    background-color: #c4c4c4;
+    border-color: #888888;
+    border-width: 3px;
+    border-style: double;
+    }
+
+/* *************** DEFINITION ****************** */
+definition {display: block;
+    margin: 5pt;
+    padding: 5pt;
+    background-color: #bababa;
+    text-indent: 0pt;
+    }
+
+definition:before {content: "Definition: ";
+    font-weight: bold;
+    font-size: 12pt;
+    } 
+
+definition > term {display: inline;
+    font-size: 12pt;
+    font-weight: normal;
+    }
+
+definition > meaning {display: list-item;
+    list-style-type: square;
+    margin-left: 14pt;
+    padding: 2pt;
+    }
+
+term {font-weight: bold;
+    }
+
+/* ********** DEPEND ON XHTML *************** */
+/* table {} */
+
+
+figure { display: block; }
+
+span.figurename {display: block;
+    text-align: center;
+    }
+
+
+/* *************** LINKS ********************** */
+cnxn {font-weight: bold;
+    font-family: gothic l;
+    text-decoration: underline;
+    }
+/*
+cnxn[strength="0"], cnxn[strength="1"] {color: #590000;}
+cnxn[strength="2"], cnxn[strength="3"] {color: #820000;}
+cnxn[strength="4"], cnxn[strength="5"] {color: #aa0000;}
+cnxn[strength="6"], cnxn[strength="7"] {color: #d30000;}
+cnxn[strength="8"], cnxn[strength="9"] {color: #ff0000;}
+
+
+cnxn[strength="0"], cnxn[strength="1"] {color: #000d56;}
+cnxn[strength="2"], cnxn[strength="3"] {color: #0b00a5;}
+cnxn[strength="4"], cnxn[strength="5"] {color: #690bb7;}
+cnxn[strength="6"], cnxn[strength="7"] {color: #a80197;}
+cnxn[strength="8"], cnxn[strength="9"] {color: #b71616;}
+
+*/
+
+
+cnxn[strength="0"], cnxn[strength="1"] {color: #02103a;}
+
+cnxn[strength="2"], cnxn[strength="3"] {color: #182491;}
+
+cnxn[strength="4"], cnxn[strength="5"] {color: #0014c9;}
+
+cnxn[strength="6"], cnxn[strength="7"] {color: #006eff;}
+
+cnxn[strength="8"], cnxn[strength="9"] {color: #00aeff;}
+
+link {color: green;
+    text-indent: 0pt;
+    }
+
+/* ************* MATH ********************** */
+math, math * {color:black;
+    text-indent: 0px;
+    font-style: normal;
+    font-family: CMSY10, CMEX10, Symbol, Times, Lucida Sans Unicode, MT Extra, Math1, Math2, Math3, Math4, Math5;
+    }
+
+math[display="block"], math[mode="display"] {
+    display: block;
+    font-style: normal;
+    text-align: center;
+    }
+
+solution mi {
+    color: white;
+    }
+
+equation > name {display: block;
+    text-align: left;
+    font-size: 10pt;
+    font-weight: bold;
+    }
+
+equation {display: block;
+    padding: 15px;
+    text-align: center;
+    text-indent: 0pt;
+    }
+

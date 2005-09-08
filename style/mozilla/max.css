@@ -1,0 +1,930 @@
+/* ======= MODULE TOP ======= */
+
+html, head, 
+module{
+background-color: #ffffff;
+margin: 0px;
+padding: 0px;
+border: 0px #006699 solid;
+border-left-width: 15px;
+font-family: sans-serif;
+font-size: 14px;
+}
+
+div.toc{
+display: none;
+  position:fixed;
+  top:0; 
+  left:0; 
+  width:17em; 
+  height:100%;
+  border-right: 1px solid black;
+  background-color: white;
+  font-family: Arial;
+  overflow:auto;
+}
+
+#toc {
+background-color:#6699cc;
+color: #ffffff;
+display: block;
+margin-top: 0px;
+margin-bottom: 5px;
+padding-bottom: 7px;
+padding-top: 5px;
+padding-left: 8px;
+border: 0px #cc9900 solid;
+border-bottom-width: 2px;
+font-family: verdana, tahoma, century gothic, gothic l, arial, helvetica, sans-serif;
+font-size: 18px;
+font-variant: normal;
+font-weight: bold;
+font-stretch: normal;
+letter-spacing: -2;
+width: 100%;
+}
+
+body{
+margin: 0px;
+padding: 0px;
+border: 0px;
+}
+
+div.metadata{
+display: none;
+}
+
+div.content{
+display: block;
+margin: 15px;
+margin-bottom: 20px;
+margin-top: 0px;
+}
+
+*:before{
+font-weight: bold;
+}
+
+div.content *:before{
+font-size: 11px;
+}
+
+keywordlist, keyword{
+display: none;
+}
+
+h1, 
+module > name{
+background-color:#6699cc;
+color: #ffffff;
+display: block;
+margin: 0px;
+padding: 7px 7px 7px 15px;
+border: 0px #cc9900 solid;
+font-family: verdana, tahoma, century gothic, gothic l, arial, helvetica, sans-serif;
+font-size: 25px;
+font-variant: normal;
+font-weight: bold;
+font-stretch: normal;
+letter-spacing: -2;
+text-align: left;
+}
+
+div.about-links{
+text-align: right;
+padding: 5px 15px;
+background: #3377aa;
+color: #ccddee;
+font-size: 10px;
+border: 0px #cc9900 solid;
+border-bottom-width: 2px;
+}
+
+.about{
+color: #ccddee;
+font-size: 10px;
+}
+
+.about:hover{
+font-weight: bold;
+}
+
+/* ======== SECTION ======== */
+
+div.section > h2, 
+section > name{
+color: #006699;
+display: block;
+position: relative;
+right: 0px;
+margin: 10px 0px;
+padding: 0px 0px 3px;
+border: 0px #006699 solid;
+border-bottom-width: 2px;
+border-right-width: 2px;
+font-weight: bold;
+font-size: 21px;
+letter-spacing: -1;
+text-align: left;
+counter-reset: section-number;
+}
+
+div.section, 
+section{
+display: block;
+margin: 10px 0px;
+padding: 5px 0px;
+}
+
+div.section div.section, 
+section section{
+margin: 10px 0px 0px 36px;
+}
+
+h3, h4, h5, h6, 
+section section > name{
+color: #006699;
+border: 0px #006699 solid;
+border-left-width: 2px;
+border-bottom-width: 2px;
+font-size: 15px; 
+margin: 10px 0px;
+padding: 0px 0px 3px 5px;
+font-weight: bold;
+}
+
+/* ======== LIST & ITEM ========= */
+
+ol, ul, 
+list{
+display: block;
+margin: 0px;
+padding: 5px 0px;
+border: 0px;
+}
+
+li, 
+item{
+display: list-item;
+list-style-position: outside;
+list-style-type: disc;
+margin: 3px 3px 3px 32px;
+padding: 0px 0px 0px 4px;
+border: 0px;
+text-indent: 0px;
+}
+
+li.toc
+{
+  list-style-type: none;
+margin-right: 0;
+margin-bottom: 0;
+margin-top: 0;
+padding-top: 0;
+padding-bottom: 0;
+padding-left: 0;
+}
+
+ol > li, 
+list[type="enumerated"] > item{
+display: list-item;
+list-style-type: decimal;
+}
+
+li li, 
+item item{
+margin-left: 18px;
+}
+
+span.listname, 
+list > name{
+font-weight: bold;
+}
+
+span.listname + li, 
+list > name + item{
+margin-top: 5px;
+}
+
+/* ======= AUTHORS ======== */
+
+div.authorlist-maintainerlist{
+margin: 15px;
+margin-top: 30px;
+margin-bottom: 0px;
+border: 0px #cc9900 solid;
+border-top-width: 2px;
+padding-top: 10px;
+padding-bottom: 10px;
+font-size: 10px;
+}
+
+div.authorlist:before, div.maintainerlist:before, 
+authorlist:before, maintainerlist:before{
+display: block;
+padding: 0px;
+margin: 0px;
+margin-left: -36px;
+}
+
+div.authorlist:before, 
+authorlist:before{
+content: "Written by: ";
+display: inline;
+}
+
+div.maintainerlist:before, 
+maintainerlist:before{
+content: "Maintained by: ";
+display: inline;
+}
+
+div.authorlist, div.maintainerlist, 
+authorlist, maintainerlist{
+display: block;
+margin: 0px;
+margin-left: 36px;
+}
+
+a.homepage:before{
+content: " (";
+}
+
+a.homepage:after{
+content: ")";
+}
+
+a.homepage:before, a.homepage:after{
+color: #000000;
+font-weight: normal;
+}
+
+a.homepage, 
+author[homepage]:after, maintainer[homepage]:after{
+color: #996600;
+text-decoration: none;
+}
+
+a.email:before, 
+email:before{
+display: inline;
+content: " (";
+text-decoration: none;
+color: #000000;
+font-weight: normal;
+}
+
+a.email:after,
+email:after{
+display: inline;
+content: ")";
+text-decoration: none;
+color: #000000;
+}
+
+a.email, 
+email{
+display: inline;
+color: #996600;
+text-decoration: none;
+}
+
+a.questions-comments{
+color: #996600;
+}
+
+a.license-link {
+  color: #996600;
+  white-space: nowrap
+}
+
+.license {
+  text-align: right;
+  width: 20%;
+  font-size: 80%;
+}
+
+.logo {
+  width: 80%;
+}
+
+.editLink {
+  margin-left: 15px;
+  font-size: 10px;
+}
+
+.editLink > a {
+  color: #996600;
+}
+
+
+/* ======== PARA ========= */
+
+p.para + p.para, ul + p.para, ol + p.para, table + p.para, div.figure + p.para, div.example + p.para, div.exercise + p.para, div.definition + p.para, div.rule + p.para, div.equation + p.para, pre + p.para, 
+para + para, list + para, table + para, figure + para, example + para, exercise + para, definition + para, rule + para, equation + para, codeblock + para{
+display: block;
+text-indent: 36px;
+}
+
+p.para, 
+para{
+display: block;
+text-indent: 0px;
+text-align: justify;
+margin: 0px;
+padding: 0px;
+border: 0px;
+line-height: 1.4em;
+}
+
+/* ======= FOOTER ======== */
+
+td.contact a{
+color: #660000;
+}
+
+table.footer{
+border: 0px;
+}
+
+div.footer{
+border: 0px #cc9900 solid;
+padding: 0px;
+padding-top: 15px;
+margin: 15px;
+}
+
+/* ======= ABSTRACT & OBJECTIVE ======== */
+
+div.abstract-objectives{
+display: block;
+margin-right: 15px;
+margin-left: 15px;
+margin-bottom: 30px;
+margin-top: 0px;
+border: 0px #cc9900 solid;
+border-bottom-width: 2px;
+padding-top: 10px;
+padding-bottom: 10px;
+} 
+
+div.abstract:before, 
+abstract:before{
+display: compact;
+content: "Summary: ";
+}
+
+div.abstract, 
+abstract{ 
+display: block; 
+margin: 0px;
+margin-top: 3px; 
+margin-bottom: 3px;
+padding: 0px;
+border-style: none; 
+}
+
+div.objectives{
+display: none;
+}
+
+/* ======== CODEBLOCK & CODELINE ======== */
+
+pre, 
+codeblock{
+display: block;
+text-indent: 0px;
+font-family: courier, courier new, monospace;
+white-space: pre;
+margin: 0px;
+padding: 0px;
+color: #006600;
+text-align: left;
+font-style: normal;
+}
+
+code, 
+codeline{
+display: inline;
+font-family: courier, courier new, monospace;
+color: #006600;
+font-style: normal;
+}
+
+div.content pre, div.content code, 
+content codeblock, content codeline{
+font-size: 13px;
+}
+
+div.caption code, 
+caption codeline{
+font-size: 10px;
+}
+
+/* ======== EXAMPLE ======== */
+
+div.example:before, 
+example:before{
+content: "EXAMPLE " attr(number) ": ";
+color: #336699;
+font-weight: bold;
+}
+
+div.rule > div.example:before, div.definition > div.example:before{
+content: "EXAMPLE: ";
+}
+
+div.example, 
+example{
+display: block;
+margin: 15px 72px;
+padding: 10px;
+border: 1px #000000 outset;
+color: #000000;
+}
+
+div.example p.para, 
+example para{
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+span.examplename, 
+example name{
+display: inline;
+font-weight: bold;
+}
+
+div.definition div.example, div.rule div.example{
+margin-top: 7px;
+margin-bottom: 7px;
+padding: 6px;
+}
+
+/* ======== EXERCISE ======== */
+
+div.exercise, 
+exercise{
+display: block;
+margin: 10px 0px;
+}
+
+div.problem:before, 
+problem:before{
+content: "PROBLEM " attr(number) ": ";
+color: #336699;
+}
+
+div.problem p.para, div.solution p.para, 
+problem para, solution para{
+display: inline;
+text-indent: 0px;
+}
+
+div.problem p.para + p.para, div.solution p.para + p.para, 
+problem para + para, solution para + para{
+display: block;
+text-indent: 36px;
+}
+
+div.problem, 
+problem{
+display: block;
+padding-top: 5px;
+padding-bottom: 5px;
+}
+
+div.solution:before, 
+solution:before{
+content: "SOLUTION " attr(number) ": " ;
+color: #336699;
+}
+
+div.solution, 
+solution{
+display: none;
+padding-top: 5px;
+padding-bottom: 5px;
+margin: 0px 36px;
+}
+
+span.buttontext:before{
+content: "[ ";
+font-size: 14px;
+}
+
+span.buttontext:after{
+content: " ]";
+font-size: 14px; 
+}
+
+span.buttontext{
+display: block;
+font-size: 11px;
+font-weight: bold;
+text-transform: uppercase;
+text-align: center;
+color: #336699;
+}
+
+/* ======== CNXN, LINK, & CITE ======== */
+
+span.cite, 
+cite{
+font-style: italic;
+}
+
+a.link, 
+link{
+color: #996600;
+text-decoration: underline
+}
+
+a.cnxn, 
+cnxn{
+color: #660000;
+text-decoration: underline;
+font-size: .8em;
+text-transform: uppercase;
+}
+
+code a.cnxn, pre a.cnxn, 
+codeline cnxn, codeblock cnxn{
+font-size: 1em;
+text-transform: none;
+}
+
+a.cnxn:hover, a.cnxn:active, 
+cnxn:hover, cnxn:active{
+font-weight: bold;
+text-decoration: none;
+}
+
+/* ======= TERM & DEFINITION ======= */
+
+span.term, 
+term{
+font-weight: bold;
+font-style: normal;
+}
+
+span.term code, 
+term codeline{
+font-weight: bold;
+color: #006600;
+}
+
+div.definition, 
+definition{
+display: block;
+margin-top: 10px;
+margin-bottom: 10px;
+text-indent: 0px;
+}
+
+div.definition:before, 
+definition > term:before{
+content: "DEFINITION " attr(number) ": ";
+color: #336699;
+}
+
+div.meaning, 
+meaning{
+display: block;
+margin-left: 36px;
+margin-top: 5px;
+margin-bottom: 5px;
+padding: 2px;
+}
+
+div.definition > div.example p.para, div.definition > div.meaning p.para, 
+definition > example para, definition > meaning para{
+display: inline;
+}
+
+div.definition > div.example p.para + p.para, div.definition > div.meaning p.para + p.para, 
+definition > example para + para, definition > meaning para + para{
+display: block;
+text-indent: 36px;
+margin-top: 2px;
+margin-bottom: 2px;
+}
+
+/* ======== EMPHASIS ======== */
+
+i, 
+emphasis{
+font-style: italic;
+}
+
+pre i, code i, 
+codeblock emphasis, codeline emphasis{
+font-style: normal;
+font-weight: bold;
+}
+
+span.cite i, div.note[title="footnote"] i, div.note[title="FOOTNOTE"] i, 
+cite emphasis, note[type="footnote"] emphasis, note[type="FOOTNOTE"] emphasis{
+font-style: normal;
+}
+
+span.term code i, 
+term codeline emphasis{
+text-decoration: underline;
+}
+
+/* ========= EQUATION ========= */
+
+table.equation, 
+equation{
+margin: 10px 0px;
+padding: 0px;
+text-align: left;
+text-indent: 0px;
+}
+
+li table.equation, 
+item equation{
+text-align: left;
+}
+
+table.equation td.name, 
+equation name{
+font-weight: bold;
+color: #000000;
+padding: 0px;
+text-align: left;
+font-size: 14px;
+}
+
+li table.equation td.name
+item equation name{
+padding-bottom: 6px;
+text-align: left;
+}
+
+span.equation-number, span.view-math, span.view-math a{
+color: #336699;
+font-size: 11px;
+text-transform: uppercase;
+font-weight: bold;
+}
+
+/* ========== FIGURE ET AL. ========== */
+
+div.figure{
+display: block;
+margin: 0px;   
+}
+
+div.figure span.name, span.subfigure-name{
+display: block;  
+border: 0px #000000 solid;
+border-bottom-width: 1px;
+font: bold 14px sans-serif;
+text-align: center;
+padding-bottom: 5px;
+}
+ 
+/*
+div.caption:before{
+content: "Figure " attr(number)": ";
+font-weight: bold;
+}
+*/
+
+div.caption{
+display: block;
+color: #333333;
+font-size: 11px;
+border: 0px #000000 solid;
+border-top-width: 1px;
+padding-top: 5px;
+margin-top: 5px;
+text-align: left;
+}
+
+/*
+td.vertical div.caption:before, td.horizontal div.caption:before{
+content: "Subfigure " attr(number)": ";
+}
+*/
+
+td.vertical div.caption, td.horizontal div.caption, div.figure span.subfigure-name, div.subfigure{
+border: 0px;
+padding: 0px;  
+margin: 0px;
+}
+ 
+td.vertical div.caption{
+text-align: center;
+}
+
+span.caption-before{
+font-weight: bold;
+}
+
+/* ======= CALS TABLE ====== */
+
+table.cals-table{
+border: 1px solid #666666;
+margin-top: 5px;
+margin-bottom: 10px;
+font-size: 1em;
+}
+
+table.cals-table td, table.cals-table th{
+padding: 2px;
+}
+
+table.cals-table td, th{
+border: 1px solid #666666;
+padding: 3px;
+}
+
+span.tablename{
+display: block;
+font-weight: bold;
+text-align: center;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+
+/* ======== MATH ======== */
+
+mi, math, 
+math, equation{
+color: #006600;
+text-indent: 0px;
+/*font-size: 120%;*/
+margin-bottom: 3px;
+margin-top: 3px;
+text-align: center;
+/*font-weight: normal;*/
+}
+
+semantics annotation-xml{
+display: none;
+}
+
+math mfrac{
+/*font-size: 1em;*/
+}
+
+math[display="block"], math[mode="display"]{ 
+font-size: 120%;
+}
+
+/* ======== NOTE (WARNING, FOOTNOTE, ET AL) ======== */
+
+div.note[title]:before, 
+note[type]:before{
+content: attr(title)": ";
+color: #cc0000;
+text-transform: uppercase;
+}
+
+div.note, 
+note{
+display: block;
+margin: 10px 72px;
+padding: 7px;
+display: block;
+text-indent: 0px;
+border: 1px #000000 outset;
+padding: 6px;
+}
+
+div.note:before,
+note:before{
+content: "NOTE: ";
+color: #cc0000;
+}
+
+p.para div.note, 
+para note{
+display: block;
+}
+
+note[type='footnote']:before{
+content: attr(footnote-number) ": ";
+}
+
+note[type='footnote']{
+border: 0px;
+padding: 0px;
+margin: 0px 15px;
+}
+
+a.footnote-reference{
+color: #cc0000;
+font-size: 11px;
+font-weight: bold;
+vertical-align: super;
+}
+
+
+/* ========= RULE ========= */
+
+div.rule, 
+rule{
+display: block;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+div.rule:before, 
+rule:before{
+content: attr(type) " " attr(number) ": ";
+text-transform: uppercase;
+color: #336699;
+}
+
+div.rule > span.rulename, 
+rule > name{
+font-weight: bold;
+}
+
+div.statement, 
+statement{
+display: block;
+margin: 5px;
+margin-left: 36px;
+padding: 2px;
+}
+
+div.statement > p.para, div.proof > p.para, div.rule > div.example > p.para, 
+statement > para, proof > para, rule > example > para{
+display: inline;
+}
+
+div.statement > p.para + p.para, div.proof > p.para + p.para, div.rule > div.example > p.para + p.para, 
+statement > para + para, proof > para + para, rule > example > para + para{
+display: block;
+margin-top: 0px;
+margin-bottom: 0px;
+text-indent: 36px;
+}
+
+div.rule > div.proof:before, 
+rule > proof:before{
+content: "PROOF: ";
+color: #336699;
+}
+
+div.rule > div.proof, 
+rule > proof{ 
+display: block; 
+margin-left: 36px;
+margin-right: 0px; 
+margin-top: 2px; 
+margin-bottom: 2px; 
+padding: 2px;
+color: #000000;
+}
+
+span.proofname, 
+rule > proof > name{
+display: inline; 
+font-weight: bold; 
+content: " ";
+}
+
+p.para > div.rule, 
+para > rule{
+text-indent: 0px;
+}
+
+/* ======= QML ======== */
+
+div.feedback{
+margin-left: 36px;
+font-weight: bold;
+color: #006600;
+}
+
+div.hint, div.feedback, hr, br{
+display: none;
+}
+
+div.hint{
+font-style: italic;
+}
+
+input{
+display: inline;
+border-width: 1px;
+border: #000000 solid;
+background-color: #cc9900;
+}
+
+input[type="button"]{
+display: block;  
+margin-top: 15px;
+}
+
+input + br{    
+display: block;
+}
+
+

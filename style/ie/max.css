@@ -1,0 +1,677 @@
+/* ======= MODULE TOP ======= */
+
+html, head{
+background-color: #ffffff;
+margin: 0px;
+padding: 0px;
+font-family: helvetica, sans-serif, arial;
+font-size: .9em;
+}
+
+body{
+margin: 0px;
+padding: 15px 15px 30px;
+border: 0px solid #006699;
+border-left-width: 15px;
+}
+
+div.metadata{
+display: block;
+margin: 0px 0px 30px;
+border: 0px solid #cc9900; 
+border-bottom-width: 2px;
+padding: 0px 0px 10px;
+}
+
+div.content{
+display: block;
+margin: 0px 0px 20px;
+}
+
+keywordlist, keyword, div.objectives, revised, created, version{
+display: none;
+}
+
+div.module-name{
+background-color: #6699cc; 
+color: #ffffff; 
+display: block; 
+margin: -15px -15px 15px;
+padding: 9px 15px; 
+border: 0px solid #cc9900; 
+font-family: verdana, tahoma, century gothic, gothic l, arial, helvetica, sans-serif; 
+font-size: 1.75em; 
+font-variant: normal; 
+font-weight: bold; 
+font-stretch: normal; 
+letter-spacing: -2;
+text-align: left; 
+}
+
+div.about-links{
+margin: -15px -15px 15px;
+text-align: right;
+padding: 5px 15px;
+background: #3377aa;
+color: #ccddee;
+font-size: 11px;
+border: 0px #cc9900 solid;
+border-bottom-width: 2px;
+}
+
+.about{
+color: #ccddee;
+font-size: 11px;
+}
+
+.about:hover{
+font-weight: bold;
+}
+
+/* ======== SECTION ======== */
+
+span.section-name{
+color: #006699;
+display: block;
+margin: 10px 0px;
+padding: 0px 0px 3px;
+border: 0px solid #006699;
+border-bottom-width: 2px;
+border-right-width: 2px;
+font-weight: bold;
+font-size: 1.45em;
+letter-spacing: -1;
+text-align: left;
+}
+
+div.section{
+display: block;
+margin: 10px 0px;
+padding: 3px 0px;
+border: 0px;
+}
+
+div.section div.section{
+margin-left: 36px;
+margin-bottom: 0px;
+}
+
+div.section div.section span.section-name, div.section div.section 
+div.section span.section-name, div.section div.section div.section 
+div.section span.section-name{
+color: #006699;
+border: 0px solid #006699;
+border-left-width: 2px;
+border-bottom-width: 2px;
+font-size: 1.2em;
+margin: 10px 0px;
+padding: 0px 0px 3px 5px;
+font-weight: bold;
+}
+
+/* ======== LIST & ITEM ========= */
+
+ol, ul{
+display: block;
+margin: 0px;
+padding: 5px 0px;
+border: 0px;
+}
+
+li{
+/*display: list-item;*/
+list-style: disc outside;
+margin: 3px 0px;
+padding: 2px;
+border: 0px;
+text-indent: 0px;
+margin-left: 24px;
+}
+
+ol li{
+list-style-type: decimal;
+}
+
+li li{
+margin-left: 18px;
+}
+
+ol ul li{
+list-style-type: disc;
+}
+
+span.listname{
+font-weight: bold;
+}
+
+span.listname + li{
+margin-top: 5px;
+}
+
+/* ======= AUTHORS ======== */
+
+div.authorlist-maintainerlist{
+padding: 15px 0px 0px;
+border: 0px solid #cc9900;
+border-top-width: 2px;
+margin-top: 30px;
+}
+
+span.authorlist-before, span.maintainerlist-before{
+font-style: italic;
+font-weight: bold;
+margin-left: -18px;
+}
+
+div.authorlist, div.maintainerlist{
+display: block;
+margin: 3px 0px 3px 18px;
+padding: 0px;
+font-size: .75em;
+}
+
+div.author, div.maintainer{
+display: block;
+margin-left: 18px;
+}
+
+a.homepage{
+color: #996600;
+}
+
+span.emailbefore{
+text-decoration: none;
+color: #000000;
+font-weight: normal;
+}
+
+span.emailafter{
+text-decoration: none;
+color: #000000;
+}
+
+a.email{
+display: inline;
+color: #996600;
+text-decoration: none;
+}
+
+/* ======= FOOTER ======== */
+
+div.footer{
+padding: 15px 0px 0px;
+margin: 0px;
+}
+
+table.footer{
+font-size: 1em;
+}
+
+/* ======== PARA ========= */
+
+p.para{
+display: block;
+text-align: justify;
+margin: 12px 0px;
+padding: 0px;
+border: 0px;
+line-height: 1.4em;
+}
+
+/* ======= ABSTRACT ======== */
+
+span.abstract-before{
+display: compact;
+font-style: italic;
+font-weight: bold;
+}
+
+div.abstract{ 
+display: block; 
+margin: 0px; 
+padding: 0px; 
+border-style: none; 
+}
+
+/* ======== CODEBLOCK & CODELINE ======== */
+
+pre{
+display: block;
+text-indent: 0px;
+white-space: pre;
+margin: 0px;
+padding: 0px;
+color: #006600;
+text-align: left;
+font-style: normal;
+line-height: 1em;
+font-size: 1em;
+}
+
+code{
+display: inline;
+color: #006600;
+font-style: normal;
+font-size: 1em;
+}
+
+/* ======== EXAMPLE ======== */
+
+span.example-before{
+color: #336699;
+text-transform: uppercase;
+font-size: .75em;
+font-family: arial, helvetica, sans-serif; 
+font-weight: bold;
+}
+
+div.example{
+display: block;
+margin: 15px 72px;
+padding: 10px;
+border: 1px outset #000000;
+}
+
+div.example p.para{
+margin: 8px 0px;
+}
+
+span.example-name{
+display: inline;
+font-weight: bold;
+}
+
+div.definition div.example, div.rule div.example{
+display: block;
+margin: 5px 72px 0px;
+padding: 5px 10px 0px;
+}
+
+div.definition div.example p.para, div.rule div.example p.para{
+margin: 8px 0px;
+}
+
+div.definition span.example-before, div.rule span.example-before{
+display: block;
+margin-bottom: -8px;
+}
+
+/* ======== EXERCISE ======== */
+
+div.exercise{
+display: block;
+margin: 10px 36px;
+}
+
+span.problem-before{
+color: #336699;
+text-transform: uppercase;
+font-weight: bold;
+font-size: .75em;
+}
+
+div.problem{
+display: block;
+padding: 5px 0px;
+}
+
+span.solution-before{
+color: #336699;
+text-transform: uppercase;
+font-weight: bold;
+font-size: .75em;
+}
+
+div.solution{
+display: none;
+padding: 5px 0px;
+margin-left: 32px;
+}
+
+span.button-text{
+display: block;
+font-size: .75em;
+font-weight: bold;
+text-transform: uppercase;
+text-align: center;
+color: #336699;
+}
+
+/* ======== CNXN, LINK, & CITE ======== */
+
+span.cite{
+font-style: italic;
+}
+
+a.link, a.questions-comments{
+color: #996600;
+text-decoration: underline
+}
+
+a.cnxn{
+color: #660000;
+text-decoration: underline;
+font-size: .8em;
+text-transform: uppercase;
+}
+
+code a.cnxn, pre a.cnxn{
+font-size: 1em;
+text-transform: none;
+}
+
+a.cnxn:hover, a.cnxn:active{
+font-weight: bold;
+text-decoration: none;
+}
+
+a.license-link {
+  color: #996600;
+  white-space: nowrap
+}
+
+.license {
+  text-align: right;
+  width: 20%;
+  font-size: 80%;
+}
+
+.logo {
+  width: 80%;
+}
+
+.editLink {
+  display: none;
+}
+
+
+/* ======= TERM & DEFINITION ======= */
+
+span.term{
+font-weight: bold;
+font-style: normal;
+}
+
+span.term code{
+font-weight: bold;
+color: #006600;
+}
+
+div.definition{
+display: block;
+margin: 10px 0px;
+}
+
+span.definition-before{ 
+color: #336699; 
+text-transform: uppercase; 
+font-weight: bold; 
+font-size: .75em; 
+}
+
+div.meaning{ 
+display: block; 
+margin: 5px 0px 5px 36px; 
+padding: 2px 0px 2px; 
+}
+
+/* ======== EMPHASIS ======== */
+
+i{
+font-style: italic;
+}
+
+pre i, code i{
+font-style: normal;
+font-weight: bold;
+}
+
+span.cite i{
+font-style: normal;
+}
+
+span.term code i{
+text-decoration: underline;
+}
+
+/* ========= EQUATION ========= */
+
+div.equation{
+margin: 5px 0px 10px 0px;
+padding: 0px;
+padding-left: 32px;
+border: 0px solid;
+}
+
+div.equation-math{
+text-align: center;
+}
+
+span.equation-name{
+font-weight: bold;
+color: #000000;
+text-align: left;
+}
+
+span.equation-number{
+font-size: .75em;
+font-weight: bold;
+color: #336699;
+text-transform: uppercase;
+}
+
+div.equation m:math{
+display: block;
+}
+
+div.equation-before{
+margin-bottom: 3px;
+}
+
+/* ========== FIGURE ET AL. ========== */
+
+span.figure-name{
+display: block;  
+border: 0px #000 solid;
+/*border-bottom-width: 1px;*/
+font-weight: bold;
+font-size: .9em;
+font-family: sans-serif;
+text-align: center;
+padding-bottom: 5px;
+}
+
+div.figure{
+border: 0px #000 solid;
+border-top-width: 1px;
+}
+
+td.figure div.figure{
+padding-top: 10px;
+}
+
+span.subfigure-name{
+font-weight: bold;
+font-size: .9em;
+}
+
+span.caption{
+display: block;
+color: #333333;
+font-size: .7em;   
+border: 0px #000000 solid;
+border-top-width: 1px;
+padding-top: 5px;
+margin-top: 5px;
+text-align: left;
+}
+
+span.caption-subfigure-horizontal, span.caption-subfigure-vertical{
+display: block;
+color: #333333;
+font-size: .7em;   
+padding-top: 5px;
+margin-top: 5px;
+text-align: left;
+}
+
+div.subfigure, span.caption-subfigure-vertical, span.caption-subfigure-horizontal, span.subfigure-name{
+border: 0px;
+margin: 0px;
+padding: 0px;
+}
+
+span.caption-subfigure-vertical{
+text-align: center;
+margin-bottom: 10px;
+}
+
+span.caption-before{
+font-weight: bold;
+}
+
+
+/* ========== CALS TABLE ========== */
+
+table.cals-table{
+border: 1px solid #666;
+margin-top: 5px;
+margin-bottom: 10px;
+font-size: 1em;
+}
+
+table.cals-table td, table.cals-table th{
+padding: 2px;
+font-size: 1em;
+}
+
+table.cals-table td, th{
+border: 1px solid #666;
+padding: 3px;
+}
+
+span.tablename{
+display: block;
+font-weight: bold;
+text-align: center;
+margin-top: 5px;
+margin-bottom: 5px;
+font-size: 1em;
+}
+
+/* ======== MATH ======== */
+
+math *, math, div.equation-math, span.math{
+color: #060;
+font-size: 1em;
+font-family: serif;
+}
+
+/* ======== NOTE ======== */
+
+span.note-before{
+display: inline;
+color: #cc0000;
+text-transform: uppercase;
+font-weight: bold;
+font-size: .75em;
+}
+
+div.note{
+padding: 8px;
+margin: 5px 72px 10px;
+border: 1px outset #000000;
+}
+
+div.footnote{
+border: 0px;
+padding: 0px;  
+}
+ 
+span.footnote-number, a.footnote-reference{
+color: #cc0000;
+font-size: 11px;  
+font-weight: bold;
+}
+
+a.footnote-reference{
+vertical-align: super;
+}
+
+
+/* ========= RULE ========= */
+
+div.rule{
+display: block;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+
+span.rule-before{
+text-transform: uppercase;
+color: #336699;
+font-weight: bold;
+font-size: .75em;
+}
+
+span.rule-name{
+font-weight: bold;
+}
+
+div.statement{
+display: block;
+margin: 5px 5px 5px 36px;
+padding: 2px 2px 2px 0px;
+}
+
+span.proof-before{
+color: #336699;
+text-transform: uppercase;
+font-weight: bold;
+font-size: .75em;
+}
+
+div.proof{ 
+display: block; 
+margin: 2px 0px 2px 36px
+padding: 2px 2px 2px 0px;
+}
+
+span.proof-name{
+display: inline; 
+font-weight: bold; 
+}
+
+/* ======= QML ======== */
+
+div.feedback{
+margin-left: 36px;
+font-weight: bold;
+color: #006600;
+}
+
+div.hint, div.feedback, hr, br{
+display: none;
+}
+
+div.hint{
+font-style: italic;
+}
+
+input{
+display: inline;
+border-width: 1px;
+border-style: solid;
+border-color: #000000;
+background-color: #cc9900;
+}
+
+input[type="button"]{
+display: block;  
+margin-top: 15px;
+}
+
+input + br{    
+display: block;
+}
+

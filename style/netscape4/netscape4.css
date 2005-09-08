@@ -1,0 +1,367 @@
+<!-- ############## THROUGHOUT THE PAGE ############## -->
+
+div.objectives, div.abstract, span.sectionname, div.section, 
+div.authorlist-maintainerlist td, div.nomathml, li, p.para, div.equation, 
+td.name, a.equation, a.otherbrowsers, span.nomathml, span.equationnumber, 
+span.term, ul, ol, td, th, table.cals-table thead tr th, td.note, 
+p.caption, span.rulename, span.proofname, div.meaning, span.examplename, 
+span.tablename, a.questions-comments, span.figurename, 
+span.subfigurename, div.footnote{
+font-family: sans-serif, arial, helvetica, arial, sans-serif;
+font-size: 15px;
+}
+
+div.nomathml {
+  margin-top: 1em;
+}
+
+div.metadata-and-content{
+margin: 0px;
+}
+
+span.examplebefore, span.problembefore, span.solutionbefore, span.termbefore, span.notewithouttypebefore, span.notebefore, span.warningbefore, span.footnotebefore, span.rulebefore, span.proofbefore{
+color: #336699;
+text-transform: uppercase;
+font: bold 12px helvetica, aria, sans-serif;
+}
+
+.name, .listname, .examplename, .figurename, .subfigurename, .tablename, .rulename, .proofname, .term{
+font-weight: bold;
+}
+
+<!-- ############### HEADER ############### -->
+
+span.namebox{
+color: #ffffff; 
+padding: 10px; 
+font: bold 25px gothic l, verdana, tahoma, arial, helvetica, sans-serif;
+}
+
+div.about-links{
+padding: 5px 15px;
+color: #ccddee;
+font-size: 11px;
+}
+
+.about{
+color: #ccddee;
+}
+
+span.abstractbefore, span.objectivesbefore{
+font-weight: bold;
+}
+
+div.abstract{
+padding: 0px;
+}
+
+div.objectives{
+padding: 0x;
+}
+
+div.objectives{
+display: none;
+}
+
+td.line-under-title, div.line-top td, div.line-bottom td{
+background-color: #cc9900;
+}
+
+div.line-top{
+margin-bottom: 10px;
+}
+
+td.space-under-header, td.space-under-footer{
+background-color: #ffffff;
+}
+
+<!-- ################# FOOTER ################# -->
+
+div.footer{
+margin-top: 20px;
+margin-bottom: 10px;
+}
+
+div.authorlist-maintainerlist{
+margin-top: 10px;
+}
+
+div.authorlist-maintainerlist td{
+font-size: 12px;
+}
+
+span.authorlistbefore, span.maintainerlistbefore{
+font-weight: bold;
+}
+
+div.line-bottom{
+margin-top: 30px;
+}
+
+a.link, a.homepage, a.email, a.footer, a.questions-comments{
+color: #996600;
+}
+
+a.license-link {
+  color: #996600;
+  white-space: nowrap
+}
+
+.license {
+  text-align: right;
+  width: 20%;
+  font-size: 80%;
+}
+
+.logo {
+  width: 80%;
+}
+
+<!-- ################# LISTS ################ -->
+
+ul li{
+list-style-type: disc;
+}
+
+span.listname{
+margin-bottom: 3px;
+margin-left: -18px;
+}
+
+ul span.listname{
+margin-left: -14px;
+}
+
+ul, ol{
+display: block;
+margin: -10px 0px 10px -24px;
+text-indent: 0px;
+}
+
+ol{
+margin-left: -20px;
+}
+
+ol ul, ol ol, ul ul, ul ol{
+margin: 3px 0px 2px;
+}
+
+li{
+margin: 2px 0px;
+}
+
+<!-- ################## TEXTY THINGS ################# -->
+
+a.cnxn{
+color: #660000;
+}
+
+pre, code{
+color: #006600;
+font-family: courier;
+font-size: 14px;
+}
+
+i{
+font-style: italic;
+}
+
+pre i, code i{
+font-style: normal;
+font-weight: bold;
+}
+  
+span.cite i{
+font-style: normal;
+}
+
+span.term code i{
+text-decoration: underline;
+}
+
+span.cite{
+font-style: italic
+}
+
+span.cite i{
+font-style: normal;
+}
+
+<!-- ################# SECTION ################ -->
+
+span.sectionname{
+color: #006699;
+display: block;
+margin-bottom: 0px;
+font-weight: bold;
+font-size: 23px;
+}
+
+div.section-name-table{
+margin-bottom: 10px;
+}
+
+td.blue-line{
+background: #006699;
+}
+
+div.section{
+margin: 15px 0px 0px;
+}
+
+div.section div.section{
+margin-left: 36px;
+}
+
+div.section div.section span.sectionname{
+font-size: 19px;
+}
+
+<!-- ##################### NOTE ################## -->
+
+span.notewithouttypebefore, span.notebefore, span.warningbefore, span.footnotebefore{
+color: #cc0000;
+}
+
+div.note-table{
+margin: 5px 0px;
+}
+
+table.note td.note{
+padding: 0px 0px 0px 5px;
+}
+
+a.footnote-reference{
+color: #cc0000;
+font-size: 12px;
+font-weight: bold;
+vertical-align: super;
+}
+
+<!-- #################### EXERCISE ################## -->
+
+div.button{
+display: none;
+}
+
+span.problembefore, span.solutionbefore, div.problem, div.solution{
+margin-bottom: 5px;
+}
+
+<!-- #################### EXAMPLE ################ -->
+
+div.example{
+color: #666666;
+margin: 2px 0px 10px;
+}
+
+span.examplebefore{
+margin-bottom: 10px;
+}
+
+div.definition div.example, div.rule div.example{
+margin: 0px;
+}
+
+div.definition span.examplebefore, div.rule span.examplebefore{
+margin-bottom: 0px;
+}
+
+div.example td, div.example th{
+color: #666666;
+}
+
+<!-- ##################### RULE ################## -->
+
+div.statement{
+margin-top: 8px;
+}
+
+<!-- ################### DEFINITION ################ -->
+
+div.meaning{
+margin: 5px 0px;
+}
+
+<!-- #################### RED MATH ################ -->
+
+div.nomathml, a.equation, a.otherbrowsers, span.nomathml, a.nomathml, span.equationnumber{
+color: #cc0000;
+}
+
+div.nomathml{
+margin-bottom: 10px;
+}
+
+div.equationtable{
+margin: 5px 0px;
+}
+
+<!-- ################ FIGURES, SUBFIGURES ############# -->
+
+div.figuretable{
+margin-bottom: 15px;
+}
+
+div.figure{
+margin: 5px 0px 8px;
+}
+
+div.figuretable, span.figurename, div.figure, span.subfigurename, div.subfigure{
+text-align: center;
+}
+
+div.figure pre, div.subfigure pre{
+text-align: left;
+}
+
+span.caption, span.subfigure-caption, span.vertical-subfigure-caption{
+font-size: 12px;
+}
+
+span.vertical-subfigure-caption{
+text-align: center;
+}
+
+p.caption code, div.abstract code, div.objectives code{
+font-size: 12px;
+}
+
+span.figurenamebefore, span.captionbefore, span.subfigure-captionbefore{
+font-weight: bold;
+}
+
+span.subfigure-caption, span.vertical-subfigure-caption{
+margin-bottom: 8px;
+}
+
+span.subfigurename, span.figurename{
+margin-top: 5px;
+}
+
+span.figurenamebefore, span.subfigurename-before{
+font-size: 12px;
+color: #336699;
+}
+
+td.caption-line, td.figure-line{
+background-color: #000000;
+}
+
+<!-- ###################### PARA ###################### -->
+
+p.para{
+margin: 0px 0px 10px;
+}
+
+<!-- #################### TABLES ################### -->
+
+div.cals-table{
+margin-bottom: 5px;
+text-align: center;
+}
+
+span.tablename{
+text-align: center;
+}
+

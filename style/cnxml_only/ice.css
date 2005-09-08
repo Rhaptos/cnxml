@@ -1,0 +1,201 @@
+module {font-family: Arial, blue highway, Gill Sans, avantgarde, lucida, Rockwell, Arial;
+    font-size: 12pt;
+    font-weight: normal;
+    background-image: url("paper.gif");
+    background-color: #f0f8ff; 
+    }
+
+module > name {
+    display: block;
+    background-image: url("ice.gif");
+    background-color: #5767a8;  
+    margin-top: 7pt;
+    margin-bottom: 7pt;
+    margin-left: 7pt;
+    padding-top: 5pt;
+    padding-bottom: 5pt;
+    padding-left: 10pt;
+    font-size: 20pt;
+    font-weight: bold; 
+    } 
+
+/* ******************* MATH ***************** */
+
+math[display="inline"]{
+display:inline;}
+
+math[display="block"]{
+display:block;
+text-align:center;
+}
+
+keyword {display: none;
+    }
+
+section  {display: block;
+    margin-top: 4pt;
+    margin-bottom: 4pt;
+    margin-left: 30pt;
+    border-top-width: 3pt;
+    border-top-color: #0021a8;
+    border-top-style: solid;
+    }
+
+section > name {content:attr(name);
+    font-weight: bold;
+    }
+
+section > section {display: block;
+    margin-top: 4pt;
+    margin-bottom: 4pt;
+    margin-left: 30pt;
+    border-top-width: 2pt;
+    border-top-color: #0021a8;
+    border-top-style: solid;
+    font-weight: bold;
+    } 
+
+para {display: block;
+    margin-top: 10pt;
+    margin-right: 30pt;
+    margin-left: 30pt;
+    margin-bottom: 10pt;
+    font-weight: lighter;
+    }
+
+para: first-line {margin-left: 200pt;
+    font-size: 20pt;
+    padding-left: 100pt;
+    }
+
+emphasis {font-style: italic;
+    }
+
+important {text-decoration: underline; 
+    }
+
+list {display: block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 10pt;
+    margin-right: 10pt;
+    }
+
+item {display: list-item;
+    margin-left: 50pt;
+    margin-right: 50pt;
+    }
+
+item > list > item {display: list-item;
+    margin-left: 50pt;
+    margin-right: 50pt;
+    list-style-type: circle;
+    }
+   
+/* enumarated list */
+
+
+codeline {display: inline;
+    background-color: #e0e6ed;
+    margin-top: 0pt;
+    margin-bottom: 0pt;
+    margin-left: 0pt;
+    margin-right: 0pt;
+    font-family: courier, monospace;
+    font-size: 10pt;
+    font-weight: normal;
+    white-space: pre;
+    }
+
+codeblock {display: block;
+    background-color: #e0e6ed;
+    margin-top: 5pt;
+    margin-bottom: 5pt;
+    margin-left: 7pt;
+    margin-right: 7pt;
+    font-family: courier, monospace;
+    font-size: 10pt;
+    font-weight: normal;
+    white-space: pre;
+    }
+
+example {display: block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 30pt;
+    margin-right: 30pt;
+
+    padding-left: 5pt;
+    padding-right: 5pt;
+    padding 7pt;
+
+    border-left-color: #0021a8;
+    border-left-width: 2pt;
+    border-left-style: double;  
+    border-right-color: #0021a8;
+    border-right-width: 2pt;
+    border-right-style: double;
+    border-top-color: #0021a8;
+    border-top-width: 2pt;
+    border-top-style: double;
+    border-bottom-color: #0021a8;
+    border-bottom-width: 2pt;
+    border-bottom-style: double;
+    }
+
+example:before {content: "Example: ";
+    font-size: smaller;
+    font-weight: bold;
+    }
+
+exercise {display: block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 30pt;
+    margin-right: 30pt;
+
+    padding-left: 5pt;
+    padding-right: 5pt;
+    padding 7pt;
+
+    border-left-color: #0021a8;
+    border-left-width: 2pt;
+    border-left-style: double;  
+    border-right-color: #0021a8;
+    border-right-width: 2pt;
+    border-right-style: double;
+    border-top-color: #0021a8;
+    border-top-width: 2pt;
+    border-top-style: double;
+    border-bottom-color: #0021a8;
+    border-bottom-width: 2pt;
+    border-bottom-style: double;
+    }
+
+exercise:before {content: "Exercise: ";
+    font-size: smaller;
+    font-weight: bold;
+    }
+
+ /* table{  */
+
+
+figure{ display: block; }
+
+note[type="warning"]:before {content: "Warning: ";
+    font-weight: bold;
+    }
+
+note {display: block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    margin-left: 30pt;
+    margin-right: 30pt;
+    }
+
+
+
+
+
+
+
