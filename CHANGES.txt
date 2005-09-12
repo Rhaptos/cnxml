@@ -1,3 +1,6 @@
+CNXML-0.5 (p4)
+ - No real change
+
 CNXML-0.5 (p3)
  - Support video/* not just video/mov
  - Added XMLSpy template
