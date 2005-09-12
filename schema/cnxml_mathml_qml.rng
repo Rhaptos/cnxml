@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:q="http://cnx.rice.edu/qml/1.0">
+
+  <define name="mathml_rng">
+    <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+  </define>
+
+  <include href="mdml-defs.rng">
+    <!-- We don't want -->
+    <define name="metadata" combine="choice">
+      <notAllowed/>
+    </define>
+    <define name="metadata.attlist" combine="choice">
+      <notAllowed/>
+    </define>
+  </include>
+  <include href="http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng">
+  <!-- <!ENTITY % QML.text "(
+     -     #PCDATA|
+     -     %math.qname;|
+     -     %CNXML.section.qname;|
+     -     %CNXML.media.qname;
+     - )*">
+    -->
+  <define name="QML.text">
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <!-- externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/ -->
+        <ref name="mathml_rng"/>
+        <ref name="section"/>
+        <ref name="media"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  </include>
+  <include href="cnxml-defs.rng">
+    <define name="metadata.content" combine="choice">
+      <notAllowed/>
+    </define>
+    <define name="bibtex.elem">
+      <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>
+    </define>
+    <define name="textextras">
+      <choice>
+        <text/>
+        <!-- externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/ -->
+        <ref name="mathml_rng"/>
+      </choice>
+    </define>
+    <define name="equation.content">
+      <group>
+        <optional>
+          <ref name="name"/>
+        </optional>
+        <!-- externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/ -->
+        <ref name="mathml_rng"/>
+      </group>
+    </define>
+  <!-- <!ENTITY % CNXML.exercise.content "(
+     -     (%CNXML.name.qname;)?,
+     -     (
+     -       (%CNXML.problem.qname;, (%CNXML.solution.qname;)*)|
+     -        %QML.item.qname;
+     -     )
+     - )">
+    -->
+    <define name="exercise.content">
+      <group>
+        <optional>
+          <ref name="name"/>
+        </optional>
+        <choice>
+          <group>
+            <ref name="problem"/>
+            <zeroOrMore>
+              <ref name="solution"/>
+            </zeroOrMore>
+          </group>
+          <ref name="QML.item"/>
+        </choice>
+      </group>
+    </define>
+
+    <define name="content.content">
+      <choice>
+        <ref name="QML.problemset"/>
+        <oneOrMore>
+          <ref name="block.class"/>
+        </oneOrMore>
+      </choice>
+    </define>
+  </include>
+
+  <start>
+    <ref name="document"/>
+  </start>
+
+</grammar>

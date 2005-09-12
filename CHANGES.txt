@@ -1,0 +1,14 @@
+CNXML-0.5 (p3)
+ - Support video/* not just video/mov
+ - Added XMLSpy template
+
+CNXML-0.5 (p2)
+ - Support base param for flash media
+ - Removed call to IdCheck when outputing captions since it resulted
+   in duplicate IDs
+ - Moved handling for browsers without mathml support to the mathml2 package
+
+CNXML-0.5 (p1)
+ - Removed JavaScript files duplicates in CNXContent
+ - Added support for audio files to web stylesheets
+ - Added support for name tag in list to Authentic SPS

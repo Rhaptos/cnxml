@@ -1,0 +1,19 @@
+-- SGML Open style entity catalog                                        --
+
+-- Add elements to this file: the format is                              --
+-- PUBLIC [Identifier] [path to file, full or relative to /usr/lib/sgml] --
+-- ..................................................................... --
+
+-- public identifiers override system identifiers, if both are supplied   --
+OVERRIDE YES
+
+-- CNX Project DTDs --
+
+PUBLIC "-//CNX//DTD CNXML 0.5//EN"                                              /usr/share/xml/cnxml/schema/dtd/0.5/cnxml_plain.dtd
+PUBLIC "-//CNX//DTD CNXML 0.5 plus MathML//EN"                                  /usr/share/xml/cnxml/schema/dtd/0.5/cnxml_mathml.dtd
+PUBLIC "-//CNX//DTD CNXML 0.5 plus MathML plus QML//EN"                         /usr/share/xml/cnxml/schema/dtd/0.5/cnxml_mathml_qml.dtd
+
+
+-- MDML --
+PUBLIC "-//CNX//ENTITIES MDML 0.4 Qualified Names 1.0//EN"                      /usr/share/xml/mdml/schema/dtd/0.4/mdml-qname-1.mod
+PUBLIC "-//CNX//ELEMENTS MDML 0.4 Elements//EN"                                 /usr/share/xml/mdml/schema/dtd/0.4/mdml.mod
