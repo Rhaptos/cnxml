@@ -1,0 +1,74 @@
+<!-- DTD combining CNXML and MathML documents                    -->
+<!-- Version 0.5                                               -->
+<!--                                                           -->   
+<!-- This entity may be identified by the following PUBLIC     -->
+<!-- and SYSTEM identifiers                                    -->
+<!--                                                           -->
+<!-- PUBLIC:  -//CNX//DTD CNXML 0.5 plus QML//EN               -->
+<!-- SYSTEM:  http://cnx.rice.edu/technology/cnxml/schema/dtd/0.5/cnxml_qml.dtd  -->
+<!--                                                           -->
+<!-- CVS Version: $Revision$                             -->
+<!-- Modified: $Date$                    -->
+<!-- Maintained by the CNXML langauge team                     -->
+<!-- email: cnxml@cnx.rice.edu                                 -->
+<!--                                                           -->
+
+<!ENTITY % NS.prefixed "IGNORE" > 
+
+<!-- Use "bib" for bibtex prefix --> 
+<!ENTITY % BibTeXML.prefixed "INCLUDE" >
+<!ENTITY % BibTeXML.prefix "bib" >
+
+<!-- Bring in the bibtexML dtd -->
+<!ENTITY % bibtex.dtd PUBLIC  "-//BibTeXML//DTD XML for BibTeX v1.0//EN" "http://cnx.rice.edu/technology/bibtexml/schema/dtd/1.0/bibteXML.dtd" >
+%bibtex.dtd;
+
+<!-- Bring in CNXML qualified names -->
+<!ENTITY % cnxml-qname.mod SYSTEM "cnxml-qname-1.mod" >
+%cnxml-qname.mod;
+
+<!-- Use the default MDML prefix ("md") --> 
+<!ENTITY % MDML.prefixed "INCLUDE" >
+
+<!-- Bring in MDML qualified names -->
+<!ENTITY % mdml-qname.mod PUBLIC "-//CNX//ENTITIES MDML 0.4 Qualified Names 1.0//EN" "mdml-qname-1.mod">
+%mdml-qname.mod;
+
+<!-- Use the default QML prefix ("q") --> 
+<!ENTITY % QML.prefixed "INCLUDE" >
+
+<!-- Bring in QML qualified names -->
+<!ENTITY % qml-qname.mod PUBLIC "-//CNX//ENTITIES QML 1.0 Qualified Names 1.0//EN" "http://cnx.rice.edu/technology/qml/schema/dtd/1.0/qml1-qname-1.mod">
+%qml-qname.mod;
+
+<!-- Define all xmlns attributes  -->
+<!ENTITY % NS.decl.attrib "%CNXML.xmlns.extra.attrib; %MDML.xmlns.extra.attrib; %QML.xmlns.extra.attrib; %BibTeXML.xmlns.attrib;">
+
+<!-- Update content model for 'exercise' to allow qml -->
+<!ENTITY % CNXML.exercise.content "((%CNXML.name.qname;)?, ((%CNXML.problem.qname;, (%CNXML.solution.qname;)*)|%QML.item.qname;))">
+
+<!-- Update content model for 'content' to allow problemsets -->
+<!ENTITY % CNXML.content.content "(%QML.problemset.qname;|(%CNXML.section.qname;|%CNXML.para.qname;|%CNXML.equation.qname;|%CNXML.list.qname;|%CNXML.code.qname;|%CNXML.figure.qname;|%CNXML.table.qname;|%CNXML.example.qname;|%CNXML.exercise.qname;|%CNXML.definition.qname;|%CNXML.rule.qname;|%CNXML.note.qname;|%CNXML.media.qname;)+)">
+
+
+<!-- Update content model for QML marked up text to allow ... -->
+<!ENTITY % QML.text "(#PCDATA|%CNXML.section.qname;|%CNXML.media.qname;)*">
+
+
+<!-- Bring in MDML elements  -->
+<!ENTITY % mdml.mod PUBLIC "-//CNX//ELEMENTS MDML 0.4 Elements//EN" "mdml.mod">
+%mdml.mod;
+
+<!-- Update content model for 'metadata' to match MDML  -->
+<!ENTITY % CNXML.metadata.content "%MDML.metadata.content;">
+
+<!-- Update content model for 'document' to allow bibliography  -->
+<!ENTITY % CNXML.document.content "(%CNXML.name.qname;,%CNXML.metadata.qname;?,%CNXML.content.qname;, %CNXML.glossary.qname;?, %file.qname;?)">
+
+<!-- Bring in CNXML elements  -->
+<!ENTITY % cnxml.mod SYSTEM "cnxml.mod" >
+%cnxml.mod;
+
+<!-- Bring in QML elements  -->
+<!ENTITY % qml.mod PUBLIC "-//CNX//ELEMENTS QML 1.0 Elements//EN" "http://cnx.rice.edu/technology/qml/schema/dtd/1.0/qml1.mod">
+%qml.mod;

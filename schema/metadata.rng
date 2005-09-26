@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" 
+  ns='http://cnx.rice.edu/mdml/0.4'>
+
+  <!-- Start grammar -->
+  <start>
+      <ref name='metadataContent'/>
+  </start>
+
+  <define name='metadataContent'>
+    <ref name='version'/>
+    <ref name='created'/>
+    <ref name='revised'/>
+    <ref name='authorlist'/>	
+    <ref name='maintainerlist'/>
+    <optional>
+      <ref name='keywordlist'/>
+    </optional>
+    <ref name='abstract'/>
+    <!--<optional>
+      <ref name='objectives'/>
+    </optional>-->
+  </define>
+
+  
+  <!-- Version, Created, Revised -->
+  <define name='version'>
+    <element name='version' >
+      <text/>
+    </element>
+  </define>
+
+  <define name='created'>
+    <element name='created' >
+      <text/>
+    </element>
+  </define>
+
+  <define name='revised'>
+    <element name='revised' >
+      <text/>
+    </element>
+  </define>
+
+  <!-- Author List -->
+  <define name='authorlist'>
+    <element name='authorlist' >
+      <oneOrMore>
+	<ref name='author'/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name='author'>
+    <element name='author' >
+      <attribute name="id">
+      <text/>
+      </attribute>
+      <group>
+	<optional>
+	  <ref name='honorific'/>
+	</optional>
+	<ref name='firstname'/>
+	<zeroOrMore>
+	  <ref name='othername'/>
+	</zeroOrMore>
+	<ref name='surname'/>
+	<optional>
+	  <ref name='email'/>
+	</optional>
+      </group>
+    </element>
+  </define>
+      
+  <define name='honorific'>
+    <element name='honorific' >
+      <text/>
+    </element>
+  </define>
+
+  <define name='firstname'>
+    <element name='firstname' >
+      <text/>
+    </element>
+  </define>
+  
+  <define name='othername'>
+    <element name='othername' >
+      <text/>
+    </element>
+  </define>
+  
+  <define name='surname'>
+    <element name='surname' >
+      <text/>
+    </element>
+  </define>
+
+   <define name='email'>
+    <element name='email' >
+      <text/>
+    </element>
+  </define>
+
+  <!-- Maintainer List -->
+  <define name='maintainerlist'>
+   <element name='maintainerlist' >
+      <oneOrMore>
+	<ref name='maintainer'/>
+      </oneOrMore>
+    </element>
+  </define>
+
+
+  <define name='maintainer'>
+    <element name='maintainer' >
+      <attribute name="id">
+      <text/>
+      </attribute>
+      <group>
+	<optional>
+	  <ref name='honorific'/>
+	</optional>
+	<ref name='firstname'/>
+	<zeroOrMore>
+	  <ref name='othername'/>
+	</zeroOrMore>
+	<ref name='surname'/>
+	<optional>
+	  <ref name='email'/>
+	</optional>
+      </group>
+    </element>
+  </define>
+
+  <!-- Keyword List -->
+  <define name='keywordlist'>
+    <element name='keywordlist' >
+      <oneOrMore>
+	<ref name='keyword'/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name='keyword'>
+    <element name='keyword' >
+      <text/>
+    </element>
+  </define>
+
+  <!--Abstract -->
+
+  <define name='abstract'>
+    <element name='abstract' >
+      <text/>
+    </element>
+  </define>
+
+  <!--Objectives -->
+ <!-- <define name='objectives'>
+    <element name='objectives' >
+      <choice>
+	<oneOrMore>
+	  <choice>
+	    <ref name='inline'/>
+	  </choice>
+	</oneOrMore>
+	<text/>
+      </choice>
+    </element>
+  </define> -->
+
+</grammar>

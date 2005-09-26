@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0">
+
+  <include href="mdml-defs.rng">
+    <!-- We don't want -->
+    <define name="metadata" combine="choice">
+      <notAllowed/>
+    </define>
+    <define name="metadata.attlist" combine="choice">
+      <notAllowed/>
+    </define>
+  </include>
+  <include href="http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng">
+    <define name="QML.text">
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="section"/>
+          <ref name="media"/>
+        </choice>
+      </zeroOrMore>
+    </define>
+  </include>
+  <include href="cnxml-defs.rng">
+    <!-- Update content model for 'exercise' to allow qml -->
+    <define name="exercise.content">
+      <group>
+        <optional>
+          <ref name="name"/>
+        </optional>
+        <choice>
+          <group>
+            <ref name="problem"/>
+            <zeroOrMore>
+              <ref name="solution"/>
+            </zeroOrMore>
+          </group>
+          <ref name="QML.item"/>
+        </choice>
+      </group>
+    </define>
+    <define name="content.content">
+      <choice>
+        <ref name="QML.problemset"/>
+        <oneOrMore>
+          <ref name="block.class"/>
+        </oneOrMore>
+      </choice>
+    </define>
+    <define name="metadata.content" combine="choice">
+      <notAllowed/>
+    </define>
+    <define name="bibtex.elem">
+      <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>
+    </define>
+  </include>
+
+  <start>
+    <ref name="document"/>
+  </start>
+
+</grammar>

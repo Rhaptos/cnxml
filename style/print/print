@@ -1,0 +1,53 @@
+#! /usr/bin/perl
+
+$module = shift;
+
+open (MODULE, "$module") || die "couldn't open $module: $!\n";
+
+
+$outfile1 = $module;
+$outfile1 =~ s/.rdf/1.xml/;
+
+$outfile2 = $module;
+$outfile2 =~ s/.rdf/2.xml/;
+
+$outfile3 = $module;
+$outfile3 =~ s/.rdf/3.xml/;
+
+$outfile4 = $module;
+$outfile4 =~ s/.rdf/4.xml/;
+
+
+print "Starting . . .\n";
+
+print "Step 1: Running pulltogether0-3.xsl\n";
+print "And writing to $outfile1.\n";
+system("saxon -o $outfile1 $module ~/copytex2/stylesheets/print/pulltogether0-3.xsl");
+print "\tDone\n";
+
+print "Step2: Running numbering0-3.xsl\n";
+print "And writing to $outfile2.\n";
+system("saxon -o $outfile2 $outfile1 ~/copytex2/stylesheets/print/numbering0-3.xsl\n");
+print "\tDone\n";
+#system("rm PROC.xml");
+
+print "Step 3: Running page0-3.xsl (and module.xsl)\n";
+print "And writing to $outfile3.\n";
+system("saxon -o $outfile3 $outfile2 ~/copytex2/stylesheets/print/page0-3.xsl");
+print "\tDone\n";
+#system("rm PROC.fo");
+
+print "Step 4: Running index0-3.xsl\n";
+print "And writing to $outfile4.\n";
+system("saxon -o $outfile4 $outfile3 ~/copytex2/stylesheets/print/index0-3.xsl");
+print "\tDone\n";
+#system("rm PROC2.fo");
+
+print "Step 5: Running pdfxmltex\n";
+system("pdfxmltex $outfile4 ");
+print "\tDone\n";
+
+print "Step 6: Running pdfxmltex to get references correct\n";
+system("pdfxmltex $outfile4");
+print "\tDone\n";
+print "Complete.\n";

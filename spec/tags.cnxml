@@ -1,0 +1,3618 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> 
+
+<section id="sec_tags">
+  <name>CNXML Tags</name>
+  
+  <para id="sec_elements">
+    <name>Attributes</name> 
+
+    Each CNXML element may have several attributes, some of which are
+    required and some are optional.  In the following sections, each
+    element is listed with its accompanying attributes.  The
+    attributes can be one of several types (see the <link
+    src="http://www.w3.org/XML">XML specification</link> for details
+    on what these mean) :
+    <list id="list_attlist">
+      <item id="id">ID - an identifier.  Must be unique within the document</item>
+      <item id="idref">IDREF - refers to an ID attribute</item>
+      <item id="cdata">CDATA - character data (text) </item>
+    </list>
+      
+    In addition to these types, some attributes must take a value from a predefined set.
+  </para>
+
+  <para id='taggroupingssection'>
+    <name>Tag Groupings</name>
+
+    CNXML 0.5 introduces the notion of tag groupings. In order to
+    simplify the rules for nesting tags, we have created three groups
+    of tags. Each CNXML element belongs to one of the three groups.
+    This group will determine the children that can be nested in the
+    tag.  The actual nesting rules will be explained further below.
+    The groupings are:
+    <list id='tag_groupings_list'>
+      <item><cnxn target='structural_tags'>structural tags</cnxn></item>
+      <item><cnxn target='inline_tags'>inline tags</cnxn></item>
+      <item><cnxn target='special_tags'>special tags</cnxn></item>
+    </list>
+    
+  </para>
+    
+  <section id='structural_tags'>
+    <name>Structural Tags</name>
+    <para id='structural_tags_para'>
+      Structural tags are called so because they are containers
+      for almost all other tags. The following tags are considered
+      structural tags:
+
+      <list id='structural_tags_list' type='inline'>
+	<name>Structural Tags</name>
+	<item><cnxn target='content'>content</cnxn></item>
+	<item><cnxn target='section'>section</cnxn></item>
+	<item><cnxn target='example'>example</cnxn></item>
+	<item><cnxn target='meaning'>meaning</cnxn></item>
+	<item><cnxn target='proof'>proof</cnxn></item>
+	<item><cnxn target='statement'>statement</cnxn></item>
+	<item><cnxn target='problem'>problem</cnxn></item>
+	<item><cnxn target='solution'>solution</cnxn></item>
+      </list>.
+
+      Structural tags can contain tags the following children:
+
+      <list id='structural_children'>
+	<item><cnxn target='special_tags'>special tags</cnxn></item>
+	<item><cnxn target='section'>section</cnxn></item>
+	<item><cnxn target='example'>example</cnxn></item>
+      </list>
+      
+      Any tag that is listed, or is in one of the groups listed above
+      can be nested as a child of a structural tag.
+    </para>
+
+    <note>All structural tags can have the <cnxn
+	target='name'>name</cnxn> tag as their first child.</note>
+
+    <example>
+      <name>Tag Grouping Nesting Example</name>
+      <para id='tag_grouping_example'>
+	<code type='inline'>Section</code> is a structural tag, which
+	therefore allows it to have either para, special, or other
+	structural children as it's children.  Therefore, you could
+	have a <code type='inline'>section</code> with a <code
+	type='inline'>figure</code> as a child, since <code
+	type='inline'>figure</code> is a special tag and structural
+	tags are allowed to have special tags as children.
+      </para>
+    </example>
+
+    <section id="section">
+      <name>section</name>
+      
+      <para id="secp1">
+	<name>Description</name>
+	The section tag is used to divide a document into sections,
+	as its name suggests.
+      </para>
+
+      <para id="secattr">
+	<name>Attributes</name>
+	<list id="seclist" type="bulleted">
+	  <item>id - unique id
+	    <list type="bulleted" id="seclist2">
+	      <item>Required</item>
+	      <item><cnxn target="id" >ID</cnxn></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+
+      <para id='section_type'>
+	<name>Type</name>
+	<cnxn target='structural_tags'>Structural</cnxn>
+      </para>
+
+      <para id='section_allowed'>
+	<name>Contained Within:</name>
+	<list id='section_contain_list'>
+	  <item><cnxn target='structural_tags'>Structural Tags</cnxn></item>
+	</list>
+      </para>  
+      
+      <para id="secp3">
+	<name>Children</name>
+	The section tag may have an optional <cnxn target='name'>name</cnxn> tag
+	as its first child followed by a combination of <cnxn target='structural_tags'>Structural Tags</cnxn>.
+      </para>
+      
+      <example id="secex">
+	<code type='block'>
+	  <![CDATA[
+	<section id="res">
+	  <name>Resistor</name> 
+	  <para id="para2">
+	  .
+	  .
+	  .
+	  </para>
+	</section>
+	<section id="cap">
+	  <name>Capacitor</name>
+	  <para id="para3">
+	  .
+	  .
+	  .
+	  </para>
+	</section>
+	<section id="ind">
+	  <name>Inductor</name>
+	  <para id="para4">
+	  .
+	  .
+	  .
+	  <para>
+	</section>
+	  ]]>
+	</code>
+      </example>
+    </section>
+
+    <section id="example">
+      <name>example</name>
+      <para id="exp1">
+	<name>Description</name>
+	The example tag is used to contain an example of something.
+	This is especially useful in connection with the <cnxn 
+	  target='definition'>definition</cnxn> tag where it can be used
+	to give an example of the <cnxn target='meaning'>meaning</cnxn> of a <cnxn target='term'>term</cnxn>.
+      </para>
+      
+      <para id="examatt">
+	<name>Attributes</name>
+	<list id="examlist">
+	  <item>
+	    id - unique id
+	    <list type="bulleted" id="attlist8">
+	      <item>
+		Required
+	      </item>
+	      <item>
+		<cnxn target="id" >ID</cnxn>
+	      </item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+
+      <para id='example_type'>
+	<name>Type</name>
+	<cnxn target='structural_tags'>Structural</cnxn>
+      </para>
+
+      <para id='example_allowed'>
+	<name>Contained Within:</name>
+	<list id='example_contain_list'>
+	  <item><cnxn target='structural_tags'>Structural Tags</cnxn></item>
+	</list>
+      </para> 
+      
+      
+      <para id="exp3">
+	<name>Children</name>
+	See <cnxn target='structural_tags'>structural tags</cnxn>.
+      </para>
+
+      <example id='example_code_example'>
+	<code type='block'>
+	  <![CDATA[
+	<example id="example">
+	  <para id="paraex1">
+	    The Lincoln Memorial is an example of a monument.
+	  </para>    
+	</example>
+	  ]]>
+	</code>
+	<example id="ex_ex1">
+	  <para id="paraex1">
+	    The Lincoln Memorial is an example of a monument.
+	  </para>     
+	</example>
+      </example>
+    </section>
+
+    <section id='exercise'>
+      <name>exercise</name>
+      <para id='exerp1'>
+	The exercise tag is used to create exercises, such as would
+	be used in a text book of a college course. An exercise
+	consists of two parts: a problem and a solution.
+      </para>
+
+      <para id="exerattlist">
+	<name>Attributes</name>
+	<list id='exeridatt'>
+	  <item>
+	    id - unique id
+	    <list type="bulleted" id="attlist8b">
+	      <item>
+		Required
+	      </item>
+	      <item>
+		<cnxn target="id" >ID</cnxn>
+	      </item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='exercise_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>Special</cnxn>
+      </para>
+
+      <para id='exercise_allowed'>
+	<name>Contained Within:</name>
+	<list id='exercise_contain_list'>
+	  <item><cnxn target='structural_tags'>Structural Tags</cnxn></item>
+	  <item><cnxn target='para'>Para</cnxn></item>
+	</list>
+      </para>    
+      
+      <para id="exerp3">
+	<name>Children</name>
+	An exercise may contain a problem followed by zero or more
+	optional solutions.
+      </para>
+    </section>
+
+    <section id="problem">
+      <name>problem</name>
+      
+      <para id="probp1">
+	<name>Description</name>
+	The problem tag is used to specify the problem portion of an
+	<cnxn target="exercise" >exercise</cnxn> tag.
+      </para>
+
+      <para id="problist">
+	<name>Attributes</name>
+	None
+      </para>
+      
+      <para id='problem_type'>
+	<name>Type</name>
+	<cnxn target='structural_tags'>Structural</cnxn>
+      </para>
+
+      <para id='problem_allowed'>
+	<name>Contained Within:</name>
+	<list id='problem_contain_list'>
+	  <item><cnxn target='exercise'>exercise</cnxn></item>
+	</list>
+      </para>    
+      
+      <para id="probp3">
+	<name>Children</name>
+	See <cnxn target='structural_tags'>structural tags</cnxn>.
+      </para>
+
+      <example id='problem_example_code'>
+	<code type='block'>
+	  <![CDATA[
+	<problem>
+	  <para id="prob_1">
+	    What is the capital of Texas?
+	  </para>
+	</problem>
+	  ]]>
+	</code>
+      </example>
+    </section>
+
+    <section id="solution">
+      <name>solution</name>
+
+      <para id="solp1">
+	<name>Description</name>
+	The solution tag is used to specify the solution portion of an
+	<cnxn target="exercise">exercise</cnxn> tag.
+      </para>
+
+      <para id="sollist">
+	<name>Attributes</name>
+	None
+      </para>
+      
+      <para id='solution_type'>
+	<name>Type</name>
+	<cnxn target='structural_tags'>Structural</cnxn>
+      </para>
+
+      <para id='solution_allowed'>
+	<name>Contained Within:</name>
+	<list id='solution_contain_list'>
+	  <item><cnxn target='structural_tags'>Structural Tags</cnxn></item>
+	</list>
+      </para>   
+      
+      <para id="solp3">
+	<name>Children</name>
+	See <cnxn target='structural_tags'>structural tags</cnxn>.
+      </para>
+
+      <example id='solt_example_code'>
+	<code type='block'>
+	  <![CDATA[
+	<solution>
+	  <para id="sol_1">
+	    Austin is the capital of Texas.
+	  </para>
+	</solution>
+	  ]]>
+	</code>
+
+	<example id='exercise_example_display'>
+	  <exercise id='exdisplay'>
+	    <problem>
+	      <para id="prob_1">
+		What is the capital of Texas?
+	      </para>
+	    </problem>
+	    <solution>
+	      <para id="sol_1">
+		Austin is the capital of Texas.
+	      </para>
+	    </solution>
+	  </exercise>
+	</example>
+      </example>
+      
+    </section>
+
+    <section id='proof'>
+      <name>proof</name>
+      
+      <para id='proof_par1'>
+	<name>Description</name>
+	The proof tag contains the proof or explanation of a rule tag.
+      </para>
+      
+      <para id='proofattr'>
+	<name>Attributes</name>
+	<list id='prooflist'>
+	  <item>id - a unique identifier
+	    <list id='prooflist2' type='bulleted'>
+	      <item>Optional</item>
+	      <item><cnxn target="id" >ID</cnxn></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='proof_type'>
+	<name>Type</name>
+	<cnxn target='structural_tags'>Structural</cnxn>
+      </para>
+
+      <para id='proof_allowed'>
+	<name>Contained Within:</name>
+	<list id='proof_contain_list'>
+	  <item><cnxn target='rule'>rule</cnxn></item>
+	</list>
+      </para>  
+      
+      <para id='proof_par2'>
+	<name>Children</name>
+	See <cnxn target='structural_tags'>structural tags</cnxn>.
+      </para>
+      
+      <para id='proof_par3'>
+	<name>Examples</name>
+	See the example for <cnxn target='ruleex'>rule</cnxn>. 
+      </para>
+      
+    </section>  
+
+    <section id='statement'>
+      <name>statement</name>
+      
+      <para id='state_par1'>
+	<name>Description</name> The statement tag is used inside the
+	<cnxn target='rule'>rule</cnxn> tag.  It is used to write a
+	definition or description of the rule in which it is placed.
+      </para>
+      
+      <para id='stateattr'>
+	<name>Attributes</name>
+	<list id='statelist'>
+	  <item>id - a unique identifier
+	    <list id='statelist2' type='bulleted'>
+	      <item>Optional</item>
+	      <item><cnxn target="id" >ID</cnxn></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='statement_type'>
+	<name>Type</name>
+	<cnxn target='structural_tags'>Structural</cnxn>
+      </para>
+
+      <para id='statement_allowed'>
+	<name>Contained Within:</name>
+	<list id='statement_contain_list'>
+	  <item><cnxn target='definition'>definition</cnxn></item>
+	</list>
+      </para>  
+      
+      <para id="state_par2">
+	<name>Children</name>
+	See <cnxn target='structural_tags'>structural tags</cnxn>.
+      </para> 
+      
+      <para id='state_par3'>
+	<name>Examples</name>
+	See the example for <cnxn target='ruleex'>rule</cnxn>.
+      </para>
+      
+    </section>
+  </section>
+
+  <section id='inline_tags'>
+    <name>Inline Tags</name>
+    
+    <para id='inline_tags_para'>
+      Inline tags are used inside of paragraphs and anywhere else
+      that it is necessary to add content to text. The following
+      tags are included in the inline tag group:
+
+      <list id='inline_tags_list' type='inline'>
+	<name>Inline Tags</name>
+	<item><cnxn target="emphasis">emphasis</cnxn></item>
+	<item><cnxn target="code">code</cnxn></item>	
+	<item><cnxn target="term">term</cnxn></item>
+	<item><cnxn target="cite">cite</cnxn></item>
+	<item><cnxn target="cnxn">cnxn</cnxn></item>
+	<item><cnxn target="link">link</cnxn></item>
+	<item><cnxn target='foreign'>foreign</cnxn></item>
+	<item><cnxn target='quote'>quote</cnxn></item>
+      </list>.  Unicode text can also be included inline.
+      
+      <note>Inline tags can only contain other inline tags.</note>
+    </para>
+
+    <section id="emphasis">
+      <name>emphasis</name>
+      
+      <para id="emphp1">
+	<name>Description</name>
+	The emphasis tag is used to emphasize text in a CNXML document
+	where emphasis would be needed or desired.  It is important to
+	note that this refers to <emphasis>semantic</emphasis>
+	emphasis and not a typeface, although many stylesheets may
+	choose to render it as a change in typeface. 
+      </para>
+      
+      <para id="emphlist">
+	<name>Attributes</name>
+	None
+      </para>
+      
+      <para id='emphasis_type'>
+	<name>Type</name>
+	<cnxn target='inline_tags'>Inline</cnxn>
+      </para>
+
+      <para id='emphasis_allowed'>
+	<name>Contained Within:</name>
+	<list id='emphasis_contain_list'>
+	  <item><cnxn target='inline_tags'>inline</cnxn></item>
+	  <item><cnxn target='para'>para</cnxn></item>
+	</list>
+      </para>   
+      
+      <para id="emphp3">
+	<name>Children</name>
+	See <cnxn target='inline_tags'>inline tags</cnxn>.
+      </para>
+
+      <example id='emphasisexample'>
+	<code type='block'>
+	  <![CDATA[
+	<para id="emphexample">
+	  In addition to bananas and ice cream, a proper banana split
+	  requires whipped cream, nuts, <emphasis>and</emphasis>
+	  cherries.  Remember that the quality of the dessert depends
+	  on the ice cream, so do <emphasis>not</emphasis> use a
+	  generic brand.
+	</para>
+	  ]]>
+	</code>
+	<para id="emphexample">
+	  In addition to bananas and ice cream, a proper banana split
+	  requires whipped cream, nuts, <emphasis>and</emphasis>
+	  cherries.  Remember that the quality of the dessert depends
+	  on the ice cream, so do <emphasis>not</emphasis> use a
+	  generic brand.
+	</para>
+      </example>
+    </section>
+
+    <section id="quote">
+      <name>quote</name>
+      <para id="quotep1">
+	<name>Description</name> The quote is used to create block
+	quotes.  <note>Inline quotes can be written out by
+	hand. <foreign>i.e.</foreign> "The man in the blue coat is a
+	police officer".</note>
+      </para>
+      
+      <para id="quoteattr">
+	<name>Attributes</name>
+	<list id="quotelist">
+	  <item>
+	    src - an optional relative or absolute URI indicating the path to the
+	    quote's src. 
+	  </item>
+	  <item>
+	    type - the type of quote
+	    <list id='quote_type_list'>
+	      <item>block - creates a block quote which is separate
+		from the flow of text</item>
+	      <item>inline - creates an inline quote</item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='quote_type'>
+	<name>Type</name>
+	<cnxn target='inline_tags'>inline</cnxn>
+      </para>
+
+      <para id='quote_allowed'>
+	<name>Contained Within:</name>
+	<list id='quote_contain_list'>
+	  <item> <cnxn target='inline_tags'>inline</cnxn></item>
+	  <item> <cnxn target='para'>para</cnxn></item>
+	</list>
+      </para>   
+      
+      <para id="quotep3">
+	<name>Children</name>
+	Quote may take a combination of <cnxn
+	  target='inline_tags'>inline tags</cnxn>.
+      </para> 
+      
+      <example id='quoteexample'>
+	<code type='block'>
+	  <![CDATA[
+	<para id="quoteexample">
+	  <quote src='http://www.artofeurope.com/shakespeare/sha8.htm'> 
+	  To be, or not to be: that is the question: Whether 'tis nobler
+	  in the mind to suffer The slings and arrows of outrageous
+	  fortune, Or to take arms against a sea of troubles, And by
+	  opposing end them?</quote>
+	</para>
+	  ]]>
+	</code>
+	<para id="quoteexample">
+	  <quote src='http://www.artofeurope.com/shakespeare/sha8.htm'> 
+	  To be, or not to be: that is the question: Whether 'tis nobler
+	  in the mind to suffer The slings and arrows of outrageous
+	  fortune, Or to take arms against a sea of troubles, And by
+	  opposing end them?
+	  </quote> 
+	</para>
+      </example>
+    </section>
+
+    <section id="foreign">
+      <name>foreign</name>
+      <para id="foreignp1">
+	<name>Description</name>
+	The foreign tag is used to denote that a tag is a foreign word
+	or phrase.
+      </para>
+      
+      <para id="foreignattr">
+	<name>Attributes</name>
+	<list id="foreignlist">
+	  <item>
+	    <name>Optional</name>
+	    src - a relative or absolute URI indicating the path to the
+	    foreign word or phrases' src. 
+	  </item> 
+	</list>
+      </para>
+      
+      <para id='foreign_type'>
+	<name>Type</name>
+	<cnxn target='inline_tags'>Inline</cnxn>
+      </para>
+
+      <para id='foreign_allowed'>
+	<name>Contained Within:</name>
+	<list id='foreign_contain_list'>
+	  <item> <cnxn target='structural_tags'>structural</cnxn></item>
+	  <item> <cnxn target='para'>para</cnxn></item>
+	</list>
+      </para>   
+      
+      <para id="foreignp3">
+	<name>Children</name>
+	See <cnxn target='inline_tags'>inline tags</cnxn>.
+      </para>
+      
+      <example id='foreignexample'>
+	<code type='block'>
+	  <![CDATA[
+	<para id="foreignexample">In spanish speaking countries
+	  you may often hear people say <foreign>Hola
+	  Amigo</foreign>, which means 'hello friend'.
+	</para>
+	  ]]>
+	</code>
+	<para id='foreign_display'>
+	  In spanish speaking countries you may often hear people say
+	  <foreign>Hola Amigo</foreign>, which means 'hello friend'.
+	</para>
+	
+      </example>
+    </section>
+
+    <section id="code">
+      <name>code</name>
+      <para id="codelinep1">
+	<name>Description</name>
+	The code tag is used to insert a line or block of computer
+	code (for example a command) into a document.  When displayed,
+	it will often be typeset in a fixed-width font.
+      </para>
+      
+      <para id="codelinelistp2">
+	<name>Attributes</name>
+	<list id='code_att_list'>
+	  <item>type</item>
+	  <item>
+	    <list id='item_type_list'>
+	      <item>inline - the code will be included in the
+		current line of text.
+	      </item>
+	      <item>block- the code will be set apart from the text
+		and indented.
+	      </item>
+	    </list>
+	  </item>
+	  <item>id (unique and optional)</item>
+	</list>	    
+      </para>
+      
+      <para id='code_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>Special</cnxn>
+      </para>
+
+      <para id='code_allowed'>
+	<name>Contained Within:</name>
+	<list id='code_contain_list'>
+	  <item><cnxn target='special_tags'>structural</cnxn></item>
+	  <item><cnxn target='para'>para</cnxn></item>
+	  <item><cnxn target='inline_tags'>inline tags</cnxn></item>
+	</list>
+      </para>   
+      
+      <para id="codelinep3">
+	<name>Children</name>
+	Code can contain a combination of <cnxn target='inline_tags'>inline tags</cnxn>.
+      </para>
+      
+      <example id='codelineexample'>
+	<code type='block'>
+	  Enter the command <![CDATA[<code>ls /etc</code>]]> to
+	  get a listing of configuration files.
+	</code>
+	<para id='codelineexampp1'>
+	  Enter the command <code>ls /etc</code>
+	  to get a listing of configuration files.
+	</para>
+	<!--<para id='whitespace'>
+	It is important that you always remove as much white space
+	as possible from codeline, <cnxn target='codeblock'
+	>codeblock</cnxn>, and <cnxn target='cdata'
+	><cnxn target="cdata" >CDATA</cnxn></cnxn> because whitespace is translated
+	literally.  If there is unnecessary space/spacing, it is due
+	to the fact that white space is preserved in these tags.
+      </para>-->
+      </example>
+    </section>
+
+    <section id="cnxn">
+      <name>CNXN</name>
+      <para id="cnxnp1">
+	<name>Description</name>
+	The cnxn tag links to a Connexions system document or a tag
+	inside a Connexions system document, possibly different from the
+	current document.
+      </para>
+      
+      <para id="cnxnattr">
+	<name>Attributes</name>
+	<list id="cnxnlist">
+	  <item>
+	    document - the id of the document linked to
+	    <list type="bulleted" id="attlist28">
+	      <item>Optional</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn></item>
+	      <item>
+		If the document attribute is omitted, the link will
+		default to the current document.
+	      </item>
+	    </list>
+	  </item>
+	  <item>
+	    target - the id of the tag being linked to
+	    <list type="bulleted" id="attlist27">
+	      <item>Optional</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn></item>
+	      <item>
+		If the target attribute is omitted, the link will
+		default to the root element of the target document.
+	      </item>
+	    </list>
+	  </item>
+	  <item>version - the version of the document being liked to
+	    <list type='bulleted' id='attrref4'>
+	      <item>Optional</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn></item>
+	      <item>If the version attribute is omitted, the link will
+		default to the current version of the document.
+	      </item>
+	    </list>
+	  </item>
+	  <item>strength - the strength of the association to what is
+	  being discussed
+	    <list type='bulleted' id='listitemlist'>
+	      <item>Optional</item>
+	      <item>Deprecated</item>
+	      <item>The value must be a number (1-9)</item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+
+      <para id='cnxn_type'>
+	<name>Type</name>
+	<cnxn target='inline_tags'>Inline</cnxn>
+      </para>
+
+      <para id='ref_allowed'>
+	<name>Contained Within:</name>
+	<list id='ref_contain_list'>
+	  <item><cnxn target='inline_tags'>Inline Tags</cnxn></item>
+	  <item><cnxn target='para'>Para</cnxn></item>
+	</list>
+      </para>   
+      
+      <para id="cnxnp3">
+	<name>Children</name>
+	The cnxn tag may contain one or more <cnxn
+	  target='inline_tags'>inline tags</cnxn>.
+      </para>
+
+      <example id='cnxn_example_code'>
+	<code type='block'>
+	  <![CDATA[
+	<cnxn document="m7473" target="figure12">Resistance Figure</cnxn>
+	<cnxn target="para32">As mentioned earlier</cnxn>
+	<cnxn document="m3423">A previous document</cnxn>]]>
+	</code>
+      </example>
+    </section>
+
+    <section id="link">
+      <name>link</name>
+      <para id="linkp1">
+	<name>Description</name>
+	The link tag is used to insert links to external resources.
+      </para>
+      
+      <para id="linkattr">
+	<name>Attributes</name>
+	<list id="linklist">
+	  <item>
+	    src - the URL of the resource being linked to
+	    <list type='bulleted' id='attlist30'>
+	      <item>Required</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+
+      <para id='link_type'>
+	<name>Type</name>
+	<cnxn target='inline_tags'>Inline</cnxn>
+      </para>
+
+      <para id='link_allowed'>
+	<name>Contained Within:</name>
+	<list id='link_contain_list'>
+	  <item><cnxn target='inline_tags'>Inline Tags</cnxn></item>
+	  <item><cnxn target='para'>Para</cnxn></item>
+	</list>
+      </para>
+      
+      <para id="linkp3">
+	<name>Children</name>
+	Link may contain one or more <cnxn target='inline_tags'>inline tags</cnxn>.
+      </para>
+
+      <example id='linkexample'>
+	<code type='block'>
+	  <![CDATA[
+	<para id="linkexample">
+	  <link src="http://www.laurynhill.com">Lauryn Hill</link> is
+	  one of the most influential R&amp;B artists to date.  Having
+	  performed with <link src="http://www.fugees.net">The
+	  Fugees</link> and now solo, she is a defining force in worlds 
+	  of Rap, Hip-Hop and R&amp;B.  Her voice is powerful and her 
+          <link src="http://www.lyricsondemand.com/l/laurynhilllyrics/">lyrics</link> 
+	  are moving.  It is no wonder that she set records, taking away 
+	  5 awards at the 1999 Grammies.
+	</para>
+	  ]]>
+	</code>
+	<para id="linkexample2">
+	  <link src="http://www.laurynhill.com">Lauryn Hill</link> is
+	  one of the most influential R&amp;B artists to date.  Having
+	  performed with <link src="http://www.fugees.net">The
+	  Fugees</link> and now solo, she is a defining force in
+	  worlds of Rap, Hip-Hop and R&amp;B.  Her voice is powerful
+	  and her <link
+	  src="http://www.lyricsondemand.com/l/laurynhilllyrics/">lyrics</link>
+	  are moving.  It is no wonder that she set records, taking
+	  away 5 awards at the 1999 Grammies.
+	</para>
+      </example>
+    </section>
+
+    <section id='cite'>
+      <name>cite</name>
+      <para id='citep1'>
+	<name>Description</name>
+	The cite tag is used to refer to non-electronic materials
+	(ones without a hypertext link).  It typically will contain
+	the title of the work.
+      </para>
+      
+      <para id='citep2'>
+	<name>Attributes</name>
+	<list id='citeattlist'>
+	  <item>src
+	    <list id='srcciteattlist'>
+	      <item>optional</item> <item>A relative or absolute URI
+	      indicating the path to the object. May also contain the
+	      id of a <cnxn document='m11215'>bibtex
+	      reference</cnxn>.  This is still required to be a URI
+	      and thus must be designated using # when referring to an
+	      id in a connexions module.  <code><![CDATA[<cite
+	      src="#white1998">White, 1998</cite> ]]></code></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='cite_type'>
+	<name>Type</name>
+	<cnxn target='inline_tags'>Inline</cnxn>
+      </para>
+
+      <para id='cite_allowed'>
+	<name>Contained Within:</name>
+	<list id='cite_contain_list'>
+	  <item><cnxn target='inline_tags'>Inline Tags</cnxn></item>
+	  <item><cnxn target='para'>Para</cnxn></item>
+	</list>
+      </para>   
+      
+      
+      <para id='citep3'>
+	<name>Children</name>
+	Cite may contain one or more <cnxn target='inline_tags'>inline tags</cnxn>.
+      </para>
+
+      <example id='citeexample'>
+	<code type='block'>
+	  <![CDATA[
+    <para id="citeexample">
+      <cite>A Tale of Two Cities</cite> is a classic novel by Mark Twain.
+    </para> ]]>
+	</code>
+	<para id="citeexample2">
+	  <cite>A Tale of Two Cities</cite> is a classic novel by Mark
+	  Twain.
+	</para>
+      </example>
+    </section>
+
+    <section id="term">
+      <name>term</name>
+      <para id="termp1">
+	<name>Description</name> The term tag marks the word or phrase
+	being defined.  It can be used in either a <cnxn
+	target='definition'>definition</cnxn> tag or in a sentence in
+	a <cnxn target='para'>para</cnxn>.
+      </para>
+
+      <para id='termat'>
+	<name>Attributes</name>
+	<list id='termatt_list'>
+	  <item>src - a relative or absolute URI indicating the path
+	    to the object.  May also contain the id of a glossary
+	    reference that must be identified as a URI using # before
+	    the id.  <code><![CDATA[<term
+	    src="#square">square</term>]]></code></item>
+	</list>
+      </para>
+
+      <para id='term_type'>
+	<name>Type</name>
+	<cnxn target='inline_tags'>inline</cnxn>
+      </para>
+
+      <para id='term_allowed'>
+	<name>Contained Within:</name>
+	<list id='term_contain_list'>
+	  <item> <cnxn target='inline_tags'>inline</cnxn></item>
+	  <item> <cnxn target='para'>para</cnxn></item>
+	</list>
+      </para>       
+      
+      <para id='parterm'>
+	<name>Children</name>
+	Term may contain one or more <cnxn target='inline_tags'>inline tags</cnxn>.
+      </para>
+
+      <example id='code_example_term'>
+	<code type='block'>
+	  <![CDATA[
+	<para id='parterm2'>
+	  A <term>square</term> is a rectangle with equal sides.
+	</para>
+	  ]]>
+	</code>
+	<para id='parterm1'>
+	  This might be displayed as in the next paragraph.
+	</para>
+	<para id='parterm2'>
+	  A <term>square</term> is a rectangle with equal sides.
+	</para>
+	<para id='parterm3'>
+	  See also <cnxn target='defex'>definition
+	    examples</cnxn>.
+	</para>
+      </example>
+    </section>
+  </section>
+
+  <section id='special_tags'>
+    <name>Special Tags</name>
+    <para id='special_tags_para'>
+      The following tags are considered to be 'special' because the
+      content model for each of them is very specific:
+
+      <list id='special_tags_list' type='inline'>
+	<name>Special Tags</name>
+	<item><cnxn target="para">para</cnxn></item>
+	<item><cnxn target="definition">definition</cnxn></item>
+	<item><cnxn target="rule">rule</cnxn></item>
+	<item><cnxn target="figure">figure</cnxn></item>
+	<item><cnxn target='subfigure'>subfigure</cnxn></item>
+	<item><cnxn target='caption'>caption</cnxn></item>
+	<item><cnxn target="media">media</cnxn></item>
+	<item><cnxn target="table">table</cnxn></item>
+	<item><cnxn target="name">name</cnxn></item>
+	<item><cnxn target="list">list</cnxn></item>
+	<item><cnxn target='item'>item</cnxn></item>
+	<item><cnxn target='exercise'>exercise</cnxn></item>
+	<item><cnxn target='equation'>equation</cnxn></item>
+	<item><cnxn target='note'>note</cnxn></item>
+	<item><cnxn target='glossary_section'>glossary</cnxn></item>
+	<item><cnxn target='seealso'>seealso</cnxn></item>
+      </list>.
+
+      Special tags are tags which adhere to one or more of the following:
+      
+      <list id='special_reasons' type='enumerated'>
+	<item>Can only contain certain children.</item>
+	<item>Can contain no children.</item>
+	<item>Can only appear as a child of another tag.</item>
+      </list>
+
+      <note>Each of these special tags will be defined and
+	explained later in the specification.
+      </note>
+    </para>
+    
+    <section id="document">
+      <name>document</name>
+      <para id="par_mod1">
+	<name>Description</name>
+	The document tag is the root document element of CNXML
+	documents, commonly called "modules." 
+      </para>
+
+      <para id="sec_modattr">
+	<name>Attributes</name>
+	<list id="list_modattr" type="bulleted">
+	  <item>id - A unique document identifier
+	    <list type="bulleted" id="list_modattr1">
+	      <item>Required</item>
+	      <item><cnxn target="id">ID</cnxn></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+
+      <para id='document_type'>
+	<name>Type</name>
+	<cnxn target='structural_tags'>Structural</cnxn>
+      </para>
+      
+      <para id='document_allowed'>
+	<name>Contained Within:</name>
+	none
+      </para>
+      
+      <para id="par_mod3">
+	<name>Children</name>
+	<list id="list_mod1">
+	  <item>
+	    The first child of the document tag must always be <cnxn target='name'>name</cnxn>, which is the name of the document.
+	  </item>
+	  <item>
+	    The second child of the document tag will usually be <cnxn target="metadata">metadata</cnxn>,
+	    which contains all the metadata of the document.
+	  </item>
+	  <item>
+	    The third child of the document tag must always be <cnxn
+	    target="content">content</cnxn>, which contains the
+	    content (<foreign>e.g.</foreign>, <cnxn
+	    target='section'>section</cnxn> or <cnxn
+	    target='para'>para</cnxn>) of the document.
+	  </item>
+	  <item>
+	    The fourth child of the document tag is the optional <cnxn
+	    target='glossary_section'>glossary</cnxn> tag.
+	  </item>
+	  <item>
+	    The fifth child of the document tag is the optional <cnxn
+	    document='m11215'>bib:file</cnxn> tag.
+	  </item>
+	</list>
+      </para>
+
+      <example id='sec_modex'>
+	<name>Examples</name>
+	<code type='block'>
+	  <![CDATA[
+        <document id="spec">
+	  <name>CNXML 0.5 Language Specification</name>
+	  <metadata>
+	    .
+	    .
+	    .
+	  </metadata>
+	  <content>
+	    .
+	    .
+	    .
+	  </content>
+	  <glossary>
+	    .
+	    .
+	    .
+	  </glossary>
+	  <bib:file>
+	    .
+	    .
+	    .
+	  </bib:file>
+	</document>
+	  ]]></code>
+      </example>
+    </section>
+
+    <section id="metadata">
+      <name>metadata</name>
+      <para id="par_meta1">
+	<name>Description</name> The metadata tag is where all the
+	metadata tags and information is placed. In cnxml 0.5 the
+	metadata namespace must be included in the document tag as an
+	attribute, and all metadata tags must begin with the prefix
+	<code>md:</code>.  For more information on how to include the
+	namespace in the document tag see the <cnxn document='m9006'
+	>Basic Cnxml</cnxn>. Information on the tags listed as
+	children for the metadata tag can be found in the <cnxn
+	document='m10887' target='editmetadata'>Editing
+	Metadata</cnxn> section of the CNXML tutorial.
+      </para>
+      
+      <para id='metadatap1'>
+	<name>Attributes</name>
+	None
+      </para>
+
+      <para id='metadata_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>Special</cnxn>
+      </para>
+
+      <para id='metadata_allowed'>
+	<name>Contained Within:</name>
+	<list id='metadata_contained_list'>
+	  <item><cnxn target='document'>Document</cnxn></item>
+	</list>  
+      </para>
+      
+      <para id="par_meta3">
+	<name>Children</name>
+	<list id="list_meta1">
+	  <item>The first child of the metadata tag must always be a
+	    <code>version</code> tag.
+	  </item>
+	  <item>The second child of the metadata tag must always be a
+	    <code>created tag</code>.
+	  </item>
+	  <item>The third child of the metadata tag must always be a
+	    <code>revised</code> tag.
+	  </item>
+	  <item>
+	    The fourth child of the metadata tag must always be an <code>authorlist</code> tag.
+	  </item>
+	  <item>
+	    The fifth child of the metadata tag must always be a <code>maintainerlist</code> tag.
+	  </item>
+	  <item>
+	    The <code>keywordlist</code> tag may appear next, if it
+	    appears at all.
+	  </item>
+	  <item>
+	    The <code>abstract</code> tag must appear next.
+	  </item>
+	  <item>
+	    An <code>objectives</code> tag may appear after that, if
+	    it appears at all.
+	  </item>
+	</list>
+      </para>
+
+      <example id="sec_metaex">
+	<code type='block'>
+	  <![CDATA[
+	<metadata>
+	  <md:version>2.1</md:version>
+	  <md:created>01-12-06</md:created>
+	  <md:revised>01-12-07</md:revised>	
+
+	  <md:authorlist>
+	    <md:author id="selc">
+	      <md:firstname>Sarah</md:firstname>
+	      <md:surname>Coppin</md:surname>
+	    </md:author>
+	    <md:author id="bmh">
+	      <md:firstname>Brent</md:firstname>
+	      <md:surname>Hendricks</md:surname>
+	    </md:author>
+	    <md:author id="drewlin">
+	      <md:firstname>Andrew</md:firstname>
+	      <md:surname>Lin</md:surname>
+	    </md:author>
+	    <md:author id="rars">
+	      <md:firstname>Ricky</md:firstname>
+	      <md:surname>Radaelli-Sanchez</md:surname>
+	    </md:author>
+	  </md:authorlist>
+	  <md:maintainerlist>
+	    <md:maintainer id="selc">
+	      <md:firstname>Sarah</md:firstname>
+	      <md:surname>Coppin</md:surname>
+	    </md:maintainer>
+	    <md:maintainer id="bmh">
+	      <md:firstname>Brent</md:firstname>
+	      <md:surname>Hendricks</md:surname>
+	    </md:maintainer>
+	    <md:maintainer id="rars">
+	      <md:firstname>Ricky</md:firstname>
+	      <md:surname>Radaelli-Sanchez</md:surname>
+	    </md:maintainer>
+	  </md:maintainerlist>
+	  <md:keywordlist>
+	    <md:keyword>CNXML</md:keyword>
+	    <md:keyword>MathML</md:keyword>
+	    <md:keyword>XML</md:keyword>
+	    <md:keyword>specification</md:keyword>
+	  </md:keywordlist>
+	  <md:abstract>
+	    CNXML 0.3 Language Specification
+	  </md:abstract>
+	  <md:objectives>
+	    Explain in detail how the CNXML language should be used.
+	  </md:objectives>
+	</metadata>
+	  ]]>
+	</code>
+      </example>
+    </section>
+
+    <section id="content">
+      <name>content</name>
+      <para id="par_cont1">
+	<name>Description</name>
+	The content tag is where the content information of a document
+	is stored.  
+      </para>
+
+      <para id='contentp1'>
+	<name>Attributes</name>
+	None
+      </para>
+
+      <para id='content_type'>
+	<name>Type</name>
+	<cnxn target='structural_tags'>Structural</cnxn>
+      </para>
+
+      <para id='content_allowed'>
+	<name>Contained Within:</name>
+	<list id='content_contained_list'>
+	  <item><cnxn target='document'>Document</cnxn></item>
+	</list>
+      </para>
+      
+      <para id="par_cont3">
+	<name>Children</name>
+	See <cnxn target='structural_tags'>Structural Tags</cnxn>.
+      </para>
+
+      <example id="sec_contex">
+	<code type='block'>
+	  <![CDATA[
+	<content>
+	  <section id="version">
+	    <name>Document History</name>
+	    <list id="p1">
+	      <item>
+	        Release 0.1 -- Pre release.
+	      </item>
+	    </list>	
+	  </section>
+	    .
+	    .
+	    .
+	</content>
+	  ]]>
+	</code>
+      </example>
+    </section>
+    
+    <section id="para">
+      <name>para</name>
+      <para id="parap1">
+	<name>Description</name>
+	The para tag contains a paragraph of possibly marked-up
+	text.
+      </para>
+      
+      <para id="paraatt">
+	<name>Attributes</name>
+	<list id="paralist">
+	  <item>
+	    id - unique id
+	    <list type="bulleted" id="attlist3">
+	      <item>
+		Required
+	      </item>
+	      <item>
+		<cnxn target="id" >ID</cnxn>
+	      </item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+
+      <para id='para_type'>
+	<name>Type</name>
+	<cnxn target='para'>Para</cnxn>
+      </para>
+
+      <para id='para_allowed'>
+	<name>Contained Within:</name>
+	<list id='para_contain_list'>
+	  <item>Structural Tags</item>
+	</list>
+      </para> 
+      
+      <para id="parap3">
+	<name>Children</name>
+	<cnxn target='inline_tags'>inline tags</cnxn>
+      </para>
+
+      <example id='paraexample'>
+	<para id="parap2">
+	  Two paragraphs from War and Peace.
+	</para>
+	<code type='block'>
+	  <![CDATA[      
+	<para id="para1">
+	  Prince Andrei was on duty that day and in constant attendance
+          on the Commander in Chief.
+	</para>
+	<para id="para2">
+	  At six o'clock in the evening Kutuzov went to the Emperor's
+	  headquarters, and after remaining but a short time with him, 
+	  went to the Grand Marshal of the Court, Count Tolstoy.  
+	</para>
+	  ]]>
+	</code>
+      </example>
+    </section>
+    
+    <section id="name">
+      <name>name</name>
+      <para id="par_name1">
+	<name>Description</name>
+	The name tag provides a searchable name for a particular
+	object such as a document, section or a figure.
+      </para>
+
+      <para id="par_name2">
+	<name>Attributes</name>
+	None
+      </para>
+
+      <para id='name_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>Special</cnxn>
+      </para>
+
+      <para id='name_allowed'>
+	<name>Contained Within:</name>
+	<list id='name_contained_list'>
+	  <item><cnxn target='document'>Document</cnxn></item>
+	  <item><cnxn target='section'>Section</cnxn></item>
+	  <item><cnxn target='para'>Para</cnxn></item>
+	  <item><cnxn target='list'>List</cnxn></item>
+	  <item><cnxn target='item'>Item</cnxn></item>
+	  <item><cnxn target='equation'>Equation</cnxn></item>
+	  <item><cnxn target='example'>Example</cnxn></item>
+	</list>
+      </para>  
+      
+      <para id="par_name3">
+	<name>Children</name>
+	Unicode text representing an object's name
+      </para>
+      
+      <example id="sec_nameex">
+	<code type='block'>
+	  <![CDATA[
+	<section id="intro">
+	  <name>An Introduction to CNXML</name>
+	  .
+	  .
+	  .
+	</section> ]]>
+	</code>
+      </example>
+    </section>
+    
+    <section id="definition">
+      <name>definition</name>
+      
+      <para id="defp1">
+	<name>Description</name>
+	The definition tag is used to define a word or a term.   
+      </para>
+      
+      <para id="defattr">
+	<name>Attributes</name>
+	<list id="deflist" type="bulleted">
+	  <item>id - unique id
+	    <list type="bulleted" id="attlist2">
+	      <item>Required</item>
+	      <item><cnxn target="id" >ID</cnxn></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+
+      <para id='definition_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>Special</cnxn>
+      </para>
+
+      <para id='definition_allowed'>
+	<name>Contained Within:</name>
+	<list id='definition_contain_list'>
+	  <item><cnxn target='para'>para</cnxn></item>
+	  <item><cnxn target='structural_tags'>structural tags</cnxn></item>
+	</list>
+      </para>   
+
+      <para id="defchild">
+	<name>Children</name>
+	<list id='deflist2'>
+	  <item>
+	    The definition tag can contain only three types of tags:
+	    <cnxn target='term'>term</cnxn>, <cnxn target='meaning'>meaning</cnxn>, and <cnxn target='example'>example</cnxn>.
+	  </item>
+	  <item>
+	    The <cnxn target='term'>term</cnxn> tag is
+	    always required and is first.
+	  </item>
+	  <item>
+	    After that, at least one <cnxn
+	    target='meaning'>meaning</cnxn> tag is required.  Multiple
+	    <cnxn target='meaning'>meaning</cnxn> tags are allowed in
+	    a definition.
+	  </item>
+	  <item>
+	    Next, after each <cnxn target='meaning'>meaning</cnxn> tag
+	    you may put 0, 1, or many <cnxn
+	    target='example'>example</cnxn> tags.  <cnxn
+	    target='example'>examples</cnxn> should follow the meaning
+	    they relate to.
+	  </item>
+	  <item>
+	    Finally, you may have an optional <cnxn
+	    target='seealso'>seealso</cnxn> tag.</item>
+	</list>
+      </para>
+
+      <example id='defex'>
+	<code type='block'>
+	  <![CDATA[
+	<definition id='quardef'>
+	  <term>quarter</term>
+	  <meaning>One fourth of something.</meaning>
+	  <example id='defex1'>
+	    <para id='parex1'>
+	    "He cut the pie into quarters and gave all four people a
+	    piece."
+	    </para>
+	  </example>
+	  <meaning>25 cents, a quarter of a dollar.</meaning>
+	  <example id='defex2'>
+	    <para id='parex2'>
+	      "The drink cost a quarter."
+	    </para>
+	  </example>
+	  <example id='defex3'>
+	    <para id='parex3'>
+	      "She picked up a roll of quarters so that she could do
+	      laundry."
+	    </para>
+	  </example>
+	  <seealso><term>dollar</term><term>penny</term></seealso>
+	</definition>
+	  ]]>
+	</code>
+	<definition id='quardef'>
+	  <term>quarter</term>
+	  <meaning>One fourth of something.</meaning>
+	  <example id='defex1'>
+	    <para id='parex1'>
+	      "He cut the pie into quarters and gave all four
+	      people a piece."
+	    </para>
+	  </example>
+	  <meaning>25 cents, a quarter of a dollar.</meaning>
+	  <example id='defex2'>
+	    <para id='parex2'>"The drink cost a quarter."</para>
+	  </example>
+	  <example id='defex3'>
+	    <para id='parex3'>
+	      "She picked up a roll of quarters so that she could
+	      do laundry."
+	    </para>
+	  </example>
+	  <seealso><term>dollar</term><term>penny</term></seealso>
+	</definition>
+      </example>
+    </section>
+    
+    <section id="meaning">
+      <name>meaning</name>
+      <para id="meanp1">
+	<name>Description</name>
+	The meaning tag gives one definition of the word or phrase
+	being defined in a <cnxn target='definition'>definition</cnxn>.  Each <cnxn target='definition'>definition</cnxn> tag can
+	have multiple meanings and therefore multiple meaning tags.
+      </para>
+      
+      <para id='partermat'>
+	<name>Attributes</name>
+	None
+      </para>
+      
+      <para id='meaning_type'>
+	<name>Type</name>
+	<cnxn target='structural_tags'>structural</cnxn>
+      </para>
+
+      <para id='meaning_allowed'>
+	<name>Contained Within:</name>
+	<list id='meaning_contain_list'>
+	  <item><cnxn target='definition'>definition</cnxn></item>
+	</list>
+      </para>     
+      
+      <para id='parmean2'>
+	<name>Children</name>
+	Meaning can contain a combination of <cnxn target="inline_tags">inline tags</cnxn>, and <cnxn target='special_tags'>special tags</cnxn>.
+      </para>
+      
+      <para id='parmean21'>
+	<name>Examples</name>
+	See the <cnxn target='defex'>definition
+	  examples</cnxn>.
+      </para>
+    </section>
+    
+    <section id="glossary_section">
+      <name>glossary</name>
+      <para id="glossary_cont1">
+	<name>Description</name> The glossary tag is where definitions
+	that can be placed if the author does not wish to place them
+	in the flow of text. For more information see <cnxn
+	document='m11215'>CNXML Reference Extensions</cnxn>.
+      </para>
+
+      <para id='glossaryp1'>
+	<name>Attributes</name>
+	<list id='glossary_att_list'>
+	  <item>id (optional)</item>
+	</list>
+      </para>
+
+      <para id='glossary_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>Special</cnxn>
+      </para>
+
+      <para id='content_contained_within'>
+	<name>Contained Within:</name>
+	<list id='glossary_contained_list'>
+	  <item><cnxn target='document'>Document</cnxn></item>
+	</list>
+      </para>
+      
+      <para id="par_cont10">
+	<name>Children</name>
+	One or more <cnxn target='definition'>definition</cnxn> tags.
+      </para>
+
+      <example id="glossary_contex2">
+	<code type='block'>
+	  <![CDATA[
+	<glossary id='glossary1'>
+	  <definition id='quardef'>
+	    <term>quarter</term>
+	    <meaning>
+              <name>Meaning Name</name>
+              One fourth of something.
+            </meaning>
+	    <example id='def'>
+	      <para id='par'>
+	        "He cut the pie into quarters and gave all four people a
+	        piece."
+	      </para>
+	    </example>
+	    <meaning>25 cents, a quarter of a dollar.</meaning>
+	    <example id='def2'>
+	      <para id='par2'>
+	        "The drink cost a quarter."
+	      </para>
+	    </example>
+	    <example id='def3'>
+	      <para id='par3'>
+	        "She picked up a roll of quarters so that she could do
+	        laundry."
+	      </para>
+	    </example>
+	  </definition>
+	</glossary>]]>
+	</code>
+      </example>
+    </section>
+
+    <section id='seealso'>
+      <name>seealso</name>
+      <para id="seealsop1">
+	<name>Description</name>
+	The seealso tag is a list of terms that the author believes
+	would be beneficial to the person reviewing the document. Each
+	<cnxn target='definition'>definition</cnxn> tag can contain
+	one see also tag.
+      </para>
+      <para id='partermat2'>
+	<name>Attributes</name>
+	None
+      </para>
+
+      <para id='seealso_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>special</cnxn>
+      </para>
+      
+      <para id='seealso_allowed'>
+	<name>Contained Within:</name>
+	<list id='seealso_contain_list'>
+	  <item><cnxn target='definition'>definition</cnxn></item>
+	</list>
+      </para>     
+
+      <para id='parmean1'>
+	<name>Children</name>
+	Seealso can contain one or more <cnxn
+	  target='term'>term</cnxn> tags.
+      </para>
+      
+      <para id='parseealso2'>
+	<name>Examples</name> See the <cnxn target='defex'>definition
+	examples</cnxn>.
+      </para>
+    </section>
+
+    <section id="note">
+      <name>note</name>
+      <para id="notep1">
+	<name>Description</name> The note tag is used to add a note
+	about text in a CNXML document. <note type='aside'>Note tags
+	can add more information to a text which is unimportant to the
+	immediate text itself. </note>
+      </para>
+      
+      <para id="noteattr">
+	<name>Attributes</name>
+	<list id="notelist">
+	  <item>
+	    type - the type of note
+	    <list type="bulleted" id="attlist33">
+	      <item>Optional</item> 
+	      <item>
+		<cnxn target="cdata" >CDATA</cnxn>
+		<note>
+		  The value of type is left open to the author.  The author
+		  can choose different values that reflect the purpose of the
+		  note.  Some suggestions are: note, aside, point of interest,
+		  warning, <foreign>etc</foreign>.
+		</note>
+	      </item> 
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='note_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>Special</cnxn>
+      </para>
+
+      <para id='note_allowed'>
+	<name>Contained Within:</name>
+	<list id='note_contain_list'>
+	  <item> <cnxn target='structural_tags'>structural</cnxn></item>
+	  <item> <cnxn target='para'>para</cnxn></item>
+	</list>
+      </para>   
+      
+      <para id="notep3">
+	<name>Children</name>
+	Note can take a combination of <cnxn target='inline_tags'>inline tags</cnxn>.
+      </para>
+
+      <example id='noteexample'>
+	<code type='block'>
+	  <![CDATA[
+	<para id="noteexample">
+	  Chemistry lab was always a lot of fun. We played with a lot
+	  of chemicals such as Sulfuric and Hydrochloric acid. <note
+	  type="warning">Sulfuric and Hydrochloric Acid are very
+	  dangerous. Please handle with caution.</note>
+	</para>
+	  ]]>
+	</code>
+	<para id="noteexample2">
+	  Chemistry lab was always a lot of fun. We played with a lot
+	  of chemicals such as Sulfuric and Hydrochloric acid. <note
+	  type="warning">Sulfuric and Hydrochloric Acid are very
+	  dangerous. Please handle with caution</note>
+	</para>
+      </example>
+    </section>
+    
+    <section id="rule">
+      <name>rule</name>
+      <para id='rule_par1'>
+	<name>Description</name> The rule tag defines any type of
+	"rule" such as theorems, axiom, lemmas, rule of thumb,
+	<foreign>etc</foreign>.  This tag is especially useful for
+	mathematical texts.
+      </para>
+      
+      <para id='ruleattr'>
+	<name>Attributes</name>
+	<list id='rulelist'>
+	  <item>id - a unique identifier
+	    <list id='rulelist2' type='bulleted'>
+	      <item>Required</item>
+	      <item><cnxn target="id" >ID</cnxn></item>
+	    </list>
+	  </item>
+	  <item>type - the kind of rule: theorem, axiom, lemma,
+	  <foreign>etc</foreign>.
+	    <list id='rulelist3' type='bulleted'>
+	      <item>Required</item>
+	      <item>
+		<cnxn target="cdata" >CDATA</cnxn>
+		<note>
+		  The values are not explicitly defined by this
+		  specification, because it would be unfeasible to
+		  create an exhaustive list.  However, some suggestions
+		  are theorem, axiom, lemma, corollary, proposition.
+		</note>
+	      </item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+
+      <para id='rule_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>special</cnxn>
+      </para>
+
+      <para id='rule_allowed'>
+	<name>Contained Within:</name>
+	<list id='rule_contain_list'>
+	  <item>Structural Tags</item>
+	  <item>para</item>
+	</list>
+      </para>  
+
+      <para id='rulechild'>
+	<name>Children</name> First, rule may contain an optional
+	<cnxn target='name'>name</cnxn> tag.  Next, it must contain
+	one or more <cnxn target="statement">statement</cnxn> tags.
+	Finally, rule may contain zero or more <cnxn
+	target='proof'>proof</cnxn> tags and zero or more <cnxn
+	target='example'>example</cnxn> tags in any order.
+      </para>
+
+      <example id='ruleex'>
+	<code type='block'>
+	  <![CDATA[
+	<rule type='theorem' id='ruleexcode'>
+	  <name>Pythagorean Theorem</name>
+	  <statement>
+	    <para id='ruleexp1'>
+	      On a right triangle, the sum of the squares of the
+	      sides equals the square of the hypotenuse.
+	    </para>
+	  </statement>
+	  <proof>
+	    <para id='ruleexp2'>
+	      Your favorite proof goes here.
+	    </para>
+	  </proof>
+	  <example>
+	    <para id='ruleexp3'>
+	      Take a right triangle whose sides are of length 3, 4,
+              and 5.  In this case the sum of the square of the two 
+              shorter sides is 9+16=25.  The square of the hypotenuse 
+              is 25.  So the theorem holds.
+	    </para>
+	  </example id='pythexamp1'>
+	  <proof>
+	    <para id='ruleexp4'>
+	      Another proof could go here.
+	    </para>
+	  </proof>
+	  <example id='pythexamp2'>
+	    <para id='ruleexp5'>
+	      Another example could go here.
+	    </para>
+	  </example>
+	</rule> ]]>
+	</code>
+	<rule type='theorem' id='ruleexcode'>
+	  <name>Pythagorean Theorem</name>
+	  <statement>
+	    <para id='ruleexp1'>
+	      On a right triangle, the sum of the squares of the
+	      sides equals the square of the hypotenuse.
+	    </para>
+	  </statement>
+	  <proof>
+	    <para id='ruleexp2'>
+	      Your favorite proof goes here.
+	    </para>
+	  </proof>
+	  <example id='pythexamp1'>
+	    <para id='ruleexp3'>
+	      Take a right triangle whose sides are of length 3, 4,
+	      and 5.  In this case the sum of the square of the two
+	      shorter sides is 9+16=25.  The square of the hypotenuse
+	      is 25.  So the theorem holds.
+	    </para>
+	  </example>
+	  <proof>
+	    <para id='ruleexp4'>
+	      Another proof could go here.
+	    </para>
+	  </proof>
+	  <example id='pythexamp2'>
+	    <para id='ruleexp5'>
+	      Another example could go here.
+	    </para>
+	  </example>
+	</rule>
+      </example>
+    </section>
+    
+    <section id="liststablesfigs">
+      <name>Lists and Figures</name>
+      <para id="lists_par1">
+	These are the tags specific to adding lists and figures
+	to the document.
+      </para>
+
+      <section id="list">
+	<name>list</name>
+	<para id="listp1">
+	  <name>Description</name>
+	  The list tag is used to create ordered or unordered lists of items.
+	</para>
+	
+	<para id="listattr">
+	  <name>Attributes</name>
+	  <list id="listlist">
+	    <item>
+	      id - unique id
+	      <list type="bulleted" id="attlist16">
+		<item>Required</item>
+		<item><cnxn target="id" >ID</cnxn></item>
+	      </list>
+	    </item>
+	    <item>
+	      type - makes the list ordered or unordered
+	      <list type="bulleted" id="attlist17">
+		<item>Optional</item>
+		<item>Possible values
+		  <list type="bulleted" id="attlist18">
+		    <item>enumerated - numbers the
+		      list with the first item after the tag being the
+		      first element
+		    </item>
+		    <item>bulleted - creates a bulleted list of items
+		    </item>
+		    <item>inline - creates an inline list</item>
+		    <item>named-item - creates a list in which each
+		      item must be named</item>
+		  </list>
+		</item>
+		<item>Default is bulleted.
+		</item>
+	      </list>
+	    </item>
+	  </list>
+	</para>
+	
+	<para id='list_type'>
+	  <name>Type</name>
+	  <cnxn target='special_tags'>Special</cnxn>
+	</para>
+
+	<para id='list_allowed'>
+	  <name>Contained Within:</name>
+	  <list id='list_contain_list'>
+	    <item><cnxn target='structural_tags'>Structural Tags</cnxn></item>
+	    <item><cnxn target='para'>Para Tags</cnxn></item>
+	  </list>
+	</para> 
+	
+	<para id="listp3">
+	  <name>Children</name>
+	  The list tag may contain an optional <cnxn
+	    target='name'>name</cnxn> tag followed by one or more <cnxn target="item">item</cnxn> tags.
+	</para>
+
+	<example id='codblockexample'>
+	  <name>Enumerated List Example</name>
+	  <code type='block'>
+	    <![CDATA[
+	  <list id="grocerylist" type="enumerated">
+	    <name>Grocery List</name>
+	    <item>Milk</item> 
+	    <item>Eggs</item> 
+	    <item>Sugar</item>
+	  </list> ]]>
+	  </code>
+	  <list id="groclist" type="enumerated">
+	    <name>Grocery List</name>
+	    <item>Milk</item> 
+	    <item>Eggs</item> 
+	    <item>Sugar</item>
+	  </list>
+	</example>
+      </section>
+
+      <section id="item">
+	<name>item</name>
+	<para id="itemp1">
+	  <name>Description</name>
+	  The item tag is used to specify an item of a list.  It appears
+	  only as the child of <cnxn target="list"
+	    >list</cnxn> tags.
+	</para>
+
+	<para id="itemattr">
+	  <name>Attributes</name>
+	  <list id="itemlist">
+	    <item>id - unique id
+	      <list type="bulleted" id="attlist19">
+		<item>Optional</item>
+		<item><cnxn target="id">ID</cnxn></item>
+	      </list>
+	    </item>
+	  </list>
+	</para>
+
+	<para id='item_type'>
+	  <name>Type</name>
+	  <cnxn target='special_tags'>Special</cnxn>
+	</para>
+
+	<para id='item_allowed'>
+	  <name>Contained Within:</name>
+	  <list id='item_contain_list'>
+	    <item><cnxn target='list'>List</cnxn></item>
+	  </list>
+	</para> 
+	
+	<para id="itemp3">
+	  <name>Children</name> The item tag may contain an optional
+	  <cnxn target='name'>name</cnxn> tag followed by one or more
+	  <cnxn target='inline_tags'>inline tags</cnxn>.
+	</para>
+
+	<example id='itemexample'>
+	  <code type='block'>
+	    <![CDATA[
+          <list id='forces'>
+	    <name>Four fundamental forces</name>
+	    <item>Electromagnetism</item> 
+	    <item>Gravity</item> 
+	    <item>Strong nuclear force</item>
+	    <item>Weak nuclear force</item>
+	  </list>]]>
+	  </code>
+	  <list id='forces'>
+	    <name>Four fundamental forces</name>
+	    <item>Electromagnetism</item> 
+	    <item>Gravity</item> 
+	    <item>Strong nuclear force</item>
+	    <item>Weak nuclear force</item>
+	  </list>
+	</example>     
+      </section>
+
+      <section id="figure">
+	<name>figure</name>
+	<para id="figp1">
+	  <name>Description</name>
+	  The figure tag provides the structure for creating a figure
+	  within a document.  A figure could contain such things as an
+	  image, or a table, or several of these.
+	</para>
+
+	<para id="figatt">
+	  <name>Attributes</name>
+	  <list id="figlist1">
+	    <item>
+	      id - unique id
+	      <list type="bulleted" id="attlist4">
+		<item>
+		  Required
+		</item>
+		<item>
+		  <cnxn target="id" >ID</cnxn>
+		</item>
+	      </list>
+	    </item>
+	    <item id="orient">
+	      orient - allows the writer to determine which way <cnxn
+		target="subfigure">subfigures</cnxn> should be
+	      arranged (irrelevant if there are no subfigures)
+	      <list type="bulleted" id="attlist6">
+		<item>Optional
+		</item>
+		<item>Possible values
+		  <list type="bulleted" id="attlist14">
+		    <item>
+		      horizontal - subfigures will be placed next to each other 
+		    </item>
+		    <item>	      
+		      vertical - subfigures will be placed on top of each other
+		    </item>	
+		  </list>
+		</item>
+		<item>Default is horizontal.
+		</item>
+	      </list>
+	    </item>
+	  </list>
+	</para>
+
+	<para id='figure_type'>
+	  <name>Type</name>
+	  <cnxn target='special_tags'>Special</cnxn>
+	</para>
+
+	<para id='figure_allowed'>
+	  <name>Contained Within:</name>
+	  <list id='figure_contain_list'>
+	    <item><cnxn target='structural_tags'>Stuctural Tags</cnxn></item>
+	    <item><cnxn target='para'>Para</cnxn></item>
+	  </list>
+	</para> 
+
+	<para id="figchild">
+	  <name>Children</name>
+	  <list id="figlist2">
+	    <item>
+	      First, a <cnxn target='name'>name</cnxn> tag may appear.
+	      
+	      Next, either two or more <cnxn
+		target="subfigure">subfigure</cnxn> tags, or a single
+	      <cnxn target="media">media</cnxn>, <cnxn
+		target="table">table</cnxn>, or <cnxn
+		target="code">code</cnxn> tag  must appear.
+	      Finally, an optional <cnxn target='caption'>caption</cnxn>
+	      tag may appear.
+	    </item>
+	  </list>
+	</para>
+
+	<example id='figexamples'>
+	  <code type='block'>
+	    <![CDATA[
+	  <figure id="fig1">
+	    <name>A Happy Dog</name>
+	    <media type="image/jpg" src="image1.jpg"/>
+	    <caption>The dog displayed in this picture is enjoying a
+	    comfortable bed.</caption>
+	  </figure>
+	    ]]>
+	  </code>
+	  <figure id="fig1">
+	    <name>A Happy Dog</name>
+	    <media type="image/jpg" src="spec/image1.jpg"/>
+	    <caption>
+	      The dog displayed in this picture is enjoying a
+	      comfortable bed.
+	    </caption>
+	  </figure>
+	</example>
+      </section>
+      
+      <section id="subfigure">
+	<name>subfigure</name>
+	<para id="subp1">
+	  <name>Description</name> The subfigure tag is used when you
+	  want to use more than one <cnxn target="media">media</cnxn>
+	  tag or <cnxn target="table">table</cnxn> tag,
+	  <foreign>etc</foreign>. inside of the same <cnxn
+	  target="figure">figure</cnxn> tag.  It is only appropriate
+	  to use subfigures if the subfigures are related in some way.
+	  The usage of the subfigure tag is similar to that of <cnxn
+	  target='figure'>figure</cnxn>, except that it cannot contain
+	  another subfigure tag.
+	</para>
+
+	<para id="subfigatt">
+	  <name>Attributes</name>
+	  <list id="subfiglist">
+	    <item>
+	      id - unique id 
+	      <list type="bulleted" id="attlist7">
+		<item>
+		  Optional
+		</item>
+		<item>
+		  <cnxn target="id">ID</cnxn>
+		</item>
+	      </list>
+	    </item>
+	  </list>
+	</para>
+
+	<para id='subfigure_type'>
+	  <name>Type</name>
+	  <cnxn target='special_tags'>Special</cnxn>
+	</para>
+
+	<para id='subfigure_allowed'>
+	  <name>Contained Within:</name>
+	  <list id='subfigure_contain_list'>
+	    <item><cnxn target='figure'>Figure</cnxn></item>
+	  </list>
+	</para> 
+	
+	<para id="subfigchild">
+	  <name>Children</name>
+	  <list id="subfiglist2">
+	    <item>
+	      First, a <cnxn target='name'>name</cnxn> tag may appear.
+	      Next, a single <cnxn target="media">media</cnxn>,
+	      <cnxn target="table">table</cnxn>, or <cnxn
+		target="code">code</cnxn> tag is required.
+	      Finally, a <cnxn target='caption'>caption</cnxn> tag may appear.
+	    </item>
+	  </list>
+	</para>
+
+	<example id='subfigexample'>
+	  <para id="subp2">
+	    Here are two subfigures appearing in a figure whose <cnxn
+	      target="orient">orient</cnxn> attribute is set
+	    to "horizontal".
+	  </para>
+	  <code type='block'>
+	    <![CDATA[
+	  <figure orient="horizontal" id="horfig">
+	    <subfigure id="subfig1">
+	      <media type="image/jpg" src="image1.jpg"/>
+	    </subfigure>
+	    <subfigure id="subfig2">
+	      <media type="image/jpg" src="image2.jpg"/>
+	    </subfigure>
+	  </figure>
+	    ]]>
+	  </code>
+	  <figure orient="horizontal" id="horfig">
+	    <subfigure id="subfig1">
+	      <media type="image/jpg" src="spec/image1.jpg"/>
+	    </subfigure>
+	    <subfigure id="subfig2">
+	      <media type="image/jpg" src="spec/image2.jpg"/>
+	    </subfigure>
+	  </figure>
+	  <para id="subp3">
+	    Similarly, here are two subfigures appearing in a figure
+	    whose <cnxn target="orient">orient</cnxn>
+	    attribute is set to "vertical".
+	  </para>
+	  <code type='block'>
+	    <![CDATA[
+	  <figure orient="vertical" id="vertfig">
+	    <subfigure id="subfig3">
+	      <media type="image/jpg" src="image1.jpg"/>
+	      <caption>Dog sitting</caption>
+	    </subfigure>
+	    <subfigure id="subfig4">
+	      <media type="image/jpg" src="image2.jpg"/>
+	      <caption>Dog standing</caption>
+	    </subfigure>
+	  </figure> ]]>
+	  </code>
+	  <figure orient="vertical" id="vertfig">
+	    <subfigure id="subfig3">
+	      <media type="image/jpg" src="spec/image1.jpg"/>
+	      <caption>Dog sitting</caption>
+	    </subfigure>
+	    <subfigure id="subfig4">
+	      <media type="image/jpg" src="spec/image2.jpg"/>
+	      <caption>Dog standing</caption>
+	    </subfigure>
+	  </figure>
+	</example>
+      </section>  
+      
+      <section id="caption">
+	<name>caption</name>
+	<para id="capp1">
+	  <name>Description</name>
+	  The caption tag is only used to provide a caption for a <cnxn
+	    target="figure">figure</cnxn> or a <cnxn
+	    target="subfigure">subfigure</cnxn>.  The caption tag is
+	  distinct from the <cnxn target="name">name</cnxn> tag in that
+	  it provides a possibly lengthy description of the figure for
+	  the reader's use and not an overall title or name.
+	</para>
+	
+	<para id="caplist">
+	  <name>Attributes</name>
+	  None
+	</para>
+
+	<para id='caption_type'>
+	  <name>Type</name>
+	  <cnxn target='special_tags'>Special</cnxn>
+	</para>
+
+	<para id='caption_allowed'>
+	  <name>Contained Within:</name>
+	  <list id='caption_contain_list'>
+	    <item><cnxn target='figure'>Figure</cnxn></item>
+	  </list>
+	</para> 
+	
+	<para id="capp3">
+	  <name>Children</name>
+	  Caption may contain one or more <cnxn target='inline_tags'>inline tags</cnxn>.
+	</para>
+
+	<example id='captionexample'>
+	  <para id="capp2">
+	    In this example, notice the different roles played by the
+	    <cnxn target="name">name</cnxn> tag and the
+	    caption tag.
+	  </para>
+	  <code type='block'>
+	    <![CDATA[
+	  <figure id="fig3">
+	    <name>A Happy Dog</name>
+	    <media type="image/jpg" src="image1.jpg"/>
+	    <caption>The dog displayed in this picture is enjoying a
+	    comfortable bed.</caption>
+	  </figure> ]]>
+	  </code>
+	  <figure id="fig3">
+	    <name>A Happy Dog</name>
+	    <media type="image/jpg" src="spec/image1.jpg"/>
+	    <caption>The dog displayed in this picture is enjoying a
+	      comfortable bed.</caption>
+	  </figure>
+	</example>
+      </section>
+    </section>
+
+    <section id="media">
+      <name>media</name>
+      <para id="mediap1">
+	<name>Description</name>
+	The media tag inserts "media objects", such as images,
+	applets, movies, sounds, or any valid mimetype, into CNXML
+	documents.
+      </para>
+      
+      <para id="mediaattr">
+	<name>Attributes</name>
+	<list id="medialist">
+	  <item>
+	    type - the <link
+	      src='http://www.ietf.org/rfc/rfc1341.txt?number=1341'>MIME
+	      type</link> of the media object.
+	    <list type="bulleted" id="attlist24">
+	      <item>Required</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn>
+		<note>
+		  Some examples of MIME types for common objects include
+		  <code>image/png</code>,
+		  <code>audio/basic</code>,
+		  <code>video/quicktime</code>, and
+		  <code>application/x-java-applet</code>.
+		</note>
+	      </item>
+	    </list>
+	  </item>
+	  <item>
+	    src - a relative or absolute URI indicating the path to the object.
+	    <list type="bulleted" id="attlist26">
+	      <item>Required</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='media_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>Special</cnxn>
+      </para>
+
+      <para id='media_allowed'>
+	<name>Contained Within:</name>
+	<list id='media_contain_list'>
+	  <item><cnxn target='figure'>Figure</cnxn></item>
+	  <item><cnxn target='equation'>Equation</cnxn></item>
+	  <item><cnxn target='structural_tags'>Structural Tags</cnxn></item>
+	</list>
+      </para>
+
+      <para id="mediap3">
+	<name>Children</name>
+	The media tag may take one or more <cnxn
+	  target='param'>param</cnxn> tags, followed by one or more
+	<cnxn target='media'>media</cnxn> tags.
+      </para>
+
+      <example id='code_example_code'>
+	<code type='block'>
+	  <![CDATA[
+        <media type="application/postscript" src="image1.eps">
+	  <param name='height' value='300'/>
+	  <param name='width'  value='200'/>
+          <media type='image/png' src='image2.png'/>
+	</media>]]>
+	</code>
+        <para id='media_children_media'>
+	  The example code illustrates the use of nested media tags.
+	  The outer image tag specifies the preferred (default)
+	  image. If the browser does not support that particular file
+	  type, the child media tag will be used instead.
+        </para>
+      </example>
+      <example id='code_example_code2'>
+	<code type='block'>
+          <![CDATA[
+        <media type="application/x-java-applet" src="applet.class">
+          <param name='height' value='300'/>
+          <param name='width'  value='200'/>
+          <media type='image/png' src='image2.png'/>
+        </media>]]>
+        </code>
+      </example>
+    </section>
+
+    <section id="param">
+      <name>param</name>
+      <para id="paramp1">
+	<name>Description</name>
+	The param tag allows you to pass parameters to the media tag.
+      </para>
+      
+      <para id="paramattr">
+	<name>Attributes</name>
+	<list id="paramattlist">
+	  <item>
+	    name - the attribute name of the parameter.
+	    <list type="bulleted" id="paramttlist24">
+	      <item>Required</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn>
+		<note>
+		  Some examples of param types for common objects include
+		  <code>height</code>,
+		  <code>width</code>
+		</note>
+	      </item>
+	    </list>
+	  </item>
+	  <item>
+	    value - the value for the parameter
+	    <list type="bulleted" id="paramattlist26">
+	      <item>Required</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='param_type'>
+	<name>Type</name>
+	Special
+      </para>
+
+      <para id='param_allowed'>
+	<name>Contained Within:</name>
+	<list id='param_contain_list'>
+	  <item>media</item>
+	</list>
+      </para> 
+      
+      <para id="paramp3">
+	<name>Children</name>
+	none (EMPTY)
+      </para>
+
+      <example id='param_example_example'>
+	<code type='block'>
+	  <![CDATA[
+	<media type="image/jpg" src="image1.jpg">
+	  <param name='height' value='300'/>
+	  <param name='width'  value='200'/>
+	</media>]]>
+	</code>
+      </example>
+    </section>
+
+    <section id="equation">
+      <name>equation</name>
+      <para id="eqnp1">
+	<name>Description</name> The equation tag is used to set off
+	equations in CNXML documents by using unicode text and
+	embedded <cnxn target='media'>media</cnxn> to display math.
+	<note type='note'>It is strongly encouraged, however, to use
+	  equation with <link
+	    src='http://cnx.rice.edu/content/m9008'>Content MathML</link>
+	  tags when displaying math.</note>
+      </para>
+      
+      <para id="eqnattr">
+	<name>Attributes</name>
+	<list id="eqnlist">
+	  <item>id - unique id
+	    <list type="bulleted" id="attlist21">
+	      <item>Required</item>
+	      <item><cnxn target="id" >ID</cnxn></item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='equation_type'>
+	<name>Type</name>
+	<cnxn target='special_tags'>Special</cnxn>
+      </para>
+
+      <para id='equation_allowed'>
+	<name>Contained Within:</name>
+	<list id='equation_contain_list'>
+	  <item><cnxn target='structural_tags'>structural</cnxn></item>
+	  <item><cnxn target='para'>para</cnxn></item>
+	</list>
+      </para>   
+      
+      <para id='eqnp3a'>
+	<name>Children</name> The equation tag may optionally have
+	<cnxn target='name'>name</cnxn> as the first child, to
+	associate a name with the equation.  The equation tag must
+	contain any number of <cnxn target='media'>media</cnxn> tags,
+	or mathml.  <note>For maximum flexibility,any math contained
+	in the equation tag should be marked up using <cnxn
+	document="m9008">Content MathML</cnxn> tags.
+	</note>
+      </para>
+
+      <example id='equationexample'>
+	<code type='block'>
+	  <![CDATA[
+	<equation id="eqn14">
+	  <name>Euler's Relation</name>
+	  <media type='image/gif' src='euler.gif' />
+	</equation>]]>
+	</code>
+	<code type='block'>
+	  <![CDATA[
+	<equation id='eqn15'>
+	  <name>Simple Arithmetic</name>
+	  11+27=38
+	</equation>]]>
+	</code>
+	<equation id="eqn14">
+	  <name>Euler's Relation</name>
+	  <media type='image/gif' src='spec/euler.gif' />
+	</equation>
+	<equation id='eqn15'>
+	  <name>Simple Arithmetic</name>
+	  11+27=38
+	</equation>
+      </example>
+    </section>
+  </section>
+
+  <section id='calstable'>
+    <name>CALS Table Model</name>
+    <para id='calsp1'>
+      CNXML uses the <link
+	src='http://www.oasis-open.org/specs/a502.htm'>CALS Table
+	Model</link> for including tables into CNXML documents.
+	Provided below is a brief description of the CALS tags, their
+	attributes, and children (along with <cnxn target='tableex'>a
+	helpful example</cnxn>; <cnxn document='m11216'
+	target='tab1'>a second example</cnxn>).  For a more complete
+	description of the CALS Table consult the <link
+	src='http://www.oasis-open.org/specs/a502.htm'>CALS Table
+	Spec</link>.
+    </para>
+
+    <section id='table'>
+      <name>table</name>
+
+      <para id="tablep1">
+	<name>Description</name>
+	The table tag marks beginning of a table.
+      </para>
+
+      <para id='tableatt'>
+	<name>Attributes</name>
+	<list id='tablelist1'>
+	  <item id='tableid'>id-a unique id (added for CNXML)
+	    <list id='tablelist11a'>
+	      <item>Required</item>
+	      <item><cnxn target="id" >ID</cnxn></item>
+	    </list>
+	  </item>
+	  <item id='tableframe'>frame-position of lines drawn around table
+	    <list id='tablelist1a'>
+	      <item>Optional</item>
+	      <item>Possible Values
+		<list id='tablelist1aa'>
+		  <item>sides-left and right</item>
+		  <item>top-below title</item>
+		  <item>bottom-after last row</item>
+		  <item>topbot-top and bottom</item>
+		  <item>all-all of the above</item>
+		  <item>none</item>
+		</list>
+	      </item>
+	      <item>Default comes from <cnxn  target='tabletabstyle'>tabstyle</cnxn>, otherwise it is "all"</item>
+	    </list>
+	  </item>
+	  <item id='tablecolsep'>colsep-sets whether the internal column rulings are displayed or not
+	    <list id='tablelist1b'>
+	      <item>Optional</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='tablelist1ba'>
+		  <item>0-do not display column rulings</item>
+		  <item>any other number-display column rulings</item>
+		</list>
+	      </item>
+	      <item>Default comes from <cnxn  target="tabletabstyle">tabstyle</cnxn> if used, otherwise
+		it is 1.</item>
+	    </list>
+	  </item>
+	  <item id='tablerowsep'>rowsep-sets whether the internal row rulings are displayed or not
+	    <list id='tablelist1c'>
+	      <item>Optional</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='tablelist1ca'>
+		  <item>0-do not display column rulings</item>
+		  <item>any other number-display column rulings</item>
+		</list>
+	      </item>
+	      <item>Default comes from <cnxn target='tabletabstyle'>tabstyle</cnxn> if used, otherwise
+		it is 1.</item>
+	    </list>
+	  </item>
+	  <item id='tabletabstyle'>tabstyle-an identifier for a table style
+	    <list id='tablelist1d'>
+	      <item>Optional</item>
+	      <item><!--NMTOKEN--><cnxn target="cdata" >CDATA</cnxn></item>
+	    </list>
+	  </item>
+	  <item id='tabletocentry'>tocentry-says whether the table's title, if it exists, is listed in the table of contents
+	    <list id='tablelist1e'>
+	      <item>Optional</item>
+	      <item><cnxn target="cdata" >CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='tablelist1ea'>
+		  <item>0-do not include in table of contents</item>
+		  <item>any other number-display in table of contents</item>
+		</list>
+	      </item>
+	      <item>Default comes from style specification if it exists,
+		otherwise it is 1</item>
+	      
+	      <item id='tableshortentry'>shortentry-says whether to use the shorttitle, or
+		title if no shorttitle exists, in listings in other parts
+		of the document
+		<list id='tablelist1f'>
+		  <item>Optional</item>
+		  <item><cnxn target="cdata"
+		      >CDATA</cnxn></item>
+		  <item>Default comes from style specification if it exists,
+		    otherwise it is "0"</item>
+		</list>
+	      </item>
+	      <item id='tableorient'>orient-orientation of table
+		<list id='tablelist1g'>
+		  <item>Optional</item>
+		  <item>Possible Values
+		    <list id="tablelist1ga">
+		      <item>port</item>
+		      <item>land</item>
+		    </list></item>
+		  <item>Default comes from style specification if it exists,
+		    otherwise it is "port"</item>
+		</list>
+	      </item>
+	      <item id='tablepgwide'>pgwide-determines the available
+		width of the table (only used when orient='pgwide')
+		<list id='tablelist1h'>
+		  <item>Optional</item>
+		  <item><cnxn target="cdata" >CDATA</cnxn></item>
+		  <item>Possible Values
+		    <list id='tablelist1ha'>
+		      <item>0-maximum width of the table is the galley width</item>
+		      <item>any other number-the width of the table is
+			the entire width of the page</item>
+		    </list>
+		  </item>
+		  <item>Default comes from the style specification,
+		    otherwise it depends on the medium.</item>
+		</list>
+	      </item>
+	      
+	    </list>
+	  </item>
+	</list>
+      </para>
+      <para id='tablechild'>
+	<name>Children</name>
+	<list id='tablechildlist'>
+	  <item>a <cnxn target='name' >name</cnxn></item>
+	  <item>one or more <cnxn target='tgroup'
+	      >tgroup</cnxn></item>
+	</list>
+      </para>
+      <example id='tableex'>
+	<code type='block'>
+	  <![CDATA[
+	<table frame="all" id="budgettable1">
+	  <name>Budget - Comparison by year</name>
+	  <tgroup cols="4" align="left" colsep="1" rowsep="1">
+	    <colspec colnum="2" colname="c2"/>
+	    <colspec colnum="4" colname="c4"/>
+	    <thead valign="top">
+	      <row>
+	        <entry morerows="1" align="center">Item</entry>
+	        <entry namest="c2" nameend="c4" align="center">Year</entry>
+	      </row>
+	      <row>
+	        <entry align="center">1998</entry>
+	        <entry align="center">1999</entry>
+	        <entry align="center">2000</entry>
+	      </row>
+	    </thead>
+	    <tbody valign="top">
+	      <row>
+	        <entry>Income</entry>
+	        <entry>12,293</entry>
+	        <entry>12,398</entry>
+	        <entry>14,298</entry>
+	      </row>
+	      <row>
+	        <entry>Expenditure</entry>
+	        <entry>293</entry>
+	        <entry>398</entry>
+	        <entry>298</entry>
+	      </row>
+	      <row>
+	        <entry>Surplus</entry>
+	        <entry>12000</entry>
+	        <entry>12000</entry>
+	        <entry>14000</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>
+	  ]]>
+	</code>
+	
+	<table frame="all" id="budgettable1">
+	  <name>Budget - Comparison by year</name>
+	  <tgroup cols="4" align="left" colsep="1" rowsep="1">
+	    <colspec colnum="2" colname="c2"/>
+	    <colspec colnum="4" colname="c4"/>
+	    <thead valign="top">
+	      <row>
+		<entry morerows="1" align="center">Item</entry>
+		<entry namest="c2" nameend="c4" align="center">Year</entry>
+	      </row>
+	      <row>
+		<entry align="center">1998</entry>
+		<entry align="center">1999</entry>
+		<entry align="center">2000</entry>
+	      </row>
+	    </thead>
+	    <tbody valign="top">
+	      <row>
+		<entry>Income</entry>
+		<entry>12,293</entry>
+		<entry>12,398</entry>
+		<entry>14,298</entry>
+	      </row>
+	      <row>
+		<entry>Expenditure</entry>
+		<entry>293</entry>
+		<entry>398</entry>
+		<entry>298</entry>
+	      </row>
+	      <row>
+		<entry>Surplus</entry>
+		<entry>12000</entry>
+		<entry>12000</entry>
+		<entry>14000</entry>
+	      </row>
+	    </tbody>
+	  </tgroup>
+	</table>	    
+      </example>
+      
+      <section id='tgroup'>
+	<name>tgroup</name>
+	<para id="tgroupp1">
+	  <name>Description</name>
+	  The tgroup tag identifies a new portion of a <cnxn
+	    target='table' >table</cnxn>.
+	</para>
+	
+	<para id='tgroupatt'>
+	  <name>Attributes</name>
+	  <list id='tgrouplist1'>
+	    <item id='tgroupcols'>cols-number of columns in the <cnxn
+		target='tgroup'>tgroup</cnxn>
+	      <list id="tgrouplist1a">
+		<item><cnxn target="cdata"
+		    >CDATA</cnxn></item>
+		<item>Possible Values
+		  <list id="tgrouplist1aa">
+		    <item>a number-the number of columns in the group
+		    </item>
+		  </list>
+		</item>
+	      </list>
+	    </item>
+	    <item id='tgrouptgroupstyle'>tgroupstyle-a name of a style
+	      <!--FIX ME?-->
+	      <list id='tgrouplist1b'>
+		<item>Optional</item>
+		<item><!--NMTOKEN--><cnxn target="cdata">CDATA</cnxn></item>
+	      </list>
+	    </item>
+	    <item id='tgroupcolsep'>colsep-sets whether the internal column rulings are displayed or not
+	      <list id='tgrouplist1c'>
+		<item>Optional</item>
+		<item><cnxn target="cdata"
+		    >CDATA</cnxn>
+		</item>
+		<item>Possible Value
+		  <list id='tgrouplist1ca'>
+		    <item>0-do not display column rulings</item>
+		    <item>any other number-display column rulings</item>
+		  </list>
+		</item>
+
+		<item>Default is the value from <cnxn  target='tgrouptgroupstyle'>tgroupstyle</cnxn> if it
+		  exists, or from <cnxn  target='table'>table</cnxn> if it exists, otherwise it is 1</item>
+	      </list>
+	    </item>
+	    <item id='tgrouprowsep'>rowsep-sets whether the internal row rulings are displayed or not
+	      <list id='tgrouplist1d'>
+		<item>Optional</item>
+		<item><cnxn target="cdata"
+		    >CDATA</cnxn></item>
+		<item>Possible Value
+		  <list id='tgrouplist1da'>
+		    <item>0-do not display column rulings</item>
+		    <item>any other number-display column rulings</item>
+		  </list>
+		</item>
+		<item>Default is the value from <cnxn  target='tgrouptgroupstyle'>tgroupstyle</cnxn> if it
+		  exists, or from <cnxn  target='table'>table</cnxn> if it exists, otherwise it is 1</item>
+	      </list>
+	    </item>
+	    <item id='tgroupalign'>align-how the text will be aligned
+	      <list id="tgrouplist1e">
+		<item>Optional</item>
+		<item>Possible Values
+		  <list id='tgrouplist1ea'>
+		    <item>left-left justified</item>
+		    <item>right-right justified</item>
+		    <item>center-centered</item>
+		    <item>justify-right and left justified</item>
+		    <item>char-aligns to the leftmost occurance of the
+		      value of the <cnxn  target="tgroupchar">char attribute</cnxn></item>
+		  </list>
+		</item>
+		<item>Default uses value from <cnxn  
+		    target='tgrouptgroupstyle'>tgroupstyle</cnxn> if it
+		  exists, otherwise use left</item>
+	      </list>
+	    </item>
+	    
+	    <item id='tgroupchar'>char-the character used in <cnxn
+		target="tgroupalign">align</cnxn>
+	      <list id='tgrouplist1f'>
+		<item>Optional</item>
+		<item><cnxn target="cdata"
+		    >CDATA</cnxn></item>
+		<item>Default uses value from <cnxn  
+		    target='tgrouptgroupstyle'>tgroupstyle</cnxn> if it
+		  exists, otherwise use ""</item>
+	      </list>
+	    </item>
+	    
+	    <item id='tgroupcharoff'>charoff-the precentage of the column width to the left
+	      of the char used in <cnxn  target="tgroupalign">align</cnxn>
+	      <list id='tgrouplist1g'>
+		<item>Optional</item>
+		<item><!--NUTOKEN--><cnxn target="cdata" >CDATA</cnxn></item>
+		<item>Default uses value from <cnxn  
+		    target='tgrouptgroupstyle'>tgroupstyle</cnxn> if it
+		  exists, otherwise it is "50"</item>
+	      </list>
+	      
+	    </item>
+	    <!--
+	    <item>secur<item>Required</item>
+	    <item><cnxn target="cdata" >CDATA</cnxn></item></item>-->
+	  </list>
+	</para>
+	<para id='tgroupchild'>
+	  <name>Children</name>
+	  <list id='tgrouplist3'>
+	    <item>zero, one, or more <cnxn target='colspec'
+		>colspec</cnxn></item> 
+	    <item>zero, one, or more
+	      <cnxn target='spanspec' >spanspec</cnxn></item>
+	    <item>zero or one <cnxn target='thead'
+		>thead</cnxn></item> 
+	    <item>zero or one <cnxn
+		target='tfoot' >tfoot</cnxn></item> 
+	    <item>one
+	      <cnxn target='tbody' >tbody</cnxn></item>
+	  </list>
+	</para>
+	
+	<para id="tgroupp2">
+	  <name>Example</name> See the <cnxn target='tableex'>table
+	  example</cnxn>.
+	</para>
+      </section>
+
+      <section id='colspec'>
+	<name>colspec</name>
+	
+	<para id="colspecp1">
+	  <name>Description</name>
+	  The colspec tag specifies a column of a <cnxn target='table'
+	    >table</cnxn> or <cnxn target='entrytbl'
+	    >entrytbl</cnxn>.
+	</para>
+	
+	<para id='colspecatt'>
+	  <name>Attributes</name>
+	  <list id='colspeclist2'>
+	    <item>colnum-number of the column
+	      <list id="colspeclist2a">
+		<item>Optional</item>
+		<item><cnxn target='cdata'
+		    >CDATA</cnxn></item>
+		<item>Possible Value
+		  <list id='colspeclist2ab'>
+		    <item>a number</item>
+		  </list>
+		</item>
+	      </list>
+	    </item>
+	    <item id='colspeccolname'>colname-name of the column (used by <cnxn 
+		target="entry">entry</cnxn> and <cnxn 
+		target="entrytbl">entrytbl</cnxn>)
+	      <list id="colspeclist2b">
+		<item>Optional</item>
+		<item><!--NMTOKEN--><cnxn target='cdata' >CDATA</cnxn></item>
+	      </list>
+	    </item>
+	    <item>colwidth-the width of the column
+	      <list id="colspeclist2c">
+		<item>Optional</item>
+		<item><cnxn target='cdata' >CDATA</cnxn></item>
+		<item>Possible Values
+		  <list id="colspeclist2ca">
+		    <item>a proportional measure (i.e. number*)-5* means
+		      five times the proportion</item>
+		    <item>a fixed measure (i.e. a number followed by
+		      units)-3pt means 3 point</item>
+		    <item>a mixed measure-5*+3pt means fives the
+		      proportion plus 3 point</item>
+		    <item>Default comes from a named style specification
+		      (if it exists).  If the style specification does not
+		      exist or if it is "", then colwidth='1*'</item>
+		  </list>
+		</item>
+		
+		<item>colsep-sets whether the internal column rulings are displayed or not
+		  <list id="colspeclist2d">
+		    <item>Optional</item>
+		    <item><cnxn target='cdata' >CDATA</cnxn></item>
+		    <item>Possible Value
+		      <list id='colspeclist2da'>
+			<item>0-do not display column rulings</item>
+			<item>any other number-display column rulings</item>
+		      </list>
+		    </item>
+		    <item>Default comes from nearest <cnxn
+			target='spanspec'>spanspec</cnxn> or
+		      <cnxn  
+			target='tgroup'>tgroup</cnxn> </item>
+		  </list>
+		</item>
+		<item>rowsep-sets whether the internal row rulings are displayed or not
+		  <list id="colspeclist2e">
+		    <item>Optional</item>
+		    <item><cnxn target='cdata'
+			>CDATA</cnxn></item>
+		    <item>Possible Value
+		      <list id='colspeclist2ea'>
+			<item>0-do not display column rulings</item>
+			<item>any other number-display column rulings</item>
+		      </list>
+		    </item>
+		    <item>Default comes from nearest <cnxn 
+			target='spanspec'>spanspec</cnxn> or <cnxn
+			target='tgroup'>tgroup</cnxn> 
+		    </item>
+		  </list>
+		  
+		</item>
+		<item id='colspecalign'>align-how the text will be aligned
+		  <list id="colspeclist2f">
+		    <item>Optional</item>
+		    <item>Possible Values<list id='colspeclist2fa'>
+			<item>left-left justified</item>
+			<item>right-right justified</item>
+			<item>center-centered</item>
+			<item>justify-right and left justified</item>
+			<item>char-aligns to the leftmost occurance of the
+			  value of the <cnxn target="colspecchar">char attribute</cnxn></item>
+		      </list>
+		    </item>
+		    <item>Default comes from <cnxn 
+			target='tgroup'>tgroup</cnxn>, its <cnxn 
+			target='tgrouptgroupstyle'>tgroupstyle</cnxn>,
+		      otherwise it is "left".</item>
+		  </list>
+		</item>
+		<item id='colspecchar'>char-the character used in <cnxn  target="colspecalign">align</cnxn>
+		  <list id="colspeclist2g">
+		    <item>Optional</item>
+		    <item><cnxn target='cdata' >CDATA</cnxn></item>
+
+		    <item>Default is from nearest <cnxn 
+			target='entrytbl'>entrytbl</cnxn>, if it exists,
+		      otherwise comes from <cnxn 
+			target='tgroup'>tgroup</cnxn></item>	      
+		  </list>
+		</item>
+		<item>charoff-the precentage of the column width to the left
+		  of the char used in <cnxn  target="colspecalign">align</cnxn>
+		  <list id="colspeclist2h">
+		    <item>Optional</item>
+		    <item><!--NUTOKEN--><cnxn target='cdata'
+			>CDATA</cnxn></item>
+		    <item>Default is from nearest <cnxn 
+			target='entrytbl'>entrytbl</cnxn>, if it exists,
+		      otherwise comes from <cnxn 
+			target='tgroup'>tgroup</cnxn>
+		    </item>
+		    
+		  </list>
+		</item>
+	      </list>
+	    </item>
+	  </list>
+	</para>
+	
+	<para id='colspecp2'>
+	  <name>Children</name>
+	  EMPTY
+	</para>
+
+	<para id="colspecp3">
+	  <name>Example</name> See the <cnxn target='tableex'>table
+	  example</cnxn>.
+	</para>
+      </section>
+    </section>
+    
+    <section id='spanspec'>
+      <name>spanspec</name>
+      
+      <para id="spanspecp1">
+	<name>Description</name>
+	The spanspec tag identifies a horizontal span of columns and
+	associated attributes that can subsequently be referenced by
+	its spanname for repeated use in <cnxn target='entry'
+	  >entry</cnxn> or <cnxn target='entrytbl'
+	  >entrytbl</cnxn> in different <cnxn target='row'
+	  >rows</cnxn>.
+      </para>
+      
+      <para id='spanspecatt'>
+	<name>Attributes</name>
+	<list id='spanspeclist1'>
+	  <item id='spanspecnamest'>namest-name of the furthest left column in a span
+	    <list id="spanspeclist2a">
+	      <item>Required</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata' >CDATA</cnxn></item>
+	    </list></item>
+	  <item>nameend-name of the furthest right column in a span
+	    <list id="spanspeclist2b">
+	      <item>Required</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata' >CDATA</cnxn></item>
+	    </list></item>
+	  <item id='spanspecspanname'>spanname-name for the horizontal span (used by <cnxn 
+	      target="entry">entry</cnxn> and <cnxn 
+	      target="entrytbl">entrytbl</cnxn>)
+	    <list id="spanspeclist2c">
+	      <item>Required</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata' >CDATA</cnxn></item>
+	    </list></item>
+	  <item>colsep-sets whether the internal column rulings are displayed or not
+	    <list id="spanspeclist2d">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'
+		  >CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='spanspeclist2da'>
+		  <item>0-do not display column rulings</item>
+		  <item>any other number-display column rulings</item>
+		</list>
+	      </item>
+	      <item>Default comes from <cnxn 
+		  target='entrylist1'>namest</cnxn> column's <cnxn  target='colspec'>colspec</cnxn></item>
+	    </list></item>
+	  <item>rowsep-sets whether the internal row rulings are displayed or not
+	    <list id="spanspeclist2e">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'
+		  >CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='spanspeclist2ea'>
+		  <item>0-do not display column rulings</item>
+		  <item>any other number-display column rulings</item>
+		</list>
+	      </item>
+	      <item>Default comes from <cnxn 
+		  target='entrylist1'>namest</cnxn>'s <cnxn  target='colspec'>colspec</cnxn></item>
+	    </list>
+	  </item>
+	  <item id='spanspecalign'>align-how the text will be aligned
+	    <list id="spanspeclist2f">
+	      <item>Optional</item>
+	      <item>
+		<list id="spanspeclist2fa">
+		  <item>left-left justified</item>
+		  <item>right-right justified</item>
+		  <item>center-centered</item>
+		  <item>justify-right and left justified</item>
+		  <item>char-aligns to the leftmost occurance of the
+		    value of the <cnxn  target="spanspecchar">char attribute</cnxn></item>
+		</list>
+	      </item>
+	      <item>Default uses <cnxn  target='tgrouptgroupstyle'>tgroupstyle</cnxn> if it exists, otherwise it
+		is "center"</item>
+	    </list></item>
+	  <item id='spanspecchar'>char-the character used in <cnxn  target="spanspecalign">align</cnxn>
+	    <list id="spanspeclist2g">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata' >CDATA</cnxn></item>
+	      <item>Default comes from <cnxn 
+		  target='entrylist1'>namest</cnxn> column's <cnxn  target='colspec'>colspec</cnxn></item>
+	    </list></item>
+	  <item>charoff-the precentage of the column width to the left
+	    of the char used in <cnxn  target="spanspecalign">align</cnxn>
+	    <list id="spanspeclist2h">
+	      <item>Optional</item>
+	      <item><!--NUTOKEN--><cnxn target='cdata'
+		  >CDATA</cnxn></item>
+	      <item>Default comes from <cnxn 
+		  target='entrylist1'>namest</cnxn> column's <cnxn  target='colspec'>colspec</cnxn></item>
+	    </list></item>
+	</list>
+      </para>
+      
+      <para id='spanspecp2'>
+	<name>Children</name>
+	EMPTY
+      </para>
+      
+      <para id="spanspecp3">
+	<name>Example</name> See the <cnxn target='tableex'>table
+	example</cnxn>.
+      </para>
+    </section>
+    
+    <section id='thead'>
+      <name>thead</name>
+      <para id="theadp1">
+	<name>Description</name>
+	The thead tag identifies the heading <cnxn target='row'
+	  >row</cnxn> of a <cnxn target='tgroup'
+	  >tgroup</cnxn> or <cnxn target='entrytbl'
+	  >entrytbl</cnxn>.
+      </para>
+      
+      <para id='theadatt'>
+	<name>Attributes</name>
+	<list id='theadlist2'>
+	  <item>valign-vertical position of the text
+	    <list id="theadlist2a">
+	      <item>Optional</item>
+	      <item>Possible Values<list id="theadlist2aa">
+		  <item>top</item>
+		  <item>middle</item>
+		  <item>bottom</item>
+		</list></item>
+	    </list></item>
+	  <item>Default is "bottom"</item>
+	</list>
+      </para>
+      <para id='theadchild'>
+	<name>Children</name>
+	<list id='theadlist3'>
+	  <item>zero, one, or more 
+	    <cnxn target='colspec'>colspec</cnxn></item>
+	  <item>one or more <cnxn target='row'
+	      >row</cnxn></item>
+	</list>
+      </para>
+      
+      <para id="theadp2">
+	<name>Example</name>
+	See the <cnxn target='tableex' >table
+	  example</cnxn>.
+      </para>
+    </section>
+
+    <section id='tfoot'>
+      <name>tfoot</name>
+      
+      <para id="tfootp1">
+	<name>Description</name> The tfoot tag identifies the <cnxn
+	target='row'>rows</cnxn> of footer information that are
+	displayed after the <cnxn target='tbody'>tbody</cnxn>.
+      </para>
+      
+      <para id='tfootatt'>
+	<name>Attributes</name>
+	<list id='tfootlist2'>
+	  <item>valign-vertical position of the text
+	    <list id="tfootlist2a">
+	      <item>Optional</item>
+	      <item>Possible Values<list id="tbodylist2fa">
+		  <item>top</item>
+		  <item>middle</item>
+		  <item>bottom</item>
+		</list></item>
+	    </list></item>
+	  <item>Default is "top"</item>
+	</list>
+      </para>
+      <para id='tfootchild'>
+	<name>Children</name>
+	<list id='tfootlist3'>
+	  <item>zero, one, or more 
+	    <cnxn target='colspec'
+	      >colspec</cnxn></item>
+	  <item>one or more <cnxn target='row'
+	      >row</cnxn></item>
+	</list>
+      </para>
+      
+      <para id="tfootp2">
+	<name>Example</name>
+	See the <cnxn target='tableex' >table
+	  example</cnxn>.
+      </para>
+    </section>
+
+    <section id='tbody'>
+      <name>tbody</name>
+      
+      <para id="tbodyp1">
+	<name>Description</name>
+	The tbody tag identifies the body of a <cnxn target='tgroup'
+	  >tgroup</cnxn> or <cnxn target='entrytbl'
+	  >entrytbl</cnxn>.
+      </para>
+      
+      <para id='tbodyatt'>
+	<name>Attributes</name>
+	<list id='tbodylist2'>
+	  <item>valign-vertical position of the text
+	    <list id="tbodylist2a">
+	      <item>Optional</item>
+	      <item>Possible Values<list id="tbodylist2aa">
+		  <item>top</item>
+		  <item>middle</item>
+		  <item>bottom</item>
+		</list></item>
+	    </list></item>
+	  <item>Default is "top"</item>
+	</list>
+      </para>
+      <para id='tbodychild'>
+	<name>Children</name>
+	<list id='tbodylist3'>
+	  <item>one or more 
+	    <cnxn target='row'>row</cnxn></item>
+	</list>
+      </para>
+      
+      <para id="tbodyp2">
+	<name>Example</name> See the <cnxn target='tableex'>table
+	example</cnxn>.
+      </para>
+    </section>
+    
+    <section id='row'>
+      <name>row</name>
+      
+      <para id="rowp1">
+	<name>Description</name>
+	The row tag identifies the row of information in a <cnxn
+	  target='thead' >thead</cnxn>, <cnxn target='tbody'
+	  >tbody</cnxn>, or <cnxn target='tfoot'
+	  >tfoot</cnxn>.
+      </para>
+      
+      <para id='rowatt'>
+	<name>Attributes</name>
+	<list id='rowlist2'>
+	  <item>rowsep-sets whether the internal row rulings are displayed or not
+	    <list id="rowlist2e">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata' >CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='rowlist2ea'>
+		  <item>0-do not display column rulings</item>
+		  <item>any other number-display column rulings</item>
+		</list>
+	      </item> 
+	      <item>Default comes from enclosing <cnxn 
+		  target='row'>row</cnxn>, <cnxn 
+		  target='colspec'>colspec</cnxn> with <cnxn  target='spanspecnamest'>namest</cnxn>, <cnxn 
+		  target='spanspec'>spanspec</cnxn> with <cnxn  target='spanspecnamest'>namest</cnxn>, <cnxn 
+		  target='entrytbl'>entrytbl</cnxn>, <cnxn 
+		  target='tgroup'>tgroup</cnxn>, or <cnxn  target='table'>table</cnxn></item>
+	    </list>
+	  </item>
+	  <item>valign-vertical alignment of the text
+	    <list id="rowlist2a">
+	      <item>Optional</item>
+	      <item>Possible Values
+		<list id="rowlist2fa">
+		  <item>top</item>
+		  <item>middle</item>
+		  <item>bottom</item>
+		</list></item>
+	      <item>Default is "top"</item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      <para id='rowchild'>
+	<name>Children</name>
+	<list id='rowlist3'>
+	  <item>one or more <cnxn target='entry'
+	      >entry</cnxn></item>
+	  <item>one or more <cnxn target='entrytbl'
+	      >entrytbl</cnxn></item>
+	</list>
+      </para>
+      
+      <para id="rowp2">
+	<name>Example</name> See the <cnxn target='tableex'>table
+	example</cnxn>.
+      </para>
+    </section>
+
+    <section id='entrytbl'>
+      <name>entrytbl</name>
+      
+      <para id="entrytblp1">
+	<name>Description</name> The entrytbl tag takes the place of
+	an <cnxn target='entry'>entry</cnxn>, but fits into a single
+	<cnxn target='row'>row</cnxn> of <cnxn target='tbody'
+	>tbody</cnxn> in a <cnxn target='tgroup'>tgroup</cnxn>.  The
+	content model is the same as that of a <cnxn target='tgroup'
+	>tgroup</cnxn> except that <cnxn target='tfoot'>tfoot</cnxn>
+	is ommitted and entrytbl is self-excluding.
+      </para>
+      
+      <para id='entrytblatt'>
+	<name>Attributes</name>
+	<list id='entrytbllist1'>
+	  <item>cols-number of columns in the <cnxn  target='entrytbl'>entrytbl</cnxn>
+	    <list id="entrytbllist2a">
+	      <item>Required</item>
+	      <item><cnxn target='cdata'>CDATA</cnxn></item>
+	      <item>Possible Values
+		<list id='entrytbllist1aa'>
+		  <item>a number-the number of columns</item>
+		</list>
+	      </item>
+	    </list></item>
+	  <item>tgroupstyle-a name of a style
+	    <list id="entrytbllist2b">
+	      <item>Optional</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata'>CDATA</cnxn></item>
+	    </list></item>
+	  <item id='entrytblcolname'>colname-<cnxn  target='colspeccolname'>colname</cnxn> of a <cnxn 
+	      target="colspec">colspec</cnxn> in the containing <cnxn  target='tgroup'>tgroup</cnxn>
+	    <list id="entrytbllist2c">
+	      <item>Optional</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata'>CDATA</cnxn></item>
+	    </list></item>
+	  <item id='entrytblspanname'>spanname-name of horizontal span named in a <cnxn
+	      target='spanspecspanname'>spanname</cnxn> of
+	    a <cnxn  target='spanspec'>spanspec</cnxn>
+	    <list id="entrytbllist2d">
+	      <item>Optional</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata'>CDATA</cnxn></item>
+	    </list></item>
+	  <item id='entrytblnamest'>namest-name of the furthest left column in a span
+	    <list id="entrytbllist2e">
+	      <item>Optional</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata'>CDATA</cnxn></item>
+	    </list></item>
+	  <item>nameend-name of the furthest right column in a span
+	    <list id="entrytbllist2f">
+	      <item>Optional</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata'>CDATA</cnxn></item>
+	    </list></item>
+	  <item>colsep-sets whether the internal column rulings are displayed or not
+	    <list id="entrytbllist2g">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'>CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='entrytbllist2ga'>
+		  <item>0-do not display column rulings</item>
+		  <item>any other number-display column rulings</item>
+		</list>
+	      </item>
+	      <item>Default comes from <cnxn  target='tgroup'>tgroup</cnxn></item>
+	    </list></item>
+	  <item>rowsep-sets whether the internal row rulings are displayed or not<list id="entrytbllist2h">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'
+		  >CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='entrytbllist2ha'>
+		  <item>0-do not display column rulings</item>
+		  <item>any other number-display column rulings</item>
+		</list>
+	      </item>
+	      <item>Default comes from <cnxn  target='row'>row</cnxn> if
+		it exists, otherwise <cnxn  target='spanspec'>spanspec</cnxn> or
+		<cnxn  target='colspec'>colspec</cnxn>, and if not that then <cnxn 
+		  target='tgroup'>tgroup</cnxn>, and then finally <cnxn  target='table'>table</cnxn></item>
+	    </list></item>
+	  <item id='itemalign'>align-how the text will be aligned
+	    <list id="entrytbllist2i">
+	      <item>Optional</item>
+	      <item>Possible Values<list id='entrytbllist2ia'>
+		  <item>left-left justified</item>
+		  <item>right-right justified</item>
+		  <item>center-centered</item>
+		  <item>justify-right and left justified</item>
+		  <item>char-aligns to the leftmost occurance of the
+		    value of the <cnxn  target="entrytblchar">char attribute</cnxn></item>
+		</list>
+	      </item>
+	      <item>Default comes from <cnxn 
+		  target='tgrouptgroupstyle'>tgroupstyle</cnxn>, if it exists,
+		otherwise from a containing <cnxn 
+		  target='spanspec'>spanspec</cnxn> or <cnxn 
+		  target='colspec'>colspec</cnxn>, or <cnxn 
+		  target='tgroup'>tgroup</cnxn> or <cnxn  target='tgrouptgroupstyle'>tgroupstyle</cnxn>, if they exist.
+		If none of the others apply, use "left".</item>
+	    </list>
+	  </item>
+	  <item id='entrytblchar'>char-the character used in <cnxn  
+	      target="itemalign">align</cnxn>
+	    <list id="entrytbllist2j">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'>CDATA</cnxn></item>
+	      <item>Default is no aligning character.</item>
+	    </list></item>
+	  <item>charoff-the precentage of the column width to the left
+	    of the char used in <cnxn  
+	      target="itemalign">align</cnxn>
+	    <list id="entrytbllist2k">
+	      <item>Optional</item>
+	      <item><!--NUTOKEN--><cnxn target='cdata'
+		  >CDATA</cnxn></item>
+	      <item>Default comes from the <cnxn 
+		  target='spanspec'>spanspec</cnxn> or <cnxn 
+		  target='colspec'>colspec</cnxn> of a containing <cnxn 
+		  target='tgroup'>tgroup</cnxn> that matches the <cnxn 
+		  target='entrytblspanname'>spanname</cnxn>, if it exists,
+		or <cnxn
+		  target='entrytblnamest'>namest</cnxn>, if it
+		exists, or <cnxn  target='entrytblcolname'>colname</cnxn>. </item>
+	    </list></item>
+	</list>
+
+      </para>
+      <para id='entrytblchild'>
+	<name>Children</name>
+	<list id='entrytbllist3'>
+	  <item>zero, one, or more <cnxn target='colspec'
+	      >colspec</cnxn></item>
+	  <item>zero, one, or more <cnxn target='spanspec'
+	      >spanspec</cnxn></item>
+	  <item>zero or one <cnxn target='thead'
+	      >thead</cnxn></item>
+	  <item>one <cnxn target='tbody'
+	      >tbody</cnxn></item>
+	</list>
+      </para>
+      
+      <para id="entrytblp2">
+	<name>Example</name>
+	See the <cnxn target='tableex' >table
+	  example</cnxn>.
+      </para>
+    </section>
+
+    <section id='entry'>
+      <name>entry</name>
+      
+      <para id="entryp1">
+	<name>Description</name>
+	The entry tag identifies a entry in a <cnxn target='row'
+	  >row</cnxn>.
+      </para>
+      
+      <para id='entryatt'>
+	<name>Attributes</name>
+	<list id='entrylist1'>
+	  <item>colname-name of the column so that <cnxn  
+	      target="entry">entry</cnxn> and <cnxn  
+	      target="entrytbl">entrytbl</cnxn> can span columns
+	    <list id="entrylist2a">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'
+		  >CDATA</cnxn></item>
+	      <item>Default comes from <cnxn 
+		  target='entrylist1'>namest</cnxn>, <cnxn  target='spanname'>spanname</cnxn>, or the next column.</item>
+	    </list></item>
+	  <item>namest-name of the furthest left column in a span
+	    <list id="entrylist2b">
+	      <item>Optional</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata'>CDATA</cnxn></item>
+	    </list></item>
+	  <item>nameend-name of the furthest right column in a span
+	    <list id="entrylist2c">
+	      <item>Optional</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata'>CDATA</cnxn></item>
+	    </list></item>
+	  <item id='spanname'>spanname-name of a horizontal span
+	    <list id="entrylist2d">
+	      <item>Optional</item>
+	      <item><!--NMTOKEN--><cnxn target='cdata'>CDATA</cnxn></item>
+	    </list></item>
+	  <item>morerows-how many more rows are in a rowspan
+	    <list id="entrylist2e">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'>CDATA</cnxn></item>
+	      <item>Possible Values
+		<list id='entrylist2ea'>
+		  <item>a number-the number of rows in the span after
+		    the current one</item>
+		</list>
+	      </item>
+	      <item>Default is 0</item>
+	    </list>
+	  </item>
+	  <item>colsep-sets whether the internal column rulings are displayed or not
+	    <list id="entrylist2f">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'
+		  >CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='entrylist2fa'>
+		  <item>0-do not display column rulings</item>
+		  <item>any other number-display column rulings</item>
+		</list>
+	      </item>
+	      <item>Default comes from <cnxn 
+		  target='colspec'>colspec</cnxn> or <cnxn  target='spanspec'>spanspec</cnxn></item>
+	    </list></item>
+	  <item>rowsep-sets whether the internal row rulings are displayed or not<list id="entrylist2g">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'>CDATA</cnxn></item>
+	      <item>Possible Value
+		<list id='entrylist2ga'>
+		  <item>0-do not display column rulings</item>
+		  <item>any other number-display column rulings</item>
+		</list>
+	      </item>
+	      <item>Default comes from nearest ancestor with rowsep
+		attribute defined.</item>
+	    </list></item>
+	  <item id='entryalign'>align-how the text will be aligned
+	    <list id="entrylist2h">
+	      <item>Optional</item>
+	      <item>Possible Values
+		<list id="entrylist2ha">
+		  <item>left-left justified</item>
+		  <item>right-right justified</item>
+		  <item>center-centered</item>
+		  <item>justify-right and left justified</item>
+		  <item>char-aligns to the leftmost occurance of the
+		    value of the <cnxn  target="entrychar">char attribute</cnxn></item>
+		  <item>Default comes from closest <cnxn 
+		      target='spanspec'>spanspec</cnxn> or <cnxn 
+		      target='colspec'>colspec</cnxn> of the closest containing
+		    <cnxn  target='entrytbl'>entrytbl</cnxn> or <cnxn 
+		      target='tgroup'>tgroup</cnxn> of one of their
+		    <cnxn 
+		      target='tgrouptgroupstyle'>tgroupstyle</cnxn>.  If
+		    none of these exist, then use "left".</item>
+		</list>
+	      </item>
+	    </list></item>
+	  <item id='entrychar'>char-the character used in <cnxn  
+	      target="entryalign">align</cnxn>
+	    <list id="entrylist2i">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata' >CDATA</cnxn></item>
+	      <item>Default is no aligning character.  However if there
+		is a lack of the attribute all together then the default
+		comes from closest container with a char value.</item>
+	    </list>
+	  </item>
+	  <item>charoff-the precentage of the column width to the left
+	    of the char used in <cnxn  target="entryalign">align</cnxn><list id="entrylist2j">
+	      <item>Optional</item>
+	      <item><!--NUTOKEN--><cnxn target='cdata'>CDATA</cnxn></item>
+	      <item>Default comes from <cnxn 
+		  target='colspec'>colspec</cnxn> or <cnxn 
+		  target='spanspec'>spanspec</cnxn> else <cnxn 
+		  target='tgroup'>tgroup</cnxn> else <cnxn  target='entrytbl'>entrytbl</cnxn>.</item>
+	    </list></item>
+	  <item>rotate-sets the orientation of the content to be the
+	    same as the table or 90 degrees counterclockwise from the
+	    table.  
+	    <list id="entrylist2k">
+	      <item>Optional</item>
+	      <item><cnxn target='cdata'>CDATA</cnxn></item>
+	      <item>Possible Values
+		<list id='entrylist2ka'>
+		  <item>0-content is orientation the same direction as
+		    the table</item>
+		  <item>1-content is orientation 90 degrees
+		    counterclockwise from the table</item>
+		</list>
+	      </item>
+	      <item>Default is 0</item>
+	    </list></item>
+	  <item>valign-vertical position of the text<list id="entrylist2l">
+	      <item>Optional</item>
+	      <item>Possible Values
+		<list id="entrylist2la">
+		  <item>top</item>
+		  <item>middle</item>
+		  <item>bottom</item>
+		</list>
+	      </item>
+	      <item>Default comes from nearest ancestor that defines valign.</item>
+	    </list>
+	  </item>
+	</list>
+      </para>
+      
+      <para id='entrychildp1'>
+	<name>Children</name>
+	The entry tag contains any number of <cnxn target='inline_tags'>inline tags</cnxn> and
+	<cnxn target='media' document='m9006'>media</cnxn>.
+      </para>
+      
+      <para id="entryp2">
+	<name>Example</name> See the <cnxn target='tableex'>table
+	example</cnxn>.
+      </para>
+    </section>	
+  </section>
+</section>

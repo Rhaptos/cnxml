@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+<element name="">
+</element>
+<attribute name="">
+</attribute>
+<ref name=""/>
+<define name="">
+</define>
+<optional>
+</optional>
+<zeroOrMore>
+</zeroOrMore>
+<oneOrMore>
+</oneOrMore>
+<choice>
+</choice>
+<group>
+</group>
+  -->
+
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+         ns="http://cnx.rice.edu/cnxml">
+
+<!-- <!ENTITY % bodyatt ""> -->
+<define name="bodyatt">
+  <empty/>
+</define>
+
+<!-- <!ENTITY % secur ""> -->
+<define name="secur">
+  <empty/>
+</define>
+
+<!-- no if zero(s), yes if any other digits value -->
+<!-- <!ENTITY % yesorno 'CDATA'> -->
+<define name="yesorno">
+  <!-- Some tables use 'true' instead of integers, hence
+     - we comment out this data type declaration -->
+  <!-- <data type="integer"/> -->
+  <text/>
+</define>
+
+<!-- my own defines to reduce repitition -->
+<define name="colsep">
+  <attribute name="colsep">
+    <ref name="yesorno"/>
+  </attribute>
+</define>
+
+<define name="rowsep">
+  <attribute name="rowsep">
+    <ref name="yesorno"/>
+  </attribute>
+</define>
+
+<define name="align">
+  <attribute name="align">
+    <choice>
+      <value>left</value>
+      <value>right</value>
+      <value>center</value>
+      <value>justify</value>
+      <value>char</value>
+    </choice>
+  </attribute>
+</define>
+
+<define name="valign">
+  <attribute name="valign">
+    <choice>
+      <value>top</value>
+      <value>middle</value>
+      <value>bottom</value>
+    </choice>
+  </attribute>
+</define>
+
+<define name="cols">
+  <attribute name="cols"/>
+</define>
+
+<define name="char">
+  <attribute name="char"/>
+</define>
+
+<define name="charoff">
+  <attribute name="charoff"/>
+</define>
+
+<define name="colnum">
+  <attribute name="colnum"/>
+</define>
+
+<define name="colname">
+  <attribute name="colname"/>
+</define>
+
+<define name="colwidth">
+  <attribute name="colwidth"/>
+</define>
+
+<define name="namest">
+  <attribute name="namest"/>
+</define>
+
+<define name="nameend">
+  <attribute name="nameend"/>
+</define>
+
+<define name="spanname">
+  <attribute name="spanname"/>
+</define>
+
+<!-- <!ENTITY % CNXML.table.name       "%CNXML.table.qname;"> -->
+<!-- reference from name we want to use to name used in CALS DTD -->
+<define name="table.name">
+  <ref name="table"/>
+</define>
+
+<!-- <!ENTITY % CNXML.table-main.mdl   "%CNXML.tgroup.qname;+"> -->
+<define name="table-main.mdl">
+  <oneOrMore>
+    <ref name="tgroup"/>
+  </oneOrMore>
+</define>
+
+<!-- <!ENTITY % CNXML.table.mdl
+        "%CNXML.name.qname;?,
+         %CNXML.table-main.mdl;,
+         %CNXML.caption.qname;?"
+> -->
+<!-- Old definition of entry element model, referring to definitions from
+   - cnxml-defs.rng in the calstable.rng schema.  The new way is to 
+   - give a minimal definition here and override this definition in
+   - the including schema.
+<define name="table.mdl">
+  <group>
+    <optional>
+      <ref name="name"/>
+    </optional>
+    <ref name="table-main.mdl"/>
+    <optional>
+      <ref name="caption"/>
+    </optional>
+  </group>
+</define>
+   - End comment
+  -->
+
+<!-- This item gets redefined when it is included in cnxml-defs.rng. -->
+<define name="table.mdl">
+  <ref name="table-main.mdl"/>
+</define>
+
+<!-- <!ENTITY % CNXML.table.att        '
+    id          ID              #REQUIRED
+    tabstyle    CDATA           #IMPLIED
+    tocentry    %yesorno;       #IMPLIED
+    shortentry  %yesorno;       #IMPLIED
+    orient      (port|land)     #IMPLIED
+    pgwide      %yesorno;       #IMPLIED '>
+  -->
+
+<define name="table.att">
+  <group>
+    <ref name="id"/>
+    <optional>
+      <attribute name="tabstyle">
+        <text/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="tocentry">
+        <ref name="yesorno"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="shortentry">
+        <ref name="yesorno"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="orient">
+        <choice>
+          <value>port</value>
+          <value>land</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="pgwide">
+        <ref name="yesorno"/>
+      </attribute>
+    </optional>
+  </group>
+</define>
+
+<!-- <!ENTITY % CNXML.tgroup.mdl
+                                "%CNXML.colspec.qname;*,
+                                 %CNXML.spanspec.qname;*,
+                                 %CNXML.thead.qname;?,
+                                 %CNXML.tfoot.qname;?,
+                                 %CNXML.tbody.qname;">
+  -->
+<define name="tgroup.mdl">
+  <group>
+    <zeroOrMore>
+      <ref name="colspec"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="spanspec"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="thead"/>
+    </optional>
+    <optional>
+      <ref name="tfoot"/>
+    </optional>
+    <ref name="tbody"/>
+  </group>
+</define>
+
+<!-- <!ENTITY % CNXML.tgroup.att       'tgroupstyle CDATA #IMPLIED'> -->
+<define name="tgroup.att">
+  <optional>
+    <attribute name="tgroupstyle"/>
+  </optional>
+</define>
+
+<!-- <!ENTITY % CNXML.hdft.mdl         "%CNXML.colspec.qname;*,%CNXML.row.qname;+"> -->
+<define name="hdft.mdl">
+  <group>
+    <zeroOrMore>
+      <ref name="colspec"/>
+    </zeroOrMore>
+    <oneOrMore>
+      <ref name="row"/>
+    </oneOrMore>
+  </group>
+</define>
+
+<!-- <!ENTITY % CNXML.row.mdl
+                             "(%CNXML.entry.qname;
+                              |%CNXML.entrytbl.qname;)+">
+  -->
+<define name="row.mdl">
+  <oneOrMore>
+    <choice>
+      <ref name="entry"/>
+      <ref name="entrytbl"/>
+    </choice>
+  </oneOrMore>
+</define>
+
+<!-- <!ENTITY % CNXML.entrytbl.mdl
+                                  "%CNXML.colspec.qname;*,
+                                   %CNXML.spanspec.qname;*,
+                                   %CNXML.thead.qname;?,
+                                   %CNXML.tbody.qname;">
+-->
+<define name="entrytbl.mdl">
+  <group>
+    <zeroOrMore>
+      <ref name="colspec"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="spanspec"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="thead"/>
+    </optional>
+    <ref name="tbody"/>
+  </group>
+</define>
+
+<!-- <!ENTITY % CNXML.entry.mdl
+                               "(%CNXML.inline;|%CNXML.media.qname;)*">
+  -->
+
+<!-- Old definition of entry element model, referring to definitions from
+   - cnxml-defs.rng in the calstable.rng schema.  The new way is to 
+   - give a minimal definition here and override this definition in
+   - the including schema.
+  <define name="entry.mdl">
+    <zeroOrMore>
+      <choice>
+        <ref name="inline.elems"/>
+        <ref name="media"/>
+        <ref name="code"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+   - End comment
+  -->
+
+<define name="entry.mdl">
+  <notAllowed/>
+</define>
+
+<!-- <!ELEMENT %CNXML.table.qname; (%CNXML.table.mdl;)> -->
+<define name="table">
+  <element name="table">
+    <ref name="table.attlist"/>
+    <ref name="table.mdl"/>
+  </element>
+</define>
+
+<!--
+<!ATTLIST %CNXML.table.qname;
+        frame           (top|bottom|topbot|all|sides|none)      #IMPLIED
+        colsep          %yesorno;                               #IMPLIED
+        rowsep          %yesorno;                               #IMPLIED
+        %CNXML.table.att;
+        %bodyatt;
+        %secur;
+>
+  -->
+<define name="table.attlist">
+  <group>
+    <optional>
+      <attribute name="frame">
+        <choice>
+          <value>top</value>
+          <value>bottom</value>
+          <value>topbot</value>
+          <value>all</value>
+          <value>sides</value>
+          <value>none</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <ref name="colsep"/>
+    </optional>
+    <optional>
+      <ref name="rowsep"/>
+    </optional>
+    <ref name="table.att"/>
+    <ref name="bodyatt"/>
+    <ref name="secur"/>
+  </group>
+</define>
+
+<!-- <!ELEMENT %CNXML.tgroup.qname; (%CNXML.tgroup.mdl;) > -->
+<define name="tgroup">
+  <element name="tgroup">
+    <ref name="tgroup.attlist"/>
+    <ref name="tgroup.mdl"/>
+  </element>
+</define>
+
+<!-- <!ATTLIST %CNXML.tgroup.qname;
+        cols            CDATA                                   #REQUIRED
+        %CNXML.tgroup.att;
+        colsep          %yesorno;                               #IMPLIED
+        rowsep          %yesorno;                               #IMPLIED
+        align           (left|right|center|justify|char)        #IMPLIED
+        char            CDATA                                   #IMPLIED
+        charoff         CDATA                                   #IMPLIED
+        %secur;
+>
+  -->
+
+<define name="tgroup.attlist">
+  <group>
+    <ref name="cols"/>
+    <ref name="tgroup.att"/>
+    <optional>
+      <ref name="colsep"/>
+    </optional>
+    <optional>
+      <ref name="rowsep"/>
+    </optional>
+    <optional>
+      <ref name="align"/>
+    </optional>
+    <optional>
+      <ref name="char"/>
+    </optional>
+    <optional>
+      <ref name="charoff"/>
+    </optional>
+    <ref name="secur"/>
+  </group>
+</define>
+
+<!-- <!ELEMENT %CNXML.colspec.qname; EMPTY > -->
+<define name="colspec">
+  <element name="colspec">
+    <ref name="colspec.attlist"/>
+  </element>
+</define>
+
+<!-- <!ATTLIST %CNXML.colspec.qname;
+        colnum          CDATA                                   #IMPLIED
+        colname         CDATA                                   #IMPLIED
+        colwidth        CDATA                                   #IMPLIED
+        colsep          %yesorno;                               #IMPLIED
+        rowsep          %yesorno;                               #IMPLIED
+        align           (left|right|center|justify|char)        #IMPLIED
+        char            CDATA                                   #IMPLIED
+        charoff         CDATA                                   #IMPLIED
+>
+  -->
+<define name="colspec.attlist">
+  <group>
+    <optional>
+      <ref name="colnum"/>
+    </optional>
+    <optional>
+      <ref name="colname"/>
+    </optional>
+    <optional>
+      <ref name="colwidth"/>
+    </optional>
+    <optional>
+      <ref name="colsep"/>
+    </optional>
+    <optional>
+      <ref name="rowsep"/>
+    </optional>
+    <optional>
+      <ref name="align"/>
+    </optional>
+    <optional>
+      <ref name="char"/>
+    </optional>
+    <optional>
+      <ref name="charoff"/>
+    </optional>
+  </group>
+</define>
+
+<!-- <!ELEMENT %CNXML.spanspec.qname; EMPTY > -->
+<define name="spanspec">
+  <element name="spanspec">
+    <ref name="spanspec.attlist"/>
+  </element>
+</define>
+
+<!-- <!ATTLIST %CNXML.spanspec.qname;
+        namest          CDATA                                   #REQUIRED
+        nameend         CDATA                                   #REQUIRED
+        spanname        CDATA                                   #REQUIRED
+        colsep          %yesorno;                               #IMPLIED
+        rowsep          %yesorno;                               #IMPLIED
+        align           (left|right|center|justify|char)        #IMPLIED
+        char            CDATA                                   #IMPLIED
+        charoff         CDATA                                   #IMPLIED
+>
+  -->
+<define name="spanspec.attlist">
+  <group>
+    <ref name="namest"/>
+    <ref name="nameend"/>
+    <ref name="spanname"/>
+    <optional>
+      <ref name="colsep"/>
+    </optional>
+    <optional>
+      <ref name="rowsep"/>
+    </optional>
+    <optional>
+      <ref name="align"/>
+    </optional>
+    <optional>
+      <ref name="char"/>
+    </optional>
+    <optional>
+      <ref name="charoff"/>
+    </optional>
+  </group>
+</define>
+
+<!-- <!ELEMENT %CNXML.thead.qname; (%CNXML.hdft.mdl;)> -->
+<define name="thead">
+  <element name="thead">
+    <ref name="thead.attlist"/>
+    <ref name="hdft.mdl"/>
+  </element>
+</define>
+
+<!-- <!ATTLIST %CNXML.thead.qname;
+        valign          (top|middle|bottom)                     #IMPLIED
+        %secur;
+>
+  -->
+<define name="thead.attlist">
+  <group>
+    <optional>
+      <ref name="valign"/>
+    </optional>
+    <ref name="secur"/>
+  </group>
+</define>
+
+<!-- <!ELEMENT %CNXML.tfoot.qname; (%CNXML.hdft.mdl;)> -->
+<define name="tfoot">
+  <element name="tfoot">
+    <ref name="tfoot.attlist"/>
+    <ref name="hdft.mdl"/>
+  </element>
+</define>
+
+<!-- <!ATTLIST %CNXML.tfoot.qname;
+        valign          (top|middle|bottom)                     #IMPLIED
+        %secur;
+>
+  -->
+<define name="tfoot.attlist">
+  <group>
+    <optional>
+      <ref name="valign"/>
+    </optional>
+    <ref name="secur"/>
+  </group>
+</define>
+
+<!-- <!ELEMENT %CNXML.tbody.qname; (row+)> -->
+<define name="tbody">
+  <element name="tbody">
+    <ref name="tbody.attlist"/>
+    <oneOrMore>
+      <ref name="row"/>
+    </oneOrMore>
+  </element>
+</define>
+
+<!-- <!ATTLIST %CNXML.tbody.qname;
+        valign          (top|middle|bottom)                     #IMPLIED
+        %secur;
+>
+  -->
+<define name="tbody.attlist">
+  <group>
+    <optional>
+      <ref name="valign"/>
+    </optional>
+    <ref name="secur"/>
+  </group>
+</define>
+
+<!-- <!ELEMENT %CNXML.row.qname; (%CNXML.row.mdl;)> -->
+<define name="row">
+  <element name="row">
+    <ref name="row.attlist"/>
+    <ref name="row.mdl"/>
+  </element>
+</define>
+
+<!-- <!ATTLIST %CNXML.row.qname;
+        rowsep          %yesorno;                               #IMPLIED
+        valign          (top|middle|bottom)                     #IMPLIED
+        %secur;
+>
+  -->
+<define name="row.attlist">
+  <group>
+    <optional>
+      <ref name="rowsep"/>
+    </optional>
+    <optional>
+      <ref name="valign"/>
+    </optional>
+    <ref name="secur"/>
+  </group>
+</define>
+
+<!-- <!ELEMENT %CNXML.entrytbl.qname; (%CNXML.entrytbl.mdl;)> -->
+<define name="entrytbl">
+  <element name="entrytbl">
+    <ref name="entrytbl.attlist"/>
+    <ref name="entrytbl.mdl"/>
+  </element>
+</define>
+        
+<!-- <!ATTLIST %CNXML.entrytbl.qname;
+        cols            CDATA                                   #REQUIRED
+        %CNXML.tgroup.att;
+        colname         CDATA                                   #IMPLIED
+        spanname        CDATA                                   #IMPLIED
+        namest          CDATA                                   #IMPLIED
+        nameend         CDATA                                   #IMPLIED
+        colsep          %yesorno;                               #IMPLIED
+        rowsep          %yesorno;                               #IMPLIED
+        align           (left|right|center|justify|char)        #IMPLIED
+        char            CDATA                                   #IMPLIED
+        charoff         CDATA                                   #IMPLIED
+        %secur;         
+>
+  -->
+<define name="entrytbl.attlist">
+  <group>
+    <ref name="cols"/>
+    <ref name="tgroup.att"/>
+    <optional>
+      <ref name="colname"/>
+    </optional>
+    <optional>
+      <ref name="spanname"/>
+    </optional>
+    <optional>
+      <ref name="namest"/>
+    </optional>
+    <optional>
+      <ref name="nameend"/>
+    </optional>
+    <optional>
+      <ref name="colsep"/>
+    </optional>
+    <optional>
+      <ref name="rowsep"/>
+    </optional>
+    <optional>
+      <ref name="align"/>
+    </optional>
+    <optional>
+      <ref name="char"/>
+    </optional>
+    <optional>
+      <ref name="charoff"/>
+    </optional>
+    <optional>
+      <ref name="secur"/>
+    </optional>
+  </group>
+</define>
+
+<!-- <!ELEMENT %CNXML.entry.qname; %CNXML.entry.mdl; > -->
+<define name="entry">
+  <element name="entry">
+    <ref name="entry.attlist"/>
+    <ref name="entry.mdl"/>
+  </element>
+</define>
+
+<!-- <!ATTLIST %CNXML.entry.qname;
+        colname         CDATA                                   #IMPLIED
+        namest          CDATA                                   #IMPLIED
+        nameend         CDATA                                   #IMPLIED
+        spanname        CDATA                                   #IMPLIED
+        morerows        CDATA                                   #IMPLIED
+        colsep          %yesorno;                               #IMPLIED
+        rowsep          %yesorno;                               #IMPLIED
+        align           (left|right|center|justify|char)        #IMPLIED
+        char            CDATA                                   #IMPLIED
+        charoff         CDATA                                   #IMPLIED
+        rotate          %yesorno;                               #IMPLIED
+        valign          (top|middle|bottom)                     #IMPLIED
+        %secur;         
+>       
+  -->
+<define name="entry.attlist">
+  <group>
+    <optional>
+      <ref name="colname"/>
+    </optional>
+    <optional>
+      <ref name="namest"/>
+    </optional>
+    <optional>
+      <ref name="nameend"/>
+    </optional>
+    <optional>
+      <ref name="spanname"/>
+    </optional>
+    <optional>
+      <attribute name="morerows"/>
+    </optional>
+    <optional>
+      <ref name="colsep"/>
+    </optional>
+    <optional>
+      <ref name="rowsep"/>
+    </optional>
+    <optional>
+      <ref name="align"/>
+    </optional>
+    <optional>
+      <ref name="char"/>
+    </optional>
+    <optional>
+      <ref name="charoff"/>
+    </optional>
+    <optional>
+      <attribute name="rotate">
+        <ref name="yesorno"/>
+      </attribute>
+    </optional>
+    <optional>
+      <ref name="valign"/>
+    </optional>
+    <optional>
+      <ref name="secur"/>
+    </optional>
+  </group>
+</define>
+
+<!-- stub definitions -->
+
+<define name="caption" combine="choice">
+  <notAllowed/>
+</define>
+
+<define name="name" combine="choice">
+  <notAllowed/>
+</define>
+
+</grammar>
