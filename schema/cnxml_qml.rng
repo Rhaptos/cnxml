@@ -2,7 +2,9 @@
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
 
   <include href="mdml-defs.rng">
-    <!-- We don't want -->
+  <!-- Because of name collisions in the 'define' space, we have to                  - redefine MDML 'metadata' and 'metadata.attlist' as 'notAllowed',              - since the only other options are to combine them by 'choice'                  - or 'interleave' with the definitions of the same name from
+     - CNXML.  Probably down the road the answer is to attach                        - language-specific prefixes to 'define' names to avoid
+     - such collisions.  -->
     <define name="metadata" combine="choice">
       <notAllowed/>
     </define>
@@ -11,6 +13,7 @@
     </define>
   </include>
   <include href="http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng">
+  <!-- Add MathML and CNXML 'section' and 'media' to QML inline content -->
     <define name="QML.text">
       <zeroOrMore>
         <choice>
@@ -22,7 +25,7 @@
     </define>
   </include>
   <include href="cnxml-defs.rng">
-    <!-- Update content model for 'exercise' to allow qml -->
+  <!-- Exercises may now contain a QML 'item' instead of the plain CNXML content -->
     <define name="exercise.content">
       <group>
         <optional>
@@ -39,6 +42,7 @@
         </choice>
       </group>
     </define>
+  <!-- CNXML 'content' may now contain a QML 'problemset' instead of the plain CNXML content -->
     <define name="content.content">
       <choice>
         <ref name="QML.problemset"/>
@@ -47,6 +51,7 @@
         </oneOrMore>
       </choice>
     </define>
+  <!-- We define CNXML 'metadata.content' as 'notAllowed' so that                    - MDML 'metadata.content' will be used instead. -->
     <define name="metadata.content" combine="choice">
       <notAllowed/>
     </define>
