@@ -5,21 +5,11 @@
     <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
   </define>
 
-  <include href="mdml-defs.rng">
-  <!-- Because of name collisions in the 'define' space, we have to                  - redefine MDML 'metadata' and 'metadata.attlist' as 'notAllowed',              - since the only other options are to combine them by 'choice'                  - or 'interleave' with the definitions of the same name from  
-     - CNXML.  Probably down the road the answer is to attach                        - language-specific prefixes to 'define' names to avoid
-     - such collisions.  -->
-    <define name="metadata" combine="choice">
-      <notAllowed/>
-    </define>
-    <define name="metadata.attlist" combine="choice">
-      <notAllowed/>
-    </define>
-  </include>
+  <include href="mdml-defs.rng"/>
   <include href="cnxml-defs.rng">
-  <!-- We define CNXML 'metadata.content' as 'notAllowed' so that                    - MDML 'metadata.content' will be used instead. -->
+    <!-- We use the metadata content model from MDML instead of CNXML's -->
     <define name="metadata.content" combine="choice">
-      <notAllowed/>
+      <ref name="MDML.metadata.content"/>
     </define>
     <define name="bibtex.elem">
       <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>
