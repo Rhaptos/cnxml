@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--
-<element name="">
-</element>
-<attribute name="">
-</attribute>
-<ref name=""/>
-<define name="">
-</define>
-<optional>
-</optional>
-<zeroOrMore>
-</zeroOrMore>
-<oneOrMore>
-</oneOrMore>
-<choice>
-</choice>
-  -->
-
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
@@ -27,14 +9,14 @@
 <!-- <!ELEMENT %MDML.metadata.qname; %MDML.metadata.content;>
    -       <!ATTLIST %MDML.metadata.qname; %MDML.xmlns.attrib;>
   -->
-  <define name="metadata">
+  <define name="MDML.metadata">
     <element name="metadata">
-      <ref name="metadata.attlist"/>
-      <ref name="metadata.content"/>
+      <ref name="MDML.metadata.attlist"/>
+      <ref name="MDML.metadata.content"/>
     </element>
   </define>
 
-  <define name="metadata.attlist">
+  <define name="MDML.metadata.attlist">
     <empty/>
   </define>
 
@@ -49,58 +31,58 @@
    -    (%MDML.objectives.qname;)?
    - )">
   -->
-  <define name="metadata.content">
+  <define name="MDML.metadata.content">
     <group>
-      <ref name="version"/>
-      <ref name="created"/>
-      <ref name="revised"/>
-      <ref name="authorlist"/>
-      <ref name="maintainerlist"/>
+      <ref name="MDML.version"/>
+      <ref name="MDML.created"/>
+      <ref name="MDML.revised"/>
+      <ref name="MDML.authorlist"/>
+      <ref name="MDML.maintainerlist"/>
       <optional>
-        <ref name="keywordlist"/>
+        <ref name="MDML.keywordlist"/>
       </optional>
-      <ref name="abstract"/>
+      <ref name="MDML.abstract"/>
       <optional>
-        <ref name="objectives"/>
+        <ref name="MDML.objectives"/>
       </optional>
     </group>
   </define>
 
-  <define name="version">
+  <define name="MDML.version">
     <element name="version">
       <text/>
     </element>
   </define>
 
-  <define name="created">
+  <define name="MDML.created">
     <element name="created">
       <text/>
     </element>
   </define>
 
-  <define name="revised">
+  <define name="MDML.revised">
     <element name="revised">
       <text/>
     </element>
   </define>
 
-  <define name="authorlist">
+  <define name="MDML.authorlist">
     <element name="authorlist">
-      <ref name="authorlist.content"/>
+      <ref name="MDML.authorlist.content"/>
     </element>
   </define>
 
 <!-- <!ENTITY % MDML.authorlist.content "(%MDML.author.qname;)+"> -->
-  <define name="authorlist.content">
+  <define name="MDML.authorlist.content">
     <oneOrMore>
-      <ref name="author"/>
+      <ref name="MDML.author"/>
     </oneOrMore>
   </define>
 
-  <define name="author">
+  <define name="MDML.author">
     <element name="author">
-      <ref name="author.attlist"/>
-      <ref name="author.content"/>
+      <ref name="MDML.author.attlist"/>
+      <ref name="MDML.author.content"/>
     </element>
   </define>
 
@@ -108,7 +90,7 @@
    -      <!ATTLIST %MDML.author.qname; id CDATA #REQUIRED>
    -      <!ATTLIST %MDML.author.qname; homepage CDATA #IMPLIED>
   -->
-  <define name="mdml-name.attlist">
+  <define name="MDML.name.attlist">
     <group>
       <attribute name="id"/>
       <optional>
@@ -117,8 +99,8 @@
     </group>
   </define>
 
-  <define name="author.attlist">
-    <ref name="mdml-name.attlist"/>
+  <define name="MDML.author.attlist">
+    <ref name="MDML.name.attlist"/>
   </define>
 
 <!-- <!ENTITY % MDML.author.content "(
@@ -130,37 +112,37 @@
    -     (%MDML.email.qname;)?
    - )">
   -->
-  <define name="mdml-name.content">
+  <define name="MDML.name.content">
     <group>
       <optional>
-        <ref name="honorific"/>
+        <ref name="MDML.honorific"/>
       </optional>
-      <ref name="firstname"/>
+      <ref name="MDML.firstname"/>
       <zeroOrMore>
-        <ref name="othername"/>
+        <ref name="MDML.othername"/>
       </zeroOrMore>
-      <ref name="surname"/>
+      <ref name="MDML.surname"/>
       <optional>
-        <ref name="lineage"/>
+        <ref name="MDML.lineage"/>
       </optional>
       <optional>
-        <ref name="email"/>
+        <ref name="MDML.email"/>
       </optional>
     </group>
   </define>
 
-  <define name="author.content">
-    <ref name="mdml-name.content"/>
+  <define name="MDML.author.content">
+    <ref name="MDML.name.content"/>
   </define>
 
 <!-- <!ENTITY % MDML.maintainerlist.content "(%MDML.maintainer.qname;)+">
    - <!ELEMENT %MDML.maintainerlist.qname; %MDML.maintainerlist.content;>
    -           <!ATTLIST %MDML.maintainerlist.qname; %MDML.xmlns.attrib;>
   -->
-  <define name="maintainerlist">
+  <define name="MDML.maintainerlist">
     <element name="maintainerlist">
       <oneOrMore>
-        <ref name="maintainer"/>
+        <ref name="MDML.maintainer"/>
       </oneOrMore>
     </element>
   </define>
@@ -178,26 +160,26 @@
    -           <!ATTLIST %MDML.maintainer.qname; id CDATA #REQUIRED>
    -           <!ATTLIST %MDML.maintainer.qname; homepage CDATA #IMPLIED>
   -->
-  <define name="maintainer">
+  <define name="MDML.maintainer">
     <element name="maintainer">
-      <ref name="maintainer.attlist"/>
-      <ref name="maintainer.content"/>
+      <ref name="MDML.maintainer.attlist"/>
+      <ref name="MDML.maintainer.content"/>
     </element>
   </define>
 
-  <define name="maintainer.attlist">
-    <ref name="mdml-name.attlist"/>
+  <define name="MDML.maintainer.attlist">
+    <ref name="MDML.name.attlist"/>
   </define>
 
-  <define name="maintainer.content">
-    <ref name="mdml-name.content"/>
+  <define name="MDML.maintainer.content">
+    <ref name="MDML.name.content"/>
   </define>
 
 <!-- <!ENTITY % MDML.honorific.content "(#PCDATA)">
    - <!ELEMENT %MDML.honorific.qname; %MDML.honorific.content;>
    -           <!ATTLIST %MDML.honorific.qname; %MDML.xmlns.attrib;>
   -->
-  <define name="honorific">
+  <define name="MDML.honorific">
     <element name="honorific">
       <text/>
     </element>
@@ -207,7 +189,7 @@
    - <!ELEMENT %MDML.firstname.qname; %MDML.firstname.content;>
    -           <!ATTLIST %MDML.firstname.qname; %MDML.xmlns.attrib;>
   -->
-  <define name="firstname">
+  <define name="MDML.firstname">
     <element name="firstname">
       <text/>
     </element>
@@ -217,7 +199,7 @@
    - <!ELEMENT %MDML.othername.qname; %MDML.othername.content;>
    -           <!ATTLIST %MDML.othername.qname; %MDML.xmlns.attrib;>
   -->
-  <define name="othername">
+  <define name="MDML.othername">
     <element name="othername">
       <text/>
     </element>
@@ -227,7 +209,7 @@
    - <!ELEMENT %MDML.surname.qname; %MDML.surname.content;>
    -           <!ATTLIST %MDML.surname.qname; %MDML.xmlns.attrib;>
   -->
-  <define name="surname">
+  <define name="MDML.surname">
     <element name="surname">
       <text/>
     </element>
@@ -237,7 +219,7 @@
    - <!ELEMENT %MDML.lineage.qname; %MDML.lineage.content;>
    -           <!ATTLIST %MDML.lineage.qname; %MDML.xmlns.attrib;>
   -->
-  <define name="lineage">
+  <define name="MDML.lineage">
     <element name="lineage">
       <text/>
     </element>
@@ -247,33 +229,33 @@
    - <!ELEMENT %MDML.email.qname; %MDML.email.content;>
    -           <!ATTLIST %MDML.email.qname; %MDML.xmlns.attrib;>
   -->
-  <define name="email">
+  <define name="MDML.email">
     <element name="email">
       <text/>
     </element>
   </define>
 
-  <define name="keywordlist">
+  <define name="MDML.keywordlist">
     <element name="keywordlist">
       <oneOrMore>
-        <ref name="keyword"/>
+        <ref name="MDML.keyword"/>
       </oneOrMore>
     </element>
   </define>
 
-  <define name="keyword">
+  <define name="MDML.keyword">
     <element name="keyword">
       <text/>
     </element>
   </define>
 
-  <define name="abstract">
+  <define name="MDML.abstract">
     <element name="abstract">
       <text/>
     </element>
   </define>
 
-  <define name="objectives">
+  <define name="MDML.objectives">
     <element name="objectives">
       <text/>
     </element>
