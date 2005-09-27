@@ -168,6 +168,7 @@
       <ref name="quote"/>
       <ref name="foreign"/>
       <ref name="code.inline"/>
+      <ref name="span"/>
     </choice>
   </define>
 
