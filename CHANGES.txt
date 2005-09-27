@@ -1,3 +1,5 @@
+ - Added 'MDML.' prefix to all <define> names in MDML schema
+
 CNXML-0.5 (p3)
  - Support video/* not just video/mov
  - Added XMLSpy template
