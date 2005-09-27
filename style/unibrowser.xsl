@@ -927,6 +927,51 @@
     </div>
   </xsl:template>
 
+  <!-- LABVIEW -->
+  <xsl:template match="cnx:media[starts-with(@type,'application/x-labviewrp')]">
+    <div class="labview example">
+      <object classid="CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD"
+              codebase="ftp://ftp.ni.com/support/labview/runtime/windows/8.0/English/LVRunTimeEng.exe">
+	<xsl:if test="cnx:param[@name='width']">
+	  <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
+	</xsl:if>
+	<xsl:if test="cnx:param[@name='height']">
+	  <xsl:attribute name="height"><xsl:value-of select="cnx:param[@name='height']/@value"/></xsl:attribute>
+	</xsl:if>
+	<param name="SRC" value="{@src}" />
+	<xsl:choose>
+	  <xsl:when test="cnx:param[@name='lvfppviname']">
+	    <param name="LVFPPVINAME" value="{cnx:param[@name='lvfppviname']/@value}" />
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <param name="LVFPPVINAME" value="{@src}" />
+	  </xsl:otherwise>
+	</xsl:choose>
+	<param name="REQCTRL" value="false" />
+	<param name="RUNLOCALLY" value="true" />
+	<embed src="{@src}"
+               reqctrl="true"
+	       runlocally="true"
+	       type="application/x-labviewrpvi80"
+	       pluginspage="http://digital.ni.com/express.nsf/express?openagent&amp;code=ex3e33">
+	  <xsl:attribute name="lvfppviname">
+	    <xsl:choose>
+	      <xsl:when test="cnx:param[@name='lvfppviname']"><xsl:value-of select="cnx:param[@name='lvfppviname']/@value" /></xsl:when>
+	      <xsl:otherwise><xsl:value-of select="@src" /></xsl:otherwise>
+	    </xsl:choose>
+	  </xsl:attribute>
+	  <xsl:if test="cnx:param[@name='width']">
+	    <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
+	  </xsl:if>
+	  <xsl:if test="cnx:param[@name='height']">
+	    <xsl:attribute name="height"><xsl:value-of select="cnx:param[@name='height']/@value"/></xsl:attribute>
+	  </xsl:if>
+	</embed>
+      </object>
+      <p>Download <a class="cnxn" href="{@src}">LabVIEW source</a></p>
+    </div>
+  </xsl:template>
+
   <!-- FLASH Objects -->
   <xsl:template match="cnx:media[@type='application/x-shockwave-flash']">
     <object type="application/x-shockwave-flash" data="{@src}">
