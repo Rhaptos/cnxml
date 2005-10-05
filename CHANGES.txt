@@ -1,6 +1,7 @@
 CNXML-0.5 (p5)
  - Removed old content_view.xsl template
  - Added support for LabView 8.0 media type
+ - Fixed MDML paths in DTDs
 
 CNXML-0.5 (p4)
  - New install locations compatible with FHS
