@@ -77,7 +77,7 @@
   </xsl:template>
 
   <xsl:template match="cnx:tgroup">    
-    <table class="table">
+    <table>
       <xsl:call-template name='IdCheck'/>
 
       <xsl:if test="../@pgwide=1">
