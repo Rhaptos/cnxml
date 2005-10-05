@@ -16,20 +16,20 @@
   <!-- CAPTION inside TABLE (Max doesn't think this exists, but Adan
        used it without validation problems) -->
   <xsl:template match="cnx:table/cnx:caption">
-    <div class="caption">
+    <div class="cnx_caption">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
     </div>
   </xsl:template>
   
   <xsl:template match="cnx:table">
-    <div class="table" align="center">
+    <div class="cnx_table" align="center">
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	
 	<!-- OLD TABLES -->
 	<xsl:when test="cnx:categories">
-	  <table border="1" class="old-table">
+	  <table border="1" class="cnx_old-table">
 	    <!--Outputs CATEGORY as headers.-->
 	    <tr>
 	      <xsl:for-each select="//cnx:category">
@@ -77,7 +77,7 @@
   </xsl:template>
 
   <xsl:template match="cnx:tgroup">    
-    <table class="table">
+    <table>
       <xsl:call-template name='IdCheck'/>
 
       <xsl:if test="../@pgwide=1">
