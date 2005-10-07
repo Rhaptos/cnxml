@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.5-1) unstable; urgency=low
+
+  * Added Documentation
+
+ -- Brent Hendricks <brentmh@rice.edu>  Fri, 07 Oct 2005 15:07:20 -0500
+
 connexions-cnxml (0.5.5b2-1) unstable; urgency=low
 
   * Added support for LabView 8.0
