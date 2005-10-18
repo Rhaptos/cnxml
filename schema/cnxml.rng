@@ -14,9 +14,9 @@
     <define name="metadata.content" combine="choice">
       <notAllowed/>
     </define>
-    <!--<define name="bibtex.elem">
+    <define name="bibtex.elem">
       <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>
-    </define>-->
+    </define>
   </include>
 
   <start>
