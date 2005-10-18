@@ -24,7 +24,7 @@
          ns="http://cnx.rice.edu/cnxml">
 
 
-  <include href="http://cnx.rice.edu/technology/cnxml/schema/rng/0.5/calstable.rng">
+  <include href="calstable.rng">
     <define name="table.mdl">
       <group>
         <optional>
