@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.5-2) unstable; urgency=low
+
+  * Fixed MDML catalog problems
+
+ -- Brent Hendricks <brentmh@rice.edu>  Thu, 20 Oct 2005 13:03:20 -0500
+
 connexions-cnxml (0.5.5-1) unstable; urgency=low
 
   * Added Documentation
