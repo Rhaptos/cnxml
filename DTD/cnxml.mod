@@ -297,6 +297,7 @@ of the current application.
         %CNXML.table.att;
         %bodyatt;
         %secur;
+        %CNXML.xmlns.attrib;
 >
 
 <!ELEMENT %CNXML.tgroup.qname; (%CNXML.tgroup.mdl;) >
@@ -310,6 +311,7 @@ of the current application.
         char            CDATA                                   #IMPLIED
         charoff         CDATA                                   #IMPLIED
         %secur;
+        %CNXML.xmlns.attrib;
 >
 
 <!ELEMENT %CNXML.colspec.qname; EMPTY >
@@ -323,6 +325,7 @@ of the current application.
         align           (left|right|center|justify|char)        #IMPLIED
         char            CDATA                                   #IMPLIED
         charoff         CDATA                                   #IMPLIED
+        %CNXML.xmlns.attrib;
 >
 
 <!ELEMENT %CNXML.spanspec.qname; EMPTY >
@@ -336,18 +339,21 @@ of the current application.
         align           (left|right|center|justify|char)        #IMPLIED
         char            CDATA                                   #IMPLIED
         charoff         CDATA                                   #IMPLIED
+        %CNXML.xmlns.attrib;
 >
 
 <!ELEMENT %CNXML.thead.qname; (%CNXML.hdft.mdl;)>
 <!ATTLIST %CNXML.thead.qname;
         valign          (top|middle|bottom)                     #IMPLIED
         %secur;
+        %CNXML.xmlns.attrib;
 >
 
 <!ELEMENT %CNXML.tfoot.qname; (%CNXML.hdft.mdl;)>
 <!ATTLIST %CNXML.tfoot.qname;
         valign          (top|middle|bottom)                     #IMPLIED
         %secur;
+        %CNXML.xmlns.attrib;
 >
 
 <!ELEMENT %CNXML.tbody.qname; (row+)>
@@ -355,6 +361,7 @@ of the current application.
 <!ATTLIST %CNXML.tbody.qname;
         valign          (top|middle|bottom)                     #IMPLIED
         %secur;
+        %CNXML.xmlns.attrib;
 >
 
 <!ELEMENT %CNXML.row.qname; (%CNXML.row.mdl;)>
@@ -363,6 +370,7 @@ of the current application.
         rowsep          %yesorno;                               #IMPLIED
         valign          (top|middle|bottom)                     #IMPLIED
         %secur;
+        %CNXML.xmlns.attrib;
 >
 
 <!ELEMENT %CNXML.entrytbl.qname; (%CNXML.entrytbl.mdl;)>
@@ -380,6 +388,7 @@ of the current application.
         char            CDATA                                   #IMPLIED
         charoff         CDATA                                   #IMPLIED
         %secur;
+        %CNXML.xmlns.attrib;
 >
 
 <!ELEMENT %CNXML.entry.qname; %CNXML.entry.mdl; >
@@ -398,4 +407,5 @@ of the current application.
         rotate          %yesorno;                               #IMPLIED
         valign          (top|middle|bottom)                     #IMPLIED
         %secur;
+        %CNXML.xmlns.attrib;
 >

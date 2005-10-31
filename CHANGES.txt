@@ -1,3 +1,5 @@
+ - Added implied CNXML namespace declaration to CALS table elements.
+
 CNXML-0.5 (p5)
  - Removed old content_view.xsl template
  - Moved html2cnxml stylesheet to Zope Product
