@@ -1,4 +1,5 @@
  - Added implied CNXML namespace declaration to CALS table elements.
+ - Fixed LabVIEW plugin URL
 
 CNXML-0.5 (p5)
  - Removed old content_view.xsl template

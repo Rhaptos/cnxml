@@ -931,7 +931,7 @@
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labviewrp')]">
     <div class="labview example">
       <object classid="CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD"
-              codebase="ftp://ftp.ni.com/support/labview/runtime/windows/8.0/English/LVRunTimeEng.exe">
+              codebase="http://digital.ni.com/express.nsf/bycode/exwgjq">
 	<xsl:if test="cnx:param[@name='width']">
 	  <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
 	</xsl:if>
@@ -953,7 +953,7 @@
                reqctrl="true"
 	       runlocally="true"
 	       type="application/x-labviewrpvi80"
-	       pluginspage="http://digital.ni.com/express.nsf/express?openagent&amp;code=ex3e33">
+	       pluginspage="http://digital.ni.com/express.nsf/bycode/exwgjq">
 	  <xsl:attribute name="lvfppviname">
 	    <xsl:choose>
 	      <xsl:when test="cnx:param[@name='lvfppviname']"><xsl:value-of select="cnx:param[@name='lvfppviname']/@value" /></xsl:when>
