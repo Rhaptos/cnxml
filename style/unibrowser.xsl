@@ -203,15 +203,11 @@
         </div>
       </xsl:for-each>
 
-      <xsl:variable name="upper">ABCDEFGHIJKLMNOPQRSTUVWXYZ</xsl:variable>
-      <xsl:variable name="lower">abcdefghijklmnopqrstuvwxyz</xsl:variable>
-      
       <!-- GLOSSARY -->
       <xsl:if test='cnx:glossary'>
 	<div id='glossary'>
 	  <span class='cnx_glossary'>Glossary</span>
 	  <xsl:for-each select='cnx:glossary/cnx:definition'>
-	    <xsl:sort select="translate(cnx:term//text(), $upper, $lower)" />
 	    <div class='glossary-definition'>
 	      <xsl:call-template name='IdCheck'/>
 	      <xsl:apply-templates/>
