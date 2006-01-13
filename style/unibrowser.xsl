@@ -279,7 +279,7 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:para[not(node())]|cnx:link[not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[not(node())]|cnx:codeblock[not(node())]|cnx:code[@type='block'][not(node())]|cnx:term[not(node())]|cnx:cite[not(node())]|cnx:meaning[not(node())]">
+  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:link[not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[not(node())]|cnx:term[not(node())]|cnx:cite[not(node())]|cnx:meaning[not(node())]|cnx:quote[@type='block'][not(node())]">
     <xsl:comment>empty <xsl:value-of select="local-name()" /> tag</xsl:comment>
   </xsl:template>
 
@@ -298,6 +298,9 @@
     <div class="para">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates/>
+      <xsl:if test="not(node())">
+	<xsl:comment>empty para tag</xsl:comment>
+      </xsl:if>
     </div>
   </xsl:template>
 
@@ -450,7 +453,10 @@
     <pre>
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
-    </pre>  
+      <xsl:if test="not(node())">
+	<xsl:comment>empty code tag</xsl:comment>
+      </xsl:if>
+    </pre>
   </xsl:template>
 
   <!-- FOOTNOTE -->
