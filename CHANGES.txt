@@ -1,5 +1,10 @@
- - Added implied CNXML namespace declaration to CALS table elements.
+CNXML-0.5 (p6)
+ - Added implied CNXML namespace declaration to CALS table elements so
+   putting the namespace on <table> and children elements does not
+   cause the document to be invalid
  - Fixed LabVIEW plugin URL
+ - Leave empty paragraphs in place with a comment
+ - Don't sort glossary elements
 
 CNXML-0.5 (p5)
  - Removed old content_view.xsl template
