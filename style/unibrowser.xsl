@@ -355,6 +355,13 @@
 		  <xsl:when test="self::cnx:subfigure">
 		    <xsl:number level="any" count="//cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" />
 		  </xsl:when>
+		  <xsl:when test="self::cnx:solution">
+		    <xsl:number level="any" count="//cnx:exercise" />
+		    <xsl:if test="count(parent::cnx:exercise/cnx:solution) > 1">
+		      <xsl:text>.</xsl:text>
+		      <xsl:number count="cnx:solution" />
+		    </xsl:if>
+		  </xsl:when>
 		  <xsl:otherwise>
 		    <xsl:number level="any" />
 		  </xsl:otherwise>
@@ -1043,17 +1050,27 @@
 
   <!--SOLUTION -->
   <xsl:template match="cnx:solution">
-    <div class="cnx_button" onclick="showSolution('{../@id}')">
-      <span class="cnx_button-text">[ Click for Solution ]</span>
+    <xsl:variable name="solution-number">
+      <xsl:number count="cnx:solution" />
+    </xsl:variable>
+    <xsl:variable name="full-number">
+      <xsl:number level="any" count="cnx:exercise" />
+      <xsl:if test="count(parent::cnx:exercise/cnx:solution) > 1">
+	<xsl:text>.</xsl:text>
+	<xsl:value-of select="$solution-number" />
+      </xsl:if>
+    </xsl:variable>
+    <div class="cnx_button" onclick="showSolution('{../@id}',{$solution-number})">
+      <span class="cnx_button-text">[ Click for Solution <xsl:value-of select="$full-number" /> ]</span>
     </div>
     <div class="cnx_solution">
       <xsl:call-template name='IdCheck' />
       <span class="cnx_solution">
-	Solution <xsl:number level="any" count="cnx:exercise"/><xsl:if test="cnx:name">: </xsl:if>
+	Solution <xsl:value-of select="$full-number" /><xsl:if test="cnx:name">: </xsl:if>
       </span>
       <xsl:apply-templates />
-      <div class="cnx_button" onclick="hideSolution('{../@id}')">
-        <span class="cnx_button-text">[ Hide Solution ]</span>
+      <div class="cnx_button" onclick="hideSolution('{../@id},{$solution-number}')">
+        <span class="cnx_button-text">[ Hide Solution <xsl:value-of select="$full-number" /> ]</span>
       </div>
     </div>
   </xsl:template>
