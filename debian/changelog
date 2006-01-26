@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.7-1) unstable; urgency=low
+
+  * Fixed problems (exercises) with multiple solutions
+
+ -- Ross Reedstrom <reedstrm@rice.edu>  Thu, 26 Jan 2006 15:03:51 -0600
+
 connexions-cnxml (0.5.6-1) unstable; urgency=low
 
   * Added implied CNXML namespace declaration to CALS table elements
