@@ -1,3 +1,6 @@
+CNXML-0.5 (p7)
+ - fixed exercises with multiple solutions
+
 CNXML-0.5 (p6)
  - Added implied CNXML namespace declaration to CALS table elements so
    putting the namespace on <table> and children elements does not
