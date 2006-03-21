@@ -927,7 +927,7 @@
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
     <div class="labview example">
       <span class="example-before">
-        Labview Example:
+        LabVIEW Example:
       </span>
       <xsl:for-each select=".">
         <xsl:variable name="viinfo" select="cnx:param[@name='viinfo']/@value" />
