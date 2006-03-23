@@ -940,7 +940,7 @@
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labviewrp')]">
     <div class="labview example">
       <object classid="CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD"
-              codebase="http://digital.ni.com/express.nsf/bycode/exwgjq">
+              codebase="http://zone.ni.com/devzone/conceptd.nsf/webmain/7DBFD404C6AD0B24862570BB0072F83B/$FILE/CNX_LV8_RTE.exe">
 	<xsl:if test="cnx:param[@name='width']">
 	  <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
 	</xsl:if>
