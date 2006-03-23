@@ -1,3 +1,6 @@
+CNXML-0.5 (p8)
+ - Fixed codebase URL for LabVIEW 8.0.
+
 CNXML-0.5 (p7)
  - fixed exercises with multiple solutions
 

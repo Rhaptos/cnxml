@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.8-1) unstable; urgency=low
+
+  * Fixed codebase URL for LabVIEW 8.0.
+
+ -- Chuck Bearden <cbearden@rice.edu>  Thu, 23 Mar 2006 09:45:07 -0600
+
 connexions-cnxml (0.5.7-1) unstable; urgency=low
 
   * Fixed problems (exercises) with multiple solutions
@@ -10,9 +16,9 @@ connexions-cnxml (0.5.6-1) unstable; urgency=low
     so putting the namespace on <table> and children elements does not
     cause the document to be invalid
 
-  * Fixed LabVIEW plugin URL 
+  * Fixed LabVIEW plugin URL
 
-  * Leave empty paragraphs in place with a comment 
+  * Leave empty paragraphs in place with a comment
 
   * Don't sort glossary elements
 
