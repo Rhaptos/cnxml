@@ -1,5 +1,32 @@
- - Added 'MDML.' prefix to all <define> names in MDML schema
+- Added 'MDML.' prefix to all <define> names in MDML schema
 
+-------------ported changes below from 0.5-branch-------------------
+
+CNXML-0.5 (p8)
+ - Fixed codebase URL for LabVIEW 8.0.
+
+CNXML-0.5 (p7)
+ - fixed exercises with multiple solutions
+
+CNXML-0.5 (p6)
+ - Added implied CNXML namespace declaration to CALS table elements so
+   putting the namespace on <table> and children elements does not
+   cause the document to be invalid
+ - Fixed LabVIEW plugin URL
+ - Leave empty paragraphs in place with a comment
+ - Don't sort glossary elements
+
+CNXML-0.5 (p5)
+ - Removed old content_view.xsl template
+ - Moved html2cnxml stylesheet to Zope Product
+ - Added support for LabView 8.0 media type
+ - Fixed MDML paths in DTDs and catalog
+
+CNXML-0.5 (p4)
+ - New install locations compatible with FHS
+ - Improved RelaxNG Schema
+ - Fixed problem with QML problemsets in schema
+ 
 CNXML-0.5 (p3)
  - Support video/* not just video/mov
  - Added XMLSpy template

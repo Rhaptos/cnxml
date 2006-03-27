@@ -1114,7 +1114,7 @@
 	Solution <xsl:value-of select="$full-number" /><xsl:if test="cnx:name">: </xsl:if>
       </span>
       <xsl:apply-templates />
-      <div class="cnx_button" onclick="hideSolution('{../@id},{$solution-number}')">
+      <div class="cnx_button" onclick="hideSolution('{../@id}',{$solution-number})">
         <span class="cnx_button-text">[ Hide Solution <xsl:value-of select="$full-number" /> ]</span>
       </div>
     </div>
