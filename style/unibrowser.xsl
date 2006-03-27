@@ -926,7 +926,7 @@
 
   <!-- LABVIEW -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
-    <div class="cnx_example labview">
+    <div class="cnx_labview cnx_example">
       <span class="cnx_example">
         LabVIEW Example:
       </span>
@@ -939,7 +939,7 @@
 
   <!-- LABVIEW -->        
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labviewrp')]">
-    <div class="cnx_example labview">
+    <div class="cnx_labview cnx_example">
       <object classid="CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD"
               codebase="http://zone.ni.com/devzone/conceptd.nsf/webmain/7DBFD404C6AD0B24862570BB0072F83B/$FILE/CNX_LV8_RTE.exe">
         <xsl:if test="cnx:param[@name='width']">
@@ -1026,7 +1026,7 @@
 
   <!-- Generic audio file -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
-    <div class="cnx_example musical">
+    <div class="cnx_musical cnx_example">
       <span class="cnx_example">Audio File: </span>
       <a class="cnx_link" href="{@src}">
 	<xsl:choose>
@@ -1043,7 +1043,7 @@
 
   <!-- MP3 (Tony Brandt) -->
   <xsl:template match="cnx:media[@type='audio/mpeg']"> 
-    <div class="cnx_example musical">
+    <div class="cnx_musical cnx_example">
       <span class="cnx_example">
         Musical Example:
       </span>

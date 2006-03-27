@@ -25,6 +25,8 @@ CNXML-0.5 (p5)
 CNXML-0.5 (p4)
  - New install locations compatible with FHS
  - Improved RelaxNG Schema
+ - Small tweak to XSL to make musical and labview examples compatible
+   with Connexions' Edit-In-Place
  - Fixed problem with QML problemsets in schema
  
 CNXML-0.5 (p3)
