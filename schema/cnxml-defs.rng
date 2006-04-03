@@ -1,23 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--
-<element name="">
-</element>
-<attribute name="">
-</attribute>
-<ref name=""/>
-<define name="">
-</define>
-<optional>
-</optional>
-<zeroOrMore>
-</zeroOrMore>
-<oneOrMore>
-</oneOrMore>
-<choice>
-</choice>
-  -->
-
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
@@ -1183,9 +1165,7 @@ allowed as the first child -->
   </define>
 
   <define name="document.attlist">
-    <optional>
-      <ref name="id"/>
-    </optional>
+    <ref name="id"/>
   </define>
 
 <!-- <!ENTITY % CNXML.document.content "(
