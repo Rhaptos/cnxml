@@ -1,3 +1,5 @@
+  * Made 'id' attribute of 'document' element required instead of optional.
+
 connexions-cnxml (0.5-3) unstable; urgency=low
 
   * Split source packages - see connexions-xml package for old history

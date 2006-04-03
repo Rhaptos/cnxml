@@ -1,4 +1,5 @@
-- Added 'MDML.' prefix to all <define> names in MDML schema
+  - Made 'id' attribute of 'document' element required instead of optional.
+  - Added 'MDML.' prefix to all <define> names in MDML schema
 
 -------------ported changes below from 0.5-branch-------------------
 
