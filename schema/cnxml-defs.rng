@@ -1298,9 +1298,7 @@ allowed as the first child -->
 
   <define name="document.attlist">
     <group>
-      <optional>
-        <ref name="id"/>
-      </optional>
+      <ref name="id"/>
       <ref name="common.attlist"/>
     </group>
   </define>
