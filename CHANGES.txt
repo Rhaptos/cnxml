@@ -1,3 +1,5 @@
+  - Made 'id' attribute of 'document' element required instead of optional.
+
 CNXML-0.5 (p8)
  - Fixed codebase URL for LabVIEW 8.0.
 

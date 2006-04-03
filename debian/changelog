@@ -1,3 +1,5 @@
+  * Made 'id' attribute of 'document' element required instead of optional.
+
 connexions-cnxml (0.5.8-1) unstable; urgency=low
 
   * Fixed codebase URL for LabVIEW 8.0.
