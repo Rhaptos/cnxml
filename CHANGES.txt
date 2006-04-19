@@ -1,3 +1,6 @@
+  - Make subfigures easier to handle in EIP by moving the class to each
+    <td> (instead of one on <table>) and check for IDs of subfigures,
+    not their parent figure.
   - Made 'id' attribute of 'document' element required instead of optional.
 
 CNXML-0.5 (p8)
