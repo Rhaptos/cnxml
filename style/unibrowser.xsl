@@ -777,8 +777,7 @@
 
   <!-- SUBFIGURE horizontal -->
   <xsl:template name="horizontal">
-    <table class="cnx_subfigure" border="0" cellpadding="0" cellspacing="5" width="100%">
-      <xsl:call-template name='IdCheck'/> 
+    <table border="0" cellpadding="0" cellspacing="5" width="100%">
       <tr>
 	<xsl:for-each select="cnx:subfigure">
 	  <td valign="bottom">
@@ -788,7 +787,8 @@
       </tr>
       <tr>
 	<xsl:for-each select="cnx:subfigure">
-	  <td valign="middle">
+	  <td valign="middle" class="cnx_subfigure">
+	    <xsl:call-template name='IdCheck'/>
 	    <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name)]"/>
 	  </td>
 	</xsl:for-each>
