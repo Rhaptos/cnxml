@@ -1,3 +1,6 @@
+  - Provide a link for unrecognized media (inside the <object> so that 
+    the browser can ignore its nested text if it somehow recognizes that 
+    media as an <object> tag).  Currently these media appear to vanish.
   - Put in correct stylesheet URLs and removed nonexistent one
   - Put class names on certain elements so that EIP can recognize them 
     better and so that their templates don't need to be essentially 
