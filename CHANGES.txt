@@ -1,3 +1,4 @@
+  - Put in correct stylesheet URLs and removed nonexistent one
   - Put class names on certain elements so that EIP can recognize them 
     better and so that their templates don't need to be essentially 
     duplicated in editInPlace.xsl

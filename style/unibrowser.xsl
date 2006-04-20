@@ -51,9 +51,8 @@
 	  <head>
 	    <title><xsl:value-of select="cnx:document/cnx:name|cnx:module/cnx:name"/></title>
 	    
-	    <link rel="stylesheet" type="text/css" href="/stylesheets/sky/ns4.css" />
-	    <link rel="stylesheet" title="Sky" type="text/css" href="/stylesheets/sky/document.css" />
-	    <link rel="alternate stylesheet" title="New and Improved" type="text/css" href="/stylesheets/default/newmax.css" />
+	    <link rel="stylesheet" type="text/css" href="/cnx-styles/sky/ns4.css" />
+	    <link rel="stylesheet" title="Sky" type="text/css" href="/cnx-styles/sky/document.css" />
 	    <!-- The extra space is because some browsers don't like script as an empty tag -->
 	    <script type="text/javascript" src="/js/exercise.js"><xsl:text> </xsl:text></script>
 	    <script type="text/javascript" src="/js/qml_1-0.js"><xsl:text> </xsl:text></script>
