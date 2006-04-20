@@ -1,3 +1,4 @@
+  - Provide a link to the EPS if there are no other media nested inside it
   - Provide a link for unrecognized media (inside the <object> so that  
     the browser can ignore its nested text if it somehow recognizes that 
     media as an <object> tag).  Currently these media appear to vanish.

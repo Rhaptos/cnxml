@@ -892,6 +892,17 @@
 	      <xsl:value-of select='@value'/>
 	    </xsl:attribute> 
 	  </xsl:for-each>
+	  EPS Image: 
+	  <a class="link" href="{@src}">
+	    <xsl:choose>
+	      <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
+		<xsl:value-of select="cnx:param[@name='title']/@value" />
+	      </xsl:when>
+	      <xsl:otherwise>
+		<xsl:value-of select="@src" />
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </a>
 	  <xsl:apply-templates/>
 	</object>
       </xsl:otherwise>
