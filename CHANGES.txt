@@ -1,3 +1,6 @@
+  - Put class names on certain elements so that EIP can recognize them        
+    better and so that their templates don't need to be essentially     
+    duplicated in editInPlace.xsl
   - Make subfigures easier to handle in EIP by moving the class to each
     <td> (instead of one on <table>) and check for IDs of subfigures,
     not their parent figure.

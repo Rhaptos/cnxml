@@ -457,7 +457,7 @@
   </xsl:template>
   <!--CODE.block (IE understands pre better than code.codeblock) -->
   <xsl:template match="cnx:codeblock|cnx:code[@type='block']">
-    <pre>
+    <pre class="code">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
       <xsl:if test="not(node())">
@@ -643,7 +643,7 @@
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates select="cnx:name"/>
       <xsl:for-each select="cnx:item">
-        <li>
+        <li class="item">
           <xsl:call-template name='IdCheck'/>
           <xsl:apply-templates />
         </li>
@@ -658,7 +658,7 @@
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates select="cnx:name"/>
       <xsl:for-each select="cnx:item">
-        <li>
+        <li class="item">
           <xsl:call-template name='IdCheck'/>
           <xsl:apply-templates/>
         </li>
@@ -842,7 +842,7 @@
   <xsl:template match="cnx:media[starts-with(@type,'image')]|cnx:mediaobject[starts-with(@type,'image')]">
     <xsl:choose>
       <xsl:when test="child::cnx:param[@name='thumbnail']">
-	<a href="{@src}">
+	<a href="{@src}" class="media">
 	  <img src="{child::cnx:param[@name='thumbnail']/@value}">
 	    <xsl:call-template name='IdCheck'/>
 	    <xsl:for-each select="cnx:param">
@@ -854,7 +854,7 @@
 	</a>	    
       </xsl:when>
       <xsl:otherwise>
-	<img src="{@src}">
+	<img src="{@src}" class="media">
 	  <xsl:call-template name='IdCheck'/>
 	  <xsl:for-each select="cnx:param">
 	    <xsl:attribute name='{@name}'>
@@ -889,7 +889,7 @@
 
   <!--  MEDIA:APPLET  -->
   <xsl:template match="cnx:media[@type='application/x-java-applet']">
-    <applet code="{@src}">
+    <applet code="{@src}" class="media">
       <xsl:call-template name='IdCheck'/>
       <xsl:for-each select="cnx:param">
 	<xsl:attribute name='{@name}'>
@@ -902,7 +902,7 @@
 
   <!-- Video  -->
   <xsl:template match="cnx:media[starts-with(@type, 'video/')]">
-    <object href='{@src}'>
+    <object href='{@src}' class="media">
       <xsl:call-template name='IdCheck'/>
       <xsl:for-each select="cnx:param[@name='classid' or @name='codebase']">
      	<xsl:attribute name='{@name}'>
@@ -925,7 +925,7 @@
 
   <!-- LABVIEW -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
-    <div class="labview example">
+    <div class="media labview example">
       <span class="example-before">
         LabVIEW Example:
       </span>
@@ -938,7 +938,7 @@
 
   <!-- LABVIEW -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labviewrp')]">
-    <div class="labview example">
+    <div class="media labview example">
       <object classid="CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD"
               codebase="http://zone.ni.com/devzone/conceptd.nsf/webmain/7DBFD404C6AD0B24862570BB0072F83B/$FILE/CNX_LV8_RTE.exe">
 	<xsl:if test="cnx:param[@name='width']">
@@ -983,7 +983,7 @@
 
   <!-- FLASH Objects -->
   <xsl:template match="cnx:media[@type='application/x-shockwave-flash']">
-    <object type="application/x-shockwave-flash" data="{@src}">
+    <object type="application/x-shockwave-flash" data="{@src}" class="media">
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:param[@name='width']">
 	<xsl:attribute name="width">
@@ -1025,7 +1025,7 @@
 
   <!-- Generic audio file -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
-    <div class="musical example">
+    <div class="media musical example">
       <span class="example-before">Audio File: </span>
       <a class="link" href="{@src}">
 	<xsl:choose>
@@ -1042,7 +1042,7 @@
 
   <!-- MP3 (Tony Brandt) -->
   <xsl:template match="cnx:media[@type='audio/mpeg']"> 
-    <div class="musical example">
+    <div class="media musical example">
       <span class="example-before">
         Musical Example:
       </span>
