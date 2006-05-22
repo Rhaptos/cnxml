@@ -1,4 +1,8 @@
+connexions-cnxml (0.5.9-1) unstable; urgency=low
+
   * Made 'id' attribute of 'document' element required instead of optional.
+
+ -- Ross J. Reedstrom <reedstrm@rice.edu>  Wed, 19 Apr 2006 13:52:24 -0500
 
 connexions-cnxml (0.5.8-1) unstable; urgency=low
 
