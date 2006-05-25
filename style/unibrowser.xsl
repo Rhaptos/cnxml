@@ -827,26 +827,28 @@
 
   <!-- MEDIA:RANDOM -->
   <xsl:template match="cnx:media">
-    <object class="cnx_media">
+    <div class="cnx_media">
       <xsl:call-template name='IdCheck'/>
-      <xsl:for-each select="cnx:param">
-	<xsl:attribute name='{@name}'>
-	  <xsl:value-of select='@value'/>
-	</xsl:attribute> 
-      </xsl:for-each>
-      Media File:
-      <a class="cnx_link" href="{@src}">
-	<xsl:choose>
-	  <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
-	    <xsl:value-of select="cnx:param[@name='title']/@value" />
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <xsl:value-of select="@src" />
-	  </xsl:otherwise>
-	</xsl:choose>
-      </a>
-      <xsl:apply-templates/>
-    </object>
+      <object>
+	<xsl:for-each select="cnx:param">
+	  <xsl:attribute name='{@name}'>
+	    <xsl:value-of select='@value'/>
+	  </xsl:attribute> 
+	</xsl:for-each>
+	Media File:
+	<a class="cnx_link" href="{@src}">
+	  <xsl:choose>
+	    <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
+	      <xsl:value-of select="cnx:param[@name='title']/@value" />
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:value-of select="@src" />
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</a>
+	<xsl:apply-templates/>
+      </object>
+    </div>
   </xsl:template>
 
   <!-- MEDIA:IMAGE --> 
@@ -885,26 +887,28 @@
 	<xsl:apply-templates/>
       </xsl:when>
       <xsl:otherwise>
-	<object class="cnx_media">
+	<div class="cnx_media">
 	  <xsl:call-template name='IdCheck'/>
-	  <xsl:for-each select="cnx:param">
-	    <xsl:attribute name='{@name}'>
-	      <xsl:value-of select='@value'/>
-	    </xsl:attribute> 
-	  </xsl:for-each>
-	  EPS Image: 
-	  <a class="cnx_link" href="{@src}">
-	    <xsl:choose>
-	      <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
-	        <xsl:value-of select="cnx:param[@name='title']/@value" />
-	      </xsl:when>
-	      <xsl:otherwise>
-		<xsl:value-of select="@src" />
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </a>
-	  <xsl:apply-templates/>
-	</object>
+	  <object>
+	    <xsl:for-each select="cnx:param">
+	      <xsl:attribute name='{@name}'>
+		<xsl:value-of select='@value'/>
+	      </xsl:attribute> 
+	    </xsl:for-each>
+	    EPS Image: 
+	    <a class="cnx_link" href="{@src}">
+	      <xsl:choose>
+		<xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
+		  <xsl:value-of select="cnx:param[@name='title']/@value" />
+		</xsl:when>
+		<xsl:otherwise>
+		  <xsl:value-of select="@src" />
+		</xsl:otherwise>
+	      </xsl:choose>
+	    </a>
+	    <xsl:apply-templates/>
+	  </object>
+	</div>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

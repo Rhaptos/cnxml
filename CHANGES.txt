@@ -1,7 +1,10 @@
   - Provide a link to the EPS if there are no other media nested inside it
-  - Provide a link for unrecognized media (inside the <object> so that 
-    the browser can ignore its nested text if it somehow recognizes that 
-    media as an <object> tag).  Currently these media appear to vanish.
+  - Provide a link for unrecognized media (inside "<div><object> 
+    </object></div>" so that the browser can ignore its nested text if 
+    it somehow recognizes that media as an <object> tag).  Currently 
+    these media appear to vanish.  The <div> was added so that EIP in IE 
+    would have something to latch on to, since unrecognized <object> 
+    tags (though not their children) are apparently omitted in IE.
   - Put in correct stylesheet URLs and removed nonexistent one
   - Put class names on certain elements so that EIP can recognize them 
     better and so that their templates don't need to be essentially 
