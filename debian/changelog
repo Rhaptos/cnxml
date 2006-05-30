@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.10-1) unstable; urgency=low
+
+  *  EIP and related fixes for handling media (nesting, etc.)
+
+ -- Ross J. Reedstrom <reedstrm@rice.edu>  Mon, 22 May 2006 13:50:05 -0500
+
 connexions-cnxml (0.5.9-1) unstable; urgency=low
 
   * Made 'id' attribute of 'document' element required instead of optional.
