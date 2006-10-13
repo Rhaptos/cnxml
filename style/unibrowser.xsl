@@ -962,11 +962,30 @@
     </div>
   </xsl:template>
 
-  <!-- LABVIEW -->
+  <!-- LABVIEW 8.X -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labviewrp')]">
+    <xsl:param name="lv-version" select="substring-after(@type, 'application/x-labviewrp')"/>
+    <xsl:param name="classid">
+      <xsl:choose>
+        <xsl:when test="$lv-version = 'vi80'">CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD</xsl:when>
+        <xsl:when test="$lv-version = 'vi82'">CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AE</xsl:when>
+      </xsl:choose>
+    </xsl:param>
+    <xsl:param name="codebase">
+      <xsl:choose>
+        <xsl:when test="$lv-version = 'vi80'">http://zone.ni.com/devzone/conceptd.nsf/webmain/7DBFD404C6AD0B24862570BB0072F83B/$FILE/CNX_LV8_RTE.exe</xsl:when>
+        <xsl:when test="$lv-version = 'vi82'">http://digital.ni.com/express.nsf/express?openagent&amp;code=exck2m&amp;</xsl:when>
+      </xsl:choose>
+    </xsl:param>
+    <xsl:param name="pluginspage">
+      <xsl:choose>
+        <xsl:when test="$lv-version = 'vi80'">http://digital.ni.com/express.nsf/bycode/exwgjq</xsl:when>
+        <xsl:when test="$lv-version = 'vi82'">http://digital.ni.com/express.nsf/express?openagent&amp;code=exck2m&amp;</xsl:when>
+      </xsl:choose>
+    </xsl:param>
     <div class="media labview example">
-      <object classid="CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD"
-              codebase="http://zone.ni.com/devzone/conceptd.nsf/webmain/7DBFD404C6AD0B24862570BB0072F83B/$FILE/CNX_LV8_RTE.exe">
+      <object classid="{$classid}"
+              codebase="{$codebase}">
 	<xsl:if test="cnx:param[@name='width']">
 	  <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
 	</xsl:if>
@@ -987,8 +1006,8 @@
 	<embed src="{@src}"
                reqctrl="true"
 	       runlocally="true"
-	       type="application/x-labviewrpvi80"
-	       pluginspage="http://digital.ni.com/express.nsf/bycode/exwgjq">
+	       type="{@type}"
+	       pluginspage="{$pluginspage}">
 	  <xsl:attribute name="lvfppviname">
 	    <xsl:choose>
 	      <xsl:when test="cnx:param[@name='lvfppviname']"><xsl:value-of select="cnx:param[@name='lvfppviname']/@value" /></xsl:when>
