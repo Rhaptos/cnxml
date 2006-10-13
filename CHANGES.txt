@@ -1,3 +1,4 @@
+  - Added support for LabVIEW 8.20 content
   - Provide a link to the EPS if there are no other media nested inside it
   - Provide a link for unrecognized media (inside "<div><object>
     </object></div>" so that the browser can ignore its nested text if
