@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.12-1) unstable; urgency=low
+
+  * Added support for LabVIEW 8.20 content
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Fri, 13 Oct 2006 16:02:33 -0500
+
 connexions-cnxml (0.5.11-1) unstable; urgency=low
 
   * Added a div around media's object tag, to handle unrecognized types in IE.
