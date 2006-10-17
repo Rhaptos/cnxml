@@ -1,4 +1,4 @@
-  - Provide a link to the EPS if there are no other media nested inside it
+CNXML-0.5 (p10)
   - Provide a link for unrecognized media (inside "<div><object>
     </object></div>" so that the browser can ignore its nested text if
     it somehow recognizes that media as an <object> tag).  Currently
@@ -11,7 +11,10 @@
   - Make subfigures easier to handle in EIP by moving the class to each
     <td> (instead of one on <table>) and check for IDs of subfigures,
     not their parent figure.
+
+CNXML-0.5 (p9)
   - Made 'id' attribute of 'document' element required instead of optional.
+  - Provide a link to the EPS if there are no other media nested inside it
 
 CNXML-0.5 (p8)
  - Fixed codebase URL for LabVIEW 8.0.
