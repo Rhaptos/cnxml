@@ -973,15 +973,12 @@
     </xsl:param>
     <xsl:param name="codebase">
       <xsl:choose>
-        <xsl:when test="$lv-version = 'vi80'">http://zone.ni.com/devzone/conceptd.nsf/webmain/7DBFD404C6AD0B24862570BB0072F83B/$FILE/CNX_LV8_RTE.exe</xsl:when>
-        <xsl:when test="$lv-version = 'vi82'">http://digital.ni.com/express.nsf/express?openagent&amp;code=exck2m&amp;</xsl:when>
+        <xsl:when test="$lv-version = 'vi80'">ftp://ftp.ni.com/pub/devzone/tut/cnx_lv8_runtime.exe</xsl:when>
+        <xsl:when test="$lv-version = 'vi82'">ftp://ftp.ni.com/support/labview/runtime/windows/8.2/LVRunTimeEng.exe</xsl:when>
       </xsl:choose>
     </xsl:param>
     <xsl:param name="pluginspage">
-      <xsl:choose>
-        <xsl:when test="$lv-version = 'vi80'">http://digital.ni.com/express.nsf/bycode/exwgjq</xsl:when>
-        <xsl:when test="$lv-version = 'vi82'">http://digital.ni.com/express.nsf/express?openagent&amp;code=exck2m&amp;</xsl:when>
-      </xsl:choose>
+        http://digital.ni.com/express.nsf/bycode/exwgjq
     </xsl:param>
     <div class="media labview example">
       <object classid="{$classid}"
