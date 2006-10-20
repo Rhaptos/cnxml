@@ -1,4 +1,4 @@
-connexions-cnxml (0.5.10-1) unstable; urgency=low
+connexions-cnxml (0.5.10-0rc1) unstable; urgency=low
 
   *  EIP and related fixes for handling media (nesting, unrecognized types, etc.)
 
