@@ -1,8 +1,8 @@
-connexions-cnxml (0.5.10-plus_qa_labview_1) unstable; urgency=low
+connexions-cnxml (0.5.11-1) unstable; urgency=low
 
   *  LabView 8.20 support
 
- -- Jennifer A. Drummond <jenn@cnx.org>  Tue, 17 Oct 2006 15:06:42 -0500
+ -- Jennifer A. Drummond <jenn@cnx.org>  Mon, 30 Oct 2006 13:40:27 -0500
 
 connexions-cnxml (0.5.10-1) unstable; urgency=low
 
