@@ -13,27 +13,14 @@
       <l:gentext key="MediaFile" text="Media File"/>
       <l:gentext key="EPSImage" text="EPS Image"/>
       <l:gentext key="LabVIEWExample" text="LabVIEWExample"/>
-      <l:gentext key="HideSolution" text="Hide Solution"/>
-      <l:gentext key="Definition" text="Definition"/>
+      <l:gentext key="DownloadLabVIEWSource" text="Download LabVIEW Source"/>
+      <l:gentext key="AudioFile" text="Audio File"/>
+      <l:gentext key="MusicalExample" text="Musical Example"/>
+      <l:gentext key="Problem" text="Problem"/>
       <l:gentext key="ClickForSolution" text="Click for Solution"/>
       <l:gentext key="HideSolution" text="Hide Solution"/>
-      <l:gentext key="Definition" text="Definition"/>
       
     </l:l10n>
-    <!--
-    - Strength
-    - Definition
-    - Proof
-    - Media File
-    - EPS Image
-    - Labview Example
-    - Download LabView Source
-    - Audio File
-    - Musical Example
-    - Problem
-    - Click for Solution
-    - Hide Solution
-    -->
     <l:l10n language="es" english-language-name="Spanish">
       <l:gentext key="ClickForSolution" text="Clicko por Solutiono"/>
       <l:gentext key="HideSolution" text="Hideo Solutiono"/>
