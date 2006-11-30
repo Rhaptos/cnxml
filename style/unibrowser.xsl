@@ -14,6 +14,9 @@
   <!-- Include the Docbook translation support-->
   <xsl:import href='http://docbook.sourceforge.net/release/xsl/current/common/l10n.xsl' />
 
+  <!-- Import our local translation keys -->
+  <xsl:import href="cnxmll10n.xsl" />
+
   <!-- MathML support -->
   <xsl:include href='http://cnx.rice.edu/technology/mathml/stylesheet/cnxmathmlc2p.xsl' />
 
@@ -543,7 +546,11 @@
     <div class="definition">
       <xsl:call-template name='IdCheck'/>
       <span class="definition-before">
-	Definition <xsl:number level="any" count="cnx:definition"/>: 
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Definition</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+	<!--Definition--> <xsl:number level="any" count="cnx:definition"/>: 
       </span>
       <xsl:apply-templates />
     </div>
@@ -1181,7 +1188,11 @@
       </xsl:if>
     </xsl:variable>
     <div class="button" onclick="showSolution('{../@id}',{$solution-number})">
-      <span class="button-text">[ Click for Solution <xsl:value-of select="$full-number" /> ]</span>
+      <span class="button-text">[ 
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">ClickForSolution</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template><!--Click for Solution--> <xsl:value-of select="$full-number" /> ]</span>
     </div>
     <div class="solution">
       <xsl:call-template name='IdCheck' />
@@ -1190,7 +1201,11 @@
       </span>
       <xsl:apply-templates />
       <div class="button" onclick="hideSolution('{../@id}',{$solution-number})">
-        <span class="button-text">[ Hide Solution <xsl:value-of select="$full-number" /> ]</span>
+        <span class="button-text">[ 
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">HideSolution</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template><!-- Hide Solution--> <xsl:value-of select="$full-number" /> ]</span>
       </div>
     </div>
   </xsl:template>
