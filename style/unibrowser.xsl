@@ -211,7 +211,7 @@
 	  <span class='glossary'>
             <xsl:call-template name="gentext">
               <xsl:with-param name="key">Glossary</xsl:with-param>
-              <xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
             </xsl:call-template>
             <!--Glossary--></span>
 	  <xsl:for-each select='cnx:glossary/cnx:definition'>
@@ -239,7 +239,7 @@
       <h2 id='toc'>
         <xsl:call-template name="gentext">
 	  <xsl:with-param name="key">TableofContents</xsl:with-param>
-	  <xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param>
+	  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
 	</xsl:call-template>
         <!--Table of Contents--></h2>
       <ul class="toc">
@@ -382,7 +382,7 @@
 	    </xsl:otherwise>
 	  </xsl:choose>
         </xsl:when>
-	<xsl:otherwise>(<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>)<!--(Reference)--></xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	<xsl:otherwise>(<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)<!--(Reference)--></xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!-- CNXN with document attribute only (no target) -->
@@ -394,7 +394,7 @@
 	  <xsl:apply-templates />
 	</xsl:when>
 	<xsl:otherwise>
-	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!-- CNXN with target and document attributes -->
@@ -406,7 +406,7 @@
 	  <xsl:value-of select="normalize-space(.)" />
 	</xsl:when>
 	<xsl:otherwise>
-	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!--EMPHASIS-->
@@ -498,7 +498,7 @@
 	<xsl:when test="(not(@type) or @type='')">
 	  <span class="note-before">
             <xsl:call-template name="gentext">
-              <xsl:with-param name="key">Note</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>:
+              <xsl:with-param name="key">Note</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>:
             <!--Note:--> </span>
 	</xsl:when>
 	<xsl:otherwise>
@@ -516,7 +516,7 @@
       <span class="example-before">
 	<xsl:call-template name="gentext">
 	  <xsl:with-param name="key">Example</xsl:with-param>
-	  <xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param>
+	  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
 	</xsl:call-template>
 	<!-- Example --><xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
 	  <xsl:text> </xsl:text>
@@ -572,7 +572,7 @@
     <div class="seealso">
       <span class="seealso-before">
         <xsl:call-template name="gentext">
-          <xsl:with-param name="key">GlossSeeAlso</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>:
+          <xsl:with-param name="key">GlossSeeAlso</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>:
         <!--See Also:--> </span>
       <xsl:for-each select="cnx:term">
         <xsl:apply-templates select="."/>
@@ -832,7 +832,7 @@
           <xsl:when test="self::cnx:subfigure">
             <xsl:call-template name="gentext">
               <xsl:with-param name="key">Figure</xsl:with-param>
-              <xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
             </xsl:call-template>
             <xsl:text>&#160;</xsl:text>
             <!--Subfigure--> <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
@@ -841,7 +841,7 @@
             <xsl:call-template name="gentext">
               <xsl:with-param name="key">Figure</xsl:with-param>
               <xsl:with-param name="lang">
-                <xsl:value-of select="/module/@lang"/>
+                <xsl:value-of select="/module/metadata/language"/>
               </xsl:with-param>
             </xsl:call-template>
             <xsl:text>&#160;</xsl:text>
