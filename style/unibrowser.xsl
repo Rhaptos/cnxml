@@ -11,6 +11,9 @@
   <!-- Import identity transform first so it gets lowest priority -->
   <xsl:import href="ident.xsl" />
 
+  <!-- Include the Docbook translation support-->
+  <xsl:import href='http://docbook.sourceforge.net/release/xsl/current/common/l10n.xsl' />
+
   <!-- MathML support -->
   <xsl:include href='http://cnx.rice.edu/technology/mathml/stylesheet/cnxmathmlc2p.xsl' />
 
@@ -205,7 +208,12 @@
       <!-- GLOSSARY -->
       <xsl:if test='cnx:glossary'>
 	<div id='glossary'>
-	  <span class='glossary'>Glossary</span>
+	  <span class='glossary'>
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Glossary</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param>
+            </xsl:call-template>
+            <!--Glossary--></span>
 	  <xsl:for-each select='cnx:glossary/cnx:definition'>
 	    <div class='glossary-definition'>
 	      <xsl:call-template name='IdCheck'/>
@@ -228,7 +236,12 @@
   <xsl:template name="toc">
     <!-- Table of contents -->
     <div class="toc" id="tableofcontents">
-      <h2 id='toc'>Table of Contents</h2>
+      <h2 id='toc'>
+        <xsl:call-template name="gentext">
+	  <xsl:with-param name="key">TableofContents</xsl:with-param>
+	  <xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param>
+	</xsl:call-template>
+        <!--Table of Contents--></h2>
       <ul class="toc">
 	<xsl:for-each select="cnx:section|cnx:content/cnx:section">
 	  <li class = "toc">
@@ -369,8 +382,7 @@
 	    </xsl:otherwise>
 	  </xsl:choose>
         </xsl:when>
-	<xsl:otherwise>
-	  (Reference)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	<xsl:otherwise>(<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>)<!--(Reference)--></xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!-- CNXN with document attribute only (no target) -->
@@ -382,7 +394,7 @@
 	  <xsl:apply-templates />
 	</xsl:when>
 	<xsl:otherwise>
-	  (Reference)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!-- CNXN with target and document attributes -->
@@ -394,7 +406,7 @@
 	  <xsl:value-of select="normalize-space(.)" />
 	</xsl:when>
 	<xsl:otherwise>
-	  (Reference)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!--EMPHASIS-->
@@ -484,7 +496,10 @@
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	<xsl:when test="(not(@type) or @type='')">
-	  <span class="note-before">Note: </span>
+	  <span class="note-before">
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Note</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>:
+            <!--Note:--> </span>
 	</xsl:when>
 	<xsl:otherwise>
 	  <span class="note-before"><xsl:value-of select="@type"/>: </span>
@@ -499,7 +514,11 @@
     <div class="example">
       <xsl:call-template name='IdCheck'/>
       <span class="example-before">
-	Example<xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
+	<xsl:call-template name="gentext">
+	  <xsl:with-param name="key">Example</xsl:with-param>
+	  <xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param>
+	</xsl:call-template>
+	<!-- Example --><xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
 	  <xsl:text> </xsl:text>
 	  <xsl:number level="any" count="cnx:example[not(parent::cnx:definition|parent::cnx:rule)]"/>
 	</xsl:if>
@@ -551,10 +570,13 @@
   <!-- SEEALSO -->
   <xsl:template match="cnx:seealso">
     <div class="seealso">
-      <span class="seealso-before">See Also: </span>
+      <span class="seealso-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">GlossSeeAlso</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param></xsl:call-template>:
+        <!--See Also:--> </span>
       <xsl:for-each select="cnx:term">
         <xsl:apply-templates select="."/>
-      <xsl:if test="position()!=last()">, </xsl:if>
+        <xsl:if test="position()!=last()">, </xsl:if>
       </xsl:for-each>
     </div>
   </xsl:template>
@@ -808,10 +830,22 @@
       <span class="caption-before">
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure">
-            Subfigure <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Figure</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/@lang"/></xsl:with-param>
+            </xsl:call-template>
+            <xsl:text>&#160;</xsl:text>
+            <!--Subfigure--> <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
 	  </xsl:when>
           <xsl:otherwise>
-            Figure <xsl:number level="any" count="cnx:figure" /><xsl:if test="cnx:caption">: </xsl:if>
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Figure</xsl:with-param>
+              <xsl:with-param name="lang">
+                <xsl:value-of select="/module/@lang"/>
+              </xsl:with-param>
+            </xsl:call-template>
+            <xsl:text>&#160;</xsl:text>
+            <!--Figure--> <xsl:number level="any" count="cnx:figure" /><xsl:if test="cnx:caption">: </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
       </span>
