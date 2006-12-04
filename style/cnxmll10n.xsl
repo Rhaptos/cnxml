@@ -13,18 +13,13 @@
       <l:gentext key="MediaFile" text="Media File"/>
       <l:gentext key="EPSImage" text="EPS Image"/>
       <l:gentext key="LabVIEWExample" text="LabVIEWExample"/>
-      <l:gentext key="DownloadLabVIEWSource" text="Download LabVIEW Source"/>
+      <l:gentext key="Download" text="Download"/>
+      <l:gentext key="LabVIEWSource" text="LabVIEW Source"/>
       <l:gentext key="AudioFile" text="Audio File"/>
       <l:gentext key="MusicalExample" text="Musical Example"/>
       <l:gentext key="Problem" text="Problem"/>
       <l:gentext key="ClickForSolution" text="Click for Solution"/>
       <l:gentext key="HideSolution" text="Hide Solution"/>
-      
-    </l:l10n>
-    <l:l10n language="es" english-language-name="Spanish">
-      <l:gentext key="ClickForSolution" text="Clicko por Solutiono"/>
-      <l:gentext key="HideSolution" text="Hideo Solutiono"/>
-      <l:gentext key="Definition" text="Definitiono"/>
     </l:l10n>
   </l:i18n>
 </xsl:stylesheet>
