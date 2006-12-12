@@ -86,6 +86,10 @@
       <l:gentext key="Aboutus" text="About us"/>
       <l:gentext key="Browseallcontent" text="Browse all content"/>
       <l:gentext key="Help" text="Help"/>
+      <l:gentext key="Summer Sky" text="Summer Sky"/>
+      <l:gentext key="Desert Scape" text="Desert Scape"/>
+      <l:gentext key="Charcoal" text="Charcoal"/>
+      <l:gentext key="Playland" text="Playland"/>
     </l:l10n>
   </l:i18n>
 </xsl:stylesheet>
