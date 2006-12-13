@@ -90,6 +90,7 @@
       <l:gentext key="Desert Scape" text="Desert Scape"/>
       <l:gentext key="Charcoal" text="Charcoal"/>
       <l:gentext key="Playland" text="Playland"/>
+      <l:gentext key="Plone" text="Plone"/>
     </l:l10n>
   </l:i18n>
 </xsl:stylesheet>
