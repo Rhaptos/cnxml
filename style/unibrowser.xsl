@@ -11,6 +11,12 @@
   <!-- Import identity transform first so it gets lowest priority -->
   <xsl:import href="ident.xsl" />
 
+  <!-- Include the Docbook translation support-->
+  <xsl:import href='http://docbook.sourceforge.net/release/xsl/current/common/l10n.xsl' />
+
+  <!-- Import our local translation keys -->
+  <xsl:import href="cnxmll10n.xsl" />
+
   <!-- MathML support -->
   <xsl:include href='http://cnx.rice.edu/technology/mathml/stylesheet/cnxmathmlc2p.xsl' />
 
@@ -205,7 +211,12 @@
       <!-- GLOSSARY -->
       <xsl:if test='cnx:glossary'>
 	<div id='glossary'>
-	  <span class='glossary'>Glossary</span>
+	  <span class='glossary'>
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Glossary</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            </xsl:call-template>
+            <!--Glossary--></span>
 	  <xsl:for-each select='cnx:glossary/cnx:definition'>
 	    <div class='glossary-definition'>
 	      <xsl:call-template name='IdCheck'/>
@@ -228,7 +239,12 @@
   <xsl:template name="toc">
     <!-- Table of contents -->
     <div class="toc" id="tableofcontents">
-      <h2 id='toc'>Table of Contents</h2>
+      <h2 id='toc'>
+        <xsl:call-template name="gentext">
+	  <xsl:with-param name="key">TableofContents</xsl:with-param>
+	  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+	</xsl:call-template>
+        <!--Table of Contents--></h2>
       <ul class="toc">
 	<xsl:for-each select="cnx:section|cnx:content/cnx:section">
 	  <li class = "toc">
@@ -321,7 +337,12 @@
     <a class="cnxn" href="#{@target}">
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="@strength">
-	<xsl:attribute name="title">Strength <xsl:value-of select="@strength" /></xsl:attribute>
+	<xsl:attribute name="title">
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Strength</xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+          <!--Strength--> <xsl:value-of select="@strength" /></xsl:attribute>
       </xsl:if>
       <xsl:choose>
         <xsl:when test="node()">
@@ -346,7 +367,11 @@
 	    </xsl:when>
 	    <xsl:otherwise>
 	      <span class="cnxn-target">
-		<xsl:value-of select="local-name(key('id',@target))" />
+		<!--<xsl:value-of select="local-name(key('id',@target))" />-->
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key"><xsl:value-of select="local-name(key('id',@target))" /></xsl:with-param>
+                  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+                </xsl:call-template>
 	      </span>
               <xsl:for-each select="key('id',@target)">
                 <xsl:text> </xsl:text>
@@ -369,8 +394,7 @@
 	    </xsl:otherwise>
 	  </xsl:choose>
         </xsl:when>
-	<xsl:otherwise>
-	  (Reference)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	<xsl:otherwise>(<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)<!--(Reference)--></xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!-- CNXN with document attribute only (no target) -->
@@ -382,7 +406,7 @@
 	  <xsl:apply-templates />
 	</xsl:when>
 	<xsl:otherwise>
-	  (Reference)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!-- CNXN with target and document attributes -->
@@ -394,7 +418,7 @@
 	  <xsl:value-of select="normalize-space(.)" />
 	</xsl:when>
 	<xsl:otherwise>
-	  (Reference)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!--EMPHASIS-->
@@ -484,7 +508,13 @@
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	<xsl:when test="(not(@type) or @type='')">
-	  <span class="note-before">Note: </span>
+	  <span class="note-before">
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Note</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/>
+              </xsl:with-param>
+            </xsl:call-template>:
+            <!--Note:--> </span>
 	</xsl:when>
 	<xsl:otherwise>
 	  <span class="note-before"><xsl:value-of select="@type"/>: </span>
@@ -499,7 +529,11 @@
     <div class="example">
       <xsl:call-template name='IdCheck'/>
       <span class="example-before">
-	Example<xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
+	<xsl:call-template name="gentext">
+	  <xsl:with-param name="key">Example</xsl:with-param>
+	  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+	</xsl:call-template>
+	<!-- Example --><xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
 	  <xsl:text> </xsl:text>
 	  <xsl:number level="any" count="cnx:example[not(parent::cnx:definition|parent::cnx:rule)]"/>
 	</xsl:if>
@@ -524,7 +558,12 @@
     <div class="definition">
       <xsl:call-template name='IdCheck'/>
       <span class="definition-before">
-	Definition <xsl:number level="any" count="cnx:definition"/>: 
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Definition</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+        <xsl:text>&#160;</xsl:text>
+	<!--Definition--> <xsl:number level="any" count="cnx:definition"/>: 
       </span>
       <xsl:apply-templates />
     </div>
@@ -551,10 +590,13 @@
   <!-- SEEALSO -->
   <xsl:template match="cnx:seealso">
     <div class="seealso">
-      <span class="seealso-before">See Also: </span>
+      <span class="seealso-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">GlossSeeAlso</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>:
+        <!--See Also:--> </span>
       <xsl:for-each select="cnx:term">
         <xsl:apply-templates select="."/>
-      <xsl:if test="position()!=last()">, </xsl:if>
+        <xsl:if test="position()!=last()">, </xsl:if>
       </xsl:for-each>
     </div>
   </xsl:template>
@@ -631,7 +673,13 @@
   <xsl:template match="cnx:proof">
     <div class='proof'>
       <xsl:call-template name='IdCheck'/>
-      <span class="proof-before">Proof<xsl:if test="cnx:name">: </xsl:if></span>
+      <span class="proof-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Proof</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+        <!--Proof-->
+        <xsl:if test="cnx:name">: </xsl:if></span>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
@@ -808,10 +856,22 @@
       <span class="caption-before">
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure">
-            Subfigure <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Figure</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            </xsl:call-template>
+            <xsl:text>&#160;</xsl:text>
+            <!--Subfigure--> <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
 	  </xsl:when>
           <xsl:otherwise>
-            Figure <xsl:number level="any" count="cnx:figure" /><xsl:if test="cnx:caption">: </xsl:if>
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Figure</xsl:with-param>
+              <xsl:with-param name="lang">
+                <xsl:value-of select="/module/metadata/language"/>
+              </xsl:with-param>
+            </xsl:call-template>
+            <xsl:text>&#160;</xsl:text>
+            <!--Figure--> <xsl:number level="any" count="cnx:figure" /><xsl:if test="cnx:caption">: </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
       </span>
@@ -835,7 +895,11 @@
 	    <xsl:value-of select='@value'/>
 	  </xsl:attribute> 
 	</xsl:for-each>
-	Media File:
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">MediaFile</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+	<!--Media File:-->
 	<a class="link" href="{@src}">
 	  <xsl:choose>
 	    <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
@@ -895,7 +959,11 @@
 		<xsl:value-of select='@value'/>
 	      </xsl:attribute> 
 	    </xsl:for-each>
-	    EPS Image: 
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">EPSImage</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            </xsl:call-template>:
+	    <!--EPS Image:--> 
 	    <a class="link" href="{@src}">
 	      <xsl:choose>
 		<xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
@@ -953,7 +1021,11 @@
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
     <div class="media labview example">
       <span class="example-before">
-        LabVIEW Example:
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">LabVIEWExample</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>:
+        <!--LabVIEW Example:-->
       </span>
       <xsl:for-each select=".">
         <xsl:variable name="viinfo" select="cnx:param[@name='viinfo']/@value" />
@@ -1019,7 +1091,20 @@
 	  </xsl:if>
 	</embed>
       </object>
-      <p>Download <a class="cnxn" href="{@src}">LabVIEW source</a></p>
+      <p>
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Download</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+        <!--Download--> 
+        <a class="cnxn" href="{@src}">
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">LabVIEWSource</xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+          <!--LabVIEW source-->
+        </a>
+      </p>
     </div>
   </xsl:template>
 
@@ -1068,7 +1153,13 @@
   <!-- Generic audio file -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
     <div class="media musical example">
-      <span class="example-before">Audio File: </span>
+      <span class="example-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">AudioFile</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>:
+        <!--Audio File:-->
+      </span>
       <a class="link" href="{@src}">
 	<xsl:choose>
 	  <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
@@ -1086,7 +1177,11 @@
   <xsl:template match="cnx:media[@type='audio/mpeg']"> 
     <div class="media musical example">
       <span class="example-before">
-        Musical Example:
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">MusicalExample</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>:
+        <!--Musical Example:-->
       </span>
       <a class="cnxn" href="{@src}">
         <xsl:call-template name="composer-title-comments" />
@@ -1128,7 +1223,12 @@
     <div class="problem">
       <xsl:call-template name='IdCheck'/>
       <span class="problem-before">
-	Problem <xsl:number level="any" count="cnx:exercise" /><xsl:if test="cnx:name">: </xsl:if>
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Problem</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+        <xsl:text>&#160;</xsl:text>
+	<!--Problem--> <xsl:number level="any" count="cnx:exercise" /><xsl:if test="cnx:name">: </xsl:if>
       </span>
       <xsl:apply-templates />
     </div>
@@ -1147,7 +1247,11 @@
       </xsl:if>
     </xsl:variable>
     <div class="button" onclick="showSolution('{../@id}',{$solution-number})">
-      <span class="button-text">[ Click for Solution <xsl:value-of select="$full-number" /> ]</span>
+      <span class="button-text">[ 
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">ClickForSolution</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template><!--Click for Solution--> <xsl:value-of select="$full-number" /> ]</span>
     </div>
     <div class="solution">
       <xsl:call-template name='IdCheck' />
@@ -1156,7 +1260,11 @@
       </span>
       <xsl:apply-templates />
       <div class="button" onclick="hideSolution('{../@id}',{$solution-number})">
-        <span class="button-text">[ Hide Solution <xsl:value-of select="$full-number" /> ]</span>
+        <span class="button-text">[ 
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">HideSolution</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template><!-- Hide Solution--> <xsl:value-of select="$full-number" /> ]</span>
       </div>
     </div>
   </xsl:template>
