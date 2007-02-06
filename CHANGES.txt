@@ -1,3 +1,6 @@
+CNXML-0.5 (p12)
+  - i18n for content
+
 CNXML-0.5 (p11)
   - Added support for LabVIEW 8.20 content
 

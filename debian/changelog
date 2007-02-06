@@ -1,8 +1,8 @@
-connexions-cnxml (0.5.11-1qa_translatable) unstable; urgency=low
+connexions-cnxml (0.5.12-1) unstable; urgency=low
 
   *  i18n for content
 
- -- Jennifer A. Drummond <jenn@cnx.org>  Wed, 31 Jan 2007 14:45:45 -0600
+ -- Jennifer A. Drummond <jenn@cnx.org>  Tue, 06 Feb 2007 10:35:35 -0600
 
 connexions-cnxml (0.5.11-1) unstable; urgency=low
 
