@@ -857,7 +857,7 @@
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure">
             <xsl:call-template name="gentext">
-              <xsl:with-param name="key">Figure</xsl:with-param>
+              <xsl:with-param name="key">Subfigure</xsl:with-param>
               <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
             </xsl:call-template>
             <xsl:text>&#160;</xsl:text>
@@ -1025,6 +1025,7 @@
           <xsl:with-param name="key">LabVIEWExample</xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
         </xsl:call-template>:
+        <xsl:text> </xsl:text>
         <!--LabVIEW Example:-->
       </span>
       <xsl:for-each select=".">
@@ -1096,6 +1097,7 @@
           <xsl:with-param name="key">Download</xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
         </xsl:call-template>
+        <xsl:text> </xsl:text>
         <!--Download--> 
         <a class="cnxn" href="{@src}">
           <xsl:call-template name="gentext">
@@ -1251,7 +1253,8 @@
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">ClickForSolution</xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-        </xsl:call-template><!--Click for Solution--> <xsl:value-of select="$full-number" /> ]</span>
+        </xsl:call-template><!--Click for Solution-->
+        <xsl:text> </xsl:text> <xsl:value-of select="$full-number" /> ]</span>
     </div>
     <div class="solution">
       <xsl:call-template name='IdCheck' />
@@ -1264,7 +1267,8 @@
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">HideSolution</xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-        </xsl:call-template><!-- Hide Solution--> <xsl:value-of select="$full-number" /> ]</span>
+        </xsl:call-template><!-- Hide Solution-->
+        <xsl:text> </xsl:text> <xsl:value-of select="$full-number" /> ]</span>
       </div>
     </div>
   </xsl:template>

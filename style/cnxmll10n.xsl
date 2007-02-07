@@ -8,6 +8,8 @@
   <l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
     <l:l10n language="en" english-language-name="English">
       <!-- for unibrowser.xsl -->
+      <l:gentext key="subfigure" text="subfigure"/>
+      <l:gentext key="Subfigure" text="Subfigure"/>
       <l:gentext key="Strength" text="Strength"/>
       <l:gentext key="Definition" text="Definition"/>
       <l:gentext key="Proof" text="Proof"/>
