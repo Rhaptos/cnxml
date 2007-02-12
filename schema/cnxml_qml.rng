@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
 
-  <include href="mdml-defs.rng"/>
+  <include href="mdml-defs.rng">
+    <!-- We don't want -->
+    <define name="metadata" combine="choice">
+      <notAllowed/>
+    </define>
+    <define name="metadata.attlist" combine="choice">
+      <notAllowed/>
+    </define>
+  </include>
   <include href="http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng">
-  <!-- Add MathML and CNXML 'section' and 'media' to QML inline content -->
     <define name="QML.text">
       <zeroOrMore>
         <choice>
@@ -15,7 +22,7 @@
     </define>
   </include>
   <include href="cnxml-defs.rng">
-  <!-- Exercises may now contain a QML 'item' instead of the plain CNXML content -->
+    <!-- Update content model for 'exercise' to allow qml -->
     <define name="exercise.content">
       <group>
         <optional>
@@ -32,18 +39,21 @@
         </choice>
       </group>
     </define>
-  <!-- CNXML 'content' may now contain a QML 'problemset' instead of the plain CNXML content -->
     <define name="content.content">
       <choice>
         <ref name="QML.problemset"/>
         <oneOrMore>
-          <ref name="block.class"/>
+          <choice>
+            <ref name="structural.elems"/>
+            <ref name="code"/>
+            <ref name="special.elems"/>
+            <ref name="para"/>
+          </choice>
         </oneOrMore>
       </choice>
     </define>
-    <!-- We use the metadata content model from MDML instead of CNXML's -->
     <define name="metadata.content" combine="choice">
-      <ref name="MDML.metadata.content"/>
+      <notAllowed/>
     </define>
     <define name="bibtex.elem">
       <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>

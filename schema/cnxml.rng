@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0">
 
-  <include href="mdml-defs.rng"/>
+  <include href="mdml-defs.rng">
+    <!-- We don't want -->
+    <define name="metadata" combine="choice">
+      <notAllowed/>
+    </define>
+    <define name="metadata.attlist" combine="choice">
+      <notAllowed/>
+    </define>
+  </include>
   <include href="cnxml-defs.rng">
-    <!-- We use the metadata content model from MDML instead of CNXML's -->
-    <define name="metadata.content">
-      <ref name="MDML.metadata.content"/>
+    <define name="metadata.content" combine="choice">
+      <notAllowed/>
     </define>
     <define name="bibtex.elem">
       <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>

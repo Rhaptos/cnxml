@@ -11,6 +11,12 @@
   <!-- Import identity transform first so it gets lowest priority -->
   <xsl:import href="ident.xsl" />
 
+  <!-- Include the Docbook translation support-->
+  <xsl:import href='http://docbook.sourceforge.net/release/xsl/current/common/l10n.xsl' />
+
+  <!-- Import our local translation keys -->
+  <xsl:import href="cnxmll10n.xsl" />
+
   <!-- MathML support -->
   <xsl:include href='http://cnx.rice.edu/technology/mathml/stylesheet/cnxmathmlc2p.xsl' />
 
@@ -93,8 +99,8 @@
 		<div id="licensorlist">
 		  <span id="licensorlist-before">Copyright: </span>
 		  <xsl:for-each select="cnx:module/cnx:authorlist/cnx:author|cnx:module/cnx:metadata/cnx:authorlist/cnx:author|cnx:module/cnx:metadata/md:authorlist/md:author|cnx:document/cnx:metadata/md:authorlist/md:author">
-		    <span class="cnx_author">
-		      <span class="cnx_name">
+		    <span class="author">
+		      <span class="name">
 			<xsl:choose>
 			  <xsl:when test="@name">
 			    <xsl:value-of select="@name"/>
@@ -106,10 +112,10 @@
 		      </span>
 		      <xsl:choose>
 			<xsl:when test="@email">
-			  (<a class="cnx_email" href="mailto:{@email}"><xsl:value-of select="@email"/></a>)
+			  (<a class="email" href="mailto:{@email}"><xsl:value-of select="@email"/></a>)
 			</xsl:when>
 			<xsl:when test="cnx:email|md:email">
-			  (<a class="cnx_email" href="mailto:{cnx:email|md:email}"><xsl:value-of select="cnx:email|md:email"/></a>)
+			  (<a class="email" href="mailto:{cnx:email|md:email}"><xsl:value-of select="cnx:email|md:email"/></a>)
 			</xsl:when>
 		      </xsl:choose>
 		    </span>
@@ -120,8 +126,8 @@
 		<div id="authorlist">
 		  <span id="authorlist-before">Written By: </span>
 		  <xsl:for-each select="cnx:module/cnx:authorlist/cnx:author|cnx:module/cnx:metadata/cnx:authorlist/cnx:author|cnx:module/cnx:metadata/md:authorlist/md:author|cnx:document/cnx:metadata/md:authorlist/md:author">
-		    <span class="cnx_author">
-		      <span class="cnx_name">
+		    <span class="author">
+		      <span class="name">
 			<xsl:choose>
 			  <xsl:when test="@name">
 			    <xsl:value-of select="@name"/>
@@ -133,10 +139,10 @@
 		      </span>
 		      <xsl:choose>
 			<xsl:when test="@email">
-			  (<a class="cnx_email" href="mailto:{@email}"><xsl:value-of select="@email"/></a>)
+			  (<a class="email" href="mailto:{@email}"><xsl:value-of select="@email"/></a>)
 			</xsl:when>
 			<xsl:when test="cnx:email|md:email">
-			  (<a class="cnx_email" href="mailto:{cnx:email|md:email}"><xsl:value-of select="cnx:email|md:email"/></a>)
+			  (<a class="email" href="mailto:{cnx:email|md:email}"><xsl:value-of select="cnx:email|md:email"/></a>)
 			</xsl:when>
 		      </xsl:choose>
 		    </span>
@@ -147,12 +153,12 @@
 		<div id="maintainerlist">
 		  <span id="maintainerlist-before">Maintained By: </span>
 		  <xsl:for-each select="cnx:module/cnx:maintainerlist/cnx:maintainer|cnx:module/cnx:metadata/cnx:maintainerlist/cnx:maintainer|cnx:module/cnx:metadata/md:maintainerlist/md:maintainer|cnx:document/cnx:metadata/md:maintainerlist/md:maintainer">
-		    <span class="cnx_maintainer">
-		      <span class="cnx_name">
+		    <span class="maintainer">
+		      <span class="name">
 			<xsl:value-of select="cnx:firstname|md:firstname"/>&#160;<xsl:value-of select="cnx:surname|md:surname"/>
 		      </span>
 		      <xsl:if test="cnx:email|md:email">
-			(<a class="cnx_email" href="mailto:{cnx:email|md:email}"><xsl:value-of select="cnx:email|md:email"/></a>)
+			(<a class="email" href="mailto:{cnx:email|md:email}"><xsl:value-of select="cnx:email|md:email"/></a>)
 		      </xsl:if>
 		    </span>
 		    <xsl:if test="position()!=last()">, </xsl:if>
@@ -192,10 +198,10 @@
         <xsl:variable name="footnote-number">
           <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1" />
         </xsl:variable>
-        <a class="cnx_footnote-number" name="footnote{$footnote-number}"><xsl:text> </xsl:text></a>
-        <div class="cnx_footnote">
+        <a class="footnote-number" name="footnote{$footnote-number}"><xsl:text> </xsl:text></a>
+        <div class="footnote">
 	  <xsl:call-template name='IdCheck'/>
-          <span class="cnx_footnote-number">
+          <span class="footnote-number">
 	    <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1. " />
 	  </span>
           <xsl:apply-templates />
@@ -205,7 +211,12 @@
       <!-- GLOSSARY -->
       <xsl:if test='cnx:glossary'>
 	<div id='glossary'>
-	  <span class='cnx_glossary'>Glossary</span>
+	  <span class='glossary'>
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Glossary</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            </xsl:call-template>
+            <!--Glossary--></span>
 	  <xsl:for-each select='cnx:glossary/cnx:definition'>
 	    <div class='glossary-definition'>
 	      <xsl:call-template name='IdCheck'/>
@@ -227,19 +238,24 @@
   <!-- TOC -->
   <xsl:template name="toc">
     <!-- Table of contents -->
-    <div class="cnx_toc" id="tableofcontents">
-      <h2 id='toc'>Table of Contents</h2>
-      <ul class="cnx_toc">
+    <div class="toc" id="tableofcontents">
+      <h2 id='toc'>
+        <xsl:call-template name="gentext">
+	  <xsl:with-param name="key">TableofContents</xsl:with-param>
+	  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+	</xsl:call-template>
+        <!--Table of Contents--></h2>
+      <ul class="toc">
 	<xsl:for-each select="cnx:section|cnx:content/cnx:section">
 	  <li class = "toc">
 	    <xsl:number level="single" count="cnx:section" format="1.  "/>
 	    <a href='#{@id}'><xsl:value-of select="@name|cnx:name"/></a>
-	    <ul class="cnx_toc">
+	    <ul class="toc">
 	      <xsl:for-each select="cnx:section">
 		<li class = "toc">
 		  <xsl:number level="multiple" count="cnx:section" format="1.1  "/>
 		  <a href='#{@id}'><xsl:value-of select="@name|cnx:name"/></a>
-		  <ul class="cnx_toc">
+		  <ul class="toc">
 		    <xsl:for-each select="cnx:section">
 		      <li class = "toc">
 			<xsl:number level="multiple" count="cnx:section" format="1.1.1  "/>
@@ -261,7 +277,7 @@
 
   <!--SECTION-->
   <xsl:template match="cnx:section">
-    <div class="cnx_section">
+    <div class="section">
       <xsl:call-template name='IdCheck'/>
 	  <h2>
 	    <xsl:if test="parent::cnx:problem or parent::cnx:solution">
@@ -286,7 +302,7 @@
   <!--NAME-->
   <xsl:template match="cnx:name|cnx:title">
     <xsl:if test="parent::*[not(self::cnx:module|self::cnx:document)]">
-      <span class="cnx_name">
+      <span class="name">
 	<xsl:call-template name='IdCheck'/>
 	<xsl:apply-templates /><xsl:if test="parent::cnx:meaning"><xsl:text>: </xsl:text></xsl:if>
       </span>
@@ -295,7 +311,7 @@
 
   <!--PARA-->
   <xsl:template match="cnx:para">
-    <div class="cnx_para">
+    <div class="para">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates/>
       <xsl:if test="not(node())">
@@ -306,7 +322,7 @@
 
   <!-- LINK -->
   <xsl:template match="cnx:link">
-    <a class="cnx_link" href="{@src}">
+    <a class="link" href="{@src}">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
     </a>
@@ -318,10 +334,15 @@
   is linking to.  If there is text provides, that text will serve as
   the link text. If not, we will provide it, including numbering.  -->
   <xsl:template match="cnx:cnxn[not(@document|@module)]">
-    <a class="cnx_cnxn" href="#{@target}">
+    <a class="cnxn" href="#{@target}">
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="@strength">
-	<xsl:attribute name="title">Strength <xsl:value-of select="@strength" /></xsl:attribute>
+	<xsl:attribute name="title">
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Strength</xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+          <!--Strength--> <xsl:value-of select="@strength" /></xsl:attribute>
       </xsl:if>
       <xsl:choose>
         <xsl:when test="node()">
@@ -332,7 +353,7 @@
 	    <xsl:when test="local-name(key('id',@target))='note' or local-name(key('id',@target))='rule'">
               <xsl:for-each select="key('id',@target)">
 		<xsl:variable name="cnxntype" select="@type" />
-		<span class="cnx_cnxn-target">
+		<span class="cnxn-target">
 		  <xsl:value-of select="@type" />
 		</span>
 		<xsl:text> </xsl:text>
@@ -345,8 +366,12 @@
 	      </xsl:for-each>
 	    </xsl:when>
 	    <xsl:otherwise>
-	      <span class="cnx_cnxn-target">
-		<xsl:value-of select="local-name(key('id',@target))" />
+	      <span class="cnxn-target">
+		<!--<xsl:value-of select="local-name(key('id',@target))" />-->
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key"><xsl:value-of select="local-name(key('id',@target))" /></xsl:with-param>
+                  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+                </xsl:call-template>
 	      </span>
               <xsl:for-each select="key('id',@target)">
                 <xsl:text> </xsl:text>
@@ -369,32 +394,31 @@
 	    </xsl:otherwise>
 	  </xsl:choose>
         </xsl:when>
-	<xsl:otherwise>
-	  (Reference)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	<xsl:otherwise>(<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)<!--(Reference)--></xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!-- CNXN with document attribute only (no target) -->
   <xsl:template match="cnx:cnxn[not(@target)]">
-    <a class="cnx_cnxn" href="/content/{@module|@document}/latest/">
+    <a class="cnxn" href="/content/{@module|@document}/latest/">
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	<xsl:when test="string()">
 	  <xsl:apply-templates />
 	</xsl:when>
 	<xsl:otherwise>
-	  (Reference)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!-- CNXN with target and document attributes -->
   <xsl:template match="cnx:cnxn[@target and (@module or @document)]">
-    <a class="cnx_cnxn" href="/content/{@module|@document}/latest/#{@target}">
+    <a class="cnxn" href="/content/{@module|@document}/latest/#{@target}">
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	<xsl:when test="string()">
 	  <xsl:value-of select="normalize-space(.)" />
 	</xsl:when>
 	<xsl:otherwise>
-	  (Reference)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
   </xsl:template>
 
   <!--EMPHASIS-->
@@ -420,21 +444,21 @@
 	  <xsl:call-template name="IdCheck"/>
 	  <xsl:apply-templates />
 	  <xsl:if test="@src">
-	    <span class="cnx_quote-source">[</span>
-	    <a href="{@src}" class="cnx_quote-source">source</a>
-	    <span class="cnx_quote-source">]</span>
+	    <span class="quote-source-before">[</span>
+	    <a href="{@src}" class="quote-source">source</a>
+	    <span class="quote-source-after">]</span>
 	  </xsl:if>
 	</blockquote>
       </xsl:when>
       <xsl:otherwise>
-	<span class="cnx_quote">
+	<span class="quote">
 	  <xsl:call-template name='IdCheck'/>
 	  <xsl:apply-templates />
 	</span>
 	<xsl:if test="@src">
-	  <span class="cnx_quote-source">[</span>
-	  <a href="{@src}" class="cnx_quote-source">source</a>
-	  <span class="cnx_quote-source">]</span>
+	  <span class="quote-source-before">[</span>
+	  <a href="{@src}" class="quote-source">source</a>
+	  <span class="quote-source-after">]</span>
 	</xsl:if>
       </xsl:otherwise>
     </xsl:choose>
@@ -442,7 +466,7 @@
   
   <!-- FOREIGN -->
   <xsl:template match="cnx:foreign">
-    <span class="cnx_foreign">
+    <span class="foreign">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
     </span>
@@ -450,20 +474,20 @@
 
   <!-- CODE -->
   <xsl:template match="cnx:codeline|cnx:code">
-    <code class="cnx_codeline">
+    <code class="codeline">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
     </code>
   </xsl:template>
   <!--CODE.block (IE understands pre better than code.codeblock) -->
   <xsl:template match="cnx:codeblock|cnx:code[@type='block']">
-    <pre class="cnx_code">
+    <pre class="code">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
       <xsl:if test="not(node())">
 	<xsl:comment>empty code tag</xsl:comment>
       </xsl:if>
-    </pre>  
+    </pre>
   </xsl:template>
 
   <!-- FOOTNOTE -->
@@ -471,8 +495,8 @@
     <xsl:variable name="footnote-number">
       <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1" />
     </xsl:variable>
-    <span class="cnx_footnote-reference">
-      <a class="cnx_footnote-reference" href="#footnote{$footnote-number}">
+    <span class="footnote-reference">
+      <a class="footnote-reference" href="#footnote{$footnote-number}">
 	<xsl:value-of select="$footnote-number" />
       </a><xsl:if test="following-sibling::node()[normalize-space()!=''][1][self::cnx:note and @type='footnote']">, </xsl:if>
     </span>
@@ -480,14 +504,20 @@
 
   <!-- NOTE -->
   <xsl:template match="cnx:note[not(@type='footnote')]">
-    <div class="cnx_note">
+    <div class="note">
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	<xsl:when test="(not(@type) or @type='')">
-	  <span class="cnx_note">Note: </span>
+	  <span class="note-before">
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Note</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/>
+              </xsl:with-param>
+            </xsl:call-template>:
+            <!--Note:--> </span>
 	</xsl:when>
 	<xsl:otherwise>
-	  <span class="cnx_note"><xsl:value-of select="@type"/>: </span>
+	  <span class="note-before"><xsl:value-of select="@type"/>: </span>
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates/>
@@ -496,22 +526,26 @@
   
   <!--EXAMPLE-->
   <xsl:template match="cnx:example">
-    <div class="cnx_example">
+    <div class="example">
       <xsl:call-template name='IdCheck'/>
-      <span class="cnx_example">
-	Example<xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
+      <span class="example-before">
+	<xsl:call-template name="gentext">
+	  <xsl:with-param name="key">Example</xsl:with-param>
+	  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+	</xsl:call-template>
+	<!-- Example --><xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
 	  <xsl:text> </xsl:text>
 	  <xsl:number level="any" count="cnx:example[not(parent::cnx:definition|parent::cnx:rule)]"/>
 	</xsl:if>
 	<xsl:if test="cnx:name|ancestor::cnx:glossary">: </xsl:if>
       </span>
       <xsl:if test="not(ancestor::bib:file)">
-	<span class="cnx_example-name">
+	<span class="example-name">
 	  <xsl:value-of select="cnx:name" /><xsl:text>&#160;</xsl:text>
 	</span>
       </xsl:if>
       <xsl:if test="ancestor::bib:file">
-	<span class="cnx_example-name">
+	<span class="example-name">
 	  <xsl:value-of select="cnx:name" />
 	</span>
       </xsl:if>
@@ -521,10 +555,15 @@
 
   <!--DEFINITION-->
   <xsl:template match="cnx:definition">
-    <div class="cnx_definition">
+    <div class="definition">
       <xsl:call-template name='IdCheck'/>
-      <span class="cnx_definition">
-	Definition <xsl:number level="any" count="cnx:definition"/>: 
+      <span class="definition-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Definition</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+        <xsl:text>&#160;</xsl:text>
+	<!--Definition--> <xsl:number level="any" count="cnx:definition"/>: 
       </span>
       <xsl:apply-templates />
     </div>
@@ -532,7 +571,7 @@
 
   <!--TERM-->
   <xsl:template match="cnx:term">
-    <span class="cnx_term">
+    <span class="term">
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	<xsl:when test="@src">
@@ -550,11 +589,14 @@
 
   <!-- SEEALSO -->
   <xsl:template match="cnx:seealso">
-    <div class="cnx_seealso">
-      <span class="cnx_seealso">See Also: </span>
+    <div class="seealso">
+      <span class="seealso-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">GlossSeeAlso</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>:
+        <!--See Also:--> </span>
       <xsl:for-each select="cnx:term">
         <xsl:apply-templates select="."/>
-      <xsl:if test="position()!=last()">, </xsl:if>
+        <xsl:if test="position()!=last()">, </xsl:if>
       </xsl:for-each>
     </div>
   </xsl:template>
@@ -571,7 +613,7 @@
     <xsl:choose>
       <xsl:when test='count(child::node())>0'>
 	<cite>
-	  <a class="cnx_cite" href="{@src}">
+	  <a class="cite" href="{@src}">
 	    <xsl:call-template name='IdCheck'/>
 	    <xsl:apply-templates/>
 	  </a>
@@ -582,11 +624,11 @@
 	<xsl:choose>
 	  <xsl:when test="starts-with(@src, '#') and local-name(key('id',$src))='entry'">
 	    <xsl:for-each select="key('id',$src)">
-	      [<a class="cnx_cite" href="#{@id}"><xsl:number level="any" count="//bib:entry"/></a>]
+	      [<a class="cite" href="#{@id}"><xsl:number level="any" count="//bib:entry"/></a>]
 	    </xsl:for-each>
 	  </xsl:when>
 	  <xsl:otherwise>
-	    [<a class="cnx_cite" href="{@src}">cite</a>]
+	    [<a class="cite" href="{@src}">cite</a>]
 	  </xsl:otherwise>
 	</xsl:choose>
       </xsl:otherwise>
@@ -598,7 +640,7 @@
     <div class='meaning'>
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="count(parent::cnx:definition/cnx:meaning) > 1"> 
-      <span class="cnx_meaning-number"><xsl:number level="single"/>. </span>
+      <span class="meaning-number"><xsl:number level="single"/>. </span>
       </xsl:if>
       <xsl:apply-templates/>
     </div>
@@ -607,12 +649,12 @@
   <!-- RULE -->
   <xsl:template match="cnx:rule">
     <xsl:variable name="type" select="@type"/>
-    <div class="cnx_rule">
+    <div class="rule">
       <xsl:call-template name='IdCheck'/>
-      <span class="cnx_rule">
+      <span class="rule-before">
 	<xsl:value-of select="@type"/><xsl:text> </xsl:text><xsl:number level="any" count="cnx:rule[@type=$type]" /><xsl:if test="cnx:name">: </xsl:if>
       </span>
-      <span class="cnx_rule-name">
+      <span class="rule-name">
 	<xsl:value-of select="cnx:name" /><xsl:text>&#160;</xsl:text>
       </span>
       <xsl:apply-templates select="*[not(self::cnx:name)]" />
@@ -631,7 +673,13 @@
   <xsl:template match="cnx:proof">
     <div class='proof'>
       <xsl:call-template name='IdCheck'/>
-      <span class="cnx_proof">Proof<xsl:if test="cnx:name">: </xsl:if></span>
+      <span class="proof-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Proof</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+        <!--Proof-->
+        <xsl:if test="cnx:name">: </xsl:if></span>
       <xsl:apply-templates/>
     </div>
   </xsl:template>
@@ -639,11 +687,11 @@
   <!--LIST-->
   <!-- Default list.  Prints a list of type='bulleted'. -->
   <xsl:template match="cnx:list">
-    <ul class="cnx_list">
+    <ul class="list">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates select="cnx:name"/>
       <xsl:for-each select="cnx:item">
-        <li class="cnx_item">
+        <li class="item">
           <xsl:call-template name='IdCheck'/>
           <xsl:apply-templates />
         </li>
@@ -654,11 +702,11 @@
   <!--LIST with type='enumerated'-->
   <!-- Numbered lists -->
   <xsl:template match="cnx:list[@type='enumerated']">
-    <ol class="cnx_list">
+    <ol class="list">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates select="cnx:name"/>
       <xsl:for-each select="cnx:item">
-        <li class="cnx_item">
+        <li class="item">
           <xsl:call-template name='IdCheck'/>
           <xsl:apply-templates/>
         </li>
@@ -668,13 +716,13 @@
 
   <!--LIST with type='inline' -->
   <xsl:template match="cnx:list[@type='inline']">
-    <span class="cnx_list">
+    <span class="list">
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:name">
-	<span class="cnx_name"><xsl:value-of select="cnx:name"/>: </span>
+	<span class="name"><xsl:value-of select="cnx:name"/>: </span>
       </xsl:if>
       <xsl:for-each select="cnx:item[node()]">
-	<span class="cnx_item">
+	<span class="item">
 	  <xsl:call-template name='IdCheck'/>
 	  <xsl:apply-templates /><xsl:if test="position()!=last()">; </xsl:if>
 	</span>
@@ -687,12 +735,12 @@
 
   <!--NAMED LIST ITEM-->
   <xsl:template match="cnx:list[@type!='named-item']/cnx:item/cnx:name">
-    <span class="cnx_name"><xsl:value-of select="."/><xsl:text> - </xsl:text></span>
+    <span class="name"><xsl:value-of select="."/><xsl:text> - </xsl:text></span>
   </xsl:template>
 
   <!--LIST with type='named-item' -->
   <xsl:template match="cnx:list[@type='named-item']">
-    <table border="0" cellspacing="0" cellpadding="0" class="cnx_list">
+    <table border="0" cellspacing="0" cellpadding="0" class="list">
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:name">
         <tr>
@@ -703,13 +751,13 @@
       </xsl:if>
       <xsl:for-each select="cnx:item">
         <tr>
-          <td class="cnx_name" align="right" >
+          <td class="name" align="right" >
             <xsl:apply-templates select="cnx:name"/>
           </td>
-	  <td class="cnx_bullet">
+	  <td class="bullet">
 	    <xsl:text disable-output-escaping="yes">&#160;-&#160;</xsl:text>
 	  </td>
-          <td class="cnx_item">
+          <td class="item">
             <xsl:call-template name='IdCheck'/>
             <xsl:apply-templates select="*[not(self::cnx:name)]|text()"/>
           </td>
@@ -720,16 +768,16 @@
 
   <!-- EQUATION -->
   <xsl:template match="cnx:equation">
-    <div class="cnx_equation">
+    <div class="equation">
       <xsl:call-template name='IdCheck'/> 
       <xsl:if test="@name">
-	<span class="cnx_name">
+	<span class="name">
 	  <xsl:value-of select="@name"/>
 	</span>
       </xsl:if>
       <xsl:apply-templates select="cnx:name"/>
       <xsl:apply-templates select="*[not(self::cnx:name)]|text()"/>
-      <span class="cnx_equation-number">
+      <span class="equation-number">
 	<xsl:number level="any" count="cnx:equation" format="(1)"/>
       </span>
     </div>
@@ -737,12 +785,12 @@
 
   <!-- FIGURE -->
   <xsl:template match="cnx:figure">
-    <table class="cnx_figure" border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
+    <table class="figure" border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
       <xsl:call-template name='IdCheck'/> 
       <tr>
 	<td>
 	  <xsl:apply-templates select="cnx:name|cnx:title"/>
-	  <div class="cnx_inner-figure">
+	  <div class="inner-figure">
 	    <xsl:choose>
 	      <xsl:when test="cnx:subfigure">
 		<xsl:choose>
@@ -767,7 +815,7 @@
   
   <!-- SUBFIGURE vertical -->
   <xsl:template match="cnx:subfigure[../@orient='vertical']">
-    <div class="cnx_subfigure">
+    <div class="subfigure">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates select="*[not(self::cnx:caption)]"/>
       <xsl:call-template name="caption"/>
@@ -786,7 +834,7 @@
       </tr>
       <tr>
 	<xsl:for-each select="cnx:subfigure">
-	  <td valign="middle" class="cnx_subfigure">
+	  <td valign="middle" class="subfigure">
 	    <xsl:call-template name='IdCheck'/>
 	    <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name)]"/>
 	  </td>
@@ -804,14 +852,26 @@
 
   <!-- CAPTION -->
   <xsl:template name="caption">
-    <div class="cnx_caption">
-      <span class="cnx_caption">
+    <div class="caption">
+      <span class="caption-before">
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure">
-            Subfigure <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Subfigure</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            </xsl:call-template>
+            <xsl:text>&#160;</xsl:text>
+            <!--Subfigure--> <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
 	  </xsl:when>
           <xsl:otherwise>
-            Figure <xsl:number level="any" count="cnx:figure" /><xsl:if test="cnx:caption">: </xsl:if>
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Figure</xsl:with-param>
+              <xsl:with-param name="lang">
+                <xsl:value-of select="/module/metadata/language"/>
+              </xsl:with-param>
+            </xsl:call-template>
+            <xsl:text>&#160;</xsl:text>
+            <!--Figure--> <xsl:number level="any" count="cnx:figure" /><xsl:if test="cnx:caption">: </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
       </span>
@@ -827,16 +887,20 @@
 
   <!-- MEDIA:RANDOM -->
   <xsl:template match="cnx:media">
-    <div class="cnx_media">
+    <div class="media">
       <xsl:call-template name='IdCheck'/>
       <object>
-	<xsl:for-each select="cnx:param">
+ 	<xsl:for-each select="cnx:param">
 	  <xsl:attribute name='{@name}'>
 	    <xsl:value-of select='@value'/>
 	  </xsl:attribute> 
 	</xsl:for-each>
-	Media File:
-	<a class="cnx_link" href="{@src}">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">MediaFile</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+	<!--Media File:-->
+	<a class="link" href="{@src}">
 	  <xsl:choose>
 	    <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
 	      <xsl:value-of select="cnx:param[@name='title']/@value" />
@@ -846,7 +910,7 @@
 	    </xsl:otherwise>
 	  </xsl:choose>
 	</a>
-	<xsl:apply-templates/>
+        <xsl:apply-templates/>
       </object>
     </div>
   </xsl:template>
@@ -855,7 +919,7 @@
   <xsl:template match="cnx:media[starts-with(@type,'image')]|cnx:mediaobject[starts-with(@type,'image')]">
     <xsl:choose>
       <xsl:when test="child::cnx:param[@name='thumbnail']">
-	<a href="{@src}" class="cnx_media">
+	<a href="{@src}" class="media">
 	  <img src="{child::cnx:param[@name='thumbnail']/@value}">
 	    <xsl:call-template name='IdCheck'/>
 	    <xsl:for-each select="cnx:param">
@@ -867,7 +931,7 @@
 	</a>	    
       </xsl:when>
       <xsl:otherwise>
-	<img src="{@src}" class="cnx_media">
+	<img src="{@src}" class="media">
 	  <xsl:call-template name='IdCheck'/>
 	  <xsl:for-each select="cnx:param">
 	    <xsl:attribute name='{@name}'>
@@ -887,7 +951,7 @@
 	<xsl:apply-templates/>
       </xsl:when>
       <xsl:otherwise>
-	<div class="cnx_media">
+	<div class="media">
 	  <xsl:call-template name='IdCheck'/>
 	  <object>
 	    <xsl:for-each select="cnx:param">
@@ -895,8 +959,12 @@
 		<xsl:value-of select='@value'/>
 	      </xsl:attribute> 
 	    </xsl:for-each>
-	    EPS Image: 
-	    <a class="cnx_link" href="{@src}">
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">EPSImage</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            </xsl:call-template>:
+	    <!--EPS Image:--> 
+	    <a class="link" href="{@src}">
 	      <xsl:choose>
 		<xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
 		  <xsl:value-of select="cnx:param[@name='title']/@value" />
@@ -915,7 +983,7 @@
 
   <!--  MEDIA:APPLET  -->
   <xsl:template match="cnx:media[@type='application/x-java-applet']">
-    <applet code="{@src}" class="cnx_media">
+    <applet code="{@src}" class="media">
       <xsl:call-template name='IdCheck'/>
       <xsl:for-each select="cnx:param">
 	<xsl:attribute name='{@name}'>
@@ -928,7 +996,7 @@
 
   <!-- Video  -->
   <xsl:template match="cnx:media[starts-with(@type, 'video/')]">
-    <object href='{@src}' class="cnx_media">
+    <object href='{@src}' class="media">
       <xsl:call-template name='IdCheck'/>
       <xsl:for-each select="cnx:param[@name='classid' or @name='codebase']">
      	<xsl:attribute name='{@name}'>
@@ -951,65 +1019,100 @@
 
   <!-- LABVIEW -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
-    <div class="cnx_media cnx_labview cnx_example">
-      <span class="cnx_example">
-        LabVIEW Example:
+    <div class="media labview example">
+      <span class="example-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">LabVIEWExample</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>:
+        <xsl:text> </xsl:text>
+        <!--LabVIEW Example:-->
       </span>
       <xsl:for-each select=".">
         <xsl:variable name="viinfo" select="cnx:param[@name='viinfo']/@value" />
-        (<a class="cnx_cnxn" href="{$viinfo}">run</a>) (<a class="cnx_cnxn" href="{@src}">source</a>)
+        (<a class="cnxn" href="{$viinfo}">run</a>) (<a class="cnxn" href="{@src}">source</a>)
       </xsl:for-each>
     </div>
   </xsl:template>
 
-  <!-- LABVIEW -->        
+  <!-- LABVIEW 8.X -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labviewrp')]">
-    <div class="cnx_media cnx_labview cnx_example">
-      <object classid="CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD"
-              codebase="http://zone.ni.com/devzone/conceptd.nsf/webmain/7DBFD404C6AD0B24862570BB0072F83B/$FILE/CNX_LV8_RTE.exe">
-        <xsl:if test="cnx:param[@name='width']">
-          <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
-        </xsl:if>         
-        <xsl:if test="cnx:param[@name='height']">
-          <xsl:attribute name="height"><xsl:value-of select="cnx:param[@name='height']/@value"/></xsl:attribute>
-        </xsl:if>
-        <param name="SRC" value="{@src}" />
-        <xsl:choose>
-          <xsl:when test="cnx:param[@name='lvfppviname']">
-            <param name="LVFPPVINAME" value="{cnx:param[@name='lvfppviname']/@value}" />
-          </xsl:when>
-          <xsl:otherwise>
-            <param name="LVFPPVINAME" value="{@src}" />
-          </xsl:otherwise>
-        </xsl:choose>
-        <param name="REQCTRL" value="false" />
-        <param name="RUNLOCALLY" value="true" />
-        <embed src="{@src}"
+    <xsl:param name="lv-version" select="substring-after(@type, 'application/x-labviewrp')"/>
+    <xsl:param name="classid">
+      <xsl:choose>
+        <xsl:when test="$lv-version = 'vi80'">CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD</xsl:when>
+        <xsl:when test="$lv-version = 'vi82'">CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AE</xsl:when>
+      </xsl:choose>
+    </xsl:param>
+    <xsl:param name="codebase">
+      <xsl:choose>
+        <xsl:when test="$lv-version = 'vi80'">ftp://ftp.ni.com/pub/devzone/tut/cnx_lv8_runtime.exe</xsl:when>
+        <xsl:when test="$lv-version = 'vi82'">ftp://ftp.ni.com/support/labview/runtime/windows/8.2/LVRunTimeEng.exe</xsl:when>
+      </xsl:choose>
+    </xsl:param>
+    <xsl:param name="pluginspage">
+        http://digital.ni.com/express.nsf/bycode/exwgjq
+    </xsl:param>
+    <div class="media labview example">
+      <object classid="{$classid}"
+              codebase="{$codebase}">
+	<xsl:if test="cnx:param[@name='width']">
+	  <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
+	</xsl:if>
+	<xsl:if test="cnx:param[@name='height']">
+	  <xsl:attribute name="height"><xsl:value-of select="cnx:param[@name='height']/@value"/></xsl:attribute>
+	</xsl:if>
+	<param name="SRC" value="{@src}" />
+	<xsl:choose>
+	  <xsl:when test="cnx:param[@name='lvfppviname']">
+	    <param name="LVFPPVINAME" value="{cnx:param[@name='lvfppviname']/@value}" />
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <param name="LVFPPVINAME" value="{@src}" />
+	  </xsl:otherwise>
+	</xsl:choose>
+	<param name="REQCTRL" value="false" />
+	<param name="RUNLOCALLY" value="true" />
+	<embed src="{@src}"
                reqctrl="true"
-               runlocally="true"
-               type="application/x-labviewrpvi80"
-               pluginspage="http://digital.ni.com/express.nsf/bycode/exwgjq">   
-          <xsl:attribute name="lvfppviname">
-            <xsl:choose>
-              <xsl:when test="cnx:param[@name='lvfppviname']"><xsl:value-of select="cnx:param[@name='lvfppviname']/@value" /></xsl:when>
-              <xsl:otherwise><xsl:value-of select="@src" /></xsl:otherwise>
-            </xsl:choose>
-          </xsl:attribute>
-          <xsl:if test="cnx:param[@name='width']">
-            <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
-          </xsl:if>
-          <xsl:if test="cnx:param[@name='height']">
-            <xsl:attribute name="height"><xsl:value-of select="cnx:param[@name='height']/@value"/></xsl:attribute>
-          </xsl:if>
-        </embed>          
+	       runlocally="true"
+	       type="{@type}"
+	       pluginspage="{$pluginspage}">
+	  <xsl:attribute name="lvfppviname">
+	    <xsl:choose>
+	      <xsl:when test="cnx:param[@name='lvfppviname']"><xsl:value-of select="cnx:param[@name='lvfppviname']/@value" /></xsl:when>
+	      <xsl:otherwise><xsl:value-of select="@src" /></xsl:otherwise>
+	    </xsl:choose>
+	  </xsl:attribute>
+	  <xsl:if test="cnx:param[@name='width']">
+	    <xsl:attribute name="width"><xsl:value-of select="cnx:param[@name='width']/@value"/></xsl:attribute>
+	  </xsl:if>
+	  <xsl:if test="cnx:param[@name='height']">
+	    <xsl:attribute name="height"><xsl:value-of select="cnx:param[@name='height']/@value"/></xsl:attribute>
+	  </xsl:if>
+	</embed>
       </object>
-      <p>Download <a class="cnxn" href="{@src}">LabVIEW source</a></p>
-    </div>       
+      <p>
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Download</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+        <xsl:text> </xsl:text>
+        <!--Download--> 
+        <a class="cnxn" href="{@src}">
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">LabVIEWSource</xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+          <!--LabVIEW source-->
+        </a>
+      </p>
+    </div>
   </xsl:template>
 
   <!-- FLASH Objects -->
   <xsl:template match="cnx:media[@type='application/x-shockwave-flash']">
-    <object type="application/x-shockwave-flash" data="{@src}" class="cnx_media">
+    <object type="application/x-shockwave-flash" data="{@src}" class="media">
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:param[@name='width']">
 	<xsl:attribute name="width">
@@ -1051,9 +1154,15 @@
 
   <!-- Generic audio file -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
-    <div class="cnx_media cnx_musical cnx_example">
-      <span class="cnx_example">Audio File: </span>
-      <a class="cnx_link" href="{@src}">
+    <div class="media musical example">
+      <span class="example-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">AudioFile</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>:
+        <!--Audio File:-->
+      </span>
+      <a class="link" href="{@src}">
 	<xsl:choose>
 	  <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
 	    <i><xsl:value-of select="cnx:param[@name='title']/@value" /></i>
@@ -1068,11 +1177,15 @@
 
   <!-- MP3 (Tony Brandt) -->
   <xsl:template match="cnx:media[@type='audio/mpeg']"> 
-    <div class="cnx_media cnx_musical cnx_example">
-      <span class="cnx_example">
-        Musical Example:
+    <div class="media musical example">
+      <span class="example-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">MusicalExample</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>:
+        <!--Musical Example:-->
       </span>
-      <a class="cnx_cnxn" href="{@src}">
+      <a class="cnxn" href="{@src}">
         <xsl:call-template name="composer-title-comments" />
       </a>
     </div>       
@@ -1109,10 +1222,15 @@
 
   <!-- PROBLEM -->
   <xsl:template match="cnx:problem">
-    <div class="cnx_problem">
+    <div class="problem">
       <xsl:call-template name='IdCheck'/>
-      <span class="cnx_problem">
-	Problem <xsl:number level="any" count="cnx:exercise" /><xsl:if test="cnx:name">: </xsl:if>
+      <span class="problem-before">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Problem</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+        <xsl:text>&#160;</xsl:text>
+	<!--Problem--> <xsl:number level="any" count="cnx:exercise" /><xsl:if test="cnx:name">: </xsl:if>
       </span>
       <xsl:apply-templates />
     </div>
@@ -1130,17 +1248,27 @@
 	<xsl:value-of select="$solution-number" />
       </xsl:if>
     </xsl:variable>
-    <div class="cnx_button" onclick="showSolution('{../@id}',{$solution-number})">
-      <span class="cnx_button-text">[ Click for Solution <xsl:value-of select="$full-number" /> ]</span>
+    <div class="button" onclick="showSolution('{../@id}',{$solution-number})">
+      <span class="button-text">[ 
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">ClickForSolution</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template><!--Click for Solution-->
+        <xsl:text> </xsl:text> <xsl:value-of select="$full-number" /> ]</span>
     </div>
-    <div class="cnx_solution">
+    <div class="solution">
       <xsl:call-template name='IdCheck' />
-      <span class="cnx_solution">
+      <span class="solution-before">
 	Solution <xsl:value-of select="$full-number" /><xsl:if test="cnx:name">: </xsl:if>
       </span>
       <xsl:apply-templates />
-      <div class="cnx_button" onclick="hideSolution('{../@id}',{$solution-number})">
-        <span class="cnx_button-text">[ Hide Solution <xsl:value-of select="$full-number" /> ]</span>
+      <div class="button" onclick="hideSolution('{../@id}',{$solution-number})">
+        <span class="button-text">[ 
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">HideSolution</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template><!-- Hide Solution-->
+        <xsl:text> </xsl:text> <xsl:value-of select="$full-number" /> ]</span>
       </div>
     </div>
   </xsl:template>

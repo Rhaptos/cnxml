@@ -6,45 +6,66 @@
     <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
   </define>
 
-  <include href="mdml-defs.rng"/>
-  <include href="http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng">
-  <!-- Add MathML and CNXML 'section' and 'media' to QML inline content -->
-    <define name="QML.text">
-      <zeroOrMore>
-        <choice>
-          <text/>
-          <ref name="mathml_rng"/>
-          <ref name="section"/>
-          <ref name="media"/>
-        </choice>
-      </zeroOrMore>
+  <include href="mdml-defs.rng">
+    <!-- We don't want -->
+    <define name="metadata" combine="choice">
+      <notAllowed/>
+    </define>
+    <define name="metadata.attlist" combine="choice">
+      <notAllowed/>
     </define>
   </include>
+  <include href="http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng">
+  <!-- <!ENTITY % QML.text "(
+     -     #PCDATA|
+     -     %math.qname;|
+     -     %CNXML.section.qname;|
+     -     %CNXML.media.qname;
+     - )*">
+    -->
+  <define name="QML.text">
+    <zeroOrMore>
+      <choice>
+        <text/>
+        <!-- externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/ -->
+        <ref name="mathml_rng"/>
+        <ref name="section"/>
+        <ref name="media"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+  </include>
   <include href="cnxml-defs.rng">
-    <!-- We use the metadata content model from MDML instead of CNXML's -->
     <define name="metadata.content" combine="choice">
-      <ref name="MDML.metadata.content"/>
+      <notAllowed/>
     </define>
     <define name="bibtex.elem">
       <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>
     </define>
-  <!-- Add MathML to inline content via 'textextras' -->
     <define name="textextras">
       <choice>
         <text/>
+        <!-- externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/ -->
         <ref name="mathml_rng"/>
       </choice>
     </define>
-  <!-- Equations now contain MathML instead of text or 'media' -->
     <define name="equation.content">
       <group>
         <optional>
           <ref name="name"/>
         </optional>
+        <!-- externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/ -->
         <ref name="mathml_rng"/>
       </group>
     </define>
-  <!-- Exercises may now contain a QML 'item' instead of the plain CNXML content -->
+  <!-- <!ENTITY % CNXML.exercise.content "(
+     -     (%CNXML.name.qname;)?,
+     -     (
+     -       (%CNXML.problem.qname;, (%CNXML.solution.qname;)*)|
+     -        %QML.item.qname;
+     -     )
+     - )">
+    -->
     <define name="exercise.content">
       <group>
         <optional>
@@ -61,12 +82,17 @@
         </choice>
       </group>
     </define>
-  <!-- CNXML 'content' may now contain a QML 'problemset' instead of the plain CNXML content -->
+
     <define name="content.content">
       <choice>
         <ref name="QML.problemset"/>
         <oneOrMore>
-          <ref name="block.class"/>
+          <choice>
+            <ref name="structural.elems"/>
+            <ref name="code"/>
+            <ref name="special.elems"/>
+            <ref name="para"/>
+          </choice>
         </oneOrMore>
       </choice>
     </define>

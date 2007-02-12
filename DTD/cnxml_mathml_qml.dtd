@@ -34,7 +34,7 @@
 <!ENTITY % MDML.prefixed "INCLUDE" >
 
 <!-- Bring in MDML qualified names -->
-<!ENTITY % mdml-qname.mod PUBLIC "-//CNX//ENTITIES MDML 0.4 Qualified Names 1.0//EN" "mdml-qname-1.mod">
+<!ENTITY % mdml-qname.mod PUBLIC "-//CNX//ENTITIES MDML 0.4 Qualified Names 1.0//EN" "http://cnx.rice.edu/technology/mdml/schema/dtd/0.4/mdml-qname-1.mod">
 %mdml-qname.mod;
 
 <!-- Bring in MathML qualified names -->
@@ -68,7 +68,7 @@
 <!ENTITY % QML.text "(#PCDATA|%math.qname;|%CNXML.section.qname;|%CNXML.media.qname;)*">
 
 <!-- Bring in MDML elements  -->
-<!ENTITY % mdml.mod PUBLIC "-//CNX//ELEMENTS MDML 0.4 Elements//EN" "mdml.mod">
+<!ENTITY % mdml.mod PUBLIC "-//CNX//ELEMENTS MDML 0.4 Elements//EN" "http://cnx.rice.edu/technology/mdml/schema/dtd/0.4/mdml.mod">
 %mdml.mod;
 
 <!-- Update content model for 'metadata' to match MDML  -->
