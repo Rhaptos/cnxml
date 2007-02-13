@@ -93,6 +93,10 @@
       <l:gentext key="Charcoal" text="Charcoal"/>
       <l:gentext key="Playland" text="Playland"/>
       <l:gentext key="Plone" text="Plone"/>
+      <l:gentext key="ContentActions" text="Content Actions"/>
+      <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
+      <l:gentext key="whatsthis" text="(what's this?)"/>
+      <l:gentext key="Endorsements" text="Endorsements"/>
     </l:l10n>
   </l:i18n>
 </xsl:stylesheet>
