@@ -27,10 +27,10 @@
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>
       <l:gentext key="Translators" text="Translators"/>
-      <l:gentext key="Translated By:" text="Translated By:"/>
+      <l:gentext key="Translated By" text="Translated By:"/>
       <l:gentext key="Editors:" text="Editors:"/>
       <l:gentext key="Editors" text="Editors"/>
-      <l:gentext key="Edited By:" text="Edited By:"/>
+      <l:gentext key="Edited By" text="Edited By:"/>
       <l:gentext key="By" text="By: "/>
       <l:gentext key="BasedOn" text="Based on:"/>
       <l:gentext key="Summary" text="Summary:"/>
