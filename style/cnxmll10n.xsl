@@ -61,7 +61,8 @@
       <l:gentext key="Distantlink" text="Distantly related link"/>
       <l:gentext key="Verydistantlink" text="Very distantly related link"/>
       <l:gentext key="LinktoPDFformat" text="Link to printer-friendly PDF format"/>
-      <l:gentext key="PrintPDF" text="Print (PDF)"/>
+      <l:gentext key="Print" text="Print"/>
+      <l:gentext key="PDF" text=" (PDF)"/>
       <l:gentext key="Similarcontent" text="Similar content"/>
       <l:gentext key="Moresimilarcontent" text="More links to similar content"/>
       <l:gentext key="More" text="More"/>
@@ -71,7 +72,7 @@
       <l:gentext key="Chooseastyle" text="Choose a style"/>
       <l:gentext key="EditInPlace" text="Edit-In-Place"/>
       <l:gentext key="Editthiscontent" text="Edit this content"/>
-      <l:gentext key="loginrequired" text="(login required)"/>
+      <l:gentext key="loginrequired" text=" (login required)"/>
       <l:gentext key="Moreaboutthiscontent" text="More about this content"/>
       <l:gentext key="Citethiscontent" text="Cite this content"/>
       <l:gentext key="Versionhistory" text="Version history"/>
@@ -85,18 +86,30 @@
       <l:gentext key="on" text="on"/>
       <l:gentext key="Search" text="Search"/>
       <l:gentext key="Home" text="Home"/>
-      <l:gentext key="Aboutus" text="About us"/>
-      <l:gentext key="Browseallcontent" text="Browse all content"/>
+      <l:gentext key="AboutUs" text="About Us"/>
       <l:gentext key="Help" text="Help"/>
-      <l:gentext key="Summer Sky" text="Summer Sky"/>
-      <l:gentext key="Desert Scape" text="Desert Scape"/>
-      <l:gentext key="Charcoal" text="Charcoal"/>
-      <l:gentext key="Playland" text="Playland"/>
-      <l:gentext key="Plone" text="Plone"/>
       <l:gentext key="ContentActions" text="Content Actions"/>
       <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
       <l:gentext key="whatsthis" text="(what's this?)"/>
       <l:gentext key="Endorsements" text="Endorsements"/>
+      <l:gentext key="ReportaBug" text="Report a Bug"/>
+      <l:gentext key="Contact" text="Contact"/>
+      <l:gentext key="Youarehere" text="You are here: "/>
+      <l:gentext key="rightanglequote" text=" &#187; "/>
+      <l:gentext key="Content" text="Content"/>
+      <l:gentext key="Previous" text="&#171; Previous"/>
+      <l:gentext key="Next" text="Next &#187;"/>
+      <l:gentext key="pipe" text=" | "/>
+      <l:gentext key="Incourse" text="In course:"/>
+      <l:gentext key="coursehome" text="course home"/>
+      <l:gentext key="leftparen" text="("/>
+      <l:gentext key="rightparen" text=")"/>
+      <l:gentext key="Courseby" text="Course by: "/>
+      <l:gentext key="MusicalExamples" text="Musical Examples"/>
+      <l:gentext key="Moduleby" text="Module by:"/>
+      <l:gentext key="CourseTableofContents" text="Course Table of Contents"/>
+      <l:gentext key="show" text="show"/>
+      <l:gentext key="hide" text="hide"/>
     </l:l10n>
   </l:i18n>
 </xsl:stylesheet>
