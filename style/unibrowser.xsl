@@ -273,7 +273,7 @@
   </xsl:template>
 
   <!-- METADATA -->
-  <xsl:template match="cnx:metadata|cnx:authorlist|cnx:maintainerlist|cnx:keywordlist|cnx:abstract" />
+  <xsl:template match="cnx:metadata|cnx:authorlist|cnx:maintainerlist|cnx:keywordlist|cnx:abstract|cnx:objectives" />
 
   <!--SECTION-->
   <xsl:template match="cnx:section">
