@@ -110,6 +110,7 @@
       <l:gentext key="CourseTableofContents" text="Course Table of Contents"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
+      <l:gentext key="Links" text="Links"/>
     </l:l10n>
   </l:i18n>
 </xsl:stylesheet>
