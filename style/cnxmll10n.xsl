@@ -67,6 +67,7 @@
       <l:gentext key="Moresimilarcontent" text="More links to similar content"/>
       <l:gentext key="More" text="More"/>
       <l:gentext key="Coursesusingcontent" text="Courses using this content"/>
+      <l:gentext key="Othercoursesusingcontent" text="Other courses using this content"/>
       <l:gentext key="Morecoursesusingcontent" text="More courses using this content"/>
       <l:gentext key="Personalize" text="Personalize"/>
       <l:gentext key="Chooseastyle" text="Choose a style"/>
