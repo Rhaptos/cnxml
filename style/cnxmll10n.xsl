@@ -112,6 +112,13 @@
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="Links" text="Links"/>
+
+      <!-- for editInPlace.xsl -->
+      <l:gentext key="Instructions" text="Instructions: "/>
+      <l:gentext key="Instructionstext" text="To edit text, click on an area with a white background. Warning: Reloading or leaving the page will discard any unpublished changes."/>
+      <l:gentext key="Brieflydescribeyourchanges" text="Briefly describe your changes:"/>
+      <l:gentext key="Publish" text="Publish"/>
+      <l:gentext key="Discard" text="Discard"/>
     </l:l10n>
   </l:i18n>
 </xsl:stylesheet>
