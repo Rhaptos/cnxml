@@ -73,7 +73,7 @@
       <l:gentext key="Chooseastyle" text="Choose a style"/>
       <l:gentext key="EditInPlace" text="Edit-In-Place"/>
       <l:gentext key="Editthiscontent" text="Edit this content"/>
-      <l:gentext key="loginrequired" text=" (login required)"/>
+      <l:gentext key="authoronly" text=" (author only)"/>
       <l:gentext key="Moreaboutthiscontent" text="More about this content"/>
       <l:gentext key="Citethiscontent" text="Cite this content"/>
       <l:gentext key="Versionhistory" text="Version history"/>
