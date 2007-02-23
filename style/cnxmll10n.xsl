@@ -108,7 +108,7 @@
       <l:gentext key="Courseby" text="Course by: "/>
       <l:gentext key="MusicalExamples" text="Musical Examples"/>
       <l:gentext key="Moduleby" text="Module by:"/>
-      <l:gentext key="CourseTableofContents" text="Course Table of Contents"/>
+      <l:gentext key="CourseContents" text="Course Contents"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="Links" text="Links"/>
