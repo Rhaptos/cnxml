@@ -1,3 +1,6 @@
+CNXML-0.5 (p13)
+  - addition of optional roles (currently Editor and Translator)
+
 CNXML-0.5 (p12.1)
   - i18n added for endorsements rollout
 

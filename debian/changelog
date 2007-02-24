@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.13-1) unstable; urgency=low
+
+  * addition of optional roles (currently Editor and Translator)
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Wed, 21 Feb 2007 16:03:03 -0600
+
 connexions-cnxml (0.5.12.1-1) unstable; urgency=low
 
   *  i18n update for endorsements
