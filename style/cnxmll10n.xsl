@@ -120,6 +120,7 @@
       <l:gentext key="CourseContents" text="Course Contents"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
+      <l:gentext key="showtableofcontents" text="show table of contents"/>
       <l:gentext key="Links" text="Links"/>
 
       <!-- for editInPlace.xsl -->
