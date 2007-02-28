@@ -97,7 +97,7 @@
       <l:gentext key="Home" text="Home"/>
       <l:gentext key="AboutUs" text="About Us"/>
       <l:gentext key="Help" text="Help"/>
-      <l:gentext key="Workarea" text="Work Area"/>
+      <l:gentext key="AuthorArea" text="Author Area"/>
       <l:gentext key="ContentActions" text="Content Actions"/>
       <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
       <l:gentext key="whatsthis" text="(what's this?)"/>
