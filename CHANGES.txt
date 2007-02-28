@@ -1,3 +1,6 @@
+CNXML-0.5 (p14)
+  - March 2007 site redesign (newlook)
+
 CNXML-0.5 (p13)
   - addition of optional roles (currently Editor and Translator)
 
