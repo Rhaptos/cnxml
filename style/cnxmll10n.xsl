@@ -128,6 +128,25 @@
       <l:gentext key="Brieflydescribeyourchanges" text="Briefly describe your changes:"/>
       <l:gentext key="Publish" text="Publish"/>
       <l:gentext key="Discard" text="Discard"/>
+
+      <!-- Old pairs resurrected for use by old content_render template -->
+      <l:gentext key="Aboutus" text="About us"/>
+      <l:gentext key="Browseallcontent" text="Browse all content"/>
+      <l:gentext key="PrintPDF" text="Print (PDF)"/>
+<!--      <l:gentext key="loginrequired" text="(login required)"/>  -->
+      <l:gentext key="Moreaboutthiscontent" text="More about this content"/>
+      <l:gentext key="Citethiscontent" text="Cite this content"/>
+      <l:gentext key="Versionhistory" text="Version history"/>
+      <l:gentext key="undera" text="under a"/>
+<!--
+      <l:gentext key="Summer Sky" text="Summer Sky"/>
+      <l:gentext key="Desert Scape" text="Desert Scape"/>
+      <l:gentext key="Charcoal" text="Charcoal"/>
+      <l:gentext key="Playland" text="Playland"/>
+-->
+<!--      <l:gentext key="Plone" text="Plone"/>  -->
+
+
     </l:l10n>
   </l:i18n>
 </xsl:stylesheet>
