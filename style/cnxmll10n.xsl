@@ -103,7 +103,7 @@
       <l:gentext key="whatsthis" text="(what's this?)"/>
       <l:gentext key="Endorsements" text="Endorsements"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
-      <l:gentext key="ContactUs" text="ContactUs"/>
+      <l:gentext key="ContactUs" text="Contact Us"/>
       <l:gentext key="Youarehere" text="You are here: "/>
       <l:gentext key="rightanglequote" text=" &#187; "/>
       <l:gentext key="Content" text="Content"/>
