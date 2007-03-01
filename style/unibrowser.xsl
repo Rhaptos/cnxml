@@ -285,6 +285,7 @@
 	      <xsl:number level="single" format="a) " />
 	    </xsl:if>
 	    <xsl:value-of select="@name|cnx:name"/>
+            <xsl:if test="not(cnx:name) or cnx:name[not(node())]"><xsl:text> </xsl:text></xsl:if>
 	  </h2>
       <xsl:apply-templates select="*[not(self::cnx:name)]"/>
     </div>
