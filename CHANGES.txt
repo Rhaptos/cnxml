@@ -1,3 +1,15 @@
+CNXML-0.5 (p14)
+  - March 2007 site redesign (newlook)
+
+CNXML-0.5 (p13)
+  - addition of optional roles (currently Editor and Translator)
+
+CNXML-0.5 (p12.1)
+  - i18n added for endorsements rollout
+
+CNXML-0.5 (p12)
+  - i18n for content
+
 CNXML-0.5 (p11)
   - Added support for LabVIEW 8.20 content
 

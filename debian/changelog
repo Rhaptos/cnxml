@@ -1,3 +1,27 @@
+connexions-cnxml (0.5.14-1rc1) unstable; urgency=low
+
+  * New content appearance for March 2007
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Thu, 01 Mar 2007 14:01:01 -0600
+
+connexions-cnxml (0.5.13-1) unstable; urgency=low
+
+  * addition of optional roles (currently Editor and Translator)
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Wed, 21 Feb 2007 16:03:03 -0600
+
+connexions-cnxml (0.5.12.1-1) unstable; urgency=low
+
+  *  i18n update for endorsements
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Tue, 13 Feb 2007 10:14:14 -0600
+
+connexions-cnxml (0.5.12-1) unstable; urgency=low
+
+  *  i18n for content
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Tue, 08 Feb 2007 13:29:19 -0600
+
 connexions-cnxml (0.5.11-1) unstable; urgency=low
 
   *  LabView 8.20 support
