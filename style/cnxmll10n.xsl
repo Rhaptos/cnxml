@@ -97,13 +97,13 @@
       <l:gentext key="Home" text="Home"/>
       <l:gentext key="AboutUs" text="About Us"/>
       <l:gentext key="Help" text="Help"/>
-      <l:gentext key="AuthorArea" text="Author Area"/>
+      <l:gentext key="AuthorArea" text="Authoring Area"/>
       <l:gentext key="ContentActions" text="Content Actions"/>
       <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
       <l:gentext key="whatsthis" text="(what's this?)"/>
       <l:gentext key="Endorsements" text="Endorsements"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
-      <l:gentext key="Contact" text="Contact"/>
+      <l:gentext key="ContactUs" text="Contact Us"/>
       <l:gentext key="Youarehere" text="You are here: "/>
       <l:gentext key="rightanglequote" text=" &#187; "/>
       <l:gentext key="Content" text="Content"/>
