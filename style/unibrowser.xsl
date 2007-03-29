@@ -343,7 +343,7 @@
             <xsl:with-param name="key">Strength</xsl:with-param>
             <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
           </xsl:call-template>
-          <!--Strength--> <xsl:value-of select="@strength" /></xsl:attribute>
+          <!--Strength--> <xsl:text> </xsl:text><xsl:value-of select="@strength" /></xsl:attribute>
       </xsl:if>
       <xsl:choose>
         <xsl:when test="node()">
