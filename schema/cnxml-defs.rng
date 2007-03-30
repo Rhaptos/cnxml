@@ -17,12 +17,13 @@
         </optional>
       </group>
     </define>
+<!-- FIXME: make 'choice' contain the quantifiers instead, so that
+     inline, media, and para can't occur together as siblings -->
     <define name="entry.mdl">
       <zeroOrMore>
         <choice>
           <ref name="inline.class"/>
           <ref name="media"/>
-          <!-- 'code' to be removed later -->
           <ref name="code.block"/>
           <ref name="para"/>
         </choice>
@@ -98,7 +99,7 @@
 
   <define name="id">
     <attribute name="id">
-      <data type="token" datatypeLibrary=""/>
+      <data type="token"/>
     </attribute>
   </define>
 
@@ -916,12 +917,14 @@ allowed as the first child -->
     <optional>
       <ref name="name"/>
     </optional>
-    <oneOrMore>
-      <choice>
+    <choice>
+      <oneOrMore>
         <ref name="para.content.choice.class"/>
+      </oneOrMore>
+      <oneOrMore>
         <ref name="para"/>
-      </choice>
-    </oneOrMore>
+      </oneOrMore>
+    </choice>
   </define>
 
 <!-- <!ELEMENT %CNXML.rule.qname; %CNXML.rule.content;>
