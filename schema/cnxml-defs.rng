@@ -17,17 +17,17 @@
         </optional>
       </group>
     </define>
-<!-- FIXME: make 'choice' contain the quantifiers instead, so that
-     inline, media, and para can't occur together as siblings -->
     <define name="entry.mdl">
-      <zeroOrMore>
-        <choice>
+      <choice>
+        <zeroOrMore>
           <ref name="inline.class"/>
           <ref name="media"/>
           <ref name="code.block"/>
+        </zeroOrMore>
+        <zeroOrMore>
           <ref name="para"/>
-        </choice>
-      </zeroOrMore>
+        </zeroOrMore>
+      </choice>
     </define>
   </include>
 
@@ -178,9 +178,9 @@
                                  |%CNXML.code.qname;)*">
   -->  
   <define name="inline.content">
-    <oneOrMore>
+    <zeroOrMore>
       <ref name="inline.class"/>
-    </oneOrMore>
+    </zeroOrMore>
   </define>
 
 <!-- <!ELEMENT %CNXML.emphasis.qname; %CNXML.emphasis.content;>
