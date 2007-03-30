@@ -20,9 +20,11 @@
     <define name="entry.mdl">
       <choice>
         <zeroOrMore>
-          <ref name="inline.class"/>
-          <ref name="media"/>
-          <ref name="code.block"/>
+          <choice>
+            <ref name="inline.class"/>
+            <ref name="media"/>
+            <ref name="code.block"/>
+          </choice>
         </zeroOrMore>
         <zeroOrMore>
           <ref name="para"/>
