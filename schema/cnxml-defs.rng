@@ -75,7 +75,7 @@
 
   <define name="id">
     <attribute name="id">
-      <data type="token" datatypeLibrary=""/>
+      <data type="token"/>
     </attribute>
   </define>
 
