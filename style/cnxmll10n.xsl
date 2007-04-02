@@ -85,7 +85,7 @@
       <l:gentext key="CiteThisContent" text="Cite This Content"/>
       <l:gentext key="VersionHistory" text="Version History"/>
       <l:gentext key="Worklicensedby" text="This work is licensed by"/>
-      <l:gentext key="and" text=" and "/>
+      <l:gentext key="and" text="and"/>
       <l:gentext key="comma" text=", "/>
       <l:gentext key="Seethe" text="See the"/>
       <l:gentext key="CreativeCommonsLicense" text="Creative Commons License"/>
