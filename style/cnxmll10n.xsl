@@ -80,7 +80,7 @@
       <l:gentext key="EditInPlace" text="Edit-In-Place"/>
       <l:gentext key="Editthiscontent" text="Edit this content"/>
       <l:gentext key="authoronly" text=" (author only)"/>
-      <l:gentext key="MoreAboutThisContent" text="More About This Content: "/>
+      <l:gentext key="MoreAboutThisContent" text="More about this content: "/>
       <l:gentext key="Metadata" text="Metadata"/>
       <l:gentext key="CiteThisContent" text="Cite This Content"/>
       <l:gentext key="VersionHistory" text="Version History"/>
