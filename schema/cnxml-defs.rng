@@ -885,6 +885,9 @@
   </define>
 
   <define name="statement-content">
+    <optional>
+      <ref name="name"/>
+    </optional>
     <ref name="para-or-section-content-class"/>
   </define>
 
@@ -905,6 +908,9 @@
   </define>
 
   <define name="proof-content">
+    <optional>
+      <ref name="name"/>
+    </optional>
     <ref name="para-or-section-content-class"/>
   </define>
 
@@ -974,6 +980,9 @@
   </define>
 
   <define name="solution-content">
+    <optional>
+      <ref name="name"/>
+    </optional>
     <ref name="para-or-section-content-class"/>
   </define>
 
