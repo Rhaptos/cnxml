@@ -98,7 +98,7 @@
   <define name="div-content-class">
     <choice>
       <ref name="para"/>
-      <ref name="basic-blocks-class"/>
+      <ref name="para-content-class"/>
     </choice>
   </define>
 
