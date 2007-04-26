@@ -4,7 +4,7 @@
   <include href="mdml-defs.rng"/>
   <include href="cnxml-defs.rng">
     <!-- We use the metadata content model from MDML instead of CNXML's -->
-    <define name="metadata.content">
+    <define name="metadata-content">
       <ref name="MDML.metadata.content"/>
     </define>
     <define name="bibtex.elem">
