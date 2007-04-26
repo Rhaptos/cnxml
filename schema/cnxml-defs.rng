@@ -53,7 +53,7 @@
       <ref name="cite"/>
       <ref name="cnxn"/>
       <ref name="link"/>
-      <ref name="quote"/><!-- make this quote-inline -->
+      <ref name="quote-inline"/>
       <ref name="foreign"/>
       <ref name="code-inline"/>
       <ref name="span"/>
@@ -71,7 +71,7 @@
   <!-- Elements that can be intermixed freely with 'para' -->
   <define name="basic-blocks-class">
     <choice>
-      <!-- add quote-block -->
+      <ref name="quote-block"/>
       <ref name="code-block"/>
       <ref name="definition"/>
       <ref name="example"/>
@@ -200,7 +200,7 @@
   </define>
 
   <define name="name-content">
-    <ref name="inline-content-class"/>
+    <ref name="inline-content"/>
   </define>
 
   <define name="emphasis">
@@ -356,18 +356,8 @@
   </define>
 
 <!-- FIXME: we need a quote[@type="block"] with a different content model -->
-  <define name="quote">
-    <element name="quote">
-      <ref name="quote-attlist"/>
-      <ref name="quote-content"/>
-    </element>
-  </define>
-
   <define name="quote-attlist">
     <group>
-      <optional>
-        <attribute name="type" a:defaultValue="inline"/>
-      </optional>
       <optional>
         <ref name="src"/>
       </optional>
@@ -378,13 +368,46 @@
     </group>
   </define>
 
-  <define name="quote-content">
-    <choice>
-      <ref name="inline-content"/>
-      <oneOrMore>
-        <ref name="para"/>
-      </oneOrMore>
-    </choice>
+  <define name="quote-inline">
+    <element name="quote">
+      <ref name="quote-inline-attlist"/>
+      <ref name="quote-inline-content"/>
+    </element>
+  </define>
+
+  <define name="quote-inline-attlist">
+    <group>
+      <optional>
+        <attribute name="type">
+          <value>inline</value>
+        </attribute>
+      </optional>
+      <ref name="quote-attlist"/>
+    </group>
+  </define>
+
+  <define name="quote-inline-content">
+    <ref name="inline-content"/>
+  </define>
+
+  <define name="quote-block">
+    <element name="quote">
+      <ref name="quote-block-attlist"/>
+      <ref name="quote-block-content"/>
+    </element>
+  </define>
+
+  <define name="quote-block-attlist">
+    <group>
+      <attribute name="type">
+        <value>block</value>
+      </attribute>
+      <ref name="quote-attlist"/>
+    </group>
+  </define>
+
+  <define name="quote-block-content">
+    <ref name="para-or-div-content-class"/>
   </define>
 
   <define name="foreign">
