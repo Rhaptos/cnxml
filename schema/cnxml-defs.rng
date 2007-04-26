@@ -102,6 +102,12 @@
     </choice>
   </define>
 
+  <define name="div-content">
+    <oneOrMore>
+      <ref name="div-content-class"/>
+    </oneOrMore>
+  </define>
+
   <!-- Content class for elements that can contain 'section' -->
   <define name="section-content-class">
     <choice>
@@ -406,7 +412,7 @@
   </define>
 
   <define name="quote-block-content">
-    <ref name="para-or-div-content-class"/>
+    <ref name="div-content"/>
   </define>
 
   <define name="foreign">
@@ -551,7 +557,7 @@
     <optional>
       <ref name="name"/>
     </optional>
-    <ref name="para-or-div-content-class"/>
+    <ref name="div-content"/>
   </define>
 
   <define name="example">
@@ -574,7 +580,9 @@
     <optional>
       <ref name="name"/>
     </optional>
-    <ref name="para-or-section-content-class"/>
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
   </define>
 
   <define name="seealso">
@@ -616,7 +624,7 @@
   </define>
 
   <define name="note-content">
-    <ref name="para-or-div-content-class"/>
+    <ref name="div-content"/>
   </define>
 
   <define name="note-footnote">
@@ -833,7 +841,7 @@
     <optional>
       <ref name="name"/>
     </optional>
-    <ref name="para-or-div-content-class"/>
+    <ref name="div-content"/>
   </define>
 
   <define name="rule">
@@ -888,7 +896,9 @@
     <optional>
       <ref name="name"/>
     </optional>
-    <ref name="para-or-section-content-class"/>
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
   </define>
 
   <define name="proof">
@@ -911,7 +921,9 @@
     <optional>
       <ref name="name"/>
     </optional>
-    <ref name="para-or-section-content-class"/>
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
   </define>
 
   <define name="exercise">
@@ -960,7 +972,9 @@
     <optional>
       <ref name="name"/>
     </optional>
-    <ref name="para-or-section-content-class"/>
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
   </define>
 
   <define name="solution">
@@ -983,7 +997,9 @@
     <optional>
       <ref name="name"/>
     </optional>
-    <ref name="para-or-section-content-class"/>
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
   </define>
 
   <define name="equation">
