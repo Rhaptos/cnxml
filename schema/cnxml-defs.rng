@@ -94,7 +94,7 @@
     </choice>
   </define>
 
-  <!-- Content class for elements that can contain 'para' -->
+  <!-- Content class for div-like things -->
   <define name="div-content-class">
     <choice>
       <ref name="para"/>
@@ -355,7 +355,6 @@
     <ref name="inline-content"/>
   </define>
 
-<!-- FIXME: we need a quote[@type="block"] with a different content model -->
   <define name="quote-attlist">
     <group>
       <optional>
