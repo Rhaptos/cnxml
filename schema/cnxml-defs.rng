@@ -1,9 +1,139 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
+<grammar
+    xmlns="http://relaxng.org/ns/structure/1.0"
+    xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
+    ns="http://cnx.rice.edu/cnxml"
+>
 
-<grammar xmlns="http://relaxng.org/ns/structure/1.0"
-         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
-         ns="http://cnx.rice.edu/cnxml">
+<!--
+  Common attribute definitions
+-->
+
+  <define name="id">
+    <attribute name="id">
+      <data type="token"/>
+    </attribute>
+  </define>
+
+  <define name="src">
+    <attribute name="src">
+      <ref name="URL"/>
+    </attribute>
+  </define>
+
+  <define name="class-attribute">
+    <attribute name="class"/>
+  </define>
+
+  <define name="common-attlist">
+    <optional>
+      <ref name="class-attribute"/>
+    </optional>
+  </define>
+
+<!--
+  Element content model classes
+-->
+
+  <define name="textextras">
+    <text/>
+  </define>
+
+  <define name="URL">
+    <text/>
+  </define>
+
+  <!-- Class of inline elements -->
+  <define name="inline-class">
+    <choice>
+      <ref name="textextras"/>
+      <ref name="emphasis"/>
+      <ref name="term"/>
+      <ref name="cite"/>
+      <ref name="cnxn"/>
+      <ref name="link"/>
+      <ref name="quote"/><!-- make this quote-inline -->
+      <ref name="foreign"/>
+      <ref name="code-inline"/>
+      <ref name="span"/>
+    </choice>
+  </define>
+
+  <!-- Inline content model -->
+  <define name="inline-content">
+    <zeroOrMore>
+      <ref name="inline-class"/>
+    </zeroOrMore>
+  </define>
+
+  <!-- Elements that can be intermixed freely with 'para' -->
+  <define name="basic-blocks-class">
+    <choice>
+      <!-- add quote-block -->
+      <ref name="code-block"/>
+      <ref name="definition"/>
+      <ref name="example"/>
+      <ref name="note"/>
+      <ref name="figure"/>
+      <ref name="media"/>
+      <ref name="table"/>
+      <ref name="list"/>
+      <ref name="rule"/>
+      <ref name="exercise"/>
+      <ref name="equation"/>
+    </choice>
+  </define>
+
+  <!-- Content class for para-like things -->
+  <define name="para-content-class">
+    <choice>
+      <ref name="inline-class"/>
+      <ref name="basic-blocks-class"/>
+    </choice>
+  </define>
+
+  <!-- Content class for elements that can contain 'para' -->
+  <define name="div-content-class">
+    <choice>
+      <ref name="para"/>
+      <ref name="basic-blocks-class"/>
+    </choice>
+  </define>
+
+  <!-- Content class for elements that can contain 'section' -->
+  <define name="section-content-class">
+    <choice>
+      <ref name="section"/>
+      <ref name="div-content-class"/>
+    </choice>
+  </define>
+
+  <define name="para-or-div-content-class">
+    <choice>
+      <oneOrMore>
+        <ref name="para-content-class"/>
+      </oneOrMore>
+      <oneOrMore>
+        <ref name="div-content-class"/>
+      </oneOrMore>
+    </choice>
+  </define>
+
+  <define name="para-or-section-content-class">
+    <choice>
+      <oneOrMore>
+        <ref name="para-content-class"/>
+      </oneOrMore>
+      <oneOrMore>
+        <ref name="section-content-class"/>
+      </oneOrMore>
+    </choice>
+  </define>
+
+<!--
+  Include CALS tables
+-->
 
   <include href="calstable.rng">
     <define name="table.mdl">
@@ -20,261 +150,132 @@
     <define name="entry.mdl">
       <choice>
         <zeroOrMore>
-          <choice>
-            <ref name="inline.class"/>
-            <ref name="media"/>
-            <ref name="code.block"/>
-          </choice>
+          <ref name="para-content-class"/>
         </zeroOrMore>
         <zeroOrMore>
-          <ref name="para"/>
+          <ref name="div-content-class"/>
         </zeroOrMore>
       </choice>
     </define>
   </include>
 
-  <define name="class.attribute">
-    <attribute name="class"/>
-  </define>
-
-  <define name="common.attlist">
-    <optional>
-      <ref name="class.attribute"/>
-    </optional>
-  </define>
-
-
-<!-- <!ELEMENT %CNXML.para.qname; %CNXML.para.content;> -->
-
   <define name="para">
     <element name="para">
-      <ref name="para.attlist"/>
-      <ref name="para.content"/>
+      <ref name="para-attlist"/>
+      <ref name="para-content"/>
     </element>
   </define>
 
-<!--      <!ATTLIST %CNXML.para.qname; %CNXML.xmlns.attrib;>
-   -      <!ATTLIST %CNXML.para.qname; id ID #REQUIRED>
-  -->
-  <define name="para.attlist">
+  <define name="para-attlist">
     <group>
       <ref name="id"/>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- %CNXML.name.qname; is only allowed as the first child -->
-<!-- <!ENTITY % CNXML.para.content "
-   -     (
-   -         %CNXML.inline;|
-   -         %CNXML.code.qname;|
-   -         %CNXML.special;|
-   -         %CNXML.name.qname;
-   -     )*
-   - ">
-  -->
-<!-- For CNXML 0.6: 'name' may optionally occur once at the beginning 
-   - of a paragraph -->
-  <define name="para.content">
+  <define name="para-content">
     <optional>
       <ref name="name"/>
     </optional>
     <oneOrMore>
-      <ref name="para.content.choice.class"/>
+      <ref name="para-content-class"/>
     </oneOrMore>
   </define>
 
-  <define name="para.content.choice.class">
-    <choice>
-      <ref name="inline.class"/>
-      <ref name="code.block"/>
-      <ref name="special.class"/>
-    </choice>
-  </define>
-
-<!-- Extra inline/text items.  May be redefined by other modules 
-<!ENTITY % CNXML.textextras "#PCDATA" >
-  -->
-  <define name="textextras">
-    <text/>
-  </define>
-
-  <define name="id">
-    <attribute name="id">
-      <data type="token"/>
-    </attribute>
-  </define>
-
-  <define name="id.implied">
-    <optional>
-      <ref name="id"/>
-    </optional>
-  </define>
-
-  <define name="URL">
-    <text/>
-  </define>
-
-  <define name="src">
-    <attribute name="src">
-      <ref name="URL"/>
-    </attribute>
-  </define>
-
-  <define name="src.implied">
-    <optional>
-      <ref name="src"/>
-    </optional>
-  </define>
-
-<!-- <!ELEMENT %CNXML.name.qname; %CNXML.name.content;>
-          <!ATTLIST %CNXML.name.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.name.qname; id ID #IMPLIED>
-  -->
   <define name="name">
     <element name="name">
-      <ref name="name.attlist"/>
-      <ref name="name.content"/>
+      <ref name="name-attlist"/>
+      <ref name="name-content"/>
     </element>
   </define>
 
-  <define name="name.attlist">
+  <define name="name-attlist">
     <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.name.content "(#PCDATA)"> -->
-<define name="name.content">
-  <text/>
-</define>
-
-<!-- Inline tags (with the exception of code)
-<!ENTITY % CNXML.inline '%CNXML.textextras;
-                        |%CNXML.emphasis.qname;
-                        |%CNXML.term.qname;
-                        |%CNXML.cite.qname;
-                        |%CNXML.cnxn.qname;
-                        |%CNXML.link.qname;
-                        |%CNXML.quote.qname;
-                        |%CNXML.foreign.qname;'>
-  -->
-  <define name="inline.class">
-    <choice>
-      <ref name="textextras"/>
-      <ref name="emphasis"/>
-      <ref name="term"/>
-      <ref name="cite"/>
-      <ref name="cnxn"/>
-      <ref name="link"/>
-      <ref name="quote"/>
-      <ref name="foreign"/>
-      <ref name="code.inline"/>
-      <ref name="span"/>
-    </choice>
+  <define name="name-content">
+    <text/>
   </define>
 
-<!-- Inline content model
-<!ENTITY % CNXML.inline.content "(%CNXML.inline;
-                                 |%CNXML.code.qname;)*">
-  -->  
-  <define name="inline.content">
-    <zeroOrMore>
-      <ref name="inline.class"/>
-    </zeroOrMore>
-  </define>
-
-<!-- <!ELEMENT %CNXML.emphasis.qname; %CNXML.emphasis.content;>
-          <!ATTLIST %CNXML.emphasis.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.emphasis.qname; id ID #IMPLIED> -->
   <define name="emphasis">
     <element name="emphasis">
-      <ref name="emphasis.attlist"/>
-      <ref name="emphasis.content"/>
+      <ref name="emphasis-attlist"/>
+      <ref name="emphasis-content"/>
     </element>
   </define>
 
-  <define name="emphasis.attlist">
+  <define name="emphasis-attlist">
     <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.emphasis.content "%CNXML.inline.content;"> -->
-  <define name="emphasis.content">
-    <ref name="inline.content"/>
+  <define name="emphasis-content">
+    <ref name="inline-content"/>
   </define>
 
-<!-- <!ELEMENT %CNXML.term.qname; %CNXML.term.content;>
-          <!ATTLIST %CNXML.term.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.term.qname; id ID #IMPLIED>
-          <!ATTLIST %CNXML.term.qname; src %CNXML.URL; #IMPLIED> -->
   <define name="term">
     <element name="term">
-      <ref name="term.attlist"/>
-      <ref name="term.content"/>
+      <ref name="term-attlist"/>
+      <ref name="term-content"/>
     </element>
   </define>
 
-<define name="term.attlist">
-  <group>
-    <ref name="id.implied"/>
-    <ref name="src.implied"/>
-    <ref name="common.attlist"/>
-  </group>
-</define>
-
-<!-- <!ENTITY % CNXML.term.content "%CNXML.inline.content;"> -->
-  <define name="term.content">
-    <ref name="inline.content"/>
+  <define name="term-attlist">
+    <group>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <optional>
+        <ref name="src"/>
+      </optional>
+      <ref name="common-attlist"/>
+    </group>
   </define>
 
-
-<!-- <!ELEMENT %CNXML.cite.qname; %CNXML.cite.content;>
-          <!ATTLIST %CNXML.cite.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.cite.qname; id ID #IMPLIED>
-          <!ATTLIST %CNXML.cite.qname; src %CNXML.URL; #IMPLIED> -->
+  <define name="term-content">
+    <ref name="inline-content"/>
+  </define>
 
   <define name="cite">
     <element name="cite">
-      <ref name="cite.attlist"/>
-      <ref name="cite.content"/>
+      <ref name="cite-attlist"/>
+      <ref name="cite-content"/>
     </element>
   </define>
 
-<define name="cite.attlist">
-  <group>
-    <ref name="id.implied"/>
-    <ref name="src.implied"/>
-    <ref name="common.attlist"/>
-  </group>
-</define>
-
-<!-- <!ENTITY % CNXML.cite.content "%CNXML.inline.content;"> -->
-
-  <define name="cite.content">
-    <ref name="inline.content"/>
+  <define name="cite-attlist">
+    <group>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <optional>
+        <ref name="src"/>
+      </optional>
+      <ref name="common-attlist"/>
+    </group>
   </define>
 
-
-<!-- <!ELEMENT %CNXML.cnxn.qname; %CNXML.cnxn.content;>
-          <!ATTLIST %CNXML.cnxn.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.cnxn.qname; target CDATA #IMPLIED>
-          <!ATTLIST %CNXML.cnxn.qname; document CDATA #IMPLIED>
-          <!ATTLIST %CNXML.cnxn.qname; version CDATA #IMPLIED>
-          <!ATTLIST %CNXML.cnxn.qname; strength (0|1|2|3|4|5|6|7|8|9) #IMPLIED>
-          <!ATTLIST %CNXML.cnxn.qname; id ID #IMPLIED> -->
+  <define name="cite-content">
+    <ref name="inline-content"/>
+  </define>
 
   <define name="cnxn">
     <element name="cnxn">
-      <ref name="cnxn.attlist"/>
-      <ref name="cnxn.content"/>
+      <ref name="cnxn-attlist"/>
+      <ref name="cnxn-content"/>
     </element>
   </define>
 
-  <define name="cnxn.attlist">
+  <define name="cnxn-attlist">
     <group>
       <optional>
         <attribute name="target"/>
@@ -301,138 +302,139 @@
           </choice>
         </attribute>
       </optional>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.cnxn.content "(#PCDATA)"> -->
-  <define name="cnxn.content">
+  <define name="cnxn-content">
     <text/>
   </define>
 
-<!-- <!ELEMENT %CNXML.link.qname; %CNXML.link.content;>
-          <!ATTLIST %CNXML.link.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.link.qname; src %CNXML.URL; #REQUIRED>
-          <!ATTLIST %CNXML.link.qname; id ID #IMPLIED> -->
   <define name="link">
     <element name="link">
-      <ref name="link.attlist"/>
-      <ref name="link.content"/>
+      <ref name="link-attlist"/>
+      <ref name="link-content"/>
     </element>
   </define>
 
-  <define name="link.attlist">
+  <define name="link-attlist">
     <group>
-      <ref name="id.implied"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
       <ref name="src"/>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.link.content "%CNXML.inline.content;"> -->
-  <define name="link.content">
-    <ref name="inline.content"/>
+  <define name="link-content">
+    <ref name="inline-content"/>
   </define>
 
-
-<!-- <!ELEMENT %CNXML.quote.qname; %CNXML.quote.content;>
-          <!ATTLIST %CNXML.quote.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.quote.qname; type CDATA "inline">
-          <!ATTLIST %CNXML.quote.qname; src %CNXML.URL; #IMPLIED>
-          <!ATTLIST %CNXML.quote.qname; id ID #IMPLIED> -->
-
-  <define name="quote">
-    <element name="quote">
-      <ref name="quote.attlist"/>
-      <ref name="quote.content"/>
+  <define name="span">
+    <element name="span">
+      <ref name="span-attlist"/>
+      <ref name="span-content"/>
     </element>
   </define>
 
-  <define name="quote.attlist">
+  <define name="span-attlist">
+    <group>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
+    </group>
+  </define>
+
+  <define name="span-content">
+    <ref name="inline-content"/>
+  </define>
+
+<!-- FIXME: we need a quote[@type="block"] with a different content model -->
+  <define name="quote">
+    <element name="quote">
+      <ref name="quote-attlist"/>
+      <ref name="quote-content"/>
+    </element>
+  </define>
+
+  <define name="quote-attlist">
     <group>
       <optional>
         <attribute name="type" a:defaultValue="inline"/>
       </optional>
-      <ref name="src.implied"/>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="src"/>
+      </optional>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.quote.content "%CNXML.inline.content;"> -->
-<!-- Added 'para' for CNXML 0.6
-   - Note also that 'quote.content' is also used by reference
-   - to define 'note.content'.
-  -->
-  <define name="quote.content">
+  <define name="quote-content">
     <choice>
-      <ref name="inline.content"/>
+      <ref name="inline-content"/>
       <oneOrMore>
         <ref name="para"/>
       </oneOrMore>
     </choice>
   </define>
 
-<!-- <!ELEMENT %CNXML.foreign.qname; %CNXML.foreign.content;>
-          <!ATTLIST %CNXML.foreign.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.foreign.qname; src %CNXML.URL; #IMPLIED>
-          <!ATTLIST %CNXML.foreign.qname; id ID #IMPLIED> -->
   <define name="foreign">
     <element name="foreign">
-      <!-- <optional>
+      <ref name="foreign-attlist"/>
+      <ref name="foreign-content"/>
+    </element>
+  </define>
+
+  <define name="foreign-attlist">
+    <group>
+      <optional>
         <ref name="src"/>
       </optional>
       <optional>
         <ref name="id"/>
-      </optional> -->
-      <ref name="foreign.attlist"/>
-      <ref name="foreign.content"/>
-    </element>
-  </define>
-
-  <define name="foreign.attlist">
-    <group>
-      <ref name="src.implied"/>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.foreign.content "%CNXML.inline.content;"> -->
-  <define name="foreign.content">
-    <ref name="inline.content"/>
+  <define name="foreign-content">
+    <ref name="inline-content"/>
   </define>
 
-
-<!-- <!ELEMENT %CNXML.code.qname; %CNXML.code.content;>
-          <!ATTLIST %CNXML.code.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.code.qname; id ID #IMPLIED>
-          <!ATTLIST %CNXML.code.qname; type (inline | block) 'inline'> -->
   <define name="code">
     <element name="code">
-      <ref name="code.attlist"/>
-      <ref name="code.content"/>
+      <ref name="code-attlist"/>
+      <ref name="code-content"/>
     </element>
   </define>
 
-  <define name="code.inline">
+  <define name="code-inline">
     <element name="code">
-      <ref name="code.inline.attlist"/>
-      <ref name="code.content"/>
+      <ref name="code-inline-attlist"/>
+      <ref name="code-content"/>
     </element>
   </define>
 
-  <define name="code.block">
+  <define name="code-block">
     <element name="code">
-      <ref name="code.block.attlist"/>
-      <ref name="code.content"/>
+      <ref name="code-block-attlist"/>
+      <ref name="code-content"/>
     </element>
   </define>
 
-  <define name="code.attlist">
+  <define name="code-attlist">
     <group>
-      <ref name="id.implied"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
       <optional>
         <attribute name="type" a:defaultValue="inline">
           <choice>
@@ -441,91 +443,57 @@
           </choice>
         </attribute>
       </optional>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-  <define name="code.inline.attlist">
+  <define name="code-inline-attlist">
     <group>
-      <ref name="id.implied"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
       <optional>
         <attribute name="type">
           <value>inline</value>
         </attribute>
       </optional>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-  <define name="code.block.attlist">
+  <define name="code-block-attlist">
     <group>
-      <ref name="id.implied"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
       <optional>
         <attribute name="type">
           <value>block</value>
         </attribute>
       </optional>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.code.content "%CNXML.inline.content;"> -->
-  <define name="code.content">
-    <ref name="inline.content"/>
+  <define name="code-content">
+    <ref name="inline-content"/>
   </define>
 
-<!-- Special tags with different content models -->
-<!-- <!ENTITY % CNXML.special "%CNXML.definition.qname;
-                         |%CNXML.rule.qname;
-                         |%CNXML.figure.qname;
-                         |%CNXML.media.qname;
-                         |%CNXML.table.qname;
-                         |%CNXML.list.qname;
-                         |%CNXML.exercise.qname;
-                         |%CNXML.equation.qname;
-                         |%CNXML.note.qname;">
-  -->
-  <define name="special.class">
-    <choice>
-      <ref name="definition"/>
-      <ref name="rule"/>
-      <ref name="figure"/>
-      <ref name="media"/>
-      <ref name="table"/>
-      <ref name="list"/>
-      <ref name="exercise"/>
-      <ref name="equation"/>
-      <ref name="note"/>
-    </choice>
-  </define>
-
-<!-- <!ELEMENT %CNXML.definition.qname; %CNXML.definition.content;>
-          <!ATTLIST %CNXML.definition.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.definition.qname; id ID #REQUIRED>
-  -->
   <define name="definition">
     <element name="definition">
-      <ref name="definition.attlist"/>
-      <ref name="definition.content"/>
+      <ref name="definition-attlist"/>
+      <ref name="definition-content"/>
     </element>
   </define>
 
-  <define name="definition.attlist">
+  <define name="definition-attlist">
     <group>
       <ref name="id"/>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.definition.content 
-                "(%CNXML.term.qname;,
-                   (%CNXML.meaning.qname;,
-                     (%CNXML.example.qname;)*,
-                     (%CNXML.seealso.qname;)?
-                   )+
-                 )">
-  -->
-  <define name="definition.content">
+  <define name="definition-content">
     <group>
       <ref name="term"/>
       <oneOrMore>
@@ -539,136 +507,107 @@
       </oneOrMore>
     </group>
   </define>
-<!-- dummy code definition -->
 
-<!-- Name not really allowed anywhere in meaning, only as first child -->
-<!-- <!ELEMENT %CNXML.meaning.qname; %CNXML.meaning.content;>
-          <!ATTLIST %CNXML.meaning.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.meaning.qname; id ID #IMPLIED>
-  -->
   <define name="meaning">
     <element name="meaning">
-      <ref name="meaning.attlist"/>
-      <ref name="meaning.content"/>
+      <ref name="meaning-attlist"/>
+      <ref name="meaning-content"/>
     </element>
   </define>
 
-  <define name="meaning.attlist">
+  <define name="meaning-attlist">
     <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.meaning.content "(%CNXML.inline;
-                                       |%CNXML.code.qname;
-                                       |%CNXML.special;
-                                       |%CNXML.name.qname;)*">
-  -->
-  <define name="meaning.content">
+  <define name="meaning-content">
     <optional>
       <ref name="name"/>
     </optional>
-    <oneOrMore>
-      <choice>
-        <ref name="inline.class"/>
-        <ref name="special.class"/>
-      </choice>
-    </oneOrMore>
+    <ref name="para-or-div-content-class"/>
   </define>
 
-<!-- <!ELEMENT %CNXML.example.qname; %CNXML.example.content;>
-          <!ATTLIST %CNXML.example.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.example.qname; id ID #IMPLIED>
-  -->
   <define name="example">
     <element name="example">
-      <ref name="example.attlist"/>
-      <ref name="example.content"/>
+      <ref name="example-attlist"/>
+      <ref name="example-content"/>
     </element>
   </define>
 
-  <define name="example.attlist">
+  <define name="example-attlist">
     <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.example.content "%CNXML.structural.content;"> -->
-  <define name="example.content">
-    <ref name="structural.content"/>
+  <define name="example-content">
+    <optional>
+      <ref name="name"/>
+    </optional>
+    <ref name="para-or-section-content-class"/>
   </define>
 
-<!-- <!ELEMENT %CNXML.seealso.qname; %CNXML.seealso.content;>
-          <!ATTLIST %CNXML.seealso.qname; %CNXML.xmlns.attrib;>
-  -->
   <define name="seealso">
     <element name="seealso">
-      <ref name="seealso.attlist"/>
-      <ref name="seealso.content"/>
+      <ref name="seealso-attlist"/>
+      <ref name="seealso-content"/>
     </element>
   </define>
 
-  <define name="seealso.attlist">
-    <ref name="common.attlist"/>
+  <define name="seealso-attlist">
+    <ref name="common-attlist"/>
   </define>
 
-<!-- <!ENTITY % CNXML.seealso.content "(%CNXML.term.qname;)+"> -->
-  <define name="seealso.content">
+  <define name="seealso-content">
     <oneOrMore>
       <ref name="term"/>
     </oneOrMore>
   </define>
 
-<!-- <!ELEMENT %CNXML.note.qname; %CNXML.note.content;>
-          <!ATTLIST %CNXML.note.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.note.qname; type CDATA #IMPLIED>
-          <!ATTLIST %CNXML.note.qname; id ID #IMPLIED>
-  -->
   <define name="note">
     <element name="note">
-      <ref name="note.attlist"/>
-      <ref name="note.content"/>
+      <ref name="note-attlist"/>
+      <ref name="note-content"/>
     </element>
   </define>
 
-  <define name="note.attlist">
+  <define name="note-attlist">
     <group>
       <optional>
         <attribute name="type">
           <text/>
         </attribute>
       </optional>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.note.content "%CNXML.inline.content;"> -->
-<!--   <define name="note.content">
-   -     <ref name="inline.content"/>
-   -   </define>
-  -->
-  <define name="note.content">
-    <ref name="quote.content"/>
+  <define name="note-content">
+    <ref name="para-or-div-content-class"/>
   </define>
 
-<!-- <!ELEMENT %CNXML.figure.qname; %CNXML.figure.content;>
-          <!ATTLIST %CNXML.figure.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.figure.qname; id ID #IMPLIED>
-          <!ATTLIST %CNXML.figure.qname; orient (vertical|horizontal) "horizontal">
-  -->
   <define name="figure">
     <element name="figure">
-      <ref name="figure.attlist"/>
-      <ref name="figure.content"/>
+      <ref name="figure-attlist"/>
+      <ref name="figure-content"/>
     </element>
   </define>
 
-  <define name="figure.attlist">
+  <define name="figure-attlist">
     <group>
-      <ref name="id.implied"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
       <optional>
         <attribute name="orient" a:defaultValue="horizontal">
           <choice>
@@ -677,31 +616,14 @@
           </choice>
         </attribute>
       </optional>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.figure.content "
-       (
-         (%CNXML.name.qname;)?,
-         (
-           (
-             %CNXML.subfigure.qname;,
-             (%CNXML.subfigure.qname;)+
-           )
-           |%CNXML.media.qname;
-           |%CNXML.table.qname;
-           |%CNXML.code.qname;
-         ),
-         (%CNXML.caption.qname;)?
-       )
-     ">
-  -->
-  <define name="figure.content">
+  <define name="figure-content">
     <optional>
       <ref name="name"/>
     </optional>
-    <!-- other stuff here -->
     <choice>
       <group>
         <ref name="subfigure"/>
@@ -718,127 +640,94 @@
     </optional>
   </define>
 
-<!-- <!ELEMENT %CNXML.media.qname; %CNXML.media.content;>
-          <!ATTLIST %CNXML.media.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.media.qname; type CDATA #REQUIRED>
-          <!ATTLIST %CNXML.media.qname; src %CNXML.URL; #REQUIRED>
-          <!ATTLIST %CNXML.media.qname; id ID #IMPLIED>
-  -->
   <define name="media">
     <element name="media">
-      <ref name="media.attlist"/>
-      <ref name="media.content"/>
+      <ref name="media-attlist"/>
+      <ref name="media-content"/>
     </element>
   </define>
 
-  <define name="media.attlist">
+  <define name="media-attlist">
     <group>
       <attribute name="type"/>
       <ref name="src"/>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.media.content "
-       (PCDATA
-         |(%CNXML.param.qname;*,
-           %CNXML.media.qname;?)
-       )
-     ">
-  -->
-  <define name="media.content">
+  <define name="media-content">
     <choice>
       <text/>
-        <group>
-          <zeroOrMore>
-            <ref name="param"/>
-          </zeroOrMore>
-          <optional>
-            <ref name="media"/>
-          </optional>
-        </group>
+      <group>
+        <zeroOrMore>
+          <ref name="param"/>
+        </zeroOrMore>
+        <optional>
+          <ref name="media"/>
+        </optional>
+      </group>
     </choice>
   </define>
 
-<!-- <!ELEMENT %CNXML.param.qname; %CNXML.param.content;>
-          <!ATTLIST %CNXML.param.qname; name CDATA #REQUIRED>
-          <!ATTLIST %CNXML.param.qname; value CDATA #REQUIRED>
-  -->
   <define name="param">
     <element name="param">
-      <ref name="param.attlist"/>
-      <ref name="param.content"/>
+      <ref name="param-attlist"/>
+      <ref name="param-content"/>
     </element>
   </define>
 
-  <define name="param.attlist">
+  <define name="param-attlist">
     <group>
       <attribute name="name"/>
       <attribute name="value"/>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.param.content "EMPTY"> -->
-  <define name="param.content">
+  <define name="param-content">
     <empty/>
   </define>
 
-<!-- <!ELEMENT %CNXML.caption.qname; %CNXML.caption.content;>
-          <!ATTLIST %CNXML.caption.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.caption.qname; id ID #IMPLIED>
-  -->
   <define name="caption">
     <element name="caption">
-      <ref name="caption.attlist"/>
-      <ref name="caption.content"/>
+      <ref name="caption-attlist"/>
+      <ref name="caption-content"/>
     </element>
   </define>
 
-  <define name="caption.attlist">
+  <define name="caption-attlist">
     <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.caption.content "%CNXML.inline.content;"> -->
-  <define name="caption.content">
-    <ref name="inline.content"/>
+  <define name="caption-content">
+    <ref name="inline-content"/>
   </define>
 
-<!-- <!ELEMENT %CNXML.subfigure.qname; %CNXML.subfigure.content;>
-          <!ATTLIST %CNXML.subfigure.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.subfigure.qname; id ID #IMPLIED>
-  -->
   <define name="subfigure">
     <element name="subfigure">
-      <ref name="subfigure.attlist"/>
-      <ref name="subfigure.content"/>
+      <ref name="subfigure-attlist"/>
+      <ref name="subfigure-content"/>
     </element>
   </define>
 
-  <define name="subfigure.attlist">
+  <define name="subfigure-attlist">
     <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.subfigure.content "
-        (
-          (%CNXML.name.qname;)?,
-          (
-            %CNXML.media.qname;
-           |%CNXML.table.qname;
-           |%CNXML.code.qname;
-          ),
-          (%CNXML.caption.qname;)?
-        )
-     ">
-  -->
-  <define name="subfigure.content">
+  <define name="subfigure-content">
     <group>
       <optional>
         <ref name="name"/>
@@ -854,33 +743,24 @@
     </group>
   </define>
 
-<!-- <!ELEMENT %CNXML.list.qname; %CNXML.list.content;>
-          <!ATTLIST %CNXML.list.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.list.qname; id ID #REQUIRED>
-          <!ATTLIST %CNXML.list.qname; type CDATA #IMPLIED>
-  -->
   <define name="list">
     <element name="list">
-      <ref name="list.attlist"/>
-      <ref name="list.content"/>
+      <ref name="list-attlist"/>
+      <ref name="list-content"/>
     </element>
   </define>
 
-  <define name="list.attlist">
+  <define name="list-attlist">
     <group>
       <ref name="id"/>
       <optional>
         <attribute name="type"/>
-      </optional> 
-      <ref name="common.attlist"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.list.content
-       "((%CNXML.name.qname;)?,
-         (%CNXML.item.qname;)+)">
-  -->
-  <define name="list.content">
+  <define name="list-content">
     <group>
       <optional>
         <ref name="name"/>
@@ -891,71 +771,45 @@
     </group>
   </define>
 
-<!-- <!ELEMENT %CNXML.item.qname; %CNXML.item.content;>
-          <!ATTLIST %CNXML.item.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.item.qname; id ID #IMPLIED>
-  -->
   <define name="item">
     <element name="item">
-      <ref name="item.attlist"/>
-      <ref name="item.content"/>
+      <ref name="item-attlist"/>
+      <ref name="item-content"/>
     </element>
   </define>
 
-  <define name="item.attlist">
+  <define name="item-attlist">
     <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- Name is listed as a child at any point but it is really only
-allowed as the first child -->
-<!-- <!ENTITY % CNXML.item.content "(%CNXML.inline;
-                                    |%CNXML.code.qname;
-                                    |%CNXML.special;
-                                    |%CNXML.name.qname;)*"> -->
-  <define name="item.content">
+  <define name="item-content">
     <optional>
       <ref name="name"/>
     </optional>
-    <choice>
-      <oneOrMore>
-        <ref name="para.content.choice.class"/>
-      </oneOrMore>
-      <oneOrMore>
-        <ref name="para"/>
-      </oneOrMore>
-    </choice>
+    <ref name="para-or-div-content-class"/>
   </define>
 
-<!-- <!ELEMENT %CNXML.rule.qname; %CNXML.rule.content;>
-          <!ATTLIST %CNXML.rule.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.rule.qname; id ID #REQUIRED>
-          <!ATTLIST %CNXML.rule.qname; type CDATA #REQUIRED>
-  -->
   <define name="rule">
     <element name="rule">
-      <ref name="rule.attlist"/>
-      <ref name="rule.content"/>
+      <ref name="rule-attlist"/>
+      <ref name="rule-content"/>
     </element>
   </define>
 
-  <define name="rule.attlist">
+  <define name="rule-attlist">
     <group>
       <ref name="id"/>
       <attribute name="type"/>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.rule.content "(
-        (%CNXML.name.qname;)?,
-        (%CNXML.statement.qname;)+,
-        (%CNXML.proof.qname;|%CNXML.example.qname;)*
-                                    )">
-  -->
-  <define name="rule.content">
+  <define name="rule-content">
     <group>
       <optional>
         <ref name="name"/>
@@ -972,76 +826,61 @@ allowed as the first child -->
     </group>
   </define>
 
-<!-- <!ELEMENT %CNXML.statement.qname; %CNXML.statement.content;>
-          <!ATTLIST %CNXML.statement.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.statement.qname; id ID #IMPLIED>
-  -->
   <define name="statement">
     <element name="statement">
-      <ref name="statement.attlist"/>
-      <ref name="statement.content"/>
+      <ref name="statement-attlist"/>
+      <ref name="statement-content"/>
     </element>
   </define>
 
-  <define name="statement.attlist">
+  <define name="statement-attlist">
     <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.statement.content "%CNXML.structural.content;"> -->
-  <define name="statement.content">
-    <ref name="structural.content"/>
+  <define name="statement-content">
+    <ref name="para-or-section-content-class"/>
   </define>
 
-<!-- <!ENTITY % CNXML.proof.content "%CNXML.structural.content;"> -->
-<!-- <!ELEMENT %CNXML.proof.qname; %CNXML.proof.content;>
-          <!ATTLIST %CNXML.proof.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.proof.qname; id ID #IMPLIED>
-  -->
   <define name="proof">
     <element name="proof">
-      <ref name="proof.attlist"/>
-      <ref name="proof.content"/>
+      <ref name="proof-attlist"/>
+      <ref name="proof-content"/>
     </element>
   </define>
 
-  <define name="proof.attlist">
+  <define name="proof-attlist">
     <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-  <define name="proof.content">
-    <ref name="structural.content"/>
+  <define name="proof-content">
+    <ref name="para-or-section-content-class"/>
   </define>
 
-<!-- <!ELEMENT %CNXML.exercise.qname; %CNXML.exercise.content;>
-          <!ATTLIST %CNXML.exercise.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.exercise.qname; id ID #REQUIRED>
-  -->
   <define name="exercise">
     <element name="exercise">
-      <ref name="exercise.attlist"/>
-      <ref name="exercise.content"/>
+      <ref name="exercise-attlist"/>
+      <ref name="exercise-content"/>
     </element>
   </define>
 
-  <define name="exercise.attlist">
+  <define name="exercise-attlist">
     <group>
       <ref name="id"/>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.exercise.content "(
-       (%CNXML.name.qname;)?,
-        %CNXML.problem.qname;,
-       (%CNXML.solution.qname;)*
-     )"> -->
-  <define name="exercise.content">
+  <define name="exercise-content">
     <group>
       <optional>
         <ref name="name"/>
@@ -1053,102 +892,61 @@ allowed as the first child -->
     </group>
   </define>
 
-<!-- <!ELEMENT %CNXML.problem.qname; %CNXML.problem.content;>
-          <!ATTLIST %CNXML.problem.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.problem.qname; id ID #IMPLIED>
-  -->
   <define name="problem">
     <element name="problem">
-      <ref name="problem.attlist"/>
-      <ref name="problem.content"/>
+      <ref name="problem-attlist"/>
+      <ref name="problem-content"/>
     </element>
   </define>
 
-  <define name="problem.attlist">
-    <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
-    </group>
-  </define>
-
-<!-- <!ENTITY % CNXML.problem.content "%CNXML.structural.content;"> -->
-  <define name="problem.content">
-    <ref name="structural.content"/>
-  </define>
-
-<!-- <!ELEMENT %CNXML.solution.qname; %CNXML.solution.content;>
-          <!ATTLIST %CNXML.solution.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.solution.qname; id ID #IMPLIED>
-  -->
-  <define name="solution">
-    <element name="solution">
-      <ref name="solution.attlist"/>
-      <ref name="solution.content"/>
-    </element>
-  </define>
-
-  <define name="solution.attlist">
-    <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
-    </group>
-  </define>
-
-<!-- <!ENTITY % CNXML.solution.content "%CNXML.structural.content;"> -->
-  <define name="solution.content">
-    <ref name="structural.content"/>
-  </define>
-
-<!-- New for CNXML 0.6 -->
-  <define name="block.class">
-    <choice>
-      <ref name="section"/>
-      <ref name="example"/>
-      <ref name="special.class"/>
-      <ref name="para"/>
-      <ref name="code.block"/>
-    </choice>
-  </define>
-
-<!-- <!ENTITY % CNXML.structural.content "(
-         %CNXML.name.qname;?,
-         (%CNXML.structural;
-         |%CNXML.special;
-         |%CNXML.para.qname;
-         |%CNXML.code.qname;)+
-)">
-  -->
-  <define name="structural.content">
+  <define name="problem-attlist">
     <group>
       <optional>
-        <ref name="name"/>
+        <ref name="id"/>
       </optional>
-      <oneOrMore>
-        <ref name="block.class"/>
-      </oneOrMore>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ELEMENT %CNXML.equation.qname; %CNXML.equation.content;>
-          <!ATTLIST %CNXML.equation.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.equation.qname; id ID #REQUIRED>
-  -->
-  <define name="equation">
-    <element name="equation">
-      <ref name="equation.attlist"/>
-      <ref name="equation.content"/>
+  <define name="problem-content">
+    <ref name="para-or-section-content-class"/>
+  </define>
+
+  <define name="solution">
+    <element name="solution">
+      <ref name="solution-attlist"/>
+      <ref name="solution-content"/>
     </element>
   </define>
 
-  <define name="equation.attlist">
+  <define name="solution-attlist">
     <group>
-      <ref name="common.attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
+    </group>
+  </define>
+
+  <define name="solution-content">
+    <ref name="para-or-section-content-class"/>
+  </define>
+
+  <define name="equation">
+    <element name="equation">
+      <ref name="equation-attlist"/>
+      <ref name="equation-content"/>
+    </element>
+  </define>
+
+  <define name="equation-attlist">
+    <group>
+      <ref name="common-attlist"/>
       <ref name="id"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.equation.content "(#PCDATA|%CNXML.name.qname;|%CNXML.media.qname;)*"> -->
-  <define name="equation.content">
+  <define name="equation-content">
     <optional>
       <ref name="name"/>
     </optional>
@@ -1160,101 +958,87 @@ allowed as the first child -->
     </oneOrMore>
   </define>
 
-<!-- <!ELEMENT %CNXML.section.qname; %CNXML.section.content;> -->
   <define name="section">
     <element name="section">
-      <ref name="section.attlist"/>
-      <ref name="section.content"/>
+      <ref name="section-attlist"/>
+      <ref name="section-content"/>
     </element>
   </define>
 
-<!--      <!ATTLIST %CNXML.section.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.section.qname; id ID #IMPLIED>
-  -->
-  <define name="section.attlist">
+  <define name="section-attlist">
     <group>
-      <ref name="common.attlist"/>
-      <ref name="id.implied"/>
+      <ref name="common-attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.section.content "%CNXML.structural.content;"> -->
-  <define name="section.content">
-    <ref name="structural.content"/>
-  </define>
-
-<!-- <!ELEMENT %CNXML.content.qname; %CNXML.content.content;>
-          <!ATTLIST %CNXML.content.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.content.qname; id ID #IMPLIED>
-  -->
-  <define name="content">
-    <element name="content">
-      <ref name="content.attlist"/>
-      <ref name="content.content"/>
-    </element>
-  </define>
-
-  <define name="content.attlist">
-    <group>
-      <ref name="common.attlist"/>
-      <ref name="id.implied"/>
-    </group>
-  </define>
-
-<!-- <!ENTITY % CNXML.content.content "(
-                    %CNXML.structural;
-                   |%CNXML.code.qname;
-                   |%CNXML.special;
-                   |%CNXML.para.qname;
-                )+">
-  -->
-  <define name="content.content">
+  <define name="section-content">
+    <optional>
+      <ref name="name"/>
+    </optional>
     <oneOrMore>
-      <ref name="block.class"/>
+      <ref name="section-content-class"/>
     </oneOrMore>
   </define>
 
-<!-- <!ELEMENT %CNXML.glossary.qname; %CNXML.glossary.content; >
-          <!ATTLIST %CNXML.glossary.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.glossary.qname; id ID #IMPLIED>
-  -->
-  <define name="glossary">
-    <element name="glossary">
-      <ref name="glossary.attlist"/>
-      <ref name="glossary.content"/>
+  <define name="content">
+    <element name="content">
+      <ref name="content-attlist"/>
+      <ref name="content-content"/>
     </element>
   </define>
 
-  <define name="glossary.attlist">
+  <define name="content-attlist">
     <group>
-      <ref name="common.attlist"/>
-      <ref name="id.implied"/>
+      <ref name="common-attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.glossary.content "(%CNXML.definition.qname;)+"> -->
-  <define name="glossary.content">
+  <define name="content-content">
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
+  </define>
+
+  <define name="glossary">
+    <element name="glossary">
+      <ref name="glossary-attlist"/>
+      <ref name="glossary-content"/>
+    </element>
+  </define>
+
+  <define name="glossary-attlist">
+    <group>
+      <ref name="common-attlist"/>
+      <optional>
+        <ref name="id"/>
+      </optional>
+    </group>
+  </define>
+
+  <define name="glossary-content">
     <oneOrMore>
       <ref name="definition"/>
     </oneOrMore>
   </define>
 
-<!-- <!ELEMENT %CNXML.metadata.qname; %CNXML.metadata.content; >
-          <!ATTLIST %CNXML.metadata.qname; %CNXML.xmlns.attrib;>
-  -->
   <define name="metadata">
     <element name="metadata">
-      <ref name="metadata.attlist"/>
-      <ref name="metadata.content"/>
+      <ref name="metadata-attlist"/>
+      <ref name="metadata-content"/>
     </element>
   </define>
 
-  <define name="metadata.attlist">
-    <ref name="common.attlist"/>
+  <define name="metadata-attlist">
+    <ref name="common-attlist"/>
   </define>
 
-<!-- <!ENTITY % CNXML.metadata.content "ANY" > -->
-  <define name="metadata.content">
+  <define name="metadata-content">
     <oneOrMore>
       <ref name="metadata.elem"/>
     </oneOrMore>
@@ -1290,32 +1074,21 @@ allowed as the first child -->
     </element>
   </define>
 
-<!-- <!ELEMENT %CNXML.document.qname; %CNXML.document.content; >
-          <!ATTLIST %CNXML.document.qname; %CNXML.xmlns.attrib;>
-          <!ATTLIST %CNXML.document.qname; id ID #REQUIRED>
-  -->
   <define name="document">
     <element name="document">
-      <ref name="document.attlist"/>
-      <ref name="document.content"/>
+      <ref name="document-attlist"/>
+      <ref name="document-content"/>
     </element>
   </define>
 
-  <define name="document.attlist">
+  <define name="document-attlist">
     <group>
       <ref name="id"/>
-      <ref name="common.attlist"/>
+      <ref name="common-attlist"/>
     </group>
   </define>
 
-<!-- <!ENTITY % CNXML.document.content "(
-    %CNXML.name.qname;,
-    %CNXML.metadata.qname;?,
-    %CNXML.content.qname;,
-    %CNXML.glossary.qname;?
-)">
-  -->
-  <define name="document.content">
+  <define name="document-content">
     <group>
       <ref name="name"/>
       <optional>
@@ -1330,25 +1103,5 @@ allowed as the first child -->
       </optional>
     </group>
   </define>
-
-<!-- New for CNXML 0.6 -->
-  <define name="span">
-    <element name="span">
-      <ref name="span.attlist"/>
-      <ref name="span.content"/>
-    </element>
-  </define>
-
-  <define name="span.attlist">
-    <group>
-      <ref name="id.implied"/>
-      <ref name="common.attlist"/>
-    </group>
-  </define>
-
-  <define name="span.content">
-    <ref name="inline.content"/>
-  </define>
-
 
 </grammar>
