@@ -57,7 +57,7 @@
       <ref name="foreign"/>
       <ref name="code-inline"/>
       <ref name="span"/>
-      <!-- add 'note' of type 'footnote' -->
+      <ref name="note-footnote"/>
     </choice>
   </define>
 
@@ -618,6 +618,23 @@
 
   <define name="note-content">
     <ref name="para-or-div-content-class"/>
+  </define>
+
+  <define name="note-footnote">
+    <ref name="note-footnote-attlist"/>
+    <ref name="note-content"/>
+  </define>
+
+  <define name="note-footnote-attlist">
+    <group>
+      <attribute name="type">
+        <value>footnote</value>
+      </attribute>
+      <optional>
+        <ref name="id"/>
+      </optional>
+      <ref name="common-attlist"/>
+    </group>
   </define>
 
   <define name="figure">
