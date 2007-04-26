@@ -620,8 +620,10 @@
   </define>
 
   <define name="note-footnote">
-    <ref name="note-footnote-attlist"/>
-    <ref name="note-content"/>
+    <element name="note">
+      <ref name="note-footnote-attlist"/>
+      <ref name="note-content"/>
+    </element>
   </define>
 
   <define name="note-footnote-attlist">
@@ -949,6 +951,9 @@
   </define>
 
   <define name="problem-content">
+    <optional>
+      <ref name="name"/>
+    </optional>
     <ref name="para-or-section-content-class"/>
   </define>
 
