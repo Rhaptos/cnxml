@@ -155,14 +155,9 @@
       </group>
     </define>
     <define name="entry.mdl">
-      <choice>
-        <zeroOrMore>
-          <ref name="para-content-class"/>
-        </zeroOrMore>
-        <zeroOrMore>
-          <ref name="div-content-class"/>
-        </zeroOrMore>
-      </choice>
+      <zeroOrMore>
+        <ref name="div-content-class"/>
+      </zeroOrMore>
     </define>
   </include>
 
