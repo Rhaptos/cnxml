@@ -57,6 +57,7 @@
       <ref name="foreign"/>
       <ref name="code-inline"/>
       <ref name="span"/>
+      <!-- add 'note' of type 'footnote' -->
     </choice>
   </define>
 
@@ -199,7 +200,7 @@
   </define>
 
   <define name="name-content">
-    <text/>
+    <ref name="inline-content-class"/>
   </define>
 
   <define name="emphasis">
@@ -310,7 +311,7 @@
   </define>
 
   <define name="cnxn-content">
-    <text/>
+    <ref name="inline-content"/>
   </define>
 
   <define name="link">
