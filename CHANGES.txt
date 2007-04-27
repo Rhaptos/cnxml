@@ -1,3 +1,6 @@
+  - strip any possible margins made by the tables that are made for 
+    entrytbls and multiple tgroups
+
 CNXML-0.5 (p14)
   - March 2007 site redesign (newlook)
 

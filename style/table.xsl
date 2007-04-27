@@ -71,7 +71,7 @@
 		  <xsl:for-each select="cnx:tgroup">
 		    <tr>
 		      <td style="padding: 0 !important; border: 0 !important">
-			<table cellspacing="0" cellpadding="0" width="100%" style="border: 0 !important;">
+			<table cellspacing="0" cellpadding="0" width="100%" style="border: 0 !important; margin: 0 !important;">
 	    		  <xsl:apply-templates select="self::cnx:tgroup" />
 			</table>
 		      </td>
@@ -118,7 +118,7 @@
 	  <xsl:call-template name="calculate.colspan" />
 	</xsl:attribute>
       </xsl:if>
-      <table cellspacing="0" cellpadding="0" width="100%" style="height: 100%; border: 0 !important;">
+      <table cellspacing="0" cellpadding="0" width="100%" style="height: 100%; border: 0 !important; margin: 0 !important;">
 	<!-- Only bother to do this if there are colwidth attributes specified. -->
 	<xsl:if test="cnx:colspec/@colwidth or child::*/cnx:colspec/@colwidth">
 	  <colgroup>
