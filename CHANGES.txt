@@ -1,3 +1,6 @@
+  - nlt0212: spaces around "and" in translated content footer
+  - nlt0198: case changes
+
 CNXML-0.5 (p14)
   - March 2007 site redesign (newlook)
 
