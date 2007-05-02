@@ -27,10 +27,10 @@
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>
       <l:gentext key="Translators" text="Translators"/>
-      <l:gentext key="Translated By" text="Translated By:"/>
+      <l:gentext key="Translated By" text="Translated by:"/>
       <l:gentext key="Editors:" text="Editors:"/>
       <l:gentext key="Editors" text="Editors"/>
-      <l:gentext key="Edited By" text="Edited By:"/>
+      <l:gentext key="Edited By" text="Edited by:"/>
       <l:gentext key="By" text="By: "/>
       <l:gentext key="BasedOn" text="Based on:"/>
       <l:gentext key="Summary" text="Summary:"/>
@@ -80,12 +80,12 @@
       <l:gentext key="EditInPlace" text="Edit-In-Place"/>
       <l:gentext key="Editthiscontent" text="Edit this content"/>
       <l:gentext key="authoronly" text=" (author only)"/>
-      <l:gentext key="MoreAboutThisContent" text="More About This Content: "/>
+      <l:gentext key="MoreAboutThisContent" text="More about this content: "/>
       <l:gentext key="Metadata" text="Metadata"/>
       <l:gentext key="CiteThisContent" text="Cite This Content"/>
       <l:gentext key="VersionHistory" text="Version History"/>
       <l:gentext key="Worklicensedby" text="This work is licensed by"/>
-      <l:gentext key="and" text=" and "/>
+      <l:gentext key="and" text="and"/>
       <l:gentext key="comma" text=", "/>
       <l:gentext key="Seethe" text="See the"/>
       <l:gentext key="CreativeCommonsLicense" text="Creative Commons License"/>
