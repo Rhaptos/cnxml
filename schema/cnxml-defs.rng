@@ -83,6 +83,7 @@
       <ref name="rule"/>
       <ref name="exercise"/>
       <ref name="equation"/>
+      <ref name="div"/>
     </choice>
   </define>
 
@@ -1021,6 +1022,23 @@
         <ref name="media"/>
       </choice>
     </oneOrMore>
+  </define>
+
+  <define name="div">
+    <element name="div">
+      <ref name="div-attlist"/>
+      <ref name="div-content"/>
+    </element>
+  </define>
+
+  <define name="div-attlist">
+    <group>
+      <ref name="common-attlist"/>
+      <ref name="id"/>
+    </group>
+  </define>
+
+  <define name="div-content">
   </define>
 
   <define name="section">
