@@ -181,6 +181,7 @@
   
 
   <xsl:template name="process.cell">
+    <xsl:param name="cellgi"/>
 
     <xsl:element name="{$cellgi}">
       <xsl:if test="@morerows">
@@ -279,6 +280,7 @@
        attributes > table attributes (if no intermediary entrybl), with pit stops first to turn borders off at the bottom and left of 
        the table's very last rows and columns, respectively.  If no attributes are found, the default values are provided. -->
   <xsl:template name="style.param.determiner">
+    <xsl:param name="style.name" />
     <xsl:variable name="entry.colnum">
       <xsl:call-template name="entry.colnum" />
     </xsl:variable>
@@ -420,6 +422,8 @@
        how those attributes were determined in style.param.determiner (or in the process.cell/cnx:entrytbl templates if the current 
        entry(tbl) didn't pass through style.param.determiner). -->
   <xsl:template name="style.maker">
+    <xsl:param name="style.name" />
+    <xsl:param name="style.param" />
     <xsl:choose>
       <xsl:when test="$style.name='colsep'">
 	<xsl:choose>
@@ -588,6 +592,7 @@
 	<xsl:with-param name="mc.cols" select="';'" />
       </xsl:call-template>
     </xsl:param>
+    <xsl:param name="mc.entry" /> <!-- all passed params must be declared, even if they don't need a default -->
     <!-- Start at the top left (because we have to start accounting for @morerows beginning there) until we make it down to the row 
 	 with the entry(tbl) whose colnum we're trying to determine. -->
     <xsl:choose>
@@ -596,8 +601,6 @@
 	<xsl:call-template name="mc.determine.colnum">
 	  <xsl:with-param name="mc.cols" select="$mc.cols" />
 	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
-	  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked" />
-	  <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked" />
 	</xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
@@ -616,6 +619,8 @@
   <xsl:template name="mc.cols.initialization">
     <!-- Say, for example, the tgroup has @cols equal to 4.  $mc.cols will look like this: ;0;0;0;0; -->
     <xsl:param name="mci.iteration" select="'1'" />
+    <xsl:param name="mc.cols" />
+    <xsl:param name="mc.cols.quantity" />
     <xsl:choose>
       <xsl:when test="$mci.iteration &gt; $mc.cols.quantity">
         <xsl:value-of select="$mc.cols" />
@@ -653,6 +658,35 @@
 	<xsl:otherwise>;</xsl:otherwise>
       </xsl:choose>
     </xsl:param>
+    <xsl:param name="mc.cols" />
+    <xsl:param name="mc.cols.quantity" />
+    <xsl:param name="mc.entry" />
+    <xsl:param name="mc.entry.number.being.checked" />
+    <xsl:param name="mc.first.part" />
+    <xsl:param name="mc.row.number.being.checked" />
+    <xsl:param name="mca.entry.being.checked" select="$mc.entry/ancestor::*[2]/cnx:row[position()=$mc.row.number.being.checked]/child::*[position()=$mc.entry.number.being.checked]" />
+    <xsl:param name="mca.rowspan">
+      <xsl:choose>
+      <!-- If there's a morerows attribute, the entry(tbl) spans the number of that attribute plus 1. -->
+	<xsl:when test="$mca.entry.being.checked/@morerows">
+	  <xsl:value-of select="$mca.entry.being.checked/@morerows + 1" />
+	</xsl:when>
+	<!-- If there's not a morerows attribute, the entry(tbl) only spans one row -->
+	<xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:param>
+    <xsl:param name="mca.colspan">
+      <xsl:choose>
+ 	<!-- If there entry(tbl) has a span, calculate how long it is -->
+	<xsl:when test="($mca.entry.being.checked/@namest and $mca.entry.being.checked/@nameend) or $mca.entry.being.checked/@spanname">
+	  <xsl:call-template name="calculate.colspan">
+	    <xsl:with-param name="entry" select="$mca.entry.being.checked" />
+	  </xsl:call-template>
+	</xsl:when>
+	<!-- Otherwise, the entry(tbl) only spans one column -->
+	<xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:param>
     <!-- Assign the colnum if it can be found -->
     <xsl:choose>
       <!-- If the column has a marker that's higher than 0, something is already sitting there (either a previous entry in the same 
@@ -669,29 +703,6 @@
       </xsl:when>
       <!-- Otherwise, the entry being checked can fit there. -->
       <xsl:otherwise>
-	<xsl:param name="mca.entry.being.checked" select="$mc.entry/ancestor::*[2]/cnx:row[position()=$mc.row.number.being.checked]/child::*[position()=$mc.entry.number.being.checked]" />
-	<xsl:param name="mca.rowspan">
-	  <xsl:choose>
-	    <!-- If there's a morerows attribute, the entry(tbl) spans the number of that attribute plus 1. -->
-	    <xsl:when test="$mca.entry.being.checked/@morerows">
-	      <xsl:value-of select="$mca.entry.being.checked/@morerows + 1" />
-	    </xsl:when>
-	    <!-- If there's not a morerows attribute, the entry(tbl) only spans one row -->
-	    <xsl:otherwise>1</xsl:otherwise>
-	  </xsl:choose>
-	</xsl:param>
-	<xsl:param name="mca.colspan">
-	  <xsl:choose>
-	    <!-- If there entry(tbl) has a span, calculate how long it is -->
-	    <xsl:when test="($mca.entry.being.checked/@namest and $mca.entry.being.checked/@nameend) or $mca.entry.being.checked/@spanname">
-	      <xsl:call-template name="calculate.colspan">
-		<xsl:with-param name="entry" select="$mca.entry.being.checked" />
-	      </xsl:call-template>
-	    </xsl:when>
-	    <!-- Otherwise, the entry(tbl) only spans one column -->
-	    <xsl:otherwise>1</xsl:otherwise>
-	  </xsl:choose>
-	</xsl:param>
 	<!-- If somebody has added an entry(tbl) who's colnum is greater than the @cols attribute, bump the cols.quantity up -->
 	<xsl:param name="mc.cols.quantity.test">
 	  <xsl:choose>
@@ -753,6 +764,11 @@
     <xsl:param name="mcr.first.part" select="';'" />
     <xsl:param name="mcr.number.in.question" select="substring-before(substring-after($mc.cols,$mcr.first.part),';')" />
     <xsl:param name="mcr.last.part" select="substring-after($mc.cols,concat($mcr.first.part,$mcr.number.in.question))" />
+    <xsl:param name="mc.row.number.being.checked" />
+    <xsl:param name="mc.entry.number.being.checked" />
+    <xsl:param name="mc.entry" />
+    <xsl:param name="mc.cols.quantity" />
+    <xsl:param name="mc.cols" />
     <!-- Go through each number and subtract 1 from it (unless it's somehow less than 1, in which case return 0). -->
     <xsl:choose>
       <xsl:when test="$mcr.iteration &gt; $mc.cols.quantity">
@@ -799,6 +815,8 @@
     <xsl:param name="mc.first.part" select="';'" />
     <xsl:param name="mdc.iteration" select="'1'" />
     <xsl:param name="mdc.number.in.question" select="substring-before(substring-after($mc.cols,$mc.first.part),';')" />
+    <xsl:param name="mc.cols" />
+    <xsl:param name="mc.cols.quantity" />
     <xsl:choose>
       <xsl:when test="($mdc.number.in.question = 0) or ($mdc.iteration &gt; $mc.cols.quantity)">
 	<xsl:value-of select="$mdc.iteration" />
