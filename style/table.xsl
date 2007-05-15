@@ -581,6 +581,7 @@
   -->
 
   <xsl:template name="morerows.check">
+    <xsl:param name="mc.entry" /> <!-- all passed params must be declared, even if they don't need a default -->
     <xsl:param name="mc.first.part" select="';'" /> <!-- Used primarily for mc.cols.assignment below -->
     <xsl:param name="mc.row.number.being.checked" select="'1'" /> <!-- Number of row we're in during testing (start at top) -->
     <xsl:param name="mc.entry.number.being.checked" select="'1'" /> <!-- Number of column we're in during testing (start at left) -->
@@ -592,7 +593,6 @@
 	<xsl:with-param name="mc.cols" select="';'" />
       </xsl:call-template>
     </xsl:param>
-    <xsl:param name="mc.entry" /> <!-- all passed params must be declared, even if they don't need a default -->
     <!-- Start at the top left (because we have to start accounting for @morerows beginning there) until we make it down to the row 
 	 with the entry(tbl) whose colnum we're trying to determine. -->
     <xsl:choose>
@@ -636,6 +636,8 @@
   </xsl:template>
 
   <xsl:template name="mc.cols.assignment">
+    <xsl:param name="mc.cols" />
+    <xsl:param name="mc.first.part" />
     <xsl:param name="mca.number.in.question">
       <xsl:choose>
 	<!-- If nobody has added an entry(tbl) who's colnum is greater than the @cols attribute, determine the number by removing the 
@@ -658,11 +660,9 @@
 	<xsl:otherwise>;</xsl:otherwise>
       </xsl:choose>
     </xsl:param>
-    <xsl:param name="mc.cols" />
     <xsl:param name="mc.cols.quantity" />
     <xsl:param name="mc.entry" />
     <xsl:param name="mc.entry.number.being.checked" />
-    <xsl:param name="mc.first.part" />
     <xsl:param name="mc.row.number.being.checked" />
     <xsl:param name="mca.entry.being.checked" select="$mc.entry/ancestor::*[2]/cnx:row[position()=$mc.row.number.being.checked]/child::*[position()=$mc.entry.number.being.checked]" />
     <xsl:param name="mca.rowspan">
@@ -687,6 +687,17 @@
 	<xsl:otherwise>1</xsl:otherwise>
       </xsl:choose>
     </xsl:param>
+    <!-- If somebody has added an entry(tbl) who's colnum is greater than the @cols attribute, bump the cols.quantity up -->
+    <xsl:param name="mc.cols.quantity.test">
+      <xsl:choose>
+	<xsl:when test="$mc.first.part = $mc.cols">
+	  <xsl:value-of select="$mc.cols.quantity + 1" />
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:value-of select="$mc.cols.quantity" />
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:param>
     <!-- Assign the colnum if it can be found -->
     <xsl:choose>
       <!-- If the column has a marker that's higher than 0, something is already sitting there (either a previous entry in the same 
@@ -703,17 +714,6 @@
       </xsl:when>
       <!-- Otherwise, the entry being checked can fit there. -->
       <xsl:otherwise>
-	<!-- If somebody has added an entry(tbl) who's colnum is greater than the @cols attribute, bump the cols.quantity up -->
-	<xsl:param name="mc.cols.quantity.test">
-	  <xsl:choose>
-	    <xsl:when test="$mc.first.part = $mc.cols">
-	      <xsl:value-of select="$mc.cols.quantity + 1" />
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <xsl:value-of select="$mc.cols.quantity" />
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</xsl:param>
 	<xsl:choose>
 	<!-- If the entry we're on in morerows.check has a colspan, also assign the other corresponding colnums. -->
 	  <xsl:when test="$mca.colspan &gt; 1">
@@ -760,6 +760,7 @@
   </xsl:template>
 
   <xsl:template name="mc.cols.reset">
+    <xsl:param name="mc.cols" />
     <xsl:param name="mcr.iteration" select="'1'" />
     <xsl:param name="mcr.first.part" select="';'" />
     <xsl:param name="mcr.number.in.question" select="substring-before(substring-after($mc.cols,$mcr.first.part),';')" />
@@ -768,7 +769,6 @@
     <xsl:param name="mc.entry.number.being.checked" />
     <xsl:param name="mc.entry" />
     <xsl:param name="mc.cols.quantity" />
-    <xsl:param name="mc.cols" />
     <!-- Go through each number and subtract 1 from it (unless it's somehow less than 1, in which case return 0). -->
     <xsl:choose>
       <xsl:when test="$mcr.iteration &gt; $mc.cols.quantity">
@@ -812,10 +812,10 @@
   </xsl:template>
 
   <xsl:template name="mc.determine.colnum">
+    <xsl:param name="mc.cols" />
     <xsl:param name="mc.first.part" select="';'" />
     <xsl:param name="mdc.iteration" select="'1'" />
     <xsl:param name="mdc.number.in.question" select="substring-before(substring-after($mc.cols,$mc.first.part),';')" />
-    <xsl:param name="mc.cols" />
     <xsl:param name="mc.cols.quantity" />
     <xsl:choose>
       <xsl:when test="($mdc.number.in.question = 0) or ($mdc.iteration &gt; $mc.cols.quantity)">
@@ -854,6 +854,18 @@
 
   <xsl:template name="col.maker">
     <xsl:param name="cm.iteration" select="'1'" />
+      <!-- If thead or tfoot has a colspec with a colwidth attribute, it takes precedence ??? over a colwidth directly under a 
+	   tgroup or entrytbl.  Set this colwidth attribute as a param. -->
+      <xsl:param name="colwidth">
+      <xsl:choose>
+	<xsl:when test="child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth">
+	  <xsl:value-of select="child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth" />
+	</xsl:when>
+	<xsl:when test="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth">
+	  <xsl:value-of select="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth" />
+	</xsl:when>
+      </xsl:choose>
+    </xsl:param>
     <xsl:choose>
       <xsl:when test="$cm.iteration &gt; @cols" />
       <xsl:otherwise>
@@ -862,18 +874,6 @@
 	  <xsl:choose>
 	    <xsl:when test="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))][@colwidth!=''] or 
 			    child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))][@colwidth!='']">
-	      <!-- If thead or tfoot has a colspec with a colwidth attribute, it takes precedence ??? over a colwidth directly under a 
-		   tgroup or entrytbl.  Set this colwidth attribute as a param. -->
-	      <xsl:param name="colwidth">
-		<xsl:choose>
-		  <xsl:when test="child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth">
-		    <xsl:value-of select="child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth" />
-		  </xsl:when>
-		  <xsl:when test="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth">
-		    <xsl:value-of select="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth" />
-		  </xsl:when>
-	        </xsl:choose>
-	      </xsl:param>
 	      <!-- If the colwidth is expressed in 'in', 'em', 'cm', 'pc', 'pi', 'mm', or 'ex', express this width with a style 
 		   attribute instead of a width attribute, since browsers can actually handle this. -->
 	      <xsl:choose>
