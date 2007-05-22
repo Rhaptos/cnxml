@@ -586,12 +586,7 @@
   </define>
 
   <define name="example-content">
-    <optional>
-      <ref name="name"/>
-    </optional>
-    <oneOrMore>
-      <ref name="section-content-class"/>
-    </oneOrMore>
+    <ref name="section-content"/>
   </define>
 
   <define name="seealso">
@@ -903,12 +898,7 @@
   </define>
 
   <define name="statement-content">
-    <optional>
-      <ref name="name"/>
-    </optional>
-    <oneOrMore>
-      <ref name="section-content-class"/>
-    </oneOrMore>
+    <ref name="section-content"/>
   </define>
 
   <define name="proof">
@@ -928,12 +918,7 @@
   </define>
 
   <define name="proof-content">
-    <optional>
-      <ref name="name"/>
-    </optional>
-    <oneOrMore>
-      <ref name="section-content-class"/>
-    </oneOrMore>
+    <ref name="section-content"/>
   </define>
 
   <define name="exercise">
@@ -979,12 +964,7 @@
   </define>
 
   <define name="problem-content">
-    <optional>
-      <ref name="name"/>
-    </optional>
-    <oneOrMore>
-      <ref name="section-content-class"/>
-    </oneOrMore>
+    <ref name="section-content"/>
   </define>
 
   <define name="solution">
@@ -1004,12 +984,7 @@
   </define>
 
   <define name="solution-content">
-    <optional>
-      <ref name="name"/>
-    </optional>
-    <oneOrMore>
-      <ref name="section-content-class"/>
-    </oneOrMore>
+    <ref name="section-content"/>
   </define>
 
   <define name="equation">
