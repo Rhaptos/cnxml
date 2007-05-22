@@ -609,7 +609,11 @@
     <group>
       <optional>
         <attribute name="type">
-          <text/>
+          <data a:type="token">
+            <except>
+              <value>footnote</value>
+            </except>
+          </data>
         </attribute>
       </optional>
       <optional>
@@ -1036,9 +1040,6 @@
       <ref name="common-attlist"/>
       <ref name="id"/>
     </group>
-  </define>
-
-  <define name="div-content">
   </define>
 
   <define name="section">
