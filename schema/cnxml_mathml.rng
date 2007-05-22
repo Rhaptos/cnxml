@@ -8,7 +8,7 @@
   <include href="mdml-defs.rng"/>
   <include href="cnxml-defs.rng">
     <!-- We use the metadata content model from MDML instead of CNXML's -->
-    <define name="metadata.content" combine="choice">
+    <define name="metadata-content" combine="choice">
       <ref name="MDML.metadata.content"/>
     </define>
     <define name="bibtex.elem">
@@ -22,7 +22,7 @@
       </choice>
     </define>
   <!-- Equations now contain MathML instead of text or 'media' -->
-    <define name="equation.content">
+    <define name="equation-content">
       <group>
         <optional>
           <ref name="name"/>
