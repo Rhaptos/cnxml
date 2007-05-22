@@ -109,6 +109,13 @@
     </oneOrMore>
   </define>
 
+  <define name="named-div-content">
+    <optional>
+      <ref name="name"/>
+    </optional>
+    <ref name="div-content"/>
+  </define>
+
   <!-- Content class for elements that can contain 'section' -->
   <define name="section-content-class">
     <choice>
@@ -550,10 +557,7 @@
   </define>
 
   <define name="meaning-content">
-    <optional>
-      <ref name="name"/>
-    </optional>
-    <ref name="div-content"/>
+    <ref name="named-div-content"/>
   </define>
 
   <define name="example">
@@ -838,10 +842,7 @@
   </define>
 
   <define name="item-content">
-    <optional>
-      <ref name="name"/>
-    </optional>
-    <ref name="div-content"/>
+    <ref name="named-div-content"/>
   </define>
 
   <define name="rule">
