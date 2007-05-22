@@ -124,6 +124,15 @@
     </choice>
   </define>
 
+  <define name="section-content">
+    <optional>
+      <ref name="name"/>
+    </optional>
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
+  </define>
+
   <define name="para-or-div-content-class">
     <choice>
       <oneOrMore>
@@ -1057,15 +1066,6 @@
         <ref name="id"/>
       </optional>
     </group>
-  </define>
-
-  <define name="section-content">
-    <optional>
-      <ref name="name"/>
-    </optional>
-    <oneOrMore>
-      <ref name="section-content-class"/>
-    </oneOrMore>
   </define>
 
   <define name="content">
