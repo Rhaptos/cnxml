@@ -51,8 +51,6 @@
       <ref name="emphasis"/>
       <ref name="term"/>
       <ref name="cite"/>
-      <ref name="cnxn"/>
-      <ref name="link"/>
       <ref name="quote-inline"/>
       <ref name="foreign"/>
       <ref name="code-inline"/>
@@ -61,8 +59,27 @@
     </choice>
   </define>
 
+  <!-- Class of linking elements (split off from inline-class because 
+       they may not contain themselves) -->
+  <define name="linking-class">
+    <choice>
+      <ref name="cnxn"/>
+      <ref name="link"/>
+    </choice>
+  </define>
+
   <!-- Inline content model -->
   <define name="inline-content">
+    <zeroOrMore>
+      <choice>
+        <ref name="inline-class"/>
+        <ref name="linking-class"/>
+      </choice>
+    </zeroOrMore>
+  </define>
+
+  <!-- Linking element content model -->
+  <define name="linking-content">
     <zeroOrMore>
       <ref name="inline-class"/>
     </zeroOrMore>
@@ -91,6 +108,7 @@
   <define name="para-content-class">
     <choice>
       <ref name="inline-class"/>
+      <ref name="linking-class"/>
       <ref name="basic-blocks-class"/>
     </choice>
   </define>
@@ -329,7 +347,7 @@
   </define>
 
   <define name="cnxn-content">
-    <ref name="inline-content"/>
+    <ref name="linking-content"/>
   </define>
 
   <define name="link">
@@ -350,7 +368,7 @@
   </define>
 
   <define name="link-content">
-    <ref name="inline-content"/>
+    <ref name="linking-content"/>
   </define>
 
   <define name="span">
