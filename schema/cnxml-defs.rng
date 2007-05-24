@@ -104,6 +104,13 @@
     </choice>
   </define>
 
+  <define name="code-class">
+    <choice>
+      <ref name="code-inline"/>
+      <ref name="code-block"/>
+    </choice>
+  </define>
+
   <!-- Content class for para-like things -->
   <define name="para-content-class">
     <choice>
@@ -468,13 +475,6 @@
     <ref name="inline-content"/>
   </define>
 
-  <define name="code">
-    <element name="code">
-      <ref name="code-attlist"/>
-      <ref name="code-content"/>
-    </element>
-  </define>
-
   <define name="code-inline">
     <element name="code">
       <ref name="code-inline-attlist"/>
@@ -709,7 +709,7 @@
       </group>
       <ref name="media"/>
       <ref name="table"/>
-      <ref name="code"/>
+      <ref name="code-class"/>
     </choice>
     <optional>
       <ref name="caption"/>
@@ -811,7 +811,7 @@
       <choice>
         <ref name="media"/>
         <ref name="table"/>
-        <ref name="code"/>
+        <ref name="code-class"/>
       </choice>
       <optional>
         <ref name="caption"/>
