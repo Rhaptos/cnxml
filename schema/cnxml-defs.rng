@@ -68,6 +68,13 @@
     </choice>
   </define>
 
+  <define name="title-class">
+    <choice>
+      <ref name="title"/>
+      <ref name="name"/>
+    </choice>
+  </define>
+
   <!-- Inline content model -->
   <define name="inline-content">
     <zeroOrMore>
@@ -136,7 +143,7 @@
 
   <define name="named-div-content">
     <optional>
-      <ref name="name"/>
+      <ref name="title-class"/>
     </optional>
     <ref name="div-content"/>
   </define>
@@ -152,7 +159,7 @@
 
   <define name="section-content">
     <optional>
-      <ref name="name"/>
+      <ref name="title-class"/>
     </optional>
     <oneOrMore>
       <ref name="section-content-class"/>
@@ -189,7 +196,7 @@
     <define name="table.mdl">
       <group>
         <optional>
-          <ref name="name"/>
+          <ref name="title-class"/>
         </optional>
         <ref name="table-main.mdl"/>
         <optional>
@@ -220,21 +227,28 @@
 
   <define name="para-content">
     <optional>
-      <ref name="name"/>
+      <ref name="title-class"/>
     </optional>
     <oneOrMore>
       <ref name="para-content-class"/>
     </oneOrMore>
   </define>
 
-  <define name="name">
-    <element name="name">
-      <ref name="name-attlist"/>
-      <ref name="name-content"/>
+  <define name="title">
+    <element name="title">
+      <ref name="title-attlist"/>
+      <ref name="title-content"/>
     </element>
   </define>
 
-  <define name="name-attlist">
+  <define name="name">
+    <element name="name">
+      <ref name="title-attlist"/>
+      <ref name="title-content"/>
+    </element>
+  </define>
+
+  <define name="title-attlist">
     <group>
       <optional>
         <ref name="id"/>
@@ -243,7 +257,7 @@
     </group>
   </define>
 
-  <define name="name-content">
+  <define name="title-content">
     <ref name="inline-content"/>
   </define>
 
@@ -680,7 +694,7 @@
 
   <define name="figure-content">
     <optional>
-      <ref name="name"/>
+      <ref name="title-class"/>
     </optional>
     <choice>
       <group>
@@ -789,7 +803,7 @@
   <define name="subfigure-content">
     <group>
       <optional>
-        <ref name="name"/>
+        <ref name="title-class"/>
       </optional>
       <choice>
         <ref name="media"/>
@@ -822,7 +836,7 @@
   <define name="list-content">
     <group>
       <optional>
-        <ref name="name"/>
+        <ref name="title-class"/>
       </optional>
       <oneOrMore>
         <ref name="item"/>
@@ -868,7 +882,7 @@
   <define name="rule-content">
     <group>
       <optional>
-        <ref name="name"/>
+        <ref name="title-class"/>
       </optional>
       <oneOrMore>
         <ref name="statement"/>
@@ -939,7 +953,7 @@
   <define name="exercise-content">
     <group>
       <optional>
-        <ref name="name"/>
+        <ref name="title-class"/>
       </optional>
       <ref name="problem"/>
       <zeroOrMore>
@@ -1004,7 +1018,7 @@
 
   <define name="equation-content">
     <optional>
-      <ref name="name"/>
+      <ref name="title-class"/>
     </optional>
     <oneOrMore>
       <choice>
@@ -1151,7 +1165,7 @@
 
   <define name="document-content">
     <group>
-      <ref name="name"/>
+      <ref name="title-class"/>
       <optional>
         <ref name="metadata"/>
       </optional>
