@@ -145,7 +145,8 @@
   <define name="section-content-class">
     <choice>
       <ref name="section"/>
-      <ref name="div-content-class"/>
+      <ref name="para"/>
+      <ref name="basic-blocks-class"/>
     </choice>
   </define>
 
@@ -489,23 +490,6 @@
     </element>
   </define>
 
-  <define name="code-attlist">
-    <group>
-      <optional>
-        <ref name="id"/>
-      </optional>
-      <optional>
-        <attribute name="type" a:defaultValue="inline">
-          <choice>
-            <value>inline</value>
-            <value>block</value>
-          </choice>
-        </attribute>
-      </optional>
-      <ref name="common-attlist"/>
-    </group>
-  </define>
-
   <define name="code-inline-attlist">
     <group>
       <optional>
@@ -525,11 +509,9 @@
       <optional>
         <ref name="id"/>
       </optional>
-      <optional>
-        <attribute name="type">
-          <value>block</value>
-        </attribute>
-      </optional>
+      <attribute name="type">
+        <value>block</value>
+      </attribute>
       <ref name="common-attlist"/>
     </group>
   </define>
@@ -635,7 +617,7 @@
     <group>
       <optional>
         <attribute name="type">
-          <data a:type="token">
+          <data type="token">
             <except>
               <value>footnote</value>
             </except>
@@ -709,7 +691,8 @@
       </group>
       <ref name="media"/>
       <ref name="table"/>
-      <ref name="code-class"/>
+      <ref name="code-inline"/>
+      <ref name="code-block"/>
     </choice>
     <optional>
       <ref name="caption"/>
