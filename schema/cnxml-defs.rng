@@ -173,28 +173,6 @@
     </oneOrMore>
   </define>
 
-  <define name="para-or-div-content-class">
-    <choice>
-      <oneOrMore>
-        <ref name="para-content-class"/>
-      </oneOrMore>
-      <oneOrMore>
-        <ref name="div-content-class"/>
-      </oneOrMore>
-    </choice>
-  </define>
-
-  <define name="para-or-section-content-class">
-    <choice>
-      <oneOrMore>
-        <ref name="para-content-class"/>
-      </oneOrMore>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
-    </choice>
-  </define>
-
 <!--
   Include CALS tables
 -->
