@@ -75,6 +75,13 @@
     </choice>
   </define>
 
+  <define name="document-title-class">
+    <choice>
+      <ref name="document-title"/>
+      <ref name="document-name"/>
+    </choice>
+  </define>
+
   <!-- Inline content model -->
   <define name="inline-content">
     <zeroOrMore>
@@ -141,7 +148,7 @@
     </oneOrMore>
   </define>
 
-  <define name="named-div-content">
+  <define name="titled-div-content">
     <optional>
       <ref name="title-class"/>
     </optional>
@@ -241,10 +248,24 @@
     </element>
   </define>
 
+  <define name="document-title">
+    <element name="title">
+      <ref name="title-attlist"/>
+      <text/>
+    </element>
+  </define>
+
   <define name="name">
     <element name="name">
       <ref name="title-attlist"/>
       <ref name="title-content"/>
+    </element>
+  </define>
+
+  <define name="document-name">
+    <element name="name">
+      <ref name="title-attlist"/>
+      <text/>
     </element>
   </define>
 
@@ -580,7 +601,7 @@
   </define>
 
   <define name="meaning-content">
-    <ref name="named-div-content"/>
+    <ref name="titled-div-content"/>
   </define>
 
   <define name="example">
@@ -723,6 +744,7 @@
   <define name="media-attlist">
     <group>
       <attribute name="type"/>
+      <attribute name="alt"/>
       <ref name="src"/>
       <optional>
         <ref name="id"/>
@@ -861,7 +883,7 @@
   </define>
 
   <define name="item-content">
-    <ref name="named-div-content"/>
+    <ref name="titled-div-content"/>
   </define>
 
   <define name="rule">
@@ -1165,7 +1187,7 @@
 
   <define name="document-content">
     <group>
-      <ref name="title-class"/>
+      <ref name="document-title-class"/>
       <optional>
         <ref name="metadata"/>
       </optional>
