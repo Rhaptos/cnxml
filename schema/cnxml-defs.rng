@@ -33,7 +33,7 @@
   </define>
 
 <!--
-  Element content model classes
+  Special definitions
 -->
 
   <define name="textextras">
@@ -59,29 +59,6 @@
     </choice>
   </define>
 
-  <!-- Class of linking elements (split off from inline-class because 
-       they may not contain themselves) -->
-  <define name="linking-class">
-    <choice>
-      <ref name="cnxn"/>
-      <ref name="link"/>
-    </choice>
-  </define>
-
-  <define name="title-class">
-    <choice>
-      <ref name="title"/>
-      <ref name="name"/>
-    </choice>
-  </define>
-
-  <define name="document-title-class">
-    <choice>
-      <ref name="document-title"/>
-      <ref name="document-name"/>
-    </choice>
-  </define>
-
   <!-- Inline content model -->
   <define name="inline-content">
     <zeroOrMore>
@@ -89,13 +66,6 @@
         <ref name="inline-class"/>
         <ref name="linking-class"/>
       </choice>
-    </zeroOrMore>
-  </define>
-
-  <!-- Linking element content model -->
-  <define name="linking-content">
-    <zeroOrMore>
-      <ref name="inline-class"/>
     </zeroOrMore>
   </define>
 
@@ -115,13 +85,6 @@
       <ref name="exercise"/>
       <ref name="equation"/>
       <ref name="div"/>
-    </choice>
-  </define>
-
-  <define name="code-class">
-    <choice>
-      <ref name="code-inline"/>
-      <ref name="code-block"/>
     </choice>
   </define>
 
@@ -345,6 +308,20 @@
     <ref name="inline-content"/>
   </define>
 
+  <define name="title-class">
+    <choice>
+      <ref name="title"/>
+      <ref name="name"/>
+    </choice>
+  </define>
+
+  <define name="document-title-class">
+    <choice>
+      <ref name="document-title"/>
+      <ref name="document-name"/>
+    </choice>
+  </define>
+
 <!--
   Linking Elements
 -->
@@ -413,6 +390,22 @@
 
   <define name="link-content">
     <ref name="linking-content"/>
+  </define>
+
+  <!-- Class of linking elements (split off from inline-class because 
+       they may not contain themselves) -->
+  <define name="linking-class">
+    <choice>
+      <ref name="cnxn"/>
+      <ref name="link"/>
+    </choice>
+  </define>
+
+  <!-- Linking element content model -->
+  <define name="linking-content">
+    <zeroOrMore>
+      <ref name="inline-class"/>
+    </zeroOrMore>
   </define>
 
 <!--
@@ -620,6 +613,13 @@
 
   <define name="code-content">
     <ref name="inline-content"/>
+  </define>
+
+  <define name="code-class">
+    <choice>
+      <ref name="code-inline"/>
+      <ref name="code-block"/>
+    </choice>
   </define>
 
 <!--
