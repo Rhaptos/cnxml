@@ -2,6 +2,7 @@
 <grammar
     xmlns="http://relaxng.org/ns/structure/1.0"
     xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+    xmlns:cnxdoc="http://cnx.rice.edu/cnxdoc"
     datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
     ns="http://cnx.rice.edu/cnxml"
 >
@@ -153,6 +154,7 @@
     </define>
   </include>
 
+<div cnxdoc:title="DocumentStructure">
 <!--
   Document Structure Elements
 -->
@@ -209,6 +211,7 @@
   </define>
 
   <define name="section">
+    <cnxdoc:description>The section element is used to divide a CNXML document into sections.  section elements may be nested freely within other section elements to create subsections.  The optional first element name specifies the section title.</cnxdoc:description>
     <element name="section">
       <ref name="section-attlist"/>
       <ref name="section-content"/>
@@ -321,6 +324,8 @@
       <ref name="document-name"/>
     </choice>
   </define>
+
+</div>
 
 <!--
   Linking Elements
@@ -567,10 +572,12 @@
     </group>
   </define>
 
+<div cnxdoc:title="ComputerCode">
 <!--
   Computer code
 -->
-
+  <cnxdoc:description>Use the code element to enclose computer code of all types, such as programming languages, markup languages, and rule declaration languages.</cnxdoc:description>
+  <cnxdoc:description>code takes an optional attribute type, which can take either 'block' or 'inline' as its value.  Use 'block' to indicate that the code segment in question stands apart as a distinct unit from the flow of content around it.  Use 'inline' to indicate that the code segment in question is to be understood as being part of the flow of content around it.  The default value of type is 'inline'.</cnxdoc:description>
   <define name="code-inline">
     <element name="code">
       <ref name="code-inline-attlist"/>
@@ -596,6 +603,9 @@
         </attribute>
       </optional>
       <ref name="common-attlist"/>
+      <optional>
+        <attribute name="lang"/>
+      </optional>
     </group>
   </define>
 
@@ -608,6 +618,9 @@
         <value>block</value>
       </attribute>
       <ref name="common-attlist"/>
+      <optional>
+        <attribute name="lang"/>
+      </optional>
     </group>
   </define>
 
@@ -621,6 +634,8 @@
       <ref name="code-block"/>
     </choice>
   </define>
+
+</div>
 
 <!--
   Lists
