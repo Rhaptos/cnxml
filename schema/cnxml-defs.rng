@@ -154,11 +154,13 @@
     </define>
   </include>
 
-<div cnxdoc:title="DocumentStructure">
+
 <!--
   Document Structure Elements
 -->
   <define name="document">
+    <cnxdoc:description>The 'document' element is the root document element of a CNXML document.  It serves as the container for the four top-level parts of a document: the optional metadata element, the required content element, and the optional glossary and bibliography elements.  The required first element name specifies the title of the document. </cnxdoc:description>
+ 
     <element name="document">
       <ref name="document-attlist"/>
       <ref name="document-content"/>
@@ -189,6 +191,7 @@
   </define>
 
   <define name="content">
+    <cnxdoc:description> The content element is the heart of a CNXML instance, as it contains the instructional content of the document. </cnxdoc:description>
     <element name="content">
       <ref name="content-attlist"/>
       <ref name="content-content"/>
@@ -248,6 +251,7 @@
   </define>
 
   <define name="para">
+    <cnxdoc:description>The para element is used to enclose document paragraphs.  para elements are a transitional element within a CNXML document, since they, unlike content and section, may directly contain inline content, including text.  The optional first element name specifies the name of the paragraph.</cnxdoc:description>
     <element name="para">
       <ref name="para-attlist"/>
       <ref name="para-content"/>
@@ -270,6 +274,9 @@
     </oneOrMore>
   </define>
 
+<div cnxdoc:group="titlename">
+  <cnxdoc:description> Certain elements may be assigned a title by authors through the use of the title element.  An obvious example is the 'section' element, but in CNXML, many other elements may take an optional title element as their first child as well: para, figure, subfigure, list, item, example, equation, exercise, problem, solution, meaning, rule, statement, and proof.  The document element must take a title element as its first child, to specify the title of the document. </cnxdoc:description>
+  <cnxdoc:description> Name is deprecated. In previous versions of CNXML, the title element was called name. Name is still supported but is deprecated in favor of the more accurately named "title". </cnxdoc:description>
   <define name="title">
     <element name="title">
       <ref name="title-attlist"/>
@@ -297,6 +304,7 @@
       <text/>
     </element>
   </define>
+ 
 
   <define name="title-attlist">
     <group>
@@ -331,7 +339,10 @@
   Linking Elements
 -->
 
+<div cnxdoc:group="linking">
+
   <define name="cnxn">
+    <cnxdoc:description> Use the cnxn element to make links to other Connexions modules in the same repository, and to other parts of the same module.  The value of the optional document attribute specifies the module identifier in the repository of the module being linked to.  If this attribute is omitted, the cnxn is understood to be referring to the module in which it occurs.  The value of the optional target attribute refers to the ID of the element containing the specific part of the document being linked to.  If this attribute is omitted, the cnxn is understood to be pointing to the whole module.  The value of the optional version element refers to version number of the module being referred to.  If this attribute is omitted, the cnxn is understood to be pointing to the latest version of the module.  The value of the optional strength attribute (deprecated) specifies the strength of the relation between the document being linked to and the document from which the link is being made. </cnxdoc:description>
     <element name="cnxn">
       <ref name="cnxn-attlist"/>
       <ref name="cnxn-content"/>
@@ -377,6 +388,7 @@
   </define>
 
   <define name="link">
+    <cnxdoc:description> Use the link element to create links to other documents that are not Connexions modules in the same repository.  This includes not only HTML files, but also CNXML documents that are not modules in the same repository.  The value of the src attribute specifies the URI of the document being linked to. </cnxdoc:description>
     <element name="link">
       <ref name="link-attlist"/>
       <ref name="link-content"/>
@@ -412,12 +424,19 @@
       <ref name="inline-class"/>
     </zeroOrMore>
   </define>
+  
+  </div>
 
 <!--
   Images and other media
 -->
 
   <define name="media">
+    <cnxdoc:description> The media element enables authors to embed digital media such as images (PNG, JPEG, GIF), streaming media, applets, and animation in Connexions modules.</cnxdoc:description>
+	<cnxdoc:description> Use the media element to specify that a digital media object should be displayed, played, or rendered in your CNXML document.  The src attribute specifies the URI pointing to the media object.  The type attribute specifies the MIME type of the media object. [note on typical MIME types.]
+</cnxdoc:description>
+<cnxdoc:description> media elements can be nested to create a preferred order of rendering.  A rendering agent (typically a web browser or a PDF generation system) will render the outermost media object it is able to render in a nested group.  The most common use case for nested media elements is to nest a web-viewable image such as a PNG or a JPEG within an encapsulated Postscript (EPS) file.  The Connexions PDF generation system will use the EPS file in creating the PDF file, while a web browser will bypass it and use the nested PNG or JPEG.</cnxdoc:description>
+<cnxdoc:description> While media may occur as a child of several elements, it is usually found within a figure or a subfigure element. </cnxdoc:description>
     <element name="media">
       <ref name="media-attlist"/>
       <ref name="media-content"/>
@@ -428,6 +447,7 @@
     <group>
       <attribute name="type"/>
       <optional>
+	    <cnxdoc:description> The alt attribute is provided in order to enable authors to provide a textual surrogate for non-textual media.  </cnxdoc:description>
         <attribute name="alt"/>
       </optional>
       <ref name="src"/>
@@ -453,6 +473,7 @@
   </define>
 
   <define name="param">
+    <cnxdoc:description> To specify parameters (e.g. height and width for an image) for the correct rendering or viewing of a piece of media in a CNXML document, add param elements as children of the media element in question.  Each param element takes a name attribute and a value attribute, where the name attribute takes as its value the name of the parameter (e.g. 'height'), and the value attribute takes as its value the value of the attribute (e.g. '300'). </cnxdoc:description>
     <element name="param">
       <ref name="param-attlist"/>
       <ref name="param-content"/>
@@ -474,8 +495,12 @@
 <!--
   Figures and subfigures
 -->
+<div cnxdoc:group="FiguresAndSubfigures">
+<cnxdoc:description> CNXML provides the figure element and its children as the means to include illustrative figures in your documents, including figures comprising two or more subfigures.</cnxdoc:description>
 
   <define name="figure">
+    <cnxdoc:description> Use the figure element to create figures within a CNXML document.  
+When a figure contains a group of subfigures (instead of a media element, a code element, or a CALS table), the orient attribute of the figure element is used to specify the orientation of the subfigures ('horizontal' or 'vertical').</cnxdoc:description>
     <element name="figure">
       <ref name="figure-attlist"/>
       <ref name="figure-content"/>
@@ -521,6 +546,7 @@
   </define>
 
   <define name="caption">
+  <cnxdoc:description> The caption element encloses the caption for a figure or a subfigure element.</cnxdoc:description>
     <element name="caption">
       <ref name="caption-attlist"/>
       <ref name="caption-content"/>
@@ -541,6 +567,7 @@
   </define>
 
   <define name="subfigure">
+    <cnxdoc:description> The subfigure element encloses one of two or more subfigures within a figure element. </cnxdoc:description>
     <element name="subfigure">
       <ref name="subfigure-attlist"/>
       <ref name="subfigure-content"/>
@@ -571,8 +598,9 @@
       </optional>
     </group>
   </define>
+</div>
 
-<div cnxdoc:title="ComputerCode">
+<div cnxdoc:group="ComputerCode">
 <!--
   Computer code
 -->
@@ -642,6 +670,7 @@
 -->
 
   <define name="list">
+    <cnxdoc:description> CNXML provides elements for bulleted, numbered, named-item, and enumerated lists.  Lists can be nested, since an item element may contain a list element. The list element encloses a series of item elements.</cnxdoc:description>
     <element name="list">
       <ref name="list-attlist"/>
       <ref name="list-content"/>
@@ -652,6 +681,12 @@
     <group>
       <ref name="id"/>
       <optional>
+	    <cnxdoc:description>Possible values of this attribute include:
+'bulleted' (for an unordered list with bullet points),
+'enumerated' (for an ordered, numbered list),
+'inline' (for a list that is part of the flow of content around it),
+'named-item' (for lists in which each item is named),
+The default value of type is 'bulleted'.  All types except 'inline' denote a list that stands apart as a distinct unit from the content around it. </cnxdoc:description>
         <attribute name="type"/>
       </optional>
       <ref name="common-attlist"/>
@@ -670,6 +705,7 @@
   </define>
 
   <define name="item">
+    <cnxdoc:description> The item element encloses the content for one item of a list.</cnxdoc:description>
     <element name="item">
       <ref name="item-attlist"/>
       <ref name="item-content"/>
@@ -692,8 +728,12 @@
 <!--
   Inline Elements
 -->
+<div cnxdoc:group="Inline">
+
+<cnxdoc:description> Inline elements are those that can be more or less freely intermixed with textual data.    Rather than denoting distinct structural blocks of content, they are part of the document's textual flow.  Unlike the other groupings of elements in this specification, inline elements  are treated together because they are syntactically rather than semantically similar. </cnxdoc:description>
 
   <define name="emphasis">
+    <cnxdoc:description> The emphasis element confers semantic emphasis on the segment of content that it encloses.  It is not a rendering directive.  Some stylesheets render an emphasized segment in a different typeface than other text, but there is no requirement that they do so.  </cnxdoc:description>
     <element name="emphasis">
       <ref name="emphasis-attlist"/>
       <ref name="emphasis-content"/>
@@ -714,6 +754,7 @@
   </define>
 
   <define name="term">
+    <cnxdoc:description> The term element denotes a word or phrase as being part of a terminology or jargon.  If it occurs as the first child of a definition element, then it denotes the term being defined in that definition.  If it occurs as the child of a seealso element within a definition, then it denotes a term related to the one being defined in that definition.  If it occurs as part of inline content, it denotes a term that may or may not be defined elsewhere.  </cnxdoc:description>
     <element name="term">
       <ref name="term-attlist"/>
       <ref name="term-content"/>
@@ -726,6 +767,7 @@
         <ref name="id"/>
       </optional>
       <optional>
+	    <cnxdoc:description> The optional src attribute is a URI pointing either to the object denoted by the term being defined or to a representation of it, or, optionally in the case of usage in the seealso or inline contexts, to the definition itself.</cnxdoc:description>
         <ref name="src"/>
       </optional>
       <ref name="common-attlist"/>
@@ -737,6 +779,7 @@
   </define>
 
   <define name="cite">
+    <cnxdoc:description> The cite element encloses references to non-electronic materials and refers to the whole citation of a work. The format of enclosed content will not be italicized since the proper citation format depends on the type of work. Citations whose src attribute is set to the id of a biliographic reference will link to the bibligraphic reference. It the element is empty, the link text will be the number of the reference; if not empty, the link text will be the contents of the cite. System supplied square brackets around  empty cites with the src attribute set will no longer be supplied in order to give authors more flexibility in formatting their citations. </cnxdoc:description>
     <element name="cite">
       <ref name="cite-attlist"/>
       <ref name="cite-content"/>
@@ -749,6 +792,7 @@
         <ref name="id"/>
       </optional>
       <optional>
+	    <cnxdoc:description> A relative or absolute URI indicating the path to the object. May also contain the id of a bibtex reference. This is still required to be a URI and thus must be designated using # when referring to an id in a module (<cite src="#white1998">White, 1998</cite>). If using a relative path, the file must reside within the module (not at the workspace or workgroup level). If using an absolute path, verify that the file storage location is stable and will not change.</cnxdoc:description>
         <ref name="src"/>
       </optional>
       <ref name="common-attlist"/>
@@ -760,6 +804,7 @@
   </define>
 
   <define name="span">
+    <cnxdoc:description> The span element may contain any character data and is designed to permit authors to associate semantic information of the author's choosing with CNXML elements.  The span element is useful for cases where an author needs to associate an @class attribute with a range of inline content, but no specific CNXML element is appropriate as a carrier for the @class. </cnxdoc:description>
     <element name="span">
       <ref name="span-attlist"/>
       <ref name="span-content"/>
@@ -778,10 +823,14 @@
   <define name="span-content">
     <ref name="inline-content"/>
   </define>
+  
+  <div cnxdoc:group="quote">
+  <cnxdoc:description> The quote element denotes text quoted from a source other than the CNXML document in which it occurs.  It takes an optional type attribute with values of 'inline' or 'block'.  Use 'block' to indicate that the quote in question stands apart as a distinct unit from the flow of content around it.  Use 'inline' to indicate that the quotation in question is to be understood as being part of the flow of content around it.  'inline' is the implied default value.</cnxdoc:description>
 
   <define name="quote-attlist">
     <group>
       <optional>
+	  <cnxdoc:description> The quote element takes an optional src attribute : A relative or absolute URI indicating the path to the object. May also contain the id of a bibtex reference. This is still required to be a URI and thus must be designated using # when referring to an id in a module If using a relative path, the file must reside within the module (not at the workspace or workgroup level). If using an absolute path, verify that the file storage location is stable and will not change.</cnxdoc:description>
         <ref name="src"/>
       </optional>
       <optional>
@@ -792,6 +841,7 @@
   </define>
 
   <define name="quote-inline">
+    <cnxdoc:description> The quote element denotes text quoted from a source other than the CNXML document in which it occurs.  It takes an optional type attribute.  Use 'inline' to indicate that the quotation in question is to be understood as being part of the flow of content around it.  'inline' is the implied default value.</cnxdoc:description>
     <element name="quote">
       <ref name="quote-inline-attlist"/>
       <ref name="quote-inline-content"/>
@@ -814,6 +864,8 @@
   </define>
 
   <define name="quote-block">
+    <cnxdoc:description> The quote element denotes text quoted from a source other than the CNXML document in which it occurs.  It takes an optional type attribute. Use 'block' to indicate that the quote in question stands apart as a distinct unit from the flow of content around it. </cnxdoc:description>
+  
     <element name="quote">
       <ref name="quote-block-attlist"/>
       <ref name="quote-block-content"/>
@@ -832,8 +884,11 @@
   <define name="quote-block-content">
     <ref name="div-content"/>
   </define>
+  
+  </div>
 
   <define name="foreign">
+    <cnxdoc:description> The foreign element denotes that its content is a word or phrase from a language other than the one in which the CNXML document is written. </cnxdoc:description>
     <element name="foreign">
       <ref name="foreign-attlist"/>
       <ref name="foreign-content"/>
@@ -855,10 +910,15 @@
   <define name="foreign-content">
     <ref name="inline-content"/>
   </define>
+  
+  </div>
 
 <!--
   Notes
 -->
+<div cnxdoc:group="note">
+  <cnxdoc:description> Notes are a flexible way of drawing a reader's attention to important points in a document.  CNXML provides the note element for this purpose. </cnxdoc:description>
+  <cnxdoc:description> Use the note element to add notes to CNXML content.  The optional type attribute can be used to indicate the type of note (e.g. 'warning', 'aside', 'point of interest', 'caveat', 'footnote', 'marginalia'). The attributes control aspects of the label that appears with the note, and the positioning of the note within the flow of the document. Notes can also take an optional title. Note that docbook has notes, warnings, tips, and important. It might be a good idea to support same.</cnxdoc:description>
 
   <define name="note">
     <element name="note">
@@ -886,7 +946,7 @@
   </define>
 
   <define name="note-content">
-    <ref name="div-content"/>
+    <ref name="titled-div-content"/>
   </define>
 
   <define name="note-footnote">
@@ -907,12 +967,16 @@
       <ref name="common-attlist"/>
     </group>
   </define>
-
+</div>
 <!--
   Examples
 -->
 
   <define name="example">
+    <cnxdoc:description> Examples are often used in teaching to provide concrete illustrations of the material being presented.  CNXML furnishes the example element for the purpose of including examples in instructional content.
+</cnxdoc:description>
+    <cnxdoc:description>
+Use the example element to denote examples within a CNXML document.  example is also useful inside a definition element for providing an example usage of the word defined.</cnxdoc:description>
     <element name="example">
       <ref name="example-attlist"/>
       <ref name="example-content"/>
@@ -937,6 +1001,8 @@
 -->
 
   <define name="equation">
+    <cnxdoc:description> Equations are an important part of instructional content in engineering and the sciences.  Use the equation element to include equations in CNXML documents.</cnxdoc:description>
+	<cnxdoc:description> The equation element denotes equations in CNXML content.  The equation content itself may be text or a media object.  Use the optional title attribute of equation to assign a title to the equation.</cnxdoc:description>
     <element name="equation">
       <ref name="equation-attlist"/>
       <ref name="equation-content"/>
@@ -967,6 +1033,8 @@
 -->
 
   <define name="exercise">
+    <cnxdoc:description> Exercises can be used in instruction to reinforce learned content and to give the learner a way to assess her progress.  CNXML supplies the exercise element and its children in order for authors to include exercises in their content. The exercise element denotes an exercise comprising a problem and, optionally, one or more solutions.</cnxdoc:description>
+	<cnxdoc:description> Exercise, problem, and solution will provide a way for authors to customize the labele that are generated around the parts so that the construct is useful for things like 'case' and 'diagnosis' and 'lemma' and 'proof' etc. </cnxdoc:description>
     <element name="exercise">
       <ref name="exercise-attlist"/>
       <ref name="exercise-content"/>
@@ -993,6 +1061,7 @@
   </define>
 
   <define name="problem">
+    <cnxdoc:description> The problem element contains the statement of the problem for the containing exercise element.</cnxdoc:description>
     <element name="problem">
       <ref name="problem-attlist"/>
       <ref name="problem-content"/>
@@ -1013,6 +1082,7 @@
   </define>
 
   <define name="solution">
+    <cnxdoc:description> The 'solution' element contains a possible solution to the problem stated in the foregoing problem element. Online, the solution is hidden until the reader clicks on the solution link. In print, solutions are grouped at the end of modules or chapters in collections. </cnxdoc:description>
     <element name="solution">
       <ref name="solution-attlist"/>
       <ref name="solution-content"/>
@@ -1037,6 +1107,7 @@
 -->
 
   <define name="definition">
+    <cnxdoc:description> The definition element specifies the meanings of a given term.  In addtion to a term element with one or more meaning elements, it may also contain example elements with examples of the usage of the term, and seealso elements that refer to other terms that are related in some way to the term being defined.</cnxdoc:description>
     <element name="definition">
       <ref name="definition-attlist"/>
       <ref name="definition-content"/>
@@ -1066,6 +1137,7 @@
   </define>
 
   <define name="meaning">
+    <cnxdoc:description> The meaning element contains a meaning of the term being defined.in the parent definition element.</cnxdoc:description>
     <element name="meaning">
       <ref name="meaning-attlist"/>
       <ref name="meaning-content"/>
@@ -1086,6 +1158,7 @@
   </define>
 
   <define name="seealso">
+    <cnxdoc:description> The seealso element contains one or more term elements that refer to terms that are related in some fashion to the one being defined.  For example, they may be synonyms, or terms for related but not identical concepts, or broader or narrower terms.</cnxdoc:description>
     <element name="seealso">
       <ref name="seealso-attlist"/>
       <ref name="seealso-content"/>
@@ -1106,7 +1179,11 @@
   Proofs and Rules
 -->
 
+<div cnxdoc:group="ProofsAndRules">
+  <cnxdoc:description> In many disciplines, it is useful to include various sorts of rules (theorems, corollaries, axioms, lemmas, rule of thumb, etc) as part of instructional material.  Use the rule element and its children to include statements of rules in CNXML documents.</cnxdoc:description>
+  
   <define name="rule">
+    <cnxdoc:description> The rule element specifies a rule by means of a statement element, with optional 'proof' and example elements to demonstrate and exemplify the rule. The optional title element at the beginning of the rule can be used to specify the title of the rule, e.g. "Moore's Law".</cnxdoc:description>
     <element name="rule">
       <ref name="rule-attlist"/>
       <ref name="rule-content"/>
@@ -1139,6 +1216,7 @@
   </define>
 
   <define name="statement">
+    <cnxdoc:description> Use the statement element to give the statement of a rule. </cnxdoc:description>
     <element name="statement">
       <ref name="statement-attlist"/>
       <ref name="statement-content"/>
@@ -1159,6 +1237,7 @@
   </define>
 
   <define name="proof">
+    <cnxdoc:description> Use the proof element to supply a proof of a rule.</cnxdoc:description>
     <element name="proof">
       <ref name="proof-attlist"/>
       <ref name="proof-content"/>
@@ -1177,6 +1256,8 @@
   <define name="proof-content">
     <ref name="section-content"/>
   </define>
+
+</div>
 
   <define name="glossary">
     <element name="glossary">
