@@ -110,14 +110,14 @@
       <l:gentext key="Previous" text="&#171; Previous"/>
       <l:gentext key="Next" text="Next &#187;"/>
       <l:gentext key="pipe" text=" | "/>
-      <l:gentext key="Incourse" text="In course:"/>
-      <l:gentext key="coursehome" text="course home"/>
+      <l:gentext key="In" text="In"/>
+      <l:gentext key="home" text="home"/>
       <l:gentext key="leftparen" text="("/>
       <l:gentext key="rightparen" text=")"/>
-      <l:gentext key="Courseby" text="Course by: "/>
+      <l:gentext key="colon" text=": "/>
       <l:gentext key="MusicalExamples" text="Musical Examples"/>
       <l:gentext key="Moduleby" text="Module by:"/>
-      <l:gentext key="CourseContents" text="Course Contents"/>
+      <l:gentext key="Contents" text="Contents"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="showtableofcontents" text="show table of contents"/>
