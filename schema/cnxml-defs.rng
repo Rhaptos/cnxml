@@ -51,7 +51,7 @@
       <ref name="textextras"/>
       <ref name="emphasis"/>
       <ref name="term"/>
-	  <ref name="citation"/>
+      <ref name="citation"/>
       <ref name="cite"/>
       <ref name="quote-inline"/>
       <ref name="foreign"/>
@@ -683,18 +683,18 @@ When a figure contains a group of subfigures (instead of a media element, a code
     <group>
       <ref name="id"/>
       <optional>
-	    <cnxdoc:description>Possible values of this attribute include:
+        <cnxdoc:description>Possible values of this attribute include:
 'bulleted' (for an unordered list with bullet points),
 'enumerated' (for an ordered, numbered list),
 'named-item' (for lists in which each item is named),
 The default value of type is 'bulleted'. </cnxdoc:description>
         <attribute name="type"/>
       </optional>
-	  <optional>
-	    <cnxdoc:description> Display can take 'inline' or 'block' and 'block' is the default. 'inline' is for a list that is part of the flow of content around it.
-		</cnxdoc:description>
-		<attribute name="display"/>
-	  </optional>
+      <optional>
+        <cnxdoc:description> Display can take 'inline' or 'block' and 'block' is the default. 'inline' is for a list that is part of the flow of content around it.
+        </cnxdoc:description>
+        <attribute name="display"/>
+       </optional>
       <ref name="common-attlist"/>
     </group>
   </define>
@@ -740,8 +740,8 @@ The default value of type is 'bulleted'. </cnxdoc:description>
 
   <define name="emphasis">
     <cnxdoc:description> The emphasis element confers semantic emphasis on the segment of content that it encloses.  It is not a rendering directive.  Some stylesheets render an emphasized segment in a different typeface than other text, but there is no requirement that they do so.  </cnxdoc:description>
-	<cnxdoc:description> If the author supplies class  values of  bold, italics, and/or underline, the online renderer will respect the author's wishes. Multiple effects can be achieved by setting multiple space separated values on the 'class', e. g. class=”bold italics”. 
-	</cnxdoc:description>
+    <cnxdoc:description> If the author supplies class  values of  bold, italics, and/or underline, the online renderer will respect the author's wishes. Multiple effects can be achieved by setting multiple space separated values on the 'class', e. g. class=”bold italics”. 
+    </cnxdoc:description>
     <element name="emphasis">
       <ref name="emphasis-attlist"/>
       <ref name="emphasis-content"/>
@@ -808,7 +808,7 @@ The default value of type is 'bulleted'. </cnxdoc:description>
         <ref name="id"/>
       </optional>
       <optional>
-	    <cnxdoc:description> A relative or absolute URI indicating the path to the object. May also contain the id of a bibtex reference. This is still required to be a URI and thus must be designated using # when referring to an id in a module (&lt;cite src="#white1998"&gt;White, 1998&lt;/cite&gt;). If using a relative path, the file must reside within the module (not at the workspace or workgroup level). If using an absolute path, verify that the file storage location is stable and will not change.</cnxdoc:description>
+      <cnxdoc:description> A relative or absolute URI indicating the path to the object. May also contain the id of a bibtex reference. This is still required to be a URI and thus must be designated using # when referring to an id in a module (&lt;cite src="#white1998"&gt;White, 1998&lt;/cite&gt;). If using a relative path, the file must reside within the module (not at the workspace or workgroup level). If using an absolute path, verify that the file storage location is stable and will not change.</cnxdoc:description>
         <ref name="src"/>
       </optional>
       <ref name="common-attlist"/>
@@ -822,7 +822,7 @@ The default value of type is 'bulleted'. </cnxdoc:description>
   <define name="span">
     <cnxdoc:description> The span element may contain any character data and is designed to permit authors to associate semantic information of the author's choosing with CNXML elements.  The span element is useful for cases where an author needs to associate an @class attribute with a range of inline content, but no specific CNXML element is appropriate as a carrier for the @class. </cnxdoc:description>
     <cnxdoc:description> Multiple classes on a single element are supported by giving the class attribute a list of space separated values in the associated string.</cnxdoc:description>
-	<element name="span">
+    <element name="span">
       <ref name="span-attlist"/>
       <ref name="span-content"/>
     </element>
