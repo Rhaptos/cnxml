@@ -101,7 +101,11 @@
       <l:gentext key="ContentActions" text="Content Actions"/>
       <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
       <l:gentext key="whatsthis" text="(what's this?)"/>
-      <l:gentext key="Endorsements" text="Endorsements"/>
+      <l:gentext key="Quality" text="Quality"/>
+      <l:gentext key="EndorsedBy" text="Endorsed by"/>
+      <l:gentext key="AssociatedWith" text="Associated with"/>
+      <l:gentext key="Lenses" text="Lenses"/>
+      <l:gentext key="Tags" text="Tags"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
       <l:gentext key="ContactUs" text="Contact Us"/>
       <l:gentext key="Youarehere" text="You are here: "/>
