@@ -105,6 +105,7 @@
       <l:gentext key="EndorsedBy" text="Endorsed by"/>
       <l:gentext key="AssociatedWith" text="Associated with"/>
       <l:gentext key="Lenses" text="Lenses"/>
+      <l:gentext key="AddLens" text="Add to a lens"/>
       <l:gentext key="Tags" text="Tags"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
       <l:gentext key="ContactUs" text="Contact Us"/>
