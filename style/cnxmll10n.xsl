@@ -103,7 +103,7 @@
       <l:gentext key="whatsthis" text="(what's this?)"/>
       <l:gentext key="Quality" text="Quality"/>
       <l:gentext key="EndorsedBy" text="Endorsed by"/>
-      <l:gentext key="AssociatedWith" text="Associated with"/>
+      <l:gentext key="AffiliatedWith" text="Affiliated with"/>
       <l:gentext key="Lenses" text="Lenses"/>
       <l:gentext key="AddLens" text="Add to a lens"/>
       <l:gentext key="Memberlists" text="Member lists"/>
