@@ -128,6 +128,15 @@
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="showtableofcontents" text="show table of contents"/>
       <l:gentext key="Links" text="Links"/>
+      <l:gentext key="Includes" text="Includes:"/>
+      <l:gentext key="Includesthismodule" text="Includes this module as a part of:"/>
+      <l:gentext key="Alsoincludes" text="Also includes:"/>
+      <l:gentext key="Alsoincludesthismodule" text="Also includes this module as a part of:"/>
+      <l:gentext key="Collection" text="Collection:"/>
+      <l:gentext key="Tags" text="Tags:"/>
+      <l:gentext key="Comments" text="Comments:"/>
+      <l:gentext key="Lens" text="Lens:"/>
+      
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
