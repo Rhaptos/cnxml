@@ -133,7 +133,7 @@
       <l:gentext key="Alsoincludes" text="Also includes:"/>
       <l:gentext key="Alsoincludesthismodule" text="Also includes this module as a part of:"/>
       <l:gentext key="Collection" text="Collection:"/>
-      <l:gentext key="Tags" text="Tags:"/>
+      <l:gentext key="TagsLensInfo" text="Tags:"/>
       <l:gentext key="Comments" text="Comments:"/>
       <l:gentext key="Lens" text="Lens:"/>
       
