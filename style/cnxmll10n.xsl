@@ -128,6 +128,15 @@
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="showtableofcontents" text="show table of contents"/>
       <l:gentext key="Links" text="Links"/>
+      <l:gentext key="EndorsementHelpText" text="This content or a collection containing this content has been endorsed by the organizations listed. Click for more information."/>
+      <l:gentext key="AffiliationHelpText" text="This content or a collection containing this content is affiliated with the organizations listed. Click for more information."/>
+      <l:gentext key="LensHelpText" text="This content or a collection containing this content is selected by the member lists below. Click for more information."/>
+      <l:gentext key="TagHelpText" text="These tags about this content come from endorsements, affiliations, and member lists that include this content."/>
+      
+      
+
+      <!-- Not Currently Used - These are for the pop-up that will be
+      coming back shortly.
       <l:gentext key="Includes" text="Includes:"/>
       <l:gentext key="Includesthismodule" text="Includes this module as a part of:"/>
       <l:gentext key="Alsoincludes" text="Also includes:"/>
@@ -136,7 +145,7 @@
       <l:gentext key="TagsLensInfo" text="Tags:"/>
       <l:gentext key="Comments" text="Comments:"/>
       <l:gentext key="Lens" text="Lens:"/>
-      
+      -->
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
