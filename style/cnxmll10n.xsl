@@ -101,7 +101,13 @@
       <l:gentext key="ContentActions" text="Content Actions"/>
       <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
       <l:gentext key="whatsthis" text="(what's this?)"/>
-      <l:gentext key="Endorsements" text="Endorsements"/>
+      <l:gentext key="Quality" text="Quality"/>
+      <l:gentext key="EndorsedBy" text="Endorsed by"/>
+      <l:gentext key="AffiliatedWith" text="Affiliated with"/>
+      <l:gentext key="Lenses" text="Lenses"/>
+      <l:gentext key="AddLens" text="Add to a lens"/>
+      <l:gentext key="Memberlists" text="Member lists"/>
+      <l:gentext key="Tags" text="Tags"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
       <l:gentext key="ContactUs" text="Contact Us"/>
       <l:gentext key="Youarehere" text="You are here: "/>
@@ -122,6 +128,24 @@
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="showtableofcontents" text="show table of contents"/>
       <l:gentext key="Links" text="Links"/>
+      <l:gentext key="EndorsementHelpText" text="This content or a collection containing this content has been endorsed by the organizations listed. Click for more information."/>
+      <l:gentext key="AffiliationHelpText" text="This content or a collection containing this content is affiliated with the organizations listed. Click for more information."/>
+      <l:gentext key="LensHelpText" text="This content or a collection containing this content is selected by the member lists below. Click for more information."/>
+      <l:gentext key="TagHelpText" text="These tags about this content come from endorsements, affiliations, and member lists that include this content."/>
+      
+      
+
+      <!-- Not Currently Used - These are for the pop-up that will be
+      coming back shortly.
+      <l:gentext key="Includes" text="Includes:"/>
+      <l:gentext key="Includesthismodule" text="Includes this module as a part of:"/>
+      <l:gentext key="Alsoincludes" text="Also includes:"/>
+      <l:gentext key="Alsoincludesthismodule" text="Also includes this module as a part of:"/>
+      <l:gentext key="Collection" text="Collection:"/>
+      <l:gentext key="TagsLensInfo" text="Tags:"/>
+      <l:gentext key="Comments" text="Comments:"/>
+      <l:gentext key="Lens" text="Lens:"/>
+      -->
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
