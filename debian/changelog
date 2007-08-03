@@ -3,7 +3,7 @@ connexions-cnxml (0.5.15-1) unstable; urgency=low
   * Lenses V1
   * override l10n.xsl from docbook for local default translations
 
- -- Ross J. Reedstrom <reedstrm@cnx.org>  Mon, 23 Jul 2007 10:16:41 -0500
+ -- Ross J. Reedstrom <reedstrm@cnx.org>  Fri, 03 Aug 2007 17:02:02 -0500
 
 connexions-cnxml (0.5.14-1) unstable; urgency=low
 
