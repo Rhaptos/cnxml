@@ -23,6 +23,10 @@
       <l:gentext key="Problem" text="Problem"/>
       <l:gentext key="ClickForSolution" text="Click for Solution"/>
       <l:gentext key="HideSolution" text="Hide Solution"/>
+      <l:gentext key="Solution" text="Solution"/>
+      <l:gentext key="Diagnosis" text="Diagnosis"/>
+      <l:gentext key="ClickForDiagnosis" text="Click for Diagnosis"/>
+      <l:gentext key="HideDiagnosis" text="Hide Diagnosis"/>
 
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>
