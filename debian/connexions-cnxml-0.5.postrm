@@ -1,0 +1,13 @@
+#!/bin/sh
+# postrm for connexions-cnxml-0.5. Remove diversion of l10n.xsl from docbook-xsl
+
+set -e
+
+if [ "$1" = remove ] ; then
+    dpkg-divert --remove --package connexions-cnxml-0.5 --rename \
+    --divert /usr/share/xml/docbook/stylesheet/nwalsh/common/l10n.xsl.docbook /usr/share/xml/docbook/stylesheet/nwalsh/common/l10n.xsl
+fi
+
+#DEBHELPER#
+
+exit 0
