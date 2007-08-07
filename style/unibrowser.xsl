@@ -6,6 +6,7 @@
   xmlns:m="http://www.w3.org/1998/Math/MathML"
   xmlns:md="http://cnx.rice.edu/mdml/0.4"
   xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:mod="http://cnx.rice.edu/#moduleIds"
   xmlns:bib="http://bibtexml.sf.net/">
 
   <!-- Import identity transform first so it gets lowest priority -->
@@ -32,10 +33,10 @@
   <xsl:param name="toc" select="0" />
   <xsl:param name="viewmath" select="0" />
   <xsl:param name="wrapper" select="1" />
-  <xsl:param name="customstylesheet" select="/module/display/customstylesheet"/>
+  <xsl:variable name="memcases" select="document('memcases.xml')/mod:modules"/>
   <xsl:param name="case-diagnosis">
     <xsl:choose>
-      <xsl:when test="$customstylesheet = 'case_diagnosis'">1</xsl:when>
+      <xsl:when test="$memcases/mod:module[@moduleId=$objectId]">1</xsl:when>
       <xsl:otherwise>0</xsl:otherwise>
     </xsl:choose>
   </xsl:param>
