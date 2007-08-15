@@ -33,13 +33,15 @@
   <xsl:param name="toc" select="0" />
   <xsl:param name="viewmath" select="0" />
   <xsl:param name="wrapper" select="1" />
+  <xsl:variable name="customstylesheet" select="/module/display/customstylesheet"/>
   <xsl:variable name="memcases" select="document('memcases.xml')/mod:modules"/>
-  <xsl:param name="case-diagnosis">
+  <xsl:variable name="case-diagnosis">
     <xsl:choose>
-      <xsl:when test="$memcases/mod:module[@moduleId=$objectId]">1</xsl:when>
+      <xsl:when test="$memcases/mod:module[@moduleId=$objectId] or
+                      $customstylesheet = 'case_diagnosis'">1</xsl:when>
       <xsl:otherwise>0</xsl:otherwise>
     </xsl:choose>
-  </xsl:param>
+  </xsl:variable>
 
   <xsl:output omit-xml-declaration="yes" indent="yes"/>
 
