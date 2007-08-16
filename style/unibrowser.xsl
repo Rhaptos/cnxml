@@ -33,6 +33,7 @@
   <xsl:param name="toc" select="0" />
   <xsl:param name="viewmath" select="0" />
   <xsl:param name="wrapper" select="1" />
+  <xsl:param name="objectId" />
   <xsl:variable name="customstylesheet" select="/module/display/customstylesheet"/>
   <xsl:variable name="memcases" select="document('memcases.xml')/mod:modules"/>
   <xsl:variable name="case-diagnosis">
