@@ -1,3 +1,13 @@
+CNXML-0.5 (p16)
+  - For modules in the Rice U. Press Memorable Cases collection:
+    * change the "Click for Solution" and "Hide Solution" labels in
+      'exercise' elements to "Click for Diagnosis" and "Hide Diagnosis" respectively;
+    * suppress "Problem X" and "Solution X" labels on exercise problems
+      and solutions.
+    This approach uses a special simple XML file to enumerate the IDs of the
+    modules that get this special treatment.  All other modules are rendered as before.
+
+CNXML-0.5 (p15)
   - add l10n entries from lenses0 branch changes to content_render.xsl
   - override l10n.xsl from docbook-xsl
   - nlt0212: spaces around "and" in translated content footer
