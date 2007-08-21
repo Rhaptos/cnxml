@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.16-1) unstable; urgency=low
+
+  * Case/diagnosis special-casing for medical texts
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Thu, 16 Aug 2007 17:26:26 -0500
+
 connexions-cnxml (0.5.15-1) unstable; urgency=low
 
   * Lenses V1
