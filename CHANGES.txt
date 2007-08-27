@@ -1,3 +1,6 @@
+CNXML-0.5 (p16.1)
+  - Fix Memorable Cases in IE
+
 CNXML-0.5 (p16)
   - For modules in the Rice U. Press Memorable Cases collection:
     * change the "Click for Solution" and "Hide Solution" labels in

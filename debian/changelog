@@ -1,8 +1,14 @@
-connexions-cnxml (0.5.16-1qa_subjectediting) unstable; urgency=low
+connexions-cnxml (0.5.16.1-1qa_subjectediting) unstable; urgency=low
 
   * Supports collection type and content subject choosing
 
  -- Jennifer A. Drummond <jenn@cnx.org>  Tue, 21 Aug 2007 15:29:03 -0500
+
+connexions-cnxml (0.5.16.1-1) unstable; urgency=low
+
+  * Case/diagnosis fix for Internet Explorer
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Fri, 24 Aug 2007 15:19:19 -0500
 
 connexions-cnxml (0.5.16-1) unstable; urgency=low
 

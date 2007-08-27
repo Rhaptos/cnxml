@@ -1243,14 +1243,19 @@
     <div class="problem">
       <xsl:call-template name='IdCheck'/>
       <span class="problem-before">
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key"><xsl:value-of select="$problem-string"/></xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-        </xsl:call-template>
-        <xsl:if test="$case-diagnosis = '0'">
+      <xsl:choose>
+        <xsl:when test="$case-diagnosis = '1'">
+          <xsl:text> </xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key"><xsl:value-of select="$problem-string"/></xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
           <xsl:text>&#160;</xsl:text>
           <!--Problem--> <xsl:number level="any" count="cnx:exercise" /><xsl:if test="cnx:name">: </xsl:if>
-        </xsl:if>
+        </xsl:otherwise>
+      </xsl:choose>
       </span>
       <xsl:apply-templates />
     </div>
@@ -1294,18 +1299,21 @@
     <div class="solution">
       <xsl:call-template name='IdCheck' />
       <span class="solution-before">
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key">
-            <xsl:if test="$case-diagnosis = '0'">
+      <xsl:choose>
+        <xsl:when test="$case-diagnosis = '1'">
+          <xsl:text> </xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">
               <xsl:value-of select="$solution-string"/>
-            </xsl:if>
-          </xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-        </xsl:call-template>
-        <xsl:if test="$case-diagnosis = '0'">
+            </xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
           <xsl:text>&#160;</xsl:text>
           <xsl:value-of select="$full-number" /><xsl:if test="cnx:name">: </xsl:if>
-        </xsl:if>
+        </xsl:otherwise>
+      </xsl:choose>
       </span>
       <xsl:apply-templates />
       <div class="button" onclick="hideSolution('{../@id}',{$solution-number})">
