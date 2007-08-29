@@ -120,14 +120,16 @@
       <l:gentext key="Previous" text="&#171; Previous"/>
       <l:gentext key="Next" text="Next &#187;"/>
       <l:gentext key="pipe" text=" | "/>
-      <l:gentext key="InCollection" text="In Collection"/>
-      <l:gentext key="home" text="home"/>
+      <l:gentext key="InCollection" text="Inside Collection"/>
+      <l:gentext key="CollectionSubtype" text="Collection subtype"/>
+      <l:gentext key="HomePage" text="home page"/>
       <l:gentext key="leftparen" text="("/>
       <l:gentext key="rightparen" text=")"/>
       <l:gentext key="colon" text=": "/>
       <l:gentext key="MusicalExamples" text="Musical Examples"/>
       <l:gentext key="Moduleby" text="Module by:"/>
       <l:gentext key="CollectionContents" text="Collection Contents"/>
+      <l:gentext key="GoToCollectionHome" text="Go to collection home page"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="showtableofcontents" text="show table of contents"/>
