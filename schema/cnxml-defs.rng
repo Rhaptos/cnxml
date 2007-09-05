@@ -1142,7 +1142,7 @@ Use the example element to denote examples within a CNXML document.  example is 
           <ref name="label"/>
        </optional>
        <ref name="section-content"/>
-    <group>   
+    </group>   
   </define>
 
   <define name="solution">
@@ -1168,7 +1168,7 @@ Use the example element to denote examples within a CNXML document.  example is 
           <ref name="label"/>
        </optional>
        <ref name="section-content"/>
-    <group>   
+    </group>   
   </define>
 
 <!--
