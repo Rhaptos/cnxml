@@ -136,20 +136,16 @@
       <l:gentext key="AffiliationHelpText" text="This content or a collection containing this content is affiliated with the organizations listed. Click for more information."/>
       <l:gentext key="LensHelpText" text="This content or a collection containing this content is selected by the member lists below. Click for more information."/>
       <l:gentext key="TagHelpText" text="These tags about this content come from endorsements, affiliations, and member lists that include this content."/>
-      
-      
-
-      <!-- Not Currently Used - These are for the pop-up that will be
-      coming back shortly.
-      <l:gentext key="Includes" text="Includes:"/>
-      <l:gentext key="Includesthismodule" text="Includes this module as a part of:"/>
-      <l:gentext key="Alsoincludes" text="Also includes:"/>
-      <l:gentext key="Alsoincludesthismodule" text="Also includes this module as a part of:"/>
-      <l:gentext key="Collection" text="Collection:"/>
+      <l:gentext key="Module" text="Module"/>
+      <l:gentext key="Collection" text="Collection"/>
+      <l:gentext key="AsAPartOfCollection" text="as a part of collection"/>
+      <l:gentext key="AndAsAPartOf" text="and as a part of"/>
+      <l:gentext key="ThisModuleIncluded" text="This module is included in"/>
+      <l:gentext key="ThisModuleAndCollectionIncluded" text="This module and collection are included in"/>
+      <l:gentext key="ThisCollectionIncluded" text="This collection is included in"/>
       <l:gentext key="TagsLensInfo" text="Tags:"/>
       <l:gentext key="Comments" text="Comments:"/>
-      <l:gentext key="Lens" text="Lens:"/>
-      -->
+      <l:gentext key="lens" text="lens"/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
