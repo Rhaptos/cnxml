@@ -121,7 +121,6 @@
       <l:gentext key="Next" text="Next &#187;"/>
       <l:gentext key="pipe" text=" | "/>
       <l:gentext key="InCollection" text="Inside Collection"/>
-      <l:gentext key="CollectionSubtype" text="Collection subtype"/>
       <l:gentext key="leftparen" text="("/>
       <l:gentext key="rightparen" text=")"/>
       <l:gentext key="colon" text=": "/>
