@@ -76,9 +76,9 @@
       <l:gentext key="Similarcontent" text="Similar content"/>
       <l:gentext key="Moresimilarcontent" text="More links to similar content"/>
       <l:gentext key="More" text="More"/>
-      <l:gentext key="Coursesusingcontent" text="Courses using this content"/>
-      <l:gentext key="Othercoursesusingcontent" text="Other courses using this content"/>
-      <l:gentext key="Morecoursesusingcontent" text="More courses using this content"/>
+      <l:gentext key="Coursesusingcontent" text="Collections using this content"/>
+      <l:gentext key="Othercoursesusingcontent" text="Other collections using this content"/>
+      <l:gentext key="Morecoursesusingcontent" text="More collections using this content"/>
       <l:gentext key="Personalize" text="Personalize"/>
       <l:gentext key="Chooseastyle" text="Choose a style"/>
       <l:gentext key="EditInPlace" text="Edit-In-Place"/>
@@ -120,14 +120,14 @@
       <l:gentext key="Previous" text="&#171; Previous"/>
       <l:gentext key="Next" text="Next &#187;"/>
       <l:gentext key="pipe" text=" | "/>
-      <l:gentext key="Incourse" text="In course:"/>
-      <l:gentext key="coursehome" text="course home"/>
+      <l:gentext key="InCollection" text="Inside Collection"/>
       <l:gentext key="leftparen" text="("/>
       <l:gentext key="rightparen" text=")"/>
-      <l:gentext key="Courseby" text="Course by: "/>
+      <l:gentext key="colon" text=": "/>
       <l:gentext key="MusicalExamples" text="Musical Examples"/>
       <l:gentext key="Moduleby" text="Module by:"/>
-      <l:gentext key="CourseContents" text="Course Contents"/>
+      <l:gentext key="CollectionContents" text="Collection Contents"/>
+      <l:gentext key="GoToCollectionHome" text="Go to collection home page"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="showtableofcontents" text="show table of contents"/>
