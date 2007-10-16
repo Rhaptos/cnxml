@@ -290,7 +290,7 @@
   <xsl:template match="cnx:section">
     <div class="section">
       <xsl:call-template name='IdCheck'/>
-	  <h2>
+	  <h2 class="name">
 	    <xsl:if test="parent::cnx:problem or parent::cnx:solution">
 	      <xsl:number level="any" count="cnx:exercise" format="1."/>
 	      <xsl:number level="single" format="a) " />
@@ -313,7 +313,7 @@
 
   <!--NAME-->
   <xsl:template match="cnx:name|cnx:title">
-    <xsl:if test="parent::*[not(self::cnx:module|self::cnx:document)]">
+    <xsl:if test="not(parent::*[self::cnx:module|self::cnx:document])">
       <span class="name">
 	<xsl:call-template name='IdCheck'/>
 	<xsl:apply-templates /><xsl:if test="parent::cnx:meaning"><xsl:text>: </xsl:text></xsl:if>
@@ -754,6 +754,7 @@
   <xsl:template match="cnx:list[@type='named-item']">
     <table border="0" cellspacing="0" cellpadding="0" class="list">
       <xsl:call-template name='IdCheck'/>
+      <tbody>
       <xsl:if test="cnx:name">
         <tr>
           <td colspan="3">
@@ -775,6 +776,7 @@
           </td>
         </tr>
       </xsl:for-each>
+      </tbody>
     </table>
   </xsl:template>
 
@@ -797,8 +799,10 @@
 
   <!-- FIGURE -->
   <xsl:template match="cnx:figure">
-    <table class="figure" border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
+    <div class="figure">
+    <table border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
       <xsl:call-template name='IdCheck'/> 
+      <tbody>
       <tr>
 	<td>
 	  <xsl:apply-templates select="cnx:name|cnx:title"/>
@@ -822,7 +826,9 @@
 	  <xsl:call-template name="caption"/>
 	</td>
       </tr>
+      </tbody>
     </table>
+    </div>
   </xsl:template>
   
   <!-- SUBFIGURE vertical -->
@@ -837,6 +843,7 @@
   <!-- SUBFIGURE horizontal -->
   <xsl:template name="horizontal">
     <table border="0" cellpadding="0" cellspacing="5" width="100%">
+      <tbody>
       <tr>
 	<xsl:for-each select="cnx:subfigure">
 	  <td valign="bottom">
@@ -859,6 +866,7 @@
 	  </td>
 	</xsl:for-each> 
       </tr>
+      </tbody>
     </table>
   </xsl:template>
 
@@ -929,9 +937,10 @@
 
   <!-- MEDIA:IMAGE --> 
   <xsl:template match="cnx:media[starts-with(@type,'image')]|cnx:mediaobject[starts-with(@type,'image')]">
+    <span class="media">
     <xsl:choose>
       <xsl:when test="child::cnx:param[@name='thumbnail']">
-	<a href="{@src}" class="media">
+	<a href="{@src}">
 	  <img src="{child::cnx:param[@name='thumbnail']/@value}">
 	    <xsl:call-template name='IdCheck'/>
 	    <xsl:for-each select="cnx:param">
@@ -943,7 +952,7 @@
 	</a>	    
       </xsl:when>
       <xsl:otherwise>
-	<img src="{@src}" class="media">
+	<img src="{@src}">
 	  <xsl:call-template name='IdCheck'/>
 	  <xsl:for-each select="cnx:param">
 	    <xsl:attribute name='{@name}'>
@@ -954,6 +963,7 @@
 	</img>
       </xsl:otherwise>
     </xsl:choose>
+    </span>
   </xsl:template>
 
   <!--MEDIA:EPS Image -->
@@ -995,7 +1005,8 @@
 
   <!--  MEDIA:APPLET  -->
   <xsl:template match="cnx:media[@type='application/x-java-applet']">
-    <applet code="{@src}" class="media">
+    <span class="media">
+    <applet code="{@src}">
       <xsl:call-template name='IdCheck'/>
       <xsl:for-each select="cnx:param">
 	<xsl:attribute name='{@name}'>
@@ -1004,11 +1015,13 @@
       </xsl:for-each>
       <xsl:apply-templates />
     </applet>
+    </span>
   </xsl:template>
 
   <!-- Video  -->
   <xsl:template match="cnx:media[starts-with(@type, 'video/')]">
-    <object href='{@src}' class="media">
+    <span class="media">
+    <object href='{@src}'>
       <xsl:call-template name='IdCheck'/>
       <xsl:for-each select="cnx:param[@name='classid' or @name='codebase']">
      	<xsl:attribute name='{@name}'>
@@ -1027,6 +1040,7 @@
 	<xsl:apply-templates />
       </embed>
     </object>
+    </span>
   </xsl:template>
 
   <!-- LABVIEW -->
@@ -1124,7 +1138,8 @@
 
   <!-- FLASH Objects -->
   <xsl:template match="cnx:media[@type='application/x-shockwave-flash']">
-    <object type="application/x-shockwave-flash" data="{@src}" class="media">
+    <span class="media">
+    <object type="application/x-shockwave-flash" data="{@src}">
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:param[@name='width']">
 	<xsl:attribute name="width">
@@ -1162,6 +1177,7 @@
 	</xsl:if>
       </embed>
     </object>
+    </span>
   </xsl:template>
 
   <!-- Generic audio file -->
