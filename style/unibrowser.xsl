@@ -221,15 +221,17 @@
 
       <!-- GLOSSARY -->
       <xsl:if test='cnx:glossary'>
-	<div id='glossary'>
-	  <span class='glossary'>
+	<div class='glossary-container'>
+	  <xsl:call-template name='IdCheck'/>
+	  <h3>
             <xsl:call-template name="gentext">
               <xsl:with-param name="key">Glossary</xsl:with-param>
               <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
             </xsl:call-template>
-            <!--Glossary--></span>
+            <!--Glossary-->
+          </h3>
 	  <xsl:for-each select='cnx:glossary/cnx:definition'>
-	    <div class='glossary-definition'>
+	    <div class='definition glossary'>
 	      <xsl:call-template name='IdCheck'/>
 	      <xsl:apply-templates/>
 	    </div>
