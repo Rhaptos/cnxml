@@ -943,7 +943,7 @@
 	<a href="{@src}">
 	  <img src="{child::cnx:param[@name='thumbnail']/@value}">
 	    <xsl:call-template name='IdCheck'/>
-	    <xsl:for-each select="cnx:param">
+	    <xsl:for-each select="cnx:param[@name != 'thumbnail']">
 	      <xsl:attribute name='{@name}'>
 		<xsl:value-of select='@value'/>
 	      </xsl:attribute> 
