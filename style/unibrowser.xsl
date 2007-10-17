@@ -918,7 +918,7 @@
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">MediaFile</xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-        </xsl:call-template>
+        </xsl:call-template>:
 	<!--Media File:-->
 	<a class="link" href="{@src}">
 	  <xsl:choose>
