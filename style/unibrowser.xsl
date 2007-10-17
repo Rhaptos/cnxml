@@ -948,6 +948,11 @@
 		<xsl:value-of select='@value'/>
 	      </xsl:attribute> 
 	    </xsl:for-each>
+            <xsl:if test="not(cnx:param[@alt])">
+              <xsl:attribute name="alt">
+                <xsl:value-of select="@src" />
+              </xsl:attribute>
+            </xsl:if>
 	  </img>
 	</a>	    
       </xsl:when>
@@ -959,6 +964,11 @@
 	      <xsl:value-of select='@value'/>
 	    </xsl:attribute> 
 	  </xsl:for-each>
+          <xsl:if test="not(cnx:param[@alt])">
+            <xsl:attribute name="alt">
+              <xsl:value-of select="@src" />
+            </xsl:attribute>
+          </xsl:if>
 	  <xsl:apply-templates select="media" />
 	</img>
       </xsl:otherwise>
