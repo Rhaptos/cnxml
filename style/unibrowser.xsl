@@ -754,7 +754,8 @@
 
   <!--LIST with type='named-item' -->
   <xsl:template match="cnx:list[@type='named-item']">
-    <table border="0" cellspacing="0" cellpadding="0" class="list">
+    <div class="list">
+    <table border="0" cellspacing="0" cellpadding="0">
       <xsl:call-template name='IdCheck'/>
       <tbody>
       <xsl:if test="cnx:name">
@@ -765,14 +766,14 @@
         </tr>
       </xsl:if>
       <xsl:for-each select="cnx:item">
-        <tr>
+        <tr class="item">
           <td class="name" align="right" >
             <xsl:apply-templates select="cnx:name"/>
           </td>
 	  <td class="bullet">
 	    <xsl:text disable-output-escaping="yes">&#160;-&#160;</xsl:text>
 	  </td>
-          <td class="item">
+          <td>
             <xsl:call-template name='IdCheck'/>
             <xsl:apply-templates select="*[not(self::cnx:name)]|text()"/>
           </td>
@@ -780,6 +781,7 @@
       </xsl:for-each>
       </tbody>
     </table>
+    </div>
   </xsl:template>
 
   <!-- EQUATION -->
