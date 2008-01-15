@@ -6,6 +6,7 @@
   xmlns:m="http://www.w3.org/1998/Math/MathML"
   xmlns:md="http://cnx.rice.edu/mdml/0.4"
   xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:mod="http://cnx.rice.edu/#moduleIds"
   xmlns:bib="http://bibtexml.sf.net/">
 
   <!-- Import identity transform first so it gets lowest priority -->
@@ -32,6 +33,16 @@
   <xsl:param name="toc" select="0" />
   <xsl:param name="viewmath" select="0" />
   <xsl:param name="wrapper" select="1" />
+  <xsl:param name="objectId" />
+  <xsl:variable name="customstylesheet" select="/module/display/customstylesheet"/>
+  <xsl:variable name="memcases" select="document('memcases.xml')/mod:modules"/>
+  <xsl:variable name="case-diagnosis">
+    <xsl:choose>
+      <xsl:when test="$memcases/mod:module[@moduleId=$objectId] or
+                      $customstylesheet = 'case_diagnosis'">1</xsl:when>
+      <xsl:otherwise>0</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
 
   <xsl:output omit-xml-declaration="yes" indent="yes"/>
 
@@ -1115,40 +1126,25 @@
   <xsl:template match="cnx:media[@type='application/x-shockwave-flash']">
     <object type="application/x-shockwave-flash" data="{@src}" class="media">
       <xsl:call-template name='IdCheck'/>
-      <xsl:if test="cnx:param[@name='width']">
-	<xsl:attribute name="width">
-	  <xsl:value-of select="cnx:param[@name='width']/@value"/>
-	</xsl:attribute>
-      </xsl:if>
-      <xsl:if test="cnx:param[@name='height']">
-	<xsl:attribute name="height">
-	  <xsl:value-of select="cnx:param[@name='height']/@value"/>
-	</xsl:attribute>
-      </xsl:if>
+      <xsl:for-each select="cnx:param">
+        <xsl:choose>
+          <xsl:when test="@name='width' or @name='height'">
+            <xsl:attribute name="{@name}">
+              <xsl:value-of select="@value" />
+            </xsl:attribute>
+          </xsl:when>
+          <xsl:otherwise>
+            <param name="{@name}" value="{@value}" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
       <param name="movie" value="{@src}"/>
-      <xsl:if test="cnx:param[@name='base']">
-	<param name="base">
-	  <xsl:attribute name="value">
-	    <xsl:value-of select="cnx:param[@name='base']/@value"/>
-	  </xsl:attribute>
-	</param>
-      </xsl:if>
       <embed src="{@src}" type="application/x-shockwave-flash" pluginspace="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
-	<xsl:if test="cnx:param[@name='width']">
-	  <xsl:attribute name="width">
-	    <xsl:value-of select="cnx:param[@name='width']/@value"/>
-	  </xsl:attribute>
-	</xsl:if>
-	<xsl:if test="cnx:param[@name='height']">
-	  <xsl:attribute name="height">
-	    <xsl:value-of select="cnx:param[@name='height']/@value"/>
-	  </xsl:attribute>
-	</xsl:if>
-	<xsl:if test="cnx:param[@name='base']">
-	  <xsl:attribute name="base">
-	    <xsl:value-of select="cnx:param[@name='base']/@value"/>
-	  </xsl:attribute>
-	</xsl:if>
+        <xsl:for-each select="cnx:param">
+          <xsl:attribute name="{@name}">
+            <xsl:value-of select="@value" />
+          </xsl:attribute>
+        </xsl:for-each>
       </embed>
     </object>
   </xsl:template>
@@ -1223,15 +1219,28 @@
 
   <!-- PROBLEM -->
   <xsl:template match="cnx:problem">
+    <xsl:variable name="problem-string">
+      <xsl:choose>
+        <xsl:when test="$case-diagnosis = '1'"></xsl:when>
+        <xsl:otherwise>Problem</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <div class="problem">
       <xsl:call-template name='IdCheck'/>
       <span class="problem-before">
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key">Problem</xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-        </xsl:call-template>
-        <xsl:text>&#160;</xsl:text>
-	<!--Problem--> <xsl:number level="any" count="cnx:exercise" /><xsl:if test="cnx:name">: </xsl:if>
+      <xsl:choose>
+        <xsl:when test="$case-diagnosis = '1'">
+          <xsl:text> </xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key"><xsl:value-of select="$problem-string"/></xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+          <xsl:text>&#160;</xsl:text>
+          <!--Problem--> <xsl:number level="any" count="cnx:exercise" /><xsl:if test="cnx:name">: </xsl:if>
+        </xsl:otherwise>
+      </xsl:choose>
       </span>
       <xsl:apply-templates />
     </div>
@@ -1249,27 +1258,59 @@
 	<xsl:value-of select="$solution-number" />
       </xsl:if>
     </xsl:variable>
+    <xsl:variable name="solution-string">
+      <xsl:choose>
+        <xsl:when test="$case-diagnosis = '1'">Diagnosis</xsl:when>
+        <xsl:otherwise>Solution</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="clickfor-string">
+      <xsl:value-of select="concat('ClickFor', $solution-string)"/>
+    </xsl:variable>
+    <xsl:variable name="hide-string">
+      <xsl:value-of select="concat('Hide', $solution-string)"/>
+    </xsl:variable>
     <div class="button" onclick="showSolution('{../@id}',{$solution-number})">
-      <span class="button-text">[ 
+      <span class="button-text">[
         <xsl:call-template name="gentext">
-          <xsl:with-param name="key">ClickForSolution</xsl:with-param>
+          <xsl:with-param name="key"><xsl:value-of select="$clickfor-string"/></xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
         </xsl:call-template><!--Click for Solution-->
-        <xsl:text> </xsl:text> <xsl:value-of select="$full-number" /> ]</span>
+        <xsl:if test="$case-diagnosis = '0'">
+          <xsl:text> </xsl:text> <xsl:value-of select="$full-number" />
+        </xsl:if>
+     <xsl:text> ]</xsl:text></span>
     </div>
     <div class="solution">
       <xsl:call-template name='IdCheck' />
       <span class="solution-before">
-	Solution <xsl:value-of select="$full-number" /><xsl:if test="cnx:name">: </xsl:if>
+      <xsl:choose>
+        <xsl:when test="$case-diagnosis = '1'">
+          <xsl:text> </xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">
+              <xsl:value-of select="$solution-string"/>
+            </xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+          <xsl:text>&#160;</xsl:text>
+          <xsl:value-of select="$full-number" /><xsl:if test="cnx:name">: </xsl:if>
+        </xsl:otherwise>
+      </xsl:choose>
       </span>
       <xsl:apply-templates />
       <div class="button" onclick="hideSolution('{../@id}',{$solution-number})">
         <span class="button-text">[ 
         <xsl:call-template name="gentext">
-          <xsl:with-param name="key">HideSolution</xsl:with-param>
+          <xsl:with-param name="key"><xsl:value-of select="$hide-string"/></xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
         </xsl:call-template><!-- Hide Solution-->
-        <xsl:text> </xsl:text> <xsl:value-of select="$full-number" /> ]</span>
+        <xsl:if test="$case-diagnosis = '0'">
+          <xsl:text> </xsl:text> <xsl:value-of select="$full-number" />
+        </xsl:if>
+        <xsl:text> ]</xsl:text></span>
       </div>
     </div>
   </xsl:template>

@@ -1,3 +1,28 @@
+connexions-cnxml (0.5.17-1) unstable; urgency=low
+
+  * Supports collection type and content subject choosing
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Fri, 14 Sep 2007 13:44:44 -0500
+
+connexions-cnxml (0.5.16.1-1) unstable; urgency=low
+
+  * Case/diagnosis fix for Internet Explorer
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Fri, 24 Aug 2007 15:19:19 -0500
+
+connexions-cnxml (0.5.16-1) unstable; urgency=low
+
+  * Case/diagnosis special-casing for medical texts
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Thu, 16 Aug 2007 17:26:26 -0500
+
+connexions-cnxml (0.5.15-1) unstable; urgency=low
+
+  * Lenses V1
+  * override l10n.xsl from docbook for local default translations
+
+ -- Ross J. Reedstrom <reedstrm@cnx.org>  Fri, 03 Aug 2007 17:02:02 -0500
+
 connexions-cnxml (0.5.14-1) unstable; urgency=low
 
   * New content appearance for March 2007
