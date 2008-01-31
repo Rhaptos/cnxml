@@ -1,3 +1,6 @@
+  - PDF link wording tweak to match collection printing
+  - #3987: support for arbitrary Flash parameters
+
 CNXML-0.5 (p17)
   - Support for display of collection subtypes
 
