@@ -1126,40 +1126,25 @@
   <xsl:template match="cnx:media[@type='application/x-shockwave-flash']">
     <object type="application/x-shockwave-flash" data="{@src}" class="media">
       <xsl:call-template name='IdCheck'/>
-      <xsl:if test="cnx:param[@name='width']">
-	<xsl:attribute name="width">
-	  <xsl:value-of select="cnx:param[@name='width']/@value"/>
-	</xsl:attribute>
-      </xsl:if>
-      <xsl:if test="cnx:param[@name='height']">
-	<xsl:attribute name="height">
-	  <xsl:value-of select="cnx:param[@name='height']/@value"/>
-	</xsl:attribute>
-      </xsl:if>
+      <xsl:for-each select="cnx:param">
+        <xsl:choose>
+          <xsl:when test="@name='width' or @name='height'">
+            <xsl:attribute name="{@name}">
+              <xsl:value-of select="@value" />
+            </xsl:attribute>
+          </xsl:when>
+          <xsl:otherwise>
+            <param name="{@name}" value="{@value}" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:for-each>
       <param name="movie" value="{@src}"/>
-      <xsl:if test="cnx:param[@name='base']">
-	<param name="base">
-	  <xsl:attribute name="value">
-	    <xsl:value-of select="cnx:param[@name='base']/@value"/>
-	  </xsl:attribute>
-	</param>
-      </xsl:if>
       <embed src="{@src}" type="application/x-shockwave-flash" pluginspace="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
-	<xsl:if test="cnx:param[@name='width']">
-	  <xsl:attribute name="width">
-	    <xsl:value-of select="cnx:param[@name='width']/@value"/>
-	  </xsl:attribute>
-	</xsl:if>
-	<xsl:if test="cnx:param[@name='height']">
-	  <xsl:attribute name="height">
-	    <xsl:value-of select="cnx:param[@name='height']/@value"/>
-	  </xsl:attribute>
-	</xsl:if>
-	<xsl:if test="cnx:param[@name='base']">
-	  <xsl:attribute name="base">
-	    <xsl:value-of select="cnx:param[@name='base']/@value"/>
-	  </xsl:attribute>
-	</xsl:if>
+        <xsl:for-each select="cnx:param">
+          <xsl:attribute name="{@name}">
+            <xsl:value-of select="@value" />
+          </xsl:attribute>
+        </xsl:for-each>
       </embed>
     </object>
   </xsl:template>
