@@ -146,6 +146,8 @@
       <l:gentext key="TagsLensInfo" text="Tags:"/>
       <l:gentext key="Comments" text="Comments:"/>
       <l:gentext key="lens" text="lens"/>
+      <l:gentext key="Whatisalens" text="What is a lens?"/>
+      <l:gentext key="Thiscontentisellipsis" text="This content is ..."/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
