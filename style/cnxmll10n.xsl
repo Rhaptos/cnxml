@@ -103,7 +103,7 @@
       <l:gentext key="AuthorArea" text="Authoring Area"/>
       <l:gentext key="ContentActions" text="Content Actions"/>
       <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
-      <l:gentext key="whatsthis" text="(what's this?)"/>
+      <l:gentext key="parensquestion" text="(?)"/>
       <l:gentext key="Quality" text="Quality"/>
       <l:gentext key="EndorsedBy" text="Endorsed by"/>
       <l:gentext key="AffiliatedWith" text="Affiliated with"/>
