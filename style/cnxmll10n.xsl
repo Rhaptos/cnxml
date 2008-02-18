@@ -148,6 +148,10 @@
       <l:gentext key="Comments" text="Comments:"/>
       <l:gentext key="lens" text="lens"/>
       <l:gentext key="Whatisalens" text="What is a lens?"/>
+      <l:gentext key="Lensespara" text="A lens is a custom view of Connexions content. You can think of it as a fancy kind of list that will let you see Connexions through the eyes of organizations and people you trust."/>
+      <l:gentext key="Whatisalenspara" text="Lens makers point to Connexions materials (modules and collections), creating a guide that includes their own comments and descriptive tags about the content."/>
+      <l:gentext key="Whocancreatealens" text="Who can create a lens?"/>
+      <l:gentext key="Whocancreatealenspara" text="Any individual Connexions member, a community, or a respected organization."/>
       <l:gentext key="Thiscontentisellipsis" text="This content is ..."/>
 
       <!-- for editInPlace.xsl -->
