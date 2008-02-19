@@ -141,7 +141,8 @@
       <l:gentext key="ThisModuleIncluded" text="This module is included in"/>
       <l:gentext key="ThisModuleAndCollectionIncluded" text="This module and collection are included in"/>
       <l:gentext key="ThisCollectionIncluded" text="This collection is included in"/>
-      <l:gentext key="ALensBy" text="a lens by"/>
+      <l:gentext key="a" text="a"/>
+      <l:gentext key="Lensby" text="Lens by:"/>
       <l:gentext key="Comments" text="Comments:"/>
       <l:gentext key="Lens" text="Lens:"/>
       <l:gentext key="Whatisalens" text="What is a lens?"/>
