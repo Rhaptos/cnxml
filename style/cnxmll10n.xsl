@@ -136,8 +136,8 @@
       <l:gentext key="AffiliationHelpText" text="This content or a collection containing this content is affiliated with the organizations listed. Click for more information."/>
       <l:gentext key="LensHelpText" text="This content or a collection containing this content is selected by the member lists below. Click for more information."/>
       <l:gentext key="TagHelpText" text="These tags about this content come from endorsements, affiliations, and member lists that include this content."/>
-      <l:gentext key="AsAPartOfCollection" text="as a part of collection"/>
-      <l:gentext key="AndAsAPartOf" text="and as a part of"/>
+      <l:gentext key="AsAPartOfCollection" text="As a part of collection:"/>
+      <l:gentext key="AsAPartOfCollections" text="As a part of collections:"/>
       <l:gentext key="ThisModuleIncluded" text="This module is included in"/>
       <l:gentext key="ThisModuleAndCollectionIncluded" text="This module and collection are included in"/>
       <l:gentext key="ThisCollectionIncluded" text="This collection is included in"/>
@@ -150,6 +150,12 @@
       <l:gentext key="Whocancreatealens" text="Who can create a lens?"/>
       <l:gentext key="Whocancreatealenspara" text="Any individual Connexions member, a community, or a respected organization."/>
       <l:gentext key="Thiscontentisellipsis" text="This content is ..."/>
+      <l:gentext key="Clickthe" text="Click the"/>
+      <l:gentext key="lquot" text='"'/>
+      <l:gentext key="rquot" text='"'/>
+      <l:gentext key="linktoseeallendorsed" text="link to see all content they endorse."/>
+      <l:gentext key="linktoseeallaffiliated" text="link to see all content affiliated with them."/>
+      <l:gentext key="linktoseeallselected" text="link to see all content selected in this lens."/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
