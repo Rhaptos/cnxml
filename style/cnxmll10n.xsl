@@ -136,17 +136,13 @@
       <l:gentext key="AffiliationHelpText" text="This content or a collection containing this content is affiliated with the organizations listed. Click for more information."/>
       <l:gentext key="LensHelpText" text="This content or a collection containing this content is selected by the member lists below. Click for more information."/>
       <l:gentext key="TagHelpText" text="These tags about this content come from endorsements, affiliations, and member lists that include this content."/>
-      <l:gentext key="Module" text="Module"/>
-      <l:gentext key="Collection" text="Collection"/>
       <l:gentext key="AsAPartOfCollection" text="as a part of collection"/>
       <l:gentext key="AndAsAPartOf" text="and as a part of"/>
       <l:gentext key="ThisModuleIncluded" text="This module is included in"/>
       <l:gentext key="ThisModuleAndCollectionIncluded" text="This module and collection are included in"/>
       <l:gentext key="ThisCollectionIncluded" text="This collection is included in"/>
       <l:gentext key="ALensBy" text="a lens by"/>
-      <l:gentext key="TagsLensInfo" text="Tags:"/>
       <l:gentext key="Comments" text="Comments:"/>
-      <l:gentext key="lens" text="lens"/>
       <l:gentext key="Lens" text="Lens:"/>
       <l:gentext key="Whatisalens" text="What is a lens?"/>
       <l:gentext key="Lensespara" text="A lens is a custom view of Connexions content. You can think of it as a fancy kind of list that will let you see Connexions through the eyes of organizations and people you trust."/>
