@@ -132,10 +132,9 @@
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="showtableofcontents" text="show table of contents"/>
       <l:gentext key="Links" text="Links"/>
-      <l:gentext key="EndorsementHelpText" text="This content or a collection containing this content has been endorsed by the organizations listed. Click for more information."/>
-      <l:gentext key="AffiliationHelpText" text="This content or a collection containing this content is affiliated with the organizations listed. Click for more information."/>
-      <l:gentext key="LensHelpText" text="This content or a collection containing this content is selected by the member lists below. Click for more information."/>
-      <l:gentext key="TagHelpText" text="These tags about this content come from endorsements, affiliations, and member lists that include this content."/>
+      <l:gentext key="EndorsementHelpText" text="This content has been endorsed by the organizations listed. Click each link for a list of all content endorsed by the organization."/>
+      <l:gentext key="AffiliationHelpText" text="This content is either by members of the organizations listed or about topics related to the organizations listed. Click each link to see a list of all content affiliated with the organization."/>
+      <l:gentext key="TagHelpText" text="These tags about this content come from the endorsement, affiliation, and other lenses that include this content."/>
       <l:gentext key="AsAPartOfCollection" text="As a part of collection:"/>
       <l:gentext key="AsAPartOfCollections" text="As a part of collections:"/>
       <l:gentext key="ThisModuleIncluded" text="This module is included in"/>
