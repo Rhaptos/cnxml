@@ -71,8 +71,7 @@
       <l:gentext key="Distantlink" text="Distantly related link"/>
       <l:gentext key="Verydistantlink" text="Very distantly related link"/>
       <l:gentext key="LinktoPDFformat" text="Link to printer-friendly PDF format"/>
-      <l:gentext key="Print" text="Print"/>
-      <l:gentext key="PDF" text=" (PDF)"/>
+      <l:gentext key="DownloadPDF" text="Download PDF"/>
       <l:gentext key="Similarcontent" text="Similar content"/>
       <l:gentext key="Moresimilarcontent" text="More links to similar content"/>
       <l:gentext key="More" text="More"/>
