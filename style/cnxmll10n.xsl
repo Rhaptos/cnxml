@@ -135,7 +135,7 @@
       <l:gentext key="Links" text="Links"/>
       <l:gentext key="EndorsementHelpText" text="This content has been endorsed by the organizations listed. Click each link for a list of all content endorsed by the organization."/>
       <l:gentext key="AffiliationHelpText" text="This content is either by members of the organizations listed or about topics related to the organizations listed. Click each link to see a list of all content affiliated with the organization."/>
-      <l:gentext key="TagHelpText" text="These tags about this content come from the endorsement, affiliation, and other lenses that include this content."/>
+      <l:gentext key="TagHelpText" text="These tags come from the endorsement, affiliation, and other lenses that include this content."/>
       <l:gentext key="AsAPartOfCollection" text="As a part of collection:"/>
       <l:gentext key="AsAPartOfCollections" text="As a part of collections:"/>
       <l:gentext key="ThisModuleIncluded" text="This module is included in"/>
@@ -147,7 +147,8 @@
       <l:gentext key="Lens" text="Lens:"/>
       <l:gentext key="Whatisalens" text="What is a lens?"/>
       <l:gentext key="Lensespara" text="A lens is a custom view of Connexions content. You can think of it as a fancy kind of list that will let you see Connexions through the eyes of organizations and people you trust."/>
-      <l:gentext key="Whatisalenspara" text="Lens makers point to Connexions materials (modules and collections), creating a guide that includes their own comments and descriptive tags about the content."/>
+      <l:gentext key="Whatisinalens" text="What is in a lens?"/>
+      <l:gentext key="Whatisinalenspara" text="Lens makers point to Connexions materials (modules and collections), creating a guide that includes their own comments and descriptive tags about the content."/>
       <l:gentext key="Whocancreatealens" text="Who can create a lens?"/>
       <l:gentext key="Whocancreatealenspara" text="Any individual Connexions member, a community, or a respected organization."/>
       <l:gentext key="Thiscontentisellipsis" text="This content is ..."/>
