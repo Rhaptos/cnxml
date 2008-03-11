@@ -1,3 +1,11 @@
+connexions-cnxml (0.5.18-1) unstable; urgency=low
+
+  * Display fixes for "forall" and "thereexists"
+  * PDF link wording tweak to match collection printing
+  * support for arbitrary Flash parameters
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Thu, 21 Feb 2008 16:04:04 -0600
+
 connexions-cnxml (0.5.17-1) unstable; urgency=low
 
   * Supports collection type and content subject choosing
