@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.19-1) unstable; urgency=low
+
+  * add translations for lens hover boxes
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Thu, 10 Apr 2008 11:56:21 -0500
+
 connexions-cnxml (0.5.18-1) unstable; urgency=low
 
   * Display fixes for "forall" and "thereexists"

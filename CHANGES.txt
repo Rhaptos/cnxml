@@ -1,3 +1,4 @@
+CNXML-0.5 (p19)
   - add translations for lens hover boxes; lenses1 merge
 
 CNXML-0.5 (p18)
