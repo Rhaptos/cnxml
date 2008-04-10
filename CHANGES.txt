@@ -1,3 +1,5 @@
+  - add translations for lens hover boxes
+
 CNXML-0.5 (p18)
   - PDF link wording tweak to match collection printing
   - #3987: support for arbitrary Flash parameters
