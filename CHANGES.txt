@@ -1,4 +1,4 @@
-  - add translations for lens hover boxes
+  - add translations for lens hover boxes; lenses1 merge
 
 CNXML-0.5 (p18)
   - PDF link wording tweak to match collection printing
