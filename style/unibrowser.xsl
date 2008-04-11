@@ -290,14 +290,23 @@
   <xsl:template match="cnx:section">
     <div class="section">
       <xsl:call-template name='IdCheck'/>
-	  <h2>
-	    <xsl:if test="parent::cnx:problem or parent::cnx:solution">
-	      <xsl:number level="any" count="cnx:exercise" format="1."/>
-	      <xsl:number level="single" format="a) " />
-	    </xsl:if>
-	    <xsl:value-of select="@name|cnx:name"/>
-            <xsl:if test="not(cnx:name) or cnx:name[not(node())]"><xsl:text> </xsl:text></xsl:if>
-	  </h2>
+      <xsl:variable name="ancestor-count">
+        <xsl:choose>
+          <xsl:when test="count(ancestor::cnx:section) &lt; 4">
+            <xsl:value-of select="count(ancestor::cnx:section)" />
+          </xsl:when>
+          <xsl:otherwise>4</xsl:otherwise>
+        </xsl:choose>
+      </xsl:variable>
+      <!-- h2, h3, etc... -->
+      <xsl:element name="h{$ancestor-count + 2}">
+	<xsl:if test="parent::cnx:problem or parent::cnx:solution">
+	  <xsl:number level="any" count="cnx:exercise" format="1."/>
+          <xsl:number level="single" format="a) " />
+	</xsl:if>
+	<xsl:value-of select="@name|cnx:name"/>
+        <xsl:if test="not(cnx:name) or cnx:name[not(node())]"><xsl:text> </xsl:text></xsl:if>
+      </xsl:element>
       <xsl:apply-templates select="*[not(self::cnx:name)]"/>
     </div>
   </xsl:template>
@@ -323,13 +332,13 @@
 
   <!--PARA-->
   <xsl:template match="cnx:para">
-    <div class="para">
+    <p class="para">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates/>
       <xsl:if test="not(node())">
 	<xsl:comment>empty para tag</xsl:comment>
       </xsl:if>
-    </div>
+    </p>
   </xsl:template>
 
   <!-- LINK -->
@@ -435,25 +444,30 @@
 
   <!--EMPHASIS-->
   <xsl:template match="cnx:emphasis">
-    <i>
+    <em class="emphasis">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates/>
-    </i>
+    </em>
   </xsl:template>
 
   <!--IMPORTANT-->
   <xsl:template match="cnx:important">
-    <b>
+    <strong class="important">
       <xsl:apply-templates/>
-    </b>
+    </strong>
   </xsl:template>
 
   <!-- QUOTE -->
   <xsl:template match="cnx:quote">
     <xsl:choose>
       <xsl:when test="@type='block'">
-	<blockquote>
+	<blockquote class="quote">
 	  <xsl:call-template name="IdCheck"/>
+          <xsl:if test="@src">
+            <xsl:attribute name="cite">
+              <xsl:value-of select="@src" />
+            </xsl:attribute>
+          </xsl:if>
 	  <xsl:apply-templates />
 	  <xsl:if test="@src">
 	    <span class="quote-source-before">[</span>
@@ -493,12 +507,14 @@
   </xsl:template>
   <!--CODE.block (IE understands pre better than code.codeblock) -->
   <xsl:template match="cnx:codeblock|cnx:code[@type='block']">
-    <pre class="code">
-      <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates />
-      <xsl:if test="not(node())">
-	<xsl:comment>empty code tag</xsl:comment>
-      </xsl:if>
+    <pre class="codeblock">
+      <code>
+        <xsl:call-template name='IdCheck'/>
+        <xsl:apply-templates />
+        <xsl:if test="not(node())">
+          <xsl:comment>empty code tag</xsl:comment>
+        </xsl:if>
+      </code>
     </pre>
   </xsl:template>
 
@@ -583,7 +599,7 @@
 
   <!--TERM-->
   <xsl:template match="cnx:term">
-    <span class="term">
+    <dfn class="term">
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	<xsl:when test="@src">
@@ -596,7 +612,7 @@
       <xsl:if test="ancestor::cnx:glossary and parent::cnx:definition">
 	<xsl:text>: </xsl:text>
       </xsl:if>
-    </span>
+    </dfn>
   </xsl:template>
 
   <!-- SEEALSO -->
@@ -615,7 +631,7 @@
   
   <!--CITE-->
   <xsl:template match="cnx:cite">
-    <cite>
+    <cite class="cite">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates/>
     </cite>
@@ -624,7 +640,7 @@
   <xsl:template match="cnx:cite[@src]"> 
     <xsl:choose>
       <xsl:when test='count(child::node())>0'>
-	<cite>
+	<cite class="cite">
 	  <a class="cite" href="{@src}">
 	    <xsl:call-template name='IdCheck'/>
 	    <xsl:apply-templates/>
