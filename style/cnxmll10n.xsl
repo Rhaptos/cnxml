@@ -103,13 +103,15 @@
       <l:gentext key="AuthorArea" text="Authoring Area"/>
       <l:gentext key="ContentActions" text="Content Actions"/>
       <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
-      <l:gentext key="whatsthis" text="(what's this?)"/>
+      <l:gentext key="Bookmarkhelp" text="Add this content to the social bookmarking site del.icio.us, where you can share your favorite links with others."/>
+      <l:gentext key="parensquestion" text="(?)"/>
       <l:gentext key="Quality" text="Quality"/>
       <l:gentext key="EndorsedBy" text="Endorsed by"/>
       <l:gentext key="AffiliatedWith" text="Affiliated with"/>
       <l:gentext key="Lenses" text="Lenses"/>
       <l:gentext key="AddLens" text="Add to a lens"/>
-      <l:gentext key="Memberlists" text="Member lists"/>
+      <l:gentext key="Intheselenses" text="In these lenses" />
+      <l:gentext key="Alsointheselenses" text="Also in these lenses" />
       <l:gentext key="Tags" text="Tags"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
       <l:gentext key="ContactUs" text="Contact Us"/>
@@ -131,24 +133,31 @@
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="showtableofcontents" text="show table of contents"/>
       <l:gentext key="Links" text="Links"/>
-      <l:gentext key="EndorsementHelpText" text="This content or a collection containing this content has been endorsed by the organizations listed. Click for more information."/>
-      <l:gentext key="AffiliationHelpText" text="This content or a collection containing this content is affiliated with the organizations listed. Click for more information."/>
-      <l:gentext key="LensHelpText" text="This content or a collection containing this content is selected by the member lists below. Click for more information."/>
-      <l:gentext key="TagHelpText" text="These tags about this content come from endorsements, affiliations, and member lists that include this content."/>
-      
-      
-
-      <!-- Not Currently Used - These are for the pop-up that will be
-      coming back shortly.
-      <l:gentext key="Includes" text="Includes:"/>
-      <l:gentext key="Includesthismodule" text="Includes this module as a part of:"/>
-      <l:gentext key="Alsoincludes" text="Also includes:"/>
-      <l:gentext key="Alsoincludesthismodule" text="Also includes this module as a part of:"/>
-      <l:gentext key="Collection" text="Collection:"/>
-      <l:gentext key="TagsLensInfo" text="Tags:"/>
+      <l:gentext key="EndorsementHelpText" text="This content has been endorsed by the organizations listed. Click each link for a list of all content endorsed by the organization."/>
+      <l:gentext key="AffiliationHelpText" text="This content is either by members of the organizations listed or about topics related to the organizations listed. Click each link to see a list of all content affiliated with the organization."/>
+      <l:gentext key="TagHelpText" text="These tags come from the endorsement, affiliation, and other lenses that include this content."/>
+      <l:gentext key="AsAPartOfCollection" text="As a part of collection:"/>
+      <l:gentext key="AsAPartOfCollections" text="As a part of collections:"/>
+      <l:gentext key="ThisModuleIncluded" text="This module is included in"/>
+      <l:gentext key="ThisModuleAndCollectionIncluded" text="This module and collection are included in"/>
+      <l:gentext key="ThisCollectionIncluded" text="This collection is included in"/>
+      <l:gentext key="a" text="a"/>
+      <l:gentext key="Lensby" text="Lens by:"/>
       <l:gentext key="Comments" text="Comments:"/>
       <l:gentext key="Lens" text="Lens:"/>
-      -->
+      <l:gentext key="Whatisalens" text="What is a lens?"/>
+      <l:gentext key="Lensespara" text="A lens is a custom view of Connexions content. You can think of it as a fancy kind of list that will let you see Connexions through the eyes of organizations and people you trust."/>
+      <l:gentext key="Whatisinalens" text="What is in a lens?"/>
+      <l:gentext key="Whatisinalenspara" text="Lens makers point to Connexions materials (modules and collections), creating a guide that includes their own comments and descriptive tags about the content."/>
+      <l:gentext key="Whocancreatealens" text="Who can create a lens?"/>
+      <l:gentext key="Whocancreatealenspara" text="Any individual Connexions member, a community, or a respected organization."/>
+      <l:gentext key="Thiscontentisellipsis" text="This content is ..."/>
+      <l:gentext key="Clickthe" text="Click the"/>
+      <l:gentext key="lquot" text='"'/>
+      <l:gentext key="rquot" text='"'/>
+      <l:gentext key="linktoseeallendorsed" text="link to see all content they endorse."/>
+      <l:gentext key="linktoseeallaffiliated" text="link to see all content affiliated with them."/>
+      <l:gentext key="linktoseeallselected" text="link to see all content selected in this lens."/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
