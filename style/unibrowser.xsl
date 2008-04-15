@@ -55,6 +55,26 @@
     </xsl:if>
   </xsl:template>
 
+  <!-- HOW MANY SECTION-LIKE ANCESTORS (for determining header levels) -->
+  <xsl:template name="level-count">
+    <xsl:variable name="level-number" 
+                  select="count(ancestor::cnx:section|
+                                ancestor::cnx:example|
+                                ancestor::cnx:definition|
+                                ancestor::cnx:rule|
+                                ancestor::cnx:exercise|
+                                ancestor::cnx:glossary|
+                                ancestor::cnx:para[cnx:name]|
+                                ancestor::cnx:list[cnx:name])" />
+    <xsl:choose>
+      <xsl:when test="$level-number &lt; 4">
+        <xsl:value-of select="$level-number + 2" />
+      </xsl:when>
+      <!-- There is no h7 element in HTML -->
+      <xsl:otherwise>6</xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <!-- Declare a key for the id attribute since we may not be loading
   the DTD so we can't rely on id() working --> 
   <xsl:key name='id' match='*' use='@id'/>
@@ -290,22 +310,30 @@
   <xsl:template match="cnx:section">
     <div class="section">
       <xsl:call-template name='IdCheck'/>
-      <xsl:variable name="ancestor-count">
-        <xsl:choose>
-          <xsl:when test="count(ancestor::cnx:section) &lt; 4">
-            <xsl:value-of select="count(ancestor::cnx:section)" />
-          </xsl:when>
-          <xsl:otherwise>4</xsl:otherwise>
-        </xsl:choose>
+      <xsl:variable name="level-number">
+        <xsl:call-template name="level-count" />
       </xsl:variable>
       <!-- h2, h3, etc... -->
-      <xsl:element name="h{$ancestor-count + 2}">
+      <xsl:element name="h{$level-number}">
+        <xsl:attribute name="class">section-header</xsl:attribute>
 	<xsl:if test="parent::cnx:problem or parent::cnx:solution">
 	  <xsl:number level="any" count="cnx:exercise" format="1."/>
           <xsl:number level="single" format="a) " />
 	</xsl:if>
-	<xsl:value-of select="@name|cnx:name"/>
-        <xsl:if test="not(cnx:name) or cnx:name[not(node())]"><xsl:text> </xsl:text></xsl:if>
+        <!-- for cnxml version 0.1 -->
+        <xsl:if test="@name">
+          <strong>
+            <xsl:value-of select="@name" />
+            <xsl:if test="@name=''">
+              <xsl:text> </xsl:text>
+            </xsl:if>
+          </strong>
+        </xsl:if>
+        <!-- for all other cnxml versions -->
+	<xsl:apply-templates select="cnx:name"/>
+        <xsl:if test="not(cnx:name)">
+          <xsl:text> </xsl:text>
+        </xsl:if>
       </xsl:element>
       <xsl:apply-templates select="*[not(self::cnx:name)]"/>
     </div>
@@ -323,10 +351,16 @@
   <!--NAME-->
   <xsl:template match="cnx:name|cnx:title">
     <xsl:if test="parent::*[not(self::cnx:module|self::cnx:document)]">
-      <span class="name">
+      <strong class="name">
 	<xsl:call-template name='IdCheck'/>
-	<xsl:apply-templates /><xsl:if test="parent::cnx:meaning"><xsl:text>: </xsl:text></xsl:if>
-      </span>
+	<xsl:apply-templates />
+        <xsl:if test="not(node())">
+          <xsl:text> </xsl:text>
+        </xsl:if>
+        <xsl:if test="parent::cnx:meaning or parent::cnx:item">
+          <xsl:text>: </xsl:text>
+        </xsl:if>
+      </strong>
     </xsl:if>
   </xsl:template>
 
@@ -536,7 +570,7 @@
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	<xsl:when test="(not(@type) or @type='')">
-	  <span class="note-before">
+	  <span class="cnx_before">
             <xsl:call-template name="gentext">
               <xsl:with-param name="key">Note</xsl:with-param>
               <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/>
@@ -545,7 +579,7 @@
             <!--Note:--> </span>
 	</xsl:when>
 	<xsl:otherwise>
-	  <span class="note-before"><xsl:value-of select="@type"/>: </span>
+	  <span class="cnx_before"><xsl:value-of select="@type"/>: </span>
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:apply-templates/>
@@ -556,27 +590,26 @@
   <xsl:template match="cnx:example">
     <div class="example">
       <xsl:call-template name='IdCheck'/>
-      <span class="example-before">
-	<xsl:call-template name="gentext">
-	  <xsl:with-param name="key">Example</xsl:with-param>
-	  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-	</xsl:call-template>
-	<!-- Example --><xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
-	  <xsl:text> </xsl:text>
-	  <xsl:number level="any" count="cnx:example[not(parent::cnx:definition|parent::cnx:rule)]"/>
-	</xsl:if>
-	<xsl:if test="cnx:name|ancestor::cnx:glossary">: </xsl:if>
-      </span>
-      <xsl:if test="not(ancestor::bib:file)">
-	<span class="example-name">
-	  <xsl:value-of select="cnx:name" /><xsl:text>&#160;</xsl:text>
-	</span>
-      </xsl:if>
-      <xsl:if test="ancestor::bib:file">
-	<span class="example-name">
-	  <xsl:value-of select="cnx:name" />
-	</span>
-      </xsl:if>
+      <xsl:variable name="level-number">
+        <xsl:call-template name="level-count" />
+      </xsl:variable>
+      <!-- h2, h3, etc... -->
+      <xsl:element name="h{$level-number}">
+        <xsl:attribute name="class">example-header</xsl:attribute>
+        <span class="cnx_before">
+          <!-- Example -->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Example</xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+          <xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
+            <xsl:text> </xsl:text>
+            <xsl:number level="any" count="cnx:example[not(parent::cnx:definition|parent::cnx:rule)]"/>
+          </xsl:if>
+          <xsl:if test="cnx:name|ancestor::cnx:glossary">: </xsl:if>
+        </span>
+        <xsl:apply-templates select="cnx:name" />
+      </xsl:element>
       <xsl:apply-templates select="*[not(self::cnx:name)]" />
     </div>
   </xsl:template>
@@ -585,15 +618,24 @@
   <xsl:template match="cnx:definition">
     <div class="definition">
       <xsl:call-template name='IdCheck'/>
-      <span class="definition-before">
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key">Definition</xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-        </xsl:call-template>
-        <xsl:text>&#160;</xsl:text>
-	<!--Definition--> <xsl:number level="any" count="cnx:definition"/>: 
-      </span>
-      <xsl:apply-templates />
+      <xsl:variable name="level-number">
+        <xsl:call-template name="level-count" />
+      </xsl:variable>
+      <!-- h2, h3, etc... -->
+      <xsl:element name="h{$level-number}">
+        <xsl:attribute name="class">definition-header</xsl:attribute>
+        <span class="cnx_before">
+          <!-- Definition -->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Definition</xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+          <xsl:text>&#160;</xsl:text>
+          <xsl:number level="any" count="cnx:definition"/>: 
+        </span>
+        <xsl:apply-templates select="cnx:term" />
+      </xsl:element>
+      <xsl:apply-templates select="*[not(self::cnx:term)]" />
     </div>
   </xsl:template>
 
@@ -618,7 +660,7 @@
   <!-- SEEALSO -->
   <xsl:template match="cnx:seealso">
     <div class="seealso">
-      <span class="seealso-before">
+      <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">GlossSeeAlso</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>:
         <!--See Also:--> </span>
@@ -679,12 +721,20 @@
     <xsl:variable name="type" select="@type"/>
     <div class="rule">
       <xsl:call-template name='IdCheck'/>
-      <span class="rule-before">
-	<xsl:value-of select="@type"/><xsl:text> </xsl:text><xsl:number level="any" count="cnx:rule[@type=$type]" /><xsl:if test="cnx:name">: </xsl:if>
-      </span>
-      <span class="rule-name">
-	<xsl:value-of select="cnx:name" /><xsl:text>&#160;</xsl:text>
-      </span>
+      <xsl:variable name="level-number">
+        <xsl:call-template name="level-count" />
+      </xsl:variable>
+      <!-- h2, h3, etc... -->
+      <xsl:element name="h{$level-number}">
+        <xsl:attribute name="class">rule-header</xsl:attribute>
+        <span class="cnx_before">
+          <xsl:value-of select="@type"/>
+          <xsl:text> </xsl:text>
+          <xsl:number level="any" count="cnx:rule[@type=$type]" />
+          <xsl:if test="cnx:name">: </xsl:if>
+        </span>
+	<xsl:apply-templates select="cnx:name" />
+      </xsl:element>
       <xsl:apply-templates select="*[not(self::cnx:name)]" />
     </div>
   </xsl:template>
@@ -701,7 +751,7 @@
   <xsl:template match="cnx:proof">
     <div class='proof'>
       <xsl:call-template name='IdCheck'/>
-      <span class="proof-before">
+      <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">Proof</xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
@@ -715,9 +765,18 @@
   <!--LIST-->
   <!-- Default list.  Prints a list of type='bulleted'. -->
   <xsl:template match="cnx:list">
+    <xsl:if test="cnx:name[node()]">
+      <xsl:variable name="level-number">
+        <xsl:call-template name="level-count" />
+      </xsl:variable>
+      <!-- h2, h3, etc... -->
+      <xsl:element name="h{$level-number}">
+        <xsl:attribute name="class">list-header</xsl:attribute>
+	<xsl:value-of select="cnx:name" />
+      </xsl:element>
+    </xsl:if>
     <ul class="list">
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates select="cnx:name"/>
       <xsl:for-each select="cnx:item">
         <li class="item">
           <xsl:call-template name='IdCheck'/>
@@ -730,9 +789,18 @@
   <!--LIST with type='enumerated'-->
   <!-- Numbered lists -->
   <xsl:template match="cnx:list[@type='enumerated']">
+    <xsl:if test="cnx:name[node()]">
+      <xsl:variable name="level-number">
+        <xsl:call-template name="level-count" />
+      </xsl:variable>
+      <!-- h2, h3, etc... -->
+      <xsl:element name="h{$level-number}">
+        <xsl:attribute name="class">list-header</xsl:attribute>
+	<xsl:value-of select="cnx:name" />
+      </xsl:element>
+    </xsl:if>
     <ol class="list">
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates select="cnx:name"/>
       <xsl:for-each select="cnx:item">
         <li class="item">
           <xsl:call-template name='IdCheck'/>
@@ -746,8 +814,15 @@
   <xsl:template match="cnx:list[@type='inline']">
     <span class="list">
       <xsl:call-template name='IdCheck'/>
-      <xsl:if test="cnx:name">
-	<span class="name"><xsl:value-of select="cnx:name"/>: </span>
+      <xsl:if test="cnx:name[node()]">
+        <xsl:variable name="level-number">
+          <xsl:call-template name="level-count" />
+        </xsl:variable>
+        <!-- h2, h3, etc... -->
+        <xsl:element name="h{$level-number}">
+          <xsl:attribute name="class">list-header</xsl:attribute>
+          <xsl:value-of select="cnx:name" />: 
+        </xsl:element>
       </xsl:if>
       <xsl:for-each select="cnx:item[node()]">
 	<span class="item">
@@ -761,49 +836,53 @@
     </span>
   </xsl:template>
 
-  <!--NAMED LIST ITEM-->
-  <xsl:template match="cnx:list[@type!='named-item']/cnx:item/cnx:name">
-    <span class="name"><xsl:value-of select="."/><xsl:text> - </xsl:text></span>
-  </xsl:template>
-
   <!--LIST with type='named-item' -->
   <xsl:template match="cnx:list[@type='named-item']">
-    <table border="0" cellspacing="0" cellpadding="0" class="list">
+    <xsl:if test="cnx:name[node()]">
+      <xsl:variable name="level-number">
+        <xsl:call-template name="level-count" />
+      </xsl:variable>
+      <!-- h2, h3, etc... -->
+      <xsl:element name="h{$level-number}">
+        <xsl:attribute name="class">list-header</xsl:attribute>
+	<xsl:value-of select="cnx:name" />
+      </xsl:element>
+    </xsl:if>
+    <ul class="list named-item">
       <xsl:call-template name='IdCheck'/>
-      <xsl:if test="cnx:name">
-        <tr>
-          <td colspan="3">
-            <xsl:apply-templates select="cnx:name"/>
-          </td>
-        </tr>
-      </xsl:if>
       <xsl:for-each select="cnx:item">
-        <tr>
-          <td class="name" align="right" >
-            <xsl:apply-templates select="cnx:name"/>
-          </td>
-	  <td class="bullet">
-	    <xsl:text disable-output-escaping="yes">&#160;-&#160;</xsl:text>
-	  </td>
-          <td class="item">
-            <xsl:call-template name='IdCheck'/>
-            <xsl:apply-templates select="*[not(self::cnx:name)]|text()"/>
-          </td>
-        </tr>
+        <li class="item">
+          <xsl:call-template name='IdCheck'/>
+          <strong class="name named-item">
+            <xsl:value-of select="cnx:name" />
+            <xsl:if test="cnx:name[node()]">
+              <xsl:text>:</xsl:text>
+            </xsl:if>
+            <xsl:text> </xsl:text>
+          </strong>
+          <xsl:apply-templates select="*[not(self::cnx:name)]"/>
+        </li>
       </xsl:for-each>
-    </table>
+    </ul>
   </xsl:template>
 
   <!-- EQUATION -->
   <xsl:template match="cnx:equation">
     <div class="equation">
       <xsl:call-template name='IdCheck'/> 
-      <xsl:if test="@name">
-	<span class="name">
+      <xsl:if test="cnx:name[node()]|@name">
+        <xsl:variable name="level-number">
+          <xsl:call-template name="level-count" />
+        </xsl:variable>
+        <!-- h2, h3, etc... -->
+        <xsl:element name="h{$level-number}">
+          <xsl:attribute name="class">section-header</xsl:attribute>
+          <!-- for cnxml version 0.1 -->
 	  <xsl:value-of select="@name"/>
-	</span>
+          <!-- all other cnxml versions -->
+          <xsl:apply-templates select="cnx:name"/>
+        </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="cnx:name"/>
       <xsl:apply-templates select="*[not(self::cnx:name)]|text()"/>
       <span class="equation-number">
 	<xsl:number level="any" count="cnx:equation" format="(1)"/>
@@ -813,75 +892,117 @@
 
   <!-- FIGURE -->
   <xsl:template match="cnx:figure">
-    <table class="figure" border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
-      <xsl:call-template name='IdCheck'/> 
-      <tr>
-	<td>
-	  <xsl:apply-templates select="cnx:name|cnx:title"/>
-	  <div class="inner-figure">
-	    <xsl:choose>
-	      <xsl:when test="cnx:subfigure">
-		<xsl:choose>
-		  <xsl:when test="@orient='vertical'">
-		    <xsl:apply-templates select="cnx:subfigure"/>
-		  </xsl:when>
-		  <xsl:otherwise>
-		    <xsl:call-template name="horizontal" />
-		  </xsl:otherwise>
-		</xsl:choose>
-	      </xsl:when>
-	      <xsl:otherwise>
-		<xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name)]"/>
-	      </xsl:otherwise>
-	    </xsl:choose>
-	  </div>
-	  <xsl:call-template name="caption"/>
-	</td>
-      </tr>
-    </table>
+    <div class="figure">
+      <table border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
+        <xsl:call-template name='IdCheck'/>
+        <xsl:call-template name="caption"/>
+        <xsl:if test="cnx:name|cnx:title">
+          <thead>
+            <tr>
+              <th>
+                <xsl:apply-templates select="cnx:name|cnx:title"/>
+              </th>
+            </tr>
+          </thead>
+        </xsl:if>
+        <tbody>
+          <tr>
+            <td>
+              <xsl:choose>
+                <xsl:when test="cnx:subfigure">
+                  <xsl:choose>
+                    <xsl:when test="@orient='vertical'">
+                      <xsl:apply-templates select="cnx:subfigure"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:call-template name="horizontal" />
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name|self::cnx:title)]"/>
+                </xsl:otherwise>
+              </xsl:choose>
+	    </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </xsl:template>
   
   <!-- SUBFIGURE vertical -->
   <xsl:template match="cnx:subfigure[../@orient='vertical']">
-    <div class="subfigure">
+    <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates select="*[not(self::cnx:caption)]"/>
       <xsl:call-template name="caption"/>
-    </div>
+      <xsl:if test="cnx:name">
+        <thead>
+          <tr>
+            <th>
+              <xsl:apply-templates select="cnx:name"/>
+            </th>
+          </tr>
+        </thead>
+      </xsl:if>
+      <tbody>
+        <tr>
+          <td>
+            <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name)]"/>
+	  </td>
+        </tr>
+      </tbody>
+    </table>
   </xsl:template>
 
   <!-- SUBFIGURE horizontal -->
   <xsl:template name="horizontal">
-    <table border="0" cellpadding="0" cellspacing="5" width="100%">
-      <tr>
-	<xsl:for-each select="cnx:subfigure">
-	  <td valign="bottom">
-	    <xsl:apply-templates select="cnx:name"/>
-	  </td>
-	</xsl:for-each>
-      </tr>
-      <tr>
-	<xsl:for-each select="cnx:subfigure">
-	  <td valign="middle" class="subfigure">
-	    <xsl:call-template name='IdCheck'/>
-	    <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name)]"/>
-	  </td>
-	</xsl:for-each>
-      </tr>
-      <tr>
-	<xsl:for-each select="cnx:subfigure">
-	  <td valign="top">
-	    <xsl:call-template name="caption"/>
-	  </td>
-	</xsl:for-each> 
-      </tr>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <xsl:if test="cnx:subfigure/cnx:name">
+        <thead>
+          <tr>
+            <xsl:for-each select="cnx:subfigure">
+              <th valign="bottom">
+                <xsl:apply-templates select="cnx:name"/>
+              </th>
+            </xsl:for-each>
+          </tr>
+        </thead>
+      </xsl:if>
+      <xsl:if test="cnx:subfigure/cnx:caption">
+        <tfoot>
+          <tr>
+            <xsl:for-each select="cnx:subfigure">
+              <xsl:call-template name="caption"/>
+            </xsl:for-each>
+          </tr>
+        </tfoot>
+      </xsl:if>
+      <tbody>
+        <tr>
+          <xsl:for-each select="cnx:subfigure">
+            <td valign="middle" class="subfigure">
+              <xsl:call-template name='IdCheck'/>
+              <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name)]"/>
+            </td>
+          </xsl:for-each>
+        </tr>
+      </tbody>
     </table>
   </xsl:template>
 
   <!-- CAPTION -->
   <xsl:template name="caption">
-    <div class="caption">
-      <span class="caption-before">
+    <xsl:variable name="captionelement">
+      <xsl:choose>
+        <xsl:when test="parent::cnx:figure[@orient='horizontal']">th</xsl:when>
+        <xsl:otherwise>caption</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:element name="{$captionelement}">
+      <xsl:if test="$captionelement='caption'">
+        <xsl:attribute name="align">bottom</xsl:attribute>
+      </xsl:if>
+      <span class="cnx_before">
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure">
             <xsl:call-template name="gentext">
@@ -904,8 +1025,9 @@
         </xsl:choose>
       </span>
       <xsl:apply-templates select="cnx:caption"/>
-    </div>
+    </xsl:element>
   </xsl:template>
+
   <xsl:template match="cnx:caption">
     <xsl:apply-templates />
   </xsl:template>
@@ -1048,7 +1170,7 @@
   <!-- LABVIEW -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
     <div class="media labview example">
-      <span class="example-before">
+      <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">LabVIEWExample</xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
@@ -1168,7 +1290,7 @@
   <!-- Generic audio file -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
     <div class="media musical example">
-      <span class="example-before">
+      <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">AudioFile</xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
@@ -1191,7 +1313,7 @@
   <!-- MP3 (Tony Brandt) -->
   <xsl:template match="cnx:media[@type='audio/mpeg']"> 
     <div class="media musical example">
-      <span class="example-before">
+      <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">MusicalExample</xsl:with-param>
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
@@ -1243,7 +1365,7 @@
     </xsl:variable>
     <div class="problem">
       <xsl:call-template name='IdCheck'/>
-      <span class="problem-before">
+      <span class="cnx_before">
       <xsl:choose>
         <xsl:when test="$case-diagnosis = '1'">
           <xsl:text> </xsl:text>
@@ -1299,7 +1421,7 @@
     </div>
     <div class="solution">
       <xsl:call-template name='IdCheck' />
-      <span class="solution-before">
+      <span class="cnx_before">
       <xsl:choose>
         <xsl:when test="$case-diagnosis = '1'">
           <xsl:text> </xsl:text>
