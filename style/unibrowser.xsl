@@ -381,7 +381,7 @@
     </xsl:if>
     <p class="para">
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates select="*[not(self::cnx:name)]" />
+      <xsl:apply-templates select="*[not(self::cnx:name)]|text()" />
       <xsl:if test="not(node())">
 	<xsl:comment>empty para tag</xsl:comment>
       </xsl:if>
@@ -881,7 +881,7 @@
             </xsl:if>
             <xsl:text> </xsl:text>
           </strong>
-          <xsl:apply-templates select="*[not(self::cnx:name)]"/>
+          <xsl:apply-templates select="*[not(self::cnx:name)]|text()"/>
         </li>
       </xsl:for-each>
     </ul>
