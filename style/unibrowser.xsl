@@ -230,10 +230,10 @@
         <xsl:variable name="footnote-number">
           <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1" />
         </xsl:variable>
-        <a class="footnote-number" name="footnote{$footnote-number}"><xsl:text> </xsl:text></a>
+        <a name="footnote{$footnote-number}"><xsl:text> </xsl:text></a>
         <div class="footnote">
 	  <xsl:call-template name='IdCheck'/>
-          <span class="footnote-number">
+          <span class="cnx_before">
 	    <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1. " />
 	  </span>
           <xsl:apply-templates />
@@ -242,7 +242,8 @@
 
       <!-- GLOSSARY -->
       <xsl:if test='cnx:glossary'>
-	<div id='glossary'>
+	<div class='glossary'>
+	  <xsl:call-template name='IdCheck'/>
 	  <h2 class='glossary-header'>
             <!--Glossary-->
             <xsl:call-template name="gentext">
@@ -569,11 +570,9 @@
     <xsl:variable name="footnote-number">
       <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1" />
     </xsl:variable>
-    <span class="footnote-reference">
-      <a class="footnote-reference" href="#footnote{$footnote-number}">
-	<xsl:value-of select="$footnote-number" />
-      </a><xsl:if test="following-sibling::node()[normalize-space()!=''][1][self::cnx:note and @type='footnote']">, </xsl:if>
-    </span>
+    <a href="#footnote{$footnote-number}">
+      <xsl:value-of select="$footnote-number" />
+    </a><xsl:if test="following-sibling::node()[normalize-space()!=''][1][self::cnx:note and @type='footnote']">, </xsl:if>
   </xsl:template>
 
   <!-- NOTE -->
@@ -729,7 +728,9 @@
     <div class='meaning'>
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="count(parent::cnx:definition/cnx:meaning) > 1"> 
-      <span class="meaning-number"><xsl:number level="single"/>. </span>
+      <span class="cnx_before">
+        <xsl:number level="single"/>. 
+      </span>
       </xsl:if>
       <xsl:apply-templates/>
     </div>
@@ -873,6 +874,7 @@
         <li class="item">
           <xsl:call-template name='IdCheck'/>
           <strong class="name named-item">
+            <xsl:call-template name='IdCheck'/>
             <xsl:value-of select="cnx:name" />
             <xsl:if test="cnx:name[node()]">
               <xsl:text>:</xsl:text>
@@ -1425,7 +1427,7 @@
     <xsl:variable name="hide-string">
       <xsl:value-of select="concat('Hide', $solution-string)"/>
     </xsl:variable>
-    <div class="button" onclick="showSolution('{../@id}',{$solution-number})">
+    <div class="solution-toggle" onclick="showSolution('{../@id}',{$solution-number})">
       [
       <!-- Click for Solution/Diagnosis -->
       <xsl:call-template name="gentext">
@@ -1463,7 +1465,7 @@
         </xsl:element>
       </xsl:if>
       <xsl:apply-templates select="*[not(cnx:name)]" />
-      <div class="button" onclick="hideSolution('{../@id}',{$solution-number})">
+      <div class="solution-toggle" onclick="hideSolution('{../@id}',{$solution-number})">
         [ 
         <!-- Hide Solution/Diagnosis -->
         <xsl:call-template name="gentext">
