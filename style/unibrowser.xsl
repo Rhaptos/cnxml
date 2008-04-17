@@ -962,7 +962,7 @@
   </xsl:template>
   
   <!-- SUBFIGURE vertical -->
-  <xsl:template match="cnx:subfigure[../@orient='vertical']">
+  <xsl:template match="cnx:subfigure[parent::cnx:figure[@orient='vertical']]">
     <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
       <xsl:call-template name='IdCheck'/>
       <xsl:call-template name="caption"/>
@@ -989,10 +989,10 @@
   <xsl:template name="horizontal">
     <table border="0" cellpadding="0" cellspacing="0" width="100%">
       <xsl:if test="cnx:subfigure/cnx:name">
-        <thead>
+        <thead valign="bottom">
           <tr>
             <xsl:for-each select="cnx:subfigure">
-              <th valign="bottom">
+              <th>
                 <xsl:apply-templates select="cnx:name"/>
               </th>
             </xsl:for-each>
@@ -1011,7 +1011,7 @@
       <tbody>
         <tr>
           <xsl:for-each select="cnx:subfigure">
-            <td valign="middle" class="subfigure">
+            <td class="subfigure">
               <xsl:call-template name='IdCheck'/>
               <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name)]"/>
             </td>
@@ -1025,11 +1025,12 @@
   <xsl:template name="caption">
     <xsl:variable name="captionelement">
       <xsl:choose>
-        <xsl:when test="parent::cnx:figure[@orient='horizontal']">th</xsl:when>
+        <xsl:when test="parent::cnx:figure[not(@orient) or @orient='horizontal']">th</xsl:when>
         <xsl:otherwise>caption</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$captionelement}">
+      <xsl:attribute name="class">caption</xsl:attribute>
       <xsl:if test="$captionelement='caption'">
         <xsl:attribute name="align">bottom</xsl:attribute>
       </xsl:if>
