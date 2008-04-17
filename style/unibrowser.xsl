@@ -62,6 +62,7 @@
                                 ancestor::cnx:example|
                                 ancestor::cnx:definition|
                                 ancestor::cnx:rule|
+                                ancestor::cnx:proof|
                                 ancestor::cnx:problem|
                                 ancestor::cnx:solution|
                                 ancestor::cnx:glossary|
@@ -771,14 +772,23 @@
   <xsl:template match="cnx:proof">
     <div class='proof'>
       <xsl:call-template name='IdCheck'/>
-      <span class="cnx_before">
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key">Proof</xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-        </xsl:call-template>
-        <!--Proof-->
-        <xsl:if test="cnx:name">: </xsl:if></span>
-      <xsl:apply-templates/>
+      <xsl:variable name="level-number">
+        <xsl:call-template name="level-count" />
+      </xsl:variable>
+      <!-- h2, h3, etc... -->
+      <xsl:element name="h{$level-number}">
+        <xsl:attribute name="class">rule-header</xsl:attribute>
+        <span class="cnx_before">
+          <!--Proof-->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Proof</xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+          <xsl:if test="cnx:name">: </xsl:if>
+        </span>
+        <xsl:apply-templates select="cnx:name" />
+      </xsl:element>
+      <xsl:apply-templates select="*[not(self::cnx:name)]" />
     </div>
   </xsl:template>
   
