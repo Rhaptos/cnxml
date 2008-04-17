@@ -1409,10 +1409,13 @@
   <!--SOLUTION -->
   <xsl:template match="cnx:solution">
     <xsl:variable name="solution-number">
+      <xsl:number count="cnx:solution" />
+    </xsl:variable>
+    <xsl:variable name="solution-full-number">
       <xsl:number level="any" count="cnx:exercise" />
       <xsl:if test="count(parent::cnx:exercise/cnx:solution) > 1">
         <xsl:text>.</xsl:text>
-        <xsl:number count="cnx:solution" />
+        <xsl:value-of select="$solution-number" />
       </xsl:if>
     </xsl:variable>
     <xsl:variable name="solution-string">
@@ -1436,7 +1439,7 @@
       </xsl:call-template>
       <xsl:if test="$case-diagnosis = '0'">
         <xsl:text> </xsl:text> 
-        <xsl:value-of select="$solution-number" />
+        <xsl:value-of select="$solution-full-number" />
       </xsl:if>
       ]
     </div>
@@ -1457,14 +1460,14 @@
                 <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
               </xsl:call-template>
               <xsl:text> </xsl:text>
-              <xsl:value-of select="$solution-number" />
-              <xsl:if test="cnx:name">: </xsl:if>
+              <xsl:value-of select="$solution-full-number" />
+              <xsl:if test="cnx:name[node()]">: </xsl:if>
             </span>
           </xsl:if>
           <xsl:apply-templates select="cnx:name" />
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(cnx:name)]" />
+      <xsl:apply-templates select="*[not(self::cnx:name)]" />
       <div class="solution-toggle" onclick="hideSolution('{../@id}',{$solution-number})">
         [ 
         <!-- Hide Solution/Diagnosis -->
@@ -1473,7 +1476,7 @@
           <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
         </xsl:call-template>
         <xsl:if test="$case-diagnosis = '0'">
-          <xsl:text> </xsl:text> <xsl:value-of select="$solution-number" />
+          <xsl:text> </xsl:text> <xsl:value-of select="$solution-full-number" />
         </xsl:if>
         ]
       </div>
