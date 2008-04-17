@@ -570,7 +570,7 @@
     <xsl:variable name="footnote-number">
       <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1" />
     </xsl:variable>
-    <a href="#footnote{$footnote-number}">
+    <a class="footnote-reference" href="#footnote{$footnote-number}">
       <xsl:value-of select="$footnote-number" />
     </a><xsl:if test="following-sibling::node()[normalize-space()!=''][1][self::cnx:note and @type='footnote']">, </xsl:if>
   </xsl:template>
