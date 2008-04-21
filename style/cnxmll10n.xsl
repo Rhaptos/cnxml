@@ -158,13 +158,11 @@
       <l:gentext key="linktoseeallendorsed" text="link to see all content they endorse."/>
       <l:gentext key="linktoseeallaffiliated" text="link to see all content affiliated with them."/>
       <l:gentext key="linktoseeallselected" text="link to see all content selected in this lens."/>
-      <l:gentext key="Skiptomodulecontent" text="Skip to module content"/>
+      <l:gentext key="Skiptocontent" text="Skip to content"/>
+      <l:gentext key="Skiptonavigation" text="Skip to navigation"/>
       <l:gentext key="Skiptocollectioninformation" text="Skip to collection information"/>
-      <l:gentext key="Skiptocollectionnavigation" text="Skip to collection navigation"/>
-      <l:gentext key="Skiptosidebar" text="Skip to sidebar"/>
-      <l:gentext key="Sections" text="Sections"/>
       <l:gentext key="Selectedcolon" text="Selected:"/>
-      <l:gentext key="Sidebar" text="Sidebar"/>
+      <l:gentext key="Navigation" text="Navigation"/>
       <l:gentext key="Footer" text="Footer"/>
       <l:gentext key="Logofor" text="Logo for"/>
       <l:gentext key="Privatelenskey" text="Private lens key"/>
