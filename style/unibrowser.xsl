@@ -844,6 +844,7 @@
   <xsl:template match="cnx:list[@type='inline']">
     <span class="list">
       <xsl:call-template name='IdCheck'/>
+      <xsl:text> </xsl:text>
       <xsl:if test="cnx:name[node()]">
         <xsl:variable name="level-number">
           <xsl:call-template name="level-count" />
