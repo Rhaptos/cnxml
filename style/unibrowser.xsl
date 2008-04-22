@@ -888,7 +888,7 @@
             <xsl:call-template name='IdCheck'/>
             <xsl:value-of select="cnx:name" />
             <xsl:if test="cnx:name[node()]">
-              <xsl:text>:</xsl:text>
+              <xsl:text> - </xsl:text>
             </xsl:if>
             <xsl:text> </xsl:text>
           </strong>
