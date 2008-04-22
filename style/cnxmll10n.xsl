@@ -97,6 +97,7 @@
       <l:gentext key="Lasteditedby" text="Last edited by"/>
       <l:gentext key="on" text="on"/>
       <l:gentext key="Search" text="Search"/>
+      <l:gentext key="Searchcolon" text="Search: "/>
       <l:gentext key="Home" text="Home"/>
       <l:gentext key="AboutUs" text="About Us"/>
       <l:gentext key="Help" text="Help"/>
