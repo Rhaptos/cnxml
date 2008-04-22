@@ -1442,7 +1442,7 @@
     <xsl:variable name="hide-string">
       <xsl:value-of select="concat('Hide', $solution-string)"/>
     </xsl:variable>
-    <div class="solution-toggle" onclick="showSolution('{../@id}',{$solution-number})">
+    <a class="solution-toggle" href="#" onclick="showSolution('{../@id}',{$solution-number}); return false;">
       [
       <!-- Click for Solution/Diagnosis -->
       <xsl:call-template name="gentext">
@@ -1454,7 +1454,7 @@
         <xsl:value-of select="$solution-full-number" />
       </xsl:if>
       ]
-    </div>
+    </a>
     <div class="solution">
       <xsl:call-template name='IdCheck' />
       <xsl:if test="$case-diagnosis = '0' or cnx:name[node()]">
@@ -1480,7 +1480,7 @@
         </xsl:element>
       </xsl:if>
       <xsl:apply-templates select="*[not(self::cnx:name)]" />
-      <div class="solution-toggle" onclick="hideSolution('{../@id}',{$solution-number})">
+      <a class="solution-toggle" href="#" onclick="hideSolution('{../@id}',{$solution-number}); return false;">
         [ 
         <!-- Hide Solution/Diagnosis -->
         <xsl:call-template name="gentext">
@@ -1491,7 +1491,7 @@
           <xsl:text> </xsl:text> <xsl:value-of select="$solution-full-number" />
         </xsl:if>
         ]
-      </div>
+      </a>
     </div>
   </xsl:template>
 
