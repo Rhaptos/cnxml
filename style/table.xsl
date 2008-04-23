@@ -71,7 +71,7 @@
               </caption>
             </xsl:if>
             <xsl:if test="cnx:caption and not(cnx:name)">
-              <caption>
+              <caption align="bottom" class="caption">
                 <xsl:apply-templates select="cnx:caption" />
               </caption>
             </xsl:if>
@@ -1021,10 +1021,8 @@
 
   <!-- CAPTION inside TABLE -->
   <xsl:template match="cnx:table/cnx:caption">
-    <div class="caption">
-      <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates />
-    </div>
+    <xsl:call-template name='IdCheck'/>
+    <xsl:apply-templates />
   </xsl:template>
 
 
