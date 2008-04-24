@@ -6,13 +6,13 @@
   
 
   <xsl:template match="cnx:table">
-    <div class="table" align="center">
+    <div class="table">
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
 	<!-- OLD TABLES -->
 	<xsl:when test="cnx:categories">
           <xsl:apply-templates select="cnx:name" />
-	  <table class="old-table" cellspacing="0" cellpadding="0" style="border: 1px solid !important; border-collapse: collapse;">
+	  <table class="old-table" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid !important; border-collapse: collapse;">
 	    <!--Outputs CATEGORY as headers.-->
 	    <tr>
 	      <xsl:for-each select="//cnx:category">
@@ -35,7 +35,7 @@
 	</xsl:when>
 	<!-- NEW TABLE -->
 	<xsl:otherwise>
-	  <table cellspacing="0" cellpadding="0">
+	  <table cellspacing="0" cellpadding="0" align="center">
 	    <xsl:attribute name="style">
 	      <!-- The "solid" style is used because browsers need this to render any border at all (can be overridden in a CSS file 
 	      with !important marker).  Where the border is turned off with a "border-width: 0 !important;", the !important marker is 
@@ -66,12 +66,12 @@
 	      </xsl:if>
 	    </xsl:attribute>
             <xsl:if test="cnx:name">
-              <caption>
+              <caption class="table-name">
                 <xsl:apply-templates select="cnx:name" />
               </caption>
             </xsl:if>
             <xsl:if test="cnx:caption and not(cnx:name)">
-              <caption align="bottom" class="caption">
+              <caption align="bottom" class="table-caption">
                 <xsl:apply-templates select="cnx:caption" />
               </caption>
             </xsl:if>
@@ -95,7 +95,7 @@
 	    </xsl:choose>
 	  </table>
           <xsl:if test="cnx:name and cnx:caption">
-            <p class="caption">
+            <p class="table-caption">
               <xsl:apply-templates select="cnx:caption" />
             </p>
           </xsl:if>

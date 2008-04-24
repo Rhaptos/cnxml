@@ -931,7 +931,7 @@
         <xsl:if test="cnx:name[node()]|cnx:title[node()]|@name">
           <thead>
             <tr>
-              <th>
+              <th class="figure-name">
                 <xsl:apply-templates select="cnx:name|cnx:title|@name"/>
               </th>
             </tr>
@@ -939,7 +939,7 @@
         </xsl:if>
         <tbody>
           <tr>
-            <td>
+            <td class="inner-figure">
               <xsl:choose>
                 <xsl:when test="cnx:subfigure">
                   <xsl:choose>
@@ -964,13 +964,13 @@
   
   <!-- SUBFIGURE vertical -->
   <xsl:template match="cnx:subfigure[parent::cnx:figure[@orient='vertical']]">
-    <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%">
+    <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" class="vertical-subfigure">
       <xsl:call-template name='IdCheck'/>
       <xsl:call-template name="caption"/>
       <xsl:if test="cnx:name">
         <thead>
           <tr>
-            <th>
+            <th class="vertical-subfigure-name">
               <xsl:apply-templates select="cnx:name"/>
             </th>
           </tr>
@@ -978,7 +978,7 @@
       </xsl:if>
       <tbody>
         <tr>
-          <td>
+          <td class="inner-vertical-subfigure">
             <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name)]"/>
 	  </td>
         </tr>
@@ -988,12 +988,12 @@
 
   <!-- SUBFIGURE horizontal -->
   <xsl:template name="horizontal">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="horizontal-subfigure">
       <xsl:if test="cnx:subfigure/cnx:name">
         <thead valign="bottom">
           <tr>
             <xsl:for-each select="cnx:subfigure">
-              <th>
+              <th class="horizontal-subfigure-name">
                 <xsl:apply-templates select="cnx:name"/>
               </th>
             </xsl:for-each>
@@ -1012,7 +1012,7 @@
       <tbody>
         <tr>
           <xsl:for-each select="cnx:subfigure">
-            <td class="subfigure">
+            <td class="inner-horizontal-subfigure">
               <xsl:call-template name='IdCheck'/>
               <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name)]"/>
             </td>
@@ -1031,7 +1031,12 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$captionelement}">
-      <xsl:attribute name="class">caption</xsl:attribute>
+      <xsl:attribute name="class">
+        <xsl:choose>
+          <xsl:when test="parent::cnx:figure">subfigure-caption</xsl:when>
+          <xsl:otherwise>figure-caption</xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
       <xsl:if test="$captionelement='caption'">
         <xsl:attribute name="align">bottom</xsl:attribute>
       </xsl:if>
