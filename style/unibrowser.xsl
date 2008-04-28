@@ -952,7 +952,7 @@
 		<xsl:value-of select='@value'/>
 	      </xsl:attribute> 
 	    </xsl:for-each>
-            <xsl:if test="not(cnx:param[@alt])">
+            <xsl:if test="not(cnx:param[@name='alt'])">
               <xsl:attribute name="alt">
                 <xsl:value-of select="@src" />
               </xsl:attribute>
@@ -968,7 +968,7 @@
 	      <xsl:value-of select='@value'/>
 	    </xsl:attribute> 
 	  </xsl:for-each>
-          <xsl:if test="not(cnx:param[@alt])">
+          <xsl:if test="not(cnx:param[@name='alt'])">
             <xsl:attribute name="alt">
               <xsl:value-of select="@src" />
             </xsl:attribute>
