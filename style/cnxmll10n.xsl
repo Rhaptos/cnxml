@@ -27,6 +27,7 @@
       <l:gentext key="Diagnosis" text="Diagnosis"/>
       <l:gentext key="ClickForDiagnosis" text="Click for Diagnosis"/>
       <l:gentext key="HideDiagnosis" text="Hide Diagnosis"/>
+      <l:gentext key="Footnotes" text="Footnotes"/>
 
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>

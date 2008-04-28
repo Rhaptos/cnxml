@@ -227,19 +227,27 @@
 
 
       <!-- FOOTNOTEs -->
-      <xsl:for-each select="descendant::cnx:note[@type='footnote']">
-        <xsl:variable name="footnote-number">
-          <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1" />
-        </xsl:variable>
-        <a name="footnote{$footnote-number}"><xsl:text> </xsl:text></a>
-        <div class="footnote">
-	  <xsl:call-template name='IdCheck'/>
-          <span class="cnx_before">
-	    <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1. " />
-	  </span>
-          <xsl:apply-templates />
-        </div>
-      </xsl:for-each>
+      <xsl:if test="descendant::cnx:note[@type='footnote']">
+        <h2 class="hiddenStructure">
+          <!-- Footnotes -->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Footnotes</xsl:with-param>
+            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          </xsl:call-template>
+        </h2>
+        <ol id="footnotes">
+          <xsl:for-each select="descendant::cnx:note[@type='footnote']">
+            <xsl:variable name="footnote-number">
+              <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1" />
+            </xsl:variable>
+            <li>
+              <xsl:call-template name='IdCheck'/>
+              <a name="footnote{$footnote-number}"><xsl:text> </xsl:text></a>
+              <xsl:apply-templates />
+            </li>
+          </xsl:for-each>
+        </ol>
+      </xsl:if>
 
       <!-- GLOSSARY -->
       <xsl:if test='cnx:glossary'>
