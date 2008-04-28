@@ -42,7 +42,7 @@
 	      used to prevent a CSS file from overriding that zero width when a general width is given to table elements in a CSS file 
 	      (which must also use the !important marker to override the non-!important elements encoded inline).  -->
 	      <xsl:text>border: 1px solid; </xsl:text>
-	      <xsl:if test="@pgwide='1' or @orient='land'">
+	      <xsl:if test="@pgwide!='0' or @orient='land'">
 		width: 100%; 
 	      </xsl:if>
       	      <xsl:if test="@frame">
