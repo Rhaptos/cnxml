@@ -1455,19 +1455,6 @@
     <xsl:variable name="hide-string">
       <xsl:value-of select="concat('Hide', $solution-string)"/>
     </xsl:variable>
-    <a class="solution-toggle" href="#" onclick="showSolution('{../@id}',{$solution-number}); return false;">
-      [
-      <!-- Click for Solution/Diagnosis -->
-      <xsl:call-template name="gentext">
-        <xsl:with-param name="key"><xsl:value-of select="$clickfor-string"/></xsl:with-param>
-        <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-      </xsl:call-template>
-      <xsl:if test="$case-diagnosis = '0'">
-        <xsl:text> </xsl:text> 
-        <xsl:value-of select="$solution-full-number" />
-      </xsl:if>
-      ]
-    </a>
     <div class="solution">
       <xsl:call-template name='IdCheck' />
       <xsl:if test="$case-diagnosis = '0' or cnx:name[node()]">
@@ -1493,7 +1480,22 @@
         </xsl:element>
       </xsl:if>
       <xsl:apply-templates select="*[not(self::cnx:name)]" />
-      <a class="solution-toggle" href="#" onclick="hideSolution('{../@id}',{$solution-number}); return false;">
+    </div>
+    <a href="#" onclick="toggleSolution('{../@id}',{$solution-number}); return false;" class="solution-toggles">
+      <span class="solution-toggle">
+      [
+      <!-- Click for Solution/Diagnosis -->
+      <xsl:call-template name="gentext">
+        <xsl:with-param name="key"><xsl:value-of select="$clickfor-string"/></xsl:with-param>
+        <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+      </xsl:call-template>
+      <xsl:if test="$case-diagnosis = '0'">
+        <xsl:text> </xsl:text> 
+        <xsl:value-of select="$solution-full-number" />
+      </xsl:if>
+      ]
+      </span>
+      <span class="solution-toggle" style="display: none;">
         [ 
         <!-- Hide Solution/Diagnosis -->
         <xsl:call-template name="gentext">
@@ -1504,8 +1506,8 @@
           <xsl:text> </xsl:text> <xsl:value-of select="$solution-full-number" />
         </xsl:if>
         ]
-      </a>
-    </div>
+      </span>
+    </a>
   </xsl:template>
 
 </xsl:stylesheet>
