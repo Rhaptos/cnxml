@@ -60,7 +60,6 @@
     <xsl:variable name="level-number" 
                   select="count(ancestor::cnx:section|
                                 ancestor::cnx:example|
-                                ancestor::cnx:definition|
                                 ancestor::cnx:rule|
                                 ancestor::cnx:proof|
                                 ancestor::cnx:problem|
@@ -250,24 +249,7 @@
       </xsl:if>
 
       <!-- GLOSSARY -->
-      <xsl:if test='cnx:glossary'>
-	<div class='glossary'>
-	  <xsl:call-template name='IdCheck'/>
-	  <h2 class='glossary-header'>
-            <!--Glossary-->
-            <xsl:call-template name="gentext">
-              <xsl:with-param name="key">Glossary</xsl:with-param>
-              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-            </xsl:call-template>
-          </h2>
-	  <xsl:for-each select='cnx:glossary/cnx:definition'>
-	    <div class='glossary-definition'>
-	      <xsl:call-template name='IdCheck'/>
-	      <xsl:apply-templates/>
-	    </div>
-	  </xsl:for-each>
-	</div>
-      </xsl:if>
+      <xsl:apply-templates select="cnx:glossary" />
 
       <!--BIBTEXML -->
       <xsl:if test='bib:file'>
@@ -277,6 +259,22 @@
    </div>
 
   </xsl:template>
+
+  <!-- GLOSSARY -->
+  <xsl:template match="cnx:glossary">
+    <div class='glossary'>
+      <xsl:call-template name='IdCheck'/>
+      <h2 class='glossary-header'>
+        <!--Glossary-->
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Glossary</xsl:with-param>
+          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+        </xsl:call-template>
+      </h2>
+      <xsl:apply-templates />
+    </div>
+  </xsl:template>
+
 
   <!-- TOC -->
   <xsl:template name="toc">
@@ -643,27 +641,35 @@
 
   <!--DEFINITION-->
   <xsl:template match="cnx:definition">
-    <div class="definition">
+    <dl>
+      <xsl:attribute name="class">
+        <xsl:choose>
+          <xsl:when test="parent::cnx:glossary">glossary-definition</xsl:when>
+          <xsl:otherwise>definition</xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
       <xsl:call-template name='IdCheck'/>
-      <xsl:variable name="level-number">
-        <xsl:call-template name="level-count" />
-      </xsl:variable>
-      <!-- h2, h3, etc... -->
-      <xsl:element name="h{$level-number}">
-        <xsl:attribute name="class">definition-header</xsl:attribute>
-        <span class="cnx_before">
-          <!-- Definition -->
-          <xsl:call-template name="gentext">
-            <xsl:with-param name="key">Definition</xsl:with-param>
-            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-          </xsl:call-template>
-          <xsl:text>&#160;</xsl:text>
-          <xsl:number level="any" count="cnx:definition"/>: 
-        </span>
+      <dt>
+        <xsl:if test="not(parent::cnx:glossary)">
+          <span class="cnx_before">
+            <!-- Definition -->
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Definition</xsl:with-param>
+              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            </xsl:call-template>
+            <xsl:text>&#160;</xsl:text>
+            <xsl:number level="any" count="cnx:definition"/>: 
+          </span>
+        </xsl:if>
         <xsl:apply-templates select="cnx:term" />
-      </xsl:element>
-      <xsl:apply-templates select="*[not(self::cnx:term)]" />
-    </div>
+      </dt>
+      <xsl:for-each select="cnx:meaning">
+        <dd>
+          <xsl:apply-templates select=".|../cnx:example[generate-id(preceding-sibling::cnx:meaning[1]) = generate-id(current())]" />
+        </dd>
+      </xsl:for-each>
+      <xsl:apply-templates select="cnx:seealso" />
+    </dl>
   </xsl:template>
 
   <!--TERM-->
@@ -679,14 +685,14 @@
 	</xsl:otherwise>
       </xsl:choose>
       <xsl:if test="ancestor::cnx:glossary and parent::cnx:definition">
-	<xsl:text>: </xsl:text>
+	<xsl:text>:</xsl:text>
       </xsl:if>
     </dfn>
   </xsl:template>
 
   <!-- SEEALSO -->
   <xsl:template match="cnx:seealso">
-    <div class="seealso">
+    <dd class="seealso">
       <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">GlossSeeAlso</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>:
@@ -695,7 +701,7 @@
         <xsl:apply-templates select="."/>
         <xsl:if test="position()!=last()">, </xsl:if>
       </xsl:for-each>
-    </div>
+    </dd>
   </xsl:template>
   
   <!--CITE-->
