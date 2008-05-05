@@ -90,7 +90,7 @@
 		</tbody>
 	      </xsl:when>
 	      <xsl:otherwise>
-		<xsl:apply-templates select="*[not(self::cnx:name or self::cnx:caption)]" />
+		<xsl:apply-templates select="cnx:tgroup" />
 	      </xsl:otherwise>
 	    </xsl:choose>
 	  </table>
@@ -113,7 +113,9 @@
 	<xsl:call-template name="col.maker" />
       </colgroup>
     </xsl:if>
-    <xsl:apply-templates/>
+    <xsl:apply-templates select="cnx:thead" />
+    <xsl:apply-templates select="cnx:tbody" />
+    <xsl:apply-templates select="cnx:tfoot" />
   </xsl:template>
 
   <xsl:template match="cnx:entrytbl">
