@@ -107,14 +107,19 @@
       <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
       <l:gentext key="Bookmarkhelp" text="Add this content to the social bookmarking site del.icio.us, where you can share your favorite links with others."/>
       <l:gentext key="parensquestion" text="(?)"/>
-      <l:gentext key="Quality" text="Quality"/>
+      <l:gentext key="questionmark" text="?"/>
+      <l:gentext key="Whatdoessavingtodeliciousmean" text="What does saving to del.icio.us mean"/>
       <l:gentext key="EndorsedBy" text="Endorsed by"/>
+      <l:gentext key="Whatdoesendorsedbymean" text='What does "Endorsed by" mean'/>
       <l:gentext key="AffiliatedWith" text="Affiliated with"/>
+      <l:gentext key="Whatdoesaffiliatedwithmean" text='What does "Affiliated with" mean'/>
+      <l:gentext key="Definitionofalens" text="Definition of a lens"/>
       <l:gentext key="Lenses" text="Lenses"/>
       <l:gentext key="AddLens" text="Add to a lens"/>
       <l:gentext key="Intheselenses" text="In these lenses" />
       <l:gentext key="Alsointheselenses" text="Also in these lenses" />
       <l:gentext key="Tags" text="Tags"/>
+      <l:gentext key="Whatisatag" text="What is a tag"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
       <l:gentext key="ContactUs" text="Contact Us"/>
       <l:gentext key="Youarehere" text="You are here: "/>
@@ -147,7 +152,7 @@
       <l:gentext key="Lensby" text="Lens by:"/>
       <l:gentext key="Comments" text="Comments:"/>
       <l:gentext key="Lens" text="Lens:"/>
-      <l:gentext key="Whatisalens" text="What is a lens?"/>
+      <l:gentext key="Whatisalens" text="What is a lens"/>
       <l:gentext key="Lensespara" text="A lens is a custom view of Connexions content. You can think of it as a fancy kind of list that will let you see Connexions through the eyes of organizations and people you trust."/>
       <l:gentext key="Whatisinalens" text="What is in a lens?"/>
       <l:gentext key="Whatisinalenspara" text="Lens makers point to Connexions materials (modules and collections), creating a guide that includes their own comments and descriptive tags about the content."/>
