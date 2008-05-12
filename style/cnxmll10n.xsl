@@ -15,7 +15,7 @@
       <l:gentext key="Proof" text="Proof"/>
       <l:gentext key="MediaFile" text="Media File"/>
       <l:gentext key="EPSImage" text="EPS Image"/>
-      <l:gentext key="LabVIEWExample" text="LabVIEWExample"/>
+      <l:gentext key="LabVIEWExample" text="LabVIEW Example"/>
       <l:gentext key="Download" text="Download"/>
       <l:gentext key="LabVIEWSource" text="LabVIEW Source"/>
       <l:gentext key="AudioFile" text="Audio File"/>
