@@ -791,7 +791,7 @@
       </xsl:variable>
       <!-- h2, h3, etc... -->
       <xsl:element name="h{$level-number}">
-        <xsl:attribute name="class">rule-header</xsl:attribute>
+        <xsl:attribute name="class">proof-header</xsl:attribute>
         <span class="cnx_before">
           <!--Proof-->
           <xsl:call-template name="gentext">
