@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.20-1) unstable; urgency=low
+
+  * support for major Edit-in-Place update
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Mon, 12 May 2008 15:03:26 -0500
+
 connexions-cnxml (0.5.19-1) unstable; urgency=low
 
   * add translations for lens hover boxes

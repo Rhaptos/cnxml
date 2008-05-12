@@ -1,3 +1,4 @@
+CNXML-0.5 (p20)
   - various small changes to make the XHTML output work better with EIP 
     and be more valid in places
 
