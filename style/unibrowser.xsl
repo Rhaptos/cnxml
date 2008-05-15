@@ -561,7 +561,7 @@
   </xsl:template>
   <!--CODE.block (IE understands pre better than code.codeblock) -->
   <xsl:template match="cnx:codeblock|cnx:code[@type='block']">
-    <pre class="codeblock">
+    <pre class="code codeblock">
       <code>
         <xsl:call-template name='IdCheck'/>
         <xsl:apply-templates />
