@@ -36,6 +36,11 @@
 	<!-- NEW TABLE -->
 	<xsl:otherwise>
 	  <table cellspacing="0" cellpadding="0" align="center">
+            <xsl:if test="processing-instruction('summary')">
+              <xsl:attribute name="summary">
+                <xsl:value-of select="processing-instruction('summary')" />
+              </xsl:attribute>
+            </xsl:if>
 	    <xsl:attribute name="style">
 	      <!-- The "solid" style is used because browsers need this to render any border at all (can be overridden in a CSS file 
 	      with !important marker).  Where the border is turned off with a "border-width: 0 !important;", the !important marker is 
