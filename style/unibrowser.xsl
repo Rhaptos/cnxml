@@ -984,7 +984,7 @@
   
   <!-- SUBFIGURE vertical -->
   <xsl:template match="cnx:subfigure[parent::cnx:figure[@orient='vertical']]">
-    <table border="0" cellpadding="0" cellspacing="0" align="center" width="100%" class="vertical-subfigure">
+    <table border="0" cellpadding="0" cellspacing="0" align="center" class="vertical-subfigure">
       <xsl:call-template name='IdCheck'/>
       <xsl:call-template name="caption"/>
       <xsl:if test="cnx:name">
@@ -1008,7 +1008,7 @@
 
   <!-- SUBFIGURE horizontal -->
   <xsl:template name="horizontal">
-    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="horizontal-subfigure">
+    <table border="0" cellpadding="0" cellspacing="0" class="horizontal-subfigure">
       <xsl:if test="cnx:subfigure/cnx:name">
         <thead valign="bottom">
           <tr>
