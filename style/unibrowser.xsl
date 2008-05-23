@@ -810,6 +810,7 @@
   <!-- Default list.  Prints a list of type='bulleted'. -->
   <xsl:template match="cnx:list">
     <div class="list">
+    <xsl:call-template name='IdCheck'/>
     <xsl:if test="cnx:name[node()]">
       <xsl:variable name="level-number">
         <xsl:call-template name="level-count" />
@@ -821,7 +822,6 @@
       </xsl:element>
     </xsl:if>
     <ul>
-      <xsl:call-template name='IdCheck'/>
       <xsl:for-each select="cnx:item">
         <li class="item">
           <xsl:call-template name='IdCheck'/>
@@ -836,6 +836,7 @@
   <!-- Numbered lists -->
   <xsl:template match="cnx:list[@type='enumerated']">
     <div class="list">
+    <xsl:call-template name='IdCheck'/>
     <xsl:if test="cnx:name[node()]">
       <xsl:variable name="level-number">
         <xsl:call-template name="level-count" />
@@ -847,7 +848,6 @@
       </xsl:element>
     </xsl:if>
     <ol>
-      <xsl:call-template name='IdCheck'/>
       <xsl:for-each select="cnx:item">
         <li class="item">
           <xsl:call-template name='IdCheck'/>
@@ -888,6 +888,7 @@
   <!--LIST with type='named-item' -->
   <xsl:template match="cnx:list[@type='named-item']">
     <div class="list named-item">
+    <xsl:call-template name='IdCheck'/>
     <xsl:if test="cnx:name[node()]">
       <xsl:variable name="level-number">
         <xsl:call-template name="level-count" />
@@ -899,7 +900,6 @@
       </xsl:element>
     </xsl:if>
     <ul>
-      <xsl:call-template name='IdCheck'/>
       <xsl:for-each select="cnx:item">
         <li class="item">
           <xsl:call-template name='IdCheck'/>
