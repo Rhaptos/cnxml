@@ -55,6 +55,10 @@
       <l:gentext key="hereanda" text=" here and a "/>
       <l:gentext key="listofchanges" text="list of changes"/>
       <l:gentext key="here" text=" here."/>
+      <l:gentext key="CollectionNavigation" text="Collection Navigation" />
+      <l:gentext key="Previous" text="Previous"/>
+      <l:gentext key="Next" text="Next"/>
+      <l:gentext key="CollectionHome" text="Collection Home: "/>
       <l:gentext key="Commentsquestionsfeedback" text="Comments, questions, feedback, criticisms?"/>
       <l:gentext key="Discussionforum" text="Discussion forum"/>
       <l:gentext key="Jointhediscussion" text="Join the discussion &#187;"/>
@@ -125,8 +129,8 @@
       <l:gentext key="Youarehere" text="You are here: "/>
       <l:gentext key="rightanglequote" text=" &#187; "/>
       <l:gentext key="Content" text="Content"/>
-      <l:gentext key="Previous" text="&#171; Previous"/>
-      <l:gentext key="Next" text="Next &#187;"/>
+      <l:gentext key="arrowPrevious" text="&#171; Previous"/>
+      <l:gentext key="Nextarrow" text="Next &#187;"/>
       <l:gentext key="pipe" text=" | "/>
       <l:gentext key="InCollection" text="Inside Collection"/>
       <l:gentext key="leftparen" text="("/>
