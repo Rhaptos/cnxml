@@ -1020,15 +1020,13 @@
           </tr>
         </thead>
       </xsl:if>
-      <xsl:if test="cnx:subfigure/cnx:caption">
-        <tfoot>
-          <tr>
-            <xsl:for-each select="cnx:subfigure">
-              <xsl:call-template name="caption"/>
-            </xsl:for-each>
-          </tr>
-        </tfoot>
-      </xsl:if>
+      <tfoot>
+        <tr>
+          <xsl:for-each select="cnx:subfigure">
+            <xsl:call-template name="caption"/>
+          </xsl:for-each>
+        </tr>
+      </tfoot>
       <tbody>
         <tr>
           <xsl:for-each select="cnx:subfigure">
