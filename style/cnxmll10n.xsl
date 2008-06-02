@@ -56,8 +56,9 @@
       <l:gentext key="listofchanges" text="list of changes"/>
       <l:gentext key="here" text=" here."/>
       <l:gentext key="CollectionNavigation" text="Collection Navigation" />
-      <l:gentext key="Previous" text="Previous"/>
-      <l:gentext key="Next" text="Next"/>
+      <l:gentext key="Previousmodule" text="&#171; Previous module"/>
+      <l:gentext key="Nextmodule" text="Next module"/>
+      <l:gentext key="incollection" text="in collection"/>
       <l:gentext key="CollectionHome" text="Collection Home: "/>
       <l:gentext key="Commentsquestionsfeedback" text="Comments, questions, feedback, criticisms?"/>
       <l:gentext key="Discussionforum" text="Discussion forum"/>
@@ -80,6 +81,7 @@
       <l:gentext key="Similarcontent" text="Similar content"/>
       <l:gentext key="Moresimilarcontent" text="More links to similar content"/>
       <l:gentext key="More" text="More"/>
+      <l:gentext key="similarcontent" text="similar content"/>
       <l:gentext key="Coursesusingcontent" text="Collections using this content"/>
       <l:gentext key="Othercoursesusingcontent" text="Other collections using this content"/>
       <l:gentext key="Morecoursesusingcontent" text="More collections using this content"/>
@@ -130,7 +132,8 @@
       <l:gentext key="rightanglequote" text=" &#187; "/>
       <l:gentext key="Content" text="Content"/>
       <l:gentext key="arrowPrevious" text="&#171; Previous"/>
-      <l:gentext key="Nextarrow" text="Next &#187;"/>
+      <l:gentext key="Next" text="Next"/>
+      <l:gentext key="moduleincollection" text="module in collection"/>
       <l:gentext key="pipe" text=" | "/>
       <l:gentext key="InCollection" text="Inside Collection"/>
       <l:gentext key="leftparen" text="("/>
@@ -143,7 +146,9 @@
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="showtableofcontents" text="show table of contents"/>
+      <l:gentext key="tableofcontents" text="table of contents"/>
       <l:gentext key="Links" text="Links"/>
+      <l:gentext key="links" text="links"/>
       <l:gentext key="EndorsementHelpText" text="This content has been endorsed by the organizations listed. Click each link for a list of all content endorsed by the organization."/>
       <l:gentext key="AffiliationHelpText" text="This content is either by members of the organizations listed or about topics related to the organizations listed. Click each link to see a list of all content affiliated with the organization."/>
       <l:gentext key="TagHelpText" text="These tags come from the endorsement, affiliation, and other lenses that include this content."/>
