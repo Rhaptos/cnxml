@@ -59,7 +59,7 @@
       <l:gentext key="Previousmodule" text="&#171; Previous module"/>
       <l:gentext key="Nextmodule" text="Next module"/>
       <l:gentext key="incollection" text="in collection"/>
-      <l:gentext key="CollectionHome" text="Collection Home: "/>
+      <l:gentext key="Collectionhome" text="Collection home: "/>
       <l:gentext key="Commentsquestionsfeedback" text="Comments, questions, feedback, criticisms?"/>
       <l:gentext key="Discussionforum" text="Discussion forum"/>
       <l:gentext key="Jointhediscussion" text="Join the discussion &#187;"/>
@@ -134,7 +134,6 @@
       <l:gentext key="arrowPrevious" text="&#171; Previous"/>
       <l:gentext key="Next" text="Next"/>
       <l:gentext key="moduleincollection" text="module in collection"/>
-      <l:gentext key="pipe" text=" | "/>
       <l:gentext key="InCollection" text="Inside Collection"/>
       <l:gentext key="leftparen" text="("/>
       <l:gentext key="rightparen" text=")"/>
