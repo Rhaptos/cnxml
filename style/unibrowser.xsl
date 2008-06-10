@@ -66,7 +66,7 @@
                                 ancestor::cnx:solution|
                                 ancestor::cnx:glossary|
                                 ancestor::cnx:para[cnx:name]|
-                                ancestor::cnx:list[cnx:name])" />
+                                ancestor::cnx:list[not(@type='inline') and cnx:name])" />
     <xsl:choose>
       <xsl:when test="$level-number &lt; 4">
         <xsl:value-of select="$level-number + 2" />
@@ -367,7 +367,7 @@
         <xsl:if test="not(node())">
           <xsl:text> </xsl:text>
         </xsl:if>
-        <xsl:if test="parent::cnx:meaning or parent::cnx:item">
+        <xsl:if test="parent::cnx:meaning or parent::cnx:item or parent::cnx:list[@type='inline']">
           <xsl:text>: </xsl:text>
         </xsl:if>
       </strong>
@@ -863,16 +863,7 @@
     <span class="list">
       <xsl:call-template name='IdCheck'/>
       <xsl:text> </xsl:text>
-      <xsl:if test="cnx:name[node()]">
-        <xsl:variable name="level-number">
-          <xsl:call-template name="level-count" />
-        </xsl:variable>
-        <!-- h2, h3, etc... -->
-        <xsl:element name="h{$level-number}">
-          <xsl:attribute name="class">list-header</xsl:attribute>
-          <xsl:value-of select="cnx:name" />: 
-        </xsl:element>
-      </xsl:if>
+      <xsl:apply-templates select="cnx:name" />
       <xsl:for-each select="cnx:item[node()]">
 	<span class="item">
 	  <xsl:call-template name='IdCheck'/>
