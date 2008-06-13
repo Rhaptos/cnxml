@@ -898,9 +898,16 @@
             <xsl:call-template name='IdCheck'/>
             <xsl:value-of select="cnx:name" />
             <xsl:if test="cnx:name[node()]">
-              <xsl:text> - </xsl:text>
+              <xsl:choose>
+                <xsl:when test="parent::cnx:list/processing-instruction('mark')">
+                  <xsl:value-of select="parent::cnx:list/processing-instruction('mark')" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:text> -</xsl:text>
+                </xsl:otherwise>
+              </xsl:choose>
+              <xsl:text> </xsl:text>
             </xsl:if>
-            <xsl:text> </xsl:text>
           </strong>
           <xsl:apply-templates select="*[not(self::cnx:name)]|text()"/>
         </li>
