@@ -1130,11 +1130,7 @@
 		<xsl:value-of select='@value'/>
 	      </xsl:attribute> 
 	    </xsl:for-each>
-            <xsl:if test="not(cnx:param[@name='alt'])">
-              <xsl:attribute name="alt">
-                <xsl:value-of select="@src" />
-              </xsl:attribute>
-            </xsl:if>
+            <xsl:call-template name="altgenerator" />
 	  </img>
 	</a>	    
       </xsl:when>
@@ -1146,16 +1142,71 @@
 	      <xsl:value-of select='@value'/>
 	    </xsl:attribute> 
 	  </xsl:for-each>
-          <xsl:if test="not(cnx:param[@name='alt'])">
-            <xsl:attribute name="alt">
-              <xsl:value-of select="@src" />
-            </xsl:attribute>
-          </xsl:if>
+          <xsl:call-template name="altgenerator" />
 	  <xsl:apply-templates select="media" />
 	</img>
       </xsl:otherwise>
     </xsl:choose>
     </span>
+  </xsl:template>
+
+  <!-- Alt generator (if that param is absent) -->
+  <xsl:template name="altgenerator">
+    <xsl:if test="not(cnx:param[@name='alt'])">
+      <xsl:attribute name="alt">
+        <xsl:choose>
+          <xsl:when test="parent::cnx:figure">
+            <xsl:choose>
+              <xsl:when test="parent::cnx:figure/cnx:name">
+                <xsl:value-of select="parent::cnx:figure/cnx:name" />
+              </xsl:when>
+              <xsl:otherwise>
+                <!--Figure--> 
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key">Figure</xsl:with-param>
+                    <xsl:with-param name="lang">
+                      <xsl:value-of select="/module/metadata/language"/>
+                    </xsl:with-param>
+                  </xsl:call-template>
+                <xsl:text> </xsl:text>
+                <xsl:number level="any" count="cnx:figure" />
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="@src" />
+            <xsl:text>)</xsl:text>
+          </xsl:when>
+          <xsl:when test="parent::cnx:subfigure">
+            <xsl:choose>
+              <xsl:when test="parent::cnx:subfigure/cnx:name">
+                <xsl:value-of select="parent::cnx:subfigure/cnx:name" />
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:if test="ancestor::cnx:figure[1]/cnx:name">
+                  <xsl:value-of select="ancestor::cnx:figure[1]/cnx:name" />
+                  <xsl:text>, </xsl:text>
+                </xsl:if>
+                <!--Subfigure--> 
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key">Subfigure</xsl:with-param>
+                    <xsl:with-param name="lang">
+                      <xsl:value-of select="/module/metadata/language"/>
+                    </xsl:with-param>
+                  </xsl:call-template>
+                <xsl:text> </xsl:text>
+		<xsl:number level="any" count="//cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" />
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text> (</xsl:text>
+            <xsl:value-of select="@src" />
+            <xsl:text>)</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@src" />
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+    </xsl:if>
   </xsl:template>
 
   <!--MEDIA:EPS Image -->
