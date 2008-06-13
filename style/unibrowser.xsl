@@ -977,7 +977,6 @@
   <xsl:template match="cnx:subfigure[parent::cnx:figure[@orient='vertical']]">
     <table border="0" cellpadding="0" cellspacing="0" align="center" class="vertical-subfigure">
       <xsl:call-template name='IdCheck'/>
-      <xsl:call-template name="caption"/>
       <xsl:if test="cnx:name">
         <thead>
           <tr>
@@ -987,6 +986,11 @@
           </tr>
         </thead>
       </xsl:if>
+      <tfoot>
+        <tr>
+          <xsl:call-template name="caption" />
+        </tr>
+      </tfoot>
       <tbody>
         <tr>
           <td class="inner-vertical-subfigure">
@@ -1035,14 +1039,15 @@
   <xsl:template name="caption">
     <xsl:variable name="captionelement">
       <xsl:choose>
-        <xsl:when test="parent::cnx:figure[not(@orient) or @orient='horizontal']">th</xsl:when>
+        <xsl:when test="parent::cnx:figure">th</xsl:when>
         <xsl:otherwise>caption</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$captionelement}">
       <xsl:attribute name="class">
         <xsl:choose>
-          <xsl:when test="parent::cnx:figure">subfigure-caption</xsl:when>
+          <xsl:when test="parent::cnx:figure[@orient='vertical']">vertical-subfigure-caption</xsl:when>
+          <xsl:when test="parent::cnx:figure">horizontal-subfigure-caption</xsl:when>
           <xsl:otherwise>figure-caption</xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
