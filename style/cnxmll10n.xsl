@@ -92,14 +92,16 @@
       <l:gentext key="authoronly" text=" (author only)"/>
       <l:gentext key="MoreAboutThisContent" text="More about this content: "/>
       <l:gentext key="Metadata" text="Metadata"/>
-      <l:gentext key="CiteThisContent" text="Cite This Content"/>
       <l:gentext key="VersionHistory" text="Version History"/>
+      <l:gentext key="Howto" text="How to"/>
+      <l:gentext key="reuse" text="reuse"/>
+      <l:gentext key="cite" text="cite"/>
+      <l:gentext key="andattributethiscontent" text="and attribute this content"/>
       <l:gentext key="Worklicensedby" text="This work is licensed by"/>
       <l:gentext key="and" text="and"/>
       <l:gentext key="comma" text=", "/>
-      <l:gentext key="Seethe" text="See the"/>
-      <l:gentext key="CreativeCommonsLicense" text="Creative Commons License"/>
-      <l:gentext key="aboutpermission" text="about permission to reuse this material."/>
+      <l:gentext key="undera" text="under a"/>
+      <l:gentext key="CreativeCommonsAttributionLicense" text="Creative Commons Attribution License"/>
       <l:gentext key="period" text=". "/>
       <l:gentext key="Lasteditedby" text="Last edited by"/>
       <l:gentext key="on" text="on"/>
@@ -199,7 +201,6 @@
       <l:gentext key="Moreaboutthiscontent" text="More about this content"/>
       <l:gentext key="Citethiscontent" text="Cite this content"/>
       <l:gentext key="Versionhistory" text="Version history"/>
-      <l:gentext key="undera" text="under a"/>
 <!--
       <l:gentext key="Summer Sky" text="Summer Sky"/>
       <l:gentext key="Desert Scape" text="Desert Scape"/>
