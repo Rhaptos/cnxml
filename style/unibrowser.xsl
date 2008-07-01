@@ -585,20 +585,37 @@
 
   <!--TERM-->
   <xsl:template match="cnx:term">
-    <span class="term">
-      <xsl:call-template name='IdCheck'/>
-      <xsl:choose>
-	<xsl:when test="@src">
-	  <a href="{@src}"><xsl:apply-templates /></a>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:apply-templates />
-	</xsl:otherwise>
-      </xsl:choose>
-      <xsl:if test="ancestor::cnx:glossary and parent::cnx:definition">
-	<xsl:text>: </xsl:text>
-      </xsl:if>
-    </span>
+    <xsl:choose>
+      <xsl:when test="//cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]">
+        <span class="lensinfowrap">
+          <dfn class="term">
+            <xsl:call-template name='IdCheck'/>
+            <a href="{@src}" class="lenslink"><xsl:apply-templates /></a>
+          </dfn>
+          <span class="lensinfo hiddenStructure">
+            <xsl:apply-templates select="//cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]/*[not(self::cnx:term)]" />
+          </span>
+        </span>
+      </xsl:when>
+      <xsl:when test="@src">
+        <dfn class="term">
+          <xsl:call-template name='IdCheck'/>
+          <a href="{@src}"><xsl:apply-templates /></a>
+          <xsl:if test="ancestor::cnx:glossary and parent::cnx:definition">
+            <xsl:text>:</xsl:text>
+          </xsl:if>
+        </dfn>
+      </xsl:when>
+      <xsl:otherwise>
+        <dfn class="term">
+          <xsl:call-template name='IdCheck'/>
+          <xsl:apply-templates />
+          <xsl:if test="ancestor::cnx:glossary and parent::cnx:definition">
+            <xsl:text>:</xsl:text>
+          </xsl:if>
+        </dfn>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- SEEALSO -->
