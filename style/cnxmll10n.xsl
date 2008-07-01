@@ -131,7 +131,6 @@
       <l:gentext key="GoToCollectionHome" text="Go to collection home page"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
-      <l:gentext key="showtableofcontents" text="show table of contents"/>
       <l:gentext key="Links" text="Links"/>
       <l:gentext key="EndorsementHelpText" text="This content has been endorsed by the organizations listed. Click each link for a list of all content endorsed by the organization."/>
       <l:gentext key="AffiliationHelpText" text="This content is either by members of the organizations listed or about topics related to the organizations listed. Click each link to see a list of all content affiliated with the organization."/>
