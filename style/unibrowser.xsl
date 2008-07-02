@@ -1086,12 +1086,10 @@
       <span class="cnx_before">
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure">
-            <xsl:call-template name="gentext">
-              <xsl:with-param name="key">Subfigure</xsl:with-param>
-              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-            </xsl:call-template>
-            <xsl:text>&#160;</xsl:text>
-            <!--Subfigure--> <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
+            <xsl:number count="cnx:subfigure" format="(a)" />
+            <xsl:if test="cnx:caption">
+              <xsl:text> </xsl:text>
+            </xsl:if>
 	  </xsl:when>
           <xsl:otherwise>
             <xsl:call-template name="gentext">
@@ -1215,15 +1213,15 @@
                   <xsl:value-of select="ancestor::cnx:figure[1]/cnx:name" />
                   <xsl:text>, </xsl:text>
                 </xsl:if>
-                <!--Subfigure--> 
+                <!--Figure--> 
                 <xsl:call-template name="gentext">
-                  <xsl:with-param name="key">Subfigure</xsl:with-param>
+                  <xsl:with-param name="key">Figure</xsl:with-param>
                     <xsl:with-param name="lang">
                       <xsl:value-of select="/module/metadata/language"/>
                     </xsl:with-param>
                   </xsl:call-template>
                 <xsl:text> </xsl:text>
-		<xsl:number level="any" count="//cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" />
+		<xsl:number level="any" count="//cnx:figure" /><xsl:number count="cnx:subfigure" format="(a)" />
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text> (</xsl:text>
