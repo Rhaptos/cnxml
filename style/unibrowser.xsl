@@ -227,7 +227,8 @@
 
       <!-- FOOTNOTEs -->
       <xsl:if test="descendant::cnx:note[@type='footnote']">
-        <h2 class="hiddenStructure">
+        <div class="footnotes">
+        <h2 class="footnotes-header">
           <!-- Footnotes -->
           <xsl:call-template name="gentext">
             <xsl:with-param name="key">Footnotes</xsl:with-param>
@@ -246,6 +247,7 @@
             </li>
           </xsl:for-each>
         </ol>
+        </div>
       </xsl:if>
 
       <!-- GLOSSARY -->
