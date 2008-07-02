@@ -1,3 +1,37 @@
+  - #5731: Added pop-up feature for terms that link to definitions in 
+    in-module glossaries.
+  - Added translation support for: attribution policy footer text 
+    changes (#5751), previous/next/collection home prefixes (#5566), 
+    changes to portlet texts, the label for the search box, the "skip 
+    to" links (for screen readers), hidden headers and other hidden 
+    texts.
+  - Added processing instructions as pre-0.6 hacks to put in table 
+    summary attributes (#5621) and have custom delimiters in named-item 
+    lists (#5428).  Also added hack to support creating row headers.
+  - #5735: Generated better alts for images that don't have alt params.
+  - Changed many elements to make output more semantic, including: 
+    named-item list as <ul>s (#5428); definition as <dl>s (#5306); 
+    footnotes in an <ol>; <caption> for table name and, if table has no 
+    name, <caption> for table caption; name as <strong>; figure name 
+    as <thead> and figure caption as <caption>; para as <p>; emphasis 
+    as <em>; <code> around all code (block or inline); cite attribute 
+    for <blockquote>; term as <dfn>.
+  - Put table footer after tfoot so that screen readers interpret them 
+    better, even though that's invalid.
+  - Made solution toggler work better for keyboard and screen reader 
+    users by using a single <a> (onclickable) and toggling text inside 
+    that <a>.
+  - Changed several CSS selectors to be more precise or efficient.
+  - Used HTML headers for names/prefixes of section, example, rule, 
+    proof, problem, solution, glossary, para, and non-inline lists.  
+    They go from h2 to h6 depending on what they're nested in
+  - Allowed glossary to have user-supplied ID.
+  - #2250: Implemented more of CALS table, including: correct border 
+    implementation; support of multiple tgroups; fuller support of 
+    colwidth, colsep, rowsep, char, charoff, valign, and align 
+    attributes (including from previous unsupported ancestors); 
+    spanning via spanname attribute; better column identification.
+
 CNXML-0.5 (p20)
   - various small changes to make the XHTML output work better with EIP 
     and be more valid in places
