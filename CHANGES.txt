@@ -1,3 +1,6 @@
+  - #5731: popup definitions
+  - #5605: table of contents header changed
+
 CNXML-0.5 (p20)
   - various small changes to make the XHTML output work better with EIP 
     and be more valid in places
