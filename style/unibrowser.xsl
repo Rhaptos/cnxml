@@ -677,14 +677,14 @@
   <!--TERM-->
   <xsl:template match="cnx:term">
     <xsl:choose>
-      <xsl:when test="//cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]">
+      <xsl:when test="not(ancestor::cnx:glossary) and ancestor::cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]">
         <span class="lensinfowrap">
           <dfn class="term">
             <xsl:call-template name='IdCheck'/>
             <a href="{@src}" class="lenslink"><xsl:apply-templates /></a>
           </dfn>
           <span class="lensinfo hiddenStructure">
-            <xsl:apply-templates select="//cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]/*[not(self::cnx:term)]" />
+            <xsl:apply-templates select="ancestor::cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]/*[not(self::cnx:term)]" />
           </span>
         </span>
       </xsl:when>
