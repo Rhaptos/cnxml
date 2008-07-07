@@ -27,6 +27,7 @@
       <l:gentext key="Diagnosis" text="Diagnosis"/>
       <l:gentext key="ClickForDiagnosis" text="Click for Diagnosis"/>
       <l:gentext key="HideDiagnosis" text="Hide Diagnosis"/>
+      <l:gentext key="Footnotes" text="Footnotes"/>
 
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>
@@ -54,6 +55,11 @@
       <l:gentext key="hereanda" text=" here and a "/>
       <l:gentext key="listofchanges" text="list of changes"/>
       <l:gentext key="here" text=" here."/>
+      <l:gentext key="CollectionNavigation" text="Collection Navigation" />
+      <l:gentext key="Previousmodule" text="&#171; Previous module"/>
+      <l:gentext key="Nextmodule" text="Next module"/>
+      <l:gentext key="incollection" text="in collection"/>
+      <l:gentext key="Collectionhome" text="Collection home: "/>
       <l:gentext key="Commentsquestionsfeedback" text="Comments, questions, feedback, criticisms?"/>
       <l:gentext key="Discussionforum" text="Discussion forum"/>
       <l:gentext key="Jointhediscussion" text="Join the discussion &#187;"/>
@@ -75,6 +81,7 @@
       <l:gentext key="Similarcontent" text="Similar content"/>
       <l:gentext key="Moresimilarcontent" text="More links to similar content"/>
       <l:gentext key="More" text="More"/>
+      <l:gentext key="similarcontent" text="similar content"/>
       <l:gentext key="Coursesusingcontent" text="Collections using this content"/>
       <l:gentext key="Othercoursesusingcontent" text="Other collections using this content"/>
       <l:gentext key="Morecoursesusingcontent" text="More collections using this content"/>
@@ -85,18 +92,21 @@
       <l:gentext key="authoronly" text=" (author only)"/>
       <l:gentext key="MoreAboutThisContent" text="More about this content: "/>
       <l:gentext key="Metadata" text="Metadata"/>
-      <l:gentext key="CiteThisContent" text="Cite This Content"/>
       <l:gentext key="VersionHistory" text="Version History"/>
+      <l:gentext key="Howto" text="How to"/>
+      <l:gentext key="reuse" text="reuse"/>
+      <l:gentext key="cite" text="cite"/>
+      <l:gentext key="andattributethiscontent" text="and attribute this content"/>
       <l:gentext key="Worklicensedby" text="This work is licensed by"/>
       <l:gentext key="and" text="and"/>
       <l:gentext key="comma" text=", "/>
-      <l:gentext key="Seethe" text="See the"/>
-      <l:gentext key="CreativeCommonsLicense" text="Creative Commons License"/>
-      <l:gentext key="aboutpermission" text="about permission to reuse this material."/>
+      <l:gentext key="undera" text="under a"/>
+      <l:gentext key="CreativeCommonsAttributionLicense" text="Creative Commons Attribution License"/>
       <l:gentext key="period" text=". "/>
       <l:gentext key="Lasteditedby" text="Last edited by"/>
       <l:gentext key="on" text="on"/>
       <l:gentext key="Search" text="Search"/>
+      <l:gentext key="Searchcolon" text="Search: "/>
       <l:gentext key="Home" text="Home"/>
       <l:gentext key="AboutUs" text="About Us"/>
       <l:gentext key="Help" text="Help"/>
@@ -105,22 +115,27 @@
       <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
       <l:gentext key="Bookmarkhelp" text="Add this content to the social bookmarking site del.icio.us, where you can share your favorite links with others."/>
       <l:gentext key="parensquestion" text="(?)"/>
-      <l:gentext key="Quality" text="Quality"/>
+      <l:gentext key="questionmark" text="?"/>
+      <l:gentext key="Whatdoessavingtodeliciousmean" text="What does saving to del.icio.us mean"/>
       <l:gentext key="EndorsedBy" text="Endorsed by"/>
+      <l:gentext key="Whatdoesendorsedbymean" text='What does "Endorsed by" mean'/>
       <l:gentext key="AffiliatedWith" text="Affiliated with"/>
+      <l:gentext key="Whatdoesaffiliatedwithmean" text='What does "Affiliated with" mean'/>
+      <l:gentext key="Definitionofalens" text="Definition of a lens"/>
       <l:gentext key="Lenses" text="Lenses"/>
       <l:gentext key="AddLens" text="Add to a lens"/>
       <l:gentext key="Intheselenses" text="In these lenses" />
       <l:gentext key="Alsointheselenses" text="Also in these lenses" />
       <l:gentext key="Tags" text="Tags"/>
+      <l:gentext key="Whatisatag" text="What is a tag"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
       <l:gentext key="ContactUs" text="Contact Us"/>
       <l:gentext key="Youarehere" text="You are here: "/>
       <l:gentext key="rightanglequote" text=" &#187; "/>
       <l:gentext key="Content" text="Content"/>
-      <l:gentext key="Previous" text="&#171; Previous"/>
-      <l:gentext key="Next" text="Next &#187;"/>
-      <l:gentext key="pipe" text=" | "/>
+      <l:gentext key="arrowPrevious" text="&#171; Previous"/>
+      <l:gentext key="Next" text="Next"/>
+      <l:gentext key="moduleincollection" text="module in collection"/>
       <l:gentext key="InCollection" text="Inside Collection"/>
       <l:gentext key="leftparen" text="("/>
       <l:gentext key="rightparen" text=")"/>
@@ -131,7 +146,9 @@
       <l:gentext key="GoToCollectionHome" text="Go to collection home page"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
+      <l:gentext key="tableofcontents" text="table of contents"/>
       <l:gentext key="Links" text="Links"/>
+      <l:gentext key="links" text="links"/>
       <l:gentext key="EndorsementHelpText" text="This content has been endorsed by the organizations listed. Click each link for a list of all content endorsed by the organization."/>
       <l:gentext key="AffiliationHelpText" text="This content is either by members of the organizations listed or about topics related to the organizations listed. Click each link to see a list of all content affiliated with the organization."/>
       <l:gentext key="TagHelpText" text="These tags come from the endorsement, affiliation, and other lenses that include this content."/>
@@ -144,7 +161,7 @@
       <l:gentext key="Lensby" text="Lens by:"/>
       <l:gentext key="Comments" text="Comments:"/>
       <l:gentext key="Lens" text="Lens:"/>
-      <l:gentext key="Whatisalens" text="What is a lens?"/>
+      <l:gentext key="Whatisalens" text="What is a lens"/>
       <l:gentext key="Lensespara" text="A lens is a custom view of Connexions content. You can think of it as a fancy kind of list that will let you see Connexions through the eyes of organizations and people you trust."/>
       <l:gentext key="Whatisinalens" text="What is in a lens?"/>
       <l:gentext key="Whatisinalenspara" text="Lens makers point to Connexions materials (modules and collections), creating a guide that includes their own comments and descriptive tags about the content."/>
@@ -157,6 +174,16 @@
       <l:gentext key="linktoseeallendorsed" text="link to see all content they endorse."/>
       <l:gentext key="linktoseeallaffiliated" text="link to see all content affiliated with them."/>
       <l:gentext key="linktoseeallselected" text="link to see all content selected in this lens."/>
+      <l:gentext key="Skiptocontent" text="Skip to content"/>
+      <l:gentext key="Skiptonavigation" text="Skip to navigation"/>
+      <l:gentext key="Skiptocollectioninformation" text="Skip to collection information"/>
+      <l:gentext key="Selectedcolon" text="Selected:"/>
+      <l:gentext key="Navigation" text="Navigation"/>
+      <l:gentext key="Footer" text="Footer"/>
+      <l:gentext key="Logofor" text="Logo for"/>
+      <l:gentext key="Privatelenskey" text="Private lens key"/>
+      <l:gentext key="Privatelensexplanation" text="Private lens: seen only by lens maker while logged on"/>
+      <l:gentext key="Diagramoflenses" text="Diagram of lenses"/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
@@ -173,7 +200,6 @@
       <l:gentext key="Moreaboutthiscontent" text="More about this content"/>
       <l:gentext key="Citethiscontent" text="Cite this content"/>
       <l:gentext key="Versionhistory" text="Version history"/>
-      <l:gentext key="undera" text="under a"/>
 <!--
       <l:gentext key="Summer Sky" text="Summer Sky"/>
       <l:gentext key="Desert Scape" text="Desert Scape"/>
