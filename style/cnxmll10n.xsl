@@ -142,11 +142,10 @@
       <l:gentext key="colon" text=": "/>
       <l:gentext key="MusicalExamples" text="Musical Examples"/>
       <l:gentext key="Moduleby" text="Module by:"/>
-      <l:gentext key="CollectionContents" text="Collection Contents"/>
+      <l:gentext key="TableofContents" text="Table of Contents"/>
       <l:gentext key="GoToCollectionHome" text="Go to collection home page"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
-      <l:gentext key="showtableofcontents" text="show table of contents"/>
       <l:gentext key="tableofcontents" text="table of contents"/>
       <l:gentext key="Links" text="Links"/>
       <l:gentext key="links" text="links"/>

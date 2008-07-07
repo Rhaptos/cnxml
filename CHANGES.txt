@@ -31,6 +31,8 @@
     colwidth, colsep, rowsep, char, charoff, valign, and align 
     attributes (including from previous unsupported ancestors); 
     spanning via spanname attribute; better column identification.
+  - #5731: popup definitions
+  - #5605: table of contents header changed
 
 CNXML-0.5 (p20)
   - various small changes to make the XHTML output work better with EIP 
