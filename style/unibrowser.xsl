@@ -681,7 +681,7 @@
         <span class="lensinfowrap">
           <dfn class="term">
             <xsl:call-template name='IdCheck'/>
-            <a href="{@src}" class="lenslink" onmouseover="createDefinition(this)" onmouseout="removeDefinition(this)">
+            <a href="{@src}" class="hovlink" onmouseover="createDefinition(this)" onmouseout="removeDefinition(this)">
               <xsl:apply-templates />
             </a>
           </dfn>
