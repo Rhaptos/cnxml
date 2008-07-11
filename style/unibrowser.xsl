@@ -378,7 +378,6 @@
 
   <!--PARA-->
   <xsl:template match="cnx:para">
-    <xsl:param name="popup">0</xsl:param>
     <xsl:if test="cnx:name[node()]">
       <xsl:variable name="level-number">
         <xsl:call-template name="level-count" />
@@ -391,9 +390,7 @@
     </xsl:if>
     <p class="para">
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates select="*[not(self::cnx:name)]|text()">
-        <xsl:with-param name="popup" select="$popup" />
-      </xsl:apply-templates>
+      <xsl:apply-templates select="*[not(self::cnx:name)]|text()" />
       <xsl:if test="not(node())">
 	<xsl:comment>empty para tag</xsl:comment>
       </xsl:if>
@@ -618,7 +615,6 @@
   
   <!--EXAMPLE-->
   <xsl:template match="cnx:example">
-    <xsl:param name="popup">0</xsl:param>
     <div class="example">
       <xsl:call-template name='IdCheck'/>
       <xsl:variable name="level-number">
@@ -641,9 +637,7 @@
         </span>
         <xsl:apply-templates select="cnx:name" />
       </xsl:element>
-      <xsl:apply-templates select="*[not(self::cnx:name)]">
-        <xsl:with-param name="popup" select="$popup" />
-      </xsl:apply-templates>
+      <xsl:apply-templates select="*[not(self::cnx:name)]" />
     </div>
   </xsl:template>
 
@@ -682,22 +676,18 @@
 
   <!--TERM-->
   <xsl:template match="cnx:term">
-    <xsl:param name="popup">0</xsl:param>
     <xsl:choose>
-      <xsl:when test="$popup!='1' and ancestor::cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]">
+      <xsl:when test="ancestor::cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]">
         <span class="lensinfowrap">
           <dfn class="term">
             <xsl:call-template name='IdCheck'/>
-            <a href="{@src}" class="lenslink"><xsl:apply-templates /></a>
+            <a href="{@src}" class="lenslink" onmouseover="createDefinition(this)" onmouseout="removeDefinition(this)">
+              <xsl:apply-templates />
+            </a>
           </dfn>
-          <span class="lensinfo hiddenStructure">
-            <xsl:apply-templates select="ancestor::cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]/*[not(self::cnx:term)]">
-              <xsl:with-param name="popup">1</xsl:with-param>
-            </xsl:apply-templates>
-          </span>
         </span>
       </xsl:when>
-      <xsl:when test="@src and $popup!='1'">
+      <xsl:when test="@src">
         <dfn class="term">
           <xsl:call-template name='IdCheck'/>
           <a href="{@src}"><xsl:apply-templates /></a>
@@ -720,16 +710,13 @@
 
   <!-- SEEALSO -->
   <xsl:template match="cnx:seealso">
-    <xsl:param name="popup">0</xsl:param>
     <dd class="seealso">
       <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">GlossSeeAlso</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>:
         <!--See Also:--> </span>
       <xsl:for-each select="cnx:term">
-        <xsl:apply-templates select=".">
-          <xsl:with-param name="popup" select="$popup" />
-        </xsl:apply-templates>
+        <xsl:apply-templates select="." />
         <xsl:if test="position()!=last()">, </xsl:if>
       </xsl:for-each>
     </dd>
@@ -771,7 +758,6 @@
 
   <!--MEANING-->
   <xsl:template match="cnx:meaning">
-    <xsl:param name="popup">0</xsl:param>
     <div class='meaning'>
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="count(parent::cnx:definition/cnx:meaning) > 1"> 
@@ -779,9 +765,7 @@
         <xsl:number level="single"/>. 
       </span>
       </xsl:if>
-      <xsl:apply-templates>
-        <xsl:with-param name="popup" select="$popup" />
-      </xsl:apply-templates>
+      <xsl:apply-templates />
     </div>
   </xsl:template>
 
