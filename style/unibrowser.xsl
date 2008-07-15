@@ -920,9 +920,10 @@
             </xsl:if>
             <xsl:if test="cnx:name[node()]">
               <xsl:choose>
-                <xsl:when test="parent::cnx:list/processing-instruction('mark')">
+                <xsl:when test="parent::cnx:list/processing-instruction('mark')[string-length(normalize-space(.)) &gt; 0]">
                   <xsl:value-of select="parent::cnx:list/processing-instruction('mark')" />
                 </xsl:when>
+                <xsl:when test="parent::cnx:list/processing-instruction('mark')" />
                 <xsl:otherwise>
                   <xsl:text> -</xsl:text>
                 </xsl:otherwise>
