@@ -1,3 +1,6 @@
+CNXML-0.5 (p21.1)
+  - #6090: Handle empty "mark" processing instructions
+
 CNXML-0.5 (p21)
   - Major accessibility release:
     - Added translation support for some elements, including hidden ones
