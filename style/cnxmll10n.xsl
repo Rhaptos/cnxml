@@ -90,7 +90,6 @@
       <l:gentext key="EditInPlace" text="Edit-In-Place"/>
       <l:gentext key="Editthiscontent" text="Edit this content"/>
       <l:gentext key="authoronly" text=" (author only)"/>
-      <l:gentext key="MoreAboutThisContent" text="More about this content: "/>
       <l:gentext key="Metadata" text="Metadata"/>
       <l:gentext key="VersionHistory" text="Version History"/>
       <l:gentext key="Howto" text="How to"/>
@@ -187,12 +186,10 @@
       <l:gentext key="Thismodule" text="This module"/>
       <l:gentext key="ispublishedbycolon" text="is published by:"/>
       <l:gentext key="issponsoredbycolon" text="is sponsored by:"/>
-      <l:gentext key="and" text="and"/>
+      <l:gentext key="isfundedbycolon" text="is funded by:"/>
       <l:gentext key="ModuleLicensedBy" text="This module is licensed by"/>
-      <l:gentext key="MoreAboutThisModule" text="More about this module:"/>
+      <l:gentext key="Moreaboutthismodulecolon" text="More about this module:"/>
       <l:gentext key="andattributethismodule" text="and attribute this module"/>
-      <l:gentext key="FundedBy" text="is funded by:"/>
-      <l:gentext key="MoreAboutThisModule" text="More about this module: "/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
