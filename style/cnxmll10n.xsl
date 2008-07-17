@@ -184,6 +184,15 @@
       <l:gentext key="Privatelenskey" text="Private lens key"/>
       <l:gentext key="Privatelensexplanation" text="Private lens: seen only by lens maker while logged on"/>
       <l:gentext key="Diagramoflenses" text="Diagram of lenses"/>
+      <l:gentext key="ThisModule" text="This module"/>
+      <l:gentext key="PublishedBy" text="is published by:"/>
+      <l:gentext key="SponsoredBy" text="is sponsored by:"/>
+      <l:gentext key="and" text="and"/>
+      <l:gentext key="ModuleLicensedBy" text="This module is licensed by"/>
+      <l:gentext key="MoreAboutThisModule" text="More about this module:"/>
+      <l:gentext key="andattributethismodule" text="and attribute this module"/>
+      <l:gentext key="FundedBy" text="is funded by:"/>
+      <l:gentext key="MoreAboutThisModule" text="More about this module: "/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
