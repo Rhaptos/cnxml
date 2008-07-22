@@ -144,10 +144,10 @@
       <l:gentext key="MusicalExamples" text="Musical Examples"/>
       <l:gentext key="Moduleby" text="Module by:"/>
       <l:gentext key="TableofContents" text="Table of Contents"/>
+      <l:gentext key="ClicktotoggleToC" text="Click to toggle the Table of Contents open and closed"/>
       <l:gentext key="GoToCollectionHome" text="Go to collection home page"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
-      <l:gentext key="tableofcontents" text="table of contents"/>
       <l:gentext key="Links" text="Links"/>
       <l:gentext key="links" text="links"/>
       <l:gentext key="EndorsementHelpText" text="This content has been endorsed by the organizations listed. Click each link for a list of all content endorsed by the organization."/>
