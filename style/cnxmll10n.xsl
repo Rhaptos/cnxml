@@ -79,6 +79,10 @@
       <l:gentext key="LinktoPDFformat" text="Link to printer-friendly PDF format"/>
       <l:gentext key="DownloadPDF" text="Download PDF"/>
       <l:gentext key="Printthispage" text="Print this page"/>
+      <l:gentext key="Emailtheauthormaybepluralellipsis" text="E-mail the author(s) ..."/>
+      <l:gentext key="Opentoemail" text="Open this area to e-mail the author(s) of:" />
+      <l:gentext key="Thismodulecomma" text="This module," />
+      <l:gentext key="Thiscollectioncomma" text="This collection," />
       <l:gentext key="Similarcontent" text="Similar content"/>
       <l:gentext key="Moresimilarcontent" text="More links to similar content"/>
       <l:gentext key="More" text="More"/>
