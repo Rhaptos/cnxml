@@ -83,6 +83,8 @@
       <l:gentext key="Opentoemail" text="Open this area to e-mail the author(s) of:" />
       <l:gentext key="Thismodulecomma" text="This module," />
       <l:gentext key="Thiscollectioncomma" text="This collection," />
+      <l:gentext key="ofthemodule" text="of the module" />
+      <l:gentext key="ofthecollection" text="of the collection" />
       <l:gentext key="Similarcontent" text="Similar content"/>
       <l:gentext key="Moresimilarcontent" text="More links to similar content"/>
       <l:gentext key="More" text="More"/>
