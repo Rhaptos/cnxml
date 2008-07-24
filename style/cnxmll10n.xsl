@@ -76,8 +76,25 @@
       <l:gentext key="Relatedlink" text="Related link"/>
       <l:gentext key="Distantlink" text="Distantly related link"/>
       <l:gentext key="Verydistantlink" text="Very distantly related link"/>
+      <l:gentext key="Downloadellipsis" text="Download ..."/>
+      <l:gentext key="Opentodownload" text="Open this area to download:"/>
+      <l:gentext key="ThePDFofthemodulecomma" text="The PDF of the module,"/>
+      <l:gentext key="ThePDFofthecollectioncomma" text="The PDF of the collection,"/>
+      <l:gentext key="AZIPfileofthecollectioncomma" text="A ZIP file containing all the multimedia files in the collection,"/>
       <l:gentext key="LinktoPDFformat" text="Link to printer-friendly PDF format"/>
-      <l:gentext key="DownloadPDF" text="Download PDF"/>
+      <l:gentext key="DownloadmodulePDF" text="Download module PDF"/>
+      <l:gentext key="DownloadcollectionPDF" text="Download collection PDF"/>
+      <l:gentext key="DownloadcollectionmultimediaZIP" text="Download collection multimedia ZIP"/>
+      <l:gentext key="mZIPexplanationopening" text="The multimedia ZIP file provides offline access to all the multimedia files that are not available in the printed version (PDF) of this collection."/>
+      <l:gentext key="Toaccessthefilescolon" text="To access the files:"/>
+      <l:gentext key="downloadtheZIP" text="download the ZIP"/>
+      <l:gentext key="extractallthefiles" text="extract all of its files to a location on your hard drive"/>
+      <l:gentext key="opentheREADME" text="open the README file for instructions or go directly to mediafiles.html file in your Web browser"/>
+      <l:gentext key="betainparens" text="(beta)"/>
+      <l:gentext key="ModulePDF" text="Module PDF"/>
+      <l:gentext key="CollectionPDF" text="Collection PDF"/>
+      <l:gentext key="CollectionmultimediaZIP" text="Collection multimedia ZIP"/>
+      <l:gentext key="HowdoIusethemultimediazipfile" text="How do I use the multimedia ZIP file"/>
       <l:gentext key="Printthispage" text="Print this page"/>
       <l:gentext key="Emailtheauthormaybepluralellipsis" text="E-mail the author(s) ..."/>
       <l:gentext key="Opentoemail" text="Open this area to e-mail the author(s) of:" />
