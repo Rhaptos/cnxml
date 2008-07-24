@@ -152,6 +152,14 @@
       <l:gentext key="Alsointheselenses" text="Also in these lenses" />
       <l:gentext key="Tags" text="Tags"/>
       <l:gentext key="Whatisatag" text="What is a tag"/>
+      <l:gentext key="Addtoellipsis" text="Add to ..."/>
+      <l:gentext key="Addmoduleorcollectionto" text="Add either the module or the collection to:"/>
+      <l:gentext key="Addmoduleto" text="Add the module to:"/>
+      <l:gentext key="MyFavorites" text="My Favorites"/>
+      <l:gentext key="Alens" text="A lens"/>
+      <l:gentext key="Asocialbookmarkingservice" text="A social bookmarking service"/>
+      <l:gentext key="Addmoduletocolon" text="Add module to:"/>
+      <l:gentext key="Addcollectiontocolon" text="Add collection to:"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
       <l:gentext key="ContactUs" text="Contact Us"/>
       <l:gentext key="Youarehere" text="You are here: "/>
