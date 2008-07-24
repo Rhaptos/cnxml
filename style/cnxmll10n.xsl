@@ -160,6 +160,7 @@
       <l:gentext key="Asocialbookmarkingservice" text="A social bookmarking service"/>
       <l:gentext key="Addmoduletocolon" text="Add module to:"/>
       <l:gentext key="Addcollectiontocolon" text="Add collection to:"/>
+      <l:gentext key="Loginrequired" text="Login required"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
       <l:gentext key="ContactUs" text="Contact Us"/>
       <l:gentext key="Youarehere" text="You are here: "/>
@@ -199,6 +200,8 @@
       <l:gentext key="Whatisinalenspara" text="Lens makers point to Connexions materials (modules and collections), creating a guide that includes their own comments and descriptive tags about the content."/>
       <l:gentext key="Whocancreatealens" text="Who can create a lens?"/>
       <l:gentext key="Whocancreatealenspara" text="Any individual Connexions member, a community, or a respected organization."/>
+      <l:gentext key="WhatisMyFavorites" text="What is 'My Favorites'"/>
+      <l:gentext key="MyFavoritesexplanation" text="'My Favorites' is a special kind of lens which you can use to bookmark modules and collections directly in Connexions. 'My Favorites' can only be seen by you, and collections saved in 'My Favorites' can remember the last module you were on. You need a Connexions account to use 'My Favorites'."/>
       <l:gentext key="Thiscontentisellipsis" text="This content is ..."/>
       <l:gentext key="Clickthe" text="Click the"/>
       <l:gentext key="lquot" text='"'/>
