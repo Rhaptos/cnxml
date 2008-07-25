@@ -136,11 +136,9 @@
       <l:gentext key="Help" text="Help"/>
       <l:gentext key="AuthorArea" text="Authoring Area"/>
       <l:gentext key="ContentActions" text="Content Actions"/>
-      <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
-      <l:gentext key="Bookmarkhelp" text="Add this content to the social bookmarking site del.icio.us, where you can share your favorite links with others."/>
       <l:gentext key="parensquestion" text="(?)"/>
       <l:gentext key="questionmark" text="?"/>
-      <l:gentext key="Whatdoessavingtodeliciousmean" text="What does saving to del.icio.us mean"/>
+      <l:gentext key="BookmarkandShare" text="Bookmark and Share"/>
       <l:gentext key="EndorsedBy" text="Endorsed by"/>
       <l:gentext key="Whatdoesendorsedbymean" text='What does "Endorsed by" mean'/>
       <l:gentext key="AffiliatedWith" text="Affiliated with"/>
