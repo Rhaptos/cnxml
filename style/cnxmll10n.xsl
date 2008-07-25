@@ -175,7 +175,6 @@
       <l:gentext key="Moduleby" text="Module by:"/>
       <l:gentext key="TableofContents" text="Table of Contents"/>
       <l:gentext key="ClicktotoggleToC" text="Click to toggle the Table of Contents open and closed"/>
-      <l:gentext key="GoToCollectionHome" text="Go to collection home page"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
       <l:gentext key="Links" text="Links"/>
