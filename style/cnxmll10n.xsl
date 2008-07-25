@@ -134,7 +134,7 @@
       <l:gentext key="Home" text="Home"/>
       <l:gentext key="AboutUs" text="About Us"/>
       <l:gentext key="Help" text="Help"/>
-      <l:gentext key="AuthorArea" text="Authoring Area"/>
+      <l:gentext key="MyCNX" text="MyCNX"/>
       <l:gentext key="ContentActions" text="Content Actions"/>
       <l:gentext key="parensquestion" text="(?)"/>
       <l:gentext key="questionmark" text="?"/>
