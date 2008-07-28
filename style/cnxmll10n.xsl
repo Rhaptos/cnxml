@@ -77,7 +77,7 @@
       <l:gentext key="Distantlink" text="Distantly related link"/>
       <l:gentext key="Verydistantlink" text="Very distantly related link"/>
       <l:gentext key="Downloadellipsis" text="Download ..."/>
-      <l:gentext key="Opentodownload" text="Open this area to download:"/>
+      <l:gentext key="Downloadcolon" text="Download:"/>
       <l:gentext key="ThePDFofthemodulecomma" text="The PDF of the module,"/>
       <l:gentext key="ThePDFofthecollectioncomma" text="The PDF of the collection,"/>
       <l:gentext key="AZIPfileofthecollectioncomma" text="A ZIP file containing all the multimedia files in the collection,"/>
@@ -97,7 +97,7 @@
       <l:gentext key="HowdoIusethemultimediazipfile" text="How do I use the multimedia ZIP file"/>
       <l:gentext key="Printthispage" text="Print this page"/>
       <l:gentext key="Emailtheauthormaybepluralellipsis" text="E-mail the author(s) ..."/>
-      <l:gentext key="Opentoemail" text="Open this area to e-mail the author(s) of:" />
+      <l:gentext key="Emailauthorof" text="E-mail the author(s) of:" />
       <l:gentext key="Thismodulecomma" text="This module," />
       <l:gentext key="Thiscollectioncomma" text="This collection," />
       <l:gentext key="ofthemodule" text="of the module" />
