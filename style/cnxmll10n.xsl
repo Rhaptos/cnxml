@@ -159,6 +159,8 @@
       <l:gentext key="Addmoduletocolon" text="Add module to:"/>
       <l:gentext key="Addcollectiontocolon" text="Add collection to:"/>
       <l:gentext key="Loginrequired" text="Login required"/>
+      <l:gentext key="LogIn" text="Log In"/>
+      <l:gentext key="LogOut" text="Log Out"/>
       <l:gentext key="ReportaBug" text="Report a Bug"/>
       <l:gentext key="ContactUs" text="Contact Us"/>
       <l:gentext key="Youarehere" text="You are here: "/>
