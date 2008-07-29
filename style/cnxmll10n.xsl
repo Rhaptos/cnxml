@@ -102,6 +102,12 @@
       <l:gentext key="Thiscollectioncomma" text="This collection," />
       <l:gentext key="ofthemodule" text="of the module" />
       <l:gentext key="ofthecollection" text="of the collection" />
+      <l:gentext key="ofthiscontent" text="of this content" />
+      <l:gentext key="Feedbackon" text="Feedback on" />
+      <l:gentext key="modulecolon" text="module:" />
+      <l:gentext key="collectioncolon" text="collection:" />
+      <l:gentext key="asusedincollection" text="as used in collection:" />
+      <l:gentext key="commamodule" text=", module:" />
       <l:gentext key="Similarcontent" text="Similar content"/>
       <l:gentext key="Moresimilarcontent" text="More links to similar content"/>
       <l:gentext key="More" text="More"/>
