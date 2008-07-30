@@ -145,7 +145,6 @@
       <l:gentext key="ContentActions" text="Content Actions"/>
       <l:gentext key="parensquestion" text="(?)"/>
       <l:gentext key="questionmark" text="?"/>
-      <l:gentext key="BookmarkandShare" text="Bookmark and Share"/>
       <l:gentext key="EndorsedBy" text="Endorsed by"/>
       <l:gentext key="Whatdoesendorsedbymean" text='What does "Endorsed by" mean'/>
       <l:gentext key="AffiliatedWith" text="Affiliated with"/>
@@ -162,7 +161,8 @@
       <l:gentext key="Addmoduleto" text="Add the module to:"/>
       <l:gentext key="MyFavorites" text="My Favorites"/>
       <l:gentext key="Alens" text="A lens"/>
-      <l:gentext key="Asocialbookmarkingservice" text="A social bookmarking service"/>
+      <l:gentext key="Anexternalsocialbookmarkingservice" text="An external social bookmarking service"/>
+      <l:gentext key="Externalbookmarks" text="External bookmarks"/>
       <l:gentext key="Addmoduletocolon" text="Add module to:"/>
       <l:gentext key="Addcollectiontocolon" text="Add collection to:"/>
       <l:gentext key="Loginrequired" text="Login required"/>
