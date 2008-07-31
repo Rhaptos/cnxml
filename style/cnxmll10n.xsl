@@ -165,6 +165,7 @@
       <l:gentext key="Externalbookmarks" text="External bookmarks"/>
       <l:gentext key="Addmoduletocolon" text="Add module to:"/>
       <l:gentext key="Addcollectiontocolon" text="Add collection to:"/>
+      <l:gentext key="remove" text="remove" />
       <l:gentext key="Loginrequired" text="Login required"/>
       <l:gentext key="LogIn" text="Log In"/>
       <l:gentext key="LogOut" text="Log Out"/>
