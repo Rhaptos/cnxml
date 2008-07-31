@@ -123,7 +123,6 @@
       <l:gentext key="downloadtheZIP" text="download the ZIP"/>
       <l:gentext key="extractallthefiles" text="extract all of its files to a location on your hard drive"/>
       <l:gentext key="opentheREADME" text="open the README file for instructions or go directly to mediafiles.html file in your Web browser"/>
-      <l:gentext key="betainparens" text="(beta)"/>
       <l:gentext key="ModulePDF" text="Module PDF"/>
       <l:gentext key="CollectionPDF" text="Collection PDF"/>
       <l:gentext key="CollectionmultimediaZIP" text="Collection multimedia ZIP"/>
