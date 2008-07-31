@@ -8,8 +8,41 @@
   <l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
     <l:l10n language="en" english-language-name="English">
       <!-- for unibrowser.xsl -->
-      <l:gentext key="subfigure" text="subfigure"/>
+      <l:gentext key="subfigure" text="Subfigure"/>
       <l:gentext key="Subfigure" text="Subfigure"/>
+      <l:gentext key="problem" text="Problem"/>
+      <l:gentext key="Problem" text="Problem"/>
+      <l:gentext key="exercise" text="Exercise"/>
+      <l:gentext key="Exercise" text="Exercise"/>
+      <l:gentext key="solution" text="Solution"/>
+      <l:gentext key="para" text="Paragraph"/>
+      <l:gentext key="statement" text="Statement"/>
+      <l:gentext key="rule" text="Rule"/>
+      <l:gentext key="definition" text="Definition"/>
+      <l:gentext key="meaning" text="Meaning"/>
+      <l:gentext key="list" text="List"/>
+      <l:gentext key="item" text="Item"/>
+      <l:gentext key="caption" text="Caption"/>
+      <l:gentext key="media" text="Media"/>
+      <l:gentext key="param" text="Param"/>
+      <l:gentext key="emphasis" text="Emphasis"/>
+      <l:gentext key="quote" text="Quote"/>
+      <l:gentext key="foreign" text="Foreign"/>
+      <l:gentext key="code" text="Code"/>
+      <l:gentext key="cnxn" text="Cnxn"/>
+      <l:gentext key="link" text="Link"/>
+      <l:gentext key="cite" text="Cite"/>
+      <l:gentext key="term" text="Term"/>
+      <l:gentext key="name" text="Name"/>
+      <l:gentext key="tgroup" text="Tgroup"/>
+      <l:gentext key="colspec" text="Colspec"/>
+      <l:gentext key="spanspec" text="Spanspec"/>
+      <l:gentext key="thead" text="Thead"/>
+      <l:gentext key="tfoot" text="Tfoot"/>
+      <l:gentext key="tbody" text="Tbody"/>
+      <l:gentext key="row" text="Row"/>
+      <l:gentext key="entrytbl" text="Entrytbl"/>
+      <l:gentext key="entry" text="Entry"/>
       <l:gentext key="Strength" text="Strength"/>
       <l:gentext key="Definition" text="Definition"/>
       <l:gentext key="Proof" text="Proof"/>
@@ -20,7 +53,6 @@
       <l:gentext key="LabVIEWSource" text="LabVIEW Source"/>
       <l:gentext key="AudioFile" text="Audio File"/>
       <l:gentext key="MusicalExample" text="Musical Example"/>
-      <l:gentext key="Problem" text="Problem"/>
       <l:gentext key="ClickForSolution" text="Click for Solution"/>
       <l:gentext key="HideSolution" text="Hide Solution"/>
       <l:gentext key="Solution" text="Solution"/>

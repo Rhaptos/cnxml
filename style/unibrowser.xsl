@@ -426,52 +426,95 @@
 	  <xsl:apply-templates />
         </xsl:when>
 	<xsl:when test="key('id', @target)">
-	  <xsl:choose>
-	    <xsl:when test="local-name(key('id',@target))='note' or local-name(key('id',@target))='rule'">
-              <xsl:for-each select="key('id',@target)">
-		<xsl:variable name="cnxntype" select="@type" />
-		<span class="cnxn-target">
-		  <xsl:value-of select="@type" />
-		</span>
-		<xsl:text> </xsl:text>
-		<xsl:if test="self::cnx:note">
-		  <xsl:number level="any" count="//cnx:note[@type=$cnxntype]"/>
-		</xsl:if>
-		<xsl:if test="self::cnx:rule">
-		  <xsl:number level="any" count="//cnx:rule[@type=$cnxntype]"/>
-		</xsl:if>
-	      </xsl:for-each>
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <span class="cnxn-target">
-		<!--<xsl:value-of select="local-name(key('id',@target))" />-->
-                <xsl:call-template name="gentext">
-                  <xsl:with-param name="key"><xsl:value-of select="local-name(key('id',@target))" /></xsl:with-param>
-                  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-                </xsl:call-template>
-	      </span>
-              <xsl:for-each select="key('id',@target)">
-                <xsl:text> </xsl:text>
-	        <xsl:choose>
-		  <xsl:when test="self::cnx:subfigure">
-		    <xsl:number level="any" count="//cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" />
-		  </xsl:when>
-		  <xsl:when test="self::cnx:solution">
-		    <xsl:number level="any" count="//cnx:exercise" />
-		    <xsl:if test="count(parent::cnx:exercise/cnx:solution) > 1">
-		      <xsl:text>.</xsl:text>
-		      <xsl:number count="cnx:solution" />
-		    </xsl:if>
-		  </xsl:when>
-		  <xsl:otherwise>
-		    <xsl:number level="any" />
-		  </xsl:otherwise>
-		</xsl:choose>
-	      </xsl:for-each>
-	    </xsl:otherwise>
-	  </xsl:choose>
+          <xsl:for-each select="key('id', @target)">
+            <xsl:variable name="type">
+              <xsl:value-of select="@type" />
+            </xsl:variable>
+            <!-- Build a label -->
+            <span class="cnxn-target">
+              <xsl:choose>
+                <xsl:when test="self::cnx:note[@type!=''] or self::cnx:rule">
+                  <xsl:value-of select="$type" />
+                </xsl:when>
+                <xsl:when test="self::cnx:exercise[parent::cnx:example]">
+                  <!-- Problem -->
+                  <xsl:call-template name="gentext">
+                    <xsl:with-param name="key">Problem</xsl:with-param>
+                    <xsl:with-param name="lang" select="/module/metadata/language" />
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:when test="self::cnx:problem[not(parent::cnx:exercise[parent::cnx:example])]">
+                  <!-- Exercise -->
+                  <xsl:call-template name="gentext">
+                    <xsl:with-param name="key">Exercise</xsl:with-param>
+                    <xsl:with-param name="lang" select="/module/metadata/language" />
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                  <!--<xsl:value-of select="local-name(key('id',@target))" />-->
+                  <xsl:call-template name="gentext">
+                    <xsl:with-param name="key"><xsl:value-of select="local-name(.)" /></xsl:with-param>
+                    <xsl:with-param name="lang" select="/module/metadata/language"/>
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
+            </span>
+            <xsl:text> </xsl:text>
+            <!-- Build a number -->
+            <xsl:choose>
+              <xsl:when test="self::cnx:note[@type='note' or @type='' or not(@type)]">
+                <xsl:number level="any" count="cnx:note[@type='note' or @type='' or not(@type)]" />
+              </xsl:when>
+              <xsl:when test="self::cnx:note">
+                <xsl:number level="any" count="cnx:note[@type=$type]" />
+              </xsl:when>
+              <xsl:when test="self::cnx:rule">
+                <xsl:number level="any" count="cnx:rule[@type=$type]" />
+              </xsl:when>
+              <xsl:when test="self::cnx:subfigure">
+		<xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" />
+              </xsl:when>
+              <xsl:when test="self::cnx:solution or self::cnx:problem">
+                <xsl:choose>
+                  <xsl:when test="parent::cnx:exercise[parent::cnx:example]">
+                    <xsl:number count="cnx:exercise" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:number level="any" count="cnx:exercise[not(parent::cnx:example)]" />
+                  </xsl:otherwise>
+                </xsl:choose>
+                <xsl:if test="self::cnx:solution and count(parent::cnx:exercise/cnx:solution) > 1">
+                  <xsl:text>.</xsl:text>
+                  <xsl:number count="cnx:solution" />
+                </xsl:if>
+              </xsl:when>
+              <xsl:when test="self::cnx:exercise">
+                <xsl:choose>
+                  <xsl:when test="parent::cnx:example">
+                    <xsl:number count="cnx:exercise" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:number level="any" count="cnx:exercise[not(parent::cnx:example)]" />
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:when>
+              <xsl:otherwise>
+		<xsl:number level="any" />
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
         </xsl:when>
-	<xsl:otherwise>(<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)<!--(Reference)--></xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	<xsl:otherwise>
+          <xsl:text>(</xsl:text>
+          <!-- Reference -->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Reference</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language"/>
+          </xsl:call-template>
+          <xsl:text>)asdf</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </a>
   </xsl:template>
 
   <!-- CNXN with document attribute only (no target) -->
@@ -483,7 +526,16 @@
 	  <xsl:apply-templates />
 	</xsl:when>
 	<xsl:otherwise>
-	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  <xsl:text>(</xsl:text>
+          <!-- Reference -->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Reference</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language"/>
+          </xsl:call-template>
+          <xsl:text>)</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </a>
   </xsl:template>
 
   <!-- CNXN with target and document attributes -->
@@ -495,7 +547,16 @@
 	  <xsl:value-of select="normalize-space(.)" />
 	</xsl:when>
 	<xsl:otherwise>
-	  (<xsl:call-template name="gentext"><xsl:with-param name="key">Reference</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>)</xsl:otherwise></xsl:choose></a> <!-- this is made w/ poorly formed XSL to eliminate the underlined white space after the parenthesis -->
+	  <xsl:text>(</xsl:text>
+          <!-- Reference -->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Reference</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language"/>
+          </xsl:call-template>
+          <xsl:text>)</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+    </a>
   </xsl:template>
 
   <!--EMPHASIS-->
@@ -1518,13 +1579,31 @@
           <xsl:attribute name="class">problem-header</xsl:attribute>
           <xsl:if test="$case-diagnosis = '0'">
             <span class="cnx_before">
-              <!--Problem-->
-              <xsl:call-template name="gentext">
-                <xsl:with-param name="key">Problem</xsl:with-param>
-                <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-              </xsl:call-template>
+              <xsl:choose>
+                <xsl:when test="parent::cnx:exercise[parent::cnx:example]">
+                  <!-- Problem -->
+                  <xsl:call-template name="gentext">
+                    <xsl:with-param name="key">Problem</xsl:with-param>
+                    <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                  <!-- Exercise -->
+                  <xsl:call-template name="gentext">
+                    <xsl:with-param name="key">Exercise</xsl:with-param>
+                    <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
               <xsl:text> </xsl:text>
-              <xsl:number level="any" count="cnx:exercise" />
+              <xsl:choose>
+                <xsl:when test="parent::cnx:exercise[parent::cnx:example]">
+                  <xsl:number count="cnx:exercise" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:number level="any" count="cnx:exercise[not(parent::cnx:example)]" />
+                </xsl:otherwise>
+              </xsl:choose>
               <xsl:if test="cnx:name">: </xsl:if>
             </span>
           </xsl:if>
@@ -1541,7 +1620,14 @@
       <xsl:number count="cnx:solution" />
     </xsl:variable>
     <xsl:variable name="solution-full-number">
-      <xsl:number level="any" count="cnx:exercise" />
+      <xsl:choose>
+        <xsl:when test="parent::cnx:exercise[parent::cnx:example]">
+          <xsl:number count="cnx:exercise" />
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:number level="any" count="cnx:exercise[not(parent::cnx:example)]" />
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:if test="count(parent::cnx:exercise/cnx:solution) > 1">
         <xsl:text>.</xsl:text>
         <xsl:value-of select="$solution-number" />
