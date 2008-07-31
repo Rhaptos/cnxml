@@ -1,3 +1,9 @@
+connexions-cnxml (0.5.21.1-1qamycnx) unstable; urgency=low
+
+  * mycnx devset test deb
+
+ -- Jennifer A. Drummond <jenn@cnx.org>  Thu, 31 Jul 2008 16:30:49 -0500
+
 connexions-cnxml (0.5.21.1-1) unstable; urgency=low
 
   * fix case of empty "mark" processing instruction for named lists
