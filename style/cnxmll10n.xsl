@@ -214,7 +214,8 @@
       <l:gentext key="colon" text=": "/>
       <l:gentext key="MusicalExamples" text="Musical Examples"/>
       <l:gentext key="Moduleby" text="Module by:"/>
-      <l:gentext key="TableofContents" text="Table of Contents"/>
+      <l:gentext key="Tableof" text="Table of"/>
+      <l:gentext key="Contents" text="Contents"/>
       <l:gentext key="ClicktotoggleToC" text="Click to toggle the Table of Contents open and closed"/>
       <l:gentext key="show" text="show"/>
       <l:gentext key="hide" text="hide"/>
