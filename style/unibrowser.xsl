@@ -1645,8 +1645,19 @@
     <xsl:variable name="hide-string">
       <xsl:value-of select="concat('Hide', $solution-string)"/>
     </xsl:variable>
+    <xsl:variable name="javascriptpresent" select="/module/display/javascriptpresent"/>
     <div class="solution">
       <xsl:call-template name='IdCheck' />
+      <xsl:attribute name="style">
+        <xsl:choose>
+          <xsl:when test="$javascriptpresent='true'">
+            <xsl:text>display: none;</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>display: block;</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
       <xsl:if test="$case-diagnosis = '0' or cnx:name[node()]">
         <xsl:variable name="level-number">
           <xsl:call-template name="level-count" />
@@ -1671,7 +1682,18 @@
       </xsl:if>
       <xsl:apply-templates select="*[not(self::cnx:name)]" />
     </div>
-    <a href="#" onclick="toggleSolution('{../@id}',{$solution-number}); return false;" class="solution-toggles">
+    <div class="solution-toggles">
+      <xsl:attribute name="style">
+        <xsl:choose>
+          <xsl:when test="$javascriptpresent='true'">
+            <xsl:text>display: block;</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>display: none;</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+      <a href="#" onclick="toggleSolution('{../@id}',{$solution-number}); return false;">
       <span class="solution-toggle">
       [
       <!-- Click for Solution/Diagnosis -->
@@ -1697,7 +1719,8 @@
         </xsl:if>
         ]
       </span>
-    </a>
+      </a>
+    </div>
   </xsl:template>
 
 </xsl:stylesheet>
