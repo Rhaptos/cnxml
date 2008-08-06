@@ -128,7 +128,7 @@
       <l:gentext key="CollectionPDF" text="Collection PDF"/>
       <l:gentext key="CollectionmultimediaZIP" text="Collection multimedia ZIP"/>
       <l:gentext key="HowdoIusethemultimediazipfile" text="How do I use the multimedia ZIP file"/>
-      <l:gentext key="Printthispage" text="Print this page"/>
+      <l:gentext key="PrintthisWebpage" text="Print this Web page"/>
       <l:gentext key="Emailtheauthormaybepluralellipsis" text="E-mail the author(s) ..."/>
       <l:gentext key="Emailauthorof" text="E-mail the author(s) of:" />
       <l:gentext key="Thismodulecomma" text="This module," />
