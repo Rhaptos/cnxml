@@ -115,6 +115,7 @@
       <l:gentext key="ThePDFofthecollectioncomma" text="The PDF of the collection,"/>
       <l:gentext key="AZIPfileofthecollectioncomma" text="A ZIP file containing all the multimedia files in the collection,"/>
       <l:gentext key="LinktoPDFformat" text="Link to printer-friendly PDF format"/>
+      <l:gentext key="LinktoZIPfile" text="Link to ZIP file of any images and interactive media"/>
       <l:gentext key="DownloadmodulePDF" text="Download module PDF"/>
       <l:gentext key="DownloadcollectionPDF" text="Download collection PDF"/>
       <l:gentext key="DownloadcollectionmultimediaZIP" text="Download collection multimedia ZIP"/>
