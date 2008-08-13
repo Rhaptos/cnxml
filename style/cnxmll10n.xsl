@@ -109,7 +109,7 @@
       <l:gentext key="Relatedlink" text="Related link"/>
       <l:gentext key="Distantlink" text="Distantly related link"/>
       <l:gentext key="Verydistantlink" text="Very distantly related link"/>
-      <l:gentext key="Downloadellipsis" text="Download ..."/>
+      <l:gentext key="Downloadellipsis" text="Download PDF/ZIP..."/>
       <l:gentext key="Downloadcolon" text="Download:"/>
       <l:gentext key="ThePDFofthemodulecomma" text="The PDF of the module,"/>
       <l:gentext key="ThePDFofthecollectioncomma" text="The PDF of the collection,"/>
