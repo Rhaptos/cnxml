@@ -275,6 +275,11 @@
       <l:gentext key="Moreaboutthiscontent" text="More about this content"/>
       <l:gentext key="Citethiscontent" text="Cite this content"/>
       <l:gentext key="Versionhistory" text="Version history"/>
+      <l:gentext key="SaveToDelicious" text="Save to del.icio.us"/>
+      <l:gentext key="Coursesusingcontent" text="Collections using this content"/>
+      <l:gentext key="Morecoursesusingcontent" text="More collections using this content"/>
+      <l:gentext key="TableofContents" text="Table of Contents"/>
+
 <!--
       <l:gentext key="Summer Sky" text="Summer Sky"/>
       <l:gentext key="Desert Scape" text="Desert Scape"/>
