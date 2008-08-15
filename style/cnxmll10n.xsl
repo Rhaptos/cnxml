@@ -255,6 +255,7 @@
       <l:gentext key="Selectedcolon" text="Selected:"/>
       <l:gentext key="Navigation" text="Navigation"/>
       <l:gentext key="Footer" text="Footer"/>
+      <l:gentext key="CreativeCommonsLicense" text="Creative Commons License"/>
       <l:gentext key="Logofor" text="Logo for"/>
       <l:gentext key="Privatelenskey" text="Private lens key"/>
       <l:gentext key="Privatelensexplanation" text="Private lens: seen only by lens maker while logged on"/>
