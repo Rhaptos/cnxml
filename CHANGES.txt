@@ -1,3 +1,8 @@
+CNXML-0.5 (p22)
+  - MyCNX lands
+    - unibrowser solution/exercise improvements
+    - l10n changes for content_render related to new content actions portlet, favorites, recently viewed portlet
+
 CNXML-0.5 (p21.1)
   - #6090: Handle empty "mark" processing instructions
 
