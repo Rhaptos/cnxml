@@ -1,8 +1,8 @@
-connexions-cnxml (0.5.21.1-1qamycnx) unstable; urgency=low
+connexions-cnxml (0.5.22-1) unstable; urgency=low
 
-  * mycnx devset test deb
+  * i18n changes for MyCNX rollout; exercise improvments
 
- -- Jennifer A. Drummond <jenn@cnx.org>  Thu, 31 Jul 2008 16:30:49 -0500
+ -- Jennifer A. Drummond <jenn@cnx.org>  Fri, 15 Aug 2008 22:34:20 -0500
 
 connexions-cnxml (0.5.21.1-1) unstable; urgency=low
 
