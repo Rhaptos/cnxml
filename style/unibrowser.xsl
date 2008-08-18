@@ -511,7 +511,7 @@
             <xsl:with-param name="key">Reference</xsl:with-param>
             <xsl:with-param name="lang" select="/module/metadata/language"/>
           </xsl:call-template>
-          <xsl:text>)asdf</xsl:text>
+          <xsl:text>)</xsl:text>
         </xsl:otherwise>
       </xsl:choose>
     </a>
