@@ -158,7 +158,7 @@
       <l:gentext key="VersionHistory" text="Version History"/>
       <l:gentext key="Howto" text="How to"/>
       <l:gentext key="reuse" text="reuse"/>
-      <l:gentext key="cite" text="cite"/>
+      <l:gentext key="cite_verb" text="cite"/>
       <l:gentext key="andattributethiscontent" text="and attribute this content"/>
       <l:gentext key="Worklicensedby" text="This work is licensed by"/>
       <l:gentext key="and" text="and"/>
