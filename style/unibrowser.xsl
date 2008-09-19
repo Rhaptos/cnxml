@@ -739,12 +739,14 @@
   <xsl:template match="cnx:term">
     <xsl:choose>
       <xsl:when test="ancestor::cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]">
+        <span class="lensinfowrap">
           <dfn class="term">
             <xsl:call-template name='IdCheck'/>
-            <a href="{@src}" class="hovlink">
+            <a href="{@src}" class="hovlink" onmouseover="createDefinition(this)" onmouseout="removeDefinition(this)">
               <xsl:apply-templates />
             </a>
           </dfn>
+        </span>
       </xsl:when>
       <xsl:when test="@src">
         <dfn class="term">
