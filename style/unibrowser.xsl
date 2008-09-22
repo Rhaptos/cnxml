@@ -436,14 +436,14 @@
                 <xsl:when test="self::cnx:note[@type!=''] or self::cnx:rule">
                   <xsl:value-of select="$type" />
                 </xsl:when>
-                <xsl:when test="self::cnx:exercise[parent::cnx:example]">
+                <xsl:when test="self::cnx:exercise[ancestor::cnx:example]">
                   <!-- Problem -->
                   <xsl:call-template name="gentext">
                     <xsl:with-param name="key">Problem</xsl:with-param>
                     <xsl:with-param name="lang" select="/module/metadata/language" />
                   </xsl:call-template>
                 </xsl:when>
-                <xsl:when test="self::cnx:problem[not(parent::cnx:exercise[parent::cnx:example])]">
+                <xsl:when test="self::cnx:problem[not(parent::cnx:exercise[ancestor::cnx:example])]">
                   <!-- Exercise -->
                   <xsl:call-template name="gentext">
                     <xsl:with-param name="key">Exercise</xsl:with-param>
@@ -476,11 +476,11 @@
               </xsl:when>
               <xsl:when test="self::cnx:solution or self::cnx:problem">
                 <xsl:choose>
-                  <xsl:when test="parent::cnx:exercise[parent::cnx:example]">
-                    <xsl:number count="cnx:exercise" />
+                  <xsl:when test="parent::cnx:exercise[ancestor::cnx:example]">
+                    <xsl:number level="any" count="cnx:exercise" from="cnx:example" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:exercise[not(parent::cnx:example)]" />
+                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example)]" />
                   </xsl:otherwise>
                 </xsl:choose>
                 <xsl:if test="self::cnx:solution and count(parent::cnx:exercise/cnx:solution) > 1">
@@ -490,11 +490,11 @@
               </xsl:when>
               <xsl:when test="self::cnx:exercise">
                 <xsl:choose>
-                  <xsl:when test="parent::cnx:example">
-                    <xsl:number count="cnx:exercise" />
+                  <xsl:when test="ancestor::cnx:example">
+                    <xsl:number level="any" count="cnx:exercise" from="cnx:example" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:exercise[not(parent::cnx:example)]" />
+                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example)]" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:when>
@@ -1580,7 +1580,7 @@
           <xsl:if test="$case-diagnosis = '0'">
             <span class="cnx_before">
               <xsl:choose>
-                <xsl:when test="parent::cnx:exercise[parent::cnx:example]">
+                <xsl:when test="parent::cnx:exercise[ancestor::cnx:example]">
                   <!-- Problem -->
                   <xsl:call-template name="gentext">
                     <xsl:with-param name="key">Problem</xsl:with-param>
@@ -1597,11 +1597,11 @@
               </xsl:choose>
               <xsl:text> </xsl:text>
               <xsl:choose>
-                <xsl:when test="parent::cnx:exercise[parent::cnx:example]">
-                  <xsl:number count="cnx:exercise" />
+                <xsl:when test="parent::cnx:exercise[ancestor::cnx:example]">
+                  <xsl:number level="any" count="cnx:exercise" from="cnx:example" />
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:number level="any" count="cnx:exercise[not(parent::cnx:example)]" />
+                  <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example)]" />
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:if test="cnx:name">: </xsl:if>
@@ -1621,11 +1621,11 @@
     </xsl:variable>
     <xsl:variable name="solution-full-number">
       <xsl:choose>
-        <xsl:when test="parent::cnx:exercise[parent::cnx:example]">
-          <xsl:number count="cnx:exercise" />
+        <xsl:when test="parent::cnx:exercise[ancestor::cnx:example]">
+          <xsl:number level="any" count="cnx:exercise" from="cnx:example" />
         </xsl:when>
         <xsl:otherwise>
-          <xsl:number level="any" count="cnx:exercise[not(parent::cnx:example)]" />
+          <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example)]" />
         </xsl:otherwise>
       </xsl:choose>
       <xsl:if test="count(parent::cnx:exercise/cnx:solution) > 1">
