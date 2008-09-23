@@ -1,10 +1,4 @@
 Connexions XML related files
-------------------------
+----------------------------
 
-This is the Connexions Debian compatible packaging for the Connexions 
-Markup Language (CNXML), Mathematical Markup Language
-(MathML) 2.0, and BibTexML,  XML applications for describing 
-educational content, mathematical notation, and bibliographic references,
-while capturing both its structure and content.
-
-
+This is the Connexions Debian compatible packaging for CNXML 0.5

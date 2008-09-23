@@ -1,13 +1,13 @@
 Source: connexions-cnxml
 Section: text
 Priority: optional
-Maintainer: Ross J. Reedstrom <reedstrm@rice.edu>
+Maintainer: Ross J. Reedstrom <reedstrm@cnx.org>
 Build-Depends: debhelper (>> 4.0.0)
 Standards-Version: 3.6.1.0
 
 Package: connexions-cnxml-0.5
 Architecture: all
-Depends: ${misc:Depends}
+Depends: ${misc:Depends}, docbook-xsl
 Suggests: connexions-bibtexml, connexions-mathml, connexions-qml
 Provides: connexions-cnxml
 Description: Connexions Markup Language 0.5 Schema and stylesheets

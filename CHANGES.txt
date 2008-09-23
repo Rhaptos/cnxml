@@ -1,21 +1,102 @@
-  - Provide a link to the EPS if there are no other media nested inside it
-  - Provide a link for unrecognized media (inside "<div><object> 
-    </object></div>" so that the browser can ignore its nested text if 
-    it somehow recognizes that media as an <object> tag).  Currently 
-    these media appear to vanish.  The <div> was added so that EIP in IE 
-    would have something to latch on to, since unrecognized <object> 
-    tags (though not their children) are apparently omitted in IE.
-  - Put in correct stylesheet URLs and removed nonexistent one
-  - Put class names on certain elements so that EIP can recognize them 
-    better and so that their templates don't need to be essentially 
-    duplicated in editInPlace.xsl
-  - Make subfigures easier to handle in EIP by moving the class to each 
-    <td> (instead of one on <table>) and check for IDs of subfigures, 
-    not their parent figure.
-  - Made 'id' attribute of 'document' element required instead of optional.
-  - Added 'MDML.' prefix to all <define> names in MDML schema
+cnxml-0.5 (p23)
+  - MyCNX phase 2
+    - #6578: duplication problem with translation of "cite"
+    - #6275: Label and number exercises (and the empty cnxns to them)
 
--------------ported changes below from 0.5-branch-------------------
+CNXML-0.5 (p22.1)
+  - #6531: remove some accidental debugging text
+
+CNXML-0.5 (p22)
+  - MyCNX lands
+    - unibrowser solution/exercise improvements
+    - l10n changes for content_render related to new content actions portlet, favorites, recently viewed portlet
+
+CNXML-0.5 (p21.1)
+  - #6090: Handle empty "mark" processing instructions
+
+CNXML-0.5 (p21)
+  - Major accessibility release:
+    - Added translation support for some elements, including hidden ones
+    - Better automatic alt tags for images that don't have alt params
+    - Changed many elements to make HTML output more semantic
+    - Put table footer after tfoot so that screen readers interpret them 
+      better, even though that's invalid.
+    - Made solution toggler work better for keyboard and screen reader 
+  - Pop-ups for terms that link to definitions in in-module glossaries.
+  - Added several processing instructions as pre-0.6 hacks
+  - Changed several CSS selectors to be more precise or efficient
+  - Allowed glossary to have user-supplied ID.
+  - #2250: Implemented more of CALS table, including: correct border 
+    implementation; support of multiple tgroups; fuller support of 
+    colwidth, colsep, rowsep, char, charoff, valign, and align 
+    attributes (including from previous unsupported ancestors); 
+    spanning via spanname attribute; better column identification.
+
+CNXML-0.5 (p20)
+  - various small changes to make the XHTML output work better with EIP 
+    and be more valid in places
+
+CNXML-0.5 (p19)
+  - add translations for lens hover boxes; lenses1 merge
+
+CNXML-0.5 (p18)
+  - PDF link wording tweak to match collection printing
+  - #3987: support for arbitrary Flash parameters
+  - Two "forall" display fixes (#4421, #4423)
+
+CNXML-0.5 (p17)
+  - Support for display of collection subtypes
+
+CNXML-0.5 (p16.1)
+  - Fix Memorable Cases in IE
+
+CNXML-0.5 (p16)
+  - For modules in the Rice U. Press Memorable Cases collection:
+    * change the "Click for Solution" and "Hide Solution" labels in
+      'exercise' elements to "Click for Diagnosis" and "Hide Diagnosis" respectively;
+    * suppress "Problem X" and "Solution X" labels on exercise problems
+      and solutions.
+    This approach uses a special simple XML file to enumerate the IDs of the
+    modules that get this special treatment.  All other modules are rendered as before.
+
+CNXML-0.5 (p15)
+  - add l10n entries from lenses0 branch changes to content_render.xsl
+  - override l10n.xsl from docbook-xsl
+  - nlt0212: spaces around "and" in translated content footer
+  - nlt0198: case changes
+
+CNXML-0.5 (p14)
+  - March 2007 site redesign (newlook)
+
+CNXML-0.5 (p13)
+  - addition of optional roles (currently Editor and Translator)
+
+CNXML-0.5 (p12.1)
+  - i18n added for endorsements rollout
+
+CNXML-0.5 (p12)
+  - i18n for content
+
+CNXML-0.5 (p11)
+  - Added support for LabVIEW 8.20 content
+
+CNXML-0.5 (p10)
+  - Provide a link for unrecognized media (inside "<div><object>
+    </object></div>" so that the browser can ignore its nested text if
+    it somehow recognizes that media as an <object> tag).  Currently
+    these media appear to vanish.  The <div> was added so that EIP in IE
+    would have something to latch on to, since unrecognized <object>
+    tags (though not their children) are apparently omitted in IE.
+  - Put class names on certain elements so that EIP can recognize them
+    better and so that their templates don't need to be essentially
+    duplicated in editInPlace.xsl
+  - Make subfigures easier to handle in EIP by moving the class to each
+    <td> (instead of one on <table>) and check for IDs of subfigures,
+    not their parent figure.
+
+CNXML-0.5 (p9)
+  - Made 'id' attribute of 'document' element required instead of optional.
+  - Provide a link to the EPS if there are no other media nested inside it
 
 CNXML-0.5 (p8)
  - Fixed codebase URL for LabVIEW 8.0.
@@ -43,7 +124,7 @@ CNXML-0.5 (p4)
  - Small tweak to XSL to make musical and labview examples compatible
    with Connexions' Edit-In-Place
  - Fixed problem with QML problemsets in schema
- 
+
 CNXML-0.5 (p3)
  - Support video/* not just video/mov
  - Added XMLSpy template

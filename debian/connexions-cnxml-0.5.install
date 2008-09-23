@@ -5,3 +5,4 @@ schema/*.xsd usr/share/xml/cnxml/schema/xsd/0.5/
 style/*.xsl usr/share/xml/cnxml/stylesheet
 *.sps usr/share/xml/cnxml/misc/
 *template.xml usr/share/xml/cnxml/misc/
+l10n.xsl usr/share/xml/docbook/stylesheet/nwalsh/common/
