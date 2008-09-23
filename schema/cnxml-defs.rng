@@ -708,36 +708,40 @@
     </optional>
   </define>
 
+  <define name="block-list-common-content">
+    <ref name="display-block-attribute"/>
+    <ref name="id"/>
+  </define>
+
+  <define name="inline-list-common-content">
+    <ref name="display-inline-attribute"/>
+    <optional>
+      <ref name="id"/>
+    </optional>
+  </define>
+
   <define name="bulleted-list-common-content">
     <ref name="bulleted-list-type-attribute"/>
     <optional>
       <ref name="sep-after-attribute"/>
     </optional>
     <ref name="bullet-style-attribute"/>
+    <ref name="list-common-content"/>
   </define>
 
-  <define name="bulleted-list">
+  <define name="bulleted-block-list">
     <element name="list">
-      <ref name="display-attribute"/>
-      <ref name="common-attributes"/>
-      <optional>
-        <ref name="sep-before-attribute"/>
-      </optional>
-      <optional>
-        <ref name="sep-after-attribute"/>
-      </optional>
-      <optional>
-        <ref name="item-sep-attribute"/>
-      </optional>
-      <ref name="id-attribute"/>
-      <ref name="bulleted-list-type-attribute"/>
-      <ref name="bullet-style-attribute"/>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="item"/>
-      </oneOrMore>
+      <ref name="bulleted-list-common-content"/>
+      <ref name="block-list-common-content"/>
+      <ref name="list-common-content"/>
+    </element>
+  </define>
+
+  <define name="bulleted-inline-list">
+    <element name="list">
+      <ref name="bulleted-list-common-content"/>
+      <ref name="inline-list-common-content"/>
+      <ref name="list-common-content"/>
     </element>
   </define>
 
@@ -750,29 +754,19 @@
     <ref name="start-value-attribute"/>
   </define>
 
-  <define name="enumerated-list">
+  <define name="enumerated-block-list">
     <element name="list">
-      <ref name="display-attribute"/>
-      <ref name="common-attributes"/>
-      <optional>
-        <ref name="sep-before-attribute"/>
-      </optional>
-      <optional>
-        <ref name="sep-after-attribute"/>
-      </optional>
-      <optional>
-        <ref name="item-sep-attribute"/>
-      </optional>
-      <ref name="id-attribute"/>
-      <ref name="enumerated-list-type-attribute"/>
-      <ref name="number-style-attribute"/>
-      <ref name="start-value-attribute"/>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="item"/>
-      </oneOrMore>
+      <ref name="enumerated-list-common-content"/>
+      <ref name="block-list-common-content"/>
+      <ref name="list-common-content"/>
+    </element>
+  </define>
+
+  <define name="enumerated-inline-list">
+    <element name="list">
+      <ref name="enumerated-list-common-content"/>
+      <ref name="inline-list-common-content"/>
+      <ref name="list-common-content"/>
     </element>
   </define>
 
@@ -783,28 +777,36 @@
     <ref name="labeled-item-list-type-attribute"/>
   </define>
 
-  <define name="labeled-item-list">
+  <define name="labeled-item-block-list">
     <element name="list">
-      <ref name="display-attribute"/>
-      <ref name="common-attributes"/>
-      <optional>
-        <ref name="sep-before-attribute"/>
-      </optional>
-      <optional>
-        <ref name="labeled-item-sep-after-attribute"/>
-      </optional>
-      <optional>
-        <ref name="item-sep-attribute"/>
-      </optional>
-      <ref name="id-attribute"/>
-      <ref name="labeled-item-list-type-attribute"/>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="item"/>
-      </oneOrMore>
+      <ref name="labeled-item-list-common-content"/>
+      <ref name="block-list-common-content"/>
+      <ref name="list-common-content"/>
     </element>
+  </define>
+
+  <define name="labeled-item-inline-list">
+    <element name="list">
+      <ref name="labeled-item-list-common-content"/>
+      <ref name="inline-list-common-content"/>
+      <ref name="list-common-content"/>
+    </element>
+  </define>
+
+  <define name="block-list">
+    <choice>
+      <ref name="bulleted-block-list"/>
+      <ref name="enumerated-block-list"/>
+      <ref name="labeled-item-block-list"/>
+    </choice>
+  </define>
+
+  <define name="inline-list">
+    <choice>
+      <ref name="bulleted-inline-list"/>
+      <ref name="enumerated-inline-list"/>
+      <ref name="labeled-item-inline-list"/>
+    </choice>
   </define>
 
   <define name="item">
@@ -971,6 +973,7 @@
     </choice>
   </define>
 
+<!-- FIXME: stub definitions for media children -->
   <define name="object">
     <element name="object">
     </element>
