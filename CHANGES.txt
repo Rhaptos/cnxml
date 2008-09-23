@@ -1,3 +1,4 @@
+cnxml-0.5 (p23)
   - MyCNX phase 2
     - #6578: duplication problem with translation of "cite"
     - #6275: Label and number exercises (and the empty cnxns to them)
