@@ -71,6 +71,14 @@
     </attribute>
   </define>
 
+  <define name="display-none-attribute">
+    <attribute name="display" a:defaultValue="none">
+      <optional>
+        <value>none</value>
+      </optional>
+    </attribute>
+  </define>
+
   <!-- May be revised to have values of 1-5 -->
   <define name="strength-attribute">
     <attribute name="strength">
@@ -329,6 +337,8 @@
       <ref name="citetitle"/>
       <ref name="foreign"/>
       <ref name="emphasis"/>
+      <ref name="sub"/>
+      <ref name="sup"/>
       <ref name="inline-code"/>
       <ref name="inline-preformat"/>
       <ref name="inline-quote"/>
@@ -706,6 +716,9 @@
     <optional>
       <ref name="title"/>
     </optional>
+    <oneOrMore>
+      <ref name="item"/>
+    </oneOrMore>
   </define>
 
   <define name="block-list-common-content">
@@ -886,7 +899,7 @@
         <ref name="title"/>
       </optional>
       <choice>
-      <ref name="media"/>
+        <ref name="media"/>
         <group>
           <ref name="subfigure"/>
           <oneOrMore>
@@ -956,6 +969,13 @@
     </element>
   </define>
 
+  <define name="nodisplay-media">
+    <element name="media">
+      <ref name="display-none-attribute"/>
+      <ref name="media-common-content"/>
+    </element>
+  </define>
+
   <define name="longdesc">
     <choice>
       <ref name="longdesc-attribute"/>
@@ -970,6 +990,7 @@
     <choice>
       <ref name="block-media"/>
       <ref name="inline-media"/>
+      <ref name="nodisplay-media"/>
     </choice>
   </define>
 
