@@ -538,7 +538,9 @@
     <element name="preformat">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
-      <ref name="display-block-attribute"/>
+      <optional>
+        <ref name="display-block-attribute"/>
+      </optional>
       <ref name="div-content"/>
     </element>
   </define>
@@ -641,6 +643,7 @@
     </element>
   </define>
 
+<!-- FIXME: need inline and block definitions! -->
   <define name="quote">
     <element name="quote">
       <ref name="linking-attributes"/>
@@ -694,7 +697,9 @@
 
   <define name="block-note">
     <element name="note">
-      <ref name="display-block-attribute"/>
+      <optional>
+        <ref name="display-block-attribute"/>
+      </optional>
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
       <ref name="note-type-attribute"/>
@@ -722,7 +727,9 @@
   </define>
 
   <define name="block-list-common-content">
-    <ref name="display-block-attribute"/>
+    <optional>
+      <ref name="display-block-attribute"/>
+    </optional>
     <ref name="id"/>
   </define>
 
@@ -849,7 +856,9 @@
 
   <define name="inline-code">
     <element name="code">
-      <ref name="display-inline-attribute"/>
+      <optional>
+        <ref name="display-inline-attribute"/>
+      </optional>
       <ref name="common-attributes"/>
       <optional>
         <ref name="id-attribute"/>
@@ -866,7 +875,9 @@
 
   <define name="code-listing">
     <element name="code">
-      <ref name="display-block-attribute"/>
+      <optional>
+        <ref name="display-block-attribute"/>
+      </optional>
       <ref name="code-listing-type-attribute"/>
       <ref name="common-attributes"/>
       <optional>
@@ -964,7 +975,9 @@
 
   <define name="inline-media">
     <element name="media">
-      <ref name="display-inline-attribute"/>
+      <optional>
+        <ref name="display-inline-attribute"/>
+      </optional>
       <ref name="media-common-content"/>
     </element>
   </define>
