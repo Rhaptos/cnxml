@@ -387,7 +387,8 @@
   <define name="section-content-class">
     <choice>
       <ref name="section"/>
-      <ref name="div-content-class"/>
+      <ref name="basic-blocks-class"/>
+      <ref name="para"/>
     </choice>
   </define>
 
