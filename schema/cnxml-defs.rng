@@ -690,20 +690,6 @@
     </element>
   </define>
 
-  <define name="inline-note">
-    <element name="note">
-      <ref name="display-inline-attribute"/>
-      <optional>
-        <ref name="id-attribute"/>
-      </optional>
-      <ref name="note-type-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <ref name="inline-content"/>
-    </element>
-  </define>
-
   <define name="block-note">
     <element name="note">
       <optional>
@@ -716,6 +702,20 @@
         <ref name="label"/>
       </optional>
       <ref name="div-content"/>
+    </element>
+  </define>
+
+  <define name="inline-note">
+    <element name="note">
+      <ref name="display-inline-attribute"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <ref name="note-type-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <ref name="inline-content"/>
     </element>
   </define>
 
@@ -850,19 +850,6 @@
     </element>
   </define>
 
-  <define name="block-code">
-    <element name="code">
-      <ref name="display-block-attribute"/>
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <ref name="code-lang-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <ref name="inline-content"/>
-    </element>
-  </define>
-
   <define name="inline-code">
     <element name="code">
       <optional>
@@ -873,6 +860,19 @@
         <ref name="id-attribute"/>
       </optional>
       <ref name="code-lang-attribute"/>
+      <ref name="inline-content"/>
+    </element>
+  </define>
+
+  <define name="block-code">
+    <element name="code">
+      <ref name="display-block-attribute"/>
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <ref name="code-lang-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
       <ref name="inline-content"/>
     </element>
   </define>
@@ -975,18 +975,18 @@
     </optional>
   </define>
 
-  <define name="block-media">
-    <element name="media">
-      <ref name="display-block-attribute"/>
-      <ref name="media-common-content"/>
-    </element>
-  </define>
-
   <define name="inline-media">
     <element name="media">
       <optional>
         <ref name="display-inline-default-attribute"/>
       </optional>
+      <ref name="media-common-content"/>
+    </element>
+  </define>
+
+  <define name="block-media">
+    <element name="media">
+      <ref name="display-block-attribute"/>
       <ref name="media-common-content"/>
     </element>
   </define>
