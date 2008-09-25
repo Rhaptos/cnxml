@@ -725,13 +725,13 @@
     <optional>
       <ref name="display-block-attribute"/>
     </optional>
-    <ref name="id"/>
+    <ref name="id-attribute"/>
   </define>
 
   <define name="inline-list-common-content">
     <ref name="display-inline-attribute"/>
     <optional>
-      <ref name="id"/>
+      <ref name="id-attribute"/>
     </optional>
   </define>
 
