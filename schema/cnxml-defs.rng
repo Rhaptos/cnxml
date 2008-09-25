@@ -57,25 +57,19 @@
 
   <define name="display-block-attribute">
     <attribute name="display" a:defaultValue="block">
-      <optional>
-        <value>block</value>
-      </optional>
+      <value>block</value>
     </attribute>
   </define>
 
   <define name="display-inline-attribute">
     <attribute name="display" a:defaultValue="inline">
-      <optional>
-        <value>inline</value>
-      </optional>
+      <value>inline</value>
     </attribute>
   </define>
 
   <define name="display-none-attribute">
     <attribute name="display" a:defaultValue="none">
-      <optional>
-        <value>none</value>
-      </optional>
+      <value>none</value>
     </attribute>
   </define>
 
