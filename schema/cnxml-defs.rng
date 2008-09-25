@@ -980,7 +980,9 @@
     <ref name="common-attributes"/>
     <ref name="id-attribute"/>
     <ref name="alt-attribute"/>
-    <ref name="longdesc"/>
+    <optional>
+      <ref name="longdesc"/>
+    </optional>
     <ref name="media-object-class"/>
     <optional>
       <ref name="media-object-class"/>
