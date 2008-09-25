@@ -320,6 +320,26 @@
     <attribute name="longdesc-attribute"/>
   </define>
 
+  <define name="height-attribute">
+    <attribute name="height"/>
+  </define>
+
+  <define name="width-attribute">
+    <attribute name="width"/>
+  </define>
+
+  <define name="src-attribute">
+    <attribute name="src"/>
+  </define>
+
+  <define name="mimetype-attribute">
+    <attribute name="mimetype"/>
+  </define>
+
+  <define name="thumbnail-attribute">
+    <attribute name="mimetype"/>
+  </define>
+
   <define name="common-attributes">
     <optional>
       <ref name="class-attribute"/>
@@ -1030,12 +1050,47 @@
     </choice>
   </define>
 
-<!-- FIXME: stub definitions for media children -->
-  <define name="object">
-    <element name="object">
+  <define name="param">
+    <element name="param">
+      <attribute name="name"/>
+      <attribute name="value"/>
     </element>
   </define>
 
+<!-- @src must be handled per-element -->
+  <define name="media-object-common-content">
+    <optional>
+      <ref name="id-attribute"/>
+    </optional>
+    <optional>
+      <ref name="height-attribute"/>
+    </optional>
+    <optional>
+      <ref name="width-attribute"/>
+    </optional>
+    <optional>
+      <ref name="mimetype-attribute"/>
+    </optional>
+    <ref name="alt-attribute"/>
+    <optional>
+      <ref name="longdesc"/>
+    </optional>
+    <zeroOrMore>
+      <ref name="param"/>
+    </zeroOrMore>
+    <ref name="div-content"/>
+  </define>
+
+  <define name="object">
+    <element name="object">
+      <ref name="media-object-common-content"/>
+      <optional>
+        <ref name="src-attribute"/>
+      </optional>
+    </element>
+  </define>
+
+<!-- FIXME: stub definitions for media children -->
   <define name="image">
     <element name="image">
     </element>
