@@ -652,9 +652,21 @@
     </element>
   </define>
 
-<!-- FIXME: need inline and block definitions! -->
-  <define name="quote">
+  <define name="block-quote">
     <element name="quote">
+      <optional>
+        <ref name="display-block-default-attribute"/>
+      </optional>
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <ref name="linking-attributes"/>
+      <ref name="div-content"/>
+    </element>
+  </define>
+
+  <define name="inline-quote">
+    <element name="quote">
+      <ref name="display-inline-attribute"/>
       <ref name="linking-attributes"/>
       <ref name="inline-content"/>
     </element>
