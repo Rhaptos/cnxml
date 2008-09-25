@@ -1093,6 +1093,9 @@
 <!-- FIXME: stub definitions for media children -->
   <define name="image">
     <element name="image">
+      <ref name="media-object-common-content"/>
+      <ref name="src-attribute"/>
+      <ref name="thumbnail-attribute"/>
     </element>
   </define>
 
