@@ -337,7 +337,23 @@
   </define>
 
   <define name="thumbnail-attribute">
-    <attribute name="mimetype"/>
+    <attribute name="thumbnail"/>
+  </define>
+
+  <define name="codebase-attribute">
+    <attribute name="codebase"/>
+  </define>
+
+  <define name="code-attribute">
+    <attribute name="code"/>
+  </define>
+
+  <define name="archive-attribute">
+    <attribute name="archive"/>
+  </define>
+
+  <define name="name-attribute">
+    <attribute name="name"/>
   </define>
 
   <define name="common-attributes">
@@ -426,7 +442,7 @@
       <ref name="image"/>
       <ref name="audio"/>
       <ref name="video"/>
-      <ref name="javaapplet"/>
+      <ref name="java-applet"/>
       <ref name="flash"/>
       <ref name="labview"/>
       <ref name="text"/>
@@ -1114,8 +1130,22 @@
     </element>
   </define>
 
-  <define name="javaapplet">
-    <element name="javaapplet">
+  <define name="java-applet">
+    <element name="java-applet">
+      <ref name="media-object-common-content"/>
+      <optional>
+        <ref name="src-attribute"/>
+      </optional>
+      <optional>
+        <ref name="codebase-attribute"/>
+      </optional>
+      <ref name="code-attribute"/>
+      <optional>
+        <ref name="archive-attribute"/>
+      </optional>
+      <optional>
+        <ref name="name-attribute"/>
+      </optional>
     </element>
   </define>
 
