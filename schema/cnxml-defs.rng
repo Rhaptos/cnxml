@@ -55,20 +55,34 @@
     </attribute>
   </define>
 
-  <define name="display-block-attribute">
+  <define name="display-block-default-attribute">
     <attribute name="display" a:defaultValue="block">
+      <value>block</value>
+      <value>none</value>
+    </attribute>
+  </define>
+
+  <define name="display-block-attribute">
+    <attribute name="display">
       <value>block</value>
     </attribute>
   </define>
 
-  <define name="display-inline-attribute">
+  <define name="display-inline-default-attribute">
     <attribute name="display" a:defaultValue="inline">
+      <value>inline</value>
+      <value>none</value>
+    </attribute>
+  </define>
+
+  <define name="display-inline-attribute">
+    <attribute name="display">
       <value>inline</value>
     </attribute>
   </define>
 
   <define name="display-none-attribute">
-    <attribute name="display" a:defaultValue="none">
+    <attribute name="display">
       <value>none</value>
     </attribute>
   </define>
@@ -534,7 +548,7 @@
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
       <optional>
-        <ref name="display-block-attribute"/>
+        <ref name="display-block-default-attribute"/>
       </optional>
       <ref name="div-content"/>
     </element>
@@ -693,7 +707,7 @@
   <define name="block-note">
     <element name="note">
       <optional>
-        <ref name="display-block-attribute"/>
+        <ref name="display-block-default-attribute"/>
       </optional>
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
@@ -723,7 +737,7 @@
 
   <define name="block-list-common-content">
     <optional>
-      <ref name="display-block-attribute"/>
+      <ref name="display-block-default-attribute"/>
     </optional>
     <ref name="id-attribute"/>
   </define>
@@ -852,7 +866,7 @@
   <define name="inline-code">
     <element name="code">
       <optional>
-        <ref name="display-inline-attribute"/>
+        <ref name="display-inline-default-attribute"/>
       </optional>
       <ref name="common-attributes"/>
       <optional>
@@ -971,7 +985,7 @@
   <define name="inline-media">
     <element name="media">
       <optional>
-        <ref name="display-inline-attribute"/>
+        <ref name="display-inline-default-attribute"/>
       </optional>
       <ref name="media-common-content"/>
     </element>
