@@ -56,10 +56,12 @@
   </define>
 
   <define name="display-block-default-attribute">
-    <attribute name="display" a:defaultValue="block">
-      <value>block</value>
-      <value>none</value>
-    </attribute>
+    <optional>
+      <attribute name="display" a:defaultValue="block">
+        <value>block</value>
+        <value>none</value>
+      </attribute>
+    </optional>
   </define>
 
   <define name="display-block-attribute">
@@ -69,10 +71,12 @@
   </define>
 
   <define name="display-inline-default-attribute">
-    <attribute name="display" a:defaultValue="inline">
-      <value>inline</value>
-      <value>none</value>
-    </attribute>
+    <optional>
+      <attribute name="display" a:defaultValue="inline">
+        <value>inline</value>
+        <value>none</value>
+      </attribute>
+    </optional>
   </define>
 
   <define name="display-inline-attribute">
@@ -226,14 +230,16 @@
   </define>
 
   <define name="list-type-attribute">
-    <attribute name="list-type" a:defaultValue="bulleted">
-      <choice>
-        <value>bulleted</value>
-        <value>enumerated</value>
-        <value>labeled-item</value>
-        <text/>
-      </choice>
-    </attribute>
+    <optional>
+      <attribute name="list-type" a:defaultValue="bulleted">
+        <choice>
+          <value>bulleted</value>
+          <value>enumerated</value>
+          <value>labeled-item</value>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
   </define>
 
   <define name="bulleted-list-type-attribute">
@@ -255,31 +261,35 @@
   </define>
 
   <define name="bullet-style-attribute">
-    <attribute name="bullet-style" a:defaultValue="bullet">
-      <choice>
-        <value>bullet</value>
-        <value>opencircle</value>
-        <value>pilcrow</value>
-        <value>rpilcrow</value>
-        <value>asterisk</value>
-        <value>dash</value>
-        <value>section</value>
-        <value>none</value>
-        <text/>
-      </choice>
-    </attribute>
+    <optional>
+      <attribute name="bullet-style" a:defaultValue="bullet">
+        <choice>
+          <value>bullet</value>
+          <value>opencircle</value>
+          <value>pilcrow</value>
+          <value>rpilcrow</value>
+          <value>asterisk</value>
+          <value>dash</value>
+          <value>section</value>
+          <value>none</value>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
   </define>
 
   <define name="number-style-attribute">
-    <attribute name="number-style" a:defaultValue="arabic">
-      <choice>
-        <value>arabic</value>
-        <value>upperalpha</value>
-        <value>loweralpha</value>
-        <value>upperroman</value>
-        <value>lowerroman</value>
-      </choice>
-    </attribute>
+    <optional>
+      <attribute name="number-style" a:defaultValue="arabic">
+        <choice>
+          <value>arabic</value>
+          <value>upperalpha</value>
+          <value>loweralpha</value>
+          <value>upperroman</value>
+          <value>lowerroman</value>
+        </choice>
+      </attribute>
+    </optional>
   </define>
 
   <define name="sep-before-attribute">
@@ -287,15 +297,21 @@
   </define>
 
   <define name="sep-after-attribute">
-    <attribute name="sep-after" a:defaultValue="."/>
+    <optional>
+      <attribute name="sep-after" a:defaultValue="."/>
+    </optional>
   </define>
 
   <define name="labeled-item-sep-after-attribute">
-    <attribute name="sep-after" a:defaultValue=":"/>
+    <optional>
+      <attribute name="sep-after" a:defaultValue=":"/>
+    </optional>
   </define>
 
   <define name="item-sep-attribute">
-    <attribute name="item-sep" a:defaultValue=";"/>
+    <optional>
+      <attribute name="item-sep" a:defaultValue=";"/>
+    </optional>
   </define>
 
   <define name="start-value-attribute">
@@ -605,9 +621,7 @@
     <element name="preformat">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
-      <optional>
-        <ref name="display-block-default-attribute"/>
-      </optional>
+      <ref name="display-block-default-attribute"/>
       <ref name="div-content"/>
     </element>
   </define>
@@ -755,9 +769,7 @@
 
   <define name="block-quote">
     <element name="quote">
-      <optional>
-        <ref name="display-block-default-attribute"/>
-      </optional>
+      <ref name="display-block-default-attribute"/>
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
       <ref name="linking-attributes"/>
@@ -813,9 +825,7 @@
 
   <define name="block-note">
     <element name="note">
-      <optional>
-        <ref name="display-block-default-attribute"/>
-      </optional>
+      <ref name="display-block-default-attribute"/>
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
       <ref name="note-type-attribute"/>
@@ -845,9 +855,7 @@
     <optional>
       <ref name="sep-before-attribute"/>
     </optional>
-    <optional>
-      <ref name="item-sep-attribute"/>
-    </optional>
+    <ref name="item-sep-attribute"/>
     <optional>
       <ref name="title"/>
     </optional>
@@ -857,9 +865,7 @@
   </define>
 
   <define name="block-list-common-content">
-    <optional>
-      <ref name="display-block-default-attribute"/>
-    </optional>
+    <ref name="display-block-default-attribute"/>
     <ref name="id-attribute"/>
   </define>
 
@@ -872,9 +878,7 @@
 
   <define name="bulleted-list-common-content">
     <ref name="bulleted-list-type-attribute"/>
-    <optional>
-      <ref name="sep-after-attribute"/>
-    </optional>
+    <ref name="sep-after-attribute"/>
     <ref name="bullet-style-attribute"/>
     <ref name="list-common-content"/>
   </define>
@@ -896,9 +900,7 @@
   </define>
 
   <define name="enumerated-list-common-content">
-    <optional>
-      <ref name="sep-after-attribute"/>
-    </optional>
+    <ref name="sep-after-attribute"/>
     <ref name="enumerated-list-type-attribute"/>
     <ref name="number-style-attribute"/>
     <ref name="start-value-attribute"/>
@@ -921,9 +923,7 @@
   </define>
 
   <define name="labeled-item-list-common-content">
-    <optional>
-      <ref name="labeled-item-sep-after-attribute"/>
-    </optional>
+    <ref name="labeled-item-sep-after-attribute"/>
     <ref name="labeled-item-list-type-attribute"/>
   </define>
 
@@ -973,9 +973,7 @@
 
   <define name="inline-code">
     <element name="code">
-      <optional>
-        <ref name="display-inline-default-attribute"/>
-      </optional>
+      <ref name="display-inline-default-attribute"/>
       <ref name="common-attributes"/>
       <optional>
         <ref name="id-attribute"/>
@@ -1100,9 +1098,7 @@
 
   <define name="inline-media">
     <element name="media">
-      <optional>
-        <ref name="display-inline-default-attribute"/>
-      </optional>
+      <ref name="display-inline-default-attribute"/>
       <ref name="media-common-content"/>
     </element>
   </define>
