@@ -1304,5 +1304,20 @@
     </element>
   </define>
 
+  <define name="example">
+    <element name="example">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
+        <ref name="title"/>
+      </optional>
+      <oneOrMore>
+        <ref name="section-content-class"/>
+      </oneOrMore>
+    </element>
+  </define>
 
 </grammar>
