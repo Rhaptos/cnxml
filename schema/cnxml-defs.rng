@@ -190,25 +190,25 @@
       <optional>
         <ref name="window-attribute"/>
       </optional>
-      <optional>
-        <choice>
+      <choice>
+        <optional>
           <ref name="url-attribute"/>
-          <group>
-            <optional>
-              <ref name="document-attribute"/>
-            </optional>
-            <optional>
-              <ref name="version-attribute"/>
-            </optional>
-            <optional>
-              <choice>
-                <ref name="targetid-attribute"/>
-                <ref name="resource-attribute"/>
-              </choice>
-            </optional>
-          </group>
-        </choice>
-      </optional>
+        </optional>
+        <group>
+          <optional>
+            <ref name="document-attribute"/>
+          </optional>
+          <optional>
+            <ref name="version-attribute"/>
+          </optional>
+          <optional>
+            <choice>
+              <ref name="targetid-attribute"/>
+              <ref name="resource-attribute"/>
+            </choice>
+          </optional>
+        </group>
+      </choice>
     </group>
   </define>
 
@@ -655,6 +655,10 @@
 
   <define name="cite">
     <element name="cite">
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
       <ref name="linking-attributes"/>
       <ref name="inline-content"/>
     </element>
