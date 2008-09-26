@@ -700,6 +700,10 @@
 
   <define name="link">
     <element name="link">
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
       <ref name="link-attributes"/>
       <ref name="inline-content"/>
     </element>
