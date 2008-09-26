@@ -1340,6 +1340,12 @@
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
       <ref name="print-placement-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
+        <ref name="title"/>
+      </optional>
       <ref name="problem"/>
       <zeroOrMore>
         <ref name="solution"/>
@@ -1354,6 +1360,12 @@
     <element name="problem">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
+        <ref name="title"/>
+      </optional>
       <ref name="section-content"/>
     </element>
   </define>
@@ -1363,6 +1375,12 @@
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
       <ref name="print-placement-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
+        <ref name="title"/>
+      </optional>
       <ref name="section-content"/>
     </element>
   </define>
@@ -1373,6 +1391,9 @@
       <ref name="id-attribute"/>
       <optional>
         <ref name="label"/>
+      </optional>
+      <optional>
+        <ref name="title"/>
       </optional>
       <oneOrMore>
         <ref name="div-content-class"/>
