@@ -768,6 +768,10 @@
   <define name="inline-quote">
     <element name="quote">
       <ref name="display-inline-attribute"/>
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
       <ref name="linking-attributes"/>
       <ref name="inline-content"/>
     </element>
