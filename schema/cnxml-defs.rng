@@ -1126,6 +1126,9 @@
       <ref name="longdesc-attribute"/>
       <element name="longdesc">
         <ref name="common-attributes"/>
+        <optional>
+          <ref name="id-attribute"/>
+        </optional>
         <ref name="div-content"/>
       </element>
     </choice>
