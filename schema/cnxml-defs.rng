@@ -103,12 +103,14 @@
   </define>
 
   <define name="window-attribute">
-    <attribute name="window" a:defaultValue="replace">
-      <choice>
-        <value>replace</value>
-        <value>new</value>
-      </choice>
-    </attribute>
+    <optional>
+      <attribute name="window" a:defaultValue="replace">
+        <choice>
+          <value>replace</value>
+          <value>new</value>
+        </choice>
+      </attribute>
+    </optional>
   </define>
 
   <define name="url-attribute">
@@ -141,9 +143,7 @@
       <optional>
         <ref name="strength-attribute"/>
       </optional>
-      <optional>
-        <ref name="window-attribute"/>
-      </optional>
+      <ref name="window-attribute"/>
       <choice>
         <ref name="url-attribute"/>
         <group>
@@ -191,9 +191,7 @@
       <optional>
         <ref name="strength-attribute"/>
       </optional>
-      <optional>
-        <ref name="window-attribute"/>
-      </optional>
+      <ref name="window-attribute"/>
       <choice>
         <optional>
           <ref name="url-attribute"/>
@@ -217,16 +215,18 @@
   </define>
 
   <define name="note-type-attribute">
-    <attribute name="type" a:defaultValue="note">
-      <choice>
-        <value>note</value>
-        <value>aside</value>
-        <value>warning</value>
-        <value>tip</value>
-        <value>important</value>
-        <text/>
-      </choice>
-    </attribute>
+    <optional>
+      <attribute name="type" a:defaultValue="note">
+        <choice>
+          <value>note</value>
+          <value>aside</value>
+          <value>warning</value>
+          <value>tip</value>
+          <value>important</value>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
   </define>
 
   <define name="list-type-attribute">
