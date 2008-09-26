@@ -711,6 +711,13 @@
 
   <define name="emphasis">
     <element name="emphasis">
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <optional>
+        <ref name="effect-attribute"/>
+      </optional>
       <ref name="inline-content"/>
     </element>
   </define>
