@@ -393,6 +393,17 @@
     </attribute>
   </define>
 
+  <define name="link-group-type-attribute">
+    <choice>
+      <value>prerequisite</value>
+      <value>example</value>
+      <value>supplemental</value>
+      <value>funder</value>
+      <value>sponsor</value>
+      <value>publisher</value>
+    </choice>
+  </define>
+
   <define name="common-attributes">
     <optional>
       <ref name="class-attribute"/>
@@ -548,11 +559,24 @@
     <element name="featured-links">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <oneOrMore>
+        <ref name="link-group"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="link-group">
+    <element name="link-group">
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <ref name="link-group-type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
       <oneOrMore>
-        <ref name="link-group"/>
+        <ref name="link"/>
       </oneOrMore>
     </element>
   </define>
