@@ -559,18 +559,19 @@
     <element name="section">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
-      <zeroOrMore>
+      <optional>
         <ref name="label"/>
-      </zeroOrMore>
-      <zeroOrMore>
+      </optional>
+      <optional>
         <ref name="title"/>
-      </zeroOrMore>
+      </optional>
       <oneOrMore>
         <ref name="section-content-class"/>
       </oneOrMore>
     </element>
   </define>
 
+<!-- FIXME: Needs a ticket -->
   <define name="div">
     <element name="div">
       <ref name="common-attributes"/>
