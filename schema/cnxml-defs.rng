@@ -418,6 +418,17 @@
     </optional>
   </define>
 
+  <define name="print-placement-attribute">
+    <optional>
+      <attribute name="print-placement">
+        <choice>
+          <value>here</value>
+          <value>end</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
   <define name="common-attributes">
     <optional>
       <ref name="class-attribute"/>
@@ -539,6 +550,20 @@
     </oneOrMore>
   </define>
 
+  <define name="section-content">
+    <ref name="common-attributes"/>
+    <ref name="id-attribute"/>
+    <optional>
+      <ref name="label"/>
+    </optional>
+    <optional>
+      <ref name="title"/>
+    </optional>
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
+  </define>
+
 <!--
   Element Definitions
 -->
@@ -635,17 +660,7 @@
 
   <define name="section">
     <element name="section">
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <ref name="section-content"/>
     </element>
   </define>
 
@@ -1316,6 +1331,51 @@
       </optional>
       <oneOrMore>
         <ref name="section-content-class"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="exercise">
+    <element name="exercise">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <ref name="print-placement-attribute"/>
+      <ref name="problem"/>
+      <zeroOrMore>
+        <ref name="solution"/>
+      </zeroOrMore>
+      <optional>
+        <ref name="commentary"/>
+      </optional>
+    </element>
+  </define>
+
+  <define name="problem">
+    <element name="problem">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <ref name="section-content"/>
+    </element>
+  </define>
+
+  <define name="solution">
+    <element name="solution">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <ref name="print-placement-attribute"/>
+      <ref name="section-content"/>
+    </element>
+  </define>
+
+  <define name="commentary">
+    <element name="commentary">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <oneOrMore>
+        <ref name="div-content-class"/>
       </oneOrMore>
     </element>
   </define>
