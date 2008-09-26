@@ -404,6 +404,12 @@
     </choice>
   </define>
 
+  <define name="cnxml-version">
+    <attribute name="cnxml-version">
+      <value>0.6</value>
+    </attribute>
+  </define>
+
   <define name="common-attributes">
     <optional>
       <ref name="class-attribute"/>
@@ -532,6 +538,7 @@
       <ref name="id-attribute"/><!-- Rename this object-id -->
       <ref name="common-attributes"/>
       <ref name="document-title"/>
+      <ref name="cnxml-version"/>
       <optional>
         <ref name="metadata"/>
       </optional>
