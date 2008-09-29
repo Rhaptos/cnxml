@@ -424,6 +424,20 @@
     </optional>
   </define>
 
+  <define name="viname-attribute">
+    <attribute name="viname"/>
+  </define>
+
+  <define name="labview-version-attribute">
+    <attribute name="version">
+      <choice>
+        <value>7.0</value>
+        <value>8.0</value>
+        <value>8.2</value>
+      </choice>
+    </attribute>
+  </define>
+
   <define name="pub-type">
     <attribute name="pub-type">
       <choice>
@@ -1377,16 +1391,22 @@
     </element>
   </define>
 
+<!-- 
   <define name="flash">
     <element name="flash">
     </element>
   </define>
+ -->
 
   <define name="labview">
     <element name="labview">
+      <ref name="media-object-common-content"/>
+      <ref name="viname-attribute"/>
+      <ref name="labview-version-attribute"/>
     </element>
   </define>
 
+<!-- 
   <define name="text">
     <element name="text">
     </element>
@@ -1396,6 +1416,7 @@
     <element name="download">
     </element>
   </define>
+ -->
 
   <define name="example">
     <element name="example">
