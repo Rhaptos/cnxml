@@ -1416,12 +1416,14 @@
     </element>
   </define>
 
-<!-- FIXME
   <define name="download">
     <element name="download">
+      <ref name="media-object-common-content"/>
+      <optional>
+        <ref name="src-attribute"/>
+      </optional>
     </element>
   </define>
- -->
 
   <define name="example">
     <element name="example">
