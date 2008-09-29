@@ -1398,4 +1398,46 @@
     </element>
   </define>
 
+  <define name="definition">
+    <element name="definition">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <ref name="term"/>
+      <choice>
+        <ref name="seealso"/>
+        <group>
+          <oneOrMore>
+            <ref name="meaning"/>
+            <zeroOrMore>
+              <ref name="example"/>
+            </zeroOrMore>
+          </oneOrMore>
+          <ref name="seealso"/>
+        </group>
+      </choice>
+    </element>
+  </define>
+
+  <define name="meaning">
+    <element name="meaning">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <oneOrMore>
+        <ref name="div-content-class"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="seealso">
+    <element name="seealso">
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <oneOrMore>
+        <ref name="term"/>
+      </oneOrMore>
+    </element>
+  </define>
+
 </grammar>
