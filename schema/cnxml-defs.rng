@@ -1351,7 +1351,6 @@
     </element>
   </define>
 
-<!-- FIXME: stub definitions for media children -->
   <define name="image">
     <element name="image">
       <ref name="media-object-common-content"/>
@@ -1391,7 +1390,7 @@
     </element>
   </define>
 
-<!-- 
+<!-- FIXME
   <define name="flash">
     <element name="flash">
     </element>
@@ -1406,12 +1405,18 @@
     </element>
   </define>
 
-<!-- 
   <define name="text">
     <element name="text">
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <oneOrMore>
+        <ref name="div-content-class"/>
+      </oneOrMore>
     </element>
   </define>
 
+<!-- FIXME
   <define name="download">
     <element name="download">
     </element>
