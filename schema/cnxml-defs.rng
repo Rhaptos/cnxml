@@ -404,6 +404,22 @@
     </choice>
   </define>
 
+  <define name="rule-type">
+    <optional>
+      <attribute name="type" a:defaultValue="rule">
+        <choice>
+          <value>rule</value>
+          <value>theorem</value>
+          <value>lemma</value>
+          <value>corollary</value>
+          <value>law</value>
+          <value>proposition</value>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
   <define name="cnxml-version">
     <attribute name="cnxml-version">
       <value>0.6</value>
@@ -1440,4 +1456,46 @@
     </element>
   </define>
 
+  <define name="rule">
+    <element name="rule">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <ref name="rule-type"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
+        <ref name="title"/>
+      </optional>
+      <ref name="statement"/>
+      <zeroOrMore>
+        <choice>
+          <ref name="proof"/>
+          <ref name="example"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="statement">
+    <element name="statement">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <optional>
+        <ref name="title"/>
+      </optional>
+      <oneOrMore>
+        <ref name="section-content-class"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="proof">
+    <element name="proof">
+      <ref name="common-attributes"/>
+      <ref name="id-attribute"/>
+      <ref name="section-content"/>
+    </element>
+  </define>
+ 
 </grammar>
