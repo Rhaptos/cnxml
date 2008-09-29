@@ -372,6 +372,58 @@
     <attribute name="name"/>
   </define>
 
+  <define name="standby-attribute">
+    <optional>
+      <attribute name="standby">
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+
+  <define name="autoplay-attribute">
+    <optional>
+      <attribute name="autoplay" a:defaultValue="false">
+        <choice>
+          <value>true</value>
+          <value>false</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
+  <define name="loop-attribute">
+    <optional>
+      <attribute name="loop" a:defaultValue="false">
+        <choice>
+          <value>true</value>
+          <value>false</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
+  <define name="controller-attribute">
+    <optional>
+      <attribute name="controller" a:defaultValue="false">
+        <choice>
+          <value>true</value>
+          <value>false</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
+  <define name="volume-attribute">
+    <optional>
+      <attribute name="volume" a:defaultValue="50">
+        <data type="integer">
+          <param name="minInclusive">1</param>
+          <param name="maxInclusive">100</param>
+        </data>
+      </attribute>
+    </optional>
+  </define>
+
   <define name="pub-type">
     <attribute name="pub-type">
       <choice>
@@ -1266,6 +1318,16 @@
     <ref name="div-content"/>
   </define>
 
+  <define name="audio-video-common-content">
+    <ref name="media-object-common-content"/>
+    <ref name="src-attribute"/>
+    <ref name="standby-attribute"/>
+    <ref name="autoplay-attribute"/>
+    <ref name="loop-attribute"/>
+    <ref name="controller-attribute"/>
+    <ref name="volume-attribute"/>
+  </define>
+
   <define name="object">
     <element name="object">
       <ref name="media-object-common-content"/>
@@ -1286,16 +1348,13 @@
 
   <define name="audio">
     <element name="audio">
+      <ref name="audio-video-common-content"/>
     </element>
   </define>
 
   <define name="video">
     <element name="video">
-    </element>
-  </define>
-
-  <define name="audio">
-    <element name="audio">
+      <ref name="audio-video-common-content"/>
     </element>
   </define>
 
