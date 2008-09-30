@@ -1,3 +1,4 @@
+cnxml-0.5 (p24)
   - quickperf (30 Sept 2008)
     - two entries for "Recently" and "Viewed" due to wrapping issues in portlet title
 
