@@ -11,8 +11,7 @@
 
   <define name="id-attribute">
     <attribute name="id">
-      <data datatypeLibrary="http://relaxng.org/ns/compatibility/datatypes/1.0" 
-            type="ID"/>
+      <data type="ID"/>
     </attribute>
   </define>
 
