@@ -1647,10 +1647,10 @@
 
   <define name="tgroup.mdl">
     <zeroOrMore>
-      <ref name="colspec-attribute"/>
+      <ref name="colspec"/>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="spanspec-attribute"/>
+      <ref name="spanspec"/>
     </zeroOrMore>
     <optional>
       <ref name="thead"/>
@@ -1671,7 +1671,7 @@
 
   <define name="hdft.mdl">
     <zeroOrMore>
-      <ref name="colspec-attribute"/>
+      <ref name="colspec"/>
     </zeroOrMore>
     <oneOrMore>
       <ref name="row"/>
@@ -1689,10 +1689,10 @@
 
   <define name="entrytbl.mdl">
     <zeroOrMore>
-      <ref name="colspec-attribute"/>
+      <ref name="colspec"/>
     </zeroOrMore>
     <zeroOrMore>
-      <ref name="spanspec-attribute"/>
+      <ref name="spanspec"/>
     </zeroOrMore>
     <optional>
       <ref name="thead"/>
@@ -1756,6 +1756,72 @@
       </optional>
       <ref name="secur"/>
       <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <ref name="tgroup.mdl"/>
+    </element>
+  </define>
+
+  <define name="colspec">
+    <element name="colspec">
+      <optional>
+        <attribute name="colnum"/>
+      </optional>
+      <optional>
+        <attribute name="colname"/>
+      </optional>
+      <optional>
+        <attribute name="colwidth"/>
+      </optional>
+      <optional>
+        <ref name="colsep-attribute"/>
+      </optional>
+      <optional>
+        <ref name="rowsep-attribute"/>
+      </optional>
+      <optional>
+        <ref name="align-attribute"/>
+      </optional>
+      <optional>
+        <ref name="char-attribute"/>
+      </optional>
+      <optional>
+        <ref name="charoff-attribute"/>
+      </optional>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <ref name="tgroup.mdl"/>
+    </element>
+  </define>
+
+  <define name="spanspec">
+    <element name="spanspec">
+      <optional>
+        <attribute name="namest"/>
+      </optional>
+      <optional>
+        <attribute name="nameend"/>
+      </optional>
+      <optional>
+        <attribute name="colwidth"/>
+      </optional>
+      <optional>
+        <ref name="colsep-attribute"/>
+      </optional>
+      <optional>
+        <ref name="rowsep-attribute"/>
+      </optional>
+      <optional>
+        <ref name="align-attribute"/>
+      </optional>
+      <optional>
+        <ref name="char-attribute"/>
+      </optional>
+      <optional>
+        <ref name="charoff-attribute"/>
+      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
