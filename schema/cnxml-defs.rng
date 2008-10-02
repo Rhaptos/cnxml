@@ -1558,13 +1558,25 @@
   </define>
 
   <define name="yesorno">
-    <data type="integer"/>
+    <data type="integer">
       <param name="minInclusive">0</param>
     </data>
   </define>
 
+  <define name="colsep-attribute">
+    <attribute name="colsep">
+      <ref name="yesorno"/>
+    </attribute>
+  </define>
+
+  <define name="rowsep-attribute">
+    <attribute name="rowsep">
+      <ref name="yesorno"/>
+    </attribute>
+  </define>
+
   <define name="table.title">
-    <notAllowed/>
+    <ref name="title"/>
   </define>
 
   <define name="table-main.mdl">
@@ -1611,6 +1623,94 @@
         <ref name="yesorno"/>
       </attribute>
     </optional>
+  </define>
+
+  <define name="tgroup.mdl">
+    <zeroOrMore>
+      <ref name="colspec-attribute"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="spanspec-attribute"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="thead"/>
+    </optional>
+    <optional>
+      <ref name="tfoot"/>
+    </optional>
+    <ref name="tbody"/>
+  </define>
+
+  <define name="tgroup.att">
+    <optional>
+      <attribute name="tgroupstyle">
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+
+  <define name="hdft.mdl">
+    <zeroOrMore>
+      <ref name="colspec-attribute"/>
+    </zeroOrMore>
+    <oneOrMore>
+      <ref name="row"/>
+    </oneOrMore>
+  </define>
+
+  <define name="row.mdl">
+    <oneOrMore>
+      <choice>
+        <ref name="entry"/>
+        <ref name="entrytbl"/>
+      </choice>
+    </oneOrMore>
+  </define>
+
+  <define name="entrytbl.mdl">
+    <zeroOrMore>
+      <ref name="colspec-attribute"/>
+    </zeroOrMore>
+    <zeroOrMore>
+      <ref name="spanspec-attribute"/>
+    </zeroOrMore>
+    <optional>
+      <ref name="thead"/>
+    </optional>
+    <ref name="tbody"/>
+  </define>
+
+  <define name="entry.mdl">
+    <zeroOrMore>
+      <ref name="div-content-class"/>
+    </zeroOrMore>
+  </define>
+
+  <define name="table">
+    <optional>
+      <attribute name="frame">
+        <choice>
+          <value>top</value>
+          <value>bottom</value>
+          <value>topbot</value>
+          <value>all</value>
+          <value>sides</value>
+          <value>none</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <ref name="colsep-attribute"/>
+    </optional>
+    <optional>
+      <ref name="rowsep-attribute"/>
+    </optional>
+    <ref name="table.att"/>
+    <ref name="bodyatt"/>
+    <ref name="secur"/>
+    <ref name="common-attributes"/>
+    <ref name="id-attribute"/>
+    <ref name="table.mdl"/>
   </define>
 
 </grammar>
