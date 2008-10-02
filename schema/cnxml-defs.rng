@@ -1587,6 +1587,18 @@
     </attribute>
   </define>
 
+  <define name="valign-attribute">
+    <optional>
+      <attribute name="valign">
+        <choice>
+          <value>top</value>
+          <value>middle</value>
+          <value>bottom</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
   <define name="char-attribute">
     <attribute name="char"/>
   </define>
@@ -1789,6 +1801,7 @@
       <optional>
         <ref name="charoff-attribute"/>
       </optional>
+      <ref name="common-attributes"/>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -1822,10 +1835,35 @@
       <optional>
         <ref name="charoff-attribute"/>
       </optional>
+      <ref name="common-attributes"/>
       <optional>
         <ref name="id-attribute"/>
       </optional>
       <ref name="tgroup.mdl"/>
+    </element>
+  </define>
+
+  <define name="thead">
+    <element name="thead">
+      <ref name="valign-attribute"/>
+      <ref name="secur"/>
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <ref name="hdft.mdl"/>
+    </element>
+  </define>
+
+  <define name="tfoot">
+    <element name="tfoot">
+      <ref name="valign-attribute"/>
+      <ref name="secur"/>
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <ref name="hdft.mdl"/>
     </element>
   </define>
 
