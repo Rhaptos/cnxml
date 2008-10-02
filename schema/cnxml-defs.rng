@@ -6,7 +6,7 @@
          ns="http://cnx.rice.edu/cnxml">
 
 <!--
-  Attribute Definitions
+    Attribute Definitions
 -->
 
   <define name="id-attribute">
@@ -531,7 +531,7 @@
   </define>
 
 <!--
-  Content Classes
+    Content Classes
 -->
 
   <define name="inline-class">
@@ -615,7 +615,7 @@
   </define>
 
 <!--
-  Shared Content Models
+    Shared Content Models
 -->
 
   <define name="inline-content">
@@ -654,7 +654,7 @@
   </define>
 
 <!--
-  Element Definitions
+    Element Definitions
 -->
 
   <define name="anyElement">
@@ -1545,4 +1545,72 @@
     </element>
   </define>
  
+<!-- 
+    CALS Table Definitions
+ -->
+
+  <define name="bodyatt">
+    <empty/>
+  </define>
+
+  <define name="secur">
+    <empty/>
+  </define>
+
+  <define name="yesorno">
+    <data type="integer"/>
+      <param name="minInclusive">0</param>
+    </data>
+  </define>
+
+  <define name="table.title">
+    <notAllowed/>
+  </define>
+
+  <define name="table-main.mdl">
+    <oneOrMore>
+      <ref name="tgroup"/>
+    </oneOrMore>
+  </define>
+
+  <define name="table.mdl">
+    <optional>
+      <ref name="table.title"/>
+    </optional>
+    <ref name="table-main.mdl"/>
+    <optional>
+      <ref name="caption"/>
+    </optional>
+  </define>
+
+  <define name="table.att">
+    <ref name="id-attribute"/>
+    <optional>
+      <attribute name="tabstyle"/>
+    </optional>
+    <optional>
+      <attribute name="tocentry">
+        <ref name="yesorno"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="shortentry">
+        <ref name="yesorno"/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="orient">
+        <choice>
+          <value>port</value>
+          <value>land</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="pgwide">
+        <ref name="yesorno"/>
+      </attribute>
+    </optional>
+  </define>
+
 </grammar>
