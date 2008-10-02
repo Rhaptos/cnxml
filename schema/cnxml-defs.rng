@@ -47,16 +47,6 @@
     </attribute>
   </define>
 
-  <define name="display-attribute">
-    <attribute name="display" a:defaultValue="block">
-      <choice>
-        <value>block</value>
-        <value>inline</value>
-        <value>none</value>
-      </choice>
-    </attribute>
-  </define>
-
   <define name="display-block-default-attribute">
     <optional>
       <attribute name="display" a:defaultValue="block">
@@ -229,19 +219,6 @@
           <value>warning</value>
           <value>tip</value>
           <value>important</value>
-          <text/>
-        </choice>
-      </attribute>
-    </optional>
-  </define>
-
-  <define name="list-type-attribute">
-    <optional>
-      <attribute name="list-type" a:defaultValue="bulleted">
-        <choice>
-          <value>bulleted</value>
-          <value>enumerated</value>
-          <value>labeled-item</value>
           <text/>
         </choice>
       </attribute>
@@ -1766,7 +1743,6 @@
       <ref name="bodyatt"/>
       <ref name="secur"/>
       <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
       <ref name="table.mdl"/>
     </element>
   </define>
