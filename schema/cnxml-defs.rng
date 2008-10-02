@@ -1619,6 +1619,10 @@
     <attribute name="spanname"/>
   </define>
 
+  <define name="morerows-attribute">
+    <attribute name="morerows"/>
+  </define>
+
   <define name="namest-attribute">
     <attribute name="namest"/>
   </define>
