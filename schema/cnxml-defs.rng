@@ -312,7 +312,7 @@
   </define>
 
   <define name="alt-attribute">
-    <attribute name="alt-attribute"/>
+    <attribute name="alt"/>
   </define>
 
   <define name="longdesc-attribute">
