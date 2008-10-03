@@ -579,9 +579,13 @@
     Content Classes
 -->
 
+  <define name="text-extras">
+    <text/>
+  </define>
+
   <define name="inline-class">
     <choice>
-      <text/>
+      <ref name="text-extras"/>
       <ref name="span"/>
       <ref name="term"/>
       <ref name="cite"/>
