@@ -20,6 +20,10 @@
     </define>
   </include>
 
+  <define name="mathml-math">
+    <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+  </define>
+
   <include href="cnxml-defs.rng">
     <define name="metadata-content">
       <ref name="mdml-metadata-content"/>
@@ -28,6 +32,14 @@
       <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>
     </define>
   </include>
+
+  <define name="text-extras" combine="choice">
+    <ref name="mathml-math"/>
+  </define>
+
+  <define name="equation-content" combine="choice">
+    <ref name="mathml-math"/>
+  </define>
 
   <define name="simple-para">
     <element name="para">

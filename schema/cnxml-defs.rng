@@ -991,6 +991,13 @@
   </define>
 
 <!-- FIXME: Do we want to continue to permit 'media' or text in 'equation'? -->
+  <define name="equation-content">
+    <choice>
+      <ref name="media"/>
+      <text/>
+    </choice>
+  </define>
+
   <define name="equation">
     <element name="equation">
       <ref name="common-attributes"/>
@@ -1001,10 +1008,7 @@
       <optional>
         <ref name="title"/>
       </optional>
-      <choice>
-        <ref name="media"/>
-        <text/>
-      </choice>
+      <ref name="equation-content"/>
     </element>
   </define>
 
