@@ -37,7 +37,7 @@
     <ref name="mathml-math"/>
   </define>
 
-  <define name="equation-content" combine="choice">
+  <define name="equation-content-choice" combine="choice">
     <ref name="mathml-math"/>
   </define>
 
