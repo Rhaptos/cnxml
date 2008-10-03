@@ -737,6 +737,9 @@
       <optional>
         <ref name="glossary"/>
       </optional>
+      <optional>
+        <ref name="bibliography"/>
+      </optional>
     </element>
   </define>
 
@@ -807,6 +810,10 @@
         <ref name="definition"/>
       </oneOrMore>
     </element>
+  </define>
+
+  <define name="bibliography">
+    <notAllowed/>
   </define>
 
   <define name="section">
