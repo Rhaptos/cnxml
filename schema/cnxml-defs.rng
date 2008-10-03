@@ -355,6 +355,54 @@
     <attribute name="name"/>
   </define>
 
+  <define name="wmode-attribute">
+    <attribute name="wmode">
+      <choice>
+        <value>window</value>
+        <value>opaque</value>
+        <value>transparent</value>
+      </choice>
+    </attribute>
+  </define>
+
+  <define name="quality-attribute">
+    <attribute name="quality">
+      <choice>
+        <value>low</value>
+        <value>autolow</value>
+        <value>autohigh</value>
+        <value>medium</value>
+        <value>high</value>
+      </choice>
+    </attribute>
+  </define>
+
+  <define name="scale-attribute">
+    <optional>
+      <attribute name="scale" a:defaultValue="default">
+        <choice>
+          <value>default</value>
+          <value>noorder</value>
+          <value>exactfit</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
+  <define name="bgcolor-attribute">
+    <attribute name="bgcolor">
+      <data type="string">
+        <param name="pattern">#[a-fA-F0-9]{6}</param>
+      </data>
+    </attribute>
+  </define>
+
+  <define name="flash-vars-attribute">
+    <attribute name="flash-vars">
+      <text/>
+    </attribute>
+  </define>
+
   <define name="standby-attribute">
     <optional>
       <attribute name="standby">
@@ -1318,12 +1366,30 @@
     </element>
   </define>
 
-<!-- FIXME
   <define name="flash">
     <element name="flash">
+      <ref name="media-object-common-content"/>
+      <ref name="src-attribute"/>
+      <optional>
+        <ref name="wmode-attribute"/>
+      </optional>
+      <optional>
+        <ref name="loop-attribute"/>
+      </optional>
+      <optional>
+        <ref name="quality-attribute"/>
+      </optional>
+      <optional>
+        <ref name="scale-attribute"/>
+      </optional>
+      <optional>
+        <ref name="bgcolor-attribute"/>
+      </optional>
+      <optional>
+        <ref name="flash-vars-attribute"/>
+      </optional>
     </element>
   </define>
- -->
 
   <define name="labview">
     <element name="labview">
