@@ -24,9 +24,30 @@
     <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
   </define>
 
+  <include href="http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng">
+    <define name="qml-text">
+      <zeroOrMore>
+        <choice>
+          <text/>
+          <ref name="section"/>
+          <ref name="media"/>
+        </choice>
+      </zeroOrMore>
+    </define>
+  </include>
+
   <include href="cnxml-defs.rng">
     <define name="metadata-content">
       <ref name="mdml-metadata-content"/>
+    </define>
+    <define name="content-alternatives">
+      <ref name="qml.problemset"/>
+    </define>
+    <define name="exercise-content-extras">
+      <ref name="qml.item"/>
+    </define>
+    <define name="equation-content-extras">
+      <ref name="mathml-math"/>
     </define>
     <define name="bibliography">
       <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>
@@ -34,10 +55,6 @@
   </include>
 
   <define name="text-extras" combine="choice">
-    <ref name="mathml-math"/>
-  </define>
-
-  <define name="equation-content-choice" combine="choice">
     <ref name="mathml-math"/>
   </define>
 
