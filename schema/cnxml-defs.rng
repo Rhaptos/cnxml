@@ -794,10 +794,17 @@
       <optional>
         <ref name="id-attribute"/>
       </optional>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <choice>
+        <oneOrMore>
+          <ref name="section-content-class"/>
+        </oneOrMore>
+        <ref name="content-alternatives"/>
+      </choice>
     </element>
+  </define>
+
+  <define name="content-alternatives">
+    <empty/>
   </define>
 
   <define name="glossary">
@@ -813,7 +820,7 @@
   </define>
 
   <define name="bibliography">
-    <notAllowed/>
+    <empty/>
   </define>
 
   <define name="section">
@@ -991,13 +998,6 @@
   </define>
 
 <!-- FIXME: Do we want to continue to permit 'media' or text in 'equation'? -->
-  <define name="equation-content-choice">
-    <choice>
-      <ref name="media"/>
-      <text/>
-    </choice>
-  </define>
-
   <define name="equation">
     <element name="equation">
       <ref name="common-attributes"/>
@@ -1008,8 +1008,16 @@
       <optional>
         <ref name="title"/>
       </optional>
-      <ref name="equation-content-choice"/>
+      <choice>
+        <ref name="media"/>
+        <text/>
+        <ref name="equation-content-extras"/>
+      </choice>
     </element>
+  </define>
+
+  <define name="equation-content-extras">
+    <empty/>
   </define>
 
   <define name="block-note">
@@ -1482,20 +1490,29 @@
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
       <ref name="print-placement-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <ref name="problem"/>
-      <zeroOrMore>
-        <ref name="solution"/>
-      </zeroOrMore>
-      <optional>
-        <ref name="commentary"/>
-      </optional>
+      <choice>
+        <group>
+          <optional>
+            <ref name="label"/>
+          </optional>
+          <optional>
+            <ref name="title"/>
+          </optional>
+          <ref name="problem"/>
+          <zeroOrMore>
+            <ref name="solution"/>
+          </zeroOrMore>
+          <optional>
+            <ref name="commentary"/>
+          </optional>
+        </group>
+        <ref name="exercise-content-extras"/>
+      </choice>
     </element>
+  </define>
+
+  <define name="exercise-content-extras">
+    <empty/>
   </define>
 
   <define name="problem">
