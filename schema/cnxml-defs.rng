@@ -1858,6 +1858,9 @@
           </choice>
         </attribute>
       </optional>
+      <attribute name="summary">
+        <text/>
+      </attribute>
       <optional>
         <ref name="colsep-attribute"/>
       </optional>
