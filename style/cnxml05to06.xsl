@@ -24,22 +24,22 @@ convert linking element attributes
   * convert @type=(inline|block) to @display=(inline|block)
   * convert note[@type=footnote] to footnote
   * convert list/@type=named-item to list/@type=labeled-item
-generate IDs for all of 
-  # div
-  # section
-  # figure
-  # subfigure
-  # example
-  # note
-  # footnote
-  # problem
-  # solution
-  # quote[@type='block']
-  # code[@type='block']
-  # pre[@type='block']
-  # media
-  # meaning
-  # proof 
+  * generate IDs for all of 
+    # div
+    # section
+    # figure
+    # subfigure
+    # example
+    # note
+    # footnote
+    # problem
+    # solution
+    # quote[@type='block']
+    # code[@type='block']
+    # pre[@type='block']
+    # media
+    # meaning
+    # proof 
 convert media to new media structures
 -->
 
@@ -148,7 +148,15 @@ convert media to new media structures
         </xsl:when>
       </xsl:choose>
     </xsl:if>
-  </xsl:template> 
+  </xsl:template>
+
+  <xsl:template match="cnxml:link">
+    <xsl:copy>
+      <xsl:apply-templates select="@*[not(name(.)='src')]"/>
+      <xsl:attribute name="url"><xsl:value-of select="@src"/></xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
 
   <xsl:template match="/">
     <xsl:apply-templates/>
