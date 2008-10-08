@@ -12,6 +12,7 @@
   xmlns:cnx="http://cnx.rice.edu/contexts#"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:exsl="http://exslt.org/common"
+  xmlns:reqid="#required-ids"
   extension-element-prefixes="exsl"
   exclude-result-prefixes="cnxml"
 >
@@ -42,8 +43,24 @@ generate IDs for all of
 convert media to new media structures
 -->
 
+  <reqid:elements>
+    <reqid:element name="div"/>
+    <reqid:element name="section"/>
+    <reqid:element name="figure"/>
+    <reqid:element name="subfigure"/>
+    <reqid:element name="example"/>
+    <reqid:element name="note"/>
+    <reqid:element name="footnote"/>
+    <reqid:element name="problem"/>
+    <reqid:element name="solution"/>
+    <reqid:element name="media"/>
+    <reqid:element name="meaning"/>
+    <reqid:element name="proof "/>
+  </reqid:elements>
+
   <xsl:output indent="yes" method="xml"/>
   <xsl:param name="moduleid"/>
+  <xsl:variable name="required-id-elements" select="document('')/xsl:stylesheet/reqid:elements"/>
 
   <xsl:template match="cnxml:document">
     <xsl:element name="document" namespace="http://cnx.rice.edu/cnxml">
@@ -112,23 +129,26 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
-<!--  <xsl:template name="create-id">
-    # div
-    # section
-    # figure
-    # subfigure
-    # example
-    # note
-    # footnote
-    # problem
-    # solution
-    # quote[@type='block']
-    # code[@type='block']
-    # pre[@type='block']
-    # media
-    # meaning
-    # proof 
-  </xsl:template> -->
+  <xsl:template name="generate-id-if-required">
+    <xsl:if test="not(@id)">
+      <xsl:variable name="element-name" select="name(self::*)"/>
+      <xsl:choose>
+        <!-- Certain elements now get IDs always. -->
+        <xsl:when test="$required-id-elements/reqid:element[@name=$element-name]">
+          <xsl:attribute name="id">
+            <xsl:value-of select="generate-id()"/>
+          </xsl:attribute>
+        </xsl:when>
+        <!-- Block 'quote', 'pre', and 'code' get IDs always. -->
+        <xsl:when test="(name(self::*) = 'quote' or name(self::*) = 'code' or 
+                         name(self::*) = 'pre') and self::*[@type='block']">
+          <xsl:attribute name="id">
+            <xsl:value-of select="generate-id()"/>
+          </xsl:attribute>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:if>
+  </xsl:template> 
 
   <xsl:template match="/">
     <xsl:apply-templates/>
@@ -137,6 +157,7 @@ convert media to new media structures
   <xsl:template match="*">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
+      <xsl:call-template name="generate-id-if-required"/>
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
