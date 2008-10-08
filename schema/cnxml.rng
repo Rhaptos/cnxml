@@ -40,8 +40,13 @@
     <define name="metadata-content">
       <ref name="mdml-metadata-content"/>
     </define>
-    <define name="content-alternatives">
-      <ref name="qml.problemset"/>
+    <define name="content-content">
+      <choice>
+        <oneOrMore>
+          <ref name="section-content-class"/>
+        </oneOrMore>
+        <ref name="qml.problemset"/>
+      </choice>
     </define>
     <define name="exercise-content-extras">
       <ref name="qml.item"/>

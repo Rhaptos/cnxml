@@ -678,13 +678,11 @@
   </define>
 
   <define name="div-content">
+    <optional>
+      <ref name="title"/>
+    </optional>
     <oneOrMore>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="div-content-class"/>
-      </oneOrMore>
+      <ref name="div-content-class"/>
     </oneOrMore>
   </define>
 
@@ -795,13 +793,14 @@
       <optional>
         <ref name="id-attribute"/>
       </optional>
-      <oneOrMore>
-        <choice>
-          <ref name="section-content-class"/>
-          <ref name="content-alternatives"/>
-        </choice>
-      </oneOrMore>
+      <ref name="content-content"/>
     </element>
+  </define>
+
+  <define name="content-content">
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
   </define>
 
   <define name="content-alternatives">
