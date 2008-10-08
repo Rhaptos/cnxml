@@ -43,10 +43,20 @@ convert media to new media structures
 -->
 
   <xsl:output indent="yes" method="xml"/>
+  <xsl:param name="moduleid"/>
+
+  <xsl:template match="cnxml:document">
+    <xsl:element name="document" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:apply-templates select="@*"/>
+      <xsl:attribute name="module-id"><xsl:value-of select="$moduleid"/></xsl:attribute>
+      <xsl:attribute name="cnxml-version">0.6</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
 
   <!-- Convert 'name' to 'title'. -->
   <xsl:template match="cnxml:name">
-    <xsl:element name="title">
+    <xsl:element name="title" namespace="http://cnx.rice.edu/cnxml">
       <xsl:copy-of select="@id"/>
       <xsl:apply-templates/>
     </xsl:element>
@@ -65,12 +75,15 @@ convert media to new media structures
   </xsl:template>
 
   <xsl:template match="cnxml:note[@type='footnote']">
-    <xsl:element name="cnxml:footnote">
+    <xsl:element name="footnote" namespace="http://cnx.rice.edu/cnxml">
       <xsl:choose>
         <xsl:when test="@id"><xsl:copy-of select="@id"/></xsl:when>
-        <xsl:otherwise><xsl:value-of select="generate-id()"/></xsl:otherwise>
+        <xsl:otherwise>
+          <xsl:attribute name="id">
+            <xsl:value-of select="generate-id()"/>
+          </xsl:attribute>
+        </xsl:otherwise>
       </xsl:choose>
-      <xsl:copy-of select="@id"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -85,7 +98,7 @@ convert media to new media structures
       </xsl:when>
       <xsl:when test="starts-with(normalize-space(.), 'enum') or
                       starts-with(normalize-space(.), 'enme') or
-                      starts-with(normalize-space(.), 'ennu') or">
+                      starts-with(normalize-space(.), 'ennu')">
         <xsl:attribute name="list-type">enumerated</xsl:attribute>
       </xsl:when>
       <xsl:when test="starts-with(normalize-space(.), 'name')">
@@ -99,8 +112,23 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template name="create-id">
-  </xsl:template>
+<!--  <xsl:template name="create-id">
+    # div
+    # section
+    # figure
+    # subfigure
+    # example
+    # note
+    # footnote
+    # problem
+    # solution
+    # quote[@type='block']
+    # code[@type='block']
+    # pre[@type='block']
+    # media
+    # meaning
+    # proof 
+  </xsl:template> -->
 
   <xsl:template match="/">
     <xsl:apply-templates/>
