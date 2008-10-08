@@ -727,6 +727,7 @@
       <ref name="common-attributes"/>
       <ref name="document-title"/>
       <ref name="cnxml-version"/>
+      <attribute name="module-id"/>
       <optional>
         <ref name="metadata"/>
       </optional>
@@ -794,12 +795,12 @@
       <optional>
         <ref name="id-attribute"/>
       </optional>
-      <choice>
-        <oneOrMore>
+      <oneOrMore>
+        <choice>
           <ref name="section-content-class"/>
-        </oneOrMore>
-        <ref name="content-alternatives"/>
-      </choice>
+          <ref name="content-alternatives"/>
+        </choice>
+      </oneOrMore>
     </element>
   </define>
 
