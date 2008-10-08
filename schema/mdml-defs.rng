@@ -13,7 +13,7 @@
 
   <define name="mdml-id-attribute">
     <attribute name="id">
-      <data type="ID"/>
+      <data type="NMTOKEN"/>
     </attribute>
   </define>
 
