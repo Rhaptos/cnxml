@@ -170,18 +170,31 @@ convert media to new media structures
       <!-- Absolute URL pointing to Connexions object -->
       <xsl:when test="starts-with($src, 'http:') and (
                 contains($src, 'cnx.rice.edu') or
-                contains($src, 'cnx.or')
+                contains($src, 'cnx.org')
                 ) and
+                contains($src, '/content/') and
                 not(contains($src, 'content/browse')) and
                 not(contains($src, 'content/search'))">
+        <xsl:call-template name="make-link-attributes">
+          <xsl:with-param name="attribute-name" select="'document'"/>
+          <xsl:with-param name="value" select="substring-after($src, 'content/')"/>
+        </xsl:call-template>
       </xsl:when>
       <!-- Relative URL pointing to Connexions object -->
       <xsl:when test="starts-with($src, '/content/') and
                       not(contains($src, '/content/search')) and
                       not(contains($src, '/content/browse'))">
+        <xsl:call-template name="make-link-attributes">
+          <xsl:with-param name="attribute-name" select="'document'"/>
+          <xsl:with-param name="value" select="substring-after($src, 'content/')"/>
+        </xsl:call-template>
       </xsl:when>
       <!-- Fragment identifier pointing to element @id -->
       <xsl:when test="starts-with($src, '#')">
+        <xsl:call-template name="make-link-attributes">
+          <xsl:with-param name="attribute-name" select="'target-id'"/>
+          <xsl:with-param name="value" select="$src"/>
+        </xsl:call-template>
       </xsl:when>
       <!-- Relative URL pointing to resource inside of a module -->
       <xsl:when test="not(starts-with($src, '/')) and
@@ -195,7 +208,15 @@ convert media to new media structures
                       not(starts-with($src, 'www.')) and
                       not(starts-with($src, 'okapi.berkeley.edu')) and
                       not(starts-with($src, 'serials.abc-clio.com'))">
+        <xsl:call-template name="make-link-attributes">
+          <xsl:with-param name="attribute-name" select="'resource'"/>
+          <xsl:with-param name="value" select="$src"/>
+        </xsl:call-template>
       </xsl:when>
+      <!-- URL pointing somewhere outside of the respository -->
+      <xsl:otherwise>
+        <xsl:attribute name="url"><xsl:value-of select="$src"/></xsl:attribute>
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
