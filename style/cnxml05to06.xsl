@@ -19,7 +19,7 @@
 
 <!--
   * 'name' becomes 'title'
-convert cnxn to link
+  * convert cnxn to link
 convert linking element attributes
   * convert @type=(inline|block) to @display=(inline|block)
   * convert note[@type=footnote] to footnote
@@ -156,7 +156,7 @@ convert media to new media structures
    - @target-id
    - @resource
    - @version -->
-  <xsl:template match="cnxml:link">
+  <xsl:template match="cnxml:link|cnxml:cite|cnxml:term|cnxml:quote">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name(.)='src')]"/>
       <xsl:call-template name="convert-link-src">
@@ -169,6 +169,8 @@ convert media to new media structures
   <xsl:template name="convert-link-src">
     <xsl:param name="src"/>
     <xsl:choose>
+      <!-- Empty or absent @src: do nothing. -->
+      <xsl:when test="not($src)"></xsl:when>
       <!-- Absolute URL pointing to Connexions object -->
       <xsl:when test="starts-with($src, 'http:') and (
                 contains($src, 'cnx.rice.edu') or
