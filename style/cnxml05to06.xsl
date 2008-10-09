@@ -270,7 +270,40 @@ convert media to new media structures
     </xsl:if>
   </xsl:template>
 
-  <!-- FIXME -->
+  <xsl:template match="cnxml:cnxn">
+    <xsl:variable name="strength" select="normalize-space(@strength)"/>
+    <xsl:element name="link" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:if test="normalize-space(@document)">
+        <xsl:attribute name="document">
+          <xsl:value-of select="normalize-space(@document)"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="normalize-space(@version)">
+        <xsl:attribute name="version">
+          <xsl:value-of select="normalize-space(@version)"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="normalize-space(@target)">
+        <xsl:attribute name="target-id">
+          <xsl:value-of select="normalize-space(@target)"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="$strength">
+        <xsl:attribute name="strength">
+          <xsl:choose>
+            <xsl:when test="$strength='9' or $strength='8'">3</xsl:when>
+            <xsl:when test="$strength='7' or $strength='6' or
+                            $strength='5' or $strength='4'">2</xsl:when>
+            <xsl:when test="$strength='3' or $strength='2' or
+                            $strength='1' or $strength='0'">2</xsl:when>
+          </xsl:choose>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- FIXME: this becomes code[@type="listing"] later. -->
   <xsl:template match="cnxml:figure/cnxml:code">
     <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
       <image src="foo.png" mimetype="image/png" xmlns="http://cnx.rice.edu/cnxml"/>
