@@ -150,12 +150,53 @@ convert media to new media structures
     </xsl:if>
   </xsl:template>
 
+  <!--
+   Handle these attributes:
+   - @document
+   - @target-id
+   - @resource
+   - @version -->
   <xsl:template match="cnxml:link">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name(.)='src')]"/>
       <xsl:attribute name="url"><xsl:value-of select="@src"/></xsl:attribute>
       <xsl:apply-templates/>
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template name="convert-link-src">
+    <xsl:param name="src"/>
+    <xsl:choose>
+      <!-- Absolute URL pointing to Connexions object -->
+      <xsl:when test="starts-with($src, 'http:') and (
+                contains($src, 'cnx.rice.edu') or
+                contains($src, 'cnx.or')
+                ) and
+                not(contains($src, 'content/browse')) and
+                not(contains($src, 'content/search'))">
+      </xsl:when>
+      <!-- Relative URL pointing to Connexions object -->
+      <xsl:when test="starts-with($src, '/content/') and
+                      not(contains($src, '/content/search')) and
+                      not(contains($src, '/content/browse'))">
+      </xsl:when>
+      <!-- Fragment identifier pointing to element @id -->
+      <xsl:when test="starts-with($src, '#')">
+      </xsl:when>
+      <!-- Relative URL pointing to resource inside of a module -->
+      <xsl:when test="not(starts-with($src, '/')) and
+                      not(starts-with($src, 'http:')) and
+                      not(starts-with($src, 'https:')) and
+                      not(starts-with($src, 'ftp:')) and
+                      not(starts-with($src, 'file:')) and
+                      not(starts-with($src, 'mailto:')) and
+                      not(starts-with($src, 'matilto:')) and
+                      not(starts-with($src, 'mms:')) and
+                      not(starts-with($src, 'www.')) and
+                      not(starts-with($src, 'okapi.berkeley.edu')) and
+                      not(starts-with($src, 'serials.abc-clio.com'))">
+      </xsl:when>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="/">
