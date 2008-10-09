@@ -132,7 +132,7 @@
   </define>
 
   <define name="targetid-attribute">
-    <attribute name="targetid"/>
+    <attribute name="target-id"/>
   </define>
 
   <define name="resource-attribute">
