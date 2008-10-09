@@ -159,7 +159,9 @@ convert media to new media structures
   <xsl:template match="cnxml:link">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name(.)='src')]"/>
-      <xsl:attribute name="url"><xsl:value-of select="@src"/></xsl:attribute>
+      <xsl:call-template name="convert-link-src">
+        <xsl:with-param name="src" select="normalize-space(@src)"/>
+      </xsl:call-template>
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
@@ -239,12 +241,13 @@ convert media to new media structures
       </xsl:if>
     </xsl:variable>
     <!-- Output an attribute unless its name is 'version' and the value is 'latest'. -->
-    <xsl:if test="$attribute-name != 'version' and $first != 'latest'">
+    <xsl:if test="not($attribute-name = 'version' and $first = 'latest')">
       <xsl:attribute name="{$attribute-name}">
         <xsl:value-of select="$first"/>
       </xsl:attribute>
     </xsl:if>
-    <xsl:if test="$rest">
+    <xsl:if test="string-length($rest)">
+      <xsl:message>attname: '<xsl:value-of select="$attribute-name"/>', first: '<xsl:value-of select="$first"/>', rest: '<xsl:value-of select="$rest"/>'</xsl:message>
       <xsl:choose>
         <xsl:when test="$attribute-name = 'document'">
           <xsl:call-template name="make-link-attributes">
@@ -265,6 +268,13 @@ convert media to new media structures
         </xsl:when>
       </xsl:choose>
     </xsl:if>
+  </xsl:template>
+
+  <!-- FIXME -->
+  <xsl:template match="cnxml:figure/cnxml:code">
+    <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
+      <image src="foo.png" mimetype="image/png" xmlns="http://cnx.rice.edu/cnxml"/>
+    </media>
   </xsl:template>
 
   <xsl:template match="/">
