@@ -199,6 +199,53 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template name="make-link-attributes">
+    <xsl:param name="attribute-name"/>
+    <xsl:param name="value"/>
+    <xsl:variable name="value-before-slash" select="substring-before($value, '/')"/>
+    <xsl:variable name="value-after-slash" select="substring-after($value, '/')"/>
+    <xsl:variable name="first">
+      <xsl:choose>
+        <xsl:when test="$value-before-slash">
+          <xsl:value-of select="$value-before-slash"/>
+        </xsl:when>
+        <xsl:otherwise><xsl:value-of select="$value"/></xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="rest">
+      <xsl:if test="$value-after-slash">
+        <xsl:value-of select="$value-after-slash"/>
+      </xsl:if>
+    </xsl:variable>
+    <!-- Output an attribute unless its name is 'version' and the value is 'latest'. -->
+    <xsl:if test="$attribute-name != 'version' and $first != 'latest'">
+      <xsl:attribute name="{$attribute-name}">
+        <xsl:value-of select="$first"/>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="$rest">
+      <xsl:choose>
+        <xsl:when test="$attribute-name = 'document'">
+          <xsl:call-template name="make-link-attributes">
+            <xsl:with-param name="attribute-name" select="'version'"/>
+            <xsl:with-param name="value" select="$rest"/>
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:when test="$attribute-name = 'version'">
+          <xsl:call-template name="make-link-attributes">
+            <xsl:with-param name="attribute-name">
+              <xsl:choose>
+                <xsl:when test="starts-with($rest, '#')">target-id</xsl:when>
+                <xsl:otherwise>resource</xsl:otherwise>
+              </xsl:choose>
+            </xsl:with-param>
+            <xsl:with-param name="value" select="$rest"/>
+          </xsl:call-template>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="/">
     <xsl:apply-templates/>
   </xsl:template>
