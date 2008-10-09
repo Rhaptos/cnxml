@@ -1166,7 +1166,9 @@
   <define name="inline-code">
     <element name="code">
       <ref name="display-inline-default-attribute"/>
-      <ref name="code-lang-attribute"/>
+      <optional>
+        <ref name="code-lang-attribute"/>
+      </optional>
       <ref name="inline-content"/>
     </element>
   </define>
@@ -1176,7 +1178,9 @@
       <ref name="display-block-attribute"/>
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
-      <ref name="code-lang-attribute"/>
+      <optional>
+        <ref name="code-lang-attribute"/>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1204,7 +1208,9 @@
         <ref name="display-block-attribute"/>
       </optional>
       <ref name="code-listing-type-attribute"/>
-      <ref name="code-lang-attribute"/>
+      <optional>
+        <ref name="code-lang-attribute"/>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1224,6 +1230,14 @@
     <element name="figure">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <optional>
+        <attribute name="orient" a:defaultValue="horizontal">
+          <choice>
+            <value>horizontal</value>
+            <value>vertical</value>
+          </choice>
+        </attribute>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1323,7 +1337,6 @@
     <choice>
       <ref name="block-media"/>
       <ref name="inline-media"/>
-      <ref name="nodisplay-media"/>
     </choice>
   </define>
 
@@ -1348,7 +1361,6 @@
     <optional>
       <ref name="mimetype-attribute"/>
     </optional>
-    <ref name="alt-attribute"/>
     <optional>
       <ref name="longdesc"/>
     </optional>
@@ -1381,7 +1393,9 @@
     <element name="image">
       <ref name="media-object-common-content"/>
       <ref name="src-attribute"/>
-      <ref name="thumbnail-attribute"/>
+      <optional>
+        <ref name="thumbnail-attribute"/>
+      </optional>
     </element>
   </define>
 
