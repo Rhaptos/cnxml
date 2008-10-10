@@ -307,10 +307,22 @@ table gets @summary
     </xsl:element>
   </xsl:template>
 
-  <!-- FIXME: this becomes code[@type="listing"] later. -->
-  <xsl:template match="cnxml:figure/cnxml:code">
+  <xsl:template match="cnxml:table">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:call-template name="generate-id-if-required"/>
+      <xsl:attribute name="summary"></xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- FIXME: this becomes code[@type="listing"] later, or a proper 'media' with children. -->
+  <xsl:template match="cnxml:figure/cnxml:code|cnxml:media">
     <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
-      <image src="foo.png" mimetype="image/png" xmlns="http://cnx.rice.edu/cnxml"/>
+      <xsl:if test="parent::cnxml:content or parent::cnxml:section">
+        <xsl:attribute name="display">block</xsl:attribute>
+      </xsl:if>
+      <image src="foo.png" mimetype="image/png"/>
     </media>
   </xsl:template>
 
