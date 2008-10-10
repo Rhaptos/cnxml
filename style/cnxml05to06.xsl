@@ -279,17 +279,17 @@ figure/table and figure/code conversion
   <xsl:template match="cnxml:cnxn">
     <xsl:variable name="strength" select="normalize-space(@strength)"/>
     <xsl:element name="link" namespace="http://cnx.rice.edu/cnxml">
-      <xsl:if test="normalize-space(@document)">
+      <xsl:if test="@document">
         <xsl:attribute name="document">
           <xsl:value-of select="normalize-space(@document)"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="normalize-space(@version)">
+      <xsl:if test="@version">
         <xsl:attribute name="version">
           <xsl:value-of select="normalize-space(@version)"/>
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="normalize-space(@target)">
+      <xsl:if test="@target">
         <xsl:attribute name="target-id">
           <xsl:value-of select="normalize-space(@target)"/>
         </xsl:attribute>
