@@ -1589,7 +1589,9 @@
               <ref name="example"/>
             </zeroOrMore>
           </oneOrMore>
-          <ref name="seealso"/>
+          <optional>
+            <ref name="seealso"/>
+          </optional>
         </group>
       </choice>
     </element>
