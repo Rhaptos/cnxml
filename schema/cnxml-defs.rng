@@ -309,6 +309,12 @@
     </optional>
   </define>
 
+  <define name="bulleted-sep-after-attribute">
+    <optional>
+      <attribute name="sep-after" a:defaultValue=""/>
+    </optional>
+  </define>
+
   <define name="labeled-item-sep-after-attribute">
     <optional>
       <attribute name="sep-after" a:defaultValue=":"/>
@@ -1076,7 +1082,7 @@
 
   <define name="bulleted-list-common-content">
     <ref name="bulleted-list-type-attribute"/>
-    <ref name="sep-after-attribute"/>
+    <ref name="bulleted-sep-after-attribute"/>
     <ref name="bullet-style-attribute"/>
     <ref name="list-common-content"/>
   </define>
