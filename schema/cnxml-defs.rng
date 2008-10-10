@@ -1642,24 +1642,13 @@
 
   <define name="statement">
     <element name="statement">
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <ref name="section-content"/>
     </element>
   </define>
 
   <define name="proof">
     <element name="proof">
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <ref name="section-content"/>
     </element>
   </define>
  
@@ -1941,7 +1930,6 @@
       <optional>
         <ref name="id-attribute"/>
       </optional>
-      <ref name="tgroup.mdl"/>
     </element>
   </define>
 
@@ -1971,7 +1959,6 @@
       <optional>
         <ref name="id-attribute"/>
       </optional>
-      <ref name="tgroup.mdl"/>
     </element>
   </define>
 
