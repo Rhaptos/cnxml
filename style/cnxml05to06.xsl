@@ -39,9 +39,11 @@
     # pre[@type='block']
     # media
     # meaning
-    # proof 
+    # proof
+    # statement
 convert media to new media structures
-figure/table and figure/code conversion
+  * figure/table 
+figure/code
   * table gets @summary
 -->
 
@@ -350,8 +352,42 @@ figure/table and figure/code conversion
     </xsl:apply-templates>
   </xsl:template>
 
+  <xsl:template match="cnxml:figure[cnxml:code]">
+    <xsl:apply-templates select="cnxml:code">
+      <xsl:with-param name="listing" select="1"/>
+    </xsl:apply-templates>
+  </xsl:template>
+
+  <xsl:template match="cnxml:code">
+    <xsl:param name="listing" select="0"/>
+    <xsl:copy>
+      <xsl:apply-templates select="@*[name()!='id']"/>
+      <xsl:attribute name="id">
+        <xsl:choose>
+          <xsl:when test="$listing = 1">
+            <xsl:value-of select="parent::cnxml:figure/@id"/>
+          </xsl:when>
+          <xsl:when test="string-length(@id)">
+            <xsl:value-of select="@id"/>
+          </xsl:when>
+          <xsl:otherwise><xsl:value-of select="generate-id()"/></xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
+      <xsl:if test="$listing = 1">
+        <xsl:attribute name="class">listing</xsl:attribute>
+        <xsl:if test="preceding-sibling::cnxml:name">
+          <xsl:apply-templates select="preceding-sibling::cnxml:name"/>
+        </xsl:if>
+      </xsl:if>
+      <xsl:apply-templates/>
+      <xsl:if test="$listing = 1 and following-sibling::cnxml:caption">
+        <xsl:apply-templates select="following-sibling::cnxml:caption"/>
+      </xsl:if>
+    </xsl:copy>
+  </xsl:template>
+
   <!-- FIXME: this becomes code[@type="listing"] later, or a proper 'media' with children. -->
-  <xsl:template match="cnxml:figure/cnxml:code|cnxml:media">
+  <xsl:template match="cnxml:media">
     <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
       <xsl:if test="parent::cnxml:content or parent::cnxml:section">
         <xsl:attribute name="display">block</xsl:attribute>
