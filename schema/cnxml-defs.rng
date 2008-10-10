@@ -1680,15 +1680,19 @@
   </define>
 
   <define name="colsep-attribute">
-    <attribute name="colsep">
-      <ref name="yesorno"/>
-    </attribute>
+    <optional>
+      <attribute name="colsep">
+        <ref name="yesorno"/>
+      </attribute>
+    </optional>
   </define>
 
   <define name="rowsep-attribute">
-    <attribute name="rowsep">
-      <ref name="yesorno"/>
-    </attribute>
+    <optional>
+      <attribute name="rowsep">
+        <ref name="yesorno"/>
+      </attribute>
+    </optional>
   </define>
 
   <define name="align-attribute">
@@ -1875,12 +1879,8 @@
       <attribute name="summary">
         <text/>
       </attribute>
-      <optional>
-        <ref name="colsep-attribute"/>
-      </optional>
-      <optional>
-        <ref name="rowsep-attribute"/>
-      </optional>
+      <ref name="colsep-attribute"/>
+      <ref name="rowsep-attribute"/>
       <ref name="table.att"/>
       <ref name="bodyatt"/>
       <ref name="secur"/>
@@ -1893,12 +1893,8 @@
     <element name="tgroup">
       <ref name="cols-attribute"/>
       <ref name="tgroup.att"/>
-      <optional>
-        <ref name="colsep-attribute"/>
-      </optional>
-      <optional>
-        <ref name="rowsep-attribute"/>
-      </optional>
+      <ref name="colsep-attribute"/>
+      <ref name="rowsep-attribute"/>
       <optional>
         <ref name="align-attribute"/>
       </optional>
@@ -1928,12 +1924,8 @@
       <optional>
         <attribute name="colwidth"/>
       </optional>
-      <optional>
-        <ref name="colsep-attribute"/>
-      </optional>
-      <optional>
-        <ref name="rowsep-attribute"/>
-      </optional>
+      <ref name="colsep-attribute"/>
+      <ref name="rowsep-attribute"/>
       <optional>
         <ref name="align-attribute"/>
       </optional>
@@ -1962,12 +1954,8 @@
       <optional>
         <attribute name="colwidth"/>
       </optional>
-      <optional>
-        <ref name="colsep-attribute"/>
-      </optional>
-      <optional>
-        <ref name="rowsep-attribute"/>
-      </optional>
+      <ref name="colsep-attribute"/>
+      <ref name="rowsep-attribute"/>
       <optional>
         <ref name="align-attribute"/>
       </optional>
@@ -2052,12 +2040,8 @@
       <optional>
         <ref name="nameend-attribute"/>
       </optional>
-      <optional>
-        <ref name="colsep-attribute"/>
-      </optional>
-      <optional>
-        <ref name="rowsep-attribute"/>
-      </optional>
+      <ref name="colsep-attribute"/>
+      <ref name="rowsep-attribute"/>
       <optional>
         <ref name="align-attribute"/>
       </optional>
@@ -2090,12 +2074,8 @@
       <optional>
         <ref name="morerows-attribute"/>
       </optional>
-      <optional>
-        <ref name="colsep-attribute"/>
-      </optional>
-      <optional>
-        <ref name="rowsep-attribute"/>
-      </optional>
+      <ref name="colsep-attribute"/>
+      <ref name="rowsep-attribute"/>
       <optional>
         <ref name="align-attribute"/>
       </optional>
