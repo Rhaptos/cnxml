@@ -20,7 +20,7 @@
 <!--
   * 'name' becomes 'title'
   * convert cnxn to link
-convert linking element attributes
+  * convert linking element attributes
   * convert @type=(inline|block) to @display=(inline|block)
   * convert note[@type=footnote] to footnote
   * convert list/@type=named-item to list/@type=labeled-item
@@ -41,6 +41,8 @@ convert linking element attributes
     # meaning
     # proof 
 convert media to new media structures
+figure/table and figure/code conversion
+table gets @summary
 -->
 
   <reqid:elements>
@@ -297,7 +299,7 @@ convert media to new media structures
             <xsl:when test="$strength='7' or $strength='6' or
                             $strength='5' or $strength='4'">2</xsl:when>
             <xsl:when test="$strength='3' or $strength='2' or
-                            $strength='1' or $strength='0'">2</xsl:when>
+                            $strength='1' or $strength='0'">1</xsl:when>
           </xsl:choose>
         </xsl:attribute>
       </xsl:if>
