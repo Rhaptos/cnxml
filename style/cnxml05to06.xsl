@@ -57,7 +57,8 @@ figure/table and figure/code conversion
     <reqid:element name="solution"/>
     <reqid:element name="media"/>
     <reqid:element name="meaning"/>
-    <reqid:element name="proof "/>
+    <reqid:element name="proof"/>
+    <reqid:element name="statement"/>
   </reqid:elements>
 
   <xsl:output indent="yes" method="xml"/>
@@ -160,10 +161,11 @@ figure/table and figure/code conversion
    - @version -->
   <xsl:template match="cnxml:link|cnxml:cite|cnxml:term|cnxml:quote">
     <xsl:copy>
-      <xsl:apply-templates select="@*[not(name(.)='src')]"/>
+      <xsl:apply-templates select="@*[not(name(.)='src') and not(name(.)='id')]"/>
       <xsl:call-template name="convert-link-src">
         <xsl:with-param name="src" select="normalize-space(@src)"/>
       </xsl:call-template>
+      <xsl:call-template name="generate-id-if-required"/>
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
