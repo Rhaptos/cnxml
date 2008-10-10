@@ -42,7 +42,7 @@
     # proof 
 convert media to new media structures
 figure/table and figure/code conversion
-table gets @summary
+  * table gets @summary
 -->
 
   <reqid:elements>
@@ -308,12 +308,44 @@ table gets @summary
   </xsl:template>
 
   <xsl:template match="cnxml:table">
+    <xsl:param name="figure-id"/>
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
-      <xsl:call-template name="generate-id-if-required"/>
+      <xsl:apply-templates select="@*[name(.)!='id']"/>
+      <xsl:attribute name="id">
+        <xsl:choose>
+          <xsl:when test="string-length($figure-id)">
+              <xsl:value-of select="$figure-id"/>
+          </xsl:when>
+          <xsl:when test="string-length(@id)">
+            <xsl:value-of select="@id"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="generate-id()"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
       <xsl:attribute name="summary"></xsl:attribute>
       <xsl:apply-templates/>
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="cnxml:figure[cnxml:table]">
+    <xsl:if test="@id">
+      <xsl:processing-instruction name="figure-id">
+        <xsl:value-of select="@id"/>
+      </xsl:processing-instruction>
+    </xsl:if>
+    <xsl:apply-templates select="cnxml:table">
+      <xsl:with-param name="figure-id">
+        <!-- m16333 is the one module in which cnxns pointing to a table 
+             within a figure use the table @id rather than the figure @id. 
+             In this case, we don't pass figure/@id down to the table 
+             template. -->
+        <xsl:if test="$moduleid != 'm16333'">
+          <xsl:value-of select="@id"/>
+        </xsl:if>
+      </xsl:with-param>
+    </xsl:apply-templates>
   </xsl:template>
 
   <!-- FIXME: this becomes code[@type="listing"] later, or a proper 'media' with children. -->
