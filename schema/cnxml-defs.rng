@@ -246,9 +246,11 @@
   </define>
 
   <define name="bulleted-list-type-attribute">
-    <attribute name="list-type">
-      <value>bulleted</value>
-    </attribute>
+    <optional>
+      <attribute name="list-type" a:defaultValue="bulleted">
+        <value>bulleted</value>
+      </attribute>
+    </optional>
   </define>
 
   <define name="enumerated-list-type-attribute">
@@ -1159,9 +1161,7 @@
       <optional>
         <ref name="id-attribute"/>
       </optional>
-      <oneOrMore>
-        <ref name="div-content-class"/>
-      </oneOrMore>
+      <ref name="div-content"/>
     </element>
   </define>
 
