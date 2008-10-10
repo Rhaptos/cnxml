@@ -296,7 +296,9 @@
   </define>
 
   <define name="sep-before-attribute">
-    <attribute name="sep-before"/>
+    <optional>
+      <attribute name="sep-before"/>
+    </optional>
   </define>
 
   <define name="sep-after-attribute">
@@ -318,7 +320,9 @@
   </define>
 
   <define name="start-value-attribute">
-    <attribute name="start-value"/>
+    <optional>
+      <attribute name="start-value"/>
+    </optional>
   </define>
 
   <define name="code-lang-attribute">
@@ -1046,9 +1050,7 @@
 
   <define name="list-common-content">
     <ref name="common-attributes"/>
-    <optional>
-      <ref name="sep-before-attribute"/>
-    </optional>
+    <ref name="sep-before-attribute"/>
     <ref name="item-sep-attribute"/>
     <optional>
       <ref name="title"/>
@@ -1601,9 +1603,7 @@
     <element name="meaning">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
-      <oneOrMore>
-        <ref name="div-content-class"/>
-      </oneOrMore>
+      <ref name="div-content"/>
     </element>
   </define>
 
