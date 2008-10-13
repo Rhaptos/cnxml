@@ -19,6 +19,29 @@
     <attribute name="class"/>
   </define>
 
+  <define name="listing-class-attribute">
+    <attribute name="class">
+      <data type="string">
+        <param name="pattern">(listing(\s.*)*)|(.*\slisting(\s.*)*)</param>
+      </data>
+    </attribute>
+  </define>
+
+  <define name="non-listing-class-attribute">
+    <attribute name="class">
+      <data type="string">
+        <except>
+          <data type="string">
+            <param name="pattern">(listing(\s.*)*)</param>
+          </data>
+          <data type="string">
+            <param name="pattern">(.*\slisting(\s.*)*)</param>
+          </data>
+        </except>
+      </data>
+    </attribute>
+  </define>
+
   <define name="foreign-namespaced-attribute">
     <zeroOrMore>
       <attribute>
@@ -335,12 +358,6 @@
 
   <define name="code-lang-attribute">
     <attribute name="lang"/>
-  </define>
-
-  <define name="code-listing-type-attribute">
-    <attribute name="type">
-      <value>listing</value>
-    </attribute>
   </define>
 
   <define name="alt-attribute">
@@ -1177,14 +1194,32 @@
       <optional>
         <ref name="code-lang-attribute"/>
       </optional>
-      <ref name="inline-content"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <optional>
+        <ref name="non-listing-class-attribute"/>
+      </optional>
+      <ref name="foreign-namespaced-attribute"/>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="inline-class"/>
+      </zeroOrMore>
     </element>
   </define>
 
   <define name="block-code">
     <element name="code">
       <ref name="display-block-attribute"/>
-      <ref name="common-attributes"/>
+      <optional>
+        <ref name="non-listing-class-attribute"/>
+      </optional>
+      <ref name="foreign-namespaced-attribute"/>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <ref name="id-attribute"/>
       <optional>
         <ref name="code-lang-attribute"/>
@@ -1210,12 +1245,18 @@
      RelaxNG pattern that matches 'listing' somewhere in an attribute 
      value. -->
 
+<!-- FIXME; ensure that block and inline code may not have 'listing' in their class attribute. -->
   <define name="code-listing">
     <element name="code">
       <optional>
         <ref name="display-block-attribute"/>
       </optional>
-      <ref name="code-listing-type-attribute"/>
+      <ref name="foreign-namespaced-attribute"/>
+      <ref name="id-attribute"/>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <ref name="listing-class-attribute"/>
       <optional>
         <ref name="code-lang-attribute"/>
       </optional>
@@ -1225,7 +1266,9 @@
       <optional>
         <ref name="title"/>
       </optional>
-      <ref name="inline-content"/>
+      <oneOrMore>
+        <ref name="inline-class"/>
+      </oneOrMore>
       <optional>
         <ref name="caption"/>
       </optional>
