@@ -353,18 +353,15 @@ figure/code
   </xsl:template>
 
   <xsl:template match="cnxml:figure[cnxml:code]">
-    <xsl:apply-templates select="cnxml:code">
-      <xsl:with-param name="listing" select="1"/>
-    </xsl:apply-templates>
+    <xsl:apply-templates select="cnxml:code"/>
   </xsl:template>
 
   <xsl:template match="cnxml:code">
-    <xsl:param name="listing" select="0"/>
     <xsl:copy>
       <xsl:apply-templates select="@*[name()!='id']"/>
       <xsl:attribute name="id">
         <xsl:choose>
-          <xsl:when test="$listing = 1">
+          <xsl:when test="parent::cnxml:figure">
             <xsl:value-of select="parent::cnxml:figure/@id"/>
           </xsl:when>
           <xsl:when test="string-length(@id)">
@@ -373,14 +370,14 @@ figure/code
           <xsl:otherwise><xsl:value-of select="generate-id()"/></xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
-      <xsl:if test="$listing = 1">
+      <xsl:if test="parent::cnxml:figure">
         <xsl:attribute name="class">listing</xsl:attribute>
         <xsl:if test="preceding-sibling::cnxml:name">
           <xsl:apply-templates select="preceding-sibling::cnxml:name"/>
         </xsl:if>
       </xsl:if>
       <xsl:apply-templates/>
-      <xsl:if test="$listing = 1 and following-sibling::cnxml:caption">
+      <xsl:if test="parent::cnxml:figure and following-sibling::cnxml:caption">
         <xsl:apply-templates select="following-sibling::cnxml:caption"/>
       </xsl:if>
     </xsl:copy>
