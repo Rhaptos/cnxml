@@ -5,12 +5,10 @@ Maintainer: Ross J. Reedstrom <reedstrm@cnx.org>
 Build-Depends: debhelper (>> 4.0.0)
 Standards-Version: 3.6.1.0
 
-Package: connexions-cnxml-0.5
+Package: connexions-cnxml-common
 Architecture: all
 Depends: ${misc:Depends}, docbook-xsl
-Suggests: connexions-bibtexml, connexions-mathml, connexions-qml
-Provides: connexions-cnxml
-Description: Connexions Markup Language 0.5 Schema and stylesheets
+Description: Connexions Markup Language common files (stylesheets)
  Connexions Markup Language (CNXML), an XML application for
  marking up educational texts. It is designed for use in the
  Connexions Project, but we are making it generally
@@ -19,6 +17,24 @@ Description: Connexions Markup Language 0.5 Schema and stylesheets
  document and encourages the separation of content from
  presentation.
  .
- Author:  The Connexions Language Team <cnxml@cnx.rice.edu>
+ Author:  The Connexions Language Team <cnxml@cnx.org>
  .
- Homepage: http://cnx.rice.edu/technology/cnxml/
+ Homepage: http://cnx.org/technology/cnxml/
+
+Package: connexions-cnxml-0.5
+Architecture: all
+Depends: ${misc:Depends}, connexions-cnxml-common
+Suggests: connexions-bibtexml, connexions-mathml, connexions-qml
+Provides: connexions-cnxml
+Description: Connexions Markup Language 0.5 Schema
+ Connexions Markup Language (CNXML), an XML application for
+ marking up educational texts. It is designed for use in the
+ Connexions Project, but we are making it generally
+ available in the hopes that others may find it useful.
+ CNXML marks up the structure and semantic content of a
+ document and encourages the separation of content from
+ presentation.
+ .
+ Author:  The Connexions Language Team <cnxml@cnx.org>
+ .
+ Homepage: http://cnx.org/technology/cnxml/

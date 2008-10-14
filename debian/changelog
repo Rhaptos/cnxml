@@ -1,3 +1,10 @@
+connexions-cnxml (0.5.24-2) unstable; urgency=low
+
+  * Split into two debs: cnxml-<version> and cnxml-common, to enable
+    simultaneous install of more than one version of the schema files
+
+ -- Ross J. Reedstrom <reedstrm@cnx.org>  Tue, 14 Oct 2008 12:05:47 -0500
+
 connexions-cnxml (0.5.24-1) unstable; urgency=low
 
   * Changes to i18n for quickperf devset
