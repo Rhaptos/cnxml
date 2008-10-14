@@ -100,7 +100,8 @@
       <l:gentext key="Emailtheauthor" text="E-mail the author"/>
       <l:gentext key="Email" text="E-mail "/>
       <l:gentext key="Relatedmaterial" text="Related material"/>
-      <l:gentext key="RecentlyViewed" text="Recently Viewed"/>
+      <l:gentext key="Recently" text="Recently"/>
+      <l:gentext key="Viewed" text="Viewed"/>
       <l:gentext key="Example links" text="Example links"/>
       <l:gentext key="Prerequisite links" text="Prerequisite links"/>
       <l:gentext key="Supplemental links" text="Supplemental links"/>

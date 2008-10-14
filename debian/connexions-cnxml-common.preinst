@@ -1,11 +1,11 @@
 #!/bin/sh
-# preinst for connexions-cnxml-0.5.  Divert l10n.xsl from docbook-xsl
+# preinst for connexions-cnxml-common.  Divert l10n.xsl from docbook-xsl
 # so we can install our patched version
 
 set -e
 
 if [ "$1" = install -o "$1" = upgrade ] ; then
-    dpkg-divert --add --package connexions-cnxml-0.5 --rename \
+    dpkg-divert --add --package connexions-cnxml-common --rename \
     --divert /usr/share/xml/docbook/stylesheet/nwalsh/common/l10n.xsl.docbook /usr/share/xml/docbook/stylesheet/nwalsh/common/l10n.xsl
 fi
 

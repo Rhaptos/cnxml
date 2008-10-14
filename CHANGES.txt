@@ -1,3 +1,7 @@
+cnxml-0.5 (p24)
+  - quickperf (30 Sept 2008)
+    - two entries for "Recently" and "Viewed" due to wrapping issues in portlet title
+
 cnxml-0.5 (p23)
   - MyCNX phase 2
     - #6578: duplication problem with translation of "cite"
