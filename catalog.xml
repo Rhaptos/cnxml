@@ -8,6 +8,4 @@
   <public publicId="-//CNX//DTD CNXML 0.5 plus QML//EN"  uri="schema/dtd/0.5/cnxml_qml.dtd"/>
   <public publicId="-//CNX//DTD CNXML 0.5 plus MathML plus QML//EN"  uri="schema/dtd/0.5/cnxml_mathml_qml.dtd"/>
   
-  <!-- SYSTEM Rewrite rules to access local copies -->
-  <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/cnxml" rewritePrefix="."/>
 </catalog>

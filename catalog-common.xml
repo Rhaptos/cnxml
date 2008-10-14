@@ -10,4 +10,5 @@
   
   <!-- SYSTEM Rewrite rules to access local copies -->
   <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/mdml" rewritePrefix="../mdml"/>
+  <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/cnxml" rewritePrefix="."/>
 </catalog>
