@@ -1178,7 +1178,7 @@
     <ref name="enumerated-list-type-attribute"/>
     <ref name="number-style-attribute"/>
     <ref name="start-value-attribute"/>
-      <ref name="list-common-content"/>
+    <ref name="list-common-content"/>
   </define>
 
   <define name="enumerated-block-list">
@@ -1575,6 +1575,7 @@
   <define name="labview">
     <element name="labview">
       <ref name="media-object-common-content"/>
+      <ref name="src-attribute"/>
       <ref name="viname-attribute"/>
       <ref name="labview-version-attribute"/>
     </element>
