@@ -1290,22 +1290,13 @@
     </choice>
   </define>
 
-<!-- FIXME: code[@class="listing"] may be a problem, since @class 
-     takes multiple space-separated values, and we can't create a 
-     RelaxNG pattern that matches 'listing' somewhere in an attribute 
-     value. -->
-
-<!-- FIXME; ensure that block and inline code may not have 'listing' in their class attribute. -->
   <define name="code-listing">
     <element name="code">
       <optional>
         <ref name="display-block-attribute"/>
       </optional>
-      <ref name="foreign-namespaced-attribute"/>
+      <ref name="common-attributes"/>
       <ref name="id-attribute"/>
-      <optional>
-        <attribute name="xml:lang"/>
-      </optional>
       <ref name="listing-class-attribute"/>
       <optional>
         <ref name="code-lang-attribute"/>
