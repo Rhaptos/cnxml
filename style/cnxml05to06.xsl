@@ -43,7 +43,7 @@
     # statement
 convert media to new media structures
   * figure/table 
-figure/code
+  * figure/code
   * table gets @summary
 -->
 
@@ -383,6 +383,12 @@ figure/code
     </xsl:copy>
   </xsl:template>
 
+  <!-- media upconversion cases:
+      - ext='html' or ext='htm', type='image/png', has thumbnail (Ed Doering)
+      - eps around png/bmp/gif
+      - png around png
+      - mov around png
+      - everything else (single media) -->
   <!-- FIXME: this becomes code[@type="listing"] later, or a proper 'media' with children. -->
   <xsl:template match="cnxml:media">
     <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
