@@ -87,7 +87,7 @@
         <ref name="sub"/>
         <ref name="code"/>
         <ref name="simple-quote"/>
-        <ref name="simple-pre"/>
+        <ref name="simple-preformat"/>
         <ref name="simple-list"/>
         <ref name="simple-item"/>
         <text/>
@@ -140,8 +140,8 @@
     </element>
   </define>
 
-  <define name="simple-pre">
-    <element name="pre">
+  <define name="simple-preformat">
+    <element name="preformat">
       <ref name="display-attribute"/>
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
