@@ -389,14 +389,50 @@ convert media to new media structures
       - png around png
       - mov around png
       - everything else (single media) -->
-  <!-- FIXME: this becomes code[@type="listing"] later, or a proper 'media' with children. -->
+  <!-- FIXME: this becomes a proper 'media' with children. -->
   <xsl:template match="cnxml:media">
-    <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
-      <xsl:if test="parent::cnxml:content or parent::cnxml:section">
-        <xsl:attribute name="display">block</xsl:attribute>
-      </xsl:if>
-      <image src="foo.png" mimetype="image/png"/>
-    </media>
+    <xsl:variable name="ext">
+      <xsl:call-template name="get-extension">
+        <xsl:with-param name="data" select="normalize-space(substring-after(@src, '.'))"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:choose>
+      <!-- FIXME dummy content -->
+      <xsl:when test="cnxml:media">
+        <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
+          <xsl:if test="parent::cnxml:content or parent::cnxml:section">
+            <xsl:attribute name="display">block</xsl:attribute>
+          </xsl:if>
+          <image src="foo.png" mimetype="image/png"/>
+        </media>
+      </xsl:when>
+      <!-- FIXME dummy content -->
+      <xsl:when test="@type='image/png' and ($ext = 'htm' or $ext = 'html') and cnxml:param[@name='thumbnail']">
+        <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
+          <xsl:if test="parent::cnxml:content or parent::cnxml:section">
+            <xsl:attribute name="display">block</xsl:attribute>
+          </xsl:if>
+          <image src="foo.png" mimetype="image/png"/>
+        </media>
+      </xsl:when>
+      <xsl:otherwise>
+        <!-- FIXME -->
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="get-extension">
+    <xsl:param name="data"/>
+    <xsl:choose>
+      <xsl:when test="contains($data, '.')">
+        <xsl:call-template name="get-extension">
+          <xsl:with-param name="data" select="substring-after($data, '.')"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$data"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="/">
