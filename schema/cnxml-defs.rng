@@ -1470,9 +1470,7 @@
     <optional>
       <ref name="width-attribute"/>
     </optional>
-    <optional>
-      <ref name="mime-type-attribute"/>
-    </optional>
+    <ref name="mime-type-attribute"/>
     <optional>
       <ref name="longdesc"/>
     </optional>
