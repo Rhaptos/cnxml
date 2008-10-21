@@ -48,6 +48,14 @@ convert media to new media structures
   * table gets @summary
 -->
 
+<!-- Important: this stylesheet attempts to handle only those combinations of 
+     elements and attributes in the Connexions respository at the time I was 
+     writing the upconversion.  For instance, there are presently no loop 
+     parameters on audio or video media elements, so there is no handling for 
+     them in this conversion, even though they are valid as attributes on 
+     audio and video elements.  This transformation is therefore does not 
+     handle all possible CNXML 0.5 to 0.6 pathways. -->
+
   <xsl:output indent="yes" method="xml"/>
   <xsl:param name="moduleid"/>
   <xsl:variable name="required-id-elements" select="document('')/xsl:stylesheet/reqid:elements"/>
@@ -405,7 +413,7 @@ convert media to new media structures
         <xsl:variable name="intype" select="@type"/>
         <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
         <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
-          <xsl:call-template name="generate-id-if-required"/>
+          <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
           <xsl:attribute name="alt">
             <xsl:value-of select="//cnxml:param[@name='alt'][1]"/>
           </xsl:attribute>
@@ -416,6 +424,12 @@ convert media to new media structures
           <xsl:choose>
             <xsl:when test="$media-conversion/@objtype='image'">
               <xsl:call-template name="make-media-image">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='audio' or 
+                            $media-conversion/@objtype='video'">
+              <xsl:call-template name="make-media-audio-video">
                 <xsl:with-param name="media-conversion" select="$media-conversion"/>
               </xsl:call-template>
             </xsl:when>
@@ -470,6 +484,30 @@ convert media to new media structures
       <xsl:call-template name="make-attribute-from-param">
         <xsl:with-param name="param-name" select="'thumbnail'"/>
       </xsl:call-template>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template name="make-media-audio-video">
+    <xsl:param name="object-type" select="'audio'"/>
+    <xsl:param name="media-conversion"/>
+    <xsl:element name="{$media-conversion/@objtype}" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:attribute name="src">
+        <xsl:value-of select="@src"/>
+      </xsl:attribute>
+      <xsl:call-template name="make-mime-type">
+        <xsl:with-param name="media-conversion" select="$media-conversion"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'height'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'width'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'autoplay'"/>
+      </xsl:call-template>
+      <xsl:copy-of select="@*[not(name(self::node())='type')]"/>
+      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and @name!='autoplay']"/>
     </xsl:element>
   </xsl:template>
 
