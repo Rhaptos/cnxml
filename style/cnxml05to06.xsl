@@ -409,6 +409,9 @@ convert media to new media structures
           <xsl:attribute name="alt">
             <xsl:value-of select="//cnxml:param[@name='alt'][1]"/>
           </xsl:attribute>
+          <xsl:call-template name="make-attribute-from-param">
+            <xsl:with-param name="param-name" select="'longdesc'"/>
+          </xsl:call-template>
           <xsl:call-template name="make-media-display-attribute"/>
           <xsl:choose>
             <xsl:when test="$media-conversion/@objtype='image'">

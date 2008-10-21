@@ -365,7 +365,7 @@
   </define>
 
   <define name="longdesc-attribute">
-    <attribute name="longdesc-attribute"/>
+    <attribute name="longdesc"/>
   </define>
 
   <define name="height-attribute">
