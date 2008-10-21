@@ -376,12 +376,16 @@
     <attribute name="width"/>
   </define>
 
+  <define name="print-width-attribute">
+    <attribute name="print-width"/>
+  </define>
+
   <define name="src-attribute">
     <attribute name="src"/>
   </define>
 
-  <define name="mimetype-attribute">
-    <attribute name="mimetype"/>
+  <define name="mime-type-attribute">
+    <attribute name="mime-type"/>
   </define>
 
   <define name="thumbnail-attribute">
@@ -1467,7 +1471,7 @@
       <ref name="width-attribute"/>
     </optional>
     <optional>
-      <ref name="mimetype-attribute"/>
+      <ref name="mime-type-attribute"/>
     </optional>
     <optional>
       <ref name="longdesc"/>
@@ -1501,6 +1505,9 @@
     <element name="image">
       <ref name="media-object-common-content"/>
       <ref name="src-attribute"/>
+      <optional>
+        <ref name="print-width-attribute"/>
+      </optional>
       <optional>
         <ref name="thumbnail-attribute"/>
       </optional>
