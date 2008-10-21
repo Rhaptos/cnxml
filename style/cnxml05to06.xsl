@@ -13,6 +13,7 @@
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:exsl="http://exslt.org/common"
   xmlns:reqid="#required-ids"
+  xmlns:mc="#media-conversions"
   extension-element-prefixes="exsl"
   exclude-result-prefixes="cnxml"
 >
@@ -47,25 +48,10 @@ convert media to new media structures
   * table gets @summary
 -->
 
-  <reqid:elements>
-    <reqid:element name="div"/>
-    <reqid:element name="section"/>
-    <reqid:element name="figure"/>
-    <reqid:element name="subfigure"/>
-    <reqid:element name="example"/>
-    <reqid:element name="note"/>
-    <reqid:element name="footnote"/>
-    <reqid:element name="problem"/>
-    <reqid:element name="solution"/>
-    <reqid:element name="media"/>
-    <reqid:element name="meaning"/>
-    <reqid:element name="proof"/>
-    <reqid:element name="statement"/>
-  </reqid:elements>
-
   <xsl:output indent="yes" method="xml"/>
   <xsl:param name="moduleid"/>
   <xsl:variable name="required-id-elements" select="document('')/xsl:stylesheet/reqid:elements"/>
+  <xsl:variable name="media-conversions" select="document('')/xsl:stylesheet/mc:mediaconversions"/>
 
   <xsl:template match="cnxml:document">
     <xsl:element name="document" namespace="http://cnx.rice.edu/cnxml">
@@ -403,7 +389,7 @@ convert media to new media structures
           <xsl:if test="parent::cnxml:content or parent::cnxml:section">
             <xsl:attribute name="display">block</xsl:attribute>
           </xsl:if>
-          <image src="foo.png" mimetype="image/png"/>
+          <image src="foo.png" mime-type="image/png"/>
         </media>
       </xsl:when>
       <!-- FIXME dummy content -->
@@ -412,10 +398,26 @@ convert media to new media structures
           <xsl:if test="parent::cnxml:content or parent::cnxml:section">
             <xsl:attribute name="display">block</xsl:attribute>
           </xsl:if>
-          <image src="foo.png" mimetype="image/png"/>
+          <image src="foo.png" mime-type="image/png"/>
         </media>
       </xsl:when>
       <xsl:otherwise>
+        <xsl:variable name="intype" select="@type"/>
+        <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
+        <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
+          <xsl:call-template name="generate-id-if-required"/>
+          <xsl:attribute name="alt">
+            <xsl:value-of select="//cnxml:param[@name='alt'][1]"/>
+          </xsl:attribute>
+          <xsl:call-template name="make-media-display-attribute"/>
+          <xsl:choose>
+            <xsl:when test="$media-conversion/@objtype='image'">
+              <xsl:call-template name="make-media-image">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+          </xsl:choose>
+        </xsl:element>
         <!-- FIXME -->
       </xsl:otherwise>
     </xsl:choose>
@@ -435,6 +437,62 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template name="make-media-display-attribute">
+    <xsl:if test="parent::cnxml:content or parent::cnxml:section or
+                  parent::cnxml:example or parent::cnxml:problem or
+                  parent::cnxml:solution or parent::cnxml:statement or
+                  parent::cnxml:proof">
+      <xsl:attribute name="display">block</xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+
+  <xsl:template name="make-media-image">
+    <xsl:param name="media-conversion"/>
+    <xsl:element name="image" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:attribute name="src">
+        <xsl:value-of select="@src"/>
+      </xsl:attribute>
+      <xsl:call-template name="make-mime-type">
+        <xsl:with-param name="media-conversion" select="$media-conversion"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'height'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'width'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'print-width'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'thumbnail'"/>
+      </xsl:call-template>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template name="make-mime-type">
+    <xsl:param name="media-conversion"/>
+    <xsl:attribute name="mime-type">
+      <xsl:choose>
+        <xsl:when test="string-length($media-conversion/@outtype)">
+          <xsl:value-of select="$media-conversion/@outtype"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="@type"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
+  </xsl:template>
+
+  <xsl:template name="make-attribute-from-param">
+    <xsl:param name="param-name"/>
+    <xsl:if test="cnxml:param[@name=$param-name]">
+      <xsl:attribute name="{$param-name}">
+        <xsl:value-of select="cnxml:param[@name=$param-name]/@value"/>
+      </xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+
   <xsl:template match="/">
     <xsl:apply-templates/>
   </xsl:template>
@@ -451,4 +509,146 @@ convert media to new media structures
     <xsl:copy/>
   </xsl:template>
 
+  <reqid:elements>
+    <reqid:element name="div"/>
+    <reqid:element name="section"/>
+    <reqid:element name="figure"/>
+    <reqid:element name="subfigure"/>
+    <reqid:element name="example"/>
+    <reqid:element name="note"/>
+    <reqid:element name="footnote"/>
+    <reqid:element name="problem"/>
+    <reqid:element name="solution"/>
+    <reqid:element name="media"/>
+    <reqid:element name="meaning"/>
+    <reqid:element name="proof"/>
+    <reqid:element name="statement"/>
+  </reqid:elements>
+
+  <mc:mediaconversions>
+    <mc:mediaconversion intype="image/png" inext="png" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/gif" inext="gif" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="application/postscript" inext="eps" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/jpeg" inext="jpg" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="audio/mpeg" inext="mp3" objtype="audio" outtype=""/>
+    <mc:mediaconversion intype="image/bmp" inext="bmp" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/jpg" inext="gif" objtype="image" outtype="image/gif"/>
+    <mc:mediaconversion intype="image/png" inext="" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/png" inext="PNG" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/" inext="" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/png" inext="html" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/jpg" inext="JPG" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/jpg" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="application/msword" inext="doc" objtype="download" outtype=""/>
+    <mc:mediaconversion intype="application/mspowerpoint" inext="ppt" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediaconversion intype="image/jpeg" inext="JPG" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="class" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="image/jpg" inext="GIF" objtype="image" outtype="image/gif"/>
+    <mc:mediaconversion intype="image/jpeg" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="image/jpeg" inext="gif" objtype="image" outtype="image/gif"/>
+    <mc:mediaconversion intype="image/jpg" inext="" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="video/mpeg" inext="mov" objtype="video" outtype="video/quicktime"/>
+    <mc:mediaconversion intype="image/wmf" inext="wmf" objtype="image" outtype="image/wmf"/>
+    <mc:mediaconversion intype="application/x-labviewrpvi80" inext="llb" objtype="labview" outtype=""/>
+    <mc:mediaconversion intype="image/" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="audio/mp3" inext="mp3" objtype="audio" outtype="audio/mpeg"/>
+    <mc:mediaconversion intype="audio/x-wav" inext="wav" objtype="audio" outtype=""/>
+    <mc:mediaconversion intype="application/x-labview-llb" inext="llb" objtype="labview" outtype=""/>
+    <mc:mediaconversion intype="image/png" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="application/word" inext="doc" objtype="download" outtype="application/msword"/>
+    <mc:mediaconversion intype="application/mp3" inext="mp3" objtype="audio" outtype="audio/mpeg"/>
+    <mc:mediaconversion intype="doc/pdf" inext="pdf" objtype="download" outtype="application/pdf"/>
+    <mc:mediaconversion intype="image.png" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="application/x-shockwave-flash" inext="swf" objtype="flash" outtype=""/>
+    <mc:mediaconversion intype="application/x-labview-vi" inext="vi" objtype="labview" outtype=""/>
+    <mc:mediaconversion intype="image/png" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="application/x-labviewrpvi82" inext="llb" objtype="labview" outtype=""/>
+    <mc:mediaconversion intype="image.jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/bmp" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="audio/wav" inext="wav" objtype="audio" outtype="audio/x-wav"/>
+    <mc:mediaconversion intype="image/jpg" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image/src" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="application/pdf" inext="pdf" objtype="download" outtype=""/>
+    <mc:mediaconversion intype="application/vnd.mspowerpoint" inext="ppt" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediaconversion intype="image/gif" inext="GIF" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="application/ms-word" inext="doc" objtype="download" outtype="application/msword"/>
+    <mc:mediaconversion intype="application/ppt" inext="ppt" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediaconversion intype="image" inext="" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/gif" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="image" inext="gif" objtype="image" outtype="image/gif"/>
+    <mc:mediaconversion intype="image/pjpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/wmf" inext="gif" objtype="image" outtype="image/gif"/>
+    <mc:mediaconversion intype="imagejpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="video/mpeg" inext="mpg" objtype="video" outtype=""/>
+    <mc:mediaconversion intype="application/octet" inext="m" objtype="download" outtype="application/octet-stream"/>
+    <mc:mediaconversion intype="application/vnd.ms-powerpoint" inext="ppt" objtype="download" outtype=""/>
+    <mc:mediaconversion intype="image" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="video/mpg" inext="mpg" objtype="video" outtype="video/mpeg"/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcApplet" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="image/jpeg" inext="jpeg" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/png" inext="gif" objtype="image" outtype="image/gif"/>
+    <mc:mediaconversion intype="images/png" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="video.m4v" inext="m4v" objtype="video" outtype="video/mp4"/>
+    <mc:mediaconversion intype="application/powerpoint" inext="ppt" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediaconversion intype="file/m" inext="m" objtype="download" outtype=""/>
+    <mc:mediaconversion intype="image/fig" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/pct" inext="pct" objtype="image" outtype="image/pct"/>
+    <mc:mediaconversion intype="image1.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image2.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="application/pptx" inext="pptx" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediaconversion intype="applicatoin/msword" inext="doc" objtype="download" outtype="application/msword"/>
+    <mc:mediaconversion intype="applicaton/msword" inext="doc" objtype="download" outtype="application/msword"/>
+    <mc:mediaconversion intype="audio/mpeg" inext="edu/Brandt/expository/" objtype="audio" outtype=""/>
+    <mc:mediaconversion intype="file/wav" inext="wav" objtype="audio" outtype="audio/x-wav"/>
+    <mc:mediaconversion intype="image.gif" inext="gif" objtype="image" outtype="image/gif"/>
+    <mc:mediaconversion intype="image.png" inext="PNG" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="image/bmp" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="image/fig" inext="jpeg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/jpeg" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image/type" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="image3.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image4.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="text/plain" inext="m" objtype="download" outtype="application/octet-stream"/>
+    <mc:mediaconversion intype="video/mov" inext="mov" objtype="video" outtype="video/quicktime"/>
+    <mc:mediaconversion intype="application/adobeacrobat" inext="pdf" objtype="download" outtype="application/pdf"/>
+    <mc:mediaconversion intype="application/maword" inext="doc" objtype="download" outtype="application/msword"/>
+    <mc:mediaconversion intype="application/mspowerpoint" inext="pptx" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediaconversion intype="application/vnd.ms-word" inext="doc" objtype="download" outtype="application/msword"/>
+    <mc:mediaconversion intype="application/vnd.mspowerpoint" inext="doc" objtype="download" outtype="application/msword"/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="jar" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcButtonApplet" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="application/x-labview-llb" inext="vi" objtype="labview" outtype=""/>
+    <mc:mediaconversion intype="application/x-labviewrpvi80" inext="vi" objtype="labview" outtype=""/>
+    <mc:mediaconversion intype="application/xls" inext="xls" objtype="download" outtype="application/vnd.ms-excel"/>
+    <mc:mediaconversion intype="applicaton/vnd.mspowerpoint" inext="ppt" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediaconversion intype="imag/jpeg" inext="" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/bitmap" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image/g" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="image/GIF" inext="GIF" objtype="image" outtype="image/gif"/>
+    <mc:mediaconversion intype="image/gif" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/jpeg" inext="jpg/" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/jpeg" inext="jpg/image" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/JPG" inext="JPG" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/pg" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="image/pn" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="image/png" inext="GIF" objtype="image" outtype="image/gif"/>
+    <mc:mediaconversion intype="image/png" inext="htm" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/png" inext="jpg/view" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/png" inext="pg" objtype="image" outtype=""/>
+    <mc:mediaconversion intype="image/src" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/wmf" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image10.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image5.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image6.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image7.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image8.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image9.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image9/jpg" inext="jpg" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="images/jpeg" inext="JPG" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="images/png" inext="PNG" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="video/mp4" inext="mp4" objtype="video" outtype=""/>
+    <mc:mediaconversion intype="video/x-msvideo" inext="avi" objtype="video" outtype=""/>
+  </mc:mediaconversions>
 </xsl:stylesheet>
