@@ -423,10 +423,6 @@ convert media to new media structures
             </xsl:when>
           </xsl:choose>
         </xsl:when>
-        <!-- FIXME dummy content -->
-        <xsl:when test="@type='image/png' and ($ext = 'htm' or $ext = 'html') and cnxml:param[@name='thumbnail']">
-          <image src="foo.png" mime-type="image/png"/>
-        </xsl:when>
         <xsl:otherwise>
             <xsl:choose>
               <xsl:when test="$media-conversion/@objtype='image'">
