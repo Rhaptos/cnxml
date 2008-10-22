@@ -16,12 +16,14 @@
   </define>
 
   <define name="class-attribute">
-    <attribute name="class"/>
+    <attribute name="class">
+      <data type="token"/>
+    </attribute>
   </define>
 
   <define name="listing-class-attribute">
     <attribute name="class">
-      <data type="string">
+      <data type="token">
         <param name="pattern">(listing(\s.*)*)|(.*\slisting(\s.*)*)</param>
       </data>
     </attribute>
@@ -29,12 +31,12 @@
 
   <define name="non-listing-class-attribute">
     <attribute name="class">
-      <data type="string">
+      <data type="token">
         <except>
-          <data type="string">
+          <data type="token">
             <param name="pattern">(listing(\s.*)*)</param>
           </data>
-          <data type="string">
+          <data type="token">
             <param name="pattern">(.*\slisting(\s.*)*)</param>
           </data>
         </except>
@@ -252,7 +254,11 @@
           <value>warning</value>
           <value>tip</value>
           <value>important</value>
-          <text/>
+          <data type="token">
+            <except>
+              <value>footnote</value>
+            </except>
+          </data>
         </choice>
       </attribute>
     </optional>
@@ -444,7 +450,7 @@
 
   <define name="bgcolor-attribute">
     <attribute name="bgcolor">
-      <data type="string">
+      <data type="token">
         <param name="pattern">#[a-fA-F0-9]{6}</param>
       </data>
     </attribute>
@@ -2006,9 +2012,7 @@
           </choice>
         </attribute>
       </optional>
-      <attribute name="summary">
-        <text/>
-      </attribute>
+      <attribute name="summary"/>
       <ref name="colsep-attribute"/>
       <ref name="rowsep-attribute"/>
       <ref name="table.att"/>
