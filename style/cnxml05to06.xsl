@@ -414,7 +414,7 @@ convert media to new media structures
         <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
           <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
           <xsl:attribute name="alt">
-            <xsl:value-of select="//cnxml:param[@name='alt'][1]"/>
+            <xsl:value-of select="//cnxml:param[@name='alt'][1]/@value"/>
           </xsl:attribute>
           <xsl:call-template name="make-attribute-from-param">
             <xsl:with-param name="param-name" select="'longdesc'"/>
@@ -433,7 +433,12 @@ convert media to new media structures
               </xsl:call-template>
             </xsl:when>
             <xsl:when test="$media-conversion/@objtype='flash'">
-              <xsl:call-template name="make-media-image">
+              <xsl:call-template name="make-media-flash">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='labview'">
+              <xsl:call-template name="make-media-labview">
                 <xsl:with-param name="media-conversion" select="$media-conversion"/>
               </xsl:call-template>
             </xsl:when>
@@ -511,7 +516,7 @@ convert media to new media structures
         <xsl:with-param name="param-name" select="'autoplay'"/>
       </xsl:call-template>
       <xsl:copy-of select="@*[not(name(self::node())='type')]"/>
-      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and @name!='autoplay']"/>
+      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and @name!='autoplay' and @name!='alt']"/>
     </xsl:element>
   </xsl:template>
 
@@ -531,14 +536,52 @@ convert media to new media structures
       <xsl:call-template name="make-attribute-from-param">
         <xsl:with-param name="param-name" select="'width'"/>
       </xsl:call-template>
-      <xsl:call-template name="make-attribute-from-param">
-        <xsl:with-param name="param-name" select="'alt'"/>
-      </xsl:call-template>
       <xsl:copy-of select="@*[not(name(self::node())='type')]"/>
       <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and @name!='alt']"/>
     </xsl:element>
   </xsl:template>
-  
+
+  <xsl:template name="make-media-labview">
+    <xsl:param name="object-type"/>
+    <xsl:param name="media-conversion"/>
+    <xsl:variable name="version">
+      <xsl:choose>
+        <xsl:when test="normalize-space(@type)='application/x-labviewrpvi82'">8.2</xsl:when>
+        <xsl:when test="normalize-space(@type)='application/x-labviewrpvi80'">8.0</xsl:when>
+        <xsl:otherwise>7.0</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:element name="{$media-conversion/@objtype}" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:attribute name="src">
+        <xsl:value-of select="@src"/>
+      </xsl:attribute>
+      <xsl:attribute name="viname">
+        <xsl:choose>
+          <xsl:when test="cnxml:param[@name='lvfppviname']">
+            <xsl:value-of select="cnxml:param[@name='lvfppviname']/@value"/>
+          </xsl:when>
+          <xsl:when test="cnxml:param[@name='viinfo']">
+            <xsl:value-of select="cnxml:param[@name='viinfo']/@value"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:attribute>
+      <xsl:attribute name="version">
+        <xsl:value-of select="$version"/>
+      </xsl:attribute>
+      <xsl:call-template name="make-mime-type">
+        <xsl:with-param name="media-conversion" select="$media-conversion"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'height'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'width'"/>
+      </xsl:call-template>
+      <xsl:copy-of select="@*[not(name(self::node())='type')]"/>
+      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width']"/>
+    </xsl:element>
+  </xsl:template>
+
   <xsl:template name="make-mime-type">
     <xsl:param name="media-conversion"/>
     <xsl:attribute name="mime-type">
