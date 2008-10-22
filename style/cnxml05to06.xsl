@@ -389,69 +389,100 @@ convert media to new media structures
         <xsl:with-param name="data" select="normalize-space(substring-after(@src, '.'))"/>
       </xsl:call-template>
     </xsl:variable>
-    <xsl:choose>
-      <!-- FIXME dummy content -->
-      <xsl:when test="cnxml:media">
-        <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
-          <xsl:if test="parent::cnxml:content or parent::cnxml:section">
-            <xsl:attribute name="display">block</xsl:attribute>
-          </xsl:if>
-          <image src="foo.png" mime-type="image/png"/>
-        </media>
-      </xsl:when>
-      <!-- FIXME dummy content -->
-      <xsl:when test="@type='image/png' and ($ext = 'htm' or $ext = 'html') and cnxml:param[@name='thumbnail']">
-        <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
-          <xsl:if test="parent::cnxml:content or parent::cnxml:section">
-            <xsl:attribute name="display">block</xsl:attribute>
-          </xsl:if>
-          <image src="foo.png" mime-type="image/png"/>
-        </media>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:variable name="intype" select="@type"/>
-        <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
-        <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
-          <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
-          <xsl:attribute name="alt">
-            <xsl:value-of select="//cnxml:param[@name='alt'][1]/@value"/>
-          </xsl:attribute>
-          <xsl:call-template name="make-attribute-from-param">
-            <xsl:with-param name="param-name" select="'longdesc'"/>
-          </xsl:call-template>
-          <xsl:call-template name="make-media-display-attribute"/>
+    <xsl:variable name="intype" select="@type"/>
+    <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
+    <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+      <xsl:attribute name="alt">
+        <xsl:value-of select="//cnxml:param[@name='alt'][1]/@value"/>
+      </xsl:attribute>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'longdesc'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-media-display-attribute"/>
+      <xsl:choose>
+        <xsl:when test="cnxml:media">
           <xsl:choose>
-            <xsl:when test="$media-conversion/@objtype='image'">
+            <xsl:when test="$ext = 'eps'">
+              <xsl:apply-templates select="cnxml:media" mode="media-object-only"/>
               <xsl:call-template name="make-media-image">
                 <xsl:with-param name="media-conversion" select="$media-conversion"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:when test="$media-conversion/@objtype='audio' or 
-                            $media-conversion/@objtype='video'">
+            <xsl:when test="$ext = 'mov'">
               <xsl:call-template name="make-media-audio-video">
                 <xsl:with-param name="media-conversion" select="$media-conversion"/>
               </xsl:call-template>
+              <xsl:apply-templates select="cnxml:media" mode="media-object-only"/>
             </xsl:when>
-            <xsl:when test="$media-conversion/@objtype='flash'">
-              <xsl:call-template name="make-media-flash">
+            <xsl:when test="normalize-space(@type) = 'image/png' and 
+                            normalize-space(cnxml:media/@type) = 'image/png'">
+              <xsl:call-template name="make-media-image" mode="media-object-only">
                 <xsl:with-param name="media-conversion" select="$media-conversion"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$media-conversion/@objtype='labview'">
-              <xsl:call-template name="make-media-labview">
-                <xsl:with-param name="media-conversion" select="$media-conversion"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:when test="$media-conversion/@objtype='java-applet'">
-              <xsl:call-template name="make-media-java-applet">
-                <xsl:with-param name="media-conversion" select="$media-conversion"/>
-                <xsl:with-param name="ext" select="$ext"/>
               </xsl:call-template>
             </xsl:when>
           </xsl:choose>
-        </xsl:element>
-        <!-- FIXME -->
-      </xsl:otherwise>
+        </xsl:when>
+        <!-- FIXME dummy content -->
+        <xsl:when test="@type='image/png' and ($ext = 'htm' or $ext = 'html') and cnxml:param[@name='thumbnail']">
+          <image src="foo.png" mime-type="image/png"/>
+        </xsl:when>
+        <xsl:otherwise>
+            <xsl:choose>
+              <xsl:when test="$media-conversion/@objtype='image'">
+                <xsl:call-template name="make-media-image">
+                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:when test="$media-conversion/@objtype='audio' or 
+                              $media-conversion/@objtype='video'">
+                <xsl:call-template name="make-media-audio-video">
+                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:when test="$media-conversion/@objtype='flash'">
+                <xsl:call-template name="make-media-flash">
+                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:when test="$media-conversion/@objtype='labview'">
+                <xsl:call-template name="make-media-labview">
+                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:when test="$media-conversion/@objtype='java-applet'">
+                <xsl:call-template name="make-media-java-applet">
+                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
+                  <xsl:with-param name="ext" select="$ext"/>
+                </xsl:call-template>
+              </xsl:when>
+            </xsl:choose>
+          <!-- FIXME -->
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="cnxml:media" mode="media-object-only">
+    <xsl:variable name="ext">
+      <xsl:call-template name="get-extension">
+        <xsl:with-param name="data" select="normalize-space(substring-after(@src, '.'))"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="intype" select="@type"/>
+    <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
+    <xsl:choose>
+      <xsl:when test="$media-conversion/@objtype='image'">
+        <xsl:call-template name="make-media-image">
+          <xsl:with-param name="media-conversion" select="$media-conversion"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$media-conversion/@objtype='audio' or 
+                $media-conversion/@objtype='video'">
+        <xsl:call-template name="make-media-audio-video">
+          <xsl:with-param name="media-conversion" select="$media-conversion"/>
+        </xsl:call-template>
+      </xsl:when>
     </xsl:choose>
   </xsl:template>
 
