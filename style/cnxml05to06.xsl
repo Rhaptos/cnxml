@@ -442,6 +442,12 @@ convert media to new media structures
                 <xsl:with-param name="media-conversion" select="$media-conversion"/>
               </xsl:call-template>
             </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='java-applet'">
+              <xsl:call-template name="make-media-java-applet">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+                <xsl:with-param name="ext" select="$ext"/>
+              </xsl:call-template>
+            </xsl:when>
           </xsl:choose>
         </xsl:element>
         <!-- FIXME -->
@@ -582,6 +588,58 @@ convert media to new media structures
     </xsl:element>
   </xsl:template>
 
+  <xsl:template name="make-media-java-applet">
+    <xsl:param name="object-type"/>
+    <xsl:param name="media-conversion"/>
+    <xsl:param name="ext"/>
+    <xsl:variable name="code">
+      <xsl:choose>
+        <xsl:when test="cnxml:param[@name='code']">
+          <xsl:value-of select="cnxml:param[@name='code']/@value"/>
+        </xsl:when>
+        <xsl:when test="$ext != 'jar'">
+          <xsl:value-of select="normalize-space(@src)"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="archive">
+      <xsl:choose>
+        <xsl:when test="cnxml:param[@name='archive' or @name='ARCHIVE']">
+          <xsl:value-of select="cnxml:param[@name='archive' or @name='ARCHIVE']/@value"/>
+        </xsl:when>
+        <xsl:when test="$ext = 'jar'">
+          <xsl:value-of select="normalize-space(@src)"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:element name="{$media-conversion/@objtype}" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:attribute name="src">
+        <xsl:value-of select="@src"/>
+      </xsl:attribute>
+      <xsl:call-template name="make-mime-type">
+        <xsl:with-param name="media-conversion" select="$media-conversion"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'height'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'width'"/>
+      </xsl:call-template>
+      <xsl:attribute name="code"><xsl:value-of select="$code"/></xsl:attribute>
+      <xsl:if test="cnxml:param[@name='archive' or @name='ARCHIVE'] or $ext = 'jar'">
+        <xsl:attribute name="archive">
+          <xsl:value-of select="$archive"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:copy-of select="@*[not(name(self::node())='type')]"/>
+      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and 
+                                       @name!='alt' and 
+                                       normalize-space(@name)!='archive' and 
+                                       normalize-space(@name)!='ARCHIVE' and 
+                                       normalize-space(@name)!='code']"/>
+    </xsl:element>
+  </xsl:template>
+
   <xsl:template name="make-mime-type">
     <xsl:param name="media-conversion"/>
     <xsl:attribute name="mime-type">
@@ -655,7 +713,7 @@ convert media to new media structures
     <mc:mediaconversion intype="application/msword" inext="doc" objtype="download" outtype=""/>
     <mc:mediaconversion intype="application/mspowerpoint" inext="ppt" objtype="download" outtype="application/vnd.ms-powerpoint"/>
     <mc:mediaconversion intype="image/jpeg" inext="JPG" objtype="image" outtype=""/>
-    <mc:mediaconversion intype="application/x-java-applet" inext="class" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="class" objtype="java-applet" outtype=""/>
     <mc:mediaconversion intype="image/jpg" inext="GIF" objtype="image" outtype="image/gif"/>
     <mc:mediaconversion intype="image/jpeg" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="image/jpeg" inext="gif" objtype="image" outtype="image/gif"/>
@@ -698,7 +756,7 @@ convert media to new media structures
     <mc:mediaconversion intype="application/vnd.ms-powerpoint" inext="ppt" objtype="download" outtype=""/>
     <mc:mediaconversion intype="image" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="video/mpg" inext="mpg" objtype="video" outtype="video/mpeg"/>
-    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcApplet" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcApplet" objtype="java-applet" outtype=""/>
     <mc:mediaconversion intype="image/jpeg" inext="jpeg" objtype="image" outtype=""/>
     <mc:mediaconversion intype="image/png" inext="gif" objtype="image" outtype="image/gif"/>
     <mc:mediaconversion intype="images/png" inext="png" objtype="image" outtype="image/png"/>
@@ -729,8 +787,8 @@ convert media to new media structures
     <mc:mediaconversion intype="application/mspowerpoint" inext="pptx" objtype="download" outtype="application/vnd.ms-powerpoint"/>
     <mc:mediaconversion intype="application/vnd.ms-word" inext="doc" objtype="download" outtype="application/msword"/>
     <mc:mediaconversion intype="application/vnd.mspowerpoint" inext="doc" objtype="download" outtype="application/msword"/>
-    <mc:mediaconversion intype="application/x-java-applet" inext="jar" objtype="javaapplet" outtype=""/>
-    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcButtonApplet" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="jar" objtype="java-applet" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcButtonApplet" objtype="java-applet" outtype=""/>
     <mc:mediaconversion intype="application/x-labview-llb" inext="vi" objtype="labview" outtype=""/>
     <mc:mediaconversion intype="application/x-labviewrpvi80" inext="vi" objtype="labview" outtype=""/>
     <mc:mediaconversion intype="application/xls" inext="xls" objtype="download" outtype="application/vnd.ms-excel"/>
