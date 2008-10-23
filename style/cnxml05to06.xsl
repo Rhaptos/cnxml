@@ -714,6 +714,17 @@ convert media to new media structures
     </xsl:if>
   </xsl:template>
 
+  <xsl:template match="@rowsep">
+    <xsl:choose>
+      <xsl:when test="normalize-space(.)='true' or normalize-space(.)='one'">
+        <xsl:attribute name="rowsep">1</xsl:attribute>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <xsl:template match="/">
     <xsl:apply-templates/>
   </xsl:template>
