@@ -714,16 +714,21 @@ convert media to new media structures
     </xsl:if>
   </xsl:template>
 
-  <xsl:template match="@rowsep">
+  <xsl:template match="@rowsep|@colsep|@pgwide">
     <xsl:choose>
       <xsl:when test="normalize-space(.)='true' or normalize-space(.)='one'">
         <xsl:attribute name="rowsep">1</xsl:attribute>
+      </xsl:when>
+      <xsl:when test="normalize-space(.)='no'">
+        <xsl:attribute name="rowsep">0</xsl:attribute>
       </xsl:when>
       <xsl:otherwise>
         <xsl:copy/>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+
+  <xsl:template match="cnxml:name[string-length(normalize-space(.))=0][not(parent::cnxml:document)]"/>
 
   <xsl:template match="/">
     <xsl:apply-templates/>
