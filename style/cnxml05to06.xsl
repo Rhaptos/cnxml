@@ -301,6 +301,12 @@ convert media to new media structures
           </xsl:choose>
         </xsl:attribute>
       </xsl:if>
+      <!-- We need at least an empty @url on 'link'. -->
+      <xsl:if test="not(normalize-space(@document)) and 
+                    not(normalize-space(@version)) and 
+                    not(normalize-space(@target))">
+        <xsl:attribute name="url"></xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
