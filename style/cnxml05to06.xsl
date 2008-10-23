@@ -390,7 +390,7 @@ convert media to new media structures
         <xsl:with-param name="data" select="normalize-space(substring-after(@src, '.'))"/>
       </xsl:call-template>
     </xsl:variable>
-    <xsl:variable name="intype" select="@type"/>
+    <xsl:variable name="intype" select="normalize-space(@type)"/>
     <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
     <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
       <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
@@ -471,7 +471,7 @@ convert media to new media structures
         <xsl:with-param name="data" select="normalize-space(substring-after(@src, '.'))"/>
       </xsl:call-template>
     </xsl:variable>
-    <xsl:variable name="intype" select="@type"/>
+    <xsl:variable name="intype" select="normalize-space(@type)"/>
     <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
     <xsl:choose>
       <xsl:when test="$media-conversion/@objtype='image'">
@@ -699,7 +699,7 @@ convert media to new media structures
           <xsl:value-of select="$media-conversion/@outtype"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="@type"/>
+          <xsl:value-of select="normalize-space(@type)"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
