@@ -139,8 +139,9 @@ convert media to new media structures
           </xsl:attribute>
         </xsl:when>
         <!-- Block 'quote', 'pre', and 'code' get IDs always. -->
-        <xsl:when test="(name(self::*) = 'quote' or name(self::*) = 'code' or 
-                         name(self::*) = 'pre') and self::*[@type='block']">
+        <xsl:when test="((self::cnxml:quote or self::cnxml:preformat) and 
+                         (@type='block' or not(@type))) or
+                        self::cnxml:code/@type='block'">
           <xsl:attribute name="id">
             <xsl:value-of select="generate-id()"/>
           </xsl:attribute>
