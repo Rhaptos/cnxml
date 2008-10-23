@@ -453,6 +453,11 @@ convert media to new media structures
                   <xsl:with-param name="ext" select="$ext"/>
                 </xsl:call-template>
               </xsl:when>
+              <xsl:when test="$media-conversion/@objtype='download'">
+                <xsl:call-template name="make-media-download">
+                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
+                </xsl:call-template>
+              </xsl:when>
             </xsl:choose>
           <!-- FIXME -->
         </xsl:otherwise>
@@ -508,7 +513,7 @@ convert media to new media structures
 
   <xsl:template name="make-media-image">
     <xsl:param name="media-conversion"/>
-    <xsl:element name="image" namespace="http://cnx.rice.edu/cnxml">
+    <xsl:element name="{$media-conversion/@objtype}" namespace="http://cnx.rice.edu/cnxml">
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
@@ -665,6 +670,24 @@ convert media to new media structures
                                        normalize-space(@name)!='archive' and 
                                        normalize-space(@name)!='ARCHIVE' and 
                                        normalize-space(@name)!='code']"/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template name="make-media-download">
+    <xsl:param name="media-conversion"/>
+    <xsl:element name="{$media-conversion/@objtype}" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:attribute name="src">
+        <xsl:value-of select="@src"/>
+      </xsl:attribute>
+      <xsl:call-template name="make-mime-type">
+        <xsl:with-param name="media-conversion" select="$media-conversion"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'width'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'print-width'"/>
+      </xsl:call-template>
     </xsl:element>
   </xsl:template>
 
