@@ -73,7 +73,7 @@ convert media to new media structures
   <!-- Convert 'name' to 'title'. -->
   <xsl:template match="cnxml:name">
     <xsl:element name="title" namespace="http://cnx.rice.edu/cnxml">
-      <xsl:copy-of select="@id"/>
+      <xsl:apply-templates select="@id"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -92,14 +92,12 @@ convert media to new media structures
 
   <xsl:template match="cnxml:note[@type='footnote']">
     <xsl:element name="footnote" namespace="http://cnx.rice.edu/cnxml">
-      <xsl:choose>
-        <xsl:when test="@id"><xsl:copy-of select="@id"/></xsl:when>
-        <xsl:otherwise>
-          <xsl:attribute name="id">
-            <xsl:value-of select="generate-id()"/>
-          </xsl:attribute>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:apply-templates select="@id"/>
+      <xsl:if test="not(@id)">
+        <xsl:attribute name="id">
+          <xsl:value-of select="generate-id()"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -139,9 +137,9 @@ convert media to new media structures
           </xsl:attribute>
         </xsl:when>
         <!-- Block 'quote', 'pre', and 'code' get IDs always. -->
-        <xsl:when test="((self::cnxml:quote or self::cnxml:preformat) and 
+        <xsl:when test="(((self::cnxml:quote or self::cnxml:preformat) and 
                          (@type='block' or not(@type))) or
-                        self::cnxml:code/@type='block'">
+                         self::cnxml:code/@type='block') and not(@id)">
           <xsl:attribute name="id">
             <xsl:value-of select="generate-id()"/>
           </xsl:attribute>
@@ -158,7 +156,7 @@ convert media to new media structures
    - @version -->
   <xsl:template match="cnxml:link|cnxml:cite|cnxml:term|cnxml:quote">
     <xsl:copy>
-      <xsl:apply-templates select="@*[not(name(.)='src') and not(name(.)='id')]"/>
+      <xsl:apply-templates select="@*[not(name(.)='src')]"/>
       <xsl:call-template name="convert-link-src">
         <xsl:with-param name="src" select="normalize-space(@src)"/>
       </xsl:call-template>
@@ -287,7 +285,9 @@ convert media to new media structures
       </xsl:if>
       <xsl:if test="@target">
         <xsl:attribute name="target-id">
-          <xsl:value-of select="normalize-space(@target)"/>
+          <xsl:call-template name="fix-colon-in-id">
+            <xsl:with-param name="id-value" select="normalize-space(@target)"/>
+          </xsl:call-template>
         </xsl:attribute>
       </xsl:if>
       <xsl:if test="$strength">
@@ -302,9 +302,7 @@ convert media to new media structures
         </xsl:attribute>
       </xsl:if>
       <!-- We need at least an empty @url on 'link'. -->
-      <xsl:if test="not(normalize-space(@document)) and 
-                    not(normalize-space(@version)) and 
-                    not(normalize-space(@target))">
+      <xsl:if test="not(@document) and not(@version) and not(@target)">
         <xsl:attribute name="url"></xsl:attribute>
       </xsl:if>
       <xsl:apply-templates/>
@@ -312,22 +310,23 @@ convert media to new media structures
   </xsl:template>
 
   <xsl:template match="cnxml:table">
-    <xsl:param name="figure-id"/>
     <xsl:copy>
       <xsl:apply-templates select="@*[name(.)!='id']"/>
-      <xsl:attribute name="id">
-        <xsl:choose>
-          <xsl:when test="string-length($figure-id)">
-              <xsl:value-of select="$figure-id"/>
-          </xsl:when>
-          <xsl:when test="string-length(@id)">
-            <xsl:value-of select="@id"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="generate-id()"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+      <xsl:choose>
+        <!-- m16333 is the one module in which cnxns pointing to a table 
+              within a figure use the table @id rather than the figure @id. 
+              In this case, we don't pass figure/@id down to the table 
+              template. -->
+        <xsl:when test="string-length(parent::cnxml:figure/@id) and $moduleid != 'm16333'">
+          <xsl:apply-templates select="parent::cnxml:figure/@id"/>
+        </xsl:when>
+        <xsl:when test="string-length(@id)">
+          <xsl:apply-templates select="@id"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="generate-id()"/>
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:attribute name="summary"></xsl:attribute>
       <xsl:apply-templates/>
     </xsl:copy>
@@ -339,17 +338,7 @@ convert media to new media structures
         <xsl:value-of select="@id"/>
       </xsl:processing-instruction>
     </xsl:if>
-    <xsl:apply-templates select="cnxml:table">
-      <xsl:with-param name="figure-id">
-        <!-- m16333 is the one module in which cnxns pointing to a table 
-             within a figure use the table @id rather than the figure @id. 
-             In this case, we don't pass figure/@id down to the table 
-             template. -->
-        <xsl:if test="$moduleid != 'm16333'">
-          <xsl:value-of select="@id"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:apply-templates>
+    <xsl:apply-templates select="cnxml:table"/>
   </xsl:template>
 
   <xsl:template match="cnxml:figure[cnxml:code]">
@@ -735,6 +724,19 @@ convert media to new media structures
   </xsl:template>
 
   <xsl:template match="cnxml:name[string-length(normalize-space(.))=0][not(parent::cnxml:document)]"/>
+
+  <xsl:template name="fix-colon-in-id">
+    <xsl:param name="id-value"/>
+    <xsl:value-of select="normalize-space(translate($id-value, ':', '.'))"/>
+  </xsl:template>
+
+  <xsl:template match="@id">
+    <xsl:attribute name="id">
+      <xsl:call-template name="fix-colon-in-id">
+        <xsl:with-param name="id-value" select="normalize-space(.)"/>
+      </xsl:call-template>
+    </xsl:attribute>
+  </xsl:template>
 
   <xsl:template match="/">
     <xsl:apply-templates/>
