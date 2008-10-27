@@ -200,6 +200,24 @@ convert media to new media structures
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="cnxml:quote[@type='block']">
+    <xsl:copy>
+      <xsl:apply-templates select="@*[not(name(.)='src')]"/>
+      <xsl:call-template name="convert-link-src">
+        <xsl:with-param name="src" select="normalize-space(@src)"/>
+      </xsl:call-template>
+      <xsl:call-template name="generate-id-if-required"/>
+      <xsl:choose>
+        <xsl:when test="parent::cnxml:emphasis">
+          <emphasis xmlns="http://cnx.rice.edu/cnxml"><xsl:apply-templates/></emphasis>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:copy>
+  </xsl:template>
+
   <xsl:template name="convert-link-src">
     <xsl:param name="src"/>
     <xsl:choose>
@@ -760,6 +778,8 @@ convert media to new media structures
 
   <xsl:template match="cnxml:name[string-length(normalize-space(.))=0][not(parent::cnxml:document)]"/>
 
+  <xsl:template match="*[self::cnxml:cite][not(@*)][string-length(normalize-space(.))=0]"/>
+
   <xsl:template name="fix-colon-in-id">
     <xsl:param name="id-value"/>
     <xsl:value-of select="normalize-space(translate($id-value, ':', '.'))"/>
@@ -771,6 +791,10 @@ convert media to new media structures
         <xsl:with-param name="id-value" select="normalize-space(.)"/>
       </xsl:call-template>
     </xsl:attribute>
+  </xsl:template>
+
+  <xsl:template match="cnxml:emphasis[cnxml:quote[@type='block']]">
+    <xsl:apply-templates select="cnxml:quote"/>
   </xsl:template>
 
   <xsl:template match="/">
