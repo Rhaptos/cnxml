@@ -2096,6 +2096,7 @@
       <optional>
         <attribute name="nameend"/>
       </optional>
+      <ref name="spanname-attribute"/>
       <optional>
         <attribute name="colwidth"/>
       </optional>
@@ -2232,6 +2233,9 @@
       </optional>
       <optional>
         <ref name="nameend-attribute"/>
+      </optional>
+      <optional>
+        <ref name="spanname-attribute"/>
       </optional>
       <optional>
         <ref name="morerows-attribute"/>
