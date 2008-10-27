@@ -222,7 +222,11 @@ convert media to new media structures
     <xsl:param name="src"/>
     <xsl:choose>
       <!-- Empty or absent @src: do nothing. -->
-      <xsl:when test="not($src)"></xsl:when>
+      <xsl:when test="not($src)">
+        <xsl:if test="self::cnxml:link">
+          <xsl:attribute name="url"></xsl:attribute>
+        </xsl:if>
+      </xsl:when>
       <!-- Absolute URL pointing to Connexions object -->
       <xsl:when test="starts-with($src, 'http:') and (
                 contains($src, 'cnx.rice.edu') or
@@ -417,6 +421,9 @@ convert media to new media structures
         <xsl:if test="preceding-sibling::cnxml:name">
           <xsl:apply-templates select="preceding-sibling::cnxml:name"/>
         </xsl:if>
+      </xsl:if>
+      <xsl:if test="parent::cnxml:content or parent::cnxml:section">
+        <xsl:attribute name="display">block</xsl:attribute>
       </xsl:if>
       <xsl:apply-templates/>
       <xsl:if test="parent::cnxml:figure and following-sibling::cnxml:caption">
