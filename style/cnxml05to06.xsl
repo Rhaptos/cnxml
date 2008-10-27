@@ -797,6 +797,14 @@ convert media to new media structures
     <xsl:apply-templates select="cnxml:quote"/>
   </xsl:template>
 
+  <xsl:template match="m:emphasis|m:equation">
+    <xsl:element name="{local-name()}" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:apply-templates select="@*"/>
+      <xsl:call-template name="generate-id-if-required"/>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+
   <xsl:template match="/">
     <xsl:apply-templates/>
   </xsl:template>
