@@ -87,6 +87,7 @@ convert media to new media structures
 
   <xsl:template match="@type">
     <xsl:choose>
+      <xsl:when test="parent::cnxml:code[parent::cnxml:figure]"></xsl:when>
       <xsl:when test=".='inline'">
         <xsl:attribute name="display">inline</xsl:attribute>
       </xsl:when>
