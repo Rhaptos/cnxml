@@ -62,12 +62,19 @@ convert media to new media structures
   <xsl:variable name="media-conversions" select="document('')/xsl:stylesheet/mc:mediaconversions"/>
 
   <xsl:template match="cnxml:document">
-    <xsl:element name="document" namespace="http://cnx.rice.edu/cnxml">
-      <xsl:apply-templates select="@*"/>
-      <xsl:attribute name="module-id"><xsl:value-of select="$moduleid"/></xsl:attribute>
-      <xsl:attribute name="cnxml-version">0.6</xsl:attribute>
-      <xsl:apply-templates/>
-    </xsl:element>
+    <xsl:choose>
+      <xsl:when test="@cnxml-version='0.6'">
+        <xsl:copy-of select="."/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:element name="document" namespace="http://cnx.rice.edu/cnxml">
+          <xsl:apply-templates select="@*"/>
+          <xsl:attribute name="module-id"><xsl:value-of select="$moduleid"/></xsl:attribute>
+          <xsl:attribute name="cnxml-version">0.6</xsl:attribute>
+          <xsl:apply-templates/>
+        </xsl:element>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- Convert 'name' to 'title'. -->
