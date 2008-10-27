@@ -60,6 +60,7 @@ convert media to new media structures
   <xsl:param name="moduleid"/>
   <xsl:variable name="required-id-elements" select="document('')/xsl:stylesheet/reqid:elements"/>
   <xsl:variable name="media-conversions" select="document('')/xsl:stylesheet/mc:mediaconversions"/>
+  <xsl:key name="author-by-id" match="/cnxml:document/cnxml:metadata/md:authorlist/md:author" use="@id"/>
 
   <xsl:template match="cnxml:document">
     <xsl:choose>
@@ -108,6 +109,32 @@ convert media to new media structures
       </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="cnxml:list[normalize-space(@type)='inline']
+                                 [parent::cnxml:section or 
+                                  parent::cnxml:example or 
+                                  parent::cnxml:problem]">
+    <xsl:choose>
+      <xsl:when test="key('author-by-id', 'billowsky')">
+        <para id="{generate-id()}" xmlns="http://cnx.rice.edu/cnxml">
+          <xsl:apply-templates select="." mode="default-copy"/>
+        </para>
+      </xsl:when>
+      <xsl:otherwise>
+        <div id="{generate-id()}" xmlns="http://cnx.rice.edu/cnxml">
+          <xsl:apply-templates select="." mode="default-copy"/>
+        </div>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="*" mode="default-copy">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:call-template name="generate-id-if-required"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
   </xsl:template>
 
   <xsl:template match="cnxml:list/@type">
