@@ -1778,7 +1778,9 @@
       <optional>
         <ref name="title"/>
       </optional>
-      <ref name="statement"/>
+      <oneOrMore>
+        <ref name="statement"/>
+      </oneOrMore>
       <zeroOrMore>
         <choice>
           <ref name="proof"/>
