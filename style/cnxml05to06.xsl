@@ -82,12 +82,19 @@ convert media to new media structures
   <xsl:template match="cnxml:name">
     <xsl:variable name="element-name">
       <xsl:choose>
+        <xsl:when test="parent::cnxml:item and $moduleid='m14479'">cite</xsl:when>
         <xsl:when test="parent::cnxml:item">label</xsl:when>
         <xsl:otherwise>title</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$element-name}" namespace="http://cnx.rice.edu/cnxml">
       <xsl:apply-templates select="@id"/>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="cnxml:name" mode="m15555">
+    <xsl:element name="item" namespace="http://cnx.rice.edu/cnxml">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -844,6 +851,26 @@ convert media to new media structures
       <xsl:call-template name="generate-id-if-required"/>
       <xsl:apply-templates/>
     </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="cnxml:para">
+    <xsl:choose>
+      <xsl:when test="@id='element-431' and $moduleid='m15555'">
+        <xsl:copy>
+          <xsl:apply-templates select="@*"/>
+          <xsl:apply-templates select="cnxml:name[3]/preceding-sibling::node()"/>
+          <xsl:element name="list" namespace="http://cnx.rice.edu/cnxml">
+            <xsl:attribute name="list-type">labeled-item</xsl:attribute>
+            <xsl:attribute name="display">inline</xsl:attribute>
+            <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+            <xsl:apply-templates select="cnxml:name[position() &gt; 2]" mode="m15555"/>
+          </xsl:element>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="." mode="default-copy"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="/">
