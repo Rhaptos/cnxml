@@ -178,7 +178,7 @@ convert media to new media structures
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:apply-templates select="cnxml:name"/>
-      <xsl:apply-templates select="node()[not(self::cnxml:name)]"/>
+      <xsl:apply-templates select="*[not(self::cnxml:name)]|text()|comment()|processing-instruction()"/>
     </xsl:copy>
   </xsl:template>
 
@@ -876,7 +876,11 @@ convert media to new media structures
         </xsl:copy>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="." mode="default-copy"/>
+        <xsl:copy>
+          <xsl:apply-templates select="@*"/>
+          <xsl:apply-templates select="cnxml:name"/>
+          <xsl:apply-templates select="text()|*[not(self::cnxml:name)]|comment()|processing-instruction()"/>
+        </xsl:copy>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
