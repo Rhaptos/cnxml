@@ -78,9 +78,15 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
-  <!-- Convert 'name' to 'title'. -->
+  <!-- Convert 'name' to 'label' if the child of 'item', otherwise to 'title'. -->
   <xsl:template match="cnxml:name">
-    <xsl:element name="title" namespace="http://cnx.rice.edu/cnxml">
+    <xsl:variable name="element-name">
+      <xsl:choose>
+        <xsl:when test="parent::cnxml:item">label</xsl:when>
+        <xsl:otherwise>title</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:element name="{$element-name}" namespace="http://cnx.rice.edu/cnxml">
       <xsl:apply-templates select="@id"/>
       <xsl:apply-templates/>
     </xsl:element>
@@ -159,6 +165,19 @@ convert media to new media structures
       </xsl:when>
       <xsl:otherwise></xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="cnxml:item[local-name(child::*[1])='media'][name(child::*[2])='name']">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:element name="label" namespace="http://cnx.rice.edu/cnxml">
+        <xsl:apply-templates select="child::*[1]/preceding-sibling::node()"/>
+        <xsl:apply-templates select="child::*[1]"/>
+        <xsl:apply-templates select="child::*[2]/preceding-sibling::node()[preceding-sibling::cnxml:media]"/>
+        <xsl:apply-templates select="child::*[2]/node()"/>
+      </xsl:element>
+      <xsl:apply-templates select="child::*[2]/following-sibling::node()"/>
+    </xsl:copy>
   </xsl:template>
 
   <xsl:template name="generate-id-if-required">
@@ -418,17 +437,19 @@ convert media to new media structures
   <xsl:template match="cnxml:code">
     <xsl:copy>
       <xsl:apply-templates select="@*[name()!='id']"/>
-      <xsl:attribute name="id">
-        <xsl:choose>
-          <xsl:when test="parent::cnxml:figure">
-            <xsl:value-of select="parent::cnxml:figure/@id"/>
-          </xsl:when>
-          <xsl:when test="string-length(@id)">
-            <xsl:value-of select="@id"/>
-          </xsl:when>
-          <xsl:otherwise><xsl:value-of select="generate-id()"/></xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+      <xsl:if test="@type='block'">
+        <xsl:attribute name="id">
+          <xsl:choose>
+            <xsl:when test="parent::cnxml:figure">
+              <xsl:value-of select="parent::cnxml:figure/@id"/>
+            </xsl:when>
+            <xsl:when test="string-length(@id)">
+              <xsl:value-of select="@id"/>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="generate-id()"/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="parent::cnxml:figure">
         <xsl:attribute name="class">listing</xsl:attribute>
         <xsl:if test="preceding-sibling::cnxml:name">
