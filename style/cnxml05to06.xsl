@@ -189,7 +189,7 @@ convert media to new media structures
    - @target-id
    - @resource
    - @version -->
-  <xsl:template match="cnxml:link|cnxml:cite|cnxml:term|cnxml:quote">
+  <xsl:template match="cnxml:link|cnxml:cite|cnxml:term|cnxml:quote[@type='inline']">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name(.)='src')]"/>
       <xsl:call-template name="convert-link-src">
@@ -200,7 +200,7 @@ convert media to new media structures
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="cnxml:quote[@type='block']">
+  <xsl:template match="cnxml:quote">
     <xsl:copy>
       <xsl:apply-templates select="@*[not(name(.)='src')]"/>
       <xsl:call-template name="convert-link-src">
@@ -209,7 +209,20 @@ convert media to new media structures
       <xsl:call-template name="generate-id-if-required"/>
       <xsl:choose>
         <xsl:when test="parent::cnxml:emphasis">
-          <emphasis xmlns="http://cnx.rice.edu/cnxml"><xsl:apply-templates/></emphasis>
+          <xsl:choose>
+            <!-- When there no non-whitespace sibling text nodes and no
+                 sibling elements, we can output this 'quote' as a block
+                 and pull the 'emphasis' element inside it. -->
+            <xsl:when test="string-length(normalize-space(parent::cnxml:emphasis/text()))=0 and count(parent::cnxml:emphasis/*)=1">
+              <emphasis xmlns="http://cnx.rice.edu/cnxml"><xsl:apply-templates/></emphasis>
+            </xsl:when>
+            <!-- When there are significant sibling nodes, we must convert 
+                 this quote to @type='inline'. -->
+            <xsl:otherwise>
+              <xsl:attribute name="display">inline</xsl:attribute>
+              <xsl:apply-templates/>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates/>
