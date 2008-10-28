@@ -174,7 +174,15 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="cnxml:item[local-name(child::*[1])='media'][name(child::*[2])='name']">
+  <xsl:template match="cnxml:item">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="cnxml:name"/>
+      <xsl:apply-templates select="node()[not(self::cnxml:name)]"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="cnxml:item[local-name(child::*[1])='media'][local-name(child::*[2])='name']">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:element name="label" namespace="http://cnx.rice.edu/cnxml">
