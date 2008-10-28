@@ -924,6 +924,7 @@ convert media to new media structures
     <mc:mediaconversion intype="images/png" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="video.m4v" inext="m4v" objtype="video" outtype="video/mp4"/>
     <mc:mediaconversion intype="application/powerpoint" inext="ppt" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediaconversion intype="application/powerpoint" inext="pptx" objtype="download" outtype="application/vnd.ms-powerpoint"/>
     <mc:mediaconversion intype="file/m" inext="m" objtype="download" outtype=""/>
     <mc:mediaconversion intype="image/fig" inext="jpg" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="image/pct" inext="pct" objtype="image" outtype="image/pct"/>
@@ -984,5 +985,6 @@ convert media to new media structures
     <mc:mediaconversion intype="video/mp4" inext="mp4" objtype="video" outtype=""/>
     <mc:mediaconversion intype="video/x-msvideo" inext="avi" objtype="video" outtype=""/>
     <mc:mediaconversion intype="image\jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="application/msword" inext="docx" objtype="download" outtype="application/msword"/>
   </mc:mediaconversions>
 </xsl:stylesheet>
