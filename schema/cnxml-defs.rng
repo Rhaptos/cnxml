@@ -1253,7 +1253,9 @@
       <optional>
         <ref name="label"/>
       </optional>
-      <ref name="div-content"/>
+      <zeroOrMore>
+        <ref name="div-content-class"/>
+      </zeroOrMore>
     </element>
   </define>
 
