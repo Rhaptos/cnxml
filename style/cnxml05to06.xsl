@@ -963,6 +963,7 @@ convert media to new media structures
     <mc:mediaconversion intype="image/jpeg" inext="jpg/" objtype="image" outtype=""/>
     <mc:mediaconversion intype="image/jpeg" inext="jpg/image" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="image/JPG" inext="JPG" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/JPEG" inext="JPG" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="image/pg" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="image/pn" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="image/png" inext="GIF" objtype="image" outtype="image/gif"/>
@@ -977,10 +978,11 @@ convert media to new media structures
     <mc:mediaconversion intype="image7.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
     <mc:mediaconversion intype="image8.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
     <mc:mediaconversion intype="image9.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
-    <mc:mediaconversion intype="image9/jpg" inext="jpg" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image9/jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="images/jpeg" inext="JPG" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="images/png" inext="PNG" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="video/mp4" inext="mp4" objtype="video" outtype=""/>
     <mc:mediaconversion intype="video/x-msvideo" inext="avi" objtype="video" outtype=""/>
+    <mc:mediaconversion intype="image\jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
   </mc:mediaconversions>
 </xsl:stylesheet>
