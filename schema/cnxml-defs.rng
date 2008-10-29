@@ -1461,6 +1461,7 @@
 
   <define name="param">
     <element name="param">
+      <ref name="common-attributes"/>
       <optional>
         <ref name="class-attribute"/>
       </optional>
@@ -1593,6 +1594,7 @@
 
   <define name="text">
     <element name="text">
+      <ref name="common-attributes"/>
       <optional>
         <ref name="id-attribute"/>
       </optional>
