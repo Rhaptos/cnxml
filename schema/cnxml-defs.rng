@@ -1461,6 +1461,7 @@
 
   <define name="param">
     <element name="param">
+      <ref name="class-attribute"/>
       <attribute name="name"/>
       <attribute name="value"/>
     </element>
@@ -1592,6 +1593,9 @@
     <element name="text">
       <optional>
         <ref name="id-attribute"/>
+      </optional>
+      <optional>
+        <ref name="class-attribute"/>
       </optional>
       <oneOrMore>
         <ref name="div-content-class"/>
