@@ -1461,7 +1461,9 @@
 
   <define name="param">
     <element name="param">
-      <ref name="class-attribute"/>
+      <optional>
+        <ref name="class-attribute"/>
+      </optional>
       <attribute name="name"/>
       <attribute name="value"/>
     </element>
