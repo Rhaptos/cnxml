@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" id="m00012" module-id="m00012" cnxml-version="0.6">
+
+  <title>Upper Level Element Test</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <md:version>1.0</md:version>
+  <md:created>2008/10/12</md:created>
+  <md:revised>2008/10/12 15:37:45.023 GMT-5</md:revised>
+  <md:authorlist>
+    <md:author id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:author>
+  </md:authorlist>
+
+  <md:maintainerlist>
+    <md:maintainer id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:maintainer>
+    
+    <md:maintainer id="lizzardg">
+      <md:firstname>Elizabeth</md:firstname>
+      
+      <md:surname>Gregory</md:surname>
+      <md:email>lizzardg@rice.edu</md:email>
+    </md:maintainer>
+  </md:maintainerlist>
+  
+  <md:keywordlist>
+    <md:keyword>Supertest</md:keyword>
+    <md:keyword>Schema</md:keyword>
+  </md:keywordlist>
+
+  <md:abstract/>
+</metadata>
+
+
+
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+    <section id="supernest" asdf="faultyattribute">
+      <section id='s1'>
+        <div id='d1'>
+          Will the nesting never end?
+          <para id='p1'>
+            The rowers keep on rowing, and they're certainly not showing any signs of slowing!
+          </para>
+        </div>
+      </section>
+    </section>
+  </content>
+</document>

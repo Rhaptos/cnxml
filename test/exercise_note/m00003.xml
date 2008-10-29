@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" id="m00003" module-id="m00003" cnxml-version="0.6">
+
+  <title>Exercise and Note Test</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <md:version>2.6</md:version>
+  <md:created>2008/10/10</md:created>
+  <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
+  <md:authorlist>
+    <md:author id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:author>
+  </md:authorlist>
+
+  <md:maintainerlist>
+    <md:maintainer id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:maintainer>
+    
+    <md:maintainer id="lizzardg">
+      <md:firstname>Elizabeth</md:firstname>
+      
+      <md:surname>Gregory</md:surname>
+      <md:email>lizzardg@rice.edu</md:email>
+    </md:maintainer>
+  </md:maintainerlist>
+  
+  <md:keywordlist>
+    <md:keyword>Supertest</md:keyword>
+    <md:keyword>Schema</md:keyword>
+  </md:keywordlist>
+
+  <md:abstract/>
+</metadata>
+
+
+
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+    <exercise id='exe1' print-placement='here'>
+      <problem id='prob1' class='problematic'>
+        <title>This one is just for practice</title>
+        <section id='s1'>
+          <para id='par1'>
+            Problems can contain any section content.
+          </para>
+        </section>
+        <exercise id='exe2'>
+          <problem id='nested'>
+            <para id='nestedpara'>Exercises (and other block elements) can be put inside of exercises.</para>
+          </problem>
+        </exercise>
+        <para id='pp1'>
+          Will this exercise be validated?
+        </para>
+      </problem>
+      <solution id='sol1'>
+        <para id='solp1'>
+          Of course it will; it has the required problem element, as well as a solution.
+        </para>
+      </solution>
+      <solution id='sol2'>
+        <para id='solp2'>
+          You can also determine the answer to the solution by using an XML validator.
+        </para>
+      </solution>
+      <solution id='sol3'>
+        <para id='solp3'>
+          The solution was in the first two elements up there. You can stop reading now.
+        </para>
+      </solution>
+    </exercise>
+  </content>
+</document>
