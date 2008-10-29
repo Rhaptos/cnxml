@@ -452,7 +452,7 @@ convert media to new media structures
   <xsl:template match="cnxml:code">
     <xsl:copy>
       <xsl:apply-templates select="@*[name()!='id']"/>
-      <xsl:if test="@type='block'">
+      <xsl:if test="@type='block' or parent::cnxml:content or parent::cnxml:section or parent::cnxml:figure">
         <xsl:attribute name="id">
           <xsl:choose>
             <xsl:when test="parent::cnxml:figure">
