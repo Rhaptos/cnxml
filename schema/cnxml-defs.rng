@@ -650,7 +650,6 @@
       <ref name='example'/>
       <ref name='figure'/>
       <ref name='block-code'/>
-      <ref name="code-listing"/>
       <ref name='block-preformat'/>
       <ref name='block-quote'/>
       <ref name='block-note'/>
@@ -1269,12 +1268,12 @@
         <ref name="id-attribute"/>
       </optional>
       <optional>
-        <ref name="non-listing-class-attribute"/>
+        <ref name="class-attribute"/>
       </optional>
       <ref name="common-attributes"/>
-      <zeroOrMore>
+      <oneOrMore>
         <ref name="inline-class"/>
-      </zeroOrMore>
+      </oneOrMore>
     </element>
   </define>
 
@@ -1282,7 +1281,7 @@
     <element name="code">
       <ref name="display-block-attribute"/>
       <optional>
-        <ref name="non-listing-class-attribute"/>
+        <ref name="class-attribute"/>
       </optional>
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
@@ -1292,9 +1291,15 @@
       <optional>
         <ref name="label"/>
       </optional>
-      <zeroOrMore>
+      <optional>
+          <ref name="title"/>
+      </optional>
+      <oneOrMore>
         <ref name="inline-class"/>
-      </zeroOrMore>
+      </oneOrMore>
+      <optional>
+          <ref name="caption"/>
+      </optional>
     </element>
   </define>
 
@@ -1303,32 +1308,6 @@
       <ref name="inline-code"/>
       <ref name="block-code"/>
     </choice>
-  </define>
-
-  <define name="code-listing">
-    <element name="code">
-      <optional>
-        <ref name="display-block-attribute"/>
-      </optional>
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <ref name="listing-class-attribute"/>
-      <optional>
-        <ref name="code-lang-attribute"/>
-      </optional>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="inline-class"/>
-      </oneOrMore>
-      <optional>
-        <ref name="caption"/>
-      </optional>
-    </element>
   </define>
 
 <!-- NOTE: I have removed 'table' and 'code' as possible content for 
