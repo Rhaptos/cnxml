@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<document xmlns="http://cnx.rice.edu/cnxml" id="m00071" module-id="m00071" cnxml-version="0.6">
+<document xmlns="http://cnx.rice.edu/cnxml" id="m00095" module-id="m00095" cnxml-version="0.6">
 
-  <title>Media Test</title>
+  <title>Download Test</title>
   <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
   <md:version>2.6</md:version>
   <md:created>2008/10/10</md:created>
@@ -42,11 +42,9 @@
 
 
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <para id='p1'>
-      This media element has every optional attribute.
-      <media id='med1' display='inline' class='Imagery' alt='Image of Zeus' longdesc='Zeus surveys all of his domain.'>
-        <image src='zeus.png' mime-type='PNG'/>
-      </media>
-    </para>
+    <para id='p1'>Download elements are not allowed code attributes!</para>
+    <media id='med1' display='block' alt='Containing Media Element'>
+      <download mime-type='JAVA' code='faulty.java'/>
+    </media>
   </content>
 </document>
