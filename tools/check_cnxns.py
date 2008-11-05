@@ -107,44 +107,8 @@ class TrackCnxnsAndIds(sax.handler.ContentHandler):
     def cleanup(self):
         for k, v in self.badCnxns.items():
             if v == {}: del self.badCnxns[k]
+        # later add code to move the remaining pending cnxns to "bad".
 
-
-class CnxnIdParser(object):
-
-    def __init__(self):
-        self.parser = sax.make_parser()
-        self.parser.setContentHandler(TrackCnxnsAndIds())
-        self.parser.setFeature(sax.handler.feature_external_pes, False)
-        self.parser.setFeature(sax.handler.feature_external_ges, False)
-        self.parser.setFeature(sax.handler.feature_namespaces, True)
-        self.parser.setFeature(sax.handler.feature_namespace_prefixes, True)
-        self.moduleId = None
-
-    def parse(self, source):
-        self.parser.getContentHandler().moduleId = self.moduleId
-        try:
-            self.parser.parse(source)
-        except sax._exceptions.SAXParseException:
-            sys.stderr.write("Skipping %s (cannot parse without DTD).\n" % self.moduleId)
-
-    def getContentHandler(self):
-        return self.parser.getContentHandler()
-
-    def lastDocIds(self):
-        lastDoc = self.parser.getContentHandler().elementIds.values()[-1]
-        for k, v in lastDoc.items():
-            print "%s\t%s" % (k,v)
-
-    def lastDocCnxns(self):
-        #lastDoc = self.parser.getContentHandler().pendingCnxns.values()[-2]
-        #for k, v in lastDoc:
-        #    print "%s\t%s" % (k,v)
-        #pdb.set_trace()
-        for k,v in self.parser.getContentHandler().pendingCnxns.items():
-            if len(v):
-                print self.moduleId
-                for cnxn in v:
-                    print cnxn
 
 if __name__ == '__main__':
     ch = TrackCnxnsAndIds()
@@ -161,4 +125,10 @@ if __name__ == '__main__':
         if i == 1000:
             break
     ch.cleanup()
-    print ch.badCnxns.keys()
+    sourceModuleIds = ch.badCnxns.keys()
+    sourceModuleIds.sort()
+    for sourceModuleId in sourceModuleIds:
+        #pdb.set_trace()
+        for targetModuleId, targetList in ch.badCnxns[sourceModuleId].items():
+            for targetDoc, targetElementId in targetList:
+                print "%s\t%s\t%s" % (sourceModuleId, targetDoc, targetElementId)
