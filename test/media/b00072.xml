@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" id="m00072" module-id="m00072" cnxml-version="0.6">
+
+  <title>Media Test</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <md:version>2.6</md:version>
+  <md:created>2008/10/10</md:created>
+  <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
+  <md:authorlist>
+    <md:author id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:author>
+  </md:authorlist>
+
+  <md:maintainerlist>
+    <md:maintainer id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:maintainer>
+    
+    <md:maintainer id="lizzardg">
+      <md:firstname>Elizabeth</md:firstname>
+      
+      <md:surname>Gregory</md:surname>
+      <md:email>lizzardg@rice.edu</md:email>
+    </md:maintainer>
+  </md:maintainerlist>
+  
+  <md:keywordlist>
+    <md:keyword>Supertest</md:keyword>
+    <md:keyword>Schema</md:keyword>
+  </md:keywordlist>
+
+  <md:abstract/>
+</metadata>
+
+
+
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+    <para id='p1'>
+      Media elements cannot have more than two media object children!
+      <media id='med1' alt='Image of Zeus'>
+        <longdesc class='description' id='long1'>
+          <title>Titles shouldn't be allowed inside of longdesc elements, but they are...</title>
+          <div id='d1'>Any div content can be put inside of longdesc elements.</div>
+        </longdesc>
+        <image src='zeus.png' mime-type='PNG'/>
+        <image src='zeus.jpg' mime-type='JPG'/>
+        <image src='zeus.gif' mime-type='GIF'/>
+      </media>
+    </para>
+  </content>
+</document>
