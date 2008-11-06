@@ -376,6 +376,7 @@ convert media to new media structures
 
   <xsl:template match="cnxml:cnxn">
     <xsl:variable name="strength" select="normalize-space(@strength)"/>
+    <xsl:processing-instruction name="from-cnxn">document="<xsl:value-of select="@document"/>" target="<xsl:value-of select="@target"/>"</xsl:processing-instruction>
     <xsl:element name="link" namespace="http://cnx.rice.edu/cnxml">
       <xsl:if test="@document">
         <xsl:attribute name="document">
@@ -409,6 +410,7 @@ convert media to new media structures
       <xsl:if test="not(@document) and not(@version) and not(@target)">
         <xsl:attribute name="url"></xsl:attribute>
       </xsl:if>
+      <xsl:attribute name="class">cnxn</xsl:attribute>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -497,7 +499,16 @@ convert media to new media structures
     <xsl:variable name="intype" select="normalize-space(@type)"/>
     <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
     <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
-      <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+      <xsl:attribute name="id">
+        <xsl:choose>
+          <xsl:when test="@id">
+            <xsl:value-of select="@id"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="generate-id()"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:attribute>
       <xsl:attribute name="alt">
         <xsl:value-of select="//cnxml:param[@name='alt'][1]/@value"/>
       </xsl:attribute>
