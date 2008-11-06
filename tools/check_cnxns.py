@@ -2,10 +2,13 @@
 
 import sys
 import os
+import codecs
 from xml import sax
 from lxml import etree
 import lxml.sax
 import urllib2
+import getopt
+import re
 import pdb
 """
     SAX content handler to compare document and element IDs, and cnxns 
@@ -21,7 +24,7 @@ import pdb
     over the network for each document, or it will fail on certain valid 
     documents because it can't make sense of entity references.
 
-    Output and reporting not done yet.
+    Output and reporting not finished yet.
 """
 
 class TrackCnxnsAndIds(sax.handler.ContentHandler):
@@ -72,6 +75,9 @@ class TrackCnxnsAndIds(sax.handler.ContentHandler):
             self.thisDocElementIds[elementId] = name[1]
         if name == ('http://cnx.rice.edu/cnxml', 'cnxn'):
             self.handleCnxns(attrs)
+        elif name == ('http://cnx.rice.edu/cnxml', 'link') and \
+                attrs.get((None, 'class'), '') == 'cnxn':
+            self.handleCnxns(attrs)
 
     def handleCnxns(self, attrs):
         document = attrs.get((None, 'document'), '').strip()
@@ -79,9 +85,11 @@ class TrackCnxnsAndIds(sax.handler.ContentHandler):
             target_document = document
         else:
             target_document = self.moduleId
-        target = attrs.get((None, 'target'), '').strip()
+        if attrs.has_key((None, 'target')):
+            target = attrs.get((None, 'target'), '').strip()
+        else:
+            target = attrs.get((None, 'target-id'), '').strip()
         if target:
-            #pdb.set_trace()
             if self.elementIds.has_key(target_document) and not self.elementIds[target_document].has_key(target):
                 self.appendToBad(self.moduleId, target_document, target)
             elif not self.elementIds.has_key(target_document):
@@ -104,31 +112,57 @@ class TrackCnxnsAndIds(sax.handler.ContentHandler):
         else:
             self.pendingCnxns[targetModuleId] = [(sourceModuleId, targetElementId)]
 
-    def cleanup(self):
+    def cleanup(self, movePending=True):
+        if movePending:
+            for targetModuleId, targetList in self.pendingCnxns.items():
+                for sourceModuleId, targetElementId in targetList:
+                    self.appendToBad(sourceModuleId, targetModuleId, targetElementId)
         for k, v in self.badCnxns.items():
             if v == {}: del self.badCnxns[k]
-        # later add code to move the remaining pending cnxns to "bad".
 
 
 if __name__ == '__main__':
+    cnxml06_regex = re.compile(r'^(?P<moduleId>m\d+).xml$')
+    optz, argz = getopt.getopt(sys.argv[1:], '6')
+    cnxmlVersion = '0.5'
+    if ('-6', '') in optz:
+        cnxmlVersion = '0.6'
     ch = TrackCnxnsAndIds()
-    start_dir = sys.argv[1]
+    start_dir = argz[0]
     i = 0
+    upper = 10000
     for dpath, dnames, fnames in os.walk(start_dir):
         for fname in fnames:
-            if fname == 'index.cnxml':
+            if fname == 'index.cnxml' and cnxmlVersion != '0.6':
                 ch.moduleId = os.path.split(dpath)[-1]
                 lxml.sax.saxify(lxml.etree.parse(os.path.join(dpath, fname)), ch)
                 i += 1
-                if i == 1000:
+                if i == upper:
                     break
-        if i == 1000:
+            elif cnxmlVersion == '0.6':
+                moduleId = None
+                m = cnxml06_regex.match(fname)
+                if m:
+                    moduleId = m.group('moduleId')
+                if moduleId:
+                    ch.moduleId = moduleId
+                    lxml.sax.saxify(lxml.etree.parse(os.path.join(dpath, fname)), ch)
+                i += 1
+                if i == upper:
+                    break
+        if i == upper:
             break
-    ch.cleanup()
+    ch.cleanup(movePending=True)
     sourceModuleIds = ch.badCnxns.keys()
     sourceModuleIds.sort()
+    badfile = open('./bad_cnxns.csv', 'w')
     for sourceModuleId in sourceModuleIds:
-        #pdb.set_trace()
         for targetModuleId, targetList in ch.badCnxns[sourceModuleId].items():
             for targetDoc, targetElementId in targetList:
-                print "%s\t%s\t%s" % (sourceModuleId, targetDoc, targetElementId)
+                badfile.write("%s\t%s\t%s\n" % (sourceModuleId, targetDoc, targetElementId))
+    badfile.close()
+
+    elementsfile = codecs.open('./elementsids.csv', 'w', 'utf-8')
+    for sourceModuleId in ch.elementIds.keys():
+        for elementId, elementName in ch.elementIds[sourceModuleId].items():
+            elementsfile.write("%s\t%s\t%s\n" % (sourceModuleId, elementId, elementName))
