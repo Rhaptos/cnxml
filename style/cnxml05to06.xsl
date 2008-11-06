@@ -376,11 +376,13 @@ convert media to new media structures
 
   <xsl:template match="cnxml:cnxn">
     <xsl:variable name="strength" select="normalize-space(@strength)"/>
+    <xsl:variable name="document" select="normalize-space(@document)"/>
+    <xsl:variable name="target" select="normalize-space(@target)"/>
     <xsl:processing-instruction name="from-cnxn">document="<xsl:value-of select="@document"/>" target="<xsl:value-of select="@target"/>"</xsl:processing-instruction>
     <xsl:element name="link" namespace="http://cnx.rice.edu/cnxml">
       <xsl:if test="@document">
         <xsl:attribute name="document">
-          <xsl:value-of select="normalize-space(@document)"/>
+          <xsl:value-of select="$document"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:if test="@version">
@@ -390,9 +392,16 @@ convert media to new media structures
       </xsl:if>
       <xsl:if test="@target">
         <xsl:attribute name="target-id">
-          <xsl:call-template name="fix-colon-in-id">
-            <xsl:with-param name="id-value" select="normalize-space(@target)"/>
-          </xsl:call-template>
+          <xsl:choose>
+            <xsl:when test="$document = 'm16333' and $target ='element-176'">
+              <xsl:value-of select="'uid22'"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="fix-colon-in-id">
+                <xsl:with-param name="id-value" select="$target"/>
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:attribute>
       </xsl:if>
       <xsl:if test="$strength">
