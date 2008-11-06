@@ -21,29 +21,6 @@
     </attribute>
   </define>
 
-  <define name="listing-class-attribute">
-    <attribute name="class">
-      <data type="token">
-        <param name="pattern">(listing(\s.*)*)|(.*\slisting(\s.*)*)</param>
-      </data>
-    </attribute>
-  </define>
-
-  <define name="non-listing-class-attribute">
-    <attribute name="class">
-      <data type="token">
-        <except>
-          <data type="token">
-            <param name="pattern">(listing(\s.*)*)</param>
-          </data>
-          <data type="token">
-            <param name="pattern">(.*\slisting(\s.*)*)</param>
-          </data>
-        </except>
-      </data>
-    </attribute>
-  </define>
-
   <define name="foreign-namespaced-attribute">
     <zeroOrMore>
       <attribute>
@@ -839,10 +816,6 @@
     <oneOrMore>
       <ref name="section-content-class"/>
     </oneOrMore>
-  </define>
-
-  <define name="content-alternatives">
-    <empty/>
   </define>
 
   <define name="glossary">
