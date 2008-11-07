@@ -508,16 +508,7 @@ convert media to new media structures
     <xsl:variable name="intype" select="normalize-space(@type)"/>
     <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
     <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
-      <xsl:attribute name="id">
-        <xsl:choose>
-          <xsl:when test="@id">
-            <xsl:value-of select="@id"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="generate-id()"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+      <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
       <xsl:attribute name="alt">
         <xsl:value-of select="//cnxml:param[@name='alt'][1]/@value"/>
       </xsl:attribute>
@@ -549,40 +540,40 @@ convert media to new media structures
           </xsl:choose>
         </xsl:when>
         <xsl:otherwise>
-            <xsl:choose>
-              <xsl:when test="$media-conversion/@objtype='image'">
-                <xsl:call-template name="make-media-image">
-                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
-                </xsl:call-template>
-              </xsl:when>
-              <xsl:when test="$media-conversion/@objtype='audio' or 
-                              $media-conversion/@objtype='video'">
-                <xsl:call-template name="make-media-audio-video">
-                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
-                </xsl:call-template>
-              </xsl:when>
-              <xsl:when test="$media-conversion/@objtype='flash'">
-                <xsl:call-template name="make-media-flash">
-                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
-                </xsl:call-template>
-              </xsl:when>
-              <xsl:when test="$media-conversion/@objtype='labview'">
-                <xsl:call-template name="make-media-labview">
-                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
-                </xsl:call-template>
-              </xsl:when>
-              <xsl:when test="$media-conversion/@objtype='java-applet'">
-                <xsl:call-template name="make-media-java-applet">
-                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
-                  <xsl:with-param name="ext" select="$ext"/>
-                </xsl:call-template>
-              </xsl:when>
-              <xsl:when test="$media-conversion/@objtype='download'">
-                <xsl:call-template name="make-media-download">
-                  <xsl:with-param name="media-conversion" select="$media-conversion"/>
-                </xsl:call-template>
-              </xsl:when>
-            </xsl:choose>
+          <xsl:choose>
+            <xsl:when test="$media-conversion/@objtype='image'">
+              <xsl:call-template name="make-media-image">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='audio' or 
+                            $media-conversion/@objtype='video'">
+              <xsl:call-template name="make-media-audio-video">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='flash'">
+              <xsl:call-template name="make-media-flash">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='labview'">
+              <xsl:call-template name="make-media-labview">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='java-applet'">
+              <xsl:call-template name="make-media-java-applet">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+                <xsl:with-param name="ext" select="$ext"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='download'">
+              <xsl:call-template name="make-media-download">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+          </xsl:choose>
           <!-- FIXME -->
         </xsl:otherwise>
       </xsl:choose>
@@ -641,6 +632,7 @@ convert media to new media structures
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:call-template name="make-mime-type">
         <xsl:with-param name="media-conversion" select="$media-conversion"/>
       </xsl:call-template>
@@ -666,6 +658,7 @@ convert media to new media structures
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:call-template name="make-mime-type">
         <xsl:with-param name="media-conversion" select="$media-conversion"/>
       </xsl:call-template>
@@ -690,6 +683,7 @@ convert media to new media structures
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:call-template name="make-mime-type">
         <xsl:with-param name="media-conversion" select="$media-conversion"/>
       </xsl:call-template>
@@ -718,6 +712,7 @@ convert media to new media structures
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:attribute name="viname">
         <xsl:choose>
           <xsl:when test="cnxml:param[@name='lvfppviname']">
@@ -773,6 +768,7 @@ convert media to new media structures
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:call-template name="make-mime-type">
         <xsl:with-param name="media-conversion" select="$media-conversion"/>
       </xsl:call-template>
@@ -803,6 +799,7 @@ convert media to new media structures
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:call-template name="make-mime-type">
         <xsl:with-param name="media-conversion" select="$media-conversion"/>
       </xsl:call-template>
