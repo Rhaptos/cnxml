@@ -1063,5 +1063,6 @@ convert media to new media structures
     <mc:mediaconversion intype="video/x-msvideo" inext="avi" objtype="video" outtype=""/>
     <mc:mediaconversion intype="image\jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="application/msword" inext="docx" objtype="download" outtype="application/msword"/>
+    <mc:mediaconversion intype="image/img" inext="png" objtype="image" outtype="image/png"/>
   </mc:mediaconversions>
 </xsl:stylesheet>
