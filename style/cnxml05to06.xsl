@@ -476,14 +476,14 @@ convert media to new media structures
           </xsl:choose>
         </xsl:attribute>
       </xsl:if>
+      <xsl:if test="parent::cnxml:content or parent::cnxml:section or parent::cnxml:figure">
+        <xsl:attribute name="display">block</xsl:attribute>
+      </xsl:if>
       <xsl:if test="parent::cnxml:figure">
         <xsl:attribute name="class">listing</xsl:attribute>
         <xsl:if test="preceding-sibling::cnxml:name">
           <xsl:apply-templates select="preceding-sibling::cnxml:name"/>
         </xsl:if>
-      </xsl:if>
-      <xsl:if test="parent::cnxml:content or parent::cnxml:section">
-        <xsl:attribute name="display">block</xsl:attribute>
       </xsl:if>
       <xsl:apply-templates/>
       <xsl:if test="parent::cnxml:figure and following-sibling::cnxml:caption">
