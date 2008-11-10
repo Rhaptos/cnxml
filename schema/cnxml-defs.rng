@@ -1063,17 +1063,17 @@
     <ref name="common-attributes"/>
     <ref name="sep-before-attribute"/>
     <ref name="item-sep-attribute"/>
-    <optional>
-      <ref name="title"/>
-    </optional>
-    <oneOrMore>
-      <ref name="item"/>
-    </oneOrMore>
   </define>
 
   <define name="block-list-common-content">
     <ref name="display-block-default-attribute"/>
     <ref name="id-attribute"/>
+    <optional>
+      <ref name="title"/>
+    </optional>
+    <oneOrMore>
+      <ref name="block-list-item"/>
+    </oneOrMore>
   </define>
 
   <define name="inline-list-common-content">
@@ -1081,6 +1081,12 @@
     <optional>
       <ref name="id-attribute"/>
     </optional>
+    <optional>
+      <ref name="title"/>
+    </optional>
+    <oneOrMore>
+      <ref name="inline-list-item"/>
+    </oneOrMore>
   </define>
 
   <define name="bulleted-list-common-content">
@@ -1162,7 +1168,7 @@
     </choice>
   </define>
 
-  <define name="item">
+  <define name="block-list-item">
     <element name="item">
       <ref name="common-attributes"/>
       <optional>
@@ -1173,6 +1179,21 @@
       </optional>
       <zeroOrMore>
         <ref name="div-content-class"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="inline-list-item">
+    <element name="item">
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="inline-class"/>
       </zeroOrMore>
     </element>
   </define>
