@@ -303,27 +303,27 @@
     </optional>
   </define>
 
-  <define name="sep-before-attribute">
+  <define name="before-attribute">
     <optional>
-      <attribute name="sep-before"/>
+      <attribute name="before"/>
     </optional>
   </define>
 
-  <define name="sep-after-attribute">
+  <define name="after-attribute">
     <optional>
-      <attribute name="sep-after" a:defaultValue="."/>
+      <attribute name="after" a:defaultValue="."/>
     </optional>
   </define>
 
-  <define name="bulleted-sep-after-attribute">
+  <define name="bulleted-after-attribute">
     <optional>
-      <attribute name="sep-after" a:defaultValue=""/>
+      <attribute name="after" a:defaultValue=""/>
     </optional>
   </define>
 
-  <define name="labeled-item-sep-after-attribute">
+  <define name="labeled-item-after-attribute">
     <optional>
-      <attribute name="sep-after" a:defaultValue=":"/>
+      <attribute name="after" a:defaultValue=":"/>
     </optional>
   </define>
 
@@ -1061,7 +1061,7 @@
 
   <define name="list-common-content">
     <ref name="common-attributes"/>
-    <ref name="sep-before-attribute"/>
+    <ref name="before-attribute"/>
     <ref name="item-sep-attribute"/>
   </define>
 
@@ -1091,7 +1091,7 @@
 
   <define name="bulleted-list-common-content">
     <ref name="bulleted-list-type-attribute"/>
-    <ref name="bulleted-sep-after-attribute"/>
+    <ref name="bulleted-after-attribute"/>
     <ref name="bullet-style-attribute"/>
     <ref name="list-common-content"/>
   </define>
@@ -1111,7 +1111,7 @@
   </define>
 
   <define name="enumerated-list-common-content">
-    <ref name="sep-after-attribute"/>
+    <ref name="after-attribute"/>
     <ref name="enumerated-list-type-attribute"/>
     <ref name="number-style-attribute"/>
     <ref name="start-value-attribute"/>
@@ -1133,7 +1133,7 @@
   </define>
 
   <define name="labeled-item-list-common-content">
-    <ref name="labeled-item-sep-after-attribute"/>
+    <ref name="labeled-item-after-attribute"/>
     <ref name="labeled-item-list-type-attribute"/>
     <ref name="list-common-content"/>
   </define>
