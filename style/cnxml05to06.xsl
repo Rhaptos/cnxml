@@ -68,12 +68,16 @@ convert media to new media structures
         <xsl:copy-of select="."/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:element name="document" namespace="http://cnx.rice.edu/cnxml">
+        <document xmlns="http://cnx.rice.edu/cnxml" 
+                  xmlns:m="http://www.w3.org/1998/Math/MathML"
+                  xmlns:md="http://cnx.rice.edu/mdml/0.4"
+                  xmlns:bib="http://bibtexml.sf.net/"
+                  xmlns:q="http://cnx.rice.edu/qml/1.0">
           <xsl:apply-templates select="@*"/>
           <xsl:attribute name="module-id"><xsl:value-of select="$moduleid"/></xsl:attribute>
           <xsl:attribute name="cnxml-version">0.6</xsl:attribute>
           <xsl:apply-templates/>
-        </xsl:element>
+        </document>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
