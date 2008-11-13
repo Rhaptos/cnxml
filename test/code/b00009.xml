@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" id="m00008" module-id="m00008" cnxml-version="0.6">
+
+  <title>Code Test</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <md:version>2.6</md:version>
+  <md:created>2008/10/10</md:created>
+  <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
+  <md:authorlist>
+    <md:author id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:author>
+  </md:authorlist>
+
+  <md:maintainerlist>
+    <md:maintainer id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:maintainer>
+    
+    <md:maintainer id="lizzardg">
+      <md:firstname>Elizabeth</md:firstname>
+      
+      <md:surname>Gregory</md:surname>
+      <md:email>lizzardg@rice.edu</md:email>
+    </md:maintainer>
+  </md:maintainerlist>
+  
+  <md:keywordlist>
+    <md:keyword>Supertest</md:keyword>
+    <md:keyword>Schema</md:keyword>
+  </md:keywordlist>
+
+  <md:abstract/>
+</metadata>
+
+
+
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+    <code id='c1' class='listing' lang='CSharp'>
+      Block elements such as <example id='ex1'><para id='pe'>examples</para></example> aren't allowed inside of code!
+    </code>
+    <para id='p1'>
+      <code id='c2' display='block' class='listing' lang='CSharp'>
+        This code is inside of a para element.
+      </code>
+    </para>
+    <div id='d1'>
+      <code id='c3' class='listing' lang='CSharp'>
+        This code is inside of a div element.
+      </code>
+    </div>
+    <section id='s1'>
+      <code id='c4' display='block' class='listing' lang='CSharp'>
+        This code is inside of a section element.
+      </code>
+    </section>
+  </content>
+</document>

@@ -21,29 +21,6 @@
     </attribute>
   </define>
 
-  <define name="listing-class-attribute">
-    <attribute name="class">
-      <data type="token">
-        <param name="pattern">(listing(\s.*)*)|(.*\slisting(\s.*)*)</param>
-      </data>
-    </attribute>
-  </define>
-
-  <define name="non-listing-class-attribute">
-    <attribute name="class">
-      <data type="token">
-        <except>
-          <data type="token">
-            <param name="pattern">(listing(\s.*)*)</param>
-          </data>
-          <data type="token">
-            <param name="pattern">(.*\slisting(\s.*)*)</param>
-          </data>
-        </except>
-      </data>
-    </attribute>
-  </define>
-
   <define name="foreign-namespaced-attribute">
     <zeroOrMore>
       <attribute>
@@ -299,7 +276,7 @@
       <attribute name="bullet-style" a:defaultValue="bullet">
         <choice>
           <value>bullet</value>
-          <value>opencircle</value>
+          <value>open-circle</value>
           <value>pilcrow</value>
           <value>rpilcrow</value>
           <value>asterisk</value>
@@ -317,36 +294,36 @@
       <attribute name="number-style" a:defaultValue="arabic">
         <choice>
           <value>arabic</value>
-          <value>upperalpha</value>
-          <value>loweralpha</value>
-          <value>upperroman</value>
-          <value>lowerroman</value>
+          <value>upper-alpha</value>
+          <value>lower-alpha</value>
+          <value>upper-roman</value>
+          <value>lower-roman</value>
         </choice>
       </attribute>
     </optional>
   </define>
 
-  <define name="sep-before-attribute">
+  <define name="before-attribute">
     <optional>
-      <attribute name="sep-before"/>
+      <attribute name="before"/>
     </optional>
   </define>
 
-  <define name="sep-after-attribute">
+  <define name="after-attribute">
     <optional>
-      <attribute name="sep-after" a:defaultValue="."/>
+      <attribute name="after" a:defaultValue="."/>
     </optional>
   </define>
 
-  <define name="bulleted-sep-after-attribute">
+  <define name="bulleted-after-attribute">
     <optional>
-      <attribute name="sep-after" a:defaultValue=""/>
+      <attribute name="after" a:defaultValue=""/>
     </optional>
   </define>
 
-  <define name="labeled-item-sep-after-attribute">
+  <define name="labeled-item-after-attribute">
     <optional>
-      <attribute name="sep-after" a:defaultValue=":"/>
+      <attribute name="after" a:defaultValue=":"/>
     </optional>
   </define>
 
@@ -607,6 +584,9 @@
   <define name="common-attributes">
     <ref name="foreign-namespaced-attribute"/>
     <optional>
+      <ref name="class-attribute"/>
+    </optional>
+    <optional>
       <attribute name="xml:lang"/>
     </optional>
   </define>
@@ -650,7 +630,6 @@
       <ref name='example'/>
       <ref name='figure'/>
       <ref name='block-code'/>
-      <ref name="code-listing"/>
       <ref name='block-preformat'/>
       <ref name='block-quote'/>
       <ref name='block-note'/>
@@ -706,9 +685,6 @@
   <define name="inline-content">
     <ref name="common-attributes"/>
     <optional>
-      <ref name="class-attribute"/>
-    </optional>
-    <optional>
       <ref name="id-attribute"/>
     </optional>
     <zeroOrMore>
@@ -727,9 +703,6 @@
 
   <define name="section-content">
     <ref name="common-attributes"/>
-    <optional>
-      <ref name="class-attribute"/>
-    </optional>
     <ref name="id-attribute"/>
     <optional>
       <ref name="label"/>
@@ -765,9 +738,6 @@
     <element name="document">
       <ref name="id-attribute"/><!-- Rename this object-id -->
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="document-title"/>
       <ref name="cnxml-version"/>
       <attribute name="module-id"/>
@@ -791,9 +761,6 @@
     <element name="metadata">
       <ref name="common-attributes"/>
       <optional>
-        <ref name="class-attribute"/>
-      </optional>
-      <optional>
         <ref name="id-attribute"/>
       </optional>
       <ref name="metadata-content"/>
@@ -803,9 +770,6 @@
   <define name="featured-links">
     <element name="featured-links">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <oneOrMore>
         <ref name="link-group"/>
@@ -816,9 +780,6 @@
   <define name="link-group">
     <element name="link-group">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -845,9 +806,6 @@
     <element name="content">
       <ref name="common-attributes"/>
       <optional>
-        <ref name="class-attribute"/>
-      </optional>
-      <optional>
         <ref name="id-attribute"/>
       </optional>
       <ref name="content-content"/>
@@ -860,16 +818,9 @@
     </oneOrMore>
   </define>
 
-  <define name="content-alternatives">
-    <empty/>
-  </define>
-
   <define name="glossary">
     <element name="glossary">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -892,9 +843,6 @@
   <define name="div">
     <element name="div">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="div-content"/>
     </element>
@@ -903,9 +851,6 @@
   <define name="block-preformat">
     <element name="preformat">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="display-block-default-attribute"/>
       <ref name="div-content"/>
@@ -922,9 +867,6 @@
   <define name="para">
     <element name="para">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <optional>
         <ref name="title"/>
@@ -945,7 +887,7 @@
     <element name="title">
       <ref name="common-attributes"/>
       <optional>
-        <ref name="class-attribute"/>
+        <ref name="id-attribute"/>
       </optional>
       <text/>
     </element>
@@ -961,9 +903,6 @@
     <element name="newline">
       <ref name="common-attributes"/>
       <optional>
-        <ref name="class-attribute"/>
-      </optional>
-      <optional>
         <ref name="id-attribute"/>
       </optional>
       <ref name="count-attribute"/>
@@ -973,9 +912,6 @@
   <define name="space">
     <element name="space">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -1047,9 +983,6 @@
     <element name="quote">
       <ref name="display-block-default-attribute"/>
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="linking-attributes"/>
       <ref name="div-content"/>
@@ -1074,9 +1007,6 @@
   <define name="footnote">
     <element name="footnote">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="div-content"/>
     </element>
@@ -1086,9 +1016,6 @@
   <define name="equation">
     <element name="equation">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <optional>
         <ref name="label"/>
@@ -1112,9 +1039,6 @@
     <element name="note">
       <ref name="display-block-default-attribute"/>
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="note-type-attribute"/>
       <optional>
@@ -1137,22 +1061,19 @@
 
   <define name="list-common-content">
     <ref name="common-attributes"/>
-    <optional>
-      <ref name="class-attribute"/>
-    </optional>
-    <ref name="sep-before-attribute"/>
+    <ref name="before-attribute"/>
     <ref name="item-sep-attribute"/>
-    <optional>
-      <ref name="title"/>
-    </optional>
-    <oneOrMore>
-      <ref name="item"/>
-    </oneOrMore>
   </define>
 
   <define name="block-list-common-content">
     <ref name="display-block-default-attribute"/>
     <ref name="id-attribute"/>
+    <optional>
+      <ref name="title"/>
+    </optional>
+    <oneOrMore>
+      <ref name="block-list-item"/>
+    </oneOrMore>
   </define>
 
   <define name="inline-list-common-content">
@@ -1160,11 +1081,17 @@
     <optional>
       <ref name="id-attribute"/>
     </optional>
+    <optional>
+      <ref name="title"/>
+    </optional>
+    <oneOrMore>
+      <ref name="inline-list-item"/>
+    </oneOrMore>
   </define>
 
   <define name="bulleted-list-common-content">
     <ref name="bulleted-list-type-attribute"/>
-    <ref name="bulleted-sep-after-attribute"/>
+    <ref name="bulleted-after-attribute"/>
     <ref name="bullet-style-attribute"/>
     <ref name="list-common-content"/>
   </define>
@@ -1184,7 +1111,7 @@
   </define>
 
   <define name="enumerated-list-common-content">
-    <ref name="sep-after-attribute"/>
+    <ref name="after-attribute"/>
     <ref name="enumerated-list-type-attribute"/>
     <ref name="number-style-attribute"/>
     <ref name="start-value-attribute"/>
@@ -1206,7 +1133,7 @@
   </define>
 
   <define name="labeled-item-list-common-content">
-    <ref name="labeled-item-sep-after-attribute"/>
+    <ref name="labeled-item-after-attribute"/>
     <ref name="labeled-item-list-type-attribute"/>
     <ref name="list-common-content"/>
   </define>
@@ -1241,19 +1168,33 @@
     </choice>
   </define>
 
-  <define name="item">
+  <define name="block-list-item">
     <element name="item">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
       <optional>
         <ref name="label"/>
       </optional>
-      <ref name="div-content"/>
+      <zeroOrMore>
+        <ref name="div-content-class"/>
+      </zeroOrMore>
+    </element>
+  </define>
+
+  <define name="inline-list-item">
+    <element name="item">
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="inline-class"/>
+      </zeroOrMore>
     </element>
   </define>
 
@@ -1266,22 +1207,16 @@
       <optional>
         <ref name="id-attribute"/>
       </optional>
-      <optional>
-        <ref name="non-listing-class-attribute"/>
-      </optional>
       <ref name="common-attributes"/>
-      <zeroOrMore>
+      <oneOrMore>
         <ref name="inline-class"/>
-      </zeroOrMore>
+      </oneOrMore>
     </element>
   </define>
 
   <define name="block-code">
     <element name="code">
       <ref name="display-block-attribute"/>
-      <optional>
-        <ref name="non-listing-class-attribute"/>
-      </optional>
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
       <optional>
@@ -1290,9 +1225,15 @@
       <optional>
         <ref name="label"/>
       </optional>
-      <zeroOrMore>
+      <optional>
+          <ref name="title"/>
+      </optional>
+      <oneOrMore>
         <ref name="inline-class"/>
-      </zeroOrMore>
+      </oneOrMore>
+      <optional>
+          <ref name="caption"/>
+      </optional>
     </element>
   </define>
 
@@ -1303,40 +1244,11 @@
     </choice>
   </define>
 
-  <define name="code-listing">
-    <element name="code">
-      <optional>
-        <ref name="display-block-attribute"/>
-      </optional>
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <ref name="listing-class-attribute"/>
-      <optional>
-        <ref name="code-lang-attribute"/>
-      </optional>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="inline-class"/>
-      </oneOrMore>
-      <optional>
-        <ref name="caption"/>
-      </optional>
-    </element>
-  </define>
-
 <!-- NOTE: I have removed 'table' and 'code' as possible content for 
      'figure', but this decision can be revisited. -->
   <define name="figure">
     <element name="figure">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <optional>
         <attribute name="orient" a:defaultValue="horizontal">
@@ -1370,9 +1282,6 @@
   <define name="subfigure">
     <element name="subfigure">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <optional>
         <ref name="label"/>
@@ -1399,9 +1308,6 @@
 
   <define name="media-common-content">
     <ref name="common-attributes"/>
-    <optional>
-      <ref name="class-attribute"/>
-    </optional>
     <ref name="id-attribute"/>
     <ref name="alt-attribute"/>
     <optional>
@@ -1440,9 +1346,6 @@
       <element name="longdesc">
         <ref name="common-attributes"/>
         <optional>
-          <ref name="class-attribute"/>
-        </optional>
-        <optional>
           <ref name="id-attribute"/>
         </optional>
         <ref name="div-content"/>
@@ -1459,6 +1362,10 @@
 
   <define name="param">
     <element name="param">
+      <ref name="common-attributes"/>
+      <optional>
+        <ref name="id-attribute"/>
+      </optional>
       <attribute name="name"/>
       <attribute name="value"/>
     </element>
@@ -1467,9 +1374,6 @@
 <!-- @src must be handled per-element -->
   <define name="media-object-common-content">
     <ref name="common-attributes"/>
-    <optional>
-      <ref name="class-attribute"/>
-    </optional>
     <optional>
       <ref name="id-attribute"/>
     </optional>
@@ -1588,6 +1492,7 @@
 
   <define name="text">
     <element name="text">
+      <ref name="common-attributes"/>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -1609,9 +1514,6 @@
   <define name="example">
     <element name="example">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <optional>
         <ref name="label"/>
@@ -1628,9 +1530,6 @@
   <define name="exercise">
     <element name="exercise">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="print-placement-attribute"/>
       <choice>
@@ -1661,9 +1560,6 @@
   <define name="problem">
     <element name="problem">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <optional>
         <ref name="title"/>
@@ -1677,9 +1573,6 @@
   <define name="solution">
     <element name="solution">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="print-placement-attribute"/>
       <optional>
@@ -1697,9 +1590,6 @@
   <define name="commentary">
     <element name="commentary">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <optional>
         <ref name="label"/>
@@ -1716,9 +1606,6 @@
   <define name="definition">
     <element name="definition">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="term"/>
       <choice>
@@ -1741,9 +1628,6 @@
   <define name="meaning">
     <element name="meaning">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="div-content"/>
     </element>
@@ -1752,9 +1636,6 @@
   <define name="seealso">
     <element name="seealso">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -1767,9 +1648,6 @@
   <define name="rule">
     <element name="rule">
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="id-attribute"/>
       <ref name="rule-type"/>
       <optional>
@@ -1778,7 +1656,9 @@
       <optional>
         <ref name="title"/>
       </optional>
-      <ref name="statement"/>
+      <oneOrMore>
+        <ref name="statement"/>
+      </oneOrMore>
       <zeroOrMore>
         <choice>
           <ref name="proof"/>
@@ -2022,9 +1902,6 @@
       <ref name="bodyatt"/>
       <ref name="secur"/>
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <ref name="table.mdl"/>
     </element>
   </define>
@@ -2046,9 +1923,6 @@
       </optional>
       <ref name="secur"/>
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -2080,9 +1954,6 @@
       </optional>
       <ref name="common-attributes"/>
       <optional>
-        <ref name="class-attribute"/>
-      </optional>
-      <optional>
         <ref name="id-attribute"/>
       </optional>
     </element>
@@ -2096,6 +1967,7 @@
       <optional>
         <attribute name="nameend"/>
       </optional>
+      <ref name="spanname-attribute"/>
       <optional>
         <attribute name="colwidth"/>
       </optional>
@@ -2112,9 +1984,6 @@
       </optional>
       <ref name="common-attributes"/>
       <optional>
-        <ref name="class-attribute"/>
-      </optional>
-      <optional>
         <ref name="id-attribute"/>
       </optional>
     </element>
@@ -2125,9 +1994,6 @@
       <ref name="valign-attribute"/>
       <ref name="secur"/>
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -2141,9 +2007,6 @@
       <ref name="secur"/>
       <ref name="common-attributes"/>
       <optional>
-        <ref name="class-attribute"/>
-      </optional>
-      <optional>
         <ref name="id-attribute"/>
       </optional>
       <ref name="hdft.mdl"/>
@@ -2155,9 +2018,6 @@
       <ref name="valign-attribute"/>
       <ref name="secur"/>
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -2173,9 +2033,6 @@
       <ref name="valign-attribute"/>
       <ref name="secur"/>
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -2213,9 +2070,6 @@
       <ref name="secur"/>
       <ref name="common-attributes"/>
       <optional>
-        <ref name="class-attribute"/>
-      </optional>
-      <optional>
         <ref name="id-attribute"/>
       </optional>
       <ref name="entrytbl.mdl"/>
@@ -2232,6 +2086,9 @@
       </optional>
       <optional>
         <ref name="nameend-attribute"/>
+      </optional>
+      <optional>
+        <ref name="spanname-attribute"/>
       </optional>
       <optional>
         <ref name="morerows-attribute"/>
@@ -2259,9 +2116,6 @@
       <ref name="valign-attribute"/>
       <ref name="secur"/>
       <ref name="common-attributes"/>
-      <optional>
-        <ref name="class-attribute"/>
-      </optional>
       <optional>
         <ref name="id-attribute"/>
       </optional>

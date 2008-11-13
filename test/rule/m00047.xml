@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" id="m00047" module-id="m00047" cnxml-version="0.6">
+
+  <title>Rule Test</title>
+  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <md:version>2.6</md:version>
+  <md:created>2008/10/10</md:created>
+  <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
+  <md:authorlist>
+    <md:author id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:author>
+  </md:authorlist>
+
+  <md:maintainerlist>
+    <md:maintainer id="sk8">
+      <md:firstname>Scott</md:firstname>
+      
+      <md:surname>Kravitz</md:surname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:maintainer>
+    
+    <md:maintainer id="lizzardg">
+      <md:firstname>Elizabeth</md:firstname>
+      
+      <md:surname>Gregory</md:surname>
+      <md:email>lizzardg@rice.edu</md:email>
+    </md:maintainer>
+  </md:maintainerlist>
+  
+  <md:keywordlist>
+    <md:keyword>Supertest</md:keyword>
+    <md:keyword>Schema</md:keyword>
+  </md:keywordlist>
+
+  <md:abstract/>
+</metadata>
+
+
+
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+    <rule id='r1' class='ruling' type='generality'>
+      <label>The First Rule</label>
+      <title>On the Contents of Rules</title>
+      <statement id='stat1'>
+        <label>The First Statement</label>
+        <title>On the Contents of Statements</title>
+        <para id='p1'>
+          Rules can have all sorts of labels and attributes.
+        </para>
+      </statement>
+      <statement id='stat2'>
+        <para id='p2'>
+          Rules can have two statements.
+        </para>
+      </statement>
+      <statement id='stat3'>
+        <para id='p3'>
+          Rules can have even more than two statements.
+        </para>
+      </statement>
+      <proof id='pr1'>
+        <label>The First Proof</label>
+        <title>The CNXML Identity</title>
+        <para id='p4'>
+          Proof = labels + attributes + section content
+        </para>
+      </proof>
+      <proof id='pr2'>
+        <para id='p5'>
+          Rules can have more than one proof, as well.
+        </para>
+      </proof>
+    </rule>
+  </content>
+</document>

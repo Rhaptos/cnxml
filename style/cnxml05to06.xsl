@@ -60,26 +60,52 @@ convert media to new media structures
   <xsl:param name="moduleid"/>
   <xsl:variable name="required-id-elements" select="document('')/xsl:stylesheet/reqid:elements"/>
   <xsl:variable name="media-conversions" select="document('')/xsl:stylesheet/mc:mediaconversions"/>
+  <xsl:key name="author-by-id" match="/cnxml:document/cnxml:metadata/md:authorlist/md:author" use="@id"/>
 
   <xsl:template match="cnxml:document">
-    <xsl:element name="document" namespace="http://cnx.rice.edu/cnxml">
-      <xsl:apply-templates select="@*"/>
-      <xsl:attribute name="module-id"><xsl:value-of select="$moduleid"/></xsl:attribute>
-      <xsl:attribute name="cnxml-version">0.6</xsl:attribute>
+    <xsl:choose>
+      <xsl:when test="@cnxml-version='0.6'">
+        <xsl:copy-of select="."/>
+      </xsl:when>
+      <xsl:otherwise>
+        <document xmlns="http://cnx.rice.edu/cnxml" 
+                  xmlns:m="http://www.w3.org/1998/Math/MathML"
+                  xmlns:md="http://cnx.rice.edu/mdml/0.4"
+                  xmlns:bib="http://bibtexml.sf.net/"
+                  xmlns:q="http://cnx.rice.edu/qml/1.0">
+          <xsl:apply-templates select="@*"/>
+          <xsl:attribute name="module-id"><xsl:value-of select="$moduleid"/></xsl:attribute>
+          <xsl:attribute name="cnxml-version">0.6</xsl:attribute>
+          <xsl:apply-templates/>
+        </document>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!-- Convert 'name' to 'label' if the child of 'item', otherwise to 'title'. -->
+  <xsl:template match="cnxml:name">
+    <xsl:variable name="element-name">
+      <xsl:choose>
+        <xsl:when test="parent::cnxml:item and $moduleid='m14479'">cite</xsl:when>
+        <xsl:when test="parent::cnxml:item">label</xsl:when>
+        <xsl:otherwise>title</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:element name="{$element-name}" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:apply-templates select="@id"/>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
 
-  <!-- Convert 'name' to 'title'. -->
-  <xsl:template match="cnxml:name">
-    <xsl:element name="title" namespace="http://cnx.rice.edu/cnxml">
-      <xsl:copy-of select="@id"/>
+  <xsl:template match="cnxml:name" mode="m15555">
+    <xsl:element name="item" namespace="http://cnx.rice.edu/cnxml">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
 
   <xsl:template match="@type">
     <xsl:choose>
+      <xsl:when test="parent::cnxml:code[parent::cnxml:figure]"></xsl:when>
       <xsl:when test=".='inline'">
         <xsl:attribute name="display">inline</xsl:attribute>
       </xsl:when>
@@ -92,16 +118,40 @@ convert media to new media structures
 
   <xsl:template match="cnxml:note[@type='footnote']">
     <xsl:element name="footnote" namespace="http://cnx.rice.edu/cnxml">
-      <xsl:choose>
-        <xsl:when test="@id"><xsl:copy-of select="@id"/></xsl:when>
-        <xsl:otherwise>
-          <xsl:attribute name="id">
-            <xsl:value-of select="generate-id()"/>
-          </xsl:attribute>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:apply-templates select="@id"/>
+      <xsl:if test="not(@id)">
+        <xsl:attribute name="id">
+          <xsl:value-of select="generate-id()"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="cnxml:list[normalize-space(@type)='inline']
+                                 [parent::cnxml:section or 
+                                  parent::cnxml:example or 
+                                  parent::cnxml:problem]">
+    <xsl:choose>
+      <xsl:when test="key('author-by-id', 'billowsky')">
+        <para id="{generate-id()}" xmlns="http://cnx.rice.edu/cnxml">
+          <xsl:apply-templates select="." mode="default-copy"/>
+        </para>
+      </xsl:when>
+      <xsl:otherwise>
+        <div id="{generate-id()}" xmlns="http://cnx.rice.edu/cnxml">
+          <xsl:apply-templates select="." mode="default-copy"/>
+        </div>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="*" mode="default-copy">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:call-template name="generate-id-if-required"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
   </xsl:template>
 
   <xsl:template match="cnxml:list/@type">
@@ -128,6 +178,27 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template match="cnxml:item">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates select="cnxml:name"/>
+      <xsl:apply-templates select="*[not(self::cnxml:name)]|text()|comment()|processing-instruction()"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="cnxml:item[local-name(child::*[1])='media'][local-name(child::*[2])='name']">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:element name="label" namespace="http://cnx.rice.edu/cnxml">
+        <xsl:apply-templates select="child::*[1]/preceding-sibling::node()"/>
+        <xsl:apply-templates select="child::*[1]"/>
+        <xsl:apply-templates select="child::*[2]/preceding-sibling::node()[preceding-sibling::cnxml:media]"/>
+        <xsl:apply-templates select="child::*[2]/node()"/>
+      </xsl:element>
+      <xsl:apply-templates select="child::*[2]/following-sibling::node()"/>
+    </xsl:copy>
+  </xsl:template>
+
   <xsl:template name="generate-id-if-required">
     <xsl:if test="not(@id)">
       <xsl:variable name="element-name" select="name(self::*)"/>
@@ -139,8 +210,9 @@ convert media to new media structures
           </xsl:attribute>
         </xsl:when>
         <!-- Block 'quote', 'pre', and 'code' get IDs always. -->
-        <xsl:when test="(name(self::*) = 'quote' or name(self::*) = 'code' or 
-                         name(self::*) = 'pre') and self::*[@type='block']">
+        <xsl:when test="(((self::cnxml:quote or self::cnxml:preformat) and 
+                         (@type='block' or not(@type))) or
+                         self::cnxml:code/@type='block') and not(@id)">
           <xsl:attribute name="id">
             <xsl:value-of select="generate-id()"/>
           </xsl:attribute>
@@ -155,9 +227,9 @@ convert media to new media structures
    - @target-id
    - @resource
    - @version -->
-  <xsl:template match="cnxml:link|cnxml:cite|cnxml:term|cnxml:quote">
+  <xsl:template match="cnxml:link|cnxml:cite|cnxml:term|cnxml:quote[@type='inline']">
     <xsl:copy>
-      <xsl:apply-templates select="@*[not(name(.)='src') and not(name(.)='id')]"/>
+      <xsl:apply-templates select="@*[not(name(.)='src')]"/>
       <xsl:call-template name="convert-link-src">
         <xsl:with-param name="src" select="normalize-space(@src)"/>
       </xsl:call-template>
@@ -166,11 +238,46 @@ convert media to new media structures
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="cnxml:quote">
+    <xsl:copy>
+      <xsl:apply-templates select="@*[not(name(.)='src')]"/>
+      <xsl:call-template name="convert-link-src">
+        <xsl:with-param name="src" select="normalize-space(@src)"/>
+      </xsl:call-template>
+      <xsl:call-template name="generate-id-if-required"/>
+      <xsl:choose>
+        <xsl:when test="parent::cnxml:emphasis">
+          <xsl:choose>
+            <!-- When there no non-whitespace sibling text nodes and no
+                 sibling elements, we can output this 'quote' as a block
+                 and pull the 'emphasis' element inside it. -->
+            <xsl:when test="string-length(normalize-space(parent::cnxml:emphasis/text()))=0 and count(parent::cnxml:emphasis/*)=1">
+              <emphasis xmlns="http://cnx.rice.edu/cnxml"><xsl:apply-templates/></emphasis>
+            </xsl:when>
+            <!-- When there are significant sibling nodes, we must convert 
+                 this quote to @type='inline'. -->
+            <xsl:otherwise>
+              <xsl:attribute name="display">inline</xsl:attribute>
+              <xsl:apply-templates/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:copy>
+  </xsl:template>
+
   <xsl:template name="convert-link-src">
     <xsl:param name="src"/>
     <xsl:choose>
       <!-- Empty or absent @src: do nothing. -->
-      <xsl:when test="not($src)"></xsl:when>
+      <xsl:when test="not($src)">
+        <xsl:if test="self::cnxml:link">
+          <xsl:attribute name="url"></xsl:attribute>
+        </xsl:if>
+      </xsl:when>
       <!-- Absolute URL pointing to Connexions object -->
       <xsl:when test="starts-with($src, 'http:') and (
                 contains($src, 'cnx.rice.edu') or
@@ -273,10 +380,13 @@ convert media to new media structures
 
   <xsl:template match="cnxml:cnxn">
     <xsl:variable name="strength" select="normalize-space(@strength)"/>
+    <xsl:variable name="document" select="normalize-space(@document)"/>
+    <xsl:variable name="target" select="normalize-space(@target)"/>
+    <xsl:processing-instruction name="from-cnxn">document="<xsl:value-of select="@document"/>" target="<xsl:value-of select="@target"/>"</xsl:processing-instruction>
     <xsl:element name="link" namespace="http://cnx.rice.edu/cnxml">
       <xsl:if test="@document">
         <xsl:attribute name="document">
-          <xsl:value-of select="normalize-space(@document)"/>
+          <xsl:value-of select="$document"/>
         </xsl:attribute>
       </xsl:if>
       <xsl:if test="@version">
@@ -286,7 +396,16 @@ convert media to new media structures
       </xsl:if>
       <xsl:if test="@target">
         <xsl:attribute name="target-id">
-          <xsl:value-of select="normalize-space(@target)"/>
+          <xsl:choose>
+            <xsl:when test="$document = 'm16333' and $target ='element-176'">
+              <xsl:value-of select="'uid22'"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="fix-colon-in-id">
+                <xsl:with-param name="id-value" select="$target"/>
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:attribute>
       </xsl:if>
       <xsl:if test="$strength">
@@ -300,27 +419,33 @@ convert media to new media structures
           </xsl:choose>
         </xsl:attribute>
       </xsl:if>
+      <!-- We need at least an empty @url on 'link'. -->
+      <xsl:if test="not(@document) and not(@version) and not(@target)">
+        <xsl:attribute name="url"></xsl:attribute>
+      </xsl:if>
+      <xsl:attribute name="class">cnxn</xsl:attribute>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
 
   <xsl:template match="cnxml:table">
-    <xsl:param name="figure-id"/>
     <xsl:copy>
       <xsl:apply-templates select="@*[name(.)!='id']"/>
-      <xsl:attribute name="id">
-        <xsl:choose>
-          <xsl:when test="string-length($figure-id)">
-              <xsl:value-of select="$figure-id"/>
-          </xsl:when>
-          <xsl:when test="string-length(@id)">
-            <xsl:value-of select="@id"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:value-of select="generate-id()"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+      <xsl:choose>
+        <!-- m16333 is the one module in which cnxns pointing to a table 
+              within a figure use the table @id rather than the figure @id. 
+              In this case, we don't pass figure/@id down to the table 
+              template. -->
+        <xsl:when test="string-length(parent::cnxml:figure/@id) and $moduleid != 'm16333'">
+          <xsl:apply-templates select="parent::cnxml:figure/@id"/>
+        </xsl:when>
+        <xsl:when test="string-length(@id)">
+          <xsl:apply-templates select="@id"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:value-of select="generate-id()"/>
+        </xsl:otherwise>
+      </xsl:choose>
       <xsl:attribute name="summary"></xsl:attribute>
       <xsl:apply-templates/>
     </xsl:copy>
@@ -332,17 +457,7 @@ convert media to new media structures
         <xsl:value-of select="@id"/>
       </xsl:processing-instruction>
     </xsl:if>
-    <xsl:apply-templates select="cnxml:table">
-      <xsl:with-param name="figure-id">
-        <!-- m16333 is the one module in which cnxns pointing to a table 
-             within a figure use the table @id rather than the figure @id. 
-             In this case, we don't pass figure/@id down to the table 
-             template. -->
-        <xsl:if test="$moduleid != 'm16333'">
-          <xsl:value-of select="@id"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:apply-templates>
+    <xsl:apply-templates select="cnxml:table"/>
   </xsl:template>
 
   <xsl:template match="cnxml:figure[cnxml:code]">
@@ -352,17 +467,22 @@ convert media to new media structures
   <xsl:template match="cnxml:code">
     <xsl:copy>
       <xsl:apply-templates select="@*[name()!='id']"/>
-      <xsl:attribute name="id">
-        <xsl:choose>
-          <xsl:when test="parent::cnxml:figure">
-            <xsl:value-of select="parent::cnxml:figure/@id"/>
-          </xsl:when>
-          <xsl:when test="string-length(@id)">
-            <xsl:value-of select="@id"/>
-          </xsl:when>
-          <xsl:otherwise><xsl:value-of select="generate-id()"/></xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
+      <xsl:if test="@type='block' or parent::cnxml:content or parent::cnxml:section or parent::cnxml:figure">
+        <xsl:attribute name="id">
+          <xsl:choose>
+            <xsl:when test="parent::cnxml:figure">
+              <xsl:value-of select="parent::cnxml:figure/@id"/>
+            </xsl:when>
+            <xsl:when test="string-length(@id)">
+              <xsl:value-of select="@id"/>
+            </xsl:when>
+            <xsl:otherwise><xsl:value-of select="generate-id()"/></xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="parent::cnxml:content or parent::cnxml:section or parent::cnxml:figure">
+        <xsl:attribute name="display">block</xsl:attribute>
+      </xsl:if>
       <xsl:if test="parent::cnxml:figure">
         <xsl:attribute name="class">listing</xsl:attribute>
         <xsl:if test="preceding-sibling::cnxml:name">
@@ -389,37 +509,41 @@ convert media to new media structures
         <xsl:with-param name="data" select="normalize-space(substring-after(@src, '.'))"/>
       </xsl:call-template>
     </xsl:variable>
-    <xsl:choose>
-      <!-- FIXME dummy content -->
-      <xsl:when test="cnxml:media">
-        <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
-          <xsl:if test="parent::cnxml:content or parent::cnxml:section">
-            <xsl:attribute name="display">block</xsl:attribute>
-          </xsl:if>
-          <image src="foo.png" mime-type="image/png"/>
-        </media>
-      </xsl:when>
-      <!-- FIXME dummy content -->
-      <xsl:when test="@type='image/png' and ($ext = 'htm' or $ext = 'html') and cnxml:param[@name='thumbnail']">
-        <media id="{generate-id()}" alt="an image" xmlns="http://cnx.rice.edu/cnxml">
-          <xsl:if test="parent::cnxml:content or parent::cnxml:section">
-            <xsl:attribute name="display">block</xsl:attribute>
-          </xsl:if>
-          <image src="foo.png" mime-type="image/png"/>
-        </media>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:variable name="intype" select="@type"/>
-        <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
-        <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
-          <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
-          <xsl:attribute name="alt">
-            <xsl:value-of select="//cnxml:param[@name='alt'][1]/@value"/>
-          </xsl:attribute>
-          <xsl:call-template name="make-attribute-from-param">
-            <xsl:with-param name="param-name" select="'longdesc'"/>
-          </xsl:call-template>
-          <xsl:call-template name="make-media-display-attribute"/>
+    <xsl:variable name="intype" select="normalize-space(@type)"/>
+    <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
+    <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+      <xsl:attribute name="alt">
+        <xsl:value-of select="//cnxml:param[@name='alt'][1]/@value"/>
+      </xsl:attribute>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'longdesc'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-media-display-attribute"/>
+      <xsl:choose>
+        <xsl:when test="cnxml:media">
+          <xsl:choose>
+            <xsl:when test="$ext = 'eps'">
+              <xsl:apply-templates select="cnxml:media" mode="media-object-only"/>
+              <xsl:call-template name="make-media-image">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$ext = 'mov'">
+              <xsl:call-template name="make-media-audio-video">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+              <xsl:apply-templates select="cnxml:media" mode="media-object-only"/>
+            </xsl:when>
+            <xsl:when test="normalize-space(@type) = 'image/png' and 
+                            normalize-space(cnxml:media/@type) = 'image/png'">
+              <xsl:call-template name="make-media-image" mode="media-object-only">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise>
           <xsl:choose>
             <xsl:when test="$media-conversion/@objtype='image'">
               <xsl:call-template name="make-media-image">
@@ -442,10 +566,44 @@ convert media to new media structures
                 <xsl:with-param name="media-conversion" select="$media-conversion"/>
               </xsl:call-template>
             </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='java-applet'">
+              <xsl:call-template name="make-media-java-applet">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+                <xsl:with-param name="ext" select="$ext"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:when test="$media-conversion/@objtype='download'">
+              <xsl:call-template name="make-media-download">
+                <xsl:with-param name="media-conversion" select="$media-conversion"/>
+              </xsl:call-template>
+            </xsl:when>
           </xsl:choose>
-        </xsl:element>
-        <!-- FIXME -->
-      </xsl:otherwise>
+          <!-- FIXME -->
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="cnxml:media" mode="media-object-only">
+    <xsl:variable name="ext">
+      <xsl:call-template name="get-extension">
+        <xsl:with-param name="data" select="normalize-space(substring-after(@src, '.'))"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="intype" select="normalize-space(@type)"/>
+    <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
+    <xsl:choose>
+      <xsl:when test="$media-conversion/@objtype='image'">
+        <xsl:call-template name="make-media-image">
+          <xsl:with-param name="media-conversion" select="$media-conversion"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$media-conversion/@objtype='audio' or 
+                $media-conversion/@objtype='video'">
+        <xsl:call-template name="make-media-audio-video">
+          <xsl:with-param name="media-conversion" select="$media-conversion"/>
+        </xsl:call-template>
+      </xsl:when>
     </xsl:choose>
   </xsl:template>
 
@@ -474,10 +632,11 @@ convert media to new media structures
 
   <xsl:template name="make-media-image">
     <xsl:param name="media-conversion"/>
-    <xsl:element name="image" namespace="http://cnx.rice.edu/cnxml">
+    <xsl:element name="{$media-conversion/@objtype}" namespace="http://cnx.rice.edu/cnxml">
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:call-template name="make-mime-type">
         <xsl:with-param name="media-conversion" select="$media-conversion"/>
       </xsl:call-template>
@@ -503,6 +662,7 @@ convert media to new media structures
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:call-template name="make-mime-type">
         <xsl:with-param name="media-conversion" select="$media-conversion"/>
       </xsl:call-template>
@@ -527,6 +687,7 @@ convert media to new media structures
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:call-template name="make-mime-type">
         <xsl:with-param name="media-conversion" select="$media-conversion"/>
       </xsl:call-template>
@@ -555,6 +716,7 @@ convert media to new media structures
       <xsl:attribute name="src">
         <xsl:value-of select="@src"/>
       </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
       <xsl:attribute name="viname">
         <xsl:choose>
           <xsl:when test="cnxml:param[@name='lvfppviname']">
@@ -582,6 +744,78 @@ convert media to new media structures
     </xsl:element>
   </xsl:template>
 
+  <xsl:template name="make-media-java-applet">
+    <xsl:param name="object-type"/>
+    <xsl:param name="media-conversion"/>
+    <xsl:param name="ext"/>
+    <xsl:variable name="code">
+      <xsl:choose>
+        <xsl:when test="cnxml:param[@name='code']">
+          <xsl:value-of select="cnxml:param[@name='code']/@value"/>
+        </xsl:when>
+        <xsl:when test="$ext != 'jar'">
+          <xsl:value-of select="normalize-space(@src)"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="archive">
+      <xsl:choose>
+        <xsl:when test="cnxml:param[@name='archive' or @name='ARCHIVE']">
+          <xsl:value-of select="cnxml:param[@name='archive' or @name='ARCHIVE']/@value"/>
+        </xsl:when>
+        <xsl:when test="$ext = 'jar'">
+          <xsl:value-of select="normalize-space(@src)"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:element name="{$media-conversion/@objtype}" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:attribute name="src">
+        <xsl:value-of select="@src"/>
+      </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
+      <xsl:call-template name="make-mime-type">
+        <xsl:with-param name="media-conversion" select="$media-conversion"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'height'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'width'"/>
+      </xsl:call-template>
+      <xsl:attribute name="code"><xsl:value-of select="$code"/></xsl:attribute>
+      <xsl:if test="cnxml:param[@name='archive' or @name='ARCHIVE'] or $ext = 'jar'">
+        <xsl:attribute name="archive">
+          <xsl:value-of select="$archive"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:copy-of select="@*[not(name(self::node())='type')]"/>
+      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and 
+                                       @name!='alt' and 
+                                       normalize-space(@name)!='archive' and 
+                                       normalize-space(@name)!='ARCHIVE' and 
+                                       normalize-space(@name)!='code']"/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template name="make-media-download">
+    <xsl:param name="media-conversion"/>
+    <xsl:element name="{$media-conversion/@objtype}" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:attribute name="src">
+        <xsl:value-of select="@src"/>
+      </xsl:attribute>
+      <xsl:apply-templates select="@id"/>
+      <xsl:call-template name="make-mime-type">
+        <xsl:with-param name="media-conversion" select="$media-conversion"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'width'"/>
+      </xsl:call-template>
+      <xsl:call-template name="make-attribute-from-param">
+        <xsl:with-param name="param-name" select="'print-width'"/>
+      </xsl:call-template>
+    </xsl:element>
+  </xsl:template>
+
   <xsl:template name="make-mime-type">
     <xsl:param name="media-conversion"/>
     <xsl:attribute name="mime-type">
@@ -590,7 +824,7 @@ convert media to new media structures
           <xsl:value-of select="$media-conversion/@outtype"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:value-of select="@type"/>
+          <xsl:value-of select="normalize-space(@type)"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
@@ -603,6 +837,73 @@ convert media to new media structures
         <xsl:value-of select="cnxml:param[@name=$param-name]/@value"/>
       </xsl:attribute>
     </xsl:if>
+  </xsl:template>
+
+  <xsl:template match="@rowsep|@colsep|@pgwide">
+    <xsl:choose>
+      <xsl:when test="normalize-space(.)='true' or normalize-space(.)='one'">
+        <xsl:attribute name="rowsep">1</xsl:attribute>
+      </xsl:when>
+      <xsl:when test="normalize-space(.)='no'">
+        <xsl:attribute name="rowsep">0</xsl:attribute>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="cnxml:name[string-length(normalize-space(.))=0][not(parent::cnxml:document)]"/>
+
+  <xsl:template match="*[self::cnxml:cite][not(@*)][string-length(normalize-space(.))=0]"/>
+
+  <xsl:template name="fix-colon-in-id">
+    <xsl:param name="id-value"/>
+    <xsl:value-of select="normalize-space(translate($id-value, ':', '.'))"/>
+  </xsl:template>
+
+  <xsl:template match="@id">
+    <xsl:attribute name="id">
+      <xsl:call-template name="fix-colon-in-id">
+        <xsl:with-param name="id-value" select="normalize-space(.)"/>
+      </xsl:call-template>
+    </xsl:attribute>
+  </xsl:template>
+
+  <xsl:template match="cnxml:emphasis[cnxml:quote[@type='block']]">
+    <xsl:apply-templates select="cnxml:quote"/>
+  </xsl:template>
+
+  <xsl:template match="m:emphasis|m:equation">
+    <xsl:element name="{local-name()}" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:apply-templates select="@*"/>
+      <xsl:call-template name="generate-id-if-required"/>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="cnxml:para">
+    <xsl:choose>
+      <xsl:when test="@id='element-431' and $moduleid='m15555'">
+        <xsl:copy>
+          <xsl:apply-templates select="@*"/>
+          <xsl:apply-templates select="cnxml:name[3]/preceding-sibling::node()"/>
+          <xsl:element name="list" namespace="http://cnx.rice.edu/cnxml">
+            <xsl:attribute name="list-type">labeled-item</xsl:attribute>
+            <xsl:attribute name="display">inline</xsl:attribute>
+            <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
+            <xsl:apply-templates select="cnxml:name[position() &gt; 2]" mode="m15555"/>
+          </xsl:element>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy>
+          <xsl:apply-templates select="@*"/>
+          <xsl:apply-templates select="cnxml:name"/>
+          <xsl:apply-templates select="text()|*[not(self::cnxml:name)]|comment()|processing-instruction()"/>
+        </xsl:copy>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="/">
@@ -655,7 +956,7 @@ convert media to new media structures
     <mc:mediaconversion intype="application/msword" inext="doc" objtype="download" outtype=""/>
     <mc:mediaconversion intype="application/mspowerpoint" inext="ppt" objtype="download" outtype="application/vnd.ms-powerpoint"/>
     <mc:mediaconversion intype="image/jpeg" inext="JPG" objtype="image" outtype=""/>
-    <mc:mediaconversion intype="application/x-java-applet" inext="class" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="class" objtype="java-applet" outtype=""/>
     <mc:mediaconversion intype="image/jpg" inext="GIF" objtype="image" outtype="image/gif"/>
     <mc:mediaconversion intype="image/jpeg" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="image/jpeg" inext="gif" objtype="image" outtype="image/gif"/>
@@ -698,12 +999,13 @@ convert media to new media structures
     <mc:mediaconversion intype="application/vnd.ms-powerpoint" inext="ppt" objtype="download" outtype=""/>
     <mc:mediaconversion intype="image" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="video/mpg" inext="mpg" objtype="video" outtype="video/mpeg"/>
-    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcApplet" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcApplet" objtype="java-applet" outtype=""/>
     <mc:mediaconversion intype="image/jpeg" inext="jpeg" objtype="image" outtype=""/>
     <mc:mediaconversion intype="image/png" inext="gif" objtype="image" outtype="image/gif"/>
     <mc:mediaconversion intype="images/png" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="video.m4v" inext="m4v" objtype="video" outtype="video/mp4"/>
     <mc:mediaconversion intype="application/powerpoint" inext="ppt" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediaconversion intype="application/powerpoint" inext="pptx" objtype="download" outtype="application/vnd.ms-powerpoint"/>
     <mc:mediaconversion intype="file/m" inext="m" objtype="download" outtype=""/>
     <mc:mediaconversion intype="image/fig" inext="jpg" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="image/pct" inext="pct" objtype="image" outtype="image/pct"/>
@@ -729,8 +1031,8 @@ convert media to new media structures
     <mc:mediaconversion intype="application/mspowerpoint" inext="pptx" objtype="download" outtype="application/vnd.ms-powerpoint"/>
     <mc:mediaconversion intype="application/vnd.ms-word" inext="doc" objtype="download" outtype="application/msword"/>
     <mc:mediaconversion intype="application/vnd.mspowerpoint" inext="doc" objtype="download" outtype="application/msword"/>
-    <mc:mediaconversion intype="application/x-java-applet" inext="jar" objtype="javaapplet" outtype=""/>
-    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcButtonApplet" objtype="javaapplet" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="jar" objtype="java-applet" outtype=""/>
+    <mc:mediaconversion intype="application/x-java-applet" inext="TempCalcButtonApplet" objtype="java-applet" outtype=""/>
     <mc:mediaconversion intype="application/x-labview-llb" inext="vi" objtype="labview" outtype=""/>
     <mc:mediaconversion intype="application/x-labviewrpvi80" inext="vi" objtype="labview" outtype=""/>
     <mc:mediaconversion intype="application/xls" inext="xls" objtype="download" outtype="application/vnd.ms-excel"/>
@@ -743,6 +1045,7 @@ convert media to new media structures
     <mc:mediaconversion intype="image/jpeg" inext="jpg/" objtype="image" outtype=""/>
     <mc:mediaconversion intype="image/jpeg" inext="jpg/image" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="image/JPG" inext="JPG" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="image/JPEG" inext="JPG" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="image/pg" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="image/pn" inext="png" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="image/png" inext="GIF" objtype="image" outtype="image/gif"/>
@@ -757,10 +1060,13 @@ convert media to new media structures
     <mc:mediaconversion intype="image7.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
     <mc:mediaconversion intype="image8.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
     <mc:mediaconversion intype="image9.bmp" inext="bmp" objtype="image" outtype="image/bmp"/>
-    <mc:mediaconversion intype="image9/jpg" inext="jpg" objtype="image" outtype="image/bmp"/>
+    <mc:mediaconversion intype="image9/jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="images/jpeg" inext="JPG" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="images/png" inext="PNG" objtype="image" outtype="image/png"/>
     <mc:mediaconversion intype="video/mp4" inext="mp4" objtype="video" outtype=""/>
     <mc:mediaconversion intype="video/x-msvideo" inext="avi" objtype="video" outtype=""/>
+    <mc:mediaconversion intype="image\jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
+    <mc:mediaconversion intype="application/msword" inext="docx" objtype="download" outtype="application/msword"/>
+    <mc:mediaconversion intype="image/img" inext="png" objtype="image" outtype="image/png"/>
   </mc:mediaconversions>
 </xsl:stylesheet>
