@@ -60,7 +60,7 @@ convert media to new media structures
                 xmlns:mc="#media-conversions"/>
   <xsl:key name="author-by-id" match="/cnxml:document/cnxml:metadata/md:authorlist/md:author" use="@id"/>
 
-  <xsl:template match="cnxml:document">
+  <xsl:template match="/*[local-name()='document']">
     <xsl:choose>
       <xsl:when test="@cnxml-version='0.6'">
         <xsl:copy-of select="."/>
@@ -918,7 +918,7 @@ convert media to new media structures
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="node()" mode="bibtexml">
+  <xsl:template match="node()[not(self::*)]" mode="bibtexml">
     <xsl:copy/>
   </xsl:template>
 
