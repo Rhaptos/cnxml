@@ -6,14 +6,8 @@
   xmlns:m="http://www.w3.org/1998/Math/MathML"
   xmlns:md="http://cnx.rice.edu/mdml/0.4"
   xmlns:q="http://cnx.rice.edu/qml/1.0"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml"
   xmlns:bib="http://bibtexml.sf.net/"
-  xmlns:cc="http://web.resource.org/cc/"
-  xmlns:cnx="http://cnx.rice.edu/contexts#"
-  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:exsl="http://exslt.org/common"
-  xmlns:reqid="#required-ids"
-  xmlns:mc="#media-conversions"
   extension-element-prefixes="exsl"
   exclude-result-prefixes="cnxml"
 >
@@ -58,8 +52,12 @@ convert media to new media structures
 
   <xsl:output indent="yes" method="xml"/>
   <xsl:param name="moduleid"/>
-  <xsl:variable name="required-id-elements" select="document('')/xsl:stylesheet/reqid:elements"/>
-  <xsl:variable name="media-conversions" select="document('')/xsl:stylesheet/mc:mediaconversions"/>
+  <xsl:variable name="required-id-elements" 
+                select="document('')/xsl:stylesheet/reqid:elements"
+                xmlns:reqid="#required-ids"/>
+  <xsl:variable name="media-conversions" 
+                select="document('')/xsl:stylesheet/mc:mediaconversions" 
+                xmlns:mc="#media-conversions"/>
   <xsl:key name="author-by-id" match="/cnxml:document/cnxml:metadata/md:authorlist/md:author" use="@id"/>
 
   <xsl:template match="cnxml:document">
@@ -199,7 +197,7 @@ convert media to new media structures
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template name="generate-id-if-required">
+  <xsl:template name="generate-id-if-required" xmlns:reqid="#required-ids">
     <xsl:if test="not(@id)">
       <xsl:variable name="element-name" select="name(self::*)"/>
       <xsl:choose>
@@ -503,7 +501,7 @@ convert media to new media structures
       - mov around png
       - everything else (single media) -->
   <!-- FIXME: this becomes a proper 'media' with children. -->
-  <xsl:template match="cnxml:media">
+  <xsl:template match="cnxml:media" xmlns:mc="#media-conversions">
     <xsl:variable name="ext">
       <xsl:call-template name="get-extension">
         <xsl:with-param name="data" select="normalize-space(substring-after(@src, '.'))"/>
@@ -584,7 +582,7 @@ convert media to new media structures
     </xsl:element>
   </xsl:template>
 
-  <xsl:template match="cnxml:media" mode="media-object-only">
+  <xsl:template match="cnxml:media" mode="media-object-only" xmlns:mc="#media-conversions">
     <xsl:variable name="ext">
       <xsl:call-template name="get-extension">
         <xsl:with-param name="data" select="normalize-space(substring-after(@src, '.'))"/>
@@ -906,6 +904,51 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template match="*[local-name()='file'][namespace-uri()='']">
+    <bib:file xmlns:bib="http://bibtexml.sf.net/">
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates mode="bibtexml"/>
+    </bib:file>
+  </xsl:template>
+
+  <xsl:template match="*" mode="bibtexml">
+    <xsl:element name="bib:{local-name()}" namespace="http://bibtexml.sf.net/">
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates mode="bibtexml"/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="node()" mode="bibtexml">
+    <xsl:copy/>
+  </xsl:template>
+
+  <xsl:template match="*[local-name()='math']">
+    <m:math xmlns:m="http://www.w3.org/1998/Math/MathML">
+      <xsl:apply-templates select="@*" mode="mathml"/>
+      <xsl:apply-templates mode="mathml"/>
+    </m:math>
+  </xsl:template>
+
+  <xsl:template match="*" mode="mathml">
+    <xsl:element name="m:{local-name()}" namespace="http://www.w3.org/1998/Math/MathML">
+      <xsl:apply-templates select="@*" mode="mathml"/>
+      <xsl:apply-templates mode="mathml"/>
+    </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="@*[(name(.)='definitionURL' or name(.)='encoding') and string-length(.)=0]" mode="mathml">
+  </xsl:template>
+
+  <xsl:template match="@definitionURL[string-length(.)=0]|
+                       @encoding[string-length(.)=0]|
+                       @overflow[.='scroll']|
+                       @base[.='10']" mode="mathml">
+  </xsl:template>
+
+  <xsl:template match="node()[not(self::*)]|@*" mode="mathml">
+    <xsl:copy/>
+  </xsl:template>
+
   <xsl:template match="/">
     <xsl:apply-templates/>
   </xsl:template>
@@ -922,7 +965,7 @@ convert media to new media structures
     <xsl:copy/>
   </xsl:template>
 
-  <reqid:elements>
+  <reqid:elements xmlns:reqid="#required-ids">
     <reqid:element name="div"/>
     <reqid:element name="section"/>
     <reqid:element name="figure"/>
@@ -938,7 +981,7 @@ convert media to new media structures
     <reqid:element name="statement"/>
   </reqid:elements>
 
-  <mc:mediaconversions>
+  <mc:mediaconversions xmlns:mc="#media-conversions">
     <mc:mediaconversion intype="image/png" inext="png" objtype="image" outtype=""/>
     <mc:mediaconversion intype="image/gif" inext="gif" objtype="image" outtype=""/>
     <mc:mediaconversion intype="image/jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
