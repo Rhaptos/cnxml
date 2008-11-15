@@ -42,7 +42,7 @@
 
 
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <list id='l1' display='block' list-type='labeled-item' sep-after='anytext'>
+    <list id='l1' display='block' list-type='labeled-item' after='anytext'>
       <item>This list has all the optional labeled-item list attributes.</item>
     </list>
   </content>

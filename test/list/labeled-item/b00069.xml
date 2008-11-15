@@ -44,7 +44,9 @@
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
     <section id='s1'>
       <para id='container'>
-        <item>Item elements are not allowed as children of anything but lists!</item>
+        <list display='inline' list-type='labeled-item' id='l1' sep-before='#'>
+          <item>The 'sep-before' attribute should simply be 'before'.</item>
+        </list>
       </para>
     </section>
   </content>

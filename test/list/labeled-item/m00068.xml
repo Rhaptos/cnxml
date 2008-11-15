@@ -44,7 +44,7 @@
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
     <section id='s1'>
       <para id='container'>
-        <list display='inline' list-type='labeled-item' sep-after=')'>
+        <list display='inline' list-type='labeled-item' after=')'>
           <item><label>LABEL</label>This list has all of the labeled-item list optional attributes.</item>
         </list>
       </para>

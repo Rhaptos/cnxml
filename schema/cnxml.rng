@@ -21,10 +21,10 @@
   </include>
 
   <define name="mathml-math">
-    <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+    <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
   </define>
 
-  <include href="http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng">
+  <include href="file:///usr/share/xml/qml/schema/rng/1.0/qml-defs.rng">
     <define name="qml-text">
       <zeroOrMore>
         <choice>
@@ -55,7 +55,7 @@
       <ref name="mathml-math"/>
     </define>
     <define name="bibliography">
-      <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>
+      <externalRef href="file:///usr/share/xml/bibtexml/schema/rng/1.0/bibtexml.rng"/>
     </define>
   </include>
 

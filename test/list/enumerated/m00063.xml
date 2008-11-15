@@ -44,7 +44,7 @@
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
     <section id='s1'>
       <para id='container'>
-        <list display='inline' list-type='enumerated' class='sample' sep-before='(' item-sep='**'>
+        <list display='inline' list-type='enumerated' class='sample' before='(' item-sep='**'>
           <item>This list has all of the optional common list attributes.</item>
         </list>
       </para>
@@ -52,7 +52,7 @@
     <div id='d1'>
       <list display='inline' list-type='enumerated'>
         <item>
-          <para id='p2'>Inline items can have any kind of div content.</para>
+          Inline items can only have inline content.
         </item>
       </list>
     </div>

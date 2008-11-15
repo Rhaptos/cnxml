@@ -42,7 +42,7 @@
 
 
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <list id='l1' display='block' list-type='bulleted' class='sample' sep-before='$$' item-sep=';'>
+    <list id='l1' display='block' list-type='bulleted' class='sample' before='$$' item-sep=';'>
       <title>Sample List</title>
       <item>This bulleted list has all the optional common list attributes and elements.</item>
     </list>

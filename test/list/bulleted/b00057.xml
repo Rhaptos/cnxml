@@ -44,7 +44,7 @@
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
     <section id='s1'>
       <para id='container'>
-        <list id='l1' list-type='enumerated'>
+        <list id='l1' list-type='bulleted'>
           <item>Only items and titles are allowed as children of lists!</item>
           <para id='faulty'/>
         </list>
