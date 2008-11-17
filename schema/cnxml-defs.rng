@@ -532,9 +532,6 @@
         <value>prerequisite</value>
         <value>example</value>
         <value>supplemental</value>
-        <value>funder</value>
-        <value>sponsor</value>
-        <value>publisher</value>
         <text/>
       </choice>
     </attribute>
