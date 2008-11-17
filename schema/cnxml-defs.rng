@@ -99,6 +99,12 @@
     </attribute>
   </define>
 
+  <define name="type-attribute">
+    <optional>
+      <attribute name="type"/>
+    </optional>
+  </define>
+
   <!-- May be revised to have values of 1-5 -->
   <define name="strength-attribute">
     <attribute name="strength">
@@ -537,7 +543,7 @@
     </attribute>
   </define>
 
-  <define name="rule-type">
+  <define name="rule-type-attribute">
     <optional>
       <attribute name="type" a:defaultValue="rule">
         <choice>
@@ -981,6 +987,7 @@
       <ref name="display-block-default-attribute"/>
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <ref name="linking-attributes"/>
       <ref name="div-content"/>
     </element>
@@ -990,6 +997,7 @@
     <element name="quote">
       <ref name="display-inline-attribute"/>
       <ref name="linking-attributes"/>
+      <ref name="type-attribute"/>
       <ref name="inline-content"/>
     </element>
   </define>
@@ -1014,6 +1022,7 @@
     <element name="equation">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1060,6 +1069,7 @@
     <ref name="common-attributes"/>
     <ref name="before-attribute"/>
     <ref name="item-sep-attribute"/>
+    <ref name="type-attribute"/>
   </define>
 
   <define name="block-list-common-content">
@@ -1219,6 +1229,7 @@
       <optional>
         <ref name="code-lang-attribute"/>
       </optional>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1255,6 +1266,7 @@
           </choice>
         </attribute>
       </optional>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1512,6 +1524,7 @@
     <element name="example">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1529,6 +1542,7 @@
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
       <ref name="print-placement-attribute"/>
+      <ref name="type-attribute"/>
       <choice>
         <group>
           <optional>
@@ -1558,6 +1572,7 @@
     <element name="problem">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="title"/>
       </optional>
@@ -1571,6 +1586,7 @@
     <element name="solution">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <ref name="print-placement-attribute"/>
       <optional>
         <ref name="label"/>
@@ -1646,7 +1662,7 @@
     <element name="rule">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
-      <ref name="rule-type"/>
+      <ref name="rule-type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1667,12 +1683,14 @@
 
   <define name="statement">
     <element name="statement">
+      <ref name="type-attribute"/>
       <ref name="section-content"/>
     </element>
   </define>
 
   <define name="proof">
     <element name="proof">
+      <ref name="type-attribute"/>
       <ref name="section-content"/>
     </element>
   </define>
@@ -1898,6 +1916,7 @@
       <ref name="table.att"/>
       <ref name="bodyatt"/>
       <ref name="secur"/>
+      <ref name="type-attribute"/>
       <ref name="common-attributes"/>
       <ref name="table.mdl"/>
     </element>
