@@ -65,6 +65,12 @@
       <l:gentext key="aside" text="Aside"/>
       <l:gentext key="tip" text="Tip"/>
       <l:gentext key="Note" text="Note"/>
+      <l:gentext key="theorem" text="Theorem"/>
+      <l:gentext key="lemma" text="Lemma"/>
+      <l:gentext key="corollary" text="Corollary"/>
+      <l:gentext key="law" text="Law"/>
+      <l:gentext key="proposition" text="Proposition"/>
+      <l:gentext key="Rule" text="Rule"/>
 
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>
