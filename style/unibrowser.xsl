@@ -226,7 +226,7 @@
 
 
       <!-- FOOTNOTEs -->
-      <xsl:if test="descendant::cnx:note[@type='footnote']">
+      <xsl:if test="descendant::cnx:note[@type='footnote'] or descendant::cnx:footnote">
         <div class="footnotes">
         <h2 class="footnotes-header">
           <!-- Footnotes -->
@@ -236,9 +236,9 @@
           </xsl:call-template>
         </h2>
         <ol id="footnotes">
-          <xsl:for-each select="descendant::cnx:note[@type='footnote']">
+          <xsl:for-each select="descendant::cnx:note[@type='footnote']|descendant::cnx:footnote">
             <xsl:variable name="footnote-number">
-              <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1" />
+              <xsl:number level="any" count="//cnx:note[@type='footnote']|//cnx:footnote" format="1" />
             </xsl:variable>
             <li>
               <xsl:call-template name='IdCheck'/>
@@ -636,13 +636,16 @@
   </xsl:template>
 
   <!-- FOOTNOTE -->
-  <xsl:template match="cnx:note[@type='footnote']">
+  <xsl:template match="cnx:note[@type='footnote']|cnx:footnote">
     <xsl:variable name="footnote-number">
-      <xsl:number level="any" count="//cnx:note[@type='footnote']" format="1" />
+      <xsl:number level="any" count="//cnx:note[@type='footnote']|//cnx:footnote" format="1" />
     </xsl:variable>
     <a class="footnote-reference" href="#footnote{$footnote-number}">
       <xsl:value-of select="$footnote-number" />
-    </a><xsl:if test="following-sibling::node()[normalize-space()!=''][1][self::cnx:note and @type='footnote']">, </xsl:if>
+    </a>
+    <xsl:if test="following-sibling::node()[normalize-space()!=''][1][self::cnx:note[@type='footnote'] or self::cnx:footnote]">
+      <xsl:text>, </xsl:text>
+    </xsl:if>
   </xsl:template>
 
   <!-- NOTE -->
