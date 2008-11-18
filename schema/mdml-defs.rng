@@ -22,7 +22,7 @@
   </define>
 
   <define name="mdml-metadata-content">
-    <ref name="mdml-contentid"/>
+    <ref name="mdml-content-id"/>
     <ref name="mdml-title"/>
     <ref name="mdml-version"/>
     <ref name="mdml-created"/>
@@ -63,10 +63,10 @@
     </element>
   </define>
 
-  <define name="mdml-contentid">
-    <element name="contentid">
+  <define name="mdml-content-id">
+    <element name="content-id">
       <ref name="mdml-common-attributes"/>
-      <data type="TOKEN"/>
+      <data type="NMTOKEN"/>
     </element>
   </define>
 
