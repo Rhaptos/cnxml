@@ -33,7 +33,9 @@
     </optional>
     <ref name="mdml-license"/>
     <ref name="mdml-licensorlist"/>
-    <ref name="mdml-extendedattribution"/>
+    <optional>
+      <ref name="mdml-extended-attribution"/>
+    </optional>
     <optional>
       <ref name="mdml-keywordlist"/>
     </optional>
@@ -254,11 +256,12 @@
     </element>
   </define>
 
-  <!-- FIXME -->
-  <define name="mdml-extendedattribution">
-    <empty/>
+  <define name="mdml-extended-attribution">
+    <element name="extended-attribution">
+      <text/>
+    </element>
   </define>
-  
+
   <define name="mdml-keywordlist">
     <element name="keywordlist">
       <ref name="mdml-common-attributes"/>
