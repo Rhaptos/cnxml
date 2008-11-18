@@ -60,6 +60,11 @@
       <l:gentext key="ClickForDiagnosis" text="Click for Diagnosis"/>
       <l:gentext key="HideDiagnosis" text="Hide Diagnosis"/>
       <l:gentext key="Footnotes" text="Footnotes"/>
+      <l:gentext key="warning" text="Warning"/>
+      <l:gentext key="important" text="Important"/>
+      <l:gentext key="aside" text="Aside"/>
+      <l:gentext key="tip" text="Tip"/>
+      <l:gentext key="Note" text="Note"/>
 
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>

@@ -43,6 +43,9 @@
       <xsl:otherwise>0</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
+  <xsl:variable name="version">
+    <xsl:value-of select="//cnx:document/@cnxml-version" />
+  </xsl:variable>
 
   <xsl:output omit-xml-declaration="yes" indent="yes"/>
 
@@ -67,6 +70,7 @@
                                 ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:glossary|
                                 ancestor::cnx:para[cnx:name or cnx:title]|
+                                ancestor::cnx:note[cnx:title or not(cnx:label[not(node())]) or not(@type='' and not(cnx:label))]|
                                 ancestor::cnx:list[not(@type='inline') and (cnx:name or cnx:title)])" />
     <xsl:choose>
       <xsl:when test="$level-number &lt; 4">
@@ -659,28 +663,41 @@
   <xsl:template match="cnx:note[not(@type='footnote')]">
     <div class="note">
       <xsl:call-template name='IdCheck'/>
-      <xsl:variable name="level-number">
-        <xsl:call-template name="level-count" />
-      </xsl:variable>
-      <!-- h2, h3, etc... -->
-      <xsl:element name="h{$level-number}">
-        <xsl:attribute name="class">note-header</xsl:attribute>
-        <span class="cnx_label">
-          <xsl:choose>
-            <xsl:when test="(not(@type) or @type='')">
-              <!-- Note: -->
-              <xsl:call-template name="gentext">
-                <xsl:with-param name="key">Note</xsl:with-param>
-                <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
-              </xsl:call-template>:
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="@type"/>:
-            </xsl:otherwise>
-          </xsl:choose>
-        </span>
-      </xsl:element>
-      <xsl:apply-templates/>
+      <xsl:if test="cnx:title or not(cnx:label[not(node())]) or not(type='' and not(cnx:label))">
+        <xsl:variable name="level-number">
+          <xsl:call-template name="level-count" />
+        </xsl:variable>
+        <!-- h2, h3, etc... -->
+        <xsl:element name="h{$level-number}">
+          <xsl:attribute name="class">note-header</xsl:attribute>
+          <span class="cnx_label">
+            <xsl:choose>
+              <xsl:when test="cnx:label">
+                <xsl:apply-templates select="cnx:label" />
+              </xsl:when>
+              <xsl:when test="@type='warning' or @type='important' or @type='aside' or @type='tip'">
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key" select="@type" />
+                  <xsl:with-param name="lang" select="/module/metadata/language" />
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:when test="$version!='0.6' and @type">
+                <xsl:value-of select="@type" />
+              </xsl:when>
+              <xsl:otherwise>
+                <!-- Note -->
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key">Note</xsl:with-param>
+                  <xsl:with-param name="lang" select="/module/metadata/language" />
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>: </xsl:text>
+          </span>
+          <xsl:apply-templates select="cnx:title" />
+        </xsl:element>
+      </xsl:if>
+      <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()" />
     </div>
   </xsl:template>
   
