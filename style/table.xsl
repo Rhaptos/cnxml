@@ -70,12 +70,12 @@
 	        </xsl:choose>
 	      </xsl:if>
 	    </xsl:attribute>
-            <xsl:if test="cnx:name">
+            <xsl:if test="cnx:name or cnx:title">
               <caption class="table-name">
-                <xsl:apply-templates select="cnx:name" />
+                <xsl:apply-templates select="cnx:name|cnx:title" />
               </caption>
             </xsl:if>
-            <xsl:if test="cnx:caption and not(cnx:name)">
+            <xsl:if test="cnx:caption and not(cnx:name|cnx:title)">
               <caption align="bottom" class="table-caption">
                 <xsl:apply-templates select="cnx:caption" />
               </caption>
@@ -99,7 +99,7 @@
 	      </xsl:otherwise>
 	    </xsl:choose>
 	  </table>
-          <xsl:if test="cnx:name and cnx:caption">
+          <xsl:if test="(cnx:name or cnx:title) and cnx:caption">
             <p class="table-caption">
               <xsl:apply-templates select="cnx:caption" />
             </p>
@@ -113,6 +113,7 @@
 
   <xsl:template match="cnx:tgroup">    
     <!-- Only bother to do this if there are colwidth attributes specified. -->
+    <xsl:call-template name='IdCheck'/>
     <xsl:if test="cnx:colspec/@colwidth or child::*/cnx:colspec/@colwidth">
       <colgroup>
 	<xsl:call-template name="col.maker" />
@@ -125,6 +126,7 @@
 
   <xsl:template match="cnx:entrytbl">
     <td class="entrytbl">
+      <xsl:call-template name='IdCheck'/>
       <xsl:attribute name="style">
 	<xsl:text>height: 100%; padding: 0 !important; border-left: 0 !important; border-top: 0 !important; </xsl:text>
 	<xsl:call-template name="style.param.determiner">
@@ -153,6 +155,7 @@
 
   <xsl:template match="cnx:thead|cnx:tfoot|cnx:tbody">
     <xsl:element name="{name(.)}">
+      <xsl:call-template name='IdCheck'/>
       <xsl:attribute name="valign">
 	<xsl:choose>
 	  <xsl:when test="@valign">

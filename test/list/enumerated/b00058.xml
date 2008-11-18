@@ -42,8 +42,8 @@
 
 
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <list id='l1' list-type='enumerat'>
-      <item>The list-type is not valid!</item>
+    <list id='l1' list-type='enumerated' sep-after='faulty'>
+      <item>The 'sep-after' attribute is not allowed; the proper substitue is simply 'after'.</item>
     </list>
   </content>
 </document>

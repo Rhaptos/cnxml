@@ -42,8 +42,8 @@
 
 
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <list id='l1' display='block' list-type='enumerated' sep-after='!!!!' number-style='faulty' start-value='3'>
-      <item>This list has an improper number-style attributes, but all the rest are allowed.</item>
+    <list id='l1' display='block' list-type='enumerated' after='!!!!' number-style='lowerroman' start-value='3'>
+      <item>This list has an improper number-style attribute (it should be hyphenated), but all the rest are allowed.</item>
     </list>
   </content>
 </document>

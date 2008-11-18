@@ -42,7 +42,7 @@
 
 
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <list id='l1' list-type='bulleted' number-style='alpha'>
+    <list id='l1' list-type='bulleted' number-style='lower-alpha'>
       <item>Bulleted lists can't have a number-style attribute!</item>
     </list>
   </content>

@@ -43,11 +43,9 @@
 
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
     <para id='p3'>
-      <list id='l3' list-type='enumerated'>
+      <list id='l3' list-type='enumerated' display='inline'>
         <item>
-          <section id='s1'>
-            <para id='p1'>Items cannot contain sections.</para>
-          </section>
+          <para id='p1'>Inline items cannot contain block content.</para>
         </item>
       </list>
     </para>
