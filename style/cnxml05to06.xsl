@@ -144,6 +144,18 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template match="cnxml:exercise">
+    <xsl:copy>
+      <xsl:if test="./processing-instruction('solution_in_back')">
+        <xsl:attribute name="print-placement">end</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="processing-instruction('solution_in_back')"></xsl:template>
+  
   <xsl:template match="*" mode="default-copy">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
@@ -427,6 +439,11 @@ convert media to new media structures
   </xsl:template>
 
   <xsl:template match="cnxml:table">
+    <xsl:variable name="summary">
+      <xsl:if test="processing-instruction('table-summary')">
+        <xsl:value-of select="processing-instruction('table-summary')"/>
+      </xsl:if>
+    </xsl:variable>
     <xsl:copy>
       <xsl:apply-templates select="@*[name(.)!='id']"/>
       <xsl:choose>
@@ -444,10 +461,12 @@ convert media to new media structures
           <xsl:value-of select="generate-id()"/>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:attribute name="summary"></xsl:attribute>
+      <xsl:attribute name="summary"><xsl:value-of select="$summary"/></xsl:attribute>
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
+
+  <xsl:template match="processing-instruction('table-summary')"></xsl:template>
 
   <xsl:template match="cnxml:figure[cnxml:table]">
     <xsl:if test="@id">
