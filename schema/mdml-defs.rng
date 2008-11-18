@@ -17,6 +17,10 @@
     </attribute>
   </define>
 
+  <define name="mdml-href">
+    <attribute name="href"/>
+  </define>
+
   <define name="mdml-metadata-content">
     <ref name="mdml-contentid"/>
     <ref name="mdml-title"/>
@@ -35,6 +39,9 @@
     <ref name="mdml-licensorlist"/>
     <optional>
       <ref name="mdml-extended-attribution"/>
+    </optional>
+    <optional>
+      <ref name="mdml-parent-module"/>
     </optional>
     <optional>
       <ref name="mdml-keywordlist"/>
@@ -228,17 +235,11 @@
   <define name="mdml-license">
     <element name="license">
       <ref name="mdml-common-attributes"/>
-      <ref name="mdml-license-content"/>
+      <ref name="mdml-href"/>
+      <text/>
     </element>
   </define>
 
-  <define name="mdml-license-content">
-    <attribute name="href">
-      <text/>
-    </attribute>
-    <text/>
-  </define>
-  
   <define name="mdml-licensorlist">
     <element name="licensorlist">
       <ref name="mdml-common-attributes"/>
@@ -259,6 +260,16 @@
   <define name="mdml-extended-attribution">
     <element name="extended-attribution">
       <text/>
+    </element>
+  </define>
+
+  <define name="mdml-parent-module">
+    <element name="parent-module">
+      <ref name="mdml-href"/>
+      <ref name="mdml-title"/>
+      <ref name="mdml-authorlist"/>
+      <ref name="mdml-licensorlist"/>
+      <ref name="mdml-licensor"/>
     </element>
   </define>
 
