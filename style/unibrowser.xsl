@@ -570,6 +570,7 @@
   <!--IMPORTANT-->
   <xsl:template match="cnx:important">
     <strong class="important">
+      <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates/>
     </strong>
   </xsl:template>
@@ -775,6 +776,7 @@
   <!-- SEEALSO -->
   <xsl:template match="cnx:seealso">
     <dd class="seealso">
+      <xsl:call-template name='IdCheck'/>
       <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">GlossSeeAlso</xsl:with-param><xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param></xsl:call-template>:
@@ -1029,8 +1031,8 @@
   <!-- FIGURE -->
   <xsl:template match="cnx:figure">
     <div class="figure">
+      <xsl:call-template name='IdCheck'/>
       <table border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
-        <xsl:call-template name='IdCheck'/>
         <xsl:call-template name="caption"/>
         <xsl:if test="cnx:name[node()] or cnx:title[node()] or @name">
           <thead>
@@ -1138,6 +1140,11 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$captionelement}">
+      <xsl:if test='cnx:caption[@id]'>
+        <xsl:attribute name='id'>
+          <xsl:value-of select='cnx:caption/@id'/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:attribute name="class">
         <xsl:choose>
           <xsl:when test="parent::cnx:figure[@orient='vertical']">vertical-subfigure-caption</xsl:when>
@@ -1383,6 +1390,7 @@
   <!-- LABVIEW -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
     <div class="media labview example">
+      <xsl:call-template name='IdCheck'/>
       <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">LabVIEWExample</xsl:with-param>
@@ -1417,6 +1425,7 @@
         http://digital.ni.com/express.nsf/bycode/exwgjq
     </xsl:param>
     <div class="media labview example">
+      <xsl:call-template name='IdCheck'/>
       <object classid="{$classid}"
               codebase="{$codebase}">
 	<xsl:if test="cnx:param[@name='width']">
@@ -1505,6 +1514,7 @@
   <!-- Generic audio file -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
     <div class="media musical example">
+      <xsl:call-template name='IdCheck'/>
       <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">AudioFile</xsl:with-param>
@@ -1528,6 +1538,7 @@
   <!-- MP3 (Tony Brandt) -->
   <xsl:template match="cnx:media[@type='audio/mpeg']"> 
     <div class="media musical example">
+      <xsl:call-template name='IdCheck'/>
       <span class="cnx_before">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">MusicalExample</xsl:with-param>
