@@ -32,7 +32,7 @@
       <ref name="mdml-translatorlist"/>
     </optional>
     <ref name="mdml-license"/>
-    <ref name="mdml-copyrightholderlist"/>
+    <ref name="mdml-licensorlist"/>
     <ref name="mdml-extendedattribution"/>
     <optional>
       <ref name="mdml-keywordlist"/>
@@ -237,24 +237,25 @@
     <text/>
   </define>
   
-  <define name="mdml-copyrightholderlist">
-    <element name="copyrightholderlist">
+  <define name="mdml-licensorlist">
+    <element name="licensorlist">
       <ref name="mdml-common-attributes"/>
       <oneOrMore>
-        <ref name="mdml-copyrightholder"/>
+        <ref name="mdml-licensor"/>
       </oneOrMore>
     </element>
   </define>
-  
-  <define name="mdml-copyrightholder">
-    <element name="copyrightholder">
+
+  <define name="mdml-licensor">
+    <element name="licensor">
       <ref name="mdml-common-attributes"/>
       <ref name="mdml-id-attribute"/>
       <ref name="mdml-personname-content"/>
     </element>
   </define>
-  
-  <define name="mdml-extendedattribution>
+
+  <!-- FIXME -->
+  <define name="mdml-extendedattribution">
     <empty/>
   </define>
   
