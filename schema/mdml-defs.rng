@@ -117,6 +117,7 @@
     <optional>
       <ref name="mdml-lineage"/>
     </optional>
+    <ref name="mdml-full-name"/>
     <optional>
       <ref name="mdml-email"/>
     </optional>
@@ -203,6 +204,13 @@
 
   <define name="mdml-lineage">
     <element name="lineage">
+      <ref name="mdml-common-attributes"/>
+      <text/>
+    </element>
+  </define>
+  
+  <define name="mdml-full-name">
+    <element name="full-name">
       <ref name="mdml-common-attributes"/>
       <text/>
     </element>
