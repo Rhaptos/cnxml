@@ -71,6 +71,7 @@
       <l:gentext key="law" text="Law"/>
       <l:gentext key="proposition" text="Proposition"/>
       <l:gentext key="Rule" text="Rule"/>
+      <l:gentext key="Step" text="Step"/>
 
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>
