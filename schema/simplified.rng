@@ -603,9 +603,6 @@
         <data type="ID"/>
       </attribute>
       <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -4868,9 +4865,6 @@
   </define>
   <define name="statement">
     <element name="statement">
-      <optional>
-        <attribute name="type"/>
-      </optional>
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -4893,6 +4887,9 @@
       <attribute name="id">
         <data type="ID"/>
       </attribute>
+      <optional>
+        <attribute name="type"/>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>
@@ -4925,9 +4922,6 @@
   </define>
   <define name="proof">
     <element name="proof">
-      <optional>
-        <attribute name="type"/>
-      </optional>
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -4950,6 +4944,9 @@
       <attribute name="id">
         <data type="ID"/>
       </attribute>
+      <optional>
+        <attribute name="type"/>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>

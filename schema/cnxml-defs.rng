@@ -708,6 +708,18 @@
     <ref name="common-attributes"/>
     <ref name="id-attribute"/>
     <optional>
+      <ref name="title"/>
+    </optional>
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
+  </define>
+
+  <define name="statement-content">
+    <ref name="common-attributes"/>
+    <ref name="id-attribute"/>
+    <ref name="type-attribute"/>
+    <optional>
       <ref name="label"/>
     </optional>
     <optional>
@@ -717,7 +729,6 @@
       <ref name="section-content-class"/>
     </oneOrMore>
   </define>
-
 <!--
     Element Definitions
 -->
@@ -1692,18 +1703,16 @@
 
   <define name="statement">
     <element name="statement">
-      <ref name="type-attribute"/>
-      <ref name="section-content"/>
+      <ref name="statement-content"/>
     </element>
   </define>
 
   <define name="proof">
     <element name="proof">
-      <ref name="type-attribute"/>
-      <ref name="section-content"/>
+      <ref name="statement-content"/>
     </element>
   </define>
- 
+
 <!-- 
     CALS Table Definitions
  -->
