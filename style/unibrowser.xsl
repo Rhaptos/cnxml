@@ -70,7 +70,9 @@
                                 ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:glossary|
                                 ancestor::cnx:para[cnx:name or cnx:title]|
-                                ancestor::cnx:note[cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))]|
+                                ancestor::cnx:note[not(@display='inline')][
+                                                   cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))
+                                                  ]|
                                 ancestor::cnx:list[not(@type='inline' or @display='inline') and (cnx:name or cnx:title)])" />
     <xsl:choose>
       <xsl:when test="$level-number &lt; 4">
@@ -688,39 +690,53 @@
         <!-- h2, h3, etc... -->
         <xsl:element name="h{$level-number}">
           <xsl:attribute name="class">note-header</xsl:attribute>
-          <xsl:if test="cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))">
-            <span class="cnx_label">
-              <xsl:choose>
-                <xsl:when test="cnx:label">
-                  <xsl:apply-templates select="cnx:label" />
-                </xsl:when>
-                <xsl:when test="@type='warning' or @type='important' or @type='aside' or @type='tip'">
-                  <xsl:call-template name="gentext">
-                    <xsl:with-param name="key" select="@type" />
-                    <xsl:with-param name="lang" select="/module/metadata/language" />
-                  </xsl:call-template>
-                </xsl:when>
-                <xsl:when test="$version!='0.6' and @type">
-                  <xsl:value-of select="@type" />
-                </xsl:when>
-                <xsl:otherwise>
-                  <!-- Note -->
-                  <xsl:call-template name="gentext">
-                    <xsl:with-param name="key">Note</xsl:with-param>
-                    <xsl:with-param name="lang" select="/module/metadata/language" />
-                  </xsl:call-template>
-                </xsl:otherwise>
-              </xsl:choose>
-              <xsl:text>: </xsl:text>
-            </span>
-          </xsl:if>
-          <xsl:apply-templates select="cnx:title" />
+          <xsl:call-template name="note-label" />
         </xsl:element>
       </xsl:if>
       <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()" />
     </div>
   </xsl:template>
   
+  <!-- NOTE (inline) -->
+  <xsl:template match="cnx:note[@display='inline']">
+    <span class="note">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:call-template name="note-label" />
+      <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()" />
+    </span>
+  </xsl:template>
+  
+  <!-- builds a label and puts a name in for inline and regular notes -->
+  <xsl:template name="note-label">
+    <xsl:if test="cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))">
+      <span class="cnx_label">
+        <xsl:choose>
+          <xsl:when test="cnx:label">
+            <xsl:apply-templates select="cnx:label" />
+          </xsl:when>
+          <xsl:when test="@type='warning' or @type='important' or @type='aside' or @type='tip'">
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key" select="@type" />
+              <xsl:with-param name="lang" select="/module/metadata/language" />
+            </xsl:call-template>
+          </xsl:when>
+          <xsl:when test="$version!='0.6' and @type">
+            <xsl:value-of select="@type" />
+          </xsl:when>
+          <xsl:otherwise>
+            <!-- Note -->
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key">Note</xsl:with-param>
+              <xsl:with-param name="lang" select="/module/metadata/language" />
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
+        <xsl:text>: </xsl:text>
+      </span>
+    </xsl:if>
+    <xsl:apply-templates select="cnx:title" />
+  </xsl:template>
+
   <!--EXAMPLE-->
   <xsl:template match="cnx:example">
     <div class="example">
