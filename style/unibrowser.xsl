@@ -1041,7 +1041,7 @@
       <xsl:element name="{$list-element}">
         <xsl:attribute name="class">
           <xsl:choose>
-            <xsl:when test="@list-type='labeled-item' or @type='named-item'">labeled-item</xsl:when>
+            <xsl:when test="@list-type='labeled-item' or (@type='named-item' and $version!='0.6')">labeled-item</xsl:when>
             <xsl:when test="@before or @after or (@class='stepwise' and @list-type='enumerated')">other</xsl:when>
             <xsl:when test="@bullet-style='bullet' or (@list-type='bulleted' and not(@bullet-style)) or not(@list-type)">bullet</xsl:when>
             <xsl:when test="@bullet-style='open-circle'">open-circle</xsl:when>
