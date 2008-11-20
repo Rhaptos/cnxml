@@ -44,7 +44,12 @@
     </xsl:choose>
   </xsl:variable>
   <xsl:variable name="version">
-    <xsl:value-of select="//cnx:document/@cnxml-version" />
+    <xsl:choose>
+      <xsl:when test="//cnx:document/@cnxml-version">
+        <xsl:value-of select="//cnx:document/@cnxml-version" />
+      </xsl:when>
+      <xsl:otherwise>0.5</xsl:otherwise>
+    </xsl:choose>
   </xsl:variable>
 
   <xsl:output omit-xml-declaration="yes" indent="yes"/>
@@ -73,7 +78,9 @@
                                 ancestor::cnx:note[not(@display='inline')][
                                                    cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))
                                                   ]|
-                                ancestor::cnx:list[not(@type='inline' or @display='inline') and (cnx:name or cnx:title)])" />
+                                ancestor::cnx:list[not((@type='inline' and $version='0.5') or @display='inline')][
+                                                   cnx:name or cnx:title
+                                                  ])" />
     <xsl:choose>
       <xsl:when test="$level-number &lt; 4">
         <xsl:value-of select="$level-number + 2" />
@@ -374,8 +381,9 @@
 	<xsl:call-template name='IdCheck'/>
 	<xsl:apply-templates />
         <xsl:if test="parent::cnx:meaning or 
+                      parent::cnx:note or 
                       parent::cnx:item[parent::cnx:list[not(@type='named-item')]] or 
-                      parent::cnx:list[@type='inline' or @display='inline']">
+                      parent::cnx:list[(@type='inline' and $version='0.5') or @display='inline']">
           <xsl:text>: </xsl:text>
         </xsl:if>
         <xsl:if test="parent::cnx:item[parent::cnx:list[@type='named-item']]">
@@ -720,7 +728,7 @@
               <xsl:with-param name="lang" select="/module/metadata/language" />
             </xsl:call-template>
           </xsl:when>
-          <xsl:when test="$version!='0.6' and @type">
+          <xsl:when test="$version='0.5' and @type">
             <xsl:value-of select="@type" />
           </xsl:when>
           <xsl:otherwise>
@@ -965,7 +973,7 @@
                     <xsl:with-param name="lang" select="/module/metadata/language" />
                   </xsl:call-template>
                 </xsl:when>
-                <xsl:when test="$version!='0.6'">
+                <xsl:when test="$version='0.5'">
                   <xsl:value-of select="@type" />
                 </xsl:when>
                 <xsl:otherwise>
@@ -1035,7 +1043,7 @@
   </xsl:template>
 
   <!--LIST (block)-->
-  <xsl:template match="cnx:list[not(@display='inline')]">
+  <xsl:template match="cnx:list">
     <div class="list">
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:name[node()] or cnx:title[node()]">
@@ -1057,7 +1065,7 @@
       <xsl:element name="{$list-element}">
         <xsl:attribute name="class">
           <xsl:choose>
-            <xsl:when test="@list-type='labeled-item' or (@type='named-item' and $version!='0.6')">labeled-item</xsl:when>
+            <xsl:when test="@list-type='labeled-item' or (@type='named-item' and $version='0.5')">labeled-item</xsl:when>
             <xsl:when test="@before or @after or (@class='stepwise' and @list-type='enumerated')">other</xsl:when>
             <xsl:when test="@bullet-style='bullet' or (@list-type='bulleted' and not(@bullet-style)) or not(@list-type)">bullet</xsl:when>
             <xsl:when test="@bullet-style='open-circle'">open-circle</xsl:when>
@@ -1089,7 +1097,7 @@
   </xsl:template>
   
   <!--LIST (inline)-->
-  <xsl:template match="cnx:list[@type='inline' or @display='inline']">
+  <xsl:template match="cnx:list[(@type='inline' and ancestor::cnx:document[not(@cnxml-version)]) or @display='inline']">
     <xsl:text> </xsl:text>
     <span class="list">
       <xsl:call-template name='IdCheck'/>
@@ -1203,7 +1211,7 @@
         <xsl:when test="parent::cnx:list[@item-sep]">
           <xsl:value-of select="parent::cnx:list/@item-sep" />
         </xsl:when>
-        <xsl:when test="parent::cnx:list[@type='inline' or @display='inline']">
+        <xsl:when test="parent::cnx:list[(@type='inline' and $version='0.5') or @display='inline']">
           <xsl:text>;</xsl:text>
         </xsl:when>
       </xsl:choose>
