@@ -132,6 +132,11 @@ convert media to new media structures
     <xsl:variable name="type" select="normalize-space(@type)"/>
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
+      <xsl:if test="not(@id)">
+        <xsl:attribute name="id">
+          <xsl:value-of select="generate-id()"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="$type and $type != 'note' and $type != 'aside' and $type != 'warning' and $type != 'tip' and $type != 'important'">
         <xsl:element name="label" namespace="http://cnx.rice.edu/cnxml">
           <xsl:call-template name="uppercase-first-letter">
@@ -147,6 +152,11 @@ convert media to new media structures
     <xsl:variable name="type" select="normalize-space(@type)"/>
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
+      <xsl:if test="not(@id)">
+        <xsl:attribute name="id">
+          <xsl:value-of select="generate-id()"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:if test="$type and $type != 'rule' and $type != 'theorem' and $type != 'lemma' and $type != 'corollary' and $type != 'law' and $type != 'proposition'">
         <xsl:element name="label" namespace="http://cnx.rice.edu/cnxml">
           <xsl:call-template name="uppercase-first-letter">
