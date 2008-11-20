@@ -246,7 +246,7 @@
           <!-- Footnotes -->
           <xsl:call-template name="gentext">
             <xsl:with-param name="key">Footnotes</xsl:with-param>
-            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language" />
           </xsl:call-template>
         </h2>
         <ol id="footnotes">
@@ -284,7 +284,7 @@
         <!--Glossary-->
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">Glossary</xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
         </xsl:call-template>
       </h2>
       <xsl:apply-templates />
@@ -299,7 +299,7 @@
       <h2 id='toc'>
         <xsl:call-template name="gentext">
 	  <xsl:with-param name="key">TableofContents</xsl:with-param>
-	  <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+	  <xsl:with-param name="lang" select="/module/metadata/language" />
 	</xsl:call-template>
         <!--Table of Contents--></h2>
       <ul class="toc">
@@ -455,7 +455,7 @@
 	<xsl:attribute name="title">
           <xsl:call-template name="gentext">
             <xsl:with-param name="key">Strength</xsl:with-param>
-            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language" />
           </xsl:call-template>
           <!--Strength--> <xsl:text> </xsl:text><xsl:value-of select="@strength" /></xsl:attribute>
       </xsl:if>
@@ -766,7 +766,7 @@
                   <!-- Example -->
                   <xsl:call-template name="gentext">
                     <xsl:with-param name="key">Example</xsl:with-param>
-                    <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+                    <xsl:with-param name="lang" select="/module/metadata/language" />
                   </xsl:call-template>
                 </xsl:otherwise>
               </xsl:choose>
@@ -1397,7 +1397,7 @@
           <xsl:when test="self::cnx:subfigure">
             <xsl:call-template name="gentext">
               <xsl:with-param name="key">Subfigure</xsl:with-param>
-              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+              <xsl:with-param name="lang" select="/module/metadata/language" />
             </xsl:call-template>
             <xsl:text>&#160;</xsl:text>
             <!--Subfigure--> <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
@@ -1405,9 +1405,7 @@
           <xsl:otherwise>
             <xsl:call-template name="gentext">
               <xsl:with-param name="key">Figure</xsl:with-param>
-              <xsl:with-param name="lang">
-                <xsl:value-of select="/module/metadata/language"/>
-              </xsl:with-param>
+              <xsl:with-param name="lang" select="/module/metadata/language" />
             </xsl:call-template>
             <xsl:text>&#160;</xsl:text>
             <!--Figure--> <xsl:number level="any" count="cnx:figure" /><xsl:if test="cnx:caption">: </xsl:if>
@@ -1437,7 +1435,7 @@
 	</xsl:for-each>
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">MediaFile</xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
         </xsl:call-template>:
 	<!--Media File:-->
 	<a class="link" href="{@src}">
@@ -1502,9 +1500,7 @@
                 <!--Figure--> 
                 <xsl:call-template name="gentext">
                   <xsl:with-param name="key">Figure</xsl:with-param>
-                    <xsl:with-param name="lang">
-                      <xsl:value-of select="/module/metadata/language"/>
-                    </xsl:with-param>
+                    <xsl:with-param name="lang" select="/module/metadata/language" />
                   </xsl:call-template>
                 <xsl:text> </xsl:text>
                 <xsl:number level="any" count="cnx:figure" />
@@ -1527,9 +1523,7 @@
                 <!--Subfigure--> 
                 <xsl:call-template name="gentext">
                   <xsl:with-param name="key">Subfigure</xsl:with-param>
-                    <xsl:with-param name="lang">
-                      <xsl:value-of select="/module/metadata/language"/>
-                    </xsl:with-param>
+                    <xsl:with-param name="lang" select="/module/metadata/language" />
                   </xsl:call-template>
                 <xsl:text> </xsl:text>
 		<xsl:number level="any" count="//cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" />
@@ -1564,7 +1558,7 @@
 	    </xsl:for-each>
             <xsl:call-template name="gentext">
               <xsl:with-param name="key">EPSImage</xsl:with-param>
-              <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+              <xsl:with-param name="lang" select="/module/metadata/language" />
             </xsl:call-template>:
 	    <!--EPS Image:--> 
 	    <a class="link" href="{@src}">
@@ -1631,7 +1625,7 @@
       <span class="cnx_label">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">LabVIEWExample</xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
         </xsl:call-template>:
         <xsl:text> </xsl:text>
         <!--LabVIEW Example:-->
@@ -1704,14 +1698,14 @@
       <p>
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">Download</xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
         </xsl:call-template>
         <xsl:text> </xsl:text>
         <!--Download--> 
         <a class="cnxn" href="{@src}">
           <xsl:call-template name="gentext">
             <xsl:with-param name="key">LabVIEWSource</xsl:with-param>
-            <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language" />
           </xsl:call-template>
           <!--LabVIEW source-->
         </a>
@@ -1755,7 +1749,7 @@
       <span class="cnx_label">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">AudioFile</xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
         </xsl:call-template>:
         <!--Audio File:-->
       </span>
@@ -1779,7 +1773,7 @@
       <span class="cnx_label">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">MusicalExample</xsl:with-param>
-          <xsl:with-param name="lang"><xsl:value-of select="/module/metadata/language"/></xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
         </xsl:call-template>:
         <!--Musical Example:-->
       </span>
