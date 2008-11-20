@@ -1200,7 +1200,7 @@
   <xsl:template match="cnx:equation">
     <div class="equation">
       <xsl:call-template name='IdCheck'/> 
-      <xsl:if test="cnx:name[node()] or cnx:title[node()] or @name or cnx:label">
+      <xsl:if test="cnx:name[node()] or cnx:title[node()] or @name or cnx:label[node()]">
         <xsl:variable name="level-number">
           <xsl:call-template name="level-count" />
         </xsl:variable>
