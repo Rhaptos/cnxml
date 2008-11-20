@@ -1368,7 +1368,7 @@
       <xsl:if test="$captionelement='caption'">
         <xsl:attribute name="align">bottom</xsl:attribute>
       </xsl:if>
-      <span class="cnx_label">
+      <strong class="cnx_label">
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure">
             <xsl:call-template name="gentext">
@@ -1389,7 +1389,7 @@
             <!--Figure--> <xsl:number level="any" count="cnx:figure" /><xsl:if test="cnx:caption">: </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
-      </span>
+      </strong>
       <xsl:apply-templates select="cnx:caption"/>
     </xsl:element>
   </xsl:template>
