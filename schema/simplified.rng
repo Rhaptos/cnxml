@@ -2388,6 +2388,9 @@
         <data type="ID"/>
       </attribute>
       <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -2455,6 +2458,9 @@
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <ref name="label"/>
       </optional>
       <optional>
         <ref name="title"/>
@@ -2526,6 +2532,9 @@
         <data type="ID"/>
       </attribute>
       <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -2592,6 +2601,9 @@
         </attribute>
       </optional>
       <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -2647,6 +2659,9 @@
         <data type="ID"/>
       </attribute>
       <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -2697,6 +2712,9 @@
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <ref name="label"/>
       </optional>
       <optional>
         <ref name="title"/>
@@ -4671,6 +4689,9 @@
       <attribute name="id">
         <data type="ID"/>
       </attribute>
+      <optional>
+        <ref name="label"/>
+      </optional>
       <ref name="term"/>
       <choice>
         <ref name="seealso"/>
