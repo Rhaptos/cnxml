@@ -72,6 +72,7 @@
                                 ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:commentary[cnx:name or cnx:title or cnx:label[node()]]|
                                 ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:glossary|
                                 ancestor::cnx:para[cnx:name or cnx:title]|
@@ -1908,17 +1909,23 @@
     </div>
   </xsl:template>
 
-  <!-- PROBLEM -->
-  <xsl:template match="cnx:problem">
+  <!-- PROBLEM and COMMENTARY -->
+  <xsl:template match="cnx:problem|cnx:commentary">
     <div class="problem">
       <xsl:call-template name='IdCheck'/>
+      <xsl:attribute name="class">
+        <xsl:value-of select="local-name()" />
+      </xsl:attribute>
       <xsl:if test="cnx:label[node()] or cnx:name or cnx:title">
         <xsl:variable name="level-number">
           <xsl:call-template name="level-count" />
         </xsl:variable>
         <!-- h2, h3, etc... -->
         <xsl:element name="h{$level-number}">
-          <xsl:attribute name="class">problem-header</xsl:attribute>
+          <xsl:attribute name="class">
+            <xsl:value-of select="local-name()" />
+            <xsl:text>-header</xsl:text>
+          </xsl:attribute>
           <xsl:if test="cnx:label[node()]">
             <span class="cnx_label">
               <xsl:apply-templates select="cnx:label" />
