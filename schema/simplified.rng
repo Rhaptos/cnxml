@@ -1149,7 +1149,7 @@
             <value>underline</value>
             <value>normal</value>
             <value>smallcaps</value>
-            <text/>
+            <data type="NMTOKEN"/>
           </choice>
         </attribute>
       </optional>
@@ -1491,7 +1491,7 @@
             <value>underline</value>
             <value>normal</value>
             <value>smallcaps</value>
-            <text/>
+            <data type="NMTOKEN"/>
           </choice>
         </attribute>
       </optional>
