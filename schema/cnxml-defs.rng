@@ -1097,6 +1097,13 @@
     </element>
   </define>
 
+  <define name="note">
+    <choice>
+      <ref name="block-note"/>
+      <ref name="inline-note"/>
+    </choice>
+  </define>
+
   <define name="list-common-content">
     <ref name="common-attributes"/>
     <ref name="before-attribute"/>
@@ -1210,6 +1217,13 @@
       <ref name="bulleted-inline-list"/>
       <ref name="enumerated-inline-list"/>
       <ref name="labeled-item-inline-list"/>
+    </choice>
+  </define>
+
+  <define name="list">
+    <choice>
+      <ref name="block-list"/>
+      <ref name="inline-list"/>
     </choice>
   </define>
 
