@@ -605,12 +605,51 @@
     </a>
   </xsl:template>
 
+  <!--SPAN-->
+  <xsl:template match="cnx:span">
+    <xsl:variable name="span-element">
+      <xsl:choose>
+        <xsl:when test="@effect='bold'">b</xsl:when>
+        <xsl:when test="@effect='italics'">i</xsl:when>
+        <xsl:when test="@effect='underline'">u</xsl:when>
+        <xsl:otherwise>span</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:element name="{$span-element}">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:attribute name="class">
+        <xsl:text>span</xsl:text>
+        <xsl:if test="@effect='normal' or @effect='smallcaps'">
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="@effect" />
+        </xsl:if>
+      </xsl:attribute>
+      <xsl:apply-templates/>      
+    </xsl:element>
+  </xsl:template>
+
   <!--EMPHASIS-->
   <xsl:template match="cnx:emphasis">
-    <em class="emphasis">
+    <xsl:variable name="emphasis-element">
+      <xsl:choose>
+        <xsl:when test="@effect='bold'">b</xsl:when>
+        <xsl:when test="@effect='italics'">i</xsl:when>
+        <xsl:when test="@effect='underline'">u</xsl:when>
+        <xsl:when test="@effect='normal' or @effect='smallcaps'">span</xsl:when>
+        <xsl:otherwise>em</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:element name="{$emphasis-element}">
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates/>
-    </em>
+      <xsl:attribute name="class">
+        <xsl:text>emphasis</xsl:text>
+        <xsl:if test="@effect='normal' or @effect='smallcaps'">
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="@effect" />
+        </xsl:if>
+      </xsl:attribute>
+      <xsl:apply-templates/>      
+    </xsl:element>
   </xsl:template>
 
   <!--IMPORTANT-->
