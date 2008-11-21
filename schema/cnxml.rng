@@ -18,6 +18,13 @@
         </oneOrMore>
       </choice>
     </define>
+    <define name="mdml-extended-attribution">
+      <element name="extended-attribution">
+        <oneOrMore>
+          <ref name="link-group"/>
+        </oneOrMore>
+      </element>
+    </define>
   </include>
 
   <define name="mathml-math">
