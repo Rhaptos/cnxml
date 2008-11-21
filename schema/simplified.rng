@@ -1794,6 +1794,9 @@
         </choice>
       </group>
       <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -1886,6 +1889,9 @@
       </group>
       <optional>
         <attribute name="type"/>
+      </optional>
+      <optional>
+        <ref name="label"/>
       </optional>
       <zeroOrMore>
         <attribute>
@@ -3069,6 +3075,9 @@
       <attribute name="id">
         <data type="ID"/>
       </attribute>
+      <optional>
+        <attribute name="type"/>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>
@@ -4612,6 +4621,9 @@
         <data type="ID"/>
       </attribute>
       <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
         <ref name="label"/>
       </optional>
       <optional>
@@ -4686,6 +4698,9 @@
       <attribute name="id">
         <data type="ID"/>
       </attribute>
+      <optional>
+        <attribute name="type"/>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>

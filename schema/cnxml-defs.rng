@@ -1000,6 +1000,9 @@
       <ref name="id-attribute"/>
       <ref name="type-attribute"/>
       <ref name="linking-attributes"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
       <ref name="div-content"/>
     </element>
   </define>
@@ -1009,6 +1012,9 @@
       <ref name="display-inline-attribute"/>
       <ref name="linking-attributes"/>
       <ref name="type-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
       <ref name="inline-content"/>
     </element>
   </define>
@@ -1309,6 +1315,7 @@
     <element name="subfigure">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1621,6 +1628,7 @@
     <element name="commentary">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1637,6 +1645,7 @@
     <element name="definition">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
