@@ -435,6 +435,14 @@
     </p>
   </xsl:template>
 
+  <!--DIV-->
+  <xsl:template match="cnx:div">
+    <div class="div">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:apply-templates />
+    </div>
+  </xsl:template>
+
   <!-- LINK -->
   <xsl:template match="cnx:link">
     <a class="link" href="{@src}">
