@@ -559,6 +559,21 @@
     </optional>
   </define>
 
+  <define name="seealso-type-attribute">
+    <optional>
+      <attribute name="type">
+        <choice>
+          <value>related-term</value>
+          <value>narrower-term</value>
+          <value>broader-term</value>
+          <value>use-for</value>
+          <value>use</value>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
   <define name="cnxml-version">
     <attribute name="cnxml-version">
       <value>0.6</value>
@@ -1598,6 +1613,9 @@
       <ref name="id-attribute"/>
       <ref name="type-attribute"/>
       <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -1680,6 +1698,10 @@
       <ref name="common-attributes"/>
       <optional>
         <ref name="id-attribute"/>
+      </optional>
+      <ref name="type-attribute"/>
+      <optional>
+        <ref name="label"/>
       </optional>
       <oneOrMore>
         <ref name="term"/>
@@ -1823,6 +1845,9 @@
   </define>
 
   <define name="table.mdl">
+    <optional>
+      <ref name="label"/>
+    </optional>
     <optional>
       <ref name="table.title"/>
     </optional>

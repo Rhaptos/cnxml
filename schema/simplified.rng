@@ -4505,6 +4505,9 @@
         <attribute name="type"/>
       </optional>
       <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -4819,6 +4822,12 @@
           <data type="ID"/>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
+        <ref name="label"/>
+      </optional>
       <oneOrMore>
         <ref name="term"/>
       </oneOrMore>
@@ -5080,6 +5089,9 @@
       </optional>
       <optional>
         <attribute name="xml:lang"/>
+      </optional>
+      <optional>
+        <ref name="label"/>
       </optional>
       <optional>
         <ref name="title"/>
