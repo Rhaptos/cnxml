@@ -58,6 +58,8 @@ convert media to new media structures
   <xsl:variable name="media-conversions" 
                 select="document('')/xsl:stylesheet/mc:mediaconversions" 
                 xmlns:mc="#media-conversions"/>
+  <xsl:variable name="lower-alpha" select="'abcdefghijklmnopqrstuvwxyz'"/>
+  <xsl:variable name="upper-alpha" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
   <xsl:key name="author-by-id" match="/cnxml:document/cnxml:metadata/md:authorlist/md:author" use="@id"/>
 
   <xsl:template match="/*[local-name()='document']">
@@ -124,6 +126,51 @@ convert media to new media structures
       </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
+  </xsl:template>
+
+  <xsl:template match="cnxml:note">
+    <xsl:variable name="type" select="normalize-space(@type)"/>
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:if test="not(@id)">
+        <xsl:attribute name="id">
+          <xsl:value-of select="generate-id()"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="$type and $type != 'note' and $type != 'aside' and $type != 'warning' and $type != 'tip' and $type != 'important'">
+        <xsl:element name="label" namespace="http://cnx.rice.edu/cnxml">
+          <xsl:call-template name="uppercase-first-letter">
+            <xsl:with-param name="data" select="normalize-space(@type)"/>
+          </xsl:call-template>
+        </xsl:element>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="cnxml:rule">
+    <xsl:variable name="type" select="normalize-space(@type)"/>
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:if test="not(@id)">
+        <xsl:attribute name="id">
+          <xsl:value-of select="generate-id()"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="$type and $type != 'rule' and $type != 'theorem' and $type != 'lemma' and $type != 'corollary' and $type != 'law' and $type != 'proposition'">
+        <xsl:element name="label" namespace="http://cnx.rice.edu/cnxml">
+          <xsl:call-template name="uppercase-first-letter">
+            <xsl:with-param name="data" select="normalize-space(@type)"/>
+          </xsl:call-template>
+        </xsl:element>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template name="uppercase-first-letter">
+    <xsl:param name="data"/>
+    <xsl:value-of select="concat(translate(substring($data, 1, 1), $lower-alpha, $upper-alpha), substring($data, 2))"/>
   </xsl:template>
 
   <xsl:template match="cnxml:list[normalize-space(@type)='inline']

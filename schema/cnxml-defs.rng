@@ -559,6 +559,21 @@
     </optional>
   </define>
 
+  <define name="seealso-type-attribute">
+    <optional>
+      <attribute name="type">
+        <choice>
+          <value>related-term</value>
+          <value>narrower-term</value>
+          <value>broader-term</value>
+          <value>use-for</value>
+          <value>use</value>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+
   <define name="cnxml-version">
     <attribute name="cnxml-version">
       <value>0.6</value>
@@ -708,6 +723,18 @@
     <ref name="common-attributes"/>
     <ref name="id-attribute"/>
     <optional>
+      <ref name="title"/>
+    </optional>
+    <oneOrMore>
+      <ref name="section-content-class"/>
+    </oneOrMore>
+  </define>
+
+  <define name="statement-content">
+    <ref name="common-attributes"/>
+    <ref name="id-attribute"/>
+    <ref name="type-attribute"/>
+    <optional>
       <ref name="label"/>
     </optional>
     <optional>
@@ -717,7 +744,6 @@
       <ref name="section-content-class"/>
     </oneOrMore>
   </define>
-
 <!--
     Element Definitions
 -->
@@ -989,6 +1015,9 @@
       <ref name="id-attribute"/>
       <ref name="type-attribute"/>
       <ref name="linking-attributes"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
       <ref name="div-content"/>
     </element>
   </define>
@@ -998,6 +1027,9 @@
       <ref name="display-inline-attribute"/>
       <ref name="linking-attributes"/>
       <ref name="type-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
       <ref name="inline-content"/>
     </element>
   </define>
@@ -1076,6 +1108,9 @@
     <ref name="display-block-default-attribute"/>
     <ref name="id-attribute"/>
     <optional>
+      <ref name="label"/>
+    </optional>
+    <optional>
       <ref name="title"/>
     </optional>
     <oneOrMore>
@@ -1087,6 +1122,9 @@
     <ref name="display-inline-attribute"/>
     <optional>
       <ref name="id-attribute"/>
+    </optional>
+    <optional>
+      <ref name="label"/>
     </optional>
     <optional>
       <ref name="title"/>
@@ -1292,6 +1330,7 @@
     <element name="subfigure">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1574,6 +1613,9 @@
       <ref name="id-attribute"/>
       <ref name="type-attribute"/>
       <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -1604,6 +1646,7 @@
     <element name="commentary">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="label"/>
       </optional>
@@ -1620,6 +1663,10 @@
     <element name="definition">
       <ref name="common-attributes"/>
       <ref name="id-attribute"/>
+      <ref name="type-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
       <ref name="term"/>
       <choice>
         <ref name="seealso"/>
@@ -1652,6 +1699,10 @@
       <optional>
         <ref name="id-attribute"/>
       </optional>
+      <ref name="type-attribute"/>
+      <optional>
+        <ref name="label"/>
+      </optional>
       <oneOrMore>
         <ref name="term"/>
       </oneOrMore>
@@ -1683,18 +1734,16 @@
 
   <define name="statement">
     <element name="statement">
-      <ref name="type-attribute"/>
-      <ref name="section-content"/>
+      <ref name="statement-content"/>
     </element>
   </define>
 
   <define name="proof">
     <element name="proof">
-      <ref name="type-attribute"/>
-      <ref name="section-content"/>
+      <ref name="statement-content"/>
     </element>
   </define>
- 
+
 <!-- 
     CALS Table Definitions
  -->
@@ -1796,6 +1845,9 @@
   </define>
 
   <define name="table.mdl">
+    <optional>
+      <ref name="label"/>
+    </optional>
     <optional>
       <ref name="table.title"/>
     </optional>

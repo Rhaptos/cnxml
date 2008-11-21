@@ -60,6 +60,18 @@
       <l:gentext key="ClickForDiagnosis" text="Click for Diagnosis"/>
       <l:gentext key="HideDiagnosis" text="Hide Diagnosis"/>
       <l:gentext key="Footnotes" text="Footnotes"/>
+      <l:gentext key="warning" text="Warning"/>
+      <l:gentext key="important" text="Important"/>
+      <l:gentext key="aside" text="Aside"/>
+      <l:gentext key="tip" text="Tip"/>
+      <l:gentext key="Note" text="Note"/>
+      <l:gentext key="theorem" text="Theorem"/>
+      <l:gentext key="lemma" text="Lemma"/>
+      <l:gentext key="corollary" text="Corollary"/>
+      <l:gentext key="law" text="Law"/>
+      <l:gentext key="proposition" text="Proposition"/>
+      <l:gentext key="Rule" text="Rule"/>
+      <l:gentext key="Step" text="Step"/>
 
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>
