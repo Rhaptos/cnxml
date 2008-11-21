@@ -69,9 +69,17 @@
     </element>
   </define>
 
+  <define name="mdml-homepage">
+    <optional>
+      <attribute name="homepage"/>
+    </optional>
+  </define>
+
   <define name="mdml-author">
     <element name="author">
+      <ref name="mdml-common-attributes"/>
       <ref name="mdml-id-attribute"/>
+      <ref name="mdml-homepage"/>
       <ref name="mdml-personname-content"/>
     </element>
   </define>
@@ -106,6 +114,7 @@
     <element name="maintainer">
       <ref name="mdml-common-attributes"/>
       <ref name="mdml-id-attribute"/>
+      <ref name="mdml-homepage"/>
       <ref name="mdml-personname-content"/>
     </element>
   </define>
