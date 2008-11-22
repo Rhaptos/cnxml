@@ -191,9 +191,9 @@ convert media to new media structures
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="cnxml:exercise">
+  <xsl:template match="cnxml:solution">
     <xsl:copy>
-      <xsl:if test="./processing-instruction('solution_in_back')">
+      <xsl:if test="preceding-sibling::processing-instruction('solution_in_back') or following-sibling::processing-instruction('solution_in_back')">
         <xsl:attribute name="print-placement">end</xsl:attribute>
       </xsl:if>
       <xsl:apply-templates select="@*"/>
