@@ -60,6 +60,9 @@
         <data type="NMTOKEN"/>
       </attribute>
       <optional>
+        <attribute name="homepage"/>
+      </optional>
+      <optional>
         <ref name="mdml-honorific"/>
       </optional>
       <ref name="mdml-firstname"/>
@@ -87,6 +90,9 @@
       <attribute name="id">
         <data type="NMTOKEN"/>
       </attribute>
+      <optional>
+        <attribute name="homepage"/>
+      </optional>
       <optional>
         <ref name="mdml-honorific"/>
       </optional>
@@ -1100,8 +1106,10 @@
         </attribute>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="lines" a:defaultValue="1">
-          <data type="integer"/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="count" a:defaultValue="1">
+          <data type="integer">
+            <param name="minInclusive">1</param>
+          </data>
         </attribute>
       </optional>
     </element>
@@ -1133,8 +1141,10 @@
         </attribute>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="lines" a:defaultValue="1">
-          <data type="integer"/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="count" a:defaultValue="1">
+          <data type="integer">
+            <param name="minInclusive">1</param>
+          </data>
         </attribute>
       </optional>
     </element>

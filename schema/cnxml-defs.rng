@@ -582,8 +582,9 @@
 
   <define name="count-attribute">
     <optional>
-      <attribute name="lines" a:defaultValue="1">
-        <data type="integer"/>
+      <attribute name="count" a:defaultValue="1">
+        <data type="integer"><param name="minInclusive">1</param>
+        </data>
       </attribute>
     </optional>
   </define>
