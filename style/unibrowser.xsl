@@ -722,6 +722,61 @@
     </pre>
   </xsl:template>
 
+  <!-- NEWLINE and SPACE -->
+  <xsl:template match="cnx:newline|cnx:space">
+    <xsl:variable name="blank-element">
+      <xsl:choose>
+        <xsl:when test="self::cnx:space">pre</xsl:when>
+        <xsl:otherwise>span</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:element name="{$blank-element}">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:attribute name="class">
+        <xsl:value-of select="local-name()" />
+        <xsl:if test="@effect='underline'">
+          <xsl:text> underline</xsl:text>
+        </xsl:if>
+      </xsl:attribute>
+      <xsl:call-template name="loop">
+        <xsl:with-param name="name">
+          <xsl:value-of select="local-name()" />
+          <xsl:if test="@effect='underline'">
+            <xsl:text>underline</xsl:text>
+          </xsl:if>
+        </xsl:with-param>
+        <xsl:with-param name="count">
+          <xsl:choose>
+            <xsl:when test="@count">
+              <xsl:value-of select="@count" />
+            </xsl:when>
+            <xsl:otherwise>1</xsl:otherwise>
+          </xsl:choose>
+        </xsl:with-param>
+      </xsl:call-template>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Loop through the code based on the value of the @count attribute -->
+  <xsl:template name="loop">
+    <xsl:param name="name">newline</xsl:param>
+    <xsl:param name="count">1</xsl:param>
+    <xsl:choose>
+      <xsl:when test="$count = '0'" />
+      <xsl:otherwise>
+        <xsl:choose>
+          <xsl:when test="$name='newline'"><br /></xsl:when>
+          <xsl:when test="$name='newlineunderline'"><hr /></xsl:when>
+          <xsl:when test="contains($name,'space')"> </xsl:when>
+        </xsl:choose>
+        <xsl:call-template name="loop">
+          <xsl:with-param name="name" select="$name" />
+          <xsl:with-param name="count" select="$count - 1" />
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <!-- FOOTNOTE -->
   <xsl:template match="cnx:note[@type='footnote']|cnx:footnote">
     <xsl:variable name="footnote-number">
