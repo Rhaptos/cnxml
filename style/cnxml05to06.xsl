@@ -197,10 +197,11 @@ convert media to new media structures
         <xsl:attribute name="print-placement">end</xsl:attribute>
       </xsl:if>
       <xsl:apply-templates select="@*"/>
+      <xsl:call-template name="generate-id-if-required"/>
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
-  
+
   <xsl:template match="processing-instruction('solution_in_back')"></xsl:template>
   
   <xsl:template match="*" mode="default-copy">
