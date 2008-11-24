@@ -583,7 +583,8 @@
   <define name="count-attribute">
     <optional>
       <attribute name="count" a:defaultValue="1">
-        <data type="integer"><param name="minInclusive">1</param>
+        <data type="integer">
+          <param name="minInclusive">1</param>
         </data>
       </attribute>
     </optional>
@@ -936,6 +937,7 @@
         <ref name="id-attribute"/>
       </optional>
       <ref name="count-attribute"/>
+      <ref name="effect-attribute"/>
     </element>
   </define>
 
@@ -946,6 +948,7 @@
         <ref name="id-attribute"/>
       </optional>
       <ref name="count-attribute"/>
+      <ref name="effect-attribute"/>
     </element>
   </define>
 
