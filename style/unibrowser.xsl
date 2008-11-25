@@ -444,95 +444,173 @@
     </div>
   </xsl:template>
 
-  <!-- LINK -->
-  <xsl:template match="cnx:link">
+  <!-- LINK (cnxml version 0.5 and before) -->
+  <xsl:template match="cnx:link[@src]">
     <a class="link" href="{@src}">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
     </a>
   </xsl:template>
 
-  <!-- CNXN with target attribute only (no document) -->
+  <!-- LINK (cnxml version 0.6) -->
+  <xsl:template match="cnx:link|cnx:cnxn">
+    <xsl:choose>
+      <!-- like old LINK element -->
+      <xsl:when test="@url">
+        <a class="link" href="{@url}">
+          <xsl:call-template name="common-link-attributes" />
+          <xsl:choose>
+            <xsl:when test="node()">
+              <xsl:apply-templates />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="reference-text" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </a>
+      </xsl:when>
+      <!-- like old CNXN element -->
+      <xsl:otherwise>
+        <a class="cnxn">
+          <xsl:call-template name="common-link-attributes" />
+          <xsl:call-template name="cnxn-url-and-text" />
+        </a>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
-  <!-- Since the target is in the same document, we know what the author
-  is linking to.  If there is text provides, that text will serve as
-  the link text. If not, we will provide it, including numbering.  -->
-  <xsl:template match="cnx:cnxn[not(@document|@module)]">
-    <a class="cnxn" href="#{@target}">
-      <xsl:call-template name='IdCheck'/>
-      <xsl:if test="@strength">
-	<xsl:attribute name="title">
-          <xsl:call-template name="gentext">
-            <xsl:with-param name="key">Strength</xsl:with-param>
-            <xsl:with-param name="lang" select="/module/metadata/language" />
-          </xsl:call-template>
-          <!--Strength--> <xsl:text> </xsl:text><xsl:value-of select="@strength" /></xsl:attribute>
-      </xsl:if>
+  <!-- Common link attributes: IdCheck, @strength, and @window -->
+  <xsl:template name="common-link-attributes">
+    <xsl:call-template name='IdCheck'/>
+    <xsl:if test="@strength">
+      <xsl:attribute name="title">
+        <!--Strength-->
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Strength</xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
+        </xsl:call-template>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="@strength" />
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:if test="@window='new'">
+      <xsl:attribute name="target">_blank</xsl:attribute>
+      <xsl:attribute name="class">cnxn new</xsl:attribute>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- Put a URL together and give the link/cnxn text if it's empty -->
+  <xsl:template name="cnxn-url-and-text">
+    <xsl:variable name="target">
       <xsl:choose>
-        <xsl:when test="node()">
-	  <xsl:apply-templates />
+        <xsl:when test="@target or @target-id">
+          <xsl:value-of select="@target|@target-id" />
         </xsl:when>
-	<xsl:when test="key('id', @target)">
-          <xsl:for-each select="key('id', @target)">
-            <xsl:variable name="type">
-              <xsl:value-of select="@type" />
-            </xsl:variable>
-            <!-- Build a label -->
-            <span class="cnxn-target">
-              <xsl:choose>
-                <xsl:when test="self::cnx:note[@type!=''] or self::cnx:rule">
-                  <xsl:value-of select="$type" />
-                </xsl:when>
-                <xsl:when test="self::cnx:exercise[ancestor::cnx:example]">
-                  <!-- Problem -->
-                  <xsl:call-template name="gentext">
-                    <xsl:with-param name="key">Problem</xsl:with-param>
-                    <xsl:with-param name="lang" select="/module/metadata/language" />
-                  </xsl:call-template>
-                </xsl:when>
-                <xsl:when test="self::cnx:problem[not(parent::cnx:exercise[ancestor::cnx:example])]">
-                  <!-- Exercise -->
-                  <xsl:call-template name="gentext">
-                    <xsl:with-param name="key">Exercise</xsl:with-param>
-                    <xsl:with-param name="lang" select="/module/metadata/language" />
-                  </xsl:call-template>
-                </xsl:when>
-                <xsl:otherwise>
-                  <!--<xsl:value-of select="local-name(key('id',@target))" />-->
-                  <xsl:call-template name="gentext">
-                    <xsl:with-param name="key"><xsl:value-of select="local-name(.)" /></xsl:with-param>
-                    <xsl:with-param name="lang" select="/module/metadata/language"/>
-                  </xsl:call-template>
-                </xsl:otherwise>
-              </xsl:choose>
-            </span>
-            <xsl:text> </xsl:text>
-            <!-- Build a number -->
+        <xsl:otherwise>0</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:attribute name="href">
+      <xsl:choose>
+        <xsl:when test="not(@document) and not(@module) and not(@version)" />
+        <xsl:when test="not(@document) and not(@module) and @version">
+          <xsl:text>../</xsl:text>
+          <xsl:value-of select="@version" />
+          <xsl:text>/</xsl:text>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:text>/content/</xsl:text>
+          <xsl:value-of select="@document|@module" />
+          <xsl:text>/</xsl:text>
+          <xsl:choose>
+            <xsl:when test="@version">
+              <xsl:value-of select="@version" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>latest</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+          <xsl:text>/</xsl:text>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:if test="$target or @resource">
+        <xsl:text>#</xsl:text>
+        <xsl:value-of select="$target" />
+        <xsl:value-of select="@resource" />
+      </xsl:if>
+    </xsl:attribute>
+    <xsl:choose>
+      <xsl:when test="node()">
+        <xsl:apply-templates />
+      </xsl:when>
+      <xsl:when test="key('id',$target) and not(@document|@module|@version)">
+        <span class="cnxn-target">
+          <xsl:for-each select="key('id', $target)">
+            <!--<xsl:value-of select="local-name(key('id',$target))" />-->
             <xsl:choose>
-              <xsl:when test="self::cnx:note[@type='note' or @type='' or not(@type)]">
-                <xsl:number level="any" count="cnx:note[@type='note' or @type='' or not(@type)]" />
+              <xsl:when test="cnx:label[node()]">
+                <xsl:apply-templates select="cnx:label" />
               </xsl:when>
-              <xsl:when test="self::cnx:note">
-                <xsl:number level="any" count="cnx:note[@type=$type]" />
+              <xsl:when test="self::cnx:note[@type!=''] or self::cnx:rule">
+                <xsl:value-of select="@type" />
               </xsl:when>
-              <xsl:when test="self::cnx:rule">
-                <xsl:number level="any" count="cnx:rule[@type=$type]" />
+              <xsl:when test="self::cnx:exercise[ancestor::cnx:example]">
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key">Problem</xsl:with-param>
+                  <xsl:with-param name="lang" select="/module/metadata/language" />
+                </xsl:call-template>
+              </xsl:when>
+              <xsl:when test="self::cnx:problem[not(parent::cnx:exercise[ancestor::cnx:example])]">
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key">Exercise</xsl:with-param>
+                  <xsl:with-param name="lang" select="/module/metadata/language" />
+                </xsl:call-template>
               </xsl:when>
               <xsl:when test="self::cnx:subfigure">
-		<xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" />
+                <xsl:choose>
+                  <xsl:when test="cnx:label">
+                    <xsl:apply-templates select="cnx:label" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:call-template name="gentext">
+                      <xsl:with-param name="key">Figure</xsl:with-param>
+                      <xsl:with-param name="lang" select="/module/metadata/language" />
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key" select="local-name()" />
+                  <xsl:with-param name="lang" select="/module/metadata/language" />
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text> </xsl:text>
+            <xsl:choose>
+              <xsl:when test="self::cnx:note[@type='note' or not(@type) or @type='']">
+                <xsl:number level="any" count="cnx:note[@type='note' or not(@type) or @type='']" />
+              </xsl:when>
+              <xsl:when test="@type!=''">
+                <xsl:variable name="element" select="name()" />
+                <xsl:variable name="type" select="@type" />
+                <xsl:number level="any" count="*[name()=$element][@type=$type]" />
+              </xsl:when>
+              <xsl:when test="self::cnx:subfigure">
+                <xsl:number level="any" count="cnx:figure[not(@type) or @type='']" />
+                <xsl:number level="single" count="cnx:subfigure[not(@type) or @type='']" format="(a)" />
               </xsl:when>
               <xsl:when test="self::cnx:solution or self::cnx:problem">
                 <xsl:choose>
                   <xsl:when test="parent::cnx:exercise[ancestor::cnx:example]">
-                    <xsl:number level="any" count="cnx:exercise" from="cnx:example" />
+                    <xsl:number level="any" count="cnx:exercise[not(@type) or @type='']" from="cnx:example" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example)]" />
+                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example)][not(@type) or @type='']" />
                   </xsl:otherwise>
                 </xsl:choose>
                 <xsl:if test="self::cnx:solution and count(parent::cnx:exercise/cnx:solution) > 1">
                   <xsl:text>.</xsl:text>
-                  <xsl:number count="cnx:solution" />
+                  <xsl:number level="single" count="cnx:solution[not(@type) or @type='']" format="A" />
                 </xsl:if>
               </xsl:when>
               <xsl:when test="self::cnx:exercise">
@@ -546,64 +624,44 @@
                 </xsl:choose>
               </xsl:when>
               <xsl:otherwise>
-		<xsl:number level="any" />
+                <xsl:variable name="element" select="name()" />
+                <xsl:number level="any" count="*[name()=$element][not(@type) or @type='']" />
               </xsl:otherwise>
             </xsl:choose>
           </xsl:for-each>
-        </xsl:when>
-	<xsl:otherwise>
-          <xsl:text>(</xsl:text>
-          <!-- Reference -->
-          <xsl:call-template name="gentext">
-            <xsl:with-param name="key">Reference</xsl:with-param>
-            <xsl:with-param name="lang" select="/module/metadata/language"/>
-          </xsl:call-template>
-          <xsl:text>)</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-    </a>
+        </span>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="reference-text" />
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
-  <!-- CNXN with document attribute only (no target) -->
-  <xsl:template match="cnx:cnxn[not(@target)]">
-    <a class="cnxn" href="/content/{@module|@document}/latest/">
-      <xsl:call-template name='IdCheck'/>
-      <xsl:choose>
-	<xsl:when test="string()">
-	  <xsl:apply-templates />
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:text>(</xsl:text>
-          <!-- Reference -->
-          <xsl:call-template name="gentext">
-            <xsl:with-param name="key">Reference</xsl:with-param>
-            <xsl:with-param name="lang" select="/module/metadata/language"/>
-          </xsl:call-template>
-          <xsl:text>)</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-    </a>
+  <xsl:template name="reference-text">
+    <xsl:text>(</xsl:text>
+    <!-- Reference -->
+    <xsl:call-template name="gentext">
+      <xsl:with-param name="key">Reference</xsl:with-param>
+      <xsl:with-param name="lang" select="/module/metadata/language"/>
+    </xsl:call-template>
+    <xsl:text>)</xsl:text>
   </xsl:template>
 
-  <!-- CNXN with target and document attributes -->
-  <xsl:template match="cnx:cnxn[@target and (@module or @document)]">
-    <a class="cnxn" href="/content/{@module|@document}/latest/#{@target}">
-      <xsl:call-template name='IdCheck'/>
-      <xsl:choose>
-	<xsl:when test="string()">
-	  <xsl:value-of select="normalize-space(.)" />
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:text>(</xsl:text>
-          <!-- Reference -->
-          <xsl:call-template name="gentext">
-            <xsl:with-param name="key">Reference</xsl:with-param>
-            <xsl:with-param name="lang" select="/module/metadata/language"/>
-          </xsl:call-template>
-          <xsl:text>)</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-    </a>
+  <xsl:template name="solution-test">
+    <xsl:if test="self::cnx:solution">
+      <xsl:if test="count(parent::cnx:exercise/cnx:solution) > 1">
+        <xsl:text>, </xsl:text>
+      </xsl:if>
+      <!-- Solution -->
+      <xsl:call-template name="gentext">
+        <xsl:with-param name="key">Solution</xsl:with-param>
+        <xsl:with-param name="lang" select="/module/metadata/language" />
+      </xsl:call-template>
+      <xsl:if test="count(parent::cnx:exercise/cnx:solution) > 1">
+         <xsl:text> </xsl:text>
+         <xsl:number format="A" />
+      </xsl:if>
+    </xsl:if>
   </xsl:template>
 
   <!--SPAN-->
@@ -1498,20 +1556,56 @@
       <strong class="cnx_label">
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure">
-            <xsl:call-template name="gentext">
-              <xsl:with-param name="key">Subfigure</xsl:with-param>
-              <xsl:with-param name="lang" select="/module/metadata/language" />
-            </xsl:call-template>
-            <xsl:text>&#160;</xsl:text>
-            <!--Subfigure--> <xsl:number level="any" count="cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" /><xsl:if test="cnx:caption">: </xsl:if>
+            <xsl:choose>
+              <xsl:when test="@type!=''">
+                <xsl:variable name="type" select="@type" />
+                <xsl:if test="cnx:label[node()]">
+                  <xsl:apply-templates select="cnx:label" />
+                  <xsl:text> </xsl:text>
+                  <xsl:number level="any" count="cnx:subfigure[@type=$type]" />
+                  <xsl:if test="cnx:caption">
+                    <xsl:text>: </xsl:text>
+                  </xsl:if>
+                </xsl:if>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:if test="cnx:label[node()]">
+                  <xsl:apply-templates select="cnx:label" />
+                  <xsl:text> </xsl:text>
+                </xsl:if>
+                <xsl:number format="(a)" count="cnx:subfigure[not(@type) or @type='']" />
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text> </xsl:text>
 	  </xsl:when>
           <xsl:otherwise>
-            <xsl:call-template name="gentext">
-              <xsl:with-param name="key">Figure</xsl:with-param>
-              <xsl:with-param name="lang" select="/module/metadata/language" />
-            </xsl:call-template>
-            <xsl:text>&#160;</xsl:text>
-            <!--Figure--> <xsl:number level="any" count="cnx:figure" /><xsl:if test="cnx:caption">: </xsl:if>
+            <xsl:if test="not(cnx:label[not(node())])">
+              <xsl:choose>
+                <xsl:when test="cnx:label[node()]">
+                  <xsl:apply-templates select="cnx:label" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <!-- Figure -->
+                  <xsl:call-template name="gentext">
+                    <xsl:with-param name="key">Figure</xsl:with-param>
+                    <xsl:with-param name="lang" select="/module/metadata/language" />
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
+              <xsl:text> </xsl:text>
+              <xsl:choose>
+                <xsl:when test="@type!=''">
+                  <xsl:variable name="type" select="@type" />
+                  <xsl:number level="any" count="cnx:figure[@type=$type]" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:number level="any" count="cnx:figure[not(@type) or @type='']" />
+                </xsl:otherwise>
+              </xsl:choose>
+              <xsl:if test="cnx:caption">
+                <xsl:text>: </xsl:text>
+              </xsl:if>
+            </xsl:if>
           </xsl:otherwise>
         </xsl:choose>
       </strong>
