@@ -760,6 +760,17 @@
     </xsl:choose>
   </xsl:template>
   
+  <!-- SUP and SUB -->
+  <xsl:template match="cnx:sup|cnx:sub">
+    <xsl:element name="local-name()">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:attribute name="class">
+        <xsl:value-of select="local-name()" />
+      </xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:element>
+  </xsl:template>
+
   <!-- FOREIGN -->
   <xsl:template match="cnx:foreign">
     <span class="foreign">
