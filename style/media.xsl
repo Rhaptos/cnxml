@@ -7,110 +7,226 @@
   <!-- Squash PARAMs-->
   <xsl:template match="cnx:param" />
 
-  <!-- MEDIA:RANDOM -->
+  <!-- MEDIA (catch-all/fall-back case) -->
   <xsl:template match="cnx:media">
-    <div class="media">
-      <xsl:call-template name='IdCheck'/>
-      <object>
- 	<xsl:for-each select="cnx:param">
-	  <xsl:attribute name='{@name}'>
-	    <xsl:value-of select='@value'/>
-	  </xsl:attribute> 
-	</xsl:for-each>
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key">MediaFile</xsl:with-param>
-          <xsl:with-param name="lang" select="/module/metadata/language" />
-        </xsl:call-template>:
-	<!--Media File:-->
-	<a class="link" href="{@src}">
-	  <xsl:choose>
-	    <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
-	      <xsl:value-of select="cnx:param[@name='title']/@value" />
-	    </xsl:when>
-	    <xsl:otherwise>
-	      <xsl:value-of select="@src" />
-	    </xsl:otherwise>
-	  </xsl:choose>
-	</a>
-        <xsl:apply-templates/>
-      </object>
-    </div>
-  </xsl:template>
-
-  <!-- MEDIA:IMAGE --> 
-  <xsl:template match="cnx:media[starts-with(@type,'image')]|cnx:mediaobject[starts-with(@type,'image')]">
-    <span class="media">
     <xsl:choose>
-      <xsl:when test="child::cnx:param[@name='thumbnail']">
-	<a href="{@src}">
-	  <img src="{child::cnx:param[@name='thumbnail']/@value}">
-	    <xsl:call-template name='IdCheck'/>
-	    <xsl:for-each select="cnx:param[@name != 'thumbnail']">
-	      <xsl:attribute name='{@name}'>
-		<xsl:value-of select='@value'/>
-	      </xsl:attribute> 
-	    </xsl:for-each>
-            <xsl:call-template name="altgenerator" />
-	  </img>
-	</a>	    
+      <xsl:when test="$version='0.6'">
+        <xsl:apply-templates select="*[not(@for='print')][1]" />
       </xsl:when>
       <xsl:otherwise>
-	<img src="{@src}">
-	  <xsl:call-template name='IdCheck'/>
-	  <xsl:for-each select="cnx:param">
-	    <xsl:attribute name='{@name}'>
-	      <xsl:value-of select='@value'/>
-	    </xsl:attribute> 
-	  </xsl:for-each>
-          <xsl:call-template name="altgenerator" />
-	  <xsl:apply-templates select="media" />
-	</img>
+        <div class="media">
+          <xsl:call-template name='IdCheck'/>
+          <object>
+            <xsl:for-each select="cnx:param">
+              <xsl:attribute name='{@name}'>
+                <xsl:value-of select='@value'/>
+              </xsl:attribute> 
+            </xsl:for-each>
+            <span class="cnx_label">
+              <!--Media File:-->
+              <xsl:call-template name="gentext">
+                <xsl:with-param name="key">MediaFile</xsl:with-param>
+                <xsl:with-param name="lang" select="/module/metadata/language" />
+              </xsl:call-template>
+              <xsl:text>: </xsl:text>
+            </span>
+            <a class="link" href="{@src}">
+              <xsl:choose>
+                <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
+                  <xsl:value-of select="cnx:param[@name='title']/@value" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:value-of select="@src" />
+                </xsl:otherwise>
+              </xsl:choose>
+            </a>
+            <xsl:apply-templates/>
+          </object>
+        </div>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <!-- MEDIA of type: IMAGE (cnxml version 0.5 and below) --> 
+  <xsl:template match="cnx:media[starts-with(@type,'image')]|cnx:mediaobject[starts-with(@type,'image')]">
+    <span class="media">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:choose>
+        <xsl:when test="child::cnx:param[@name='thumbnail']">
+          <a href="{@src}">
+            <img src="{child::cnx:param[@name='thumbnail']/@value}">
+              <xsl:for-each select="cnx:param[@name!='thumbnail']">
+                <xsl:attribute name='{@name}'>
+                  <xsl:value-of select='@value'/>
+                </xsl:attribute>
+              </xsl:for-each>
+              <xsl:if test="not(cnx:param[@name='alt'])">
+                <xsl:call-template name="alt-generator" />
+              </xsl:if>
+            </img>
+          </a>
+        </xsl:when>
+        <xsl:otherwise>
+          <img src="{@src}">
+            <xsl:for-each select="cnx:param">
+              <xsl:attribute name='{@name}'>
+                <xsl:value-of select='@value'/>
+              </xsl:attribute> 
+            </xsl:for-each>
+            <xsl:if test="not(cnx:param[@name='alt'])">
+              <xsl:call-template name="alt-generator" />
+            </xsl:if>
+          </img>
+        </xsl:otherwise>
+      </xsl:choose>
     </span>
   </xsl:template>
 
+  <!-- IMAGE (cnxml version 0.6) -->
+  <xsl:template match="cnx:image">
+    <span class="media" id="{parent::cnx:media/@id}">
+      <xsl:choose>
+        <xsl:when test="@thumbnail!=''">
+          <a href="{@src}">
+            <img src="{@thumbnail}">
+              <xsl:call-template name="image-attributes" />
+            </img>
+          </a>
+        </xsl:when>
+        <xsl:otherwise>
+          <img src="{@src}">
+            <xsl:call-template name="image-attributes" />
+          </img>
+        </xsl:otherwise>
+      </xsl:choose>
+    </span>
+  </xsl:template>
+
+  <xsl:template name="image-attributes">
+    <xsl:for-each select="@width|@height|@id">
+      <xsl:attribute name="{name()}">
+        <xsl:value-of select="." />
+      </xsl:attribute>
+    </xsl:for-each>
+    <xsl:choose>
+      <xsl:when test="@longdesc">
+        <xsl:attribute name="longdesc">
+          <xsl:value-of select="@longdesc" />
+        </xsl:attribute>
+      </xsl:when>
+      <xsl:when test="cnx:longdesc">
+        <xsl:attribute name="longdesc">
+          <xsl:value-of select="cnx:longdesc" />
+        </xsl:attribute>
+      </xsl:when>
+      <xsl:when test="parent::cnx:media/@longdesc">
+        <xsl:attribute name="longdesc">
+          <xsl:value-of select="parent::cnx:media/@longdesc" />
+        </xsl:attribute>
+      </xsl:when>
+      <xsl:when test="parent::cnx:media/cnx:longdesc">
+        <xsl:attribute name="longdesc">
+          <xsl:value-of select="parent::cnx:media/cnx:longdesc" />
+        </xsl:attribute>
+      </xsl:when>
+    </xsl:choose>
+    <xsl:choose>
+      <xsl:when test="parent::cnx:media[@alt!='']">
+        <xsl:attribute name="alt">
+          <xsl:value-of select="parent::cnx:media/@alt" />
+        </xsl:attribute>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="alt-generator" />
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:for-each select="cnx:param">
+      <xsl:attribute name="{@name}">
+        <xsl:value-of select="@value" />
+      </xsl:attribute>
+    </xsl:for-each>
+  </xsl:template>
+
   <!-- Alt generator (if that param is absent) -->
-  <xsl:template name="altgenerator">
+  <xsl:template name="alt-generator">
+<!--
     <xsl:if test="not(cnx:param[@name='alt'])">
+-->
       <xsl:attribute name="alt">
         <xsl:choose>
-          <xsl:when test="parent::cnx:figure">
+          <xsl:when test="parent::cnx:subfigure or ancestor::*[2][self::cnx:subfigure]">
             <xsl:choose>
-              <xsl:when test="parent::cnx:figure/*[self::cnx:name or self::cnx:title]">
-                <xsl:value-of select="parent::cnx:figure/*[self::cnx:name or self::cnx:title]" />
+              <xsl:when test="ancestor::cnx:subfigure[1]/*[self::cnx:name or self::cnx:title]">
+                <xsl:value-of select="ancestor::cnx:subfigure[1]/*[self::cnx:name or self::cnx:title]" />
               </xsl:when>
-              <xsl:otherwise>
-                <!--Figure--> 
-                <xsl:call-template name="gentext">
-                  <xsl:with-param name="key">Figure</xsl:with-param>
-                    <xsl:with-param name="lang" select="/module/metadata/language" />
-                  </xsl:call-template>
-                <xsl:text> </xsl:text>
-                <xsl:number level="any" count="cnx:figure" />
-              </xsl:otherwise>
+              <xsl:when test="not(ancestor::cnx:subfigure[1][cnx:label[not(node())]])">
+                <xsl:choose>
+                  <xsl:when test="ancestor::cnx:subfigure[1][@type!='']">
+                    <xsl:if test="ancestor::cnx:subfigure[1][cnx:label]">
+                      <xsl:value-of select="ancestor::cnx:subfigure[1]/cnx:label" />
+                      <xsl:text> </xsl:text>
+                    </xsl:if>
+                    <xsl:variable name="type" select="ancestor::cnx:subfigure[1]/@type" />
+                    <xsl:number level="any" count="cnx:subfigure[@type=$type]" />
+                  </xsl:when>
+                  <xsl:when test="ancestor::cnx:subfigure[1]/cnx:label">
+                    <xsl:value-of select="ancestor::cnx:subfigure[1]/cnx:label" />
+                    <xsl:text> </xsl:text>
+                    <xsl:number count="cnx:subfigure[not(@type) or @type='']" format="(a)" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <!--Figure-->
+                    <xsl:call-template name="gentext">
+                      <xsl:with-param name="key">Figure</xsl:with-param>
+                      <xsl:with-param name="lang" select="/module/metadata/language" />
+                    </xsl:call-template>
+                    <xsl:text> </xsl:text>
+                    <xsl:choose>
+                      <xsl:when test="ancestor::cnx:figure[1][@type!='']">
+                        <xsl:variable name="type" select="ancestor::cnx:figure[1]/@type" />
+                        <xsl:number level="any" count="cnx:figure[@type=$type]" />
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:number level="any" count="cnx:figure[not(@type) or @type='']" />
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:number count="cnx:subfigure[not(@type) or @type='']" format="(a)" />
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:when>
             </xsl:choose>
             <xsl:text> (</xsl:text>
             <xsl:value-of select="@src" />
             <xsl:text>)</xsl:text>
           </xsl:when>
-          <xsl:when test="parent::cnx:subfigure">
+          <xsl:when test="parent::cnx:figure or ancestor::*[2][self::cnx:figure]">
             <xsl:choose>
-              <xsl:when test="parent::cnx:subfigure/*[self::cnx:name or self::cnx:title]">
-                <xsl:value-of select="parent::cnx:subfigure/*[self::cnx:name or self::cnx:title]" />
+              <xsl:when test="ancestor::cnx:figure[1]/*[self::cnx:name or self::cnx:title]">
+                <xsl:value-of select="ancestor::cnx:figure[1]/*[self::cnx:name or self::cnx:title]" />
               </xsl:when>
               <xsl:otherwise>
-                <xsl:if test="ancestor::cnx:figure[1]/*[self::cnx:name or self::cnx:title]">
-                  <xsl:value-of select="ancestor::cnx:figure[1]/*[self::cnx:name or self::cnx:title]" />
-                  <xsl:text>, </xsl:text>
-                </xsl:if>
-                <!--Subfigure--> 
-                <xsl:call-template name="gentext">
-                  <xsl:with-param name="key">Subfigure</xsl:with-param>
-                    <xsl:with-param name="lang" select="/module/metadata/language" />
-                  </xsl:call-template>
+                <xsl:choose>
+                  <xsl:when test="ancestor::cnx:figure[1]/cnx:label[node()]">
+                    <xsl:value-of select="ancestor::cnx:figure[1]/cnx:label" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <!--Figure-->
+                    <xsl:call-template name="gentext">
+                      <xsl:with-param name="key">Figure</xsl:with-param>
+                      <xsl:with-param name="lang" select="/module/metadata/language" />
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>
                 <xsl:text> </xsl:text>
-		<xsl:number level="any" count="//cnx:figure" />.<xsl:number level="single" count="cnx:subfigure" />
+                <xsl:choose>
+                  <xsl:when test="ancestor::cnx:figure[1][@type!='']">
+                    <xsl:variable name="type" select="ancestor::cnx:figure[1]/@type" />
+                    <xsl:number level="any" count="cnx:figure[@type=$type]" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:number level="any" count="cnx:figure[not(@type) or @type='']" />
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text> (</xsl:text>
@@ -122,83 +238,115 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
+<!--
     </xsl:if>
+-->
   </xsl:template>
 
-  <!--MEDIA:EPS Image -->
-  <xsl:template match="cnx:media[starts-with(@type,'application/postscript')]">
-    <xsl:choose>
-      <xsl:when test="child::cnx:media">
-	<xsl:apply-templates/>
-      </xsl:when>
-      <xsl:otherwise>
-	<div class="media">
-	  <xsl:call-template name='IdCheck'/>
-	  <object>
-	    <xsl:for-each select="cnx:param">
-	      <xsl:attribute name='{@name}'>
-		<xsl:value-of select='@value'/>
-	      </xsl:attribute> 
-	    </xsl:for-each>
-            <xsl:call-template name="gentext">
-              <xsl:with-param name="key">EPSImage</xsl:with-param>
-              <xsl:with-param name="lang" select="/module/metadata/language" />
-            </xsl:call-template>:
-	    <!--EPS Image:--> 
-	    <a class="link" href="{@src}">
-	      <xsl:choose>
-		<xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
-		  <xsl:value-of select="cnx:param[@name='title']/@value" />
-		</xsl:when>
-		<xsl:otherwise>
-		  <xsl:value-of select="@src" />
-		</xsl:otherwise>
-	      </xsl:choose>
-	    </a>
-	    <xsl:apply-templates/>
-	  </object>
-	</div>
-      </xsl:otherwise>
-    </xsl:choose>
+  <!-- MEDIA of type: EPS (old print pipeline) -->
+  <xsl:template match="cnx:media[starts-with(@type,'application/postscript') and cnx:media]">
+    <xsl:apply-templates />
   </xsl:template>
 
-  <!--  MEDIA:APPLET  -->
+  <!-- MEDIA of type: APPLET (cnxml version 0.6 and below) -->
   <xsl:template match="cnx:media[@type='application/x-java-applet']">
     <span class="media">
-    <applet code="{@src}">
       <xsl:call-template name='IdCheck'/>
-      <xsl:for-each select="cnx:param">
-	<xsl:attribute name='{@name}'>
-	  <xsl:value-of select='@value'/>
-	</xsl:attribute>
-      </xsl:for-each>
-      <xsl:apply-templates />
-    </applet>
+      <applet code="{@src}">
+        <xsl:for-each select="cnx:param">
+          <xsl:attribute name='{@name}'>
+            <xsl:value-of select='@value'/>
+          </xsl:attribute>
+        </xsl:for-each>
+        <xsl:apply-templates />
+      </applet>
     </span>
   </xsl:template>
 
-  <!-- Video  -->
+  <!-- JAVA-APPLET (cnxml version 0.6) -->
+  <xsl:template match="cnx:java-applet">
+    <span class="media" id="{parent::cnx:media/@id}">
+      <applet code="{@src}">
+        <xsl:for-each select="@width|@height|@id|@codebase|@archive|@name">
+          <xsl:attribute name="{name()}">
+            <xsl:value-of select="." />
+          </xsl:attribute>
+        </xsl:for-each>
+        <xsl:for-each select="cnx:param">
+          <xsl:attribute name="{@name}">
+            <xsl:value-of select="@value" />
+          </xsl:attribute>
+        </xsl:for-each>
+        <xsl:choose>
+          <xsl:when test="parent::cnx:media[@alt!='']">
+            <xsl:attribute name="alt">
+              <xsl:value-of select="parent::cnx:media/@alt" />
+            </xsl:attribute>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="alt-generator" />
+          </xsl:otherwise>
+        </xsl:choose>
+        <xsl:apply-templates />
+      </applet>
+    </span>
+  </xsl:template>
+
+  <!-- MEDIA of type: VIDEO (cnxml version 0.5 and below) -->
   <xsl:template match="cnx:media[starts-with(@type, 'video/')]">
     <span class="media">
-    <object href='{@src}'>
-      <xsl:call-template name='IdCheck'/>
-      <xsl:for-each select="cnx:param[@name='classid' or @name='codebase']">
-     	<xsl:attribute name='{@name}'>
-	  <xsl:value-of select='@value'/>
-	</xsl:attribute>
-      </xsl:for-each>
-     <xsl:for-each select="cnx:param[@name!='classid' and @name!='codebase']">
-	<param name='{@name}' value="{@value}" />
-     </xsl:for-each> 
-      <embed src="{@src}">
-	<xsl:for-each select="cnx:param">
-	  <xsl:attribute name='{@name}'>
-	    <xsl:value-of select='@value' />
-	  </xsl:attribute>
-	</xsl:for-each>
-	<xsl:apply-templates />
-      </embed>
-    </object>
+      <object>
+        <xsl:call-template name='IdCheck'/>
+        <xsl:for-each select="cnx:param[@name='classid' or @name='codebase' or @name='width' or @name='height']">
+          <xsl:attribute name='{@name}'>
+             <xsl:value-of select='@value'/>
+          </xsl:attribute>
+        </xsl:for-each>
+        <param name="src" value="{@src}" />
+        <xsl:for-each select="cnx:param[@name!='classid' and @name!='codebase' and @name='width' and @name='height']">
+          <param name='{@name}' value="{@value}" />
+        </xsl:for-each>
+        <embed src="{@src}">
+          <xsl:for-each select="cnx:param">
+            <xsl:attribute name='{@name}'>
+              <xsl:value-of select='@value' />
+            </xsl:attribute>
+          </xsl:for-each>
+          <xsl:apply-templates />
+        </embed>
+      </object>
+    </span>
+  </xsl:template>
+
+  <!-- VIDEO (cnxml version 0.6) -->
+  <xsl:template match="cnx:video">
+    <span class="media" id="{parent::cnx:media/@id}">
+      <object>
+        <xsl:for-each select="@classid|@codebase|@width|@height|@id">
+          <xsl:attribute name="{name()}">
+            <xsl:value-of select="." />
+          </xsl:attribute>
+        </xsl:for-each>
+        <xsl:for-each select="@src|@standby|@autoplay|@loop|@controller|@volume">
+          <param name="{name()}" value="{.}" />
+        </xsl:for-each>
+        <xsl:for-each select="cnx:param">
+          <param name="{@name}" value="{@value}" />
+        </xsl:for-each>
+        <embed>
+          <xsl:for-each select="@width|@height|@src|@standby|@autoplay|@loop|@controller|@volume">
+            <xsl:attribute name="{name()}">
+              <xsl:value-of select="." />
+            </xsl:attribute>
+          </xsl:for-each>
+          <xsl:for-each select="cnx:param">
+            <xsl:attribute name="{@name}">
+              <xsl:value-of select="." />
+            </xsl:attribute>
+          </xsl:for-each>
+          <xsl:apply-templates />
+        </embed>
+      </object>
     </span>
   </xsl:template>
 
