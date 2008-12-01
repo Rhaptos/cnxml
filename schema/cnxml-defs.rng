@@ -724,17 +724,6 @@
   <define name="section-content">
     <ref name="common-attributes"/>
     <ref name="id-attribute"/>
-    <optional>
-      <ref name="title"/>
-    </optional>
-    <oneOrMore>
-      <ref name="section-content-class"/>
-    </oneOrMore>
-  </define>
-
-  <define name="statement-content">
-    <ref name="common-attributes"/>
-    <ref name="id-attribute"/>
     <ref name="type-attribute"/>
     <optional>
       <ref name="label"/>
@@ -745,6 +734,10 @@
     <oneOrMore>
       <ref name="section-content-class"/>
     </oneOrMore>
+  </define>
+
+  <define name="statement-content">
+    <ref name="section-content"/>
   </define>
 <!--
     Element Definitions
@@ -1583,18 +1576,7 @@
 
   <define name="example">
     <element name="example">
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <ref name="type-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <ref name="section-content"/>
     </element>
   </define>
 
@@ -1631,36 +1613,14 @@
 
   <define name="problem">
     <element name="problem">
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <ref name="type-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <ref name="section-content"/>
     </element>
   </define>
 
   <define name="solution">
     <element name="solution">
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <ref name="type-attribute"/>
       <ref name="print-placement-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <ref name="section-content"/>
     </element>
   </define>
 

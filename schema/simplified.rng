@@ -636,6 +636,12 @@
         <data type="ID"/>
       </attribute>
       <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -4597,6 +4603,14 @@
   </define>
   <define name="solution">
     <element name="solution">
+      <optional>
+        <attribute name="print-placement">
+          <choice>
+            <value>here</value>
+            <value>end</value>
+          </choice>
+        </attribute>
+      </optional>
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -4621,14 +4635,6 @@
       </attribute>
       <optional>
         <attribute name="type"/>
-      </optional>
-      <optional>
-        <attribute name="print-placement">
-          <choice>
-            <value>here</value>
-            <value>end</value>
-          </choice>
-        </attribute>
       </optional>
       <optional>
         <ref name="label"/>
