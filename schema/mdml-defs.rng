@@ -277,8 +277,8 @@
       <ref name="mdml-href"/>
       <ref name="mdml-title"/>
       <ref name="mdml-authorlist"/>
+      <ref name="mdml-license"/>
       <ref name="mdml-licensorlist"/>
-      <ref name="mdml-licensor"/>
     </element>
   </define>
 
