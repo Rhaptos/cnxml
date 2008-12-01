@@ -1,7 +1,34 @@
 <?xml version="1.0"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://cnx.rice.edu/cnxml">
   <start>
-    <ref name="document"/>
+    <choice>
+      <ref name="document"/>
+      <ref name="para"/>
+      <ref name="bulleted-block-list"/>
+      <ref name="enumerated-block-list"/>
+      <ref name="labeled-item-block-list"/>
+      <ref name="bulleted-inline-list"/>
+      <ref name="enumerated-inline-list"/>
+      <ref name="labeled-item-inline-list"/>
+      <ref name="equation"/>
+      <ref name="exercise"/>
+      <ref name="figure"/>
+      <ref name="inline-code"/>
+      <ref name="block-code"/>
+      <ref name="block-note"/>
+      <ref name="inline-note"/>
+      <ref name="example"/>
+      <ref name="table"/>
+      <ref name="bulleted-block-list"/>
+      <ref name="enumerated-block-list"/>
+      <ref name="labeled-item-block-list"/>
+      <ref name="bulleted-inline-list"/>
+      <ref name="enumerated-inline-list"/>
+      <ref name="labeled-item-inline-list"/>
+      <ref name="section"/>
+      <ref name="rule"/>
+      <ref name="definition"/>
+    </choice>
   </start>
   <!--starting mdml-defs.rng-->
   <!--included elements-->
@@ -43,6 +70,9 @@
         <data type="NMTOKEN"/>
       </attribute>
       <optional>
+        <attribute name="homepage"/>
+      </optional>
+      <optional>
         <ref name="mdml-honorific"/>
       </optional>
       <ref name="mdml-firstname"/>
@@ -71,6 +101,9 @@
       <attribute name="id">
         <data type="NMTOKEN"/>
       </attribute>
+      <optional>
+        <attribute name="homepage"/>
+      </optional>
       <optional>
         <ref name="mdml-honorific"/>
       </optional>
@@ -759,6 +792,12 @@
         <data type="ID"/>
       </attribute>
       <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
+        <ref name="label"/>
+      </optional>
+      <optional>
         <ref name="title"/>
       </optional>
       <oneOrMore>
@@ -1229,8 +1268,22 @@
         </attribute>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="lines" a:defaultValue="1">
-          <data type="integer"/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="count" a:defaultValue="1">
+          <data type="integer">
+            <param name="minInclusive">1</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="effect">
+          <choice>
+            <value>bold</value>
+            <value>italics</value>
+            <value>underline</value>
+            <value>normal</value>
+            <value>smallcaps</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
     </element>
@@ -1262,8 +1315,22 @@
         </attribute>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="lines" a:defaultValue="1">
-          <data type="integer"/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="count" a:defaultValue="1">
+          <data type="integer">
+            <param name="minInclusive">1</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="effect">
+          <choice>
+            <value>bold</value>
+            <value>italics</value>
+            <value>underline</value>
+            <value>normal</value>
+            <value>smallcaps</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
     </element>
@@ -1278,7 +1345,7 @@
             <value>underline</value>
             <value>normal</value>
             <value>smallcaps</value>
-            <text/>
+            <data type="NMTOKEN"/>
           </choice>
         </attribute>
       </optional>
@@ -1620,7 +1687,7 @@
             <value>underline</value>
             <value>normal</value>
             <value>smallcaps</value>
-            <text/>
+            <data type="NMTOKEN"/>
           </choice>
         </attribute>
       </optional>
@@ -4692,6 +4759,14 @@
   </define>
   <define name="solution">
     <element name="solution">
+      <optional>
+        <attribute name="print-placement">
+          <choice>
+            <value>here</value>
+            <value>end</value>
+          </choice>
+        </attribute>
+      </optional>
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -4716,14 +4791,6 @@
       </attribute>
       <optional>
         <attribute name="type"/>
-      </optional>
-      <optional>
-        <attribute name="print-placement">
-          <choice>
-            <value>here</value>
-            <value>end</value>
-          </choice>
-        </attribute>
       </optional>
       <optional>
         <ref name="label"/>

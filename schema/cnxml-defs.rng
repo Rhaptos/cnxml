@@ -44,7 +44,7 @@
         <value>underline</value>
         <value>normal</value>
         <value>smallcaps</value>
-        <text/>
+        <data type="NMTOKEN"/>
       </choice>
     </attribute>
   </define>
@@ -582,8 +582,10 @@
 
   <define name="count-attribute">
     <optional>
-      <attribute name="lines" a:defaultValue="1">
-        <data type="integer"/>
+      <attribute name="count" a:defaultValue="1">
+        <data type="integer">
+          <param name="minInclusive">1</param>
+        </data>
       </attribute>
     </optional>
   </define>
@@ -722,17 +724,6 @@
   <define name="section-content">
     <ref name="common-attributes"/>
     <ref name="id-attribute"/>
-    <optional>
-      <ref name="title"/>
-    </optional>
-    <oneOrMore>
-      <ref name="section-content-class"/>
-    </oneOrMore>
-  </define>
-
-  <define name="statement-content">
-    <ref name="common-attributes"/>
-    <ref name="id-attribute"/>
     <ref name="type-attribute"/>
     <optional>
       <ref name="label"/>
@@ -743,6 +734,10 @@
     <oneOrMore>
       <ref name="section-content-class"/>
     </oneOrMore>
+  </define>
+
+  <define name="statement-content">
+    <ref name="section-content"/>
   </define>
 <!--
     Element Definitions
@@ -935,6 +930,9 @@
         <ref name="id-attribute"/>
       </optional>
       <ref name="count-attribute"/>
+      <optional>
+        <ref name="effect-attribute"/>
+      </optional>
     </element>
   </define>
 
@@ -945,6 +943,9 @@
         <ref name="id-attribute"/>
       </optional>
       <ref name="count-attribute"/>
+      <optional>
+        <ref name="effect-attribute"/>
+      </optional>
     </element>
   </define>
 
@@ -1097,6 +1098,13 @@
     </element>
   </define>
 
+  <define name="note">
+    <choice>
+      <ref name="block-note"/>
+      <ref name="inline-note"/>
+    </choice>
+  </define>
+
   <define name="list-common-content">
     <ref name="common-attributes"/>
     <ref name="before-attribute"/>
@@ -1210,6 +1218,13 @@
       <ref name="bulleted-inline-list"/>
       <ref name="enumerated-inline-list"/>
       <ref name="labeled-item-inline-list"/>
+    </choice>
+  </define>
+
+  <define name="list">
+    <choice>
+      <ref name="block-list"/>
+      <ref name="inline-list"/>
     </choice>
   </define>
 
@@ -1561,18 +1576,7 @@
 
   <define name="example">
     <element name="example">
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <ref name="type-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <ref name="section-content"/>
     </element>
   </define>
 
@@ -1609,36 +1613,14 @@
 
   <define name="problem">
     <element name="problem">
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <ref name="type-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <ref name="section-content"/>
     </element>
   </define>
 
   <define name="solution">
     <element name="solution">
-      <ref name="common-attributes"/>
-      <ref name="id-attribute"/>
-      <ref name="type-attribute"/>
       <ref name="print-placement-attribute"/>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="section-content-class"/>
-      </oneOrMore>
+      <ref name="section-content"/>
     </element>
   </define>
 

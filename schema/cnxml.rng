@@ -3,7 +3,22 @@
          ns="http://cnx.rice.edu/cnxml">
 
   <start>
-    <ref name="document"/>
+    <choice>
+      <ref name="document"/>
+      <ref name="para"/>
+      <ref name="list"/>
+      <ref name="equation"/>
+      <ref name="exercise"/>
+      <ref name="figure"/>
+      <ref name="code"/>
+      <ref name="note"/>
+      <ref name="example"/>
+      <ref name="table"/>
+      <ref name="list"/>
+      <ref name="section"/>
+      <ref name="rule"/>
+      <ref name="definition"/>
+    </choice>
   </start>
 
   <include href="mdml-defs.rng">
