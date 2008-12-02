@@ -12,36 +12,6 @@
   exclude-result-prefixes="cnxml"
 >
 
-<!--
-  * 'name' becomes 'title'
-  * convert cnxn to link
-  * convert linking element attributes
-  * convert @type=(inline|block) to @display=(inline|block)
-  * convert note[@type=footnote] to footnote
-  * convert list/@type=named-item to list/@type=labeled-item
-  * generate IDs for all of 
-    # div
-    # section
-    # figure
-    # subfigure
-    # example
-    # note
-    # footnote
-    # problem
-    # solution
-    # quote[@type='block']
-    # code[@type='block']
-    # pre[@type='block']
-    # media
-    # meaning
-    # proof
-    # statement
-convert media to new media structures
-  * figure/table 
-  * figure/code
-  * table gets @summary
--->
-
 <!-- Important: this stylesheet attempts to handle only those combinations of 
      elements and attributes in the Connexions respository at the time I was 
      writing the upconversion.  For instance, there are presently no loop 
@@ -80,6 +50,108 @@ convert media to new media structures
         </document>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="cnxml:metadata">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <md:content-id>FIXME</md:content-id>
+      <md:title>FIXME</md:title>
+      <xsl:copy-of select="md:version"/>
+      <xsl:copy-of select="md:created"/>
+      <xsl:copy-of select="md:revised"/>
+      <xsl:apply-templates select="md:authorlist" mode="default-copy"/>
+      <xsl:apply-templates select="md:maintainerlist" mode="default-copy"/>
+      <md:editorlist>
+        <md:editor id="FIXME">
+          <md:honorific>FIXME</md:honorific>
+          <md:firstname>FIXME</md:firstname>
+          <md:othername>FIXME</md:othername>
+          <md:surname>FIXME</md:surname>
+          <md:lineage>FIXME</md:lineage>
+          <md:fullname>FIXME</md:fullname>
+          <md:email>FIXME</md:email>
+        </md:editor>
+      </md:editorlist>
+      <md:translatorlist>
+        <md:translator id="FIXME">
+          <md:honorific>FIXME</md:honorific>
+          <md:firstname>FIXME</md:firstname>
+          <md:othername>FIXME</md:othername>
+          <md:surname>FIXME</md:surname>
+          <md:lineage>FIXME</md:lineage>
+          <md:fullname>FIXME</md:fullname>
+          <md:email>FIXME</md:email>
+        </md:translator>
+      </md:translatorlist>
+      <md:license href="FIXME"/>
+      <md:licensorlist>
+        <md:licensor id="FIXME">
+          <md:honorific>FIXME</md:honorific>
+          <md:firstname>FIXME</md:firstname>
+          <md:othername>FIXME</md:othername>
+          <md:surname>FIXME</md:surname>
+          <md:lineage>FIXME</md:lineage>
+          <md:fullname>FIXME</md:fullname>
+          <md:email>FIXME</md:email>
+        </md:licensor>
+      </md:licensorlist>
+      <md:extended-attribution>
+        <link-group type="FIXME" xmlns="http://cnx.rice.edu/cnxml">
+          <label>FIXME</label>
+          <link url="FIXME">FIXME</link>
+        </link-group>
+      </md:extended-attribution>
+      <md:parent-module href="FIXME">
+        <md:title></md:title>
+        <md:authorlist>
+          <md:author id="FIXME">
+            <md:honorific>FIXME</md:honorific>
+            <md:firstname>FIXME</md:firstname>
+            <md:othername>FIXME</md:othername>
+            <md:surname>FIXME</md:surname>
+            <md:lineage>FIXME</md:lineage>
+            <md:fullname>FIXME</md:fullname>
+            <md:email>FIXME</md:email>
+          </md:author>
+        </md:authorlist>
+        <md:license href="FIXME"/>
+        <md:licensorlist>
+          <md:licensor id="FIXME">
+            <md:honorific>FIXME</md:honorific>
+            <md:firstname>FIXME</md:firstname>
+            <md:othername>FIXME</md:othername>
+            <md:surname>FIXME</md:surname>
+            <md:lineage>FIXME</md:lineage>
+            <md:fullname>FIXME</md:fullname>
+            <md:email>FIXME</md:email>
+          </md:licensor>
+        </md:licensorlist>
+      </md:parent-module>
+      <xsl:copy-of select="md:keywordlist"/>
+      <md:subjectlist>
+        <md:subject>FIXME</md:subject>
+      </md:subjectlist>
+      <xsl:copy-of select="md:abstract"/>
+      <md:language>FIXME</md:language>
+      <xsl:copy-of select="md:objectives"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="md:author|md:maintainer|md:editor|md:translator|md:licensor">
+    <xsl:element name="{name()}">
+      <xsl:copy-of select="@*"/>
+      <xsl:if test="not(@homepage)">
+        <xsl:attribute name="homepage">FIXME</xsl:attribute>
+      </xsl:if>
+      <xsl:copy-of select="md:honorific"/>
+      <xsl:copy-of select="md:firstname"/>
+      <xsl:copy-of select="md:othername"/>
+      <xsl:copy-of select="md:surname"/>
+      <xsl:copy-of select="md:lineage"/>
+      <md:fullname>FIXME</md:fullname>
+      <xsl:copy-of select="md:email"/>
+    </xsl:element>
   </xsl:template>
 
   <!-- Convert 'name' to 'label' if the child of 'item', otherwise to 'title'. -->
@@ -203,7 +275,7 @@ convert media to new media structures
   </xsl:template>
 
   <xsl:template match="processing-instruction('solution_in_back')"></xsl:template>
-  
+
   <xsl:template match="*" mode="default-copy">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>

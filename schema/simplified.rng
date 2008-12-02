@@ -32,6 +32,16 @@
   </start>
   <!--starting mdml-defs.rng-->
   <!--included elements-->
+  <define name="mdml-content-id">
+    <element name="content-id">
+      <data type="NMTOKEN"/>
+    </element>
+  </define>
+  <define name="mdml-title">
+    <element name="title">
+      <text/>
+    </element>
+  </define>
   <define name="mdml-version">
     <element name="version">
       <text/>
@@ -73,6 +83,7 @@
       <optional>
         <ref name="mdml-lineage"/>
       </optional>
+      <ref name="mdml-fullname"/>
       <optional>
         <ref name="mdml-email"/>
       </optional>
@@ -104,6 +115,71 @@
       <optional>
         <ref name="mdml-lineage"/>
       </optional>
+      <ref name="mdml-fullname"/>
+      <optional>
+        <ref name="mdml-email"/>
+      </optional>
+    </element>
+  </define>
+  <define name="mdml-editorlist">
+    <element name="editorlist">
+      <oneOrMore>
+        <ref name="mdml-editor"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="mdml-editor">
+    <element name="editor">
+      <attribute name="id">
+        <data type="NMTOKEN"/>
+      </attribute>
+      <optional>
+        <attribute name="homepage"/>
+      </optional>
+      <optional>
+        <ref name="mdml-honorific"/>
+      </optional>
+      <ref name="mdml-firstname"/>
+      <optional>
+        <ref name="mdml-othername"/>
+      </optional>
+      <ref name="mdml-surname"/>
+      <optional>
+        <ref name="mdml-lineage"/>
+      </optional>
+      <ref name="mdml-fullname"/>
+      <optional>
+        <ref name="mdml-email"/>
+      </optional>
+    </element>
+  </define>
+  <define name="mdml-translatorlist">
+    <element name="translatorlist">
+      <oneOrMore>
+        <ref name="mdml-translator"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="mdml-translator">
+    <element name="translator">
+      <attribute name="id">
+        <data type="NMTOKEN"/>
+      </attribute>
+      <optional>
+        <attribute name="homepage"/>
+      </optional>
+      <optional>
+        <ref name="mdml-honorific"/>
+      </optional>
+      <ref name="mdml-firstname"/>
+      <optional>
+        <ref name="mdml-othername"/>
+      </optional>
+      <ref name="mdml-surname"/>
+      <optional>
+        <ref name="mdml-lineage"/>
+      </optional>
+      <ref name="mdml-fullname"/>
       <optional>
         <ref name="mdml-email"/>
       </optional>
@@ -134,9 +210,61 @@
       <text/>
     </element>
   </define>
+  <define name="mdml-fullname">
+    <element name="fullname">
+      <text/>
+    </element>
+  </define>
   <define name="mdml-email">
     <element name="email">
       <text/>
+    </element>
+  </define>
+  <define name="mdml-license">
+    <element name="license">
+      <attribute name="href"/>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-licensorlist">
+    <element name="licensorlist">
+      <oneOrMore>
+        <ref name="mdml-licensor"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="mdml-licensor">
+    <element name="licensor">
+      <attribute name="id">
+        <data type="NMTOKEN"/>
+      </attribute>
+      <optional>
+        <attribute name="homepage"/>
+      </optional>
+      <optional>
+        <ref name="mdml-honorific"/>
+      </optional>
+      <ref name="mdml-firstname"/>
+      <optional>
+        <ref name="mdml-othername"/>
+      </optional>
+      <ref name="mdml-surname"/>
+      <optional>
+        <ref name="mdml-lineage"/>
+      </optional>
+      <ref name="mdml-fullname"/>
+      <optional>
+        <ref name="mdml-email"/>
+      </optional>
+    </element>
+  </define>
+  <define name="mdml-parent-module">
+    <element name="parent-module">
+      <attribute name="href"/>
+      <ref name="mdml-title"/>
+      <ref name="mdml-authorlist"/>
+      <ref name="mdml-license"/>
+      <ref name="mdml-licensorlist"/>
     </element>
   </define>
   <define name="mdml-keywordlist">
@@ -148,6 +276,18 @@
   </define>
   <define name="mdml-keyword">
     <element name="keyword">
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-subjectlist">
+    <element name="subjectlist">
+      <oneOrMore>
+        <ref name="mdml-subject"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="mdml-subject">
+    <element name="subject">
       <text/>
     </element>
   </define>
@@ -179,12 +319,24 @@
       </choice>
     </element>
   </define>
+  <define name="mdml-language">
+    <element name="language">
+      <text/>
+    </element>
+  </define>
   <define name="mdml-objectives">
     <element name="objectives">
       <text/>
     </element>
   </define>
   <!--the rest-->
+  <define name="mdml-extended-attribution">
+    <element name="extended-attribution" ns="http://cnx.rice.edu/mdml/0.4">
+      <oneOrMore>
+        <ref name="link-group"/>
+      </oneOrMore>
+    </element>
+  </define>
   <!--ending mdml-defs.rng-->
   <!--starting http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng-->
   <!--included elements-->
@@ -442,15 +594,35 @@
           <data type="ID"/>
         </attribute>
       </optional>
+      <ref name="mdml-content-id"/>
+      <ref name="mdml-title"/>
       <ref name="mdml-version"/>
       <ref name="mdml-created"/>
       <ref name="mdml-revised"/>
       <ref name="mdml-authorlist"/>
       <ref name="mdml-maintainerlist"/>
       <optional>
+        <ref name="mdml-editorlist"/>
+      </optional>
+      <optional>
+        <ref name="mdml-translatorlist"/>
+      </optional>
+      <ref name="mdml-license"/>
+      <ref name="mdml-licensorlist"/>
+      <optional>
+        <ref name="mdml-extended-attribution"/>
+      </optional>
+      <optional>
+        <ref name="mdml-parent-module"/>
+      </optional>
+      <optional>
         <ref name="mdml-keywordlist"/>
       </optional>
+      <optional>
+        <ref name="mdml-subjectlist"/>
+      </optional>
       <ref name="mdml-abstract"/>
+      <ref name="mdml-language"/>
       <optional>
         <ref name="mdml-objectives"/>
       </optional>

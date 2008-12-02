@@ -17,16 +17,40 @@
     </attribute>
   </define>
 
+  <define name="mdml-href">
+    <attribute name="href"/>
+  </define>
+
   <define name="mdml-metadata-content">
+    <ref name="mdml-content-id"/>
+    <ref name="mdml-title"/>
     <ref name="mdml-version"/>
     <ref name="mdml-created"/>
     <ref name="mdml-revised"/>
     <ref name="mdml-authorlist"/>
     <ref name="mdml-maintainerlist"/>
     <optional>
+      <ref name="mdml-editorlist"/>
+    </optional>
+    <optional>
+      <ref name="mdml-translatorlist"/>
+    </optional>
+    <ref name="mdml-license"/>
+    <ref name="mdml-licensorlist"/>
+    <optional>
+      <ref name="mdml-extended-attribution"/>
+    </optional>
+    <optional>
+      <ref name="mdml-parent-module"/>
+    </optional>
+    <optional>
       <ref name="mdml-keywordlist"/>
     </optional>
+    <optional>
+      <ref name="mdml-subjectlist"/>
+    </optional>
     <ref name="mdml-abstract"/>
+    <ref name="mdml-language"/>
     <optional>
       <ref name="mdml-objectives"/>
     </optional>
@@ -39,6 +63,20 @@
     </element>
   </define>
 
+  <define name="mdml-content-id">
+    <element name="content-id">
+      <ref name="mdml-common-attributes"/>
+      <data type="NMTOKEN"/>
+    </element>
+  </define>
+
+  <define name="mdml-title">
+    <element name="title">
+      <ref name="mdml-common-attributes"/>
+      <text/>
+    </element>
+  </define>
+  
   <define name="mdml-version">
     <element name="version">
       <ref name="mdml-common-attributes"/>
@@ -96,6 +134,7 @@
     <optional>
       <ref name="mdml-lineage"/>
     </optional>
+    <ref name="mdml-fullname"/>
     <optional>
       <ref name="mdml-email"/>
     </optional>
@@ -119,6 +158,42 @@
     </element>
   </define>
 
+  <define name="mdml-editorlist">
+    <element name="editorlist">
+      <ref name="mdml-common-attributes"/>
+      <oneOrMore>
+        <ref name="mdml-editor"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <define name="mdml-editor">
+    <element name="editor">
+      <ref name="mdml-common-attributes"/>
+      <ref name="mdml-id-attribute"/>
+      <ref name="mdml-homepage"/>
+      <ref name="mdml-personname-content"/>
+    </element>
+  </define>
+  
+  <define name="mdml-translatorlist">
+    <element name="translatorlist">
+      <ref name="mdml-common-attributes"/>
+      <oneOrMore>
+        <ref name="mdml-translator"/>
+      </oneOrMore>
+    </element>
+  </define>
+  
+  <define name="mdml-translator">
+    <element name="translator">
+      <ref name="mdml-common-attributes"/>
+      <ref name="mdml-id-attribute"/>
+      <ref name="mdml-homepage"/>
+      <ref name="mdml-personname-content"/>
+    </element>
+  </define>
+  
   <define name="mdml-honorific">
     <element name="honorific">
       <ref name="mdml-common-attributes"/>
@@ -153,11 +228,60 @@
       <text/>
     </element>
   </define>
+  
+  <define name="mdml-fullname">
+    <element name="fullname">
+      <ref name="mdml-common-attributes"/>
+      <text/>
+    </element>
+  </define>
 
   <define name="mdml-email">
     <element name="email">
       <ref name="mdml-common-attributes"/>
       <text/>
+    </element>
+  </define>
+
+  <define name="mdml-license">
+    <element name="license">
+      <ref name="mdml-common-attributes"/>
+      <ref name="mdml-href"/>
+      <text/>
+    </element>
+  </define>
+
+  <define name="mdml-licensorlist">
+    <element name="licensorlist">
+      <ref name="mdml-common-attributes"/>
+      <oneOrMore>
+        <ref name="mdml-licensor"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="mdml-licensor">
+    <element name="licensor">
+      <ref name="mdml-common-attributes"/>
+      <ref name="mdml-id-attribute"/>
+      <ref name="mdml-homepage"/>
+      <ref name="mdml-personname-content"/>
+    </element>
+  </define>
+
+  <define name="mdml-extended-attribution">
+    <element name="extended-attribution">
+      <text/>
+    </element>
+  </define>
+
+  <define name="mdml-parent-module">
+    <element name="parent-module">
+      <ref name="mdml-href"/>
+      <ref name="mdml-title"/>
+      <ref name="mdml-authorlist"/>
+      <ref name="mdml-license"/>
+      <ref name="mdml-licensorlist"/>
     </element>
   </define>
 
@@ -177,6 +301,22 @@
     </element>
   </define>
 
+  <define name="mdml-subjectlist">
+    <element name="subjectlist">
+      <ref name="mdml-common-attributes"/>
+      <oneOrMore>
+        <ref name="mdml-subject"/>
+      </oneOrMore>
+    </element>
+  </define>
+
+  <define name="mdml-subject">
+    <element name="subject">
+      <ref name="mdml-common-attributes"/>
+      <text/>
+    </element>
+  </define>
+
   <define name="mdml-abstract">
     <element name="abstract">
       <ref name="mdml-common-attributes"/>
@@ -186,6 +326,13 @@
 
   <define name="mdml-abstract-content">
     <text/>
+  </define>
+  
+  <define name="mdml-language">
+    <element name="language">
+      <ref name="mdml-common-attributes"/>
+      <text/>
+    </element>
   </define>
 
   <define name="mdml-objectives">

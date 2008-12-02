@@ -33,6 +33,13 @@
         </oneOrMore>
       </choice>
     </define>
+    <define name="mdml-extended-attribution">
+      <element name="extended-attribution" ns="http://cnx.rice.edu/mdml/0.4">
+        <oneOrMore>
+          <ref name="link-group"/>
+        </oneOrMore>
+      </element>
+    </define>
   </include>
 
   <define name="mathml-math">
