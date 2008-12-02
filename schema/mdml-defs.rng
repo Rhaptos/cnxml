@@ -47,7 +47,7 @@
       <ref name="mdml-keywordlist"/>
     </optional>
     <optional>
-      <ref name="mdml-subject"/>
+      <ref name="mdml-subjectlist"/>
     </optional>
     <ref name="mdml-abstract"/>
     <ref name="mdml-language"/>
@@ -295,6 +295,15 @@
     <element name="keyword">
       <ref name="mdml-common-attributes"/>
       <text/>
+    </element>
+  </define>
+
+  <define name="mdml-subjectlist">
+    <element name="subjectlist">
+      <ref name="mdml-common-attributes"/>
+      <oneOrMore>
+        <ref name="mdml-subject"/>
+      </oneOrMore>
     </element>
   </define>
 
