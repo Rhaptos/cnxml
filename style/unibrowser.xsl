@@ -1011,8 +1011,40 @@
     </xsl:choose>
   </xsl:template>
 
+  <xsl:template match="cnx:note">
+    <xsl:choose>
+      <xsl:when test="$version='0.6'">
+        <xsl:choose>
+          <xsl:when test="@display='block' or @display='none' or not(@display)">
+            <xsl:call-template name="make-block-note"/>
+          </xsl:when>
+          <xsl:when test="@display='inline'">
+            <xsl:call-template name="make-inline-note"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:when test="$version='0.5'">
+        <xsl:choose>
+          <xsl:when test="@type='block' or not(@type)">
+            <xsl:call-template name="make-block-note"/>
+          </xsl:when>
+          <xsl:when test="@type='inline'">
+            <xsl:call-template name="make-inline-note"/>
+          </xsl:when>
+          <xsl:when test="@type='footnote'">
+            <xsl:call-template name="make-footnote"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="cnx:footnote">
+    <xsl:call-template name="make-footnote"/>
+  </xsl:template>
+
   <!-- FOOTNOTE -->
-  <xsl:template match="cnx:note[@type='footnote']|cnx:footnote">
+  <xsl:template name="make-footnote">
     <xsl:variable name="footnote-number">
       <xsl:number level="any" count="//cnx:note[@type='footnote']|//cnx:footnote" format="1" />
     </xsl:variable>
@@ -1025,8 +1057,11 @@
   </xsl:template>
 
   <!-- NOTE -->
-  <xsl:template match="cnx:note[not(@type='footnote')]">
+  <xsl:template name="make-block-note">
     <div class="note">
+      <xsl:if test="@display='none'">
+        <xsl:attribute name="style">display : none</xsl:attribute>
+      </xsl:if>
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))">
         <xsl:variable name="level-number">
@@ -1041,16 +1076,16 @@
       <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()" />
     </div>
   </xsl:template>
-  
+
   <!-- NOTE (inline) -->
-  <xsl:template match="cnx:note[@display='inline']">
+  <xsl:template name="make-inline-note">
     <span class="note">
       <xsl:call-template name='IdCheck'/>
       <xsl:call-template name="note-label" />
       <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()" />
     </span>
   </xsl:template>
-  
+
   <!-- builds a label and puts a name in for inline and regular notes -->
   <xsl:template name="note-label">
     <xsl:if test="cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))">
