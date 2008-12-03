@@ -927,6 +927,35 @@
     </code>
   </xsl:template>
 
+  <xsl:template match="cnx:preformat">
+    <xsl:choose>
+      <xsl:when test="@display='inline'">
+        <span style="font-family: courier new, courier, monospace; font-size: 1em;">
+          <xsl:call-template name='IdCheck'/>
+          <xsl:apply-templates />
+        </span>
+      </xsl:when>
+      <xsl:when test="@display='block' or not(@display)">
+        <pre class="codeblock">
+          <xsl:call-template name='IdCheck'/>
+          <xsl:apply-templates />
+          <xsl:if test="not(node())">
+            <xsl:comment>empty preformat tag</xsl:comment>
+          </xsl:if>
+        </pre>
+      </xsl:when>
+      <xsl:when test="@display='none'">
+        <pre style="display : none">
+          <xsl:call-template name='IdCheck'/>
+          <xsl:apply-templates />
+          <xsl:if test="not(node())">
+            <xsl:comment>empty preformat tag</xsl:comment>
+          </xsl:if>
+        </pre>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
   <!-- NEWLINE and SPACE -->
   <xsl:template match="cnx:newline|cnx:space">
     <xsl:variable name="blank-element">
