@@ -202,9 +202,6 @@
        make each attribute optional, so no problems with ambiguity.  -->
   <define name="linking-attributes">
     <group>
-      <optional>
-        <ref name="strength-attribute"/>
-      </optional>
       <ref name="window-attribute"/>
       <choice>
         <optional>

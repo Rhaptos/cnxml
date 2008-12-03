@@ -1425,15 +1425,6 @@
     <element name="cite">
       <group>
         <optional>
-          <attribute name="strength">
-            <choice>
-              <value>1</value>
-              <value>2</value>
-              <value>3</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
           <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="window" a:defaultValue="replace">
             <choice>
               <value>replace</value>
@@ -1767,15 +1758,6 @@
     <element name="term">
       <group>
         <optional>
-          <attribute name="strength">
-            <choice>
-              <value>1</value>
-              <value>2</value>
-              <value>3</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
           <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="window" a:defaultValue="replace">
             <choice>
               <value>replace</value>
@@ -2000,15 +1982,6 @@
       </optional>
       <group>
         <optional>
-          <attribute name="strength">
-            <choice>
-              <value>1</value>
-              <value>2</value>
-              <value>3</value>
-            </choice>
-          </attribute>
-        </optional>
-        <optional>
           <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="window" a:defaultValue="replace">
             <choice>
               <value>replace</value>
@@ -2093,15 +2066,6 @@
         <value>inline</value>
       </attribute>
       <group>
-        <optional>
-          <attribute name="strength">
-            <choice>
-              <value>1</value>
-              <value>2</value>
-              <value>3</value>
-            </choice>
-          </attribute>
-        </optional>
         <optional>
           <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="window" a:defaultValue="replace">
             <choice>
@@ -2191,15 +2155,6 @@
   <define name="foreign">
     <element name="foreign">
       <group>
-        <optional>
-          <attribute name="strength">
-            <choice>
-              <value>1</value>
-              <value>2</value>
-              <value>3</value>
-            </choice>
-          </attribute>
-        </optional>
         <optional>
           <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="window" a:defaultValue="replace">
             <choice>
