@@ -4,6 +4,7 @@
     <choice>
       <ref name="document"/>
       <ref name="para"/>
+      <ref name="title"/>
       <ref name="bulleted-block-list"/>
       <ref name="enumerated-block-list"/>
       <ref name="labeled-item-block-list"/>
@@ -261,6 +262,7 @@
   <define name="mdml-parent-module">
     <element name="parent-module">
       <attribute name="href"/>
+      <ref name="mdml-content-id"/>
       <ref name="mdml-title"/>
       <ref name="mdml-authorlist"/>
       <ref name="mdml-license"/>
@@ -621,7 +623,9 @@
       <optional>
         <ref name="mdml-subjectlist"/>
       </optional>
-      <ref name="mdml-abstract"/>
+      <optional>
+        <ref name="mdml-abstract"/>
+      </optional>
       <ref name="mdml-language"/>
       <optional>
         <ref name="mdml-objectives"/>

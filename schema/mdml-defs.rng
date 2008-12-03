@@ -49,7 +49,9 @@
     <optional>
       <ref name="mdml-subjectlist"/>
     </optional>
-    <ref name="mdml-abstract"/>
+    <optional>
+      <ref name="mdml-abstract"/>
+    </optional>
     <ref name="mdml-language"/>
     <optional>
       <ref name="mdml-objectives"/>
