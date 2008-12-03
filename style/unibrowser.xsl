@@ -876,27 +876,27 @@
   <xsl:template match="cnx:code">
     <xsl:choose>
       <xsl:when test="$version ='0.6'">
-        <xsl:apply-templates select="." mode="cnxml-0.6"/>
+        <xsl:choose>
+          <xsl:when test="@display='block'">
+            <xsl:call-template name="codeblock"/>
+          </xsl:when>
+          <xsl:when test="@display='inline' or not(@display)">
+            <xsl:call-template name="codeline"/>
+          </xsl:when>
+          <xsl:when test="@display='none'">
+            <xsl:call-template name="codenone"/>
+          </xsl:when>
+        </xsl:choose>
       </xsl:when>
-      <xsl:when test="@type='block'">
-        <xsl:call-template name="codeblock"/>
-      </xsl:when>
-      <xsl:when test="@type='inline' or not(@type)">
-        <xsl:call-template name="codeline"/>
-      </xsl:when>
-    </xsl:choose>
-  </xsl:template>
-
-  <xsl:template match="cnx:code" mode="cnxml-0.6">
-    <xsl:choose>
-      <xsl:when test="@display='block'">
-        <xsl:call-template name="codeblock"/>
-     </xsl:when>
-      <xsl:when test="@display='inline' or not(@display)">
-        <xsl:call-template name="codeline"/>
-      </xsl:when>
-      <xsl:when test="@display='none'">
-        <xsl:call-template name="codenone"/>
+      <xsl:when test="$version ='0.5'">
+        <xsl:choose>
+          <xsl:when test="@type='block'">
+            <xsl:call-template name="codeblock"/>
+          </xsl:when>
+          <xsl:when test="@type='inline' or not(@type)">
+            <xsl:call-template name="codeline"/>
+          </xsl:when>
+        </xsl:choose>
       </xsl:when>
     </xsl:choose>
   </xsl:template>
