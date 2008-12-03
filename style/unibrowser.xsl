@@ -796,6 +796,20 @@
         </blockquote>
       </xsl:when>
       <xsl:when test="@display='none'">
+        <div style="display : none">
+          <xsl:call-template name="IdCheck"/>
+          <xsl:if test="string-length($href)">
+            <xsl:attribute name="cite">
+              <xsl:value-of select="$href" />
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:apply-templates />
+          <xsl:if test="string-length($href)">
+            <span class="quote-source-before">[</span>
+            <a href="{$href}" class="quote-source">source</a>
+            <span class="quote-source-after">]</span>
+          </xsl:if>
+        </div> 
       </xsl:when>
     </xsl:choose>
   </xsl:template>
@@ -850,14 +864,51 @@
   </xsl:template>
 
   <!-- CODE -->
-  <xsl:template match="cnx:codeline|cnx:code">
+  <xsl:template match="cnx:codeline">
+    <xsl:call-template name="codeline"/>
+  </xsl:template>
+
+  <!--CODE.block (IE understands pre better than code.codeblock) -->
+  <xsl:template match="cnx:codeblock">
+    <xsl:call-template name="codeblock"/>
+  </xsl:template>
+
+  <xsl:template match="cnx:code">
+    <xsl:choose>
+      <xsl:when test="$version ='0.6'">
+        <xsl:apply-templates select="." mode="cnxml-0.6"/>
+      </xsl:when>
+      <xsl:when test="@type='block'">
+        <xsl:call-template name="codeblock"/>
+      </xsl:when>
+      <xsl:when test="@type='inline' or not(@type)">
+        <xsl:call-template name="codeline"/>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template match="cnx:code" mode="cnxml-0.6">
+    <xsl:choose>
+      <xsl:when test="@display='block'">
+        <xsl:call-template name="codeblock"/>
+     </xsl:when>
+      <xsl:when test="@display='inline' or not(@display)">
+        <xsl:call-template name="codeline"/>
+      </xsl:when>
+      <xsl:when test="@display='none'">
+        <xsl:call-template name="codenone"/>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="codeline">
     <code class="codeline">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
     </code>
   </xsl:template>
-  <!--CODE.block (IE understands pre better than code.codeblock) -->
-  <xsl:template match="cnx:codeblock|cnx:code[@type='block']">
+
+  <xsl:template name="codeblock">
     <pre class="code codeblock">
       <code>
         <xsl:call-template name='IdCheck'/>
@@ -867,6 +918,13 @@
         </xsl:if>
       </code>
     </pre>
+  </xsl:template>
+
+  <xsl:template name="codenone">
+    <code style="display : none">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:apply-templates />
+    </code>
   </xsl:template>
 
   <!-- NEWLINE and SPACE -->
