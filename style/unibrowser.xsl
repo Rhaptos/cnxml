@@ -730,6 +730,9 @@
   <!-- QUOTE -->
   <xsl:template match="cnx:quote">
     <xsl:choose>
+      <xsl:when test="$version='0.6'">
+        <xsl:apply-templates select="." mode="cnxml-0.6"/>
+      </xsl:when>
       <xsl:when test="@type='block'">
 	<blockquote class="quote">
 	  <xsl:call-template name="IdCheck"/>
@@ -759,7 +762,74 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-  
+
+  <xsl:template match="cnx:quote" mode="cnxml-0.6">
+    <xsl:variable name="href">
+      <xsl:call-template name="make-href"/>
+    </xsl:variable>
+    <xsl:choose>
+      <xsl:when test="@display='inline'">
+        <span class="quote">
+          <xsl:call-template name='IdCheck'/>
+          <xsl:apply-templates />
+        </span>
+        <xsl:if test="string-length($href)">
+          <span class="quote-source-before">[</span>
+          <a href="{$href}" class="quote-source">source</a>
+          <span class="quote-source-after">]</span>
+        </xsl:if>
+      </xsl:when>
+      <xsl:when test="@display='block' or not(@display)">
+        <blockquote class="quote">
+          <xsl:call-template name="IdCheck"/>
+          <xsl:if test="string-length($href)">
+            <xsl:attribute name="cite">
+              <xsl:value-of select="$href" />
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:apply-templates />
+          <xsl:if test="string-length($href)">
+            <span class="quote-source-before">[</span>
+            <a href="{$href}" class="quote-source">source</a>
+            <span class="quote-source-after">]</span>
+          </xsl:if>
+        </blockquote>
+      </xsl:when>
+      <xsl:when test="@display='none'">
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="make-href">
+    <xsl:choose>
+      <xsl:when test="@url">
+        <xsl:value-of select="normalize-space(@url)"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:variable name="object-id" select="normalize-space(@document)"/>
+        <xsl:variable name="version">
+          <xsl:choose>
+            <xsl:when test="@version">
+              <xsl:value-of select="normalize-space(@version)"/>
+            </xsl:when>
+            <xsl:otherwise>latest</xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="resource" select="normalize-space(@resource)"/>
+        <xsl:variable name="target-id" select="normalize-space(@target-id)"/>
+        <xsl:if test="$object-id">
+          <xsl:value-of select="concat('/content/', $object-id, '/', $version, '/')"/>
+        </xsl:if>
+        <xsl:if test="$resource">
+          <xsl:value-of select="$resource"/>
+        </xsl:if>
+        <xsl:if test="$target-id">
+          <xsl:value-of select="concat('#', $target-id)"/>
+        </xsl:if>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
   <!-- SUP and SUB -->
   <xsl:template match="cnx:sup|cnx:sub">
     <xsl:element name="{local-name()}">
