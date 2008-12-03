@@ -278,6 +278,7 @@
   <define name="mdml-parent-module">
     <element name="parent-module">
       <ref name="mdml-href"/>
+      <ref name="mdml-content-id"/>
       <ref name="mdml-title"/>
       <ref name="mdml-authorlist"/>
       <ref name="mdml-license"/>
