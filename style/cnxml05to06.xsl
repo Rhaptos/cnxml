@@ -21,7 +21,11 @@
      handle all possible CNXML 0.5 to 0.6 pathways. -->
 
   <xsl:output indent="yes" method="xml"/>
+  <xsl:strip-space elements="md:*"/>
+  <xsl:preserve-space elements="md:abstract"/>
   <xsl:param name="moduleid"/>
+  <xsl:param name="repositoryUrl" select="'http://cnx.org/content'"/>
+  <xsl:variable name="mdml-045" select="document(concat($repositoryUrl, '/', $moduleid, '/latest/mdml_045'))"/>
   <xsl:variable name="required-id-elements" 
                 select="document('')/xsl:stylesheet/reqid:elements"
                 xmlns:reqid="#required-ids"/>
@@ -54,87 +58,13 @@
 
   <xsl:template match="cnxml:metadata">
     <xsl:copy>
-      <xsl:apply-templates select="@*"/>
-      <md:content-id>FIXME</md:content-id>
-      <md:title>FIXME</md:title>
-      <xsl:copy-of select="md:version"/>
-      <xsl:copy-of select="md:created"/>
-      <xsl:copy-of select="md:revised"/>
-      <xsl:apply-templates select="md:authorlist" mode="default-copy"/>
-      <xsl:apply-templates select="md:maintainerlist" mode="default-copy"/>
-      <md:editorlist>
-        <md:editor id="FIXME">
-          <md:honorific>FIXME</md:honorific>
-          <md:firstname>FIXME</md:firstname>
-          <md:othername>FIXME</md:othername>
-          <md:surname>FIXME</md:surname>
-          <md:lineage>FIXME</md:lineage>
-          <md:fullname>FIXME</md:fullname>
-          <md:email>FIXME</md:email>
-        </md:editor>
-      </md:editorlist>
-      <md:translatorlist>
-        <md:translator id="FIXME">
-          <md:honorific>FIXME</md:honorific>
-          <md:firstname>FIXME</md:firstname>
-          <md:othername>FIXME</md:othername>
-          <md:surname>FIXME</md:surname>
-          <md:lineage>FIXME</md:lineage>
-          <md:fullname>FIXME</md:fullname>
-          <md:email>FIXME</md:email>
-        </md:translator>
-      </md:translatorlist>
-      <md:license href="FIXME"/>
-      <md:licensorlist>
-        <md:licensor id="FIXME">
-          <md:honorific>FIXME</md:honorific>
-          <md:firstname>FIXME</md:firstname>
-          <md:othername>FIXME</md:othername>
-          <md:surname>FIXME</md:surname>
-          <md:lineage>FIXME</md:lineage>
-          <md:fullname>FIXME</md:fullname>
-          <md:email>FIXME</md:email>
-        </md:licensor>
-      </md:licensorlist>
-      <md:extended-attribution>
-        <link-group type="FIXME" xmlns="http://cnx.rice.edu/cnxml">
-          <label>FIXME</label>
-          <link url="FIXME">FIXME</link>
-        </link-group>
-      </md:extended-attribution>
-      <md:parent-module href="FIXME">
-        <md:title></md:title>
-        <md:authorlist>
-          <md:author id="FIXME">
-            <md:honorific>FIXME</md:honorific>
-            <md:firstname>FIXME</md:firstname>
-            <md:othername>FIXME</md:othername>
-            <md:surname>FIXME</md:surname>
-            <md:lineage>FIXME</md:lineage>
-            <md:fullname>FIXME</md:fullname>
-            <md:email>FIXME</md:email>
-          </md:author>
-        </md:authorlist>
-        <md:license href="FIXME"/>
-        <md:licensorlist>
-          <md:licensor id="FIXME">
-            <md:honorific>FIXME</md:honorific>
-            <md:firstname>FIXME</md:firstname>
-            <md:othername>FIXME</md:othername>
-            <md:surname>FIXME</md:surname>
-            <md:lineage>FIXME</md:lineage>
-            <md:fullname>FIXME</md:fullname>
-            <md:email>FIXME</md:email>
-          </md:licensor>
-        </md:licensorlist>
-      </md:parent-module>
-      <xsl:copy-of select="md:keywordlist"/>
-      <md:subjectlist>
-        <md:subject>FIXME</md:subject>
-      </md:subjectlist>
-      <xsl:copy-of select="md:abstract"/>
-      <md:language>FIXME</md:language>
-      <xsl:copy-of select="md:objectives"/>
+      <xsl:apply-templates select="$mdml-045/md:metadata/node()" mode="mdml-045"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="node()|@*" mode="mdml-045">
+    <xsl:copy>
+      <xsl:apply-templates select="node()|@*" mode="mdml-045"/>
     </xsl:copy>
   </xsl:template>
 
