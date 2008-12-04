@@ -884,7 +884,7 @@
             <xsl:call-template name="codeline"/>
           </xsl:when>
           <xsl:when test="@display='none'">
-            <xsl:call-template name="codenone"/>
+            <xsl:call-template name="codeline"/>
           </xsl:when>
         </xsl:choose>
       </xsl:when>
@@ -903,6 +903,9 @@
 
   <xsl:template name="codeline">
     <code class="codeline">
+      <xsl:if test="@display='none'">
+        <xsl:attribute name="style">display : none</xsl:attribute>
+      </xsl:if>
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
     </code>
@@ -918,13 +921,6 @@
         </xsl:if>
       </code>
     </pre>
-  </xsl:template>
-
-  <xsl:template name="codenone">
-    <code style="display : none">
-      <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates />
-    </code>
   </xsl:template>
 
   <xsl:template match="cnx:preformat">
