@@ -424,15 +424,20 @@
           </xsl:call-template>
         </xsl:when>
         <xsl:when test="$attribute-name = 'version'">
-          <xsl:call-template name="make-link-attributes">
-            <xsl:with-param name="attribute-name">
-              <xsl:choose>
-                <xsl:when test="starts-with($rest, '#')">target-id</xsl:when>
-                <xsl:otherwise>resource</xsl:otherwise>
-              </xsl:choose>
-            </xsl:with-param>
-            <xsl:with-param name="value" select="$rest"/>
-          </xsl:call-template>
+          <xsl:choose>
+            <xsl:when test="starts-with($rest, '#')">
+              <xsl:call-template name="make-link-attributes">
+                <xsl:with-param name="attribute-name">target-id</xsl:with-param>
+                <xsl:with-param name="value" select="substring-after($rest, '#')"/>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="make-link-attributes">
+                <xsl:with-param name="attribute-name">resource</xsl:with-param>
+                <xsl:with-param name="value" select="$rest"/>
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:when>
       </xsl:choose>
     </xsl:if>
