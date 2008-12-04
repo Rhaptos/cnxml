@@ -21,11 +21,7 @@
      handle all possible CNXML 0.5 to 0.6 pathways. -->
 
   <xsl:output indent="yes" method="xml"/>
-  <xsl:strip-space elements="md:*"/>
-  <xsl:preserve-space elements="md:abstract"/>
   <xsl:param name="moduleid"/>
-  <xsl:param name="repositoryUrl" select="'http://cnx.org/content'"/>
-  <xsl:variable name="mdml-045" select="document(concat($repositoryUrl, '/', $moduleid, '/latest/mdml_045'))"/>
   <xsl:variable name="required-id-elements" 
                 select="document('')/xsl:stylesheet/reqid:elements"
                 xmlns:reqid="#required-ids"/>
@@ -58,30 +54,36 @@
 
   <xsl:template match="cnxml:metadata">
     <xsl:copy>
-      <xsl:apply-templates select="$mdml-045/md:metadata/node()" mode="mdml-045"/>
+      <xsl:comment>These elements are placeholers needed to create a valid document.</xsl:comment>
+      <md:content-id>undefined</md:content-id>
+      <md:title></md:title>
+      <md:version></md:version>
+      <md:created></md:created>
+      <md:revised></md:revised>
+      <md:authorlist>
+        <md:author id="author">
+          <md:firstname></md:firstname>
+          <md:surname></md:surname>
+          <md:fullname></md:fullname>
+        </md:author>
+      </md:authorlist>
+      <md:maintainerlist>
+        <md:maintainer id="maintainer">
+          <md:firstname></md:firstname>
+          <md:surname></md:surname>
+          <md:fullname></md:fullname>
+        </md:maintainer>
+      </md:maintainerlist>
+      <md:license href=""/>
+      <md:licensorlist>
+        <md:licensor id="licensor">
+          <md:firstname></md:firstname>
+          <md:surname></md:surname>
+          <md:fullname></md:fullname>
+        </md:licensor>
+      </md:licensorlist>
+      <md:language></md:language>
     </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="node()|@*" mode="mdml-045">
-    <xsl:copy>
-      <xsl:apply-templates select="node()|@*" mode="mdml-045"/>
-    </xsl:copy>
-  </xsl:template>
-
-  <xsl:template match="md:author|md:maintainer|md:editor|md:translator|md:licensor">
-    <xsl:element name="{name()}">
-      <xsl:copy-of select="@*"/>
-      <xsl:if test="not(@homepage)">
-        <xsl:attribute name="homepage">FIXME</xsl:attribute>
-      </xsl:if>
-      <xsl:copy-of select="md:honorific"/>
-      <xsl:copy-of select="md:firstname"/>
-      <xsl:copy-of select="md:othername"/>
-      <xsl:copy-of select="md:surname"/>
-      <xsl:copy-of select="md:lineage"/>
-      <md:fullname>FIXME</md:fullname>
-      <xsl:copy-of select="md:email"/>
-    </xsl:element>
   </xsl:template>
 
   <!-- Convert 'name' to 'label' if the child of 'item', otherwise to 'title'. -->
