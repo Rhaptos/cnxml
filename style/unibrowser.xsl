@@ -1401,9 +1401,38 @@
     </div>
   </xsl:template>
 
-  <!--LIST (block)-->
+  <!-- LIST -->
   <xsl:template match="cnx:list">
+    <xsl:choose>
+      <xsl:when test="$version='0.5'">
+        <xsl:choose>
+          <xsl:when test="@type='block' or not(@type)">
+            <xsl:call-template name="make-block-list"/>
+          </xsl:when>
+          <xsl:when test="@type='inline'">
+            <xsl:call-template name="make-inline-list"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:when>
+      <xsl:when test="$version='0.6'">
+        <xsl:choose>
+          <xsl:when test="@display='block' or @display='none' or not(@display)">
+            <xsl:call-template name="make-block-list"/>
+          </xsl:when>
+          <xsl:when test="@display='inline'">
+            <xsl:call-template name="make-inline-list"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:template>
+
+  <!--LIST (block)-->
+  <xsl:template name="make-block-list">
     <div class="list">
+      <xsl:if test="@display='none'">
+        <xsl:attribute name="style">display : none</xsl:attribute>
+      </xsl:if>
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:name[node()] or cnx:title[node()]">
         <xsl:variable name="level-number">
@@ -1456,7 +1485,7 @@
   </xsl:template>
   
   <!--LIST (inline)-->
-  <xsl:template match="cnx:list[(@type='inline' and ancestor::cnx:document[not(@cnxml-version)]) or @display='inline']">
+  <xsl:template name="make-inline-list">
     <xsl:text> </xsl:text>
     <span class="list">
       <xsl:call-template name='IdCheck'/>
