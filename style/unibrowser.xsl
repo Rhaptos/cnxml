@@ -730,88 +730,79 @@
   <!-- QUOTE -->
   <xsl:template match="cnx:quote">
     <xsl:choose>
+      <xsl:when test="$version='0.5'">
+        <xsl:choose>
+          <xsl:when test="@type='block' or not(@type)">
+            <xsl:call-template name="make-block-quote"/>
+          </xsl:when>
+          <xsl:when test="@type='inline'">
+            <xsl:call-template name="make-inline-quote"/>
+          </xsl:when>
+        </xsl:choose>
+      </xsl:when>
       <xsl:when test="$version='0.6'">
-        <xsl:apply-templates select="." mode="cnxml-0.6"/>
+        <xsl:choose>
+          <xsl:when test="@display='block' or @display='none' or not(@display)">
+            <xsl:call-template name="make-block-quote"/>
+          </xsl:when>
+          <xsl:when test="@display='inline'">
+            <xsl:call-template name="make-inline-quote"/>
+          </xsl:when>
+        </xsl:choose>
       </xsl:when>
-      <xsl:when test="@type='block'">
-	<blockquote class="quote">
-	  <xsl:call-template name="IdCheck"/>
-          <xsl:if test="@src">
-            <xsl:attribute name="cite">
-              <xsl:value-of select="@src" />
-            </xsl:attribute>
-          </xsl:if>
-	  <xsl:apply-templates />
-	  <xsl:if test="@src">
-	    <span class="quote-source-before">[</span>
-	    <a href="{@src}" class="quote-source">source</a>
-	    <span class="quote-source-after">]</span>
-	  </xsl:if>
-	</blockquote>
-      </xsl:when>
-      <xsl:otherwise>
-	<span class="quote">
-	  <xsl:call-template name='IdCheck'/>
-	  <xsl:apply-templates />
-	</span>
-	<xsl:if test="@src">
-	  <span class="quote-source-before">[</span>
-	  <a href="{@src}" class="quote-source">source</a>
-	  <span class="quote-source-after">]</span>
-	</xsl:if>
-      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
-  <xsl:template match="cnx:quote" mode="cnxml-0.6">
+  <xsl:template name="make-block-quote">
     <xsl:variable name="href">
-      <xsl:call-template name="make-href"/>
+      <xsl:choose>
+        <xsl:when test="$version='0.5'">
+          <xsl:value-of select="normalize-space(@src)"/>
+        </xsl:when>
+        <xsl:when test="$version='0.6'">
+          <xsl:call-template name="make-href"/>
+        </xsl:when>
+      </xsl:choose>
     </xsl:variable>
-    <xsl:choose>
-      <xsl:when test="@display='inline'">
-        <span class="quote">
-          <xsl:call-template name='IdCheck'/>
-          <xsl:apply-templates />
-        </span>
-        <xsl:if test="string-length($href)">
-          <span class="quote-source-before">[</span>
-          <a href="{$href}" class="quote-source">source</a>
-          <span class="quote-source-after">]</span>
-        </xsl:if>
-      </xsl:when>
-      <xsl:when test="@display='block' or not(@display)">
-        <blockquote class="quote">
-          <xsl:call-template name="IdCheck"/>
-          <xsl:if test="string-length($href)">
-            <xsl:attribute name="cite">
-              <xsl:value-of select="$href" />
-            </xsl:attribute>
-          </xsl:if>
-          <xsl:apply-templates />
-          <xsl:if test="string-length($href)">
-            <span class="quote-source-before">[</span>
-            <a href="{$href}" class="quote-source">source</a>
-            <span class="quote-source-after">]</span>
-          </xsl:if>
-        </blockquote>
-      </xsl:when>
-      <xsl:when test="@display='none'">
-        <div style="display : none">
-          <xsl:call-template name="IdCheck"/>
-          <xsl:if test="string-length($href)">
-            <xsl:attribute name="cite">
-              <xsl:value-of select="$href" />
-            </xsl:attribute>
-          </xsl:if>
-          <xsl:apply-templates />
-          <xsl:if test="string-length($href)">
-            <span class="quote-source-before">[</span>
-            <a href="{$href}" class="quote-source">source</a>
-            <span class="quote-source-after">]</span>
-          </xsl:if>
-        </div> 
-      </xsl:when>
-    </xsl:choose>
+    <blockquote class="quote">
+      <xsl:call-template name="IdCheck"/>
+      <xsl:if test="$href">
+        <xsl:attribute name="cite">
+          <xsl:value-of select="$href" />
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:if test="@display='none'">
+        <xsl:attribute name="style">display : none</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates />
+      <xsl:if test="$href">
+        <span class="quote-source-before">[</span>
+        <a href="{$href}" class="quote-source">source</a>
+        <span class="quote-source-after">]</span>
+      </xsl:if>
+    </blockquote>
+  </xsl:template>
+
+  <xsl:template name="make-inline-quote">
+    <xsl:variable name="href">
+      <xsl:choose>
+        <xsl:when test="$version='0.5'">
+          <xsl:value-of select="normalize-space(@src)"/>
+        </xsl:when>
+        <xsl:when test="$version='0.6'">
+          <xsl:call-template name="make-href"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <span class="quote">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:apply-templates />
+    </span>
+    <xsl:if test="$href">
+      <span class="quote-source-before">[</span>
+      <a href="{$href}" class="quote-source">source</a>
+      <span class="quote-source-after">]</span>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="make-href">
