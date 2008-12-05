@@ -584,7 +584,17 @@
       </xsl:call-template>
     </xsl:variable>
     <xsl:variable name="intype" select="normalize-space(@type)"/>
-    <xsl:variable name="media-conversion" select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
+    <xsl:variable name="media-conversion-rtf">
+      <xsl:choose>
+        <xsl:when test="count($media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext])">
+          <xsl:copy-of select="$media-conversions/mc:mediaconversion[@intype=$intype][@inext=$ext]"/>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="$media-conversions/mc:mediadefault"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="media-conversion" select="exsl:node-set($media-conversion-rtf)/mc:*[1]"/>
     <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
       <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
       <xsl:attribute name="alt">
@@ -1189,5 +1199,7 @@
     <mc:mediaconversion intype="image\jpg" inext="jpg" objtype="image" outtype="image/jpeg"/>
     <mc:mediaconversion intype="application/msword" inext="docx" objtype="download" outtype="application/msword"/>
     <mc:mediaconversion intype="image/img" inext="png" objtype="image" outtype="image/png"/>
+    <mc:mediaconversion intype="application/word" inext="pptx" objtype="download" outtype="application/vnd.ms-powerpoint"/>
+    <mc:mediadefault objtype="download" outtype="application/octet-stream"/>
   </mc:mediaconversions>
 </xsl:stylesheet>
