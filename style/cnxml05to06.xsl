@@ -726,6 +726,7 @@
       <xsl:call-template name="make-attribute-from-param">
         <xsl:with-param name="param-name" select="'thumbnail'"/>
       </xsl:call-template>
+      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and @name!='print-width' and @name!='thumbnail']"/>
     </xsl:element>
   </xsl:template>
 
@@ -887,6 +888,7 @@
       <xsl:call-template name="make-attribute-from-param">
         <xsl:with-param name="param-name" select="'print-width'"/>
       </xsl:call-template>
+      <xsl:copy-of select="cnxml:param[@name!='width' and @name!='print-width']"/>
     </xsl:element>
   </xsl:template>
 
