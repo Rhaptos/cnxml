@@ -7,7 +7,7 @@
   <xsl:param name="local.l10n.xml" select="document('')"/>
   <l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
     <l:l10n language="en" english-language-name="English">
-      <!-- for unibrowser.xsl -->
+      <!-- for cnxml_render.xsl -->
       <l:gentext key="subfigure" text="Subfigure"/>
       <l:gentext key="Subfigure" text="Subfigure"/>
       <l:gentext key="problem" text="Problem"/>
