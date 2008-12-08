@@ -11,7 +11,7 @@
   <xsl:template match="cnx:media">
     <xsl:choose>
       <xsl:when test="$version='0.6'">
-        <xsl:apply-templates select="*[not(@for='print')][1]" />
+        <xsl:apply-templates select="*[not(self::cnx:longdesc)][1]" />
       </xsl:when>
       <xsl:otherwise>
         <div class="media">
@@ -149,9 +149,6 @@
 
   <!-- Alt generator (if that param is absent) -->
   <xsl:template name="alt-generator">
-<!--
-    <xsl:if test="not(cnx:param[@name='alt'])">
--->
       <xsl:attribute name="alt">
         <xsl:choose>
           <xsl:when test="parent::cnx:subfigure or ancestor::*[2][self::cnx:subfigure]">
@@ -238,9 +235,6 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
-<!--
-    </xsl:if>
--->
   </xsl:template>
 
   <!-- MEDIA of type: EPS (old print pipeline) -->
