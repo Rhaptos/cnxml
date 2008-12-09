@@ -374,7 +374,7 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:link[not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[not(node())]|cnx:term[not(node())]|cnx:cite[not(node())]|cnx:meaning[not(node())]|cnx:span[not(node())]|cnx:div[not(node())]|cnx:preformat[not(node())]|cnx:sup[not(node())]|cnx:sub[not(node())]">
+  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:link[not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[not(node())]|cnx:codeblock[not(node())]|cnx:term[not(node())]|cnx:cite[not(node())]|cnx:meaning[not(node())]|cnx:span[not(node())]|cnx:div[not(node())]|cnx:preformat[not(node())]|cnx:sup[not(node())]|cnx:sub[not(node())]">
     <xsl:comment>empty <xsl:value-of select="local-name()" /> tag</xsl:comment>
   </xsl:template>
 
@@ -772,7 +772,7 @@
         </xsl:attribute>
       </xsl:if>
       <xsl:if test="@display='none'">
-        <xsl:attribute name="style">display : none</xsl:attribute>
+        <xsl:attribute name="style">display: none</xsl:attribute>
       </xsl:if>
       <xsl:apply-templates />
       <xsl:if test="$href">
@@ -855,15 +855,6 @@
   </xsl:template>
 
   <!-- CODE -->
-  <xsl:template match="cnx:codeline">
-    <xsl:call-template name="codeline"/>
-  </xsl:template>
-
-  <!--CODE.block (IE understands pre better than code.codeblock) -->
-  <xsl:template match="cnx:codeblock">
-    <xsl:call-template name="codeblock"/>
-  </xsl:template>
-
   <xsl:template match="cnx:code">
     <xsl:choose>
       <xsl:when test="$version ='0.6'">
@@ -871,12 +862,9 @@
           <xsl:when test="@display='block'">
             <xsl:call-template name="codeblock"/>
           </xsl:when>
-          <xsl:when test="@display='inline' or not(@display)">
+          <xsl:otherwise>
             <xsl:call-template name="codeline"/>
-          </xsl:when>
-          <xsl:when test="@display='none'">
-            <xsl:call-template name="codeline"/>
-          </xsl:when>
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
       <xsl:when test="$version ='0.5'">
@@ -884,18 +872,28 @@
           <xsl:when test="@type='block'">
             <xsl:call-template name="codeblock"/>
           </xsl:when>
-          <xsl:when test="@type='inline' or not(@type)">
+          <xsl:otherwise>
             <xsl:call-template name="codeline"/>
-          </xsl:when>
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
     </xsl:choose>
   </xsl:template>
 
+  <!-- CODELINE -->
+  <xsl:template match="cnx:codeline">
+    <xsl:call-template name="codeline"/>
+  </xsl:template>
+
+  <!-- CODEBLOCK -->
+  <xsl:template match="cnx:codeblock">
+    <xsl:call-template name="codeblock"/>
+  </xsl:template>
+
   <xsl:template name="codeline">
     <code class="codeline">
       <xsl:if test="@display='none'">
-        <xsl:attribute name="style">display : none</xsl:attribute>
+        <xsl:attribute name="style">display: none</xsl:attribute>
       </xsl:if>
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
@@ -907,9 +905,6 @@
       <code>
         <xsl:call-template name='IdCheck'/>
         <xsl:apply-templates />
-        <xsl:if test="not(node())">
-          <xsl:comment>empty code tag</xsl:comment>
-        </xsl:if>
       </code>
     </pre>
   </xsl:template>
@@ -932,7 +927,7 @@
         </pre>
       </xsl:when>
       <xsl:when test="@display='none'">
-        <pre style="display : none">
+        <pre style="display: none">
           <xsl:call-template name='IdCheck'/>
           <xsl:apply-templates />
           <xsl:if test="not(node())">
@@ -1046,7 +1041,7 @@
   <xsl:template name="make-block-note">
     <div class="note">
       <xsl:if test="@display='none'">
-        <xsl:attribute name="style">display : none</xsl:attribute>
+        <xsl:attribute name="style">display: none</xsl:attribute>
       </xsl:if>
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))">
@@ -1430,7 +1425,7 @@
   <xsl:template name="make-block-list">
     <div class="list">
       <xsl:if test="@display='none'">
-        <xsl:attribute name="style">display : none</xsl:attribute>
+        <xsl:attribute name="style">display: none</xsl:attribute>
       </xsl:if>
       <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:name[node()] or cnx:title[node()]">
