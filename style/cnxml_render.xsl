@@ -998,39 +998,38 @@
     </xsl:choose>
   </xsl:template>
 
+  <!-- NOTE -->
   <xsl:template match="cnx:note">
     <xsl:choose>
       <xsl:when test="$version='0.6'">
         <xsl:choose>
-          <xsl:when test="@display='block' or @display='none' or not(@display)">
-            <xsl:call-template name="make-block-note"/>
-          </xsl:when>
           <xsl:when test="@display='inline'">
             <xsl:call-template name="make-inline-note"/>
           </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="make-block-note"/>
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
       <xsl:when test="$version='0.5'">
         <xsl:choose>
-          <xsl:when test="@type='block' or not(@type)">
-            <xsl:call-template name="make-block-note"/>
-          </xsl:when>
-          <xsl:when test="@type='inline'">
-            <xsl:call-template name="make-inline-note"/>
-          </xsl:when>
           <xsl:when test="@type='footnote'">
             <xsl:call-template name="make-footnote"/>
           </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="make-block-note"/>
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
     </xsl:choose>
   </xsl:template>
 
+  <!-- FOOTNOTE -->
   <xsl:template match="cnx:footnote">
     <xsl:call-template name="make-footnote"/>
   </xsl:template>
 
-  <!-- FOOTNOTE -->
+  <!-- Footnote -->
   <xsl:template name="make-footnote">
     <xsl:variable name="footnote-number">
       <xsl:number level="any" count="//cnx:note[@type='footnote']|//cnx:footnote" format="1" />
@@ -1043,7 +1042,7 @@
     </xsl:if>
   </xsl:template>
 
-  <!-- NOTE -->
+  <!-- Block note -->
   <xsl:template name="make-block-note">
     <div class="note">
       <xsl:if test="@display='none'">
@@ -1064,7 +1063,7 @@
     </div>
   </xsl:template>
 
-  <!-- NOTE (inline) -->
+  <!-- Inline note -->
   <xsl:template name="make-inline-note">
     <span class="note">
       <xsl:call-template name='IdCheck'/>
@@ -1073,7 +1072,7 @@
     </span>
   </xsl:template>
 
-  <!-- builds a label and puts a name in for inline and regular notes -->
+  <!-- Builds a label and puts a name in for inline and regular notes -->
   <xsl:template name="note-label">
     <xsl:if test="cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))">
       <span class="cnx_label">
