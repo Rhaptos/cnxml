@@ -344,7 +344,7 @@
     </span>
   </xsl:template>
 
-  <!-- LABVIEW -->
+  <!-- LABVIEW 7.0 (cnxml version 0.5 or below) -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
     <div class="media labview example">
       <xsl:call-template name='IdCheck'/>
@@ -363,7 +363,25 @@
     </div>
   </xsl:template>
 
-  <!-- LABVIEW 8.X -->
+  <!-- LABVIEW 7.0 (cnxml version 0.6) -->
+  <xsl:template match="cnx:labview[@version='7.0']">
+    <div class="media labview example">
+      <xsl:call-template name='IdCheck'/>
+      <span class="cnx_label">
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">LabVIEWExample</xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
+        </xsl:call-template>:
+        <xsl:text> </xsl:text>
+        <!--LabVIEW Example:-->
+      </span>
+      <xsl:for-each select=".">
+        (<a class="cnxn" href="{@viname}">run</a>) (<a class="cnxn" href="{@src}">source</a>)
+      </xsl:for-each>
+    </div>
+  </xsl:template>
+
+  <!-- LABVIEW 8.X (cnxml version 0.5 or below) -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labviewrp')]">
     <xsl:param name="lv-version" select="substring-after(@type, 'application/x-labviewrp')"/>
     <xsl:param name="classid">
@@ -377,9 +395,6 @@
         <xsl:when test="$lv-version = 'vi80'">ftp://ftp.ni.com/pub/devzone/tut/cnx_lv8_runtime.exe</xsl:when>
         <xsl:when test="$lv-version = 'vi82'">ftp://ftp.ni.com/support/labview/runtime/windows/8.2/LVRunTimeEng.exe</xsl:when>
       </xsl:choose>
-    </xsl:param>
-    <xsl:param name="pluginspage">
-        http://digital.ni.com/express.nsf/bycode/exwgjq
     </xsl:param>
     <div class="media labview example">
       <xsl:call-template name='IdCheck'/>
@@ -406,7 +421,7 @@
                reqctrl="true"
 	       runlocally="true"
 	       type="{@type}"
-	       pluginspage="{$pluginspage}">
+	       pluginspage="http://digital.ni.com/express.nsf/bycode/exwgjq">
 	  <xsl:attribute name="lvfppviname">
 	    <xsl:choose>
 	      <xsl:when test="cnx:param[@name='lvfppviname']"><xsl:value-of select="cnx:param[@name='lvfppviname']/@value" /></xsl:when>
@@ -422,18 +437,78 @@
 	</embed>
       </object>
       <p>
+        <!--Download--> 
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">Download</xsl:with-param>
           <xsl:with-param name="lang" select="/module/metadata/language" />
         </xsl:call-template>
         <xsl:text> </xsl:text>
-        <!--Download--> 
         <a class="cnxn" href="{@src}">
+          <!--LabVIEW source-->
           <xsl:call-template name="gentext">
             <xsl:with-param name="key">LabVIEWSource</xsl:with-param>
             <xsl:with-param name="lang" select="/module/metadata/language" />
           </xsl:call-template>
+        </a>
+      </p>
+    </div>
+  </xsl:template>
+
+  <!-- LABVIEW 8.X (cnxml version 0.6) -->
+  <xsl:template match="cnx:labview[@version!='7.0']">
+    <xsl:param name="classid">
+      <xsl:choose>
+        <xsl:when test="@version = '8.0'">CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AD</xsl:when>
+        <xsl:when test="@version = '8.2'">CLSID:A40B0AD4-B50E-4E58-8A1D-8544233807AE</xsl:when>
+      </xsl:choose>
+    </xsl:param>
+    <xsl:param name="codebase">
+      <xsl:choose>
+        <xsl:when test="@version = '8.0'">ftp://ftp.ni.com/pub/devzone/tut/cnx_lv8_runtime.exe</xsl:when>
+        <xsl:when test="@version = '8.2'">ftp://ftp.ni.com/support/labview/runtime/windows/8.2/LVRunTimeEng.exe</xsl:when>
+      </xsl:choose>
+    </xsl:param>
+    <div class="media labview example">
+      <xsl:call-template name='IdCheck'/>
+      <object classid="{$classid}"
+              codebase="{$codebase}">
+	<xsl:if test="@width">
+	  <xsl:attribute name="width"><xsl:value-of select="@width"/></xsl:attribute>
+	</xsl:if>
+	<xsl:if test="@height">
+	  <xsl:attribute name="height"><xsl:value-of select="@height"/></xsl:attribute>
+	</xsl:if>
+	<param name="SRC" value="{@src}" />
+        <param name="LVFPPVINAME" value="{@viname}" />
+	<param name="REQCTRL" value="false" />
+	<param name="RUNLOCALLY" value="true" />
+	<embed src="{@src}"
+               reqctrl="true"
+	       runlocally="true"
+	       type="{@mime-type}"
+               lvfppviname="{@viname}"
+	       pluginspage="http://digital.ni.com/express.nsf/bycode/exwgjq">
+	  <xsl:if test="@width">
+	    <xsl:attribute name="width"><xsl:value-of select="@width"/></xsl:attribute>
+	  </xsl:if>
+	  <xsl:if test="@height">
+	    <xsl:attribute name="height"><xsl:value-of select="@height"/></xsl:attribute>
+	  </xsl:if>
+	</embed>
+      </object>
+      <p>
+        <!--Download--> 
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Download</xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
+        </xsl:call-template>
+        <xsl:text> </xsl:text>
+        <a class="cnxn" href="{@src}">
           <!--LabVIEW source-->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">LabVIEWSource</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language" />
+          </xsl:call-template>
         </a>
       </p>
     </div>
