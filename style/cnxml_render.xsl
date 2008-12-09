@@ -732,22 +732,22 @@
     <xsl:choose>
       <xsl:when test="$version='0.5'">
         <xsl:choose>
-          <xsl:when test="@type='block' or not(@type)">
+          <xsl:when test="@type='block'">
             <xsl:call-template name="make-block-quote"/>
           </xsl:when>
-          <xsl:when test="@type='inline'">
+          <xsl:otherwise>
             <xsl:call-template name="make-inline-quote"/>
-          </xsl:when>
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
       <xsl:when test="$version='0.6'">
         <xsl:choose>
-          <xsl:when test="@display='block' or @display='none' or not(@display)">
-            <xsl:call-template name="make-block-quote"/>
-          </xsl:when>
           <xsl:when test="@display='inline'">
             <xsl:call-template name="make-inline-quote"/>
           </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="make-block-quote"/>
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
     </xsl:choose>
