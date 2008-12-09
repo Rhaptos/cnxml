@@ -810,6 +810,9 @@
           <xsl:when test="cnxml:param[@name='viinfo']">
             <xsl:value-of select="cnxml:param[@name='viinfo']/@value"/>
           </xsl:when>
+          <xsl:otherwise>
+            <xsl:value-of select="@src"/>
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:attribute>
       <xsl:attribute name="version">
