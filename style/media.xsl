@@ -14,37 +14,62 @@
         <xsl:apply-templates select="child::*[not(self::cnx:longdesc)][1]" />
       </xsl:when>
       <xsl:otherwise>
-        <div class="media">
-          <xsl:call-template name='IdCheck'/>
-          <object>
-            <xsl:for-each select="cnx:param">
-              <xsl:attribute name='{@name}'>
-                <xsl:value-of select='@value'/>
-              </xsl:attribute> 
-            </xsl:for-each>
-            <span class="cnx_label">
-              <!--Media File:-->
-              <xsl:call-template name="gentext">
-                <xsl:with-param name="key">MediaFile</xsl:with-param>
-                <xsl:with-param name="lang" select="/module/metadata/language" />
-              </xsl:call-template>
-              <xsl:text>: </xsl:text>
-            </span>
-            <a class="link" href="{@src}">
-              <xsl:choose>
-                <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
-                  <xsl:value-of select="cnx:param[@name='title']/@value" />
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="@src" />
-                </xsl:otherwise>
-              </xsl:choose>
-            </a>
-            <xsl:apply-templates/>
-          </object>
-        </div>
+        <xsl:call-template name="default-media" />
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <!-- OBJECT and MEDIA -->
+  <xsl:template match="cnx:object|cnx:download">
+    <xsl:call-template name="default-media" />
+  </xsl:template>
+
+  <xsl:template name="default-media">
+    <div class="media">
+      <xsl:call-template name='IdCheck'/>
+      <object>
+        <xsl:for-each select="@width|@height">
+          <xsl:attribute name="{name()}">
+            <xsl:value-of select="." />
+          </xsl:attribute>
+        </xsl:for-each>
+        <xsl:for-each select="cnx:param">
+          <xsl:attribute name='{@name}'>
+            <xsl:value-of select='@value'/>
+          </xsl:attribute> 
+        </xsl:for-each>
+        <span class="cnx_label">
+          <!--Media File:-->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">MediaFile</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language" />
+          </xsl:call-template>
+          <xsl:text>: </xsl:text>
+        </span>
+        <a class="link" href="{@src}">
+          <xsl:choose>
+            <xsl:when test="cnx:title">
+              <xsl:apply-templates select="cnx:title" />
+            </xsl:when>
+            <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
+              <xsl:value-of select="cnx:param[@name='title']/@value" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="@src" />
+            </xsl:otherwise>
+          </xsl:choose>
+        </a>
+        <xsl:apply-templates/>
+      </object>
+    </div>
+  </xsl:template>
+
+  <!-- TEXT -->
+  <xsl:template match="cnx:text">
+    <div class="media">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:apply-templates/>
+    </div>
   </xsl:template>
 
   <!-- MEDIA of type: IMAGE (cnxml version 0.5 and below) --> 
@@ -622,7 +647,7 @@
       <a class="link" href="{@src}">
 	<xsl:choose>
 	  <xsl:when test="cnx:title">
-	    <i><xsl:value-of select="cnx:title" /></i>
+	    <i><xsl:apply-templates select="cnx:title" /></i>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:value-of select="@src" />
