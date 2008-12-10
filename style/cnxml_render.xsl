@@ -333,8 +333,8 @@
     </div>
   </xsl:template>
 
-  <!-- METADATA -->
-  <xsl:template match="cnx:metadata|cnx:authorlist|cnx:maintainerlist|cnx:keywordlist|cnx:abstract|cnx:objectives" />
+  <!-- METADATA and other non-displayed elements -->
+  <xsl:template match="cnx:metadata|cnx:authorlist|cnx:maintainerlist|cnx:keywordlist|cnx:abstract|cnx:objectives|featured-links|link-group" />
 
   <!--SECTION-->
   <xsl:template match="cnx:section">
