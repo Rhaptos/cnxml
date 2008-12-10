@@ -242,7 +242,7 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <!-- MEDIA of type: APPLET (cnxml version 0.6 and below) -->
+  <!-- MEDIA of type: APPLET (cnxml version 0.5 and below) -->
   <xsl:template match="cnx:media[@type='application/x-java-applet']">
     <span class="media">
       <xsl:call-template name='IdCheck'/>
@@ -344,7 +344,7 @@
     </span>
   </xsl:template>
 
-  <!-- LABVIEW 7.0 (cnxml version 0.5 or below) -->
+  <!-- MEDIA of type: LABVIEW 7.0 (cnxml version 0.5 or below) -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labview')]">
     <div class="media labview example">
       <xsl:call-template name='IdCheck'/>
@@ -381,7 +381,7 @@
     </div>
   </xsl:template>
 
-  <!-- LABVIEW 8.X (cnxml version 0.5 or below) -->
+  <!-- MEDIA of type: LABVIEW 8.X (cnxml version 0.5 or below) -->
   <xsl:template match="cnx:media[starts-with(@type,'application/x-labviewrp')]">
     <xsl:param name="lv-version" select="substring-after(@type, 'application/x-labviewrp')"/>
     <xsl:param name="classid">
