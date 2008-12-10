@@ -1466,9 +1466,7 @@
   <define name="object">
     <element name="object">
       <ref name="media-object-common-content"/>
-      <optional>
-        <ref name="src-attribute"/>
-      </optional>
+      <ref name="src-attribute"/>
     </element>
   </define>
 
@@ -1556,6 +1554,9 @@
       <optional>
         <ref name="id-attribute"/>
       </optional>
+      <optional>
+        <ref name="src-attribute"/>
+      </optional>
       <oneOrMore>
         <ref name="div-content-class"/>
       </oneOrMore>
@@ -1565,9 +1566,7 @@
   <define name="download">
     <element name="download">
       <ref name="media-object-common-content"/>
-      <optional>
-        <ref name="src-attribute"/>
-      </optional>
+      <ref name="src-attribute"/>
     </element>
   </define>
 

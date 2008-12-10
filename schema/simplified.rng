@@ -3716,9 +3716,7 @@
           <ref name="exercise"/>
         </choice>
       </oneOrMore>
-      <optional>
-        <attribute name="src"/>
-      </optional>
+      <attribute name="src"/>
     </element>
   </define>
   <define name="image">
@@ -4428,6 +4426,9 @@
           <data type="ID"/>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="src"/>
+      </optional>
       <oneOrMore>
         <choice>
           <ref name="para"/>
@@ -4558,9 +4559,7 @@
           <ref name="exercise"/>
         </choice>
       </oneOrMore>
-      <optional>
-        <attribute name="src"/>
-      </optional>
+      <attribute name="src"/>
     </element>
   </define>
   <define name="example">
