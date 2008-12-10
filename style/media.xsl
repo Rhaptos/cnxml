@@ -514,7 +514,7 @@
     </div>
   </xsl:template>
 
-  <!-- FLASH Objects -->
+  <!-- MEDIA of type: FLASH (cnxml version 0.5 or below) -->
   <xsl:template match="cnx:media[@type='application/x-shockwave-flash']">
     <span class="media">
     <object type="application/x-shockwave-flash" data="{@src}">
@@ -540,6 +540,47 @@
         </xsl:for-each>
       </embed>
     </object>
+    </span>
+  </xsl:template>
+
+  <!-- FLASH (cnxml version 0.6) -->
+  <xsl:template match="cnx:flash">
+    <span class="media">
+      <object type="application/x-shockwave-flash" data="{@src}">
+        <xsl:call-template name='IdCheck'/>
+        <xsl:for-each select="@width|@height">
+          <xsl:attribute name="{name()}">
+            <xsl:value-of select="." />
+          </xsl:attribute>
+        </xsl:for-each>
+        <xsl:for-each select="@wmode|@loop|@quality|@scale|@bgcolors">
+          <param name="{name()}" value="{.}" />
+        </xsl:for-each>
+        <xsl:if test="@flash-vars">
+          <param name="FlashVars" value="@flash-vars" />
+        </xsl:if>
+        <xsl:for-each select="cnx:param">
+          <param name="{@name}" value="{@value}" />
+        </xsl:for-each>
+        <param name="movie" value="{@src}"/>
+        <embed src="{@src}" type="application/x-shockwave-flash" pluginspace="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+          <xsl:for-each select="@width|@height|@wmode|@loop|@quality|@scale|@bgcolor">
+            <xsl:attribute name="{name()}">
+              <xsl:value-of select="." />
+            </xsl:attribute>
+          </xsl:for-each>
+          <xsl:if test="@flash-vars">
+            <xsl:attribute name="FlashVars">
+              <xsl:value-of select="@flash-vars" />
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:for-each select="cnx:param">
+            <xsl:attribute name="{@name}">
+              <xsl:value-of select="@value" />
+            </xsl:attribute>
+          </xsl:for-each>
+        </embed>
+      </object>
     </span>
   </xsl:template>
 
