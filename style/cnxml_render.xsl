@@ -375,7 +375,7 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:link[not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[not(node())]|cnx:codeblock[not(node())]|cnx:term[not(node())]|cnx:cite[not(node())]|cnx:meaning[not(node())]|cnx:span[not(node())]|cnx:div[not(node())]|cnx:preformat[not(node())]|cnx:sup[not(node())]|cnx:sub[not(node())]">
+  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:link[@src or @url][not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[not(node())]|cnx:codeblock[not(node())]|cnx:term[not(node())]|cnx:cite[not(node())]|cnx:meaning[not(node())]|cnx:span[not(node())]|cnx:div[not(node())]|cnx:preformat[not(node())]|cnx:sup[not(node())]|cnx:sub[not(node())]">
     <xsl:comment>empty <xsl:value-of select="local-name()" /> tag</xsl:comment>
   </xsl:template>
 
@@ -463,14 +463,7 @@
       <xsl:when test="@url">
         <a class="link" href="{@url}">
           <xsl:call-template name="common-link-attributes" />
-          <xsl:choose>
-            <xsl:when test="node()">
-              <xsl:apply-templates />
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:call-template name="reference-text" />
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:apply-templates />
         </a>
       </xsl:when>
       <!-- like old CNXN element -->
@@ -641,19 +634,15 @@
         </span>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="reference-text" />
+        <xsl:text>(</xsl:text>
+        <!-- Reference -->
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">Reference</xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language"/>
+        </xsl:call-template>
+        <xsl:text>)</xsl:text>        
       </xsl:otherwise>
     </xsl:choose>
-  </xsl:template>
-
-  <xsl:template name="reference-text">
-    <xsl:text>(</xsl:text>
-    <!-- Reference -->
-    <xsl:call-template name="gentext">
-      <xsl:with-param name="key">Reference</xsl:with-param>
-      <xsl:with-param name="lang" select="/module/metadata/language"/>
-    </xsl:call-template>
-    <xsl:text>)</xsl:text>
   </xsl:template>
 
   <xsl:template name="solution-test">
