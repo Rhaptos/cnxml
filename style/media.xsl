@@ -11,7 +11,7 @@
   <xsl:template match="cnx:media">
     <xsl:choose>
       <xsl:when test="$version='0.6'">
-        <xsl:apply-templates select="*[not(self::cnx:longdesc)][1]" />
+        <xsl:apply-templates select="child::*[not(self::cnx:longdesc)][1]" />
       </xsl:when>
       <xsl:otherwise>
         <div class="media">
