@@ -695,6 +695,25 @@
     </choice>
   </define>
 
+  <define name="media-object-fallback-class">
+    <choice>
+      <ref name="text-extras"/>
+      <ref name="span"/>
+      <ref name="term"/>
+      <ref name="cite"/>
+      <ref name="cite-title"/>
+      <ref name="foreign"/>
+      <ref name="emphasis"/>
+      <ref name="sub"/>
+      <ref name="sup"/>
+      <ref name="inline-code"/>
+      <ref name="inline-preformat"/>
+      <ref name="inline-quote"/>
+      <ref name="inline-note"/>
+      <ref name="inline-list"/>
+      <ref name="media-object-class"/>
+    </choice>
+  </define>
 <!--
     Shared Content Models
 -->
@@ -1450,7 +1469,9 @@
     <zeroOrMore>
       <ref name="param"/>
     </zeroOrMore>
-    <ref name="div-content"/>
+    <zeroOrMore>
+      <ref name="media-object-fallback-class"/>
+    </zeroOrMore>
   </define>
 
   <define name="audio-video-common-content">

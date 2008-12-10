@@ -3670,12 +3670,8 @@
       <zeroOrMore>
         <ref name="param"/>
       </zeroOrMore>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
+      <zeroOrMore>
         <choice>
-          <ref name="para"/>
           <text/>
           <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
@@ -3693,29 +3689,17 @@
           <ref name="bulleted-inline-list"/>
           <ref name="enumerated-inline-list"/>
           <ref name="labeled-item-inline-list"/>
-          <ref name="inline-media"/>
-          <ref name="footnote"/>
-          <ref name="link"/>
-          <ref name="newline"/>
-          <ref name="space"/>
-          <ref name="div"/>
-          <ref name="definition"/>
-          <ref name="example"/>
-          <ref name="figure"/>
-          <ref name="block-code"/>
-          <ref name="block-preformat"/>
-          <ref name="block-quote"/>
-          <ref name="block-note"/>
-          <ref name="block-media"/>
-          <ref name="bulleted-block-list"/>
-          <ref name="enumerated-block-list"/>
-          <ref name="labeled-item-block-list"/>
-          <ref name="table"/>
-          <ref name="rule"/>
-          <ref name="equation"/>
-          <ref name="exercise"/>
+          <ref name="object"/>
+          <ref name="image"/>
+          <ref name="audio"/>
+          <ref name="video"/>
+          <ref name="java-applet"/>
+          <ref name="flash"/>
+          <ref name="labview"/>
+          <ref name="text"/>
+          <ref name="download"/>
         </choice>
-      </oneOrMore>
+      </zeroOrMore>
       <attribute name="src"/>
     </element>
   </define>
@@ -3758,12 +3742,8 @@
       <zeroOrMore>
         <ref name="param"/>
       </zeroOrMore>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
+      <zeroOrMore>
         <choice>
-          <ref name="para"/>
           <text/>
           <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
@@ -3781,29 +3761,17 @@
           <ref name="bulleted-inline-list"/>
           <ref name="enumerated-inline-list"/>
           <ref name="labeled-item-inline-list"/>
-          <ref name="inline-media"/>
-          <ref name="footnote"/>
-          <ref name="link"/>
-          <ref name="newline"/>
-          <ref name="space"/>
-          <ref name="div"/>
-          <ref name="definition"/>
-          <ref name="example"/>
-          <ref name="figure"/>
-          <ref name="block-code"/>
-          <ref name="block-preformat"/>
-          <ref name="block-quote"/>
-          <ref name="block-note"/>
-          <ref name="block-media"/>
-          <ref name="bulleted-block-list"/>
-          <ref name="enumerated-block-list"/>
-          <ref name="labeled-item-block-list"/>
-          <ref name="table"/>
-          <ref name="rule"/>
-          <ref name="equation"/>
-          <ref name="exercise"/>
+          <ref name="object"/>
+          <ref name="image"/>
+          <ref name="audio"/>
+          <ref name="video"/>
+          <ref name="java-applet"/>
+          <ref name="flash"/>
+          <ref name="labview"/>
+          <ref name="text"/>
+          <ref name="download"/>
         </choice>
-      </oneOrMore>
+      </zeroOrMore>
       <attribute name="src"/>
       <optional>
         <attribute name="print-width"/>
@@ -3852,12 +3820,8 @@
       <zeroOrMore>
         <ref name="param"/>
       </zeroOrMore>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
+      <zeroOrMore>
         <choice>
-          <ref name="para"/>
           <text/>
           <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
@@ -3875,29 +3839,17 @@
           <ref name="bulleted-inline-list"/>
           <ref name="enumerated-inline-list"/>
           <ref name="labeled-item-inline-list"/>
-          <ref name="inline-media"/>
-          <ref name="footnote"/>
-          <ref name="link"/>
-          <ref name="newline"/>
-          <ref name="space"/>
-          <ref name="div"/>
-          <ref name="definition"/>
-          <ref name="example"/>
-          <ref name="figure"/>
-          <ref name="block-code"/>
-          <ref name="block-preformat"/>
-          <ref name="block-quote"/>
-          <ref name="block-note"/>
-          <ref name="block-media"/>
-          <ref name="bulleted-block-list"/>
-          <ref name="enumerated-block-list"/>
-          <ref name="labeled-item-block-list"/>
-          <ref name="table"/>
-          <ref name="rule"/>
-          <ref name="equation"/>
-          <ref name="exercise"/>
+          <ref name="object"/>
+          <ref name="image"/>
+          <ref name="audio"/>
+          <ref name="video"/>
+          <ref name="java-applet"/>
+          <ref name="flash"/>
+          <ref name="labview"/>
+          <ref name="text"/>
+          <ref name="download"/>
         </choice>
-      </oneOrMore>
+      </zeroOrMore>
       <attribute name="src"/>
       <optional>
         <attribute name="standby">
@@ -3977,12 +3929,8 @@
       <zeroOrMore>
         <ref name="param"/>
       </zeroOrMore>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
+      <zeroOrMore>
         <choice>
-          <ref name="para"/>
           <text/>
           <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
@@ -4000,29 +3948,17 @@
           <ref name="bulleted-inline-list"/>
           <ref name="enumerated-inline-list"/>
           <ref name="labeled-item-inline-list"/>
-          <ref name="inline-media"/>
-          <ref name="footnote"/>
-          <ref name="link"/>
-          <ref name="newline"/>
-          <ref name="space"/>
-          <ref name="div"/>
-          <ref name="definition"/>
-          <ref name="example"/>
-          <ref name="figure"/>
-          <ref name="block-code"/>
-          <ref name="block-preformat"/>
-          <ref name="block-quote"/>
-          <ref name="block-note"/>
-          <ref name="block-media"/>
-          <ref name="bulleted-block-list"/>
-          <ref name="enumerated-block-list"/>
-          <ref name="labeled-item-block-list"/>
-          <ref name="table"/>
-          <ref name="rule"/>
-          <ref name="equation"/>
-          <ref name="exercise"/>
+          <ref name="object"/>
+          <ref name="image"/>
+          <ref name="audio"/>
+          <ref name="video"/>
+          <ref name="java-applet"/>
+          <ref name="flash"/>
+          <ref name="labview"/>
+          <ref name="text"/>
+          <ref name="download"/>
         </choice>
-      </oneOrMore>
+      </zeroOrMore>
       <attribute name="src"/>
       <optional>
         <attribute name="standby">
@@ -4102,12 +4038,8 @@
       <zeroOrMore>
         <ref name="param"/>
       </zeroOrMore>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
+      <zeroOrMore>
         <choice>
-          <ref name="para"/>
           <text/>
           <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
@@ -4125,29 +4057,17 @@
           <ref name="bulleted-inline-list"/>
           <ref name="enumerated-inline-list"/>
           <ref name="labeled-item-inline-list"/>
-          <ref name="inline-media"/>
-          <ref name="footnote"/>
-          <ref name="link"/>
-          <ref name="newline"/>
-          <ref name="space"/>
-          <ref name="div"/>
-          <ref name="definition"/>
-          <ref name="example"/>
-          <ref name="figure"/>
-          <ref name="block-code"/>
-          <ref name="block-preformat"/>
-          <ref name="block-quote"/>
-          <ref name="block-note"/>
-          <ref name="block-media"/>
-          <ref name="bulleted-block-list"/>
-          <ref name="enumerated-block-list"/>
-          <ref name="labeled-item-block-list"/>
-          <ref name="table"/>
-          <ref name="rule"/>
-          <ref name="equation"/>
-          <ref name="exercise"/>
+          <ref name="object"/>
+          <ref name="image"/>
+          <ref name="audio"/>
+          <ref name="video"/>
+          <ref name="java-applet"/>
+          <ref name="flash"/>
+          <ref name="labview"/>
+          <ref name="text"/>
+          <ref name="download"/>
         </choice>
-      </oneOrMore>
+      </zeroOrMore>
       <optional>
         <attribute name="src"/>
       </optional>
@@ -4202,12 +4122,8 @@
       <zeroOrMore>
         <ref name="param"/>
       </zeroOrMore>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
+      <zeroOrMore>
         <choice>
-          <ref name="para"/>
           <text/>
           <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
@@ -4225,29 +4141,17 @@
           <ref name="bulleted-inline-list"/>
           <ref name="enumerated-inline-list"/>
           <ref name="labeled-item-inline-list"/>
-          <ref name="inline-media"/>
-          <ref name="footnote"/>
-          <ref name="link"/>
-          <ref name="newline"/>
-          <ref name="space"/>
-          <ref name="div"/>
-          <ref name="definition"/>
-          <ref name="example"/>
-          <ref name="figure"/>
-          <ref name="block-code"/>
-          <ref name="block-preformat"/>
-          <ref name="block-quote"/>
-          <ref name="block-note"/>
-          <ref name="block-media"/>
-          <ref name="bulleted-block-list"/>
-          <ref name="enumerated-block-list"/>
-          <ref name="labeled-item-block-list"/>
-          <ref name="table"/>
-          <ref name="rule"/>
-          <ref name="equation"/>
-          <ref name="exercise"/>
+          <ref name="object"/>
+          <ref name="image"/>
+          <ref name="audio"/>
+          <ref name="video"/>
+          <ref name="java-applet"/>
+          <ref name="flash"/>
+          <ref name="labview"/>
+          <ref name="text"/>
+          <ref name="download"/>
         </choice>
-      </oneOrMore>
+      </zeroOrMore>
       <attribute name="src"/>
       <optional>
         <attribute name="wmode">
@@ -4343,12 +4247,8 @@
       <zeroOrMore>
         <ref name="param"/>
       </zeroOrMore>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
+      <zeroOrMore>
         <choice>
-          <ref name="para"/>
           <text/>
           <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
@@ -4366,29 +4266,17 @@
           <ref name="bulleted-inline-list"/>
           <ref name="enumerated-inline-list"/>
           <ref name="labeled-item-inline-list"/>
-          <ref name="inline-media"/>
-          <ref name="footnote"/>
-          <ref name="link"/>
-          <ref name="newline"/>
-          <ref name="space"/>
-          <ref name="div"/>
-          <ref name="definition"/>
-          <ref name="example"/>
-          <ref name="figure"/>
-          <ref name="block-code"/>
-          <ref name="block-preformat"/>
-          <ref name="block-quote"/>
-          <ref name="block-note"/>
-          <ref name="block-media"/>
-          <ref name="bulleted-block-list"/>
-          <ref name="enumerated-block-list"/>
-          <ref name="labeled-item-block-list"/>
-          <ref name="table"/>
-          <ref name="rule"/>
-          <ref name="equation"/>
-          <ref name="exercise"/>
+          <ref name="object"/>
+          <ref name="image"/>
+          <ref name="audio"/>
+          <ref name="video"/>
+          <ref name="java-applet"/>
+          <ref name="flash"/>
+          <ref name="labview"/>
+          <ref name="text"/>
+          <ref name="download"/>
         </choice>
-      </oneOrMore>
+      </zeroOrMore>
       <attribute name="src"/>
       <attribute name="viname"/>
       <attribute name="version">
@@ -4513,12 +4401,8 @@
       <zeroOrMore>
         <ref name="param"/>
       </zeroOrMore>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
+      <zeroOrMore>
         <choice>
-          <ref name="para"/>
           <text/>
           <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
@@ -4536,29 +4420,17 @@
           <ref name="bulleted-inline-list"/>
           <ref name="enumerated-inline-list"/>
           <ref name="labeled-item-inline-list"/>
-          <ref name="inline-media"/>
-          <ref name="footnote"/>
-          <ref name="link"/>
-          <ref name="newline"/>
-          <ref name="space"/>
-          <ref name="div"/>
-          <ref name="definition"/>
-          <ref name="example"/>
-          <ref name="figure"/>
-          <ref name="block-code"/>
-          <ref name="block-preformat"/>
-          <ref name="block-quote"/>
-          <ref name="block-note"/>
-          <ref name="block-media"/>
-          <ref name="bulleted-block-list"/>
-          <ref name="enumerated-block-list"/>
-          <ref name="labeled-item-block-list"/>
-          <ref name="table"/>
-          <ref name="rule"/>
-          <ref name="equation"/>
-          <ref name="exercise"/>
+          <ref name="object"/>
+          <ref name="image"/>
+          <ref name="audio"/>
+          <ref name="video"/>
+          <ref name="java-applet"/>
+          <ref name="flash"/>
+          <ref name="labview"/>
+          <ref name="text"/>
+          <ref name="download"/>
         </choice>
-      </oneOrMore>
+      </zeroOrMore>
       <attribute name="src"/>
     </element>
   </define>
