@@ -756,7 +756,7 @@
     </xsl:variable>
     <blockquote class="quote">
       <xsl:call-template name="IdCheck"/>
-      <xsl:if test="$href">
+      <xsl:if test="$href!=''">
         <xsl:attribute name="cite">
           <xsl:value-of select="$href" />
         </xsl:attribute>
@@ -765,7 +765,7 @@
         <xsl:attribute name="style">display: none</xsl:attribute>
       </xsl:if>
       <xsl:apply-templates />
-      <xsl:if test="$href">
+      <xsl:if test="$href!=''">
         <span class="quote-source-before">[</span>
         <a href="{$href}" class="quote-source">source</a>
         <span class="quote-source-after">]</span>
@@ -788,7 +788,7 @@
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates />
     </span>
-    <xsl:if test="$href">
+    <xsl:if test="$href!=''">
       <span class="quote-source-before">[</span>
       <a href="{$href}" class="quote-source">source</a>
       <span class="quote-source-after">]</span>
