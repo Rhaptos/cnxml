@@ -346,7 +346,8 @@
       <!-- h2, h3, etc... -->
       <xsl:element name="h{$level-number}">
         <xsl:attribute name="class">section-header</xsl:attribute>
-	<xsl:if test="parent::cnx:problem or parent::cnx:solution">
+        <xsl:apply-template select="cnx:label" />
+	<xsl:if test="(parent::cnx:problem or parent::cnx:solution) and not(cnx:label[not(node())])">
 	  <xsl:number level="any" count="cnx:exercise" format="1."/>
           <xsl:number level="single" format="a) " />
 	</xsl:if>
@@ -365,7 +366,7 @@
           <xsl:text> </xsl:text>
         </xsl:if>
       </xsl:element>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title)]"/>
+      <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:name|self::cnx:title)]"/>
     </div>
   </xsl:template>
 
