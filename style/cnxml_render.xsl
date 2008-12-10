@@ -791,7 +791,17 @@
   <xsl:template match="cnx:foreign">
     <span class="foreign">
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates />
+      <xsl:choose>
+        <xsl:when test="@url or @document or @version or @resource or @target-id">
+          <a>
+            <xsl:call-template name="link-attributes" />
+            <xsl:apply-templates />
+          </a>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates />
+        </xsl:otherwise>
+      </xsl:choose>
     </span>
   </xsl:template>
 
