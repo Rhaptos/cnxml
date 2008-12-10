@@ -346,7 +346,7 @@
       <!-- h2, h3, etc... -->
       <xsl:element name="h{$level-number}">
         <xsl:attribute name="class">section-header</xsl:attribute>
-        <xsl:apply-template select="cnx:label" />
+        <xsl:apply-templates select="cnx:label" />
 	<xsl:if test="(parent::cnx:problem or parent::cnx:solution) and not(cnx:label[not(node())])">
 	  <xsl:number level="any" count="cnx:exercise" format="1."/>
           <xsl:number level="single" format="a) " />
@@ -448,37 +448,17 @@
     </div>
   </xsl:template>
 
-  <!-- LINK (cnxml version 0.5 and before) -->
-  <xsl:template match="cnx:link[@src]">
-    <a class="link" href="{@src}">
+  <!-- LINK and CNXN (cnxml version 0.5 and before) -->
+  <xsl:template match="cnx:link|cnx:cnxn">
+    <a>
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates />
+      <xsl:call-template name="link-attributes" />
+      <xsl:call-template name="link-text" />
     </a>
   </xsl:template>
 
-  <!-- LINK (cnxml version 0.6) -->
-  <xsl:template match="cnx:link|cnx:cnxn">
-    <xsl:choose>
-      <!-- like old LINK element -->
-      <xsl:when test="@url">
-        <a class="link" href="{@url}">
-          <xsl:call-template name="common-link-attributes" />
-          <xsl:apply-templates />
-        </a>
-      </xsl:when>
-      <!-- like old CNXN element -->
-      <xsl:otherwise>
-        <a class="cnxn">
-          <xsl:call-template name="common-link-attributes" />
-          <xsl:call-template name="cnxn-url-and-text" />
-        </a>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
-  <!-- Common link attributes: IdCheck, @strength, and @window -->
-  <xsl:template name="common-link-attributes">
-    <xsl:call-template name='IdCheck'/>
+  <!-- Common link attributes: @strength, @window, href -->
+  <xsl:template name="link-attributes">
     <xsl:if test="@strength">
       <xsl:attribute name="title">
         <!--Strength-->
@@ -492,49 +472,63 @@
     </xsl:if>
     <xsl:if test="@window='new'">
       <xsl:attribute name="target">_blank</xsl:attribute>
-      <xsl:attribute name="class">cnxn new</xsl:attribute>
     </xsl:if>
-  </xsl:template>
-
-  <!-- Put a URL together and give the link/cnxn text if it's empty -->
-  <xsl:template name="cnxn-url-and-text">
-    <xsl:variable name="target">
+    <xsl:attribute name="class">
       <xsl:choose>
-        <xsl:when test="@target or @target-id">
-          <xsl:value-of select="@target|@target-id" />
-        </xsl:when>
-        <xsl:otherwise>0</xsl:otherwise>
+        <xsl:when test="@src or @url">link</xsl:when>
+        <xsl:otherwise>cnxn</xsl:otherwise>
       </xsl:choose>
-    </xsl:variable>
-    <xsl:attribute name="href">
-      <xsl:choose>
-        <xsl:when test="not(@document) and not(@module) and not(@version)" />
-        <xsl:when test="not(@document) and not(@module) and @version">
-          <xsl:text>../</xsl:text>
-          <xsl:value-of select="@version" />
-          <xsl:text>/</xsl:text>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:text>/content/</xsl:text>
-          <xsl:value-of select="@document|@module" />
-          <xsl:text>/</xsl:text>
-          <xsl:choose>
-            <xsl:when test="@version">
-              <xsl:value-of select="@version" />
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:text>latest</xsl:text>
-            </xsl:otherwise>
-          </xsl:choose>
-          <xsl:text>/</xsl:text>
-        </xsl:otherwise>
-      </xsl:choose>
-      <xsl:if test="$target or @resource">
-        <xsl:text>#</xsl:text>
-        <xsl:value-of select="$target" />
-        <xsl:value-of select="@resource" />
+      <xsl:if test="@window='new'">
+        <xsl:text> newwindow</xsl:text>
       </xsl:if>
     </xsl:attribute>
+    <xsl:attribute name="href">
+      <xsl:call-template name="make-href" />
+    </xsl:attribute>
+  </xsl:template>
+     
+  <!-- Construct an href -->
+  <xsl:template name="make-href">
+    <xsl:choose>
+      <xsl:when test="@url or @src">
+        <xsl:value-of select="@url|@src" />
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:variable name="target" select="@target|@target-id" />
+        <xsl:choose>
+          <xsl:when test="not(@document) and not(@module) and not(@version)" />
+          <xsl:when test="not(@document) and not(@module) and @version">
+            <xsl:text>../</xsl:text>
+            <xsl:value-of select="@version" />
+            <xsl:text>/</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:text>/content/</xsl:text>
+            <xsl:value-of select="@document|@module" />
+            <xsl:text>/</xsl:text>
+            <xsl:choose>
+              <xsl:when test="@version">
+                <xsl:value-of select="@version" />
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:text>latest</xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
+            <xsl:text>/</xsl:text>
+          </xsl:otherwise>
+        </xsl:choose>
+        <xsl:value-of select="@resource" />
+        <xsl:if test="$target!=''">
+          <xsl:text>#</xsl:text>
+          <xsl:value-of select="$target" />
+        </xsl:if>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+
+  <!-- Provide the link/cnxn text if it's empty -->
+  <xsl:template name="link-text">
+    <xsl:variable name="target" select="@target|@target-id" />
     <xsl:choose>
       <xsl:when test="node()">
         <xsl:apply-templates />
@@ -719,31 +713,34 @@
 
   <!-- QUOTE -->
   <xsl:template match="cnx:quote">
-    <xsl:choose>
-      <xsl:when test="$version='0.5'">
+    <xsl:call-template name="make-quote">
+      <xsl:with-param name="display">
         <xsl:choose>
-          <xsl:when test="@type='block'">
-            <xsl:call-template name="make-block-quote"/>
+          <xsl:when test="$version='0.5'">
+            <xsl:choose>
+              <xsl:when test="@type='block'">block</xsl:when>
+              <xsl:otherwise>inline</xsl:otherwise>
+            </xsl:choose>
           </xsl:when>
-          <xsl:otherwise>
-            <xsl:call-template name="make-inline-quote"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
-      <xsl:when test="$version='0.6'">
-        <xsl:choose>
-          <xsl:when test="@display='inline'">
-            <xsl:call-template name="make-inline-quote"/>
+          <xsl:when test="$version='0.6'">
+            <xsl:choose>
+              <xsl:when test="@display='inline'">inline</xsl:when>
+              <xsl:otherwise>block</xsl:otherwise>
+            </xsl:choose>
           </xsl:when>
-          <xsl:otherwise>
-            <xsl:call-template name="make-block-quote"/>
-          </xsl:otherwise>
         </xsl:choose>
-      </xsl:when>
-    </xsl:choose>
+      </xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
-  <xsl:template name="make-block-quote">
+  <xsl:template name="make-quote">
+    <xsl:param name="display">block</xsl:param>
+    <xsl:variable name="element-name">
+      <xsl:choose>
+        <xsl:when test="$display='block'">blockquote</xsl:when>
+        <xsl:otherwise>span</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
     <xsl:variable name="href">
       <xsl:choose>
         <xsl:when test="$version='0.5'">
@@ -754,75 +751,29 @@
         </xsl:when>
       </xsl:choose>
     </xsl:variable>
-    <blockquote class="quote">
-      <xsl:call-template name="IdCheck"/>
-      <xsl:if test="$href!=''">
+    <xsl:element name="{$element-name}">
+      <xsl:call-template name='IdCheck'/>
+      <xsl:attribute name="class">quote</xsl:attribute>
+      <xsl:if test="@display='none'">
+        <xsl:attribute name="style">display: none</xsl:attribute>
+      </xsl:if>
+      <xsl:if test="$href!='' and $display='block'">
         <xsl:attribute name="cite">
           <xsl:value-of select="$href" />
         </xsl:attribute>
       </xsl:if>
-      <xsl:if test="@display='none'">
-        <xsl:attribute name="style">display: none</xsl:attribute>
-      </xsl:if>
       <xsl:apply-templates />
       <xsl:if test="$href!=''">
-        <span class="quote-source-before">[</span>
-        <a href="{$href}" class="quote-source">source</a>
-        <span class="quote-source-after">]</span>
+        <span class="quote-source">
+          <xsl:text>[</xsl:text>
+          <a>
+            <xsl:call-template name="link-attributes" />
+            <xsl:text>source</xsl:text>
+          </a>
+          <xsl:text>]</xsl:text>
+        </span>
       </xsl:if>
-    </blockquote>
-  </xsl:template>
-
-  <xsl:template name="make-inline-quote">
-    <xsl:variable name="href">
-      <xsl:choose>
-        <xsl:when test="$version='0.5'">
-          <xsl:value-of select="normalize-space(@src)"/>
-        </xsl:when>
-        <xsl:when test="$version='0.6'">
-          <xsl:call-template name="make-href"/>
-        </xsl:when>
-      </xsl:choose>
-    </xsl:variable>
-    <span class="quote">
-      <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates />
-    </span>
-    <xsl:if test="$href!=''">
-      <span class="quote-source-before">[</span>
-      <a href="{$href}" class="quote-source">source</a>
-      <span class="quote-source-after">]</span>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template name="make-href">
-    <xsl:choose>
-      <xsl:when test="@url">
-        <xsl:value-of select="normalize-space(@url)"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:variable name="object-id" select="normalize-space(@document)"/>
-        <xsl:variable name="version">
-          <xsl:choose>
-            <xsl:when test="@version">
-              <xsl:value-of select="normalize-space(@version)"/>
-            </xsl:when>
-            <xsl:otherwise>latest</xsl:otherwise>
-          </xsl:choose>
-        </xsl:variable>
-        <xsl:variable name="resource" select="normalize-space(@resource)"/>
-        <xsl:variable name="target-id" select="normalize-space(@target-id)"/>
-        <xsl:if test="$object-id">
-          <xsl:value-of select="concat('/content/', $object-id, '/', $version, '/')"/>
-        </xsl:if>
-        <xsl:if test="$resource">
-          <xsl:value-of select="$resource"/>
-        </xsl:if>
-        <xsl:if test="$target-id">
-          <xsl:value-of select="concat('#', $target-id)"/>
-        </xsl:if>
-      </xsl:otherwise>
-    </xsl:choose>
+    </xsl:element>
   </xsl:template>
 
   <!-- SUP and SUB -->
