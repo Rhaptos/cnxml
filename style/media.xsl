@@ -584,16 +584,16 @@
     </span>
   </xsl:template>
 
-  <!-- Generic audio file -->
+  <!-- MEDIA of type: Non-MP3 AUDIO (cnxml version 0.5 and below) -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
     <div class="media musical example">
       <xsl:call-template name='IdCheck'/>
       <span class="cnx_label">
+        <!--Audio File:-->
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">AudioFile</xsl:with-param>
           <xsl:with-param name="lang" select="/module/metadata/language" />
         </xsl:call-template>:
-        <!--Audio File:-->
       </span>
       <a class="link" href="{@src}">
 	<xsl:choose>
@@ -608,16 +608,40 @@
     </div>       
   </xsl:template>
 
-  <!-- MP3 (Tony Brandt) -->
-  <xsl:template match="cnx:media[@type='audio/mpeg']"> 
+  <!-- Non-MP3 AUDIO (cnxml version 0.6) -->
+  <xsl:template match="cnx:audio"> 
     <div class="media musical example">
       <xsl:call-template name='IdCheck'/>
       <span class="cnx_label">
+        <!--Audio File:-->
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">AudioFile</xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language" />
+        </xsl:call-template>:
+      </span>
+      <a class="link" href="{@src}">
+	<xsl:choose>
+	  <xsl:when test="cnx:title">
+	    <i><xsl:value-of select="cnx:title" /></i>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:value-of select="@src" />
+	  </xsl:otherwise>
+	</xsl:choose>
+      </a>
+    </div>       
+  </xsl:template>
+
+  <!-- MP3 AUDIO and MEDIA of type: MP3 AUDIO (Tony Brandt) -->
+  <xsl:template match="cnx:media[@type='audio/mpeg']|cnx:audio[@mime-type='audio/mpeg']"> 
+    <div class="media musical example">
+      <xsl:call-template name='IdCheck'/>
+      <span class="cnx_label">
+        <!--Musical Example:-->
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">MusicalExample</xsl:with-param>
           <xsl:with-param name="lang" select="/module/metadata/language" />
         </xsl:call-template>:
-        <!--Musical Example:-->
       </span>
       <a class="cnxn" href="{@src}">
         <xsl:call-template name="composer-title-comments" />
@@ -634,6 +658,9 @@
     <xsl:choose>
       <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
 	<i><xsl:value-of select="cnx:param[@name='title']/@value" /></i>
+      </xsl:when>
+      <xsl:when test="cnx:title">
+        <i><xsl:apply-templates select="cnx:title" /></i>
       </xsl:when>
       <xsl:otherwise>
 	<xsl:value-of select="@src" />
