@@ -492,7 +492,7 @@
   <!-- Construct an href -->
   <xsl:template name="make-href">
     <xsl:choose>
-      <xsl:when test="@url or @src">
+      <xsl:when test="@url[normalize-space()!=''] or @src[normalize-space()!='']">
         <xsl:value-of select="@url|@src" />
       </xsl:when>
       <xsl:otherwise>
@@ -748,14 +748,7 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="href">
-      <xsl:choose>
-        <xsl:when test="$version='0.5'">
-          <xsl:value-of select="normalize-space(@src)"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:call-template name="make-href"/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:call-template name="make-href"/>
     </xsl:variable>
     <xsl:element name="{$element-name}">
       <xsl:call-template name='IdCheck'/>
