@@ -4892,7 +4892,16 @@
         </attribute>
       </optional>
       <optional>
-        <attribute name="type"/>
+        <attribute name="type">
+          <choice>
+            <value>related-term</value>
+            <value>narrower-term</value>
+            <value>broader-term</value>
+            <value>use-for</value>
+            <value>use</value>
+            <text/>
+          </choice>
+        </attribute>
       </optional>
       <optional>
         <ref name="label"/>
