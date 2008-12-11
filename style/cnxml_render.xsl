@@ -889,6 +889,70 @@
     </pre>
   </xsl:template>
 
+  <!-- CODE with class="listing" -->
+  <xsl:template match="cnx:code[@class='listing']">
+    <div class="code">
+      <xsl:call-template name='IdCheck'/>
+      <table border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
+        <xsl:if test="cnx:caption or not(cnx:label[not(node())])">
+          <caption align="bottom" class="code-caption">
+            <xsl:if test="not(cnx:label[not(node())])">
+              <strong class="cnx_label">
+                <xsl:choose>
+                  <xsl:when test="cnx:label">
+                    <xsl:apply-templates select="cnx:label" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <!-- Listing -->
+                    <xsl:call-template name="gentext">
+                      <xsl:with-param name="key">Listing</xsl:with-param>
+                      <xsl:with-param name="lang" select="/module/metadata/language" />
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>
+                <xsl:text> </xsl:text>
+                <xsl:choose>
+                  <xsl:when test="@type!=''">
+                    <xsl:variable name="type" select="@type" />
+                    <xsl:number level="any" count="cnx:code[@class='listing'][@type=$type]" format="1" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:number level="any" count="cnx:code[@class='listing'][not(@type)]" format="1" />
+                  </xsl:otherwise>
+                </xsl:choose>
+                <xsl:if test="cnx:caption">
+                  <xsl:text>: </xsl:text>
+                </xsl:if>
+              </strong>
+            </xsl:if>
+            <xsl:apply-templates select="cnx:caption" />
+          </caption>
+        </xsl:if>
+        <xsl:if test="cnx:title[node()]">
+          <thead>
+            <tr>
+              <th class="code-title">
+                <xsl:apply-templates select="cnx:title" />
+              </th>
+            </tr>
+          </thead>
+        </xsl:if>
+        <tbody>
+          <tr>
+            <td>
+              <pre class="code codeblock">
+                <code>
+                  <xsl:call-template name='IdCheck'/>
+                  <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:title|self::cnx:label)]|text()"/>
+                </code>
+              </pre>
+	    </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </xsl:template>
+  
   <!-- PREFORMAT -->
   <xsl:template match="cnx:preformat">
     <xsl:choose>
