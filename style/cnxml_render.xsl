@@ -731,12 +731,9 @@
               <xsl:otherwise>inline</xsl:otherwise>
             </xsl:choose>
           </xsl:when>
-          <xsl:when test="$version='0.6'">
-            <xsl:choose>
-              <xsl:when test="@display='inline'">inline</xsl:when>
-              <xsl:otherwise>block</xsl:otherwise>
-            </xsl:choose>
-          </xsl:when>
+          <!-- CNXML 0.6 and EiP cases -->
+          <xsl:when test="@display='inline'">inline</xsl:when>
+          <xsl:otherwise>block</xsl:otherwise>
         </xsl:choose>
       </xsl:with-param>
     </xsl:call-template>
@@ -755,9 +752,9 @@
         <xsl:when test="$version='0.5'">
           <xsl:value-of select="normalize-space(@src)"/>
         </xsl:when>
-        <xsl:when test="$version='0.6'">
+        <xsl:otherwise>
           <xsl:call-template name="make-href"/>
-        </xsl:when>
+        </xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <xsl:element name="{$element-name}">
@@ -837,16 +834,6 @@
   <!-- CODE -->
   <xsl:template match="cnx:code">
     <xsl:choose>
-      <xsl:when test="$version ='0.6'">
-        <xsl:choose>
-          <xsl:when test="@display='block'">
-            <xsl:call-template name="codeblock"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:call-template name="codeline"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
       <xsl:when test="$version ='0.5'">
         <xsl:choose>
           <xsl:when test="@type='block'">
@@ -857,6 +844,13 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
+      <!-- CNXML 0.6 and EiP cases -->
+      <xsl:when test="@display='block'">
+        <xsl:call-template name="codeblock"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="codeline"/>
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
@@ -1032,16 +1026,6 @@
   <!-- NOTE -->
   <xsl:template match="cnx:note">
     <xsl:choose>
-      <xsl:when test="$version='0.6'">
-        <xsl:choose>
-          <xsl:when test="@display='inline'">
-            <xsl:call-template name="make-inline-note"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:call-template name="make-block-note"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:when>
       <xsl:when test="$version='0.5'">
         <xsl:choose>
           <xsl:when test="@type='footnote'">
@@ -1052,6 +1036,13 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
+      <!-- CNXML 0.6 and EiP cases -->
+      <xsl:when test="@display='inline'">
+        <xsl:call-template name="make-inline-note"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="make-block-note"/>
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
@@ -1489,16 +1480,13 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
-      <xsl:when test="$version='0.6'">
-        <xsl:choose>
-          <xsl:when test="@display='inline'">
-            <xsl:call-template name="make-inline-list"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:call-template name="make-block-list"/>
-          </xsl:otherwise>
-        </xsl:choose>
+      <!-- CNXML 0.6 and EiP cases -->
+      <xsl:when test="@display='inline'">
+        <xsl:call-template name="make-inline-list"/>
       </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="make-block-list"/>
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
