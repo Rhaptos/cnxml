@@ -1228,7 +1228,18 @@
         <span class="lensinfowrap">
           <dfn class="term">
             <xsl:call-template name='IdCheck'/>
-            <a href="{@src}" class="hovlink" onmouseover="createDefinition(this)" onmouseout="removeDefinition(this)">
+            <a class="hovlink" onmouseover="createDefinition(this)" onmouseout="removeDefinition(this)">
+              <xsl:attribute name="href">
+                <xsl:choose>
+                  <xsl:when test="@src">
+                    <xsl:value-of select="@src" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:text>#</xsl:text>
+                    <xsl:value-of select="@target-id" />
+                  </xsl:otherwise>
+                </xsl:choose>
+              </xsl:attribute>
               <xsl:apply-templates />
             </a>
           </dfn>
