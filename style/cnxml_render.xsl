@@ -499,12 +499,12 @@
         <xsl:variable name="target" select="@target[normalize-space()!='']|@target-id[normalize-space()!='']" />
         <xsl:variable name="document" select="normalize-space(@document[normalize-space()!=''])" />
         <xsl:variable name="module" select="normalize-space(@module[normalize-space()!=''])" />
-        <xsl:variable name="version" select="normalize-space(@version[normalize-space()!=''])" />
+        <xsl:variable name="doc-version" select="normalize-space(@version[normalize-space()!=''])" />
         <xsl:choose>
-          <xsl:when test="not($document) and not($module) and not($version)" />
-          <xsl:when test="not($document) and not($module) and $version">
+          <xsl:when test="not($document) and not($module) and not($doc-version)" />
+          <xsl:when test="not($document) and not($module) and $doc-version">
             <xsl:text>../</xsl:text>
-            <xsl:value-of select="$version" />
+            <xsl:value-of select="$doc-version" />
             <xsl:text>/</xsl:text>
           </xsl:when>
           <xsl:otherwise>
@@ -513,8 +513,8 @@
             <xsl:value-of select="$module" />
             <xsl:text>/</xsl:text>
             <xsl:choose>
-              <xsl:when test="$version">
-                <xsl:value-of select="$version" />
+              <xsl:when test="$doc-version">
+                <xsl:value-of select="$doc-version" />
               </xsl:when>
               <xsl:otherwise>
                 <xsl:text>latest</xsl:text>
