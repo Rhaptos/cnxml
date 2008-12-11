@@ -289,9 +289,12 @@
    - @target-id
    - @resource
    - @version -->
-  <xsl:template match="cnxml:link|cnxml:cite|cnxml:term|cnxml:quote[@type='inline']">
+  <xsl:template match="cnxml:link|cnxml:cite|cnxml:term|cnxml:quote[@type='inline' or not(@type)]">
     <xsl:copy>
-      <xsl:apply-templates select="@*[not(name(.)='src')]"/>
+      <xsl:apply-templates select="@*[not(name(.)='src')][not(name(.)='type')]"/>
+      <xsl:if test="self::cnxml:quote">
+        <xsl:attribute name="display">inline</xsl:attribute>
+      </xsl:if>
       <xsl:call-template name="convert-link-src">
         <xsl:with-param name="src" select="normalize-space(@src)"/>
       </xsl:call-template>
