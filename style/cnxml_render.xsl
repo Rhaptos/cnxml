@@ -74,6 +74,7 @@
                                 ancestor::cnx:rule[cnx:name or cnx:title or cnx:label[node()] or (@type!='' and not(cnx:label))]|
                                 ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|
                                 ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:quote[cnx:title or cnx:label[node()]]|
                                 ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|
                                 ancestor::cnx:commentary[cnx:name or cnx:title or cnx:label[node()]]|
@@ -770,7 +771,23 @@
           <xsl:value-of select="$href" />
         </xsl:attribute>
       </xsl:if>
-      <xsl:apply-templates />
+      <xsl:if test="cnx:title or cnx:label[node()]">
+        <xsl:variable name="level-number">
+          <xsl:call-template name="level-count" />
+        </xsl:variable>
+        <!-- h2, h3, etc... -->
+        <xsl:element name="h{$level-number}">
+          <xsl:attribute name="class">quote-header</xsl:attribute>
+          <xsl:if test="cnx:label[node()]">
+            <span class="cnx_label">
+              <xsl:apply-templates select="cnx:label" />
+              <xsl:if test="cnx:title">: </xsl:if>
+            </span>
+          </xsl:if>
+          <xsl:apply-templates select="cnx:title" />
+        </xsl:element>
+      </xsl:if>
+      <xsl:apply-templates select="*[not(self::cnx:title|self::cnx:label)]|text()" />
       <xsl:if test="$href!=''">
         <span class="quote-source">
           <xsl:text>[</xsl:text>
