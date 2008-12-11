@@ -72,6 +72,7 @@
                   select="count(ancestor::cnx:section|
                                 ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:rule[cnx:name or cnx:title or cnx:label[node()] or (@type!='' and not(cnx:label))]|
+                                ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|
                                 ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|
@@ -1319,8 +1320,24 @@
   <!-- STATEMENT -->
   <xsl:template match="cnx:statement">
     <div class='statement'>
+      <xsl:if test="cnx:name or cnx:title or cnx:label[node()]">
+        <xsl:variable name="level-number">
+          <xsl:call-template name="level-count" />
+        </xsl:variable>
+        <!-- h2, h3, etc... -->
+        <xsl:element name="h{$level-number}">
+          <xsl:attribute name="class">statement-header</xsl:attribute>
+          <xsl:if test="cnx:label[node()]">
+            <span class="cnx_label">
+              <xsl:value-of select="cnx:label" />
+              <xsl:if test="cnx:name or cnx:title">: </xsl:if>
+            </span>
+          </xsl:if>
+          <xsl:apply-templates select="cnx:name|cnx:title" />
+        </xsl:element>
+      </xsl:if>
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]" />
     </div>
   </xsl:template>
 
@@ -1347,7 +1364,7 @@
                     <xsl:with-param name="key">Proof</xsl:with-param>
                     <xsl:with-param name="lang" select="/module/metadata/language" />
                   </xsl:call-template>
-               </xsl:otherwise>
+                </xsl:otherwise>
               </xsl:choose>
               <xsl:if test="cnx:name or cnx:title">: </xsl:if>
             </span>
