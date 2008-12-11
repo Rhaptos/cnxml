@@ -377,7 +377,7 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:link[@src or @url][not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[not(node())]|cnx:codeblock[not(node())]|cnx:term[not(node())]|cnx:cite[not(node())]|cnx:meaning[not(node())]|cnx:span[not(node())]|cnx:div[not(node())]|cnx:preformat[not(node())]|cnx:sup[not(node())]|cnx:sub[not(node())]">
+  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:link[@src or @url][not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[not(node())]|cnx:codeblock[not(node())]|cnx:term[not(node())]|cnx:meaning[not(node())]|cnx:span[not(node())]|cnx:div[not(node())]|cnx:preformat[not(node())]|cnx:sup[not(node())]|cnx:sub[not(node())]">
     <xsl:comment>empty <xsl:value-of select="local-name()" /> tag</xsl:comment>
   </xsl:template>
 
@@ -1299,34 +1299,66 @@
   
   <!--CITE-->
   <xsl:template match="cnx:cite">
-    <cite class="cite">
-      <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates/>
-    </cite>
-  </xsl:template>
-
-  <xsl:template match="cnx:cite[@src]"> 
+    <xsl:variable name="href">
+      <xsl:call-template name="make-href" />
+    </xsl:variable>
     <xsl:choose>
-      <xsl:when test='count(child::node())>0'>
-	<cite class="cite">
-	  <a class="cite" href="{@src}">
-	    <xsl:call-template name='IdCheck'/>
-	    <xsl:apply-templates/>
-	  </a>
-	</cite>
+      <xsl:when test="$href='' and not(node())">
+        <xsl:comment>empty cite tag</xsl:comment>
       </xsl:when>
       <xsl:otherwise>
-	<xsl:variable name='src' select="substring-after(@src, '#')"/>		
-	<xsl:choose>
-	  <xsl:when test="starts-with(@src, '#') and local-name(key('id',$src))='entry'">
-	    <xsl:for-each select="key('id',$src)">
-	      [<a class="cite" href="#{@id}"><xsl:number level="any" count="//bib:entry"/></a>]
-	    </xsl:for-each>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    [<a class="cite" href="{@src}">cite</a>]
-	  </xsl:otherwise>
-	</xsl:choose>
+        <xsl:variable name="src" select="@src[normalize-space()!='']" />
+        <xsl:variable name="target-id" select="@target-id[normalize-space()!='']" />
+        <xsl:variable name="target" select="concat(substring-after($src,'#'),$target-id)" />
+        <xsl:variable name="url" select="@url[normalize-space()!='']" />
+        <xsl:variable name="bibentry" select="(starts-with($src,'#') or (concat('#',$target-id) = $href)) and
+                                              name(key('id',$target))='bib:entry'" />
+        <cite class="cite">
+          <xsl:call-template name='IdCheck'/>
+          <xsl:if test="not($bibentry)">
+            <xsl:apply-templates />
+            <xsl:if test="$href!=''">
+              <xsl:text> </xsl:text>
+            </xsl:if>
+          </xsl:if>
+          <xsl:if test="$href!='' and not($bibentry and node())">
+            <xsl:text>[</xsl:text>
+          </xsl:if>
+          <xsl:if test="$href">
+            <a href="{$href}">
+              <xsl:attribute name="class">
+                <xsl:choose>
+                  <xsl:when test="$url or ($src and not(starts-with($src,'#')))">link</xsl:when>
+                  <xsl:otherwise>cnxn</xsl:otherwise>
+                </xsl:choose>
+              </xsl:attribute>
+              <xsl:choose>
+                <xsl:when test="$bibentry">
+                  <xsl:choose>
+                    <xsl:when test="node()">
+                      <xsl:apply-templates />
+                    </xsl:when>
+                    <xsl:otherwise>
+                      <xsl:for-each select="key('id',$target)">
+                        <xsl:number level="any" count="//bib:entry" />
+                      </xsl:for-each>
+                    </xsl:otherwise>
+                  </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                  <!-- link -->
+                  <xsl:call-template name="gentext">
+                    <xsl:with-param name="key">citelink</xsl:with-param>
+                    <xsl:with-param name="lang" select="/module/metadata/language" />
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
+            </a>
+          </xsl:if>
+          <xsl:if test="$href!='' and not($bibentry and node())">
+            <xsl:text>]</xsl:text>
+          </xsl:if>
+        </cite>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

@@ -72,6 +72,7 @@
       <l:gentext key="Rule" text="Rule"/>
       <l:gentext key="Step" text="Step"/>
       <l:gentext key="Listing" text="Listing"/>
+      <l:gentext key="citelink" text="link"/>
 
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>
