@@ -494,21 +494,25 @@
         <xsl:value-of select="@url|@src" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:variable name="target" select="@target|@target-id" />
+        <xsl:variable name="target" select="@target[normalize-space()!='']|@target-id[normalize-space()!='']" />
+        <xsl:variable name="document" select="normalize-space(@document[normalize-space()!=''])" />
+        <xsl:variable name="module" select="normalize-space(@module[normalize-space()!=''])" />
+        <xsl:variable name="version" select="normalize-space(@version[normalize-space()!=''])" />
         <xsl:choose>
-          <xsl:when test="not(@document) and not(@module) and not(@version)" />
-          <xsl:when test="not(@document) and not(@module) and @version">
+          <xsl:when test="not($document) and not($module) and not($version)" />
+          <xsl:when test="not($document) and not($module) and $version">
             <xsl:text>../</xsl:text>
-            <xsl:value-of select="@version" />
+            <xsl:value-of select="$version" />
             <xsl:text>/</xsl:text>
           </xsl:when>
           <xsl:otherwise>
             <xsl:text>/content/</xsl:text>
-            <xsl:value-of select="@document|@module" />
+            <xsl:value-of select="$document" />
+            <xsl:value-of select="$module" />
             <xsl:text>/</xsl:text>
             <xsl:choose>
-              <xsl:when test="@version">
-                <xsl:value-of select="@version" />
+              <xsl:when test="$version">
+                <xsl:value-of select="$version" />
               </xsl:when>
               <xsl:otherwise>
                 <xsl:text>latest</xsl:text>
@@ -517,10 +521,10 @@
             <xsl:text>/</xsl:text>
           </xsl:otherwise>
         </xsl:choose>
-        <xsl:value-of select="@resource" />
-        <xsl:if test="$target!=''">
+        <xsl:value-of select="normalize-space(@resource)" />
+        <xsl:if test="$target">
           <xsl:text>#</xsl:text>
-          <xsl:value-of select="$target" />
+          <xsl:value-of select="normalize-space($target)" />
         </xsl:if>
       </xsl:otherwise>
     </xsl:choose>
@@ -528,14 +532,17 @@
 
   <!-- Provide the link/cnxn text if it's empty -->
   <xsl:template name="link-text">
-    <xsl:variable name="target" select="@target|@target-id" />
+    <xsl:variable name="target" select="@target[normalize-space()!='']|@target-id[normalize-space()!='']" />
     <xsl:choose>
       <xsl:when test="node()">
         <xsl:apply-templates />
       </xsl:when>
-      <xsl:when test="key('id',$target) and not(@document|@module|@version)">
+      <xsl:when test="key('id',normalize-space($target)) and not(@document[normalize-space()!=''] or 
+                                                                 @module[normalize-space()!=''] or 
+                                                                 @version[normalize-space()!='']
+                                                                )">
         <span class="cnxn-target">
-          <xsl:for-each select="key('id', $target)">
+          <xsl:for-each select="key('id', normalize-space($target))">
             <!--<xsl:value-of select="local-name(key('id',$target))" />-->
             <xsl:choose>
               <xsl:when test="cnx:label[node()]">
@@ -792,7 +799,11 @@
     <span class="foreign">
       <xsl:call-template name='IdCheck'/>
       <xsl:choose>
-        <xsl:when test="@url or @document or @version or @resource or @target-id">
+        <xsl:when test="@url[normalize-space()!=''] or 
+                        @document[normalize-space()!=''] or 
+                        @version[normalize-space()!=''] or 
+                        @resource[normalize-space()!=''] or 
+                        @target-id[normalize-space()!='']">
           <a>
             <xsl:call-template name="link-attributes" />
             <xsl:apply-templates />
