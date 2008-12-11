@@ -369,7 +369,7 @@
       <xsl:when test="starts-with($src, '#')">
         <xsl:call-template name="make-link-attributes">
           <xsl:with-param name="attribute-name" select="'target-id'"/>
-          <xsl:with-param name="value" select="$src"/>
+          <xsl:with-param name="value" select="substring-after($src, '#')"/>
         </xsl:call-template>
       </xsl:when>
       <!-- Relative URL pointing to resource inside of a module -->
