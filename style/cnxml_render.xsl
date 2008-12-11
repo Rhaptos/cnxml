@@ -1336,6 +1336,25 @@
     </xsl:choose>
   </xsl:template>
 
+  <!-- CITE-TITLE -->
+  <xsl:template match="cnx:cite-title">
+    <span class="cite-title">
+      <xsl:choose>
+        <xsl:when test="@pub-type='article' or 
+                        @pub-type='inbook' or 
+                        @pub-type='incollection' or 
+                        @pub-type='inproceedings' or 
+                        @pub-type='misc' or 
+                        @pub-type='unpublished'">
+          "<xsl:apply-templates />"
+        </xsl:when>
+        <xsl:otherwise>
+          <i><xsl:apply-templates /></i>
+        </xsl:otherwise>
+      </xsl:choose>
+    </span>
+  </xsl:template>
+
   <!--MEANING-->
   <xsl:template match="cnx:meaning">
     <div class='meaning'>
