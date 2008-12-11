@@ -1300,7 +1300,7 @@
             <span class="cnx_label">
               <xsl:choose>
                 <xsl:when test="cnx:label">
-                  <xsl:value-of select="cnx:label" />
+                  <xsl:apply-templates select="cnx:label" />
                 </xsl:when>
                 <xsl:when test="@type='theorem' or @type='lemma' or @type='corollary' or @type='law' or @type='proposition'">
                   <xsl:call-template name="gentext">
@@ -1346,7 +1346,7 @@
           <xsl:attribute name="class">statement-header</xsl:attribute>
           <xsl:if test="cnx:label[node()]">
             <span class="cnx_label">
-              <xsl:value-of select="cnx:label" />
+              <xsl:apply-templates select="cnx:label" />
               <xsl:if test="cnx:name or cnx:title">: </xsl:if>
             </span>
           </xsl:if>
@@ -1373,7 +1373,7 @@
             <span class="cnx_label">
               <xsl:choose>
                 <xsl:when test="cnx:label">
-                  <xsl:value-of select="cnx:label" />
+                  <xsl:apply-templates select="cnx:label" />
                 </xsl:when>
                 <xsl:otherwise>
                   <!--Proof-->
@@ -1940,7 +1940,7 @@
     <xsl:variable name="solution-string">
       <xsl:choose>
         <xsl:when test="cnx:label[node()]">
-          <xsl:value-of select="cnx:label" />
+          <xsl:apply-templates select="cnx:label" />
         </xsl:when>
         <xsl:when test="$case-diagnosis = '1'">Diagnosis</xsl:when>
         <xsl:otherwise>Solution</xsl:otherwise>
