@@ -1151,7 +1151,7 @@
   <!--TERM-->
   <xsl:template match="cnx:term">
     <xsl:choose>
-      <xsl:when test="ancestor::cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2)]">
+      <xsl:when test="ancestor::cnx:document/cnx:glossary/cnx:definition[@id=substring(current()/@src,2) or @id=current()/@target-id]">
         <span class="lensinfowrap">
           <dfn class="term">
             <xsl:call-template name='IdCheck'/>
