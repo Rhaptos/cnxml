@@ -477,7 +477,7 @@
     </xsl:if>
     <xsl:attribute name="class">
       <xsl:choose>
-        <xsl:when test="@src or @url">link</xsl:when>
+        <xsl:when test="@url or (@src and not(starts-with(@src,'#')))">link</xsl:when>
         <xsl:otherwise>cnxn</xsl:otherwise>
       </xsl:choose>
       <xsl:if test="@window='new'">
@@ -1325,13 +1325,8 @@
             <xsl:text>[</xsl:text>
           </xsl:if>
           <xsl:if test="$href!=''">
-            <a href="{$href}">
-              <xsl:attribute name="class">
-                <xsl:choose>
-                  <xsl:when test="$url or ($src and not(starts-with($src,'#')))">link</xsl:when>
-                  <xsl:otherwise>cnxn</xsl:otherwise>
-                </xsl:choose>
-              </xsl:attribute>
+            <a>
+              <xsl:call-template name="link-attributes" />
               <xsl:choose>
                 <xsl:when test="$bibentry">
                   <xsl:choose>
