@@ -1452,6 +1452,7 @@
   <!-- STATEMENT -->
   <xsl:template match="cnx:statement">
     <div class='statement'>
+      <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:name or cnx:title or cnx:label[node()]">
         <xsl:variable name="level-number">
           <xsl:call-template name="level-count" />
@@ -1468,7 +1469,6 @@
           <xsl:apply-templates select="cnx:name|cnx:title" />
         </xsl:element>
       </xsl:if>
-      <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]" />
     </div>
   </xsl:template>
