@@ -757,7 +757,12 @@
     </xsl:variable>
     <xsl:element name="{$element-name}">
       <xsl:call-template name='IdCheck'/>
-      <xsl:attribute name="class">quote</xsl:attribute>
+      <xsl:attribute name="class">
+        <xsl:text>quote</xsl:text>
+        <xsl:if test="$display='inline'">
+          <xsl:text> inline</xsl:text>
+        </xsl:if>
+      </xsl:attribute>
       <xsl:if test="@display='none'">
         <xsl:attribute name="style">display: none</xsl:attribute>
       </xsl:if>
@@ -1085,7 +1090,7 @@
 
   <!-- Inline note -->
   <xsl:template name="make-inline-note">
-    <span class="note">
+    <span class="note inline">
       <xsl:call-template name='IdCheck'/>
       <xsl:call-template name="note-label" />
       <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()" />
@@ -1588,7 +1593,7 @@
   <!--LIST (inline)-->
   <xsl:template name="make-inline-list">
     <xsl:text> </xsl:text>
-    <span class="list">
+    <span class="list inline">
       <xsl:call-template name='IdCheck'/>
       <xsl:apply-templates select="cnx:name|cnx:title" />
       <xsl:for-each select="cnx:item">
