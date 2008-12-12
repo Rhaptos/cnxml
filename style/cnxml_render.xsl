@@ -1324,7 +1324,7 @@
           <xsl:if test="$href!='' and not($bibentry and node())">
             <xsl:text>[</xsl:text>
           </xsl:if>
-          <xsl:if test="$href">
+          <xsl:if test="$href!=''">
             <a href="{$href}">
               <xsl:attribute name="class">
                 <xsl:choose>
