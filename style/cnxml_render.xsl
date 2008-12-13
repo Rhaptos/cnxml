@@ -1548,6 +1548,12 @@
 	  <xsl:apply-templates select="cnx:name|cnx:title" />
         </xsl:element>
       </xsl:if>
+      <xsl:variable name="stepwise">
+        <xsl:call-template name="class-test">
+          <xsl:with-param name="provided-class" select="normalize-space(@class)" />
+          <xsl:with-param name="wanted-class">stepwise</xsl:with-param>
+        </xsl:call-template>
+      </xsl:variable>
       <xsl:variable name="list-element">
         <xsl:choose>
           <xsl:when test="@list-type='enumerated' or @type='enumerated'">ol</xsl:when>
@@ -1558,7 +1564,7 @@
         <xsl:attribute name="class">
           <xsl:choose>
             <xsl:when test="@list-type='labeled-item' or (@type='named-item' and $version='0.5')">labeled-item</xsl:when>
-            <xsl:when test="@before or @after or (@class='stepwise' and @list-type='enumerated')">other</xsl:when>
+            <xsl:when test="@before or @after or ($stepwise='1' and @list-type='enumerated')">other</xsl:when>
             <xsl:when test="@bullet-style='bullet' or 
                             (@list-type='bulleted' and not(@bullet-style)) or 
                             (not(@list-type) and not(@bullet-style))">bullet</xsl:when>
@@ -1580,7 +1586,7 @@
               </xsl:attribute>
             </xsl:if>
             <xsl:if test="parent::cnx:list[@bullet-style!='bullet' or @bullet-style!='open-circle' or @list-type='labeled-item' or 
-                                           @before or @after or (@class='stepwise' and @list-type='enumerated')]">
+                                           @before or @after or ($stepwise='1' and @list-type='enumerated')]">
               <xsl:call-template name="item-decoration" />
             </xsl:if>
             <xsl:call-template name="item-contents" />
@@ -1609,6 +1615,12 @@
   <!-- Puts in @before, @after, <label> (for labeled-item lists), plus adds bullet or numbering where this can't be done by the 
        browser due to the presence of @before, @after, or @display='inline' -->
   <xsl:template name="item-decoration">
+    <xsl:variable name="stepwise">
+      <xsl:call-template name="class-test">
+        <xsl:with-param name="provided-class" select="normalize-space(parent::cnx:list/@class)" />
+        <xsl:with-param name="wanted-class">stepwise</xsl:with-param>
+      </xsl:call-template>
+    </xsl:variable>
     <xsl:variable name="item-decoration-element">
       <xsl:choose>
         <xsl:when test="parent::cnx:list[@list-type='labeled-item']">strong</xsl:when>
@@ -1617,7 +1629,7 @@
     </xsl:variable>
     <xsl:element name="{$item-decoration-element}">
       <xsl:attribute name="class">item-decoration</xsl:attribute>
-      <xsl:if test="parent::cnx:list[@class='stepwise' and @list-type='enumerated']">
+      <xsl:if test="parent::cnx:list[$stepwise='1' and @list-type='enumerated']">
         <!--Step-->
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">Step</xsl:with-param>
@@ -1713,6 +1725,15 @@
     </xsl:if>
   </xsl:template>
 
+  <xsl:template name="class-test">
+    <xsl:param name="provided-class" />
+    <xsl:param name="wanted-class" />
+    <xsl:if test="$provided-class = $wanted-class or
+                  starts-with($provided-class, concat($wanted-class, ' ')) or
+                  contains($provided-class, concat(' ', $wanted-class, ' ')) or 
+                  substring($provided-class, string-length($provided-class) - string-length($wanted-class)) = concat(' ', $wanted-class)
+                 ">1</xsl:if>
+  </xsl:template>
 
   <!-- EQUATION -->
   <xsl:template match="cnx:equation">
