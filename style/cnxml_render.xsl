@@ -1647,7 +1647,7 @@
           <xsl:when test="parent::cnx:list[@bullet-style='pilcrow']">&#182;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='rpilcrow']">&#8267;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='asterisk']">*</xsl:when>
-          <xsl:when test="parent::cnx:list[@bullet-style='dash']">&#150;</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='dash']">&#8211;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='section']">&#167;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='none']" />
           <xsl:otherwise>
