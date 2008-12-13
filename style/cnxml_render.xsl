@@ -1585,8 +1585,11 @@
                 <xsl:value-of select="parent::cnx:list/@start-value" />
               </xsl:attribute>
             </xsl:if>
-            <xsl:if test="parent::cnx:list[(@bullet-style!='bullet' and @bullet-style!='open-circle') or @list-type='labeled-item' or 
-                                           @before or @after or ($stepwise='1' and @list-type='enumerated')]">
+            <xsl:if test="parent::cnx:list[(@bullet-style!='bullet' and @bullet-style!='open-circle' and @bullet-style!='none') or 
+                                           @list-type='labeled-item' or 
+                                           @before or 
+                                           @after or 
+                                           ($stepwise='1' and @list-type='enumerated')]">
               <xsl:call-template name="item-decoration" />
             </xsl:if>
             <xsl:call-template name="item-contents" />
@@ -1649,7 +1652,6 @@
           <xsl:when test="parent::cnx:list[@bullet-style='asterisk']">*</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='dash']">&#8211;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='section']">&#167;</xsl:when>
-          <xsl:when test="parent::cnx:list[@bullet-style='none']" />
           <xsl:otherwise>
             <xsl:value-of select="parent::cnx:list/@bullet-style" />
           </xsl:otherwise>
@@ -1694,7 +1696,7 @@
           <xsl:value-of select="parent::cnx:list/@after" />
           <xsl:text> </xsl:text>
         </xsl:when>
-        <xsl:when test="parent::cnx:list[@list-type='enumerated' or @list-type='bulleted']">
+        <xsl:when test="parent::cnx:list[@list-type='enumerated']">
           <xsl:text>. </xsl:text>
         </xsl:when>
         <xsl:when test="parent::cnx:list[@list-type='labeled-item']">
