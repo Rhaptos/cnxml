@@ -1585,7 +1585,7 @@
                 <xsl:value-of select="parent::cnx:list/@start-value" />
               </xsl:attribute>
             </xsl:if>
-            <xsl:if test="parent::cnx:list[@bullet-style!='bullet' or @bullet-style!='open-circle' or @list-type='labeled-item' or 
+            <xsl:if test="parent::cnx:list[(@bullet-style!='bullet' and @bullet-style!='open-circle') or @list-type='labeled-item' or 
                                            @before or @after or ($stepwise='1' and @list-type='enumerated')]">
               <xsl:call-template name="item-decoration" />
             </xsl:if>
@@ -1640,17 +1640,19 @@
       <xsl:if test="not(parent::list[@list-type='labeled-item'] and not(cnx:label[node()]))">
         <xsl:value-of select="parent::cnx:list[@before]" />
       </xsl:if>
-      <xsl:if test="parent::cnx:list[@list-type='bulleted']">
+      <xsl:if test="parent::cnx:list[@bullet-style]">
         <xsl:choose>
-          <xsl:when test="parent::cnx:list[@bulleted-style='bullet' or not(@bulleted-style)]">&#149;</xsl:when>
-          <xsl:when test="parent::cnx:list[@bulleted-style='open-circle']">&#9675;</xsl:when>
-          <xsl:when test="parent::cnx:list[@bulleted-style='pilcrow']">&#182;</xsl:when>
-          <xsl:when test="parent::cnx:list[@bulleted-style='rpilcrow']">&#8267;</xsl:when>
-          <xsl:when test="parent::cnx:list[@bulleted-style='asterisk']">*</xsl:when>
-          <xsl:when test="parent::cnx:list[@bulleted-style='dash']">&#150;</xsl:when>
-          <xsl:when test="parent::cnx:list[@bulleted-style='section']">&#167;</xsl:when>
-          <xsl:when test="parent::cnx:list[@bulleted-style='none']" />
-          <xsl:otherwise><xsl:value-of select="parent::cnx:list[@bulleted-style]" /></xsl:otherwise>
+          <xsl:when test="parent::cnx:list[@bullet-style='bullet']">&#149;</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='open-circle']">&#9675;</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='pilcrow']">&#182;</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='rpilcrow']">&#8267;</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='asterisk']">*</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='dash']">&#150;</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='section']">&#167;</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='none']" />
+          <xsl:otherwise>
+            <xsl:value-of select="parent::cnx:list/@bullet-style" />
+          </xsl:otherwise>
         </xsl:choose>
       </xsl:if>
       <xsl:if test="parent::cnx:list[@list-type='enumerated']">
