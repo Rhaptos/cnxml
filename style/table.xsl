@@ -219,11 +219,16 @@
     </xsl:variable>
     <xsl:choose>
       <!-- nearest matching spanspec -->
+      <xsl:when test="ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname][@class='rowheader']">th</xsl:when>
       <xsl:when test="substring(ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname]/@namest,1,7) = 'header_'">th</xsl:when>
       <!-- nearest entrytbl/colspec or tgroup/colspec (where @colnum attributes are specified) -->
+      <xsl:when test="ancestor::*[3]/cnx:colspec[@colnum=$entry.colnum][@class='rowheader']">th</xsl:when>
       <xsl:when test="substring(ancestor::*[3]/cnx:colspec[@colnum=$entry.colnum]/@colname,1,7) = 'header_'">th</xsl:when>
       <!-- nearest entrytbl/colspec or tgroup/colspec (where no @colnum attributes are specified and colspecs are instead ordered sequentially) -->
+      <xsl:when test="ancestor::*[3]/cnx:colspec[position()=$entry.colnum and not(@colnum)][@class='rowheader']">th</xsl:when>
       <xsl:when test="substring(ancestor::*[3]/cnx:colspec[position()=$entry.colnum and not(@colnum)]/@colname,1,7) = 'header_'">th</xsl:when>
+      <!-- self -->
+      <xsl:when test="@class='rowheader'">th</xsl:when>
       <xsl:otherwise>td</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
