@@ -75,6 +75,7 @@
                                 ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|
                                 ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:quote[cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:code[cnx:title or cnx:label[node()]][not(@class!='listing')]|
                                 ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|
                                 ancestor::cnx:commentary[cnx:name or cnx:title or cnx:label[node()]]|
@@ -878,12 +879,37 @@
   </xsl:template>
 
   <xsl:template name="codeblock">
-    <pre class="code codeblock">
-      <code>
-        <xsl:call-template name='IdCheck'/>
-        <xsl:apply-templates />
-      </code>
-    </pre>
+    <div class="code">
+      <xsl:if test="cnx:title or cnx:label[node()]">
+        <xsl:variable name="level-number">
+          <xsl:call-template name="level-count" />
+        </xsl:variable>
+        <!-- h2, h3, etc... -->
+        <xsl:element name="h{$level-number}">
+          <xsl:attribute name="class">code-header</xsl:attribute>
+          <xsl:if test="cnx:label">
+            <span class="cnx_label">
+              <xsl:apply-templates select="cnx:label" />
+            </span>
+            <xsl:if test="cnx:title">
+              <xsl:text>: </xsl:text>
+            </xsl:if>
+          </xsl:if>
+          <xsl:apply-templates select="cnx:title" />
+        </xsl:element>
+      </xsl:if>
+      <pre class="codeblock">
+        <code>
+          <xsl:call-template name='IdCheck'/>
+          <xsl:apply-templates select="*[not(self::cnx:title|self::cnx:label|cnx:caption)]|text()"/>
+       </code>
+      </pre>
+      <xsl:if test="cnx:caption">
+        <p class="code-caption">
+          <xsl:apply-templates select="cnx:caption" />
+        </p>
+      </xsl:if>
+    </div>
   </xsl:template>
 
   <!-- CODE with class="listing" -->
