@@ -986,13 +986,16 @@
         </span>
       </xsl:when>
       <xsl:otherwise>
-        <pre class="preformat">
-          <xsl:call-template name='IdCheck'/>
-          <xsl:if test="@display='none'">
-            <xsl:attribute name="style">display: none</xsl:attribute>
-          </xsl:if>
-          <xsl:apply-templates />
-        </pre>
+        <div class="preformat">
+          <xsl:apply-templates select="cnx:title" />
+          <pre class="preformat">
+            <xsl:call-template name='IdCheck'/>
+            <xsl:if test="@display='none'">
+              <xsl:attribute name="style">display: none</xsl:attribute>
+            </xsl:if>
+            <xsl:apply-templates select="*[not(self::cnx:title)]|text()"/>
+          </pre>
+        </div>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
