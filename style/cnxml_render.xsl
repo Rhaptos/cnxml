@@ -1227,9 +1227,9 @@
                   <xsl:with-param name="key">Definition</xsl:with-param>
                   <xsl:with-param name="lang" select="/module/metadata/language" />
                 </xsl:call-template>
-                <xsl:text> </xsl:text>
               </xsl:otherwise>
             </xsl:choose>
+            <xsl:text> </xsl:text>
             <xsl:choose>
               <xsl:when test="@type">
                 <xsl:variable name="type" select="@type" />
