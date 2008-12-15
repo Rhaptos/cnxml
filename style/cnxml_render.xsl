@@ -1200,7 +1200,7 @@
           <xsl:apply-templates select="cnx:name|cnx:title" />
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title)]" />
+      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]" />
     </div>
   </xsl:template>
 
@@ -1844,7 +1844,7 @@
                   </xsl:choose>
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name|self::cnx:title)]"/>
+                  <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name|self::cnx:title|self::cnx:label)]"/>
                 </xsl:otherwise>
               </xsl:choose>
 	    </td>
@@ -1875,7 +1875,7 @@
       <tbody>
         <tr>
           <td class="inner-vertical-subfigure">
-            <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name|self::cnx:title)]"/>
+            <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name|self::cnx:title|cnx:label)]"/>
 	  </td>
         </tr>
       </tbody>
@@ -1908,7 +1908,7 @@
           <xsl:for-each select="cnx:subfigure">
             <td class="inner-horizontal-subfigure">
               <xsl:call-template name='IdCheck'/>
-              <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name|self::cnx:title)]"/>
+              <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name|self::cnx:title|self::cnx:label)]"/>
             </td>
           </xsl:for-each>
         </tr>
