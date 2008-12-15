@@ -1045,7 +1045,7 @@
         <xsl:choose>
           <xsl:when test="$name='newline'"><br /></xsl:when>
           <xsl:when test="$name='newlineunderline'"><hr /></xsl:when>
-          <xsl:when test="contains($name,'space')"> </xsl:when>
+          <xsl:when test="contains($name,'space')"><xsl:text> </xsl:text></xsl:when>
         </xsl:choose>
         <xsl:call-template name="loop">
           <xsl:with-param name="name" select="$name" />
