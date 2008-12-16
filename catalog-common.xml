@@ -2,13 +2,10 @@
 <!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
 
-   <!-- MDML Entities -->
-  <public publicId="-//CNX//ENTITIES MDML 0.4 Qualified Names 1.0//EN" uri="../mdml/schema/dtd/0.4/mdml-qname-1.mod"/>
-  <public publicId="-//CNX//ELEMENTS MDML 0.4 Elements//EN"  uri="../mdml/schema/dtd/0.4/mdml.mod"/>
-  <public publicId="-//CNX//DTD MDML 0.4//EN" uri="../mdml/schema/dtd/0.4/mdml.dtd"/>
-  
-  
   <!-- SYSTEM Rewrite rules to access local copies -->
-  <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/mdml" rewritePrefix="../mdml"/>
-  <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/cnxml" rewritePrefix="."/>
+  <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/cnxml/stylesheet" rewritePrefix="stylesheet"/>
+  <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/cnxml/misc" rewritePrefix="misc"/>
+  <rewriteUri uriStartString="http://cnx.rice.edu/technology/cnxml/stylesheet" rewritePrefix="stylesheet"/>
+  <rewriteUri uriStartString="http://cnx.rice.edu/technology/cnxml/misc" rewritePrefix="misc"/>
+
 </catalog>

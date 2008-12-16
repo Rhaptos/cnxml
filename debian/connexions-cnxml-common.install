@@ -1,4 +1,3 @@
-DTD/mdml*.* usr/share/xml/mdml/schema/dtd/0.4/
 style/*.xsl usr/share/xml/cnxml/stylesheet
 *.sps usr/share/xml/cnxml/misc/
 *template.xml usr/share/xml/cnxml/misc/

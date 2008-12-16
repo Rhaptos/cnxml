@@ -1,0 +1,2 @@
+schema/mdml*.rng usr/share/xml/mdml/schema/rng/0.4/
+DTD/mdml*.mod usr/share/xml/mdml/schema/dtd/0.4/
