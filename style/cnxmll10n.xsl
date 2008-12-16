@@ -52,12 +52,10 @@
       <l:gentext key="LabVIEWSource" text="LabVIEW Source"/>
       <l:gentext key="AudioFile" text="Audio File"/>
       <l:gentext key="MusicalExample" text="Musical Example"/>
-      <l:gentext key="ClickForSolution" text="Click for Solution"/>
-      <l:gentext key="HideSolution" text="Hide Solution"/>
+      <l:gentext key="Show" text="Show"/>
+      <l:gentext key="Hide" text="Hide"/>
       <l:gentext key="Solution" text="Solution"/>
       <l:gentext key="Diagnosis" text="Diagnosis"/>
-      <l:gentext key="ClickForDiagnosis" text="Click for Diagnosis"/>
-      <l:gentext key="HideDiagnosis" text="Hide Diagnosis"/>
       <l:gentext key="Footnotes" text="Footnotes"/>
       <l:gentext key="warning" text="Warning"/>
       <l:gentext key="important" text="Important"/>

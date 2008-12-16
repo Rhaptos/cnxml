@@ -2107,18 +2107,9 @@
     </xsl:variable>
     <xsl:variable name="solution-string">
       <xsl:choose>
-        <xsl:when test="cnx:label[node()]">
-          <xsl:apply-templates select="cnx:label" />
-        </xsl:when>
         <xsl:when test="$case-diagnosis = '1'">Diagnosis</xsl:when>
         <xsl:otherwise>Solution</xsl:otherwise>
       </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="clickfor-string">
-      <xsl:value-of select="concat('ClickFor', $solution-string)"/>
-    </xsl:variable>
-    <xsl:variable name="hide-string">
-      <xsl:value-of select="concat('Hide', $solution-string)"/>
     </xsl:variable>
     <xsl:variable name="javascriptpresent" select="/module/display/javascriptpresent"/>
     <div class="solution">
@@ -2140,13 +2131,20 @@
         <!-- h2, h3, etc... -->
         <xsl:element name="h{$level-number}">
           <xsl:attribute name="class">solution-header</xsl:attribute>
-          <xsl:if test="$case-diagnosis = '0' and not(cnx:label[not(node())])">
+          <xsl:if test="not(cnx:label[not(node())])">
             <span class="cnx_label">
-              <!--Solution-->
-              <xsl:call-template name="gentext">
-                <xsl:with-param name="key" select="$solution-string" />
-                <xsl:with-param name="lang" select="/module/metadata/language" />
-              </xsl:call-template>
+              <xsl:choose>
+                <xsl:when test="cnx:label">
+                  <xsl:apply-templates select="cnx:label" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <!--Solution-->
+                  <xsl:call-template name="gentext">
+                    <xsl:with-param name="key" select="$solution-string" />
+                    <xsl:with-param name="lang" select="/module/metadata/language" />
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
               <xsl:value-of select="$solution-letter" />
               <xsl:if test="cnx:name or cnx:title">: </xsl:if>
             </span>
@@ -2168,26 +2166,48 @@
         </xsl:choose>
       </xsl:attribute>
       <a href="#" onclick="toggleSolution('{../@id}',{$solution-number}); return false;">
-      <span class="solution-toggle">
-      [
-      <!-- Click for Solution/Diagnosis -->
-      <xsl:call-template name="gentext">
-        <xsl:with-param name="key"><xsl:value-of select="$clickfor-string"/></xsl:with-param>
-        <xsl:with-param name="lang" select="/module/metadata/language" />
-      </xsl:call-template>
-      <xsl:value-of select="$solution-letter" />
-      ]
-      </span>
-      <span class="solution-toggle" style="display: none;">
-        [ 
-        <!-- Hide Solution/Diagnosis -->
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key"><xsl:value-of select="$hide-string"/></xsl:with-param>
-          <xsl:with-param name="lang" select="/module/metadata/language" />
-        </xsl:call-template>
-        <xsl:value-of select="$solution-letter" />
-        ]
-      </span>
+        <span class="solution-toggle">
+          [
+          <!-- Show Solution/Diagnosis -->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Show</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language" />
+          </xsl:call-template>
+          <xsl:text> </xsl:text>
+          <xsl:choose>
+            <xsl:when test="cnx:label">
+              <xsl:apply-templates select="cnx:label" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="gentext">
+                <xsl:with-param name="key" select="$solution-string" />
+                <xsl:with-param name="lang" select="/module/metadata/language" />
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
+          ]
+        </span>
+        <span class="solution-toggle" style="display: none;">
+          [ 
+          <!-- Hide Solution/Diagnosis -->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">Hide</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language" />
+          </xsl:call-template>
+          <xsl:text> </xsl:text>
+          <xsl:choose>
+            <xsl:when test="cnx:label">
+              <xsl:apply-templates select="cnx:label" />
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="gentext">
+                <xsl:with-param name="key" select="$solution-string" />
+                <xsl:with-param name="lang" select="/module/metadata/language" />
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
+          ]
+        </span>
       </a>
     </div>
   </xsl:template>
