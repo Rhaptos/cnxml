@@ -2009,7 +2009,7 @@
   <xsl:template match="cnx:exercise">
     <div class='exercise'>
       <xsl:call-template name='IdCheck'/>
-      <xsl:if test="$case-diagnosis = '0' or cnx:name or cnx:title or not(cnx:label[not(node())])">
+      <xsl:if test="$case-diagnosis = '0' and (cnx:name or cnx:title or not(cnx:label[not(node())]))">
         <xsl:variable name="level-number">
           <xsl:call-template name="level-count" />
         </xsl:variable>
