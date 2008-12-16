@@ -901,7 +901,7 @@
       <pre class="codeblock">
         <code>
           <xsl:call-template name='IdCheck'/>
-          <xsl:apply-templates select="*[not(self::cnx:title|self::cnx:label|cnx:caption)]|text()"/>
+          <xsl:apply-templates select="*[not(self::cnx:title|self::cnx:label|self::cnx:caption)]|text()"/>
        </code>
       </pre>
       <xsl:if test="cnx:caption">
@@ -1875,7 +1875,7 @@
       <tbody>
         <tr>
           <td class="inner-vertical-subfigure">
-            <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name|self::cnx:title|cnx:label)]"/>
+            <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:name|self::cnx:title|self::cnx:label)]"/>
 	  </td>
         </tr>
       </tbody>
