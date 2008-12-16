@@ -963,7 +963,7 @@
         <tbody>
           <tr>
             <td>
-              <pre class="code codeblock">
+              <pre class="codeblock">
                 <code>
                   <xsl:call-template name='IdCheck'/>
                   <xsl:apply-templates select="*[not(self::cnx:caption|self::cnx:title|self::cnx:label)]|text()"/>
