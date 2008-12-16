@@ -1,6 +1,6 @@
 local;catalog-common.xml;/usr/share/xml/cnxml/catalog-common.xml
 
-root-and-package;public;-//CNX//DTD MDML;/usr/share/xml/cnxml/catalog-common.xml
-root-and-package;public;-//CNX//ENTITIES MDML;/usr/share/xml/cnxml/catalog-common.xml
-root-and-package;public;-//CNX//ELEMENTS MDML;/usr/share/xml/cnxml/catalog-common.xml
-root-and-package;system;http://cnx.rice.edu/technology/mdml;/usr/share/xml/cnxml/catalog-common.xml
+root-and-package;system;http://cnx.rice.edu/technology/cnxml/stylesheet;/usr/share/xml/cnxml/catalog-common.xml
+root-and-package;system;http://cnx.rice.edu/technology/cnxml/misc;/usr/share/xml/cnxml/catalog-common.xml
+root-and-package;uri;http://cnx.rice.edu/technology/cnxml/stylesheet;/usr/share/xml/cnxml/catalog-common.xml
+root-and-package;uri;http://cnx.rice.edu/technology/cnxml/misc;/usr/share/xml/cnxml/catalog-common.xml
