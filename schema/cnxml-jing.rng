@@ -22,7 +22,7 @@
     </choice>
   </start>
 
-  <include href="mdml-defs.rng">
+  <include href="file:///usr/share/xml/mdml/schema/rng/0.4.5/mdml-defs.rng">
     <define name="mdml-metadata">
       <notAllowed/>
     </define>
