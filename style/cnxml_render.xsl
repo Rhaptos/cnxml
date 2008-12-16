@@ -728,6 +728,22 @@
 
   <!-- QUOTE -->
   <xsl:template match="cnx:quote">
+    <xsl:if test="cnx:title or cnx:label[node()]">
+      <xsl:variable name="level-number">
+        <xsl:call-template name="level-count" />
+      </xsl:variable>
+      <!-- h2, h3, etc... -->
+      <xsl:element name="h{$level-number}">
+        <xsl:attribute name="class">quote-header</xsl:attribute>
+        <xsl:if test="cnx:label[node()]">
+          <span class="cnx_label">
+            <xsl:apply-templates select="cnx:label" />
+            <xsl:if test="cnx:title">: </xsl:if>
+          </span>
+        </xsl:if>
+        <xsl:apply-templates select="cnx:title" />
+      </xsl:element>
+    </xsl:if>
     <xsl:call-template name="make-quote">
       <xsl:with-param name="display">
         <xsl:choose>
@@ -771,22 +787,6 @@
         <xsl:attribute name="cite">
           <xsl:value-of select="$href" />
         </xsl:attribute>
-      </xsl:if>
-      <xsl:if test="cnx:title or cnx:label[node()]">
-        <xsl:variable name="level-number">
-          <xsl:call-template name="level-count" />
-        </xsl:variable>
-        <!-- h2, h3, etc... -->
-        <xsl:element name="h{$level-number}">
-          <xsl:attribute name="class">quote-header</xsl:attribute>
-          <xsl:if test="cnx:label[node()]">
-            <span class="cnx_label">
-              <xsl:apply-templates select="cnx:label" />
-              <xsl:if test="cnx:title">: </xsl:if>
-            </span>
-          </xsl:if>
-          <xsl:apply-templates select="cnx:title" />
-        </xsl:element>
       </xsl:if>
       <xsl:apply-templates select="*[not(self::cnx:title|self::cnx:label)]|text()" />
       <xsl:if test="$href!=''">
