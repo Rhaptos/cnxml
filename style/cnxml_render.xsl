@@ -1324,9 +1324,9 @@
                 <xsl:with-param name="key">GlossSeeAlso</xsl:with-param>
                 <xsl:with-param name="lang" select="/module/metadata/language" />
               </xsl:call-template>
-              <xsl:text>: </xsl:text>
             </xsl:otherwise>
           </xsl:choose>
+          <xsl:text>: </xsl:text>
         </span>
       </xsl:if>
       <xsl:for-each select="cnx:term">
