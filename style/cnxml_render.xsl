@@ -337,7 +337,7 @@
   </xsl:template>
 
   <!-- METADATA and other non-displayed elements -->
-  <xsl:template match="cnx:metadata|cnx:authorlist|cnx:maintainerlist|cnx:keywordlist|cnx:abstract|cnx:objectives|featured-links|link-group" />
+  <xsl:template match="cnx:metadata|cnx:authorlist|cnx:maintainerlist|cnx:keywordlist|cnx:abstract|cnx:objectives|cnx:featured-links|cnx:link-group" />
 
   <!--SECTION-->
   <xsl:template match="cnx:section">
