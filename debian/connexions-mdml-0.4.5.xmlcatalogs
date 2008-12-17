@@ -1,0 +1,4 @@
+local;catalog-mdml.xml;/usr/share/xml/mdml/catalog-0.4.5.xml
+
+root-and-package;system;http://cnx.rice.edu/technology/mdml/schema/rng/0.4.5;/usr/share/xml/mdml/catalog-0.4.5.xml
+root-and-package;uri;http://cnx.rice.edu/technology/mdml/schema/rng/0.4.5;/usr/share/xml/mdml/catalog-0.4.5.xml
