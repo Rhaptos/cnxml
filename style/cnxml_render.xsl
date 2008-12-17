@@ -1567,13 +1567,21 @@
         <xsl:attribute name="style">display: none</xsl:attribute>
       </xsl:if>
       <xsl:call-template name='IdCheck'/>
-      <xsl:if test="cnx:name[node()] or cnx:title[node()]">
+      <xsl:if test="cnx:name[node()] or cnx:title[node()] or cnx:label[node()]">
         <xsl:variable name="level-number">
           <xsl:call-template name="level-count" />
         </xsl:variable>
         <!-- h2, h3, etc... -->
         <xsl:element name="h{$level-number}">
           <xsl:attribute name="class">list-header</xsl:attribute>
+          <xsl:if test="cnx:label[node()]">
+            <span class="cnx_label">
+              <xsl:apply-templates select="cnx:label" />
+              <xsl:if test="cnx:title">
+                <xsl:text>: </xsl:text>
+              </xsl:if>
+            </span>
+          </xsl:if>
 	  <xsl:apply-templates select="cnx:name|cnx:title" />
         </xsl:element>
       </xsl:if>
@@ -1633,6 +1641,12 @@
     <xsl:text> </xsl:text>
     <span class="list inline">
       <xsl:call-template name='IdCheck'/>
+      <xsl:if test="cnx:label[node()]">
+        <span class="cnx_label">
+          <xsl:apply-templates select="cnx:label" />
+          <xsl:text>: </xsl:text>
+        </span>
+      </xsl:if>
       <xsl:apply-templates select="cnx:name|cnx:title" />
       <xsl:for-each select="cnx:item">
         <span class="item">
@@ -1669,18 +1683,22 @@
         </xsl:call-template>
         <xsl:text> </xsl:text>
       </xsl:if>
-      <xsl:if test="not(parent::list[@list-type='labeled-item'] and not(cnx:label[node()]))">
-        <xsl:value-of select="parent::cnx:list[@before]" />
+      <xsl:if test="not(parent::cnx:list[@list-type='labeled-item'] and (not(cnx:label) or cnx:label[not(node())]))">
+        <xsl:value-of select="parent::cnx:list/@before" />
+      </xsl:if>
+      <xsl:if test="parent::cnx:list[not(@list-type='labeled-item' or @list-type='enumerated' or @bullet-style)]">
+        <xsl:text>&#8226;</xsl:text>
       </xsl:if>
       <xsl:if test="parent::cnx:list[@bullet-style]">
         <xsl:choose>
-          <xsl:when test="parent::cnx:list[@bullet-style='bullet']">&#149;</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='bullet']">&#8226;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='open-circle']">&#9675;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='pilcrow']">&#182;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='rpilcrow']">&#8267;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='asterisk']">*</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='dash']">&#8211;</xsl:when>
           <xsl:when test="parent::cnx:list[@bullet-style='section']">&#167;</xsl:when>
+          <xsl:when test="parent::cnx:list[@bullet-style='none']" />
           <xsl:otherwise>
             <xsl:value-of select="parent::cnx:list/@bullet-style" />
           </xsl:otherwise>
@@ -1716,7 +1734,7 @@
       <xsl:if test="parent::cnx:list[@list-type='labeled-item']">
         <xsl:apply-templates select="cnx:label" />
         <xsl:if test="not(cnx:label) or cnx:label[not(node())]">
-          <xsl:comment>empty label</xsl:comment>
+          <xsl:comment>empty label element</xsl:comment>
         </xsl:if>
       </xsl:if>
       <xsl:choose>
