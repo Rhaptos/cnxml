@@ -1377,7 +1377,7 @@
       <choice>
         <ref name="media"/>
         <ref name="table"/>
-        <ref name="block-code"/>
+        <ref name="code"/>
       </choice>
       <optional>
         <ref name="caption"/>

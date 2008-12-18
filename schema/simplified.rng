@@ -3307,6 +3307,7 @@
         <ref name="block-media"/>
         <ref name="inline-media"/>
         <ref name="table"/>
+        <ref name="inline-code"/>
         <ref name="block-code"/>
       </choice>
       <optional>
