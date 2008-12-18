@@ -523,6 +523,9 @@
       </xsl:choose>
       <xsl:attribute name="summary"><xsl:value-of select="$summary"/></xsl:attribute>
       <xsl:apply-templates/>
+      <xsl:if test="parent::cnxml:figure and following-sibling::cnxml:caption and not(cnxml:caption)">
+        <xsl:apply-templates select="following-sibling::cnxml:caption"/>
+      </xsl:if>
     </xsl:copy>
   </xsl:template>
 
