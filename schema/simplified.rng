@@ -31,7 +31,7 @@
       <ref name="definition"/>
     </choice>
   </start>
-  <!--starting mdml-defs.rng-->
+  <!--starting http://cnx.rice.edu/technology/mdml/schema/rng/0.4.5/mdml-defs.rng-->
   <!--included elements-->
   <define name="mdml-content-id">
     <element name="content-id">
@@ -339,7 +339,7 @@
       </oneOrMore>
     </element>
   </define>
-  <!--ending mdml-defs.rng-->
+  <!--ending http://cnx.rice.edu/technology/mdml/schema/rng/0.4.5/mdml-defs.rng-->
   <!--starting http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng-->
   <!--included elements-->
   <define name="qml.problemset">
@@ -999,7 +999,10 @@
   <define name="inline-preformat">
     <element name="preformat">
       <attribute name="display">
-        <value>inline</value>
+        <choice>
+          <value>inline</value>
+          <value>none</value>
+        </choice>
       </attribute>
       <zeroOrMore>
         <attribute>
@@ -2063,7 +2066,10 @@
   <define name="inline-quote">
     <element name="quote">
       <attribute name="display">
-        <value>inline</value>
+        <choice>
+          <value>inline</value>
+          <value>none</value>
+        </choice>
       </attribute>
       <group>
         <optional>
@@ -2451,7 +2457,10 @@
   <define name="inline-note">
     <element name="note">
       <attribute name="display">
-        <value>inline</value>
+        <choice>
+          <value>inline</value>
+          <value>none</value>
+        </choice>
       </attribute>
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="type" a:defaultValue="note">
@@ -2653,7 +2662,10 @@
         <attribute name="type"/>
       </optional>
       <attribute name="display">
-        <value>inline</value>
+        <choice>
+          <value>inline</value>
+          <value>none</value>
+        </choice>
       </attribute>
       <optional>
         <attribute name="id">
@@ -2794,7 +2806,10 @@
         <attribute name="type"/>
       </optional>
       <attribute name="display">
-        <value>inline</value>
+        <choice>
+          <value>inline</value>
+          <value>none</value>
+        </choice>
       </attribute>
       <optional>
         <attribute name="id">
@@ -2907,7 +2922,10 @@
         <attribute name="type"/>
       </optional>
       <attribute name="display">
-        <value>inline</value>
+        <choice>
+          <value>inline</value>
+          <value>none</value>
+        </choice>
       </attribute>
       <optional>
         <attribute name="id">
@@ -3124,7 +3142,10 @@
   <define name="block-code">
     <element name="code">
       <attribute name="display">
-        <value>block</value>
+        <choice>
+          <value>block</value>
+          <value>none</value>
+        </choice>
       </attribute>
       <zeroOrMore>
         <attribute>
@@ -3412,7 +3433,10 @@
   <define name="block-media">
     <element name="media">
       <attribute name="display">
-        <value>block</value>
+        <choice>
+          <value>block</value>
+          <value>none</value>
+        </choice>
       </attribute>
       <zeroOrMore>
         <attribute>
@@ -5857,10 +5881,16 @@
       <optional>
         <choice>
           <attribute name="display">
-            <value>block</value>
+            <choice>
+              <value>block</value>
+              <value>none</value>
+            </choice>
           </attribute>
           <attribute name="display">
-            <value>inline</value>
+            <choice>
+              <value>inline</value>
+              <value>none</value>
+            </choice>
           </attribute>
           <attribute name="display">
             <value>none</value>
@@ -5952,10 +5982,16 @@
       <optional>
         <choice>
           <attribute name="display">
-            <value>block</value>
+            <choice>
+              <value>block</value>
+              <value>none</value>
+            </choice>
           </attribute>
           <attribute name="display">
-            <value>inline</value>
+            <choice>
+              <value>inline</value>
+              <value>none</value>
+            </choice>
           </attribute>
           <attribute name="display">
             <value>none</value>
@@ -6018,10 +6054,16 @@
       <optional>
         <choice>
           <attribute name="display">
-            <value>block</value>
+            <choice>
+              <value>block</value>
+              <value>none</value>
+            </choice>
           </attribute>
           <attribute name="display">
-            <value>inline</value>
+            <choice>
+              <value>inline</value>
+              <value>none</value>
+            </choice>
           </attribute>
           <attribute name="display">
             <value>none</value>
