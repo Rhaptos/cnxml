@@ -5,6 +5,7 @@
   xmlns:cnx="http://cnx.rice.edu/cnxml"
   xmlns:m="http://www.w3.org/1998/Math/MathML"
   xmlns:md="http://cnx.rice.edu/mdml/0.4"
+  xmlns:qml="http://cnx.rice.edu/qml/1.0"
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:mod="http://cnx.rice.edu/#moduleIds"
   xmlns:bib="http://bibtexml.sf.net/">
@@ -70,6 +71,8 @@
   <xsl:template name="level-count">
     <xsl:variable name="level-number" 
                   select="count(ancestor::cnx:section|
+                                ancestor::qml:problemset|
+                                ancestor::qml:item|
                                 ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:rule[cnx:name or cnx:title or cnx:label[node()] or (@type!='' and not(cnx:label))]|
                                 ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|

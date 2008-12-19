@@ -280,6 +280,9 @@
       <l:gentext key="Publish" text="Publish"/>
       <l:gentext key="Discard" text="Discard"/>
 
+      <!-- for qml.xsl -->
+      <l:gentext key="ProblemSet" text="Problem Set"/>
+
       <!-- Old pairs resurrected for use by old content_render template -->
       <l:gentext key="Aboutus" text="About us"/>
       <l:gentext key="Browseallcontent" text="Browse all content"/>
