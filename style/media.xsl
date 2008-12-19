@@ -10,11 +10,11 @@
   <!-- MEDIA (catch-all/fall-back case) -->
   <xsl:template match="cnx:media">
     <xsl:choose>
-      <xsl:when test="$version='0.6'">
-        <xsl:apply-templates select="child::*[not(self::cnx:longdesc)][1]" />
+      <xsl:when test="$version='0.5'">
+        <xsl:call-template name="default-media" />
       </xsl:when>
       <xsl:otherwise>
-        <xsl:call-template name="default-media" />
+        <xsl:apply-templates select="child::*[not(self::cnx:longdesc)][1]" />
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
