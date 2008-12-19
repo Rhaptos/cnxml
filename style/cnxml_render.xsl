@@ -72,7 +72,7 @@
     <xsl:variable name="level-number" 
                   select="count(ancestor::cnx:section|
                                 ancestor::qml:problemset|
-                                ancestor::qml:item|
+                                ancestor::qml:item[parent::qml:problemset]|
                                 ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:rule[cnx:name or cnx:title or cnx:label[node()] or (@type!='' and not(cnx:label))]|
                                 ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|
@@ -562,7 +562,7 @@
               <xsl:when test="self::cnx:note[@type!=''] or self::cnx:rule">
                 <xsl:value-of select="@type" />
               </xsl:when>
-              <xsl:when test="self::cnx:exercise[ancestor::cnx:example]">
+              <xsl:when test="self::cnx:exercise[ancestor::cnx:example or qml:item] or self::qml:item">
                 <xsl:call-template name="gentext">
                   <xsl:with-param name="key">Problem</xsl:with-param>
                   <xsl:with-param name="lang" select="/module/metadata/language" />
@@ -592,6 +592,9 @@
               <xsl:when test="self::cnx:note[@type='note' or not(@type) or @type='']">
                 <xsl:number level="any" count="cnx:note[@type='note' or not(@type) or @type='']" />
               </xsl:when>
+              <xsl:when test="self::qml:item">
+                <xsl:number level="any" count="qml:item" />
+              </xsl:when>
               <xsl:when test="@type!=''">
                 <xsl:variable name="element" select="name()" />
                 <xsl:variable name="type" select="@type" />
@@ -619,7 +622,7 @@
                     <xsl:number level="any" count="cnx:exercise[not(@type) or @type='']" from="cnx:example" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example)][not(@type) or @type='']" />
+                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type) or @type='']" />
                   </xsl:otherwise>
                 </xsl:choose>
                 <xsl:if test="self::cnx:solution and count(parent::cnx:exercise/cnx:solution) > 1">
@@ -632,8 +635,11 @@
                   <xsl:when test="ancestor::cnx:example">
                     <xsl:number level="any" count="cnx:exercise[not(@type) or @type='']" from="cnx:example" />
                   </xsl:when>
+                  <xsl:when test="qml:item">
+                    <xsl:number level="any" count="cnx:exercise[qml:item]" />
+                  </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example)][not(@type) or @type='']" />
+                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type) or @type='']" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:when>
@@ -2043,7 +2049,7 @@
                 <xsl:when test="cnx:label">
                   <xsl:apply-templates select="cnx:label" />
                 </xsl:when>
-                <xsl:when test="ancestor::cnx:example">
+                <xsl:when test="ancestor::cnx:example or qml:item">
                   <!-- Problem -->
                   <xsl:call-template name="gentext">
                     <xsl:with-param name="key">Problem</xsl:with-param>
@@ -2067,8 +2073,11 @@
                 <xsl:when test="ancestor::cnx:example">
                   <xsl:number level="any" count="cnx:exercise[not(@type)]" from="cnx:example" />
                 </xsl:when>
+                <xsl:when test="qml:item">
+                  <xsl:number level="any" count="cnx:exercise[qml:item]" />
+                </xsl:when>
                 <xsl:otherwise>
-                  <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example) and not(@type)]" />
+                  <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item) and not(@type)]" />
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:if test="cnx:name or cnx:title">
