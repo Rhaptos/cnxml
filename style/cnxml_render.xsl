@@ -301,7 +301,6 @@
     </div>
   </xsl:template>
 
-
   <!-- TOC -->
   <xsl:template name="toc">
     <!-- Table of contents -->
@@ -587,6 +586,13 @@
                 </xsl:call-template>
               </xsl:otherwise>
             </xsl:choose>
+            <xsl:if test="not(self::cnx:example[ancestor::cnx:definition or
+                                                ancestor::cnx:rule or
+                                                ancestor::cnx:exercise or
+                                                ancestor::cnx:entry or
+                                                ancestor::cnx:footnote or
+                                                ancestor::cnx:text or
+                                                ancestor::cnx:longdesc])">
             <xsl:text> </xsl:text>
             <xsl:choose>
               <xsl:when test="self::cnx:note[@type='note' or not(@type) or @type='']">
@@ -643,11 +649,21 @@
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:when>
+              <xsl:when test="self::cnx:example">
+                <xsl:number level="any" count="cnx:example[not(ancestor::cnx:definition or
+                                                               ancestor::cnx:rule or
+                                                               ancestor::cnx:exercise or
+                                                               ancestor::cnx:entry or
+                                                               ancestor::cnx:footnote or
+                                                               ancestor::cnx:text or
+                                                               ancestor::cnx:longdesc)]" />
+              </xsl:when>
               <xsl:otherwise>
                 <xsl:variable name="element" select="name()" />
                 <xsl:number level="any" count="*[name()=$element][not(@type) or @type='']" />
               </xsl:otherwise>
             </xsl:choose>
+            </xsl:if>
           </xsl:for-each>
         </span>
       </xsl:when>
@@ -1191,15 +1207,33 @@
                   </xsl:call-template>
                 </xsl:otherwise>
               </xsl:choose>
-              <xsl:if test="not(parent::cnx:definition|parent::cnx:rule)">
+              <xsl:if test="not(ancestor::cnx:definition or
+                                ancestor::cnx:rule or
+                                ancestor::cnx:exercise or 
+                                ancestor::cnx:entry or
+                                ancestor::cnx:footnote or 
+                                ancestor::cnx:text or
+                                ancestor::cnx:longdesc)">
                 <xsl:text> </xsl:text>
                 <xsl:choose>
                   <xsl:when test="@type">
                     <xsl:variable name="type" select="@type" />
-                    <xsl:number level="any" count="cnx:example[not(parent::cnx:definition|parent::cnx:rule)][@type=$type]" />
+                    <xsl:number level="any" count="cnx:example[not(ancestor::cnx:definition or
+                                                                   ancestor::cnx:rule or
+                                                                   ancestor::cnx:exercise or
+                                                                   ancestor::cnx:entry or
+                                                                   ancestor::cnx:footnote or
+                                                                   ancestor::cnx:text or
+                                                                   ancestor::cnx:longdesc)][@type=$type]" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:example[not(parent::cnx:definition|parent::cnx:rule|@type)]" />
+                    <xsl:number level="any" count="cnx:example[not(ancestor::cnx:definition or 
+                                                                   ancestor::cnx:rule or 
+                                                                   ancestor::cnx:exercise or 
+                                                                   ancestor::cnx:entry or 
+                                                                   ancestor::cnx:footnote or 
+                                                                   ancestor::cnx:text or 
+                                                                   ancestor::cnx:longdesc)][not(@type)]" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:if>
