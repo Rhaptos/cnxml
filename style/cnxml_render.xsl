@@ -889,6 +889,7 @@
 
   <xsl:template name="codeblock">
     <div class="code">
+      <xsl:call-template name='IdCheck'/>
       <xsl:if test="cnx:title or cnx:label[node()]">
         <xsl:variable name="level-number">
           <xsl:call-template name="level-count" />
@@ -909,7 +910,6 @@
       </xsl:if>
       <pre class="codeblock">
         <code>
-          <xsl:call-template name='IdCheck'/>
           <xsl:apply-templates select="*[not(self::cnx:title|self::cnx:label|self::cnx:caption)]|text()"/>
        </code>
       </pre>
