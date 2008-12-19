@@ -282,6 +282,11 @@
 
       <!-- for qml.xsl -->
       <l:gentext key="ProblemSet" text="Problem Set"/>
+      <l:gentext key="CheckAnswer" text="Check Answer"/>
+      <l:gentext key="ShowAnswer" text="Show Answer"/>
+      <l:gentext key="Hint" text="Hint"/>
+      <l:gentext key="Correct" text="Correct!"/>
+      <l:gentext key="Incorrect" text="Incorrect."/>
 
       <!-- Old pairs resurrected for use by old content_render template -->
       <l:gentext key="Aboutus" text="About us"/>
