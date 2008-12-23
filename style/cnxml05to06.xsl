@@ -522,6 +522,9 @@
         </xsl:otherwise>
       </xsl:choose>
       <xsl:attribute name="summary"><xsl:value-of select="$summary"/></xsl:attribute>
+      <xsl:if test="parent::cnxml:figure and preceding-sibling::cnxml:name and not(cnxml:name)">
+        <xsl:apply-templates select="preceding-sibling::cnxml:name"/>
+      </xsl:if>
       <xsl:apply-templates/>
       <xsl:if test="parent::cnxml:figure and following-sibling::cnxml:caption and not(cnxml:caption)">
         <xsl:apply-templates select="following-sibling::cnxml:caption"/>
@@ -949,6 +952,8 @@
   </xsl:template>
 
   <xsl:template match="cnxml:name[string-length(normalize-space(.))=0][not(parent::cnxml:document)]"/>
+
+  <xsl:template match="cnxml:caption[string-length(normalize-space(.))=0]"/>
 
   <xsl:template match="*[self::cnxml:cite][not(@*)][string-length(normalize-space(.))=0]"/>
 
