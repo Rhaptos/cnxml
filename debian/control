@@ -23,7 +23,7 @@ Description: Connexions Markup Language common files (stylesheets)
 
 Package: connexions-cnxml-0.6
 Architecture: all
-Depends: ${misc:Depends}, connexions-cnxml-common, connexions-mdml-0.4.5
+Depends: ${misc:Depends}, connexions-cnxml-common, connexions-mdml-0.4.5, connexions-qml-1.0
 Suggests: connexions-bibtexml, connexions-mathml, connexions-qml
 Provides: connexions-cnxml
 Description: Connexions Markup Language 0.6 Schema
