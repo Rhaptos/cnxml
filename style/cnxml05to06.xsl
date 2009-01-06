@@ -515,7 +515,6 @@
               when we are keeping the figure because both it and the table 
               have title or caption. -->
         <xsl:when test="string-length(parent::cnxml:figure/@id) and $moduleid != 'm16333' and not($keep-figure)">
-          <xsl:message>woof</xsl:message>
           <xsl:apply-templates select="parent::cnxml:figure/@id"/>
         </xsl:when>
         <xsl:when test="string-length(@id)">
@@ -563,10 +562,24 @@
   </xsl:template>
 
   <xsl:template match="cnxml:figure[cnxml:code]">
-    <xsl:apply-templates select="cnxml:code"/>
+    <xsl:choose>
+      <xsl:when test="$moduleid = 'm10221'">
+        <xsl:copy>
+          <xsl:copy-of select="@*"/>
+          <xsl:call-template name="generate-id-if-required"/>
+          <xsl:apply-templates>
+            <xsl:with-param name="keep-figure" select="1"/>
+          </xsl:apply-templates>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="cnxml:code"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="cnxml:code">
+    <xsl:param name="keep-figure" select="0"/>
     <xsl:copy>
       <xsl:apply-templates select="@*[name()!='id']"/>
       <xsl:if test="@type='block' or parent::cnxml:content or parent::cnxml:section or parent::cnxml:figure">
@@ -585,14 +598,14 @@
       <xsl:if test="parent::cnxml:content or parent::cnxml:section or parent::cnxml:figure">
         <xsl:attribute name="display">block</xsl:attribute>
       </xsl:if>
-      <xsl:if test="parent::cnxml:figure">
+      <xsl:if test="parent::cnxml:figure and not($keep-figure)">
         <xsl:attribute name="class">listing</xsl:attribute>
-        <xsl:if test="preceding-sibling::cnxml:name">
+        <xsl:if test="preceding-sibling::cnxml:name and not($keep-figure)">
           <xsl:apply-templates select="preceding-sibling::cnxml:name"/>
         </xsl:if>
       </xsl:if>
       <xsl:apply-templates/>
-      <xsl:if test="parent::cnxml:figure and following-sibling::cnxml:caption">
+      <xsl:if test="parent::cnxml:figure and following-sibling::cnxml:caption and not($keep-figure)">
         <xsl:apply-templates select="following-sibling::cnxml:caption"/>
       </xsl:if>
     </xsl:copy>
