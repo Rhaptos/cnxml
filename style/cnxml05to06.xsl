@@ -639,7 +639,7 @@
     <xsl:element name="media" namespace="http://cnx.rice.edu/cnxml">
       <xsl:attribute name="id"><xsl:value-of select="generate-id()"/></xsl:attribute>
       <xsl:attribute name="alt">
-        <xsl:value-of select="//cnxml:param[@name='alt'][1]/@value"/>
+        <xsl:value-of select="descendant::cnxml:param[@name='alt'][1]/@value"/>
       </xsl:attribute>
       <xsl:call-template name="make-attribute-from-param">
         <xsl:with-param name="param-name" select="'longdesc'"/>
@@ -777,7 +777,7 @@
       <xsl:call-template name="make-attribute-from-param">
         <xsl:with-param name="param-name" select="'thumbnail'"/>
       </xsl:call-template>
-      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and @name!='print-width' and @name!='thumbnail']"/>
+      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and @name!='print-width' and @name!='thumbnail' and @name !='alt']"/>
     </xsl:element>
   </xsl:template>
 
@@ -869,7 +869,7 @@
         <xsl:with-param name="param-name" select="'width'"/>
       </xsl:call-template>
       <xsl:copy-of select="@*[not(name(self::node())='type')]"/>
-      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width']"/>
+      <xsl:copy-of select="cnxml:param[@name!='height' and @name!='width' and @name!='alt']"/>
     </xsl:element>
   </xsl:template>
 
@@ -942,7 +942,7 @@
       <xsl:call-template name="make-attribute-from-param">
         <xsl:with-param name="param-name" select="'print-width'"/>
       </xsl:call-template>
-      <xsl:copy-of select="cnxml:param[@name!='width' and @name!='print-width']"/>
+      <xsl:copy-of select="cnxml:param[@name!='width' and @name!='print-width' and @name!='alt']"/>
     </xsl:element>
   </xsl:template>
 
