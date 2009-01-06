@@ -2583,9 +2583,6 @@
         <attribute name="before"/>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="item-sep" a:defaultValue=";"/>
-      </optional>
-      <optional>
         <attribute name="type"/>
       </optional>
       <optional>
@@ -2599,6 +2596,9 @@
       <attribute name="id">
         <data type="ID"/>
       </attribute>
+      <optional>
+        <attribute name="item-sep"/>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>
@@ -2658,9 +2658,6 @@
         <attribute name="before"/>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="item-sep" a:defaultValue=";"/>
-      </optional>
-      <optional>
         <attribute name="type"/>
       </optional>
       <attribute name="display">
@@ -2673,6 +2670,9 @@
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="item-sep" a:defaultValue=";"/>
       </optional>
       <optional>
         <ref name="label"/>
@@ -2730,9 +2730,6 @@
         <attribute name="before"/>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="item-sep" a:defaultValue=";"/>
-      </optional>
-      <optional>
         <attribute name="type"/>
       </optional>
       <optional>
@@ -2746,6 +2743,9 @@
       <attribute name="id">
         <data type="ID"/>
       </attribute>
+      <optional>
+        <attribute name="item-sep"/>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>
@@ -2802,9 +2802,6 @@
         <attribute name="before"/>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="item-sep" a:defaultValue=";"/>
-      </optional>
-      <optional>
         <attribute name="type"/>
       </optional>
       <attribute name="display">
@@ -2817,6 +2814,9 @@
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="item-sep" a:defaultValue=";"/>
       </optional>
       <optional>
         <ref name="label"/>
@@ -2860,9 +2860,6 @@
         <attribute name="before"/>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="item-sep" a:defaultValue=";"/>
-      </optional>
-      <optional>
         <attribute name="type"/>
       </optional>
       <optional>
@@ -2876,6 +2873,9 @@
       <attribute name="id">
         <data type="ID"/>
       </attribute>
+      <optional>
+        <attribute name="item-sep"/>
+      </optional>
       <optional>
         <ref name="label"/>
       </optional>
@@ -2918,9 +2918,6 @@
         <attribute name="before"/>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="item-sep" a:defaultValue=";"/>
-      </optional>
-      <optional>
         <attribute name="type"/>
       </optional>
       <attribute name="display">
@@ -2933,6 +2930,9 @@
         <attribute name="id">
           <data type="ID"/>
         </attribute>
+      </optional>
+      <optional>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="item-sep" a:defaultValue=";"/>
       </optional>
       <optional>
         <ref name="label"/>

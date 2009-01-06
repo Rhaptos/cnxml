@@ -336,7 +336,13 @@
     </optional>
   </define>
 
-  <define name="item-sep-attribute">
+  <define name="block-item-sep-attribute">
+    <optional>
+      <attribute name="item-sep"/>
+    </optional>
+  </define>
+
+  <define name="inline-item-sep-attribute">
     <optional>
       <attribute name="item-sep" a:defaultValue=";"/>
     </optional>
@@ -1132,13 +1138,13 @@
   <define name="list-common-content">
     <ref name="common-attributes"/>
     <ref name="before-attribute"/>
-    <ref name="item-sep-attribute"/>
     <ref name="type-attribute"/>
   </define>
 
   <define name="block-list-common-content">
     <ref name="display-block-default-attribute"/>
     <ref name="id-attribute"/>
+    <ref name="block-item-sep-attribute"/>
     <optional>
       <ref name="label"/>
     </optional>
@@ -1155,6 +1161,7 @@
     <optional>
       <ref name="id-attribute"/>
     </optional>
+    <ref name="inline-item-sep-attribute"/>
     <optional>
       <ref name="label"/>
     </optional>
