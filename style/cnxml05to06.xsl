@@ -499,6 +499,7 @@
   </xsl:template>
 
   <xsl:template match="cnxml:table">
+    <xsl:param name="keep-figure" select="0"/>
     <xsl:variable name="summary">
       <xsl:if test="processing-instruction('table-summary')">
         <xsl:value-of select="processing-instruction('table-summary')"/>
@@ -510,8 +511,11 @@
         <!-- m16333 is the one module in which cnxns pointing to a table 
               within a figure use the table @id rather than the figure @id. 
               In this case, we don't pass figure/@id down to the table 
-              template. -->
-        <xsl:when test="string-length(parent::cnxml:figure/@id) and $moduleid != 'm16333'">
+              template.  Also, we don't pass figure/@id down to the table 
+              when we are keeping the figure because both it and the table 
+              have title or caption. -->
+        <xsl:when test="string-length(parent::cnxml:figure/@id) and $moduleid != 'm16333' and not($keep-figure)">
+          <xsl:message>woof</xsl:message>
           <xsl:apply-templates select="parent::cnxml:figure/@id"/>
         </xsl:when>
         <xsl:when test="string-length(@id)">
@@ -522,11 +526,11 @@
         </xsl:otherwise>
       </xsl:choose>
       <xsl:attribute name="summary"><xsl:value-of select="$summary"/></xsl:attribute>
-      <xsl:if test="parent::cnxml:figure and preceding-sibling::cnxml:name and not(cnxml:name)">
+      <xsl:if test="parent::cnxml:figure and preceding-sibling::cnxml:name and not(cnxml:name) and not($keep-figure)">
         <xsl:apply-templates select="preceding-sibling::cnxml:name"/>
       </xsl:if>
       <xsl:apply-templates/>
-      <xsl:if test="parent::cnxml:figure and following-sibling::cnxml:caption and not(cnxml:caption)">
+      <xsl:if test="parent::cnxml:figure and following-sibling::cnxml:caption and not(cnxml:caption) and not($keep-figure)">
         <xsl:apply-templates select="following-sibling::cnxml:caption"/>
       </xsl:if>
     </xsl:copy>
@@ -535,12 +539,27 @@
   <xsl:template match="processing-instruction('table-summary')"></xsl:template>
 
   <xsl:template match="cnxml:figure[cnxml:table]">
-    <xsl:if test="@id">
-      <xsl:processing-instruction name="figure-id">
-        <xsl:value-of select="@id"/>
-      </xsl:processing-instruction>
-    </xsl:if>
-    <xsl:apply-templates select="cnxml:table"/>
+    <xsl:choose>
+      <xsl:when test="$moduleid = 'm10221' or 
+                (string-length(cnxml:name) and string-length(cnxml:table/cnxml:name)) or 
+                (string-length(cnxml:caption) and string-length(cnxml:table/cnxml:caption))">
+        <xsl:copy>
+          <xsl:copy-of select="@*"/>
+          <xsl:call-template name="generate-id-if-required"/>
+          <xsl:apply-templates>
+            <xsl:with-param name="keep-figure" select="1"/>
+          </xsl:apply-templates>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:if test="@id">
+          <xsl:processing-instruction name="figure-id">
+            <xsl:value-of select="@id"/>
+          </xsl:processing-instruction>
+        </xsl:if>
+        <xsl:apply-templates select="cnxml:table"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="cnxml:figure[cnxml:code]">
