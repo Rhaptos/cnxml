@@ -662,7 +662,7 @@
             </xsl:when>
             <xsl:when test="normalize-space(@type) = 'image/png' and 
                             normalize-space(cnxml:media/@type) = 'image/png'">
-              <xsl:call-template name="make-media-image" mode="media-object-only">
+              <xsl:call-template name="make-media-image">
                 <xsl:with-param name="media-conversion" select="$media-conversion"/>
               </xsl:call-template>
             </xsl:when>
