@@ -212,8 +212,28 @@
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:call-template name="generate-id-if-required"/>
+      <xsl:if test="self::cnxml:list">
+        <xsl:call-template name="make-after-mark"/>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template name="make-after-mark">
+    <xsl:variable name="after">
+      <xsl:choose>
+        <xsl:when test="descendant::processing-instruction('mark')">
+          <xsl:value-of select="normalize-space(descendant::processing-instruction('mark')[1])"/>
+        </xsl:when>
+        <xsl:when test="preceding-sibling::processing-instruction('mark')">
+          <xsl:value-of select="normalize-space(preceding-sibling::processing-instruction('mark')[1])"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="descendant::processing-instruction('mark') or 
+                  preceding-sibling::processing-instruction('mark')">
+      <xsl:attribute name="after"><xsl:value-of select="$after"/></xsl:attribute>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template match="cnxml:list/@type">
@@ -1088,11 +1108,7 @@
   </xsl:template>
 
   <xsl:template match="*">
-    <xsl:copy>
-      <xsl:apply-templates select="@*"/>
-      <xsl:call-template name="generate-id-if-required"/>
-      <xsl:apply-templates/>
-    </xsl:copy>
+    <xsl:apply-templates select="." mode="default-copy"/>
   </xsl:template>
 
   <xsl:template match="@*|text()|comment()|processing-instruction()">
