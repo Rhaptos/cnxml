@@ -1411,7 +1411,18 @@
         <cite class="cite">
           <xsl:call-template name='IdCheck'/>
           <xsl:if test="not($bibentry)">
-            <xsl:apply-templates />
+            <xsl:choose>
+              <xsl:when test="$version='0.5'">
+                <span class="cite-title">
+                  <i>
+                    <xsl:apply-templates />
+                  </i>
+                </span>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:apply-templates />
+              </xsl:otherwise>
+            </xsl:choose>
             <xsl:if test="$href!=''">
               <xsl:text> </xsl:text>
             </xsl:if>
