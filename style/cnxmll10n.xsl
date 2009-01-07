@@ -116,11 +116,9 @@
       <l:gentext key="Example links" text="Example links"/>
       <l:gentext key="Prerequisite links" text="Prerequisite links"/>
       <l:gentext key="Supplemental links" text="Supplemental links"/>
-      <l:gentext key="Verystronglink" text="Very strongly related link"/>
       <l:gentext key="Stronglink" text="Strongly related link"/>
       <l:gentext key="Relatedlink" text="Related link"/>
-      <l:gentext key="Distantlink" text="Distantly related link"/>
-      <l:gentext key="Verydistantlink" text="Very distantly related link"/>
+      <l:gentext key="Weaklink" text="Weakly related link"/>
       <l:gentext key="Downloadellipsis" text="Download PDF/ZIP..."/>
       <l:gentext key="Downloadcolon" text="Download:"/>
       <l:gentext key="ThePDFofthemodulecomma" text="The PDF of the module,"/>
