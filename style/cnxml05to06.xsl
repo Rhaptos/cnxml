@@ -610,7 +610,7 @@
       <xsl:if test="@type='block' or parent::cnxml:content or parent::cnxml:section or parent::cnxml:figure">
         <xsl:attribute name="id">
           <xsl:choose>
-            <xsl:when test="parent::cnxml:figure">
+            <xsl:when test="parent::cnxml:figure and not($keep-figure)">
               <xsl:value-of select="parent::cnxml:figure/@id"/>
             </xsl:when>
             <xsl:when test="string-length(@id)">
