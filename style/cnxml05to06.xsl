@@ -319,7 +319,12 @@
         <xsl:with-param name="src" select="normalize-space(@src)"/>
       </xsl:call-template>
       <xsl:call-template name="generate-id-if-required"/>
-      <xsl:apply-templates/>
+      <xsl:choose>
+        <xsl:when test="self::cnxml:cite and string-length(normalize-space(.))">
+          <cite-title xmlns="http://cnx.rice.edu/cnxml"><xsl:apply-templates/></cite-title>
+        </xsl:when>
+        <xsl:otherwise><xsl:apply-templates/></xsl:otherwise>
+      </xsl:choose>
     </xsl:copy>
   </xsl:template>
 
