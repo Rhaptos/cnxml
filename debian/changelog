@@ -4,7 +4,7 @@ connexions-cnxml (0.6-1~test045) unstable; urgency=low
     simultaneous install of more than one version of the schema files
   * Add a third deb: mdml-<version>.
 
- -- Chuck Bearden <cbearden@cnx.org>  Tue, 16 Dec 2008 16:04:54 -0500
+  -- Chuck Bearden <cbearden@cnx.org>  Wed, 07 Jan 2009 16:22:00 -0500
 
 connexions-cnxml (0.5.24-2) unstable; urgency=low
 
