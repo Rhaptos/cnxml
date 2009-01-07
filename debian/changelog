@@ -1,4 +1,4 @@
-connexions-cnxml (0.6-1~test044) unstable; urgency=low
+connexions-cnxml (0.6-1~test045) unstable; urgency=low
 
   * Split into two debs: cnxml-<version> and cnxml-common, to enable
     simultaneous install of more than one version of the schema files
