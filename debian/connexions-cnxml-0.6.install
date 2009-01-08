@@ -1,1 +1,1 @@
-schema/*.rng usr/share/xml/cnxml/schema/rng/0.6/
+schema/cnxml*.rng usr/share/xml/cnxml/schema/rng/0.6/
