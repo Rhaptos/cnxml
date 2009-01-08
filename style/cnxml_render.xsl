@@ -944,6 +944,11 @@
       </pre>
       <xsl:if test="cnx:caption">
         <p class="code-caption">
+          <xsl:if test="cnx:caption[@id]">
+            <xsl:attribute name="id">
+              <xsl:value-of select="cnx:caption/@id" />
+            </xsl:attribute>
+          </xsl:if>
           <xsl:apply-templates select="cnx:caption" />
         </p>
       </xsl:if>
@@ -957,6 +962,11 @@
       <table border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
         <xsl:if test="cnx:caption or not(cnx:label[not(node())])">
           <caption align="bottom" class="code-caption">
+            <xsl:if test="cnx:caption[@id]">
+              <xsl:attribute name="id">
+                <xsl:value-of select="cnx:caption/@id" />
+              </xsl:attribute>
+            </xsl:if>
             <xsl:if test="not(cnx:label[not(node())])">
               <strong class="cnx_label">
                 <xsl:choose>
