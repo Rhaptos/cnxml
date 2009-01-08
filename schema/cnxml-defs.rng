@@ -1593,6 +1593,19 @@
         <ref name="id-attribute"/>
       </optional>
       <optional>
+        <ref name="height-attribute"/>
+      </optional>
+      <optional>
+        <ref name="width-attribute"/>
+      </optional>
+      <ref name="mime-type-attribute"/>
+      <optional>
+        <ref name="longdesc"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="param"/>
+      </zeroOrMore>
+      <optional>
         <ref name="src-attribute"/>
       </optional>
       <oneOrMore>

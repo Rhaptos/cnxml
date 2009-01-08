@@ -4345,6 +4345,19 @@
         </attribute>
       </optional>
       <optional>
+        <attribute name="height"/>
+      </optional>
+      <optional>
+        <attribute name="width"/>
+      </optional>
+      <attribute name="mime-type"/>
+      <optional>
+        <ref name="longdesc"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="param"/>
+      </zeroOrMore>
+      <optional>
         <attribute name="src"/>
       </optional>
       <oneOrMore>
