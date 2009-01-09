@@ -2185,7 +2185,7 @@
           <xsl:apply-templates select="cnx:name|cnx:title" />
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]" />
+      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]|text()" />
     </div>
   </xsl:template>
 
