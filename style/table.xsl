@@ -217,22 +217,71 @@
     <xsl:variable name="entry.colnum">
       <xsl:call-template name="entry.colnum" />
     </xsl:variable>
+    <xsl:variable name="row.header.class.or.not">
+      <xsl:call-template name="row.header.class.or.not">
+        <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+      </xsl:call-template>
+    </xsl:variable>
     <xsl:choose>
+      <xsl:when test="$row.header.class.or.not = '1'">th</xsl:when>
       <!-- nearest matching spanspec -->
-      <xsl:when test="ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname][@class='rowheader']">th</xsl:when>
       <xsl:when test="substring(ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname]/@namest,1,7) = 'header_'">th</xsl:when>
       <!-- nearest entrytbl/colspec or tgroup/colspec (where @colnum attributes are specified) -->
-      <xsl:when test="ancestor::*[3]/cnx:colspec[@colnum=$entry.colnum][@class='rowheader']">th</xsl:when>
       <xsl:when test="substring(ancestor::*[3]/cnx:colspec[@colnum=$entry.colnum]/@colname,1,7) = 'header_'">th</xsl:when>
       <!-- nearest entrytbl/colspec or tgroup/colspec (where no @colnum attributes are specified and colspecs are instead ordered sequentially) -->
-      <xsl:when test="ancestor::*[3]/cnx:colspec[position()=$entry.colnum and not(@colnum)][@class='rowheader']">th</xsl:when>
       <xsl:when test="substring(ancestor::*[3]/cnx:colspec[position()=$entry.colnum and not(@colnum)]/@colname,1,7) = 'header_'">th</xsl:when>
-      <!-- self -->
-      <xsl:when test="@class='rowheader'">th</xsl:when>
       <xsl:otherwise>td</xsl:otherwise>
     </xsl:choose>
   </xsl:template>
   
+  <xsl:template name="row.header.class.or.not">
+    <xsl:param name="step" select="'entry'"/>
+    <xsl:param name="entry.colnum">1</xsl:param>
+    <xsl:variable name="provided-class">
+      <xsl:choose>
+        <xsl:when test="$step='entry'">
+          <xsl:value-of select="normalize-space(@class)"/>
+        </xsl:when>
+        <xsl:when test="$step='colspecstep1'">
+          <xsl:value-of select="normalize-space(ancestor::*[3]/cnx:colspec[@colnum=$entry.colnum]/@class)"/>
+        </xsl:when>
+        <xsl:when test="$step='colspecstep2'">
+          <xsl:value-of select="normalize-space(ancestor::*[3]/cnx:colspec[position()=$entry.colnum and not(@colnum)]/@class)"/>
+        </xsl:when>
+        <xsl:when test="$step='spanspec'">
+          <xsl:value-of select="normalize-space(ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname]/@class)"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="row.header.class.or.not">
+      <xsl:call-template name="class-test">
+        <xsl:with-param name="provided-class" select="$provided-class"/>
+        <xsl:with-param name="wanted-class" select="'rowheader'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:choose>
+      <xsl:when test="$row.header.class.or.not='1'">1</xsl:when>
+      <xsl:when test="$step='entry'">
+        <xsl:call-template name="row.header.class.or.not">
+          <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+          <xsl:with-param name="step" select="'colspecstep1'"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$step='colspecstep1'">
+        <xsl:call-template name="row.header.class.or.not">
+          <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+          <xsl:with-param name="step" select="'colspecstep2'"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$step='colspecstep2'">
+        <xsl:call-template name="row.header.class.or.not">
+          <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+          <xsl:with-param name="step" select="'spanspec'"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>0</xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
   <xsl:template name="process.cell">
     <xsl:param name="cellgi"/>
