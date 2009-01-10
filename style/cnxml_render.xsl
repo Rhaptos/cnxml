@@ -558,7 +558,7 @@
               <xsl:when test="cnx:label[node()]">
                 <xsl:apply-templates select="cnx:label" />
               </xsl:when>
-              <xsl:when test="self::cnx:note[@type!=''] or self::cnx:rule">
+              <xsl:when test="self::cnx:note[@type!=''] or self::cnx:rule[@type!='']">
                 <xsl:value-of select="@type" />
               </xsl:when>
               <xsl:when test="self::cnx:exercise[ancestor::cnx:example or qml:item] or self::qml:item">
@@ -597,6 +597,9 @@
             <xsl:choose>
               <xsl:when test="self::cnx:note[@type='note' or not(@type) or @type='']">
                 <xsl:number level="any" count="cnx:note[@type='note' or not(@type) or @type='']" />
+              </xsl:when>
+              <xsl:when test="self::cnx:rule[@type='rule' or not(@type) or @type='']">
+                <xsl:number level="any" count="cnx:rule[@type='rule' or not(@type) or @type='']" />
               </xsl:when>
               <xsl:when test="self::qml:item">
                 <xsl:number level="any" count="qml:item" />
@@ -1509,14 +1512,14 @@
   <xsl:template match="cnx:rule">
     <div class="rule">
       <xsl:call-template name='IdCheck'/>
-      <xsl:if test="cnx:name or cnx:title or cnx:label[node()] or (@type!='' and not(cnx:label))">
+      <xsl:if test="cnx:name or cnx:title or not(cnx:label[not(node())])">
         <xsl:variable name="level-number">
           <xsl:call-template name="level-count" />
         </xsl:variable>
         <!-- h2, h3, etc... -->
         <xsl:element name="h{$level-number}">
           <xsl:attribute name="class">rule-header</xsl:attribute>
-          <xsl:if test="cnx:label[node()] or (@type!='' and not(cnx:label))">
+          <xsl:if test="not(cnx:label[not(node())])">
             <span class="cnx_label">
               <xsl:choose>
                 <xsl:when test="cnx:label">
@@ -1540,8 +1543,15 @@
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:text> </xsl:text>
-              <xsl:variable name="type" select="@type" />
-              <xsl:number level="any" count="cnx:rule[@type=$type]" />
+              <xsl:choose>
+                <xsl:when test="@type='rule' or @type='' or not(@type)">
+                  <xsl:number level="any" count="cnx:rule[@type='rule' or @type='' or not(@type)]" />
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:variable name="type" select="@type" />
+                  <xsl:number level="any" count="cnx:rule[@type=$type]" />
+                </xsl:otherwise>
+              </xsl:choose>
               <xsl:if test="cnx:name or cnx:title">
                 <xsl:text>: </xsl:text>
               </xsl:if>
