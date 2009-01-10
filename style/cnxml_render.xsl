@@ -74,7 +74,7 @@
                                 ancestor::qml:problemset|
                                 ancestor::qml:item[parent::qml:problemset]|
                                 ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|
-                                ancestor::cnx:rule[cnx:name or cnx:title or cnx:label[node()] or (@type!='' and not(cnx:label))]|
+                                ancestor::cnx:rule[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|
                                 ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:quote[not(@display='inline')][cnx:title or cnx:label[node()]]|
