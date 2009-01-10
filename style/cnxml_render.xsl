@@ -558,7 +558,11 @@
               <xsl:when test="cnx:label[node()]">
                 <xsl:apply-templates select="cnx:label" />
               </xsl:when>
-              <xsl:when test="self::cnx:note[@type!=''] or self::cnx:rule[@type!='']">
+              <xsl:when test="(self::cnx:note[@type!=''] or self::cnx:rule[@type!='']) and $version='0.5'">
+                <xsl:value-of select="@type" />
+              </xsl:when>
+              <xsl:when test="self::cnx:note[@type='note' or @type='warning' or @type='important' or @type='aside' or @type='tip'] or 
+                              self::cnx:rule[@type='rule' or @type='theorem' or @type='lemma' or @type='corollary' or @type='law' or @type='proposition']">
                 <xsl:value-of select="@type" />
               </xsl:when>
               <xsl:when test="self::cnx:exercise[ancestor::cnx:example or qml:item] or self::qml:item">
