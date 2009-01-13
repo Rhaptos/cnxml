@@ -1831,16 +1831,18 @@
         <xsl:when test="parent::cnx:list[@list-type='labeled-item'] and not(cnx:label[node()])" />
         <xsl:when test="parent::cnx:list[@after]">
           <xsl:value-of select="parent::cnx:list/@after" />
-          <xsl:text> </xsl:text>
         </xsl:when>
         <xsl:when test="parent::cnx:list[@list-type='enumerated']">
-          <xsl:text>. </xsl:text>
+          <xsl:text>.</xsl:text>
         </xsl:when>
         <xsl:when test="parent::cnx:list[@list-type='labeled-item']">
-          <xsl:text>: </xsl:text>
+          <xsl:text>:</xsl:text>
         </xsl:when>
       </xsl:choose>
     </xsl:element>
+    <xsl:if test="not(parent::cnx:list[@list-type='labeled-item'] and not(cnx:label[node()]))">
+      <xsl:text> </xsl:text>
+    </xsl:if>
   </xsl:template>
 
   <!-- After creating the decoration and putting in the labels for labeled-item lists -->
