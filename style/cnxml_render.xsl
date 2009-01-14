@@ -577,7 +577,7 @@
                   <xsl:with-param name="lang" select="/module/metadata/language" />
                 </xsl:call-template>
               </xsl:when>
-              <xsl:when test="self::cnx:subfigure[not(@type) or @type='']">
+              <xsl:when test="self::cnx:subfigure">
                 <xsl:call-template name="gentext">
                   <xsl:with-param name="key">Figure</xsl:with-param>
                   <xsl:with-param name="lang" select="/module/metadata/language" />
@@ -599,60 +599,60 @@
                                                 ancestor::cnx:longdesc])">
             <xsl:text> </xsl:text>
             <xsl:choose>
-              <xsl:when test="self::cnx:note[@type='note' or not(@type) or @type='']">
-                <xsl:number level="any" count="cnx:note[@type='note' or not(@type) or @type='']" />
+              <xsl:when test="self::cnx:note[@type='note' or not(@type)]">
+                <xsl:number level="any" count="cnx:note[@type='note' or not(@type)]" />
               </xsl:when>
-              <xsl:when test="self::cnx:rule[@type='rule' or not(@type) or @type='']">
-                <xsl:number level="any" count="cnx:rule[@type='rule' or not(@type) or @type='']" />
+              <xsl:when test="self::cnx:rule[@type='rule' or not(@type)]">
+                <xsl:number level="any" count="cnx:rule[@type='rule' or not(@type)]" />
               </xsl:when>
               <xsl:when test="self::qml:item">
                 <xsl:number level="any" count="qml:item" />
               </xsl:when>
-              <xsl:when test="@type!=''">
+              <xsl:when test="@type and (not($version='0.5') or self::cnx:rule or self::cnx:note)">
                 <xsl:variable name="element" select="name()" />
                 <xsl:variable name="type" select="@type" />
                 <xsl:number level="any" count="*[name()=$element][@type=$type]" />
               </xsl:when>
               <xsl:when test="self::cnx:subfigure">
                 <xsl:choose>
-                  <xsl:when test="parent::cnx:figure[@type!='']">
+                  <xsl:when test="parent::cnx:figure[@type]">
                     <xsl:variable name="type" select="parent::cnx:figure/@type" />
                     <xsl:number level="any" count="cnx:figure[@type=$type]" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:figure[not(@type) or @type='']" />
+                    <xsl:number level="any" count="cnx:figure[not(@type)]" />
                   </xsl:otherwise>
                 </xsl:choose>
-                <xsl:number level="single" count="cnx:subfigure[not(@type) or @type='']" format="(a)" />
+                <xsl:number level="single" count="cnx:subfigure[not(@type)]" format="(a)" />
               </xsl:when>
               <xsl:when test="self::cnx:solution or self::cnx:problem">
                 <xsl:choose>
-                  <xsl:when test="parent::cnx:exercise[@type!='']">
+                  <xsl:when test="parent::cnx:exercise[@type]">
                     <xsl:variable name="type" select="parent::cnx:exercise/@type" />
                     <xsl:number level="any" count="cnx:exercise[@type=$type]" />
                   </xsl:when>
                   <xsl:when test="parent::cnx:exercise[ancestor::cnx:example]">
-                    <xsl:number level="any" count="cnx:exercise[not(@type) or @type='']" from="cnx:example" />
+                    <xsl:number level="any" count="cnx:exercise[not(@type)]" from="cnx:example" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type) or @type='']" />
+                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type)]" />
                   </xsl:otherwise>
                 </xsl:choose>
                 <xsl:if test="self::cnx:solution and count(parent::cnx:exercise/cnx:solution) > 1">
                   <xsl:text>.</xsl:text>
-                  <xsl:number level="single" count="cnx:solution[not(@type) or @type='']" format="A" />
+                  <xsl:number level="single" count="cnx:solution[not(@type)]" format="A" />
                 </xsl:if>
               </xsl:when>
               <xsl:when test="self::cnx:exercise">
                 <xsl:choose>
                   <xsl:when test="ancestor::cnx:example">
-                    <xsl:number level="any" count="cnx:exercise[not(@type) or @type='']" from="cnx:example" />
+                    <xsl:number level="any" count="cnx:exercise[not(@type)]" from="cnx:example" />
                   </xsl:when>
                   <xsl:when test="qml:item">
                     <xsl:number level="any" count="cnx:exercise[qml:item]" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type) or @type='']" />
+                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type)]" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:when>
@@ -667,7 +667,14 @@
               </xsl:when>
               <xsl:otherwise>
                 <xsl:variable name="element" select="name()" />
-                <xsl:number level="any" count="*[name()=$element][not(@type) or @type='']" />
+                <xsl:choose>
+                  <xsl:when test="$version='0.5'">
+                    <xsl:number level="any" count="*[name()=$element]" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:number level="any" count="*[name()=$element][not(@type)]" />
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:otherwise>
             </xsl:choose>
             </xsl:if>
@@ -990,7 +997,7 @@
                 </xsl:choose>
                 <xsl:text> </xsl:text>
                 <xsl:choose>
-                  <xsl:when test="@type!=''">
+                  <xsl:when test="@type">
                     <xsl:variable name="type" select="@type" />
                     <xsl:number level="any" count="cnx:code[@class='listing'][@type=$type]" format="1" />
                   </xsl:when>
@@ -1548,8 +1555,8 @@
               </xsl:choose>
               <xsl:text> </xsl:text>
               <xsl:choose>
-                <xsl:when test="@type='rule' or @type='' or not(@type)">
-                  <xsl:number level="any" count="cnx:rule[@type='rule' or @type='' or not(@type)]" />
+                <xsl:when test="@type='rule' or not(@type)">
+                  <xsl:number level="any" count="cnx:rule[@type='rule' or not(@type)]" />
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:variable name="type" select="@type" />
@@ -2054,7 +2061,7 @@
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure and not(cnx:label[not(node())])">
             <xsl:choose>
-              <xsl:when test="@type!=''">
+              <xsl:when test="@type">
                 <xsl:if test="cnx:label">
                   <xsl:apply-templates select="cnx:label" />
                   <xsl:text> </xsl:text>
@@ -2066,11 +2073,11 @@
                 </xsl:if>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:if test="cnx:label[node()]">
+                <xsl:if test="cnx:label">
                   <xsl:apply-templates select="cnx:label" />
                   <xsl:text> </xsl:text>
                 </xsl:if>
-                <xsl:number format="(a)" count="cnx:subfigure[not(@type) or @type='']" />
+                <xsl:number format="(a)" count="cnx:subfigure[not(@type)]" />
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text> </xsl:text>
@@ -2091,12 +2098,12 @@
               </xsl:choose>
               <xsl:text> </xsl:text>
               <xsl:choose>
-                <xsl:when test="@type!=''">
+                <xsl:when test="@type">
                   <xsl:variable name="type" select="@type" />
                   <xsl:number level="any" count="cnx:figure[@type=$type]" />
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:number level="any" count="cnx:figure[not(@type) or @type='']" />
+                  <xsl:number level="any" count="cnx:figure[not(@type)]" />
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:if test="cnx:caption">
