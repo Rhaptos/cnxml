@@ -3408,7 +3408,10 @@
       </attribute>
       <attribute name="alt"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <choice>
         <ref name="object"/>
@@ -3468,7 +3471,10 @@
       </attribute>
       <attribute name="alt"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <choice>
         <ref name="object"/>
@@ -3525,7 +3531,10 @@
       </attribute>
       <attribute name="alt"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <choice>
         <ref name="object"/>
@@ -3553,82 +3562,79 @@
       </optional>
     </element>
   </define>
-  <define name="longdesc">
-    <choice>
-      <attribute name="longdesc"/>
-      <element name="longdesc">
-        <zeroOrMore>
-          <attribute>
-            <anyName>
-              <except>
-                <nsName ns=""/>
-                <nsName ns="http://cnx.rice.edu/cnxml"/>
-                <name>xml:lang</name>
-              </except>
-            </anyName>
-          </attribute>
-        </zeroOrMore>
-        <optional>
-          <attribute name="class">
-            <data type="token"/>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute name="xml:lang"/>
-        </optional>
-        <optional>
-          <attribute name="id">
-            <data type="ID"/>
-          </attribute>
-        </optional>
-        <optional>
-          <ref name="title"/>
-        </optional>
-        <oneOrMore>
-          <choice>
-            <ref name="para"/>
-            <text/>
-            <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
-            <ref name="span"/>
-            <ref name="term"/>
-            <ref name="cite"/>
-            <ref name="cite-title"/>
-            <ref name="foreign"/>
-            <ref name="emphasis"/>
-            <ref name="sub"/>
-            <ref name="sup"/>
-            <ref name="inline-code"/>
-            <ref name="inline-preformat"/>
-            <ref name="inline-quote"/>
-            <ref name="inline-note"/>
-            <ref name="bulleted-inline-list"/>
-            <ref name="enumerated-inline-list"/>
-            <ref name="labeled-item-inline-list"/>
-            <ref name="inline-media"/>
-            <ref name="footnote"/>
-            <ref name="link"/>
-            <ref name="newline"/>
-            <ref name="space"/>
-            <ref name="div"/>
-            <ref name="definition"/>
-            <ref name="example"/>
-            <ref name="figure"/>
-            <ref name="block-code"/>
-            <ref name="block-preformat"/>
-            <ref name="block-quote"/>
-            <ref name="block-note"/>
-            <ref name="block-media"/>
-            <ref name="bulleted-block-list"/>
-            <ref name="enumerated-block-list"/>
-            <ref name="labeled-item-block-list"/>
-            <ref name="table"/>
-            <ref name="rule"/>
-            <ref name="equation"/>
-            <ref name="exercise"/>
-          </choice>
-        </oneOrMore>
-      </element>
-    </choice>
+  <define name="longdesc-element">
+    <element name="longdesc">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <optional>
+        <ref name="title"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="para"/>
+          <text/>
+          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <ref name="span"/>
+          <ref name="term"/>
+          <ref name="cite"/>
+          <ref name="cite-title"/>
+          <ref name="foreign"/>
+          <ref name="emphasis"/>
+          <ref name="sub"/>
+          <ref name="sup"/>
+          <ref name="inline-code"/>
+          <ref name="inline-preformat"/>
+          <ref name="inline-quote"/>
+          <ref name="inline-note"/>
+          <ref name="bulleted-inline-list"/>
+          <ref name="enumerated-inline-list"/>
+          <ref name="labeled-item-inline-list"/>
+          <ref name="inline-media"/>
+          <ref name="footnote"/>
+          <ref name="link"/>
+          <ref name="newline"/>
+          <ref name="space"/>
+          <ref name="div"/>
+          <ref name="definition"/>
+          <ref name="example"/>
+          <ref name="figure"/>
+          <ref name="block-code"/>
+          <ref name="block-preformat"/>
+          <ref name="block-quote"/>
+          <ref name="block-note"/>
+          <ref name="block-media"/>
+          <ref name="bulleted-block-list"/>
+          <ref name="enumerated-block-list"/>
+          <ref name="labeled-item-block-list"/>
+          <ref name="table"/>
+          <ref name="rule"/>
+          <ref name="equation"/>
+          <ref name="exercise"/>
+        </choice>
+      </oneOrMore>
+    </element>
   </define>
   <define name="param">
     <element name="param">
@@ -3695,7 +3701,10 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <zeroOrMore>
         <ref name="param"/>
@@ -3767,7 +3776,10 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <zeroOrMore>
         <ref name="param"/>
@@ -3845,7 +3857,10 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <zeroOrMore>
         <ref name="param"/>
@@ -3954,7 +3969,10 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <zeroOrMore>
         <ref name="param"/>
@@ -4063,7 +4081,10 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <zeroOrMore>
         <ref name="param"/>
@@ -4147,7 +4168,10 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <zeroOrMore>
         <ref name="param"/>
@@ -4272,7 +4296,10 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <zeroOrMore>
         <ref name="param"/>
@@ -4352,7 +4379,10 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <zeroOrMore>
         <ref name="param"/>
@@ -4439,7 +4469,10 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
-        <ref name="longdesc"/>
+        <choice>
+          <attribute name="longdesc"/>
+          <ref name="longdesc-element"/>
+        </choice>
       </optional>
       <zeroOrMore>
         <ref name="param"/>
