@@ -1736,7 +1736,7 @@
       </xsl:variable>
       <xsl:variable name="list-element">
         <xsl:choose>
-          <xsl:when test="@list-type='enumerated' or @type='enumerated'">ol</xsl:when>
+          <xsl:when test="@list-type='enumerated' or (@type='enumerated' and $version='0.5')">ol</xsl:when>
           <xsl:otherwise>ul</xsl:otherwise>
         </xsl:choose>
       </xsl:variable>
