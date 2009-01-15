@@ -253,7 +253,7 @@
 
 
       <!-- FOOTNOTEs -->
-      <xsl:if test="descendant::cnx:note[@type='footnote'] or descendant::cnx:footnote">
+      <xsl:if test="descendant::cnx:note[translate(@type,$upper,$lower)='footnote'] or descendant::cnx:footnote">
         <div class="footnotes">
         <h2 class="footnotes-header">
           <!-- Footnotes -->
@@ -263,9 +263,9 @@
           </xsl:call-template>
         </h2>
         <ol id="footnotes">
-          <xsl:for-each select="descendant::cnx:note[@type='footnote']|descendant::cnx:footnote">
+          <xsl:for-each select="descendant::cnx:note[translate(@type,$upper,$lower)='footnote']|descendant::cnx:footnote">
             <xsl:variable name="footnote-number">
-              <xsl:number level="any" count="//cnx:note[@type='footnote']|//cnx:footnote" format="1" />
+              <xsl:number level="any" count="//cnx:note[translate(@type,$upper,$lower)='footnote']|//cnx:footnote" format="1" />
             </xsl:variable>
             <li>
               <xsl:call-template name='IdCheck'/>
@@ -1173,7 +1173,7 @@
     <xsl:choose>
       <xsl:when test="$version='0.5'">
         <xsl:choose>
-          <xsl:when test="@type='footnote'">
+          <xsl:when test="translate(@type,$upper,$lower)='footnote'">
             <xsl:call-template name="make-footnote"/>
           </xsl:when>
           <xsl:otherwise>
@@ -1199,12 +1199,12 @@
   <!-- Footnote -->
   <xsl:template name="make-footnote">
     <xsl:variable name="footnote-number">
-      <xsl:number level="any" count="//cnx:note[@type='footnote']|//cnx:footnote" format="1" />
+      <xsl:number level="any" count="//cnx:note[translate(@type,$upper,$lower)='footnote']|//cnx:footnote" format="1" />
     </xsl:variable>
     <a class="footnote-reference" href="#footnote{$footnote-number}">
       <xsl:value-of select="$footnote-number" />
     </a>
-    <xsl:if test="following-sibling::node()[normalize-space()!=''][1][self::cnx:note[@type='footnote'] or self::cnx:footnote]">
+    <xsl:if test="following-sibling::node()[normalize-space()!=''][1][self::cnx:note[translate(@type,$upper,$lower)='footnote'] or self::cnx:footnote]">
       <xsl:text>, </xsl:text>
     </xsl:if>
   </xsl:template>
