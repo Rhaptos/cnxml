@@ -87,6 +87,7 @@
                                 ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|
                                 ancestor::cnx:glossary|
                                 ancestor::cnx:para[cnx:name or cnx:title]|
+                                ancestor::cnx:div[cnx:title]|
                                 ancestor::cnx:note[not(@display='inline')][
                                                    cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))
                                                   ]|
@@ -456,7 +457,17 @@
   <xsl:template match="cnx:div">
     <div class="div">
       <xsl:call-template name='IdCheck'/>
-      <xsl:apply-templates />
+      <xsl:if test="cnx:title[node()]">
+        <xsl:variable name="level-number">
+          <xsl:call-template name="level-count" />
+        </xsl:variable>
+        <!-- h2, h3, etc... -->
+        <xsl:element name="h{$level-number}">
+          <xsl:attribute name="class">div-header</xsl:attribute>
+          <xsl:apply-templates select="cnx:title" />
+        </xsl:element>
+      </xsl:if>
+      <xsl:apply-templates select="*[not(self::cnx:title)]|text()" />
     </div>
   </xsl:template>
 
