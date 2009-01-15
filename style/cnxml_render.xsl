@@ -55,6 +55,8 @@
       <xsl:otherwise>0.5</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
+  <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyzäëïöüáéíóúàèìòùâêîôûåøãõæœçłñ'"/>
+  <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÄËÏÖÜÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÅØÃÕÆŒÇŁÑ'"/>
 
   <xsl:output omit-xml-declaration="yes" indent="yes"/>
 
@@ -554,6 +556,7 @@
         <span class="cnxn-target">
           <xsl:for-each select="key('id', normalize-space($target))">
             <!--<xsl:value-of select="local-name(key('id',$target))" />-->
+            <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
             <xsl:choose>
               <xsl:when test="cnx:label[node()]">
                 <xsl:apply-templates select="cnx:label" />
@@ -561,9 +564,21 @@
               <xsl:when test="(self::cnx:note[@type!=''] or self::cnx:rule[@type!='']) and $version='0.5'">
                 <xsl:value-of select="@type" />
               </xsl:when>
-              <xsl:when test="self::cnx:note[@type='note' or @type='warning' or @type='important' or @type='aside' or @type='tip'] or 
-                              self::cnx:rule[@type='rule' or @type='theorem' or @type='lemma' or @type='corollary' or @type='law' or @type='proposition']">
-                <xsl:value-of select="@type" />
+              <xsl:when test="(self::cnx:note and ($type='note' or 
+                                                   $type='warning' or 
+                                                   $type='important' or 
+                                                   $type='aside' or 
+                                                   $type='tip')) or 
+                              (self::cnx:rule and ($type='rule' or 
+                                                   $type='theorem' or 
+                                                   $type='lemma' or 
+                                                   $type='corollary' or 
+                                                   $type='law' or 
+                                                   $type='proposition'))">
+                <xsl:call-template name="gentext">
+                  <xsl:with-param name="key" select="$type" />
+                  <xsl:with-param name="lang" select="/module/metadata/language" />
+                </xsl:call-template>
               </xsl:when>
               <xsl:when test="self::cnx:exercise[ancestor::cnx:example or qml:item] or self::qml:item">
                 <xsl:call-template name="gentext">
@@ -599,85 +614,104 @@
                                                 ancestor::cnx:longdesc])">
             <xsl:text> </xsl:text>
             <xsl:choose>
-              <xsl:when test="self::cnx:note[@type='note' or not(@type)]">
-                <xsl:number level="any" count="cnx:note[@type='note' or not(@type)]" />
+              <xsl:when test="self::cnx:note and ($type='note' or not(@type))">
+                <xsl:number level="any" 
+                            count="cnx:note[translate(@type,$upper,$lower)='note' or not(@type)]" />
               </xsl:when>
               <xsl:when test="self::cnx:rule[@type='rule' or not(@type)]">
-                <xsl:number level="any" count="cnx:rule[@type='rule' or not(@type)]" />
+                <xsl:number level="any" 
+                            count="cnx:rule[translate(@type,$upper,$lower)='rule' or not(@type)]" />
               </xsl:when>
               <xsl:when test="self::qml:item">
-                <xsl:number level="any" count="qml:item" />
+                <xsl:number level="any" 
+                            count="qml:item" />
               </xsl:when>
               <xsl:when test="@type=local-name()">
                 <xsl:variable name="element" select="name()" />
-                <xsl:variable name="type" select="@type" />
-                <xsl:number level="any" count="*[name()=$element][@type=$type or not(@type)]" />
+                <xsl:number level="any" 
+                            count="*[name()=$element][translate(@type,$upper,$lower)=$type or not(@type)]" />
               </xsl:when>
               <xsl:when test="@type and (not($version='0.5') or self::cnx:rule or self::cnx:note)">
                 <xsl:variable name="element" select="name()" />
-                <xsl:variable name="type" select="@type" />
-                <xsl:number level="any" count="*[name()=$element][@type=$type]" />
+                <xsl:number level="any" 
+                            count="*[name()=$element][translate(@type,$upper,$lower)=$type]" />
               </xsl:when>
               <xsl:when test="self::cnx:subfigure">
+                <xsl:variable name="figure-type" select="translate(parent::cnx:figure/@type,$upper,$lower)" />
                 <xsl:choose>
-                  <xsl:when test="parent::cnx:figure[@type!='figure']">
-                    <xsl:variable name="type" select="parent::cnx:figure/@type" />
-                    <xsl:number level="any" count="cnx:figure[@type=$type]" />
+                  <xsl:when test="parent::cnx:figure/@type and $figure-type!='figure'">
+                    <xsl:number level="any" 
+                                count="cnx:figure[translate(@type,$upper,$lower)=$figure-type]" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:figure[not(@type) or @type='figure']" />
+                    <xsl:number level="any" 
+                                count="cnx:figure[not(@type) or translate(@type,$upper,$lower)=$figure-type]" />
                   </xsl:otherwise>
                 </xsl:choose>
-                <xsl:number level="single" count="cnx:subfigure[not(@type) or @type='subfigure']" format="(a)" />
+                <xsl:number format="(a)" 
+                            count="cnx:subfigure[not(@type) or translate(@type,$upper,$lower)='subfigure']" />
               </xsl:when>
               <xsl:when test="self::cnx:solution or self::cnx:problem">
+                <xsl:variable name="exercise-type" select="translate(parent::cnx:exercise/@type,$upper,$lower)" />
                 <xsl:choose>
-                  <xsl:when test="parent::cnx:exercise[@type!='exercise']">
-                    <xsl:variable name="type" select="parent::cnx:exercise/@type" />
-                    <xsl:number level="any" count="cnx:exercise[@type=$type]" />
+                  <xsl:when test="parent::cnx:exercise/@type and $exercise-type!='exercise'">
+                    <xsl:number level="any" 
+                                count="cnx:exercise[translate(@type,$upper,$lower)=$exercise-type]" />
                   </xsl:when>
                   <xsl:when test="parent::cnx:exercise[ancestor::cnx:example]">
-                    <xsl:number level="any" count="cnx:exercise[not(@type) or @type='exercise']" from="cnx:example" />
+                    <xsl:number level="any" 
+                                from="cnx:example" 
+                                count="cnx:exercise[not(@type) or translate(@type,$upper,$lower)='exercise']" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type) or @type='exercise']" />
+                    <xsl:number level="any" 
+                                count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type) or translate(@type,$upper,$lower)='exercise']" />
                   </xsl:otherwise>
                 </xsl:choose>
                 <xsl:if test="self::cnx:solution and count(parent::cnx:exercise/cnx:solution) > 1">
                   <xsl:text>.</xsl:text>
-                  <xsl:number level="single" count="cnx:solution[not(@type) or @type='solution']" format="A" />
+                  <xsl:number format="A" 
+                              count="cnx:solution[not(@type) or translate(@type,$upper,$lower)='solution']" />
                 </xsl:if>
               </xsl:when>
               <xsl:when test="self::cnx:exercise">
                 <xsl:choose>
                   <xsl:when test="ancestor::cnx:example">
-                    <xsl:number level="any" count="cnx:exercise[not(@type) or @type='exercise']" from="cnx:example" />
+                    <xsl:number level="any" 
+                                from="cnx:example"
+                                count="cnx:exercise[not(@type) or translate(@type,$upper,$lower)='exercise']" />
                   </xsl:when>
                   <xsl:when test="qml:item">
-                    <xsl:number level="any" count="cnx:exercise[qml:item]" />
+                    <xsl:number level="any" 
+                                count="cnx:exercise[qml:item]" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type) or @type='exercise']" />
+                    <xsl:number level="any" 
+                                count="cnx:exercise[not(ancestor::cnx:example|qml:item)][not(@type) or translate(@type,$upper,$lower)='exercise']" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:when>
               <xsl:when test="self::cnx:example">
-                <xsl:number level="any" count="cnx:example[not(ancestor::cnx:definition or
-                                                               ancestor::cnx:rule or
-                                                               ancestor::cnx:exercise or
-                                                               ancestor::cnx:entry or
-                                                               ancestor::cnx:footnote or
-                                                               ancestor::cnx:text or
-                                                               ancestor::cnx:longdesc)]" />
+                <xsl:number level="any" 
+                            count="cnx:example[not(ancestor::cnx:definition or
+                                                   ancestor::cnx:rule or
+                                                   ancestor::cnx:exercise or
+                                                   ancestor::cnx:entry or
+                                                   ancestor::cnx:footnote or
+                                                   ancestor::cnx:text or
+                                                   ancestor::cnx:longdesc) and 
+                                              (not(@type) or translate(@type,$upper,$lower)='example')]" />
               </xsl:when>
               <xsl:otherwise>
                 <xsl:variable name="element" select="local-name()" />
                 <xsl:choose>
                   <xsl:when test="$version='0.5'">
-                    <xsl:number level="any" count="*[local-name()=$element]" />
+                    <xsl:number level="any" 
+                                count="*[local-name()=$element]" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="*[local-name()=$element][not(@type) or @type=$element]" />
+                    <xsl:number level="any" 
+                                count="*[local-name()=$element][not(@type) or translate(@type,$upper,$lower)=$element]" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:otherwise>
@@ -1001,13 +1035,15 @@
                   </xsl:otherwise>
                 </xsl:choose>
                 <xsl:text> </xsl:text>
+                <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
                 <xsl:choose>
-                  <xsl:when test="@type!='code'">
-                    <xsl:variable name="type" select="@type" />
-                    <xsl:number level="any" count="cnx:code[@class='listing'][@type=$type]" format="1" />
+                  <xsl:when test="@type and $type!='code'">
+                    <xsl:number level="any" 
+                                count="cnx:code[@class='listing'][translate(@type,$upper,$lower)=$type]" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:code[@class='listing'][not(@type) or @type='code']" format="1" />
+                    <xsl:number level="any" 
+                                count="cnx:code[@class='listing'][not(@type) or translate(@type,$upper,$lower)='code']" />
                   </xsl:otherwise>
                 </xsl:choose>
                 <xsl:if test="cnx:caption">
@@ -1196,13 +1232,14 @@
   <xsl:template name="note-label">
     <xsl:if test="cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))">
       <span class="cnx_label">
+        <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
         <xsl:choose>
           <xsl:when test="cnx:label">
             <xsl:apply-templates select="cnx:label" />
           </xsl:when>
-          <xsl:when test="@type='warning' or @type='important' or @type='aside' or @type='tip'">
+          <xsl:when test="$type='warning' or $type='important' or $type='aside' or $type='tip'">
             <xsl:call-template name="gentext">
-              <xsl:with-param name="key" select="@type" />
+              <xsl:with-param name="key" select="$type" />
               <xsl:with-param name="lang" select="/module/metadata/language" />
             </xsl:call-template>
           </xsl:when>
@@ -1256,25 +1293,27 @@
                                 ancestor::cnx:text or
                                 ancestor::cnx:longdesc)">
                 <xsl:text> </xsl:text>
+                <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
                 <xsl:choose>
-                  <xsl:when test="@type!='example'">
-                    <xsl:variable name="type" select="@type" />
-                    <xsl:number level="any" count="cnx:example[not(ancestor::cnx:definition or
-                                                                   ancestor::cnx:rule or
-                                                                   ancestor::cnx:exercise or
-                                                                   ancestor::cnx:entry or
-                                                                   ancestor::cnx:footnote or
-                                                                   ancestor::cnx:text or
-                                                                   ancestor::cnx:longdesc)][@type=$type]" />
+                  <xsl:when test="@type and $type!='example'">
+                    <xsl:number level="any" 
+                                count="cnx:example[not(ancestor::cnx:definition or
+                                                       ancestor::cnx:rule or
+                                                       ancestor::cnx:exercise or
+                                                       ancestor::cnx:entry or
+                                                       ancestor::cnx:footnote or
+                                                       ancestor::cnx:text or
+                                                       ancestor::cnx:longdesc)][translate(@type,$upper,$lower)=$type]" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:example[not(ancestor::cnx:definition or 
-                                                                   ancestor::cnx:rule or 
-                                                                   ancestor::cnx:exercise or 
-                                                                   ancestor::cnx:entry or 
-                                                                   ancestor::cnx:footnote or 
-                                                                   ancestor::cnx:text or 
-                                                                   ancestor::cnx:longdesc)][not(@type) or @type='example']" />
+                    <xsl:number level="any" 
+                                count="cnx:example[not(ancestor::cnx:definition or 
+                                                       ancestor::cnx:rule or 
+                                                       ancestor::cnx:exercise or 
+                                                       ancestor::cnx:entry or 
+                                                       ancestor::cnx:footnote or 
+                                                       ancestor::cnx:text or 
+                                                       ancestor::cnx:longdesc)][not(@type) or translate(@type,$upper,$lower)='example']" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:if>
@@ -1314,13 +1353,15 @@
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text> </xsl:text>
+            <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
             <xsl:choose>
-              <xsl:when test="@type!='definition'">
-                <xsl:variable name="type" select="@type" />
-                <xsl:number level="any" count="cnx:definition[@type=$type]"/>
+              <xsl:when test="@type and $type!='definition'">
+                <xsl:number level="any" 
+                            count="cnx:definition[translate(@type,$upper,$lower)=$type]"/>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:number level="any" count="cnx:definition[not(@type) or @type='definition']" />
+                <xsl:number level="any" 
+                            count="cnx:definition[not(@type) or translate(@type,$upper,$lower)='definition']" />
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text>: </xsl:text>
@@ -1537,13 +1578,14 @@
           <xsl:attribute name="class">rule-header</xsl:attribute>
           <xsl:if test="not(cnx:label[not(node())])">
             <span class="cnx_label">
+              <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
               <xsl:choose>
                 <xsl:when test="cnx:label">
                   <xsl:apply-templates select="cnx:label" />
                 </xsl:when>
-                <xsl:when test="@type='theorem' or @type='lemma' or @type='corollary' or @type='law' or @type='proposition'">
+                <xsl:when test="$type='theorem' or $type='lemma' or $type='corollary' or $type='law' or $type='proposition'">
                   <xsl:call-template name="gentext">
-                    <xsl:with-param name="key" select="@type" />
+                    <xsl:with-param name="key" select="$type" />
                     <xsl:with-param name="lang" select="/module/metadata/language" />
                   </xsl:call-template>
                 </xsl:when>
@@ -1560,12 +1602,11 @@
               </xsl:choose>
               <xsl:text> </xsl:text>
               <xsl:choose>
-                <xsl:when test="@type='rule' or not(@type)">
-                  <xsl:number level="any" count="cnx:rule[@type='rule' or not(@type)]" />
+                <xsl:when test="$type='rule' or not(@type)">
+                  <xsl:number level="any" count="cnx:rule[translate(@type,$upper,$lower)='rule' or not(@type)]" />
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:variable name="type" select="@type" />
-                  <xsl:number level="any" count="cnx:rule[@type=$type]" />
+                  <xsl:number level="any" count="cnx:rule[translate(@type,$upper,$lower)=$type]" />
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:if test="cnx:name or cnx:title">
@@ -1920,13 +1961,17 @@
         <xsl:when test="cnx:label[not(node())]" />
         <xsl:otherwise>
           <span class="equation-number">
+            <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
             <xsl:choose>
-              <xsl:when test="@type!='equation'">
-                <xsl:variable name="type" select="@type" />
-                <xsl:number level="any" count="cnx:equation[@type=$type]" format="(1)" />
+              <xsl:when test="@type and $type!='equation'">
+                <xsl:number level="any" 
+                            format="(1)" 
+                            count="cnx:equation[translate(@type,$upper,$lower)=$type]" />
               </xsl:when>
               <xsl:otherwise>
-                <xsl:number level="any" count="cnx:equation[not(@type) or @type='equation']" format="(1)" />
+                <xsl:number level="any" 
+                            format="(1)" 
+                            count="cnx:equation[not(@type) or translate(@type,$upper,$lower)='equation']" />
               </xsl:otherwise>
             </xsl:choose>
           </span>
@@ -2065,24 +2110,22 @@
       <strong class="cnx_label">
         <xsl:choose>
           <xsl:when test="self::cnx:subfigure and not(cnx:label[not(node())])">
+            <xsl:if test="cnx:label">
+              <xsl:apply-templates select="cnx:label" />
+              <xsl:text> </xsl:text>
+            </xsl:if>
+            <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
             <xsl:choose>
-              <xsl:when test="@type!='subfigure'">
-                <xsl:if test="cnx:label">
-                  <xsl:apply-templates select="cnx:label" />
-                  <xsl:text> </xsl:text>
-                </xsl:if>
-                <xsl:variable name="type" select="@type" />
-                <xsl:number level="any" count="cnx:subfigure[@type=$type]" />
+              <xsl:when test="@type and $type!='subfigure'">
+                <xsl:number level="any" 
+                            count="cnx:subfigure[translate(@type,$upper,$lower)=$type]" />
                 <xsl:if test="cnx:caption">
                   <xsl:text>:</xsl:text>
                 </xsl:if>
               </xsl:when>
               <xsl:otherwise>
-                <xsl:if test="cnx:label">
-                  <xsl:apply-templates select="cnx:label" />
-                  <xsl:text> </xsl:text>
-                </xsl:if>
-                <xsl:number format="(a)" count="cnx:subfigure[not(@type) or @type='subfigure']" />
+                <xsl:number format="(a)" 
+                            count="cnx:subfigure[not(@type) or translate(@type,$upper,$lower)='subfigure']" />
               </xsl:otherwise>
             </xsl:choose>
             <xsl:text> </xsl:text>
@@ -2102,13 +2145,15 @@
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:text> </xsl:text>
+              <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
               <xsl:choose>
-                <xsl:when test="@type!='figure'">
-                  <xsl:variable name="type" select="@type" />
-                  <xsl:number level="any" count="cnx:figure[@type=$type]" />
+                <xsl:when test="@type and $type!='figure'">
+                  <xsl:number level="any" 
+                              count="cnx:figure[translate(@type,$upper,$lower)=$type]" />
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:number level="any" count="cnx:figure[not(@type) or @type='figure']" />
+                  <xsl:number level="any" 
+                              count="cnx:figure[not(@type) or translate(@type,$upper,$lower)='figure']" />
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:if test="cnx:caption">
@@ -2160,19 +2205,24 @@
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:text> </xsl:text>
+              <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
               <xsl:choose>
-                <xsl:when test="@type!='exercise'">
-                  <xsl:variable name="type" select="@type" />
-                  <xsl:number level="any" count="cnx:exercise[@type=$type]" />
+                <xsl:when test="@type and $type!='exercise'">
+                  <xsl:number level="any" 
+                              count="cnx:exercise[translate(@type,$upper,$lower)=$type]" />
                 </xsl:when>
                 <xsl:when test="ancestor::cnx:example">
-                  <xsl:number level="any" count="cnx:exercise[not(@type) or @type='exercise']" from="cnx:example" />
+                  <xsl:number level="any" 
+                              from="cnx:example" 
+                              count="cnx:exercise[not(@type) or translate(@type,$upper,$lower)='exercise']" />
                 </xsl:when>
                 <xsl:when test="qml:item">
-                  <xsl:number level="any" count="cnx:exercise[qml:item]" />
+                  <xsl:number level="any" 
+                              count="cnx:exercise[qml:item]" />
                 </xsl:when>
                 <xsl:otherwise>
-                  <xsl:number level="any" count="cnx:exercise[not(ancestor::cnx:example|qml:item) and (not(@type) or @type='exercise')]" />
+                  <xsl:number level="any" 
+                              count="cnx:exercise[not(ancestor::cnx:example|qml:item) and (not(@type) or translate(@type,$upper,$lower)='exercise')]" />
                 </xsl:otherwise>
               </xsl:choose>
               <xsl:if test="cnx:name or cnx:title">
