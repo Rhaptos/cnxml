@@ -2399,7 +2399,9 @@
             <value>important</value>
             <data type="token">
               <except>
-                <value>footnote</value>
+                <data type="token">
+                  <param name="pattern">[fF][oO][oO][tT][nN][oO][tT][eE]</param>
+                </data>
               </except>
             </data>
           </choice>
@@ -2474,7 +2476,9 @@
             <value>important</value>
             <data type="token">
               <except>
-                <value>footnote</value>
+                <data type="token">
+                  <param name="pattern">[fF][oO][oO][tT][nN][oO][tT][eE]</param>
+                </data>
               </except>
             </data>
           </choice>
