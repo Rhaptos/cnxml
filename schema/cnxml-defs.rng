@@ -314,27 +314,27 @@
     </optional>
   </define>
 
-  <define name="before-attribute">
+  <define name="mark-prefix-attribute">
     <optional>
-      <attribute name="before"/>
+      <attribute name="mark-prefix"/>
     </optional>
   </define>
 
-  <define name="after-attribute">
+  <define name="mark-suffix-attribute">
     <optional>
-      <attribute name="after" a:defaultValue="."/>
+      <attribute name="mark-suffix" a:defaultValue="."/>
     </optional>
   </define>
 
-  <define name="bulleted-after-attribute">
+  <define name="bulleted-mark-suffix-attribute">
     <optional>
-      <attribute name="after" a:defaultValue=""/>
+      <attribute name="mark-suffix" a:defaultValue=""/>
     </optional>
   </define>
 
-  <define name="labeled-item-after-attribute">
+  <define name="labeled-item-mark-suffix-attribute">
     <optional>
-      <attribute name="after" a:defaultValue=":"/>
+      <attribute name="mark-suffix" a:defaultValue=":"/>
     </optional>
   </define>
 
@@ -1139,7 +1139,7 @@
 
   <define name="list-common-content">
     <ref name="common-attributes"/>
-    <ref name="before-attribute"/>
+    <ref name="mark-prefix-attribute"/>
     <ref name="type-attribute"/>
   </define>
 
@@ -1177,7 +1177,7 @@
 
   <define name="bulleted-list-common-content">
     <ref name="bulleted-list-type-attribute"/>
-    <ref name="bulleted-after-attribute"/>
+    <ref name="bulleted-mark-suffix-attribute"/>
     <ref name="bullet-style-attribute"/>
     <ref name="list-common-content"/>
   </define>
@@ -1197,7 +1197,7 @@
   </define>
 
   <define name="enumerated-list-common-content">
-    <ref name="after-attribute"/>
+    <ref name="mark-suffix-attribute"/>
     <ref name="enumerated-list-type-attribute"/>
     <ref name="number-style-attribute"/>
     <ref name="start-value-attribute"/>
@@ -1219,7 +1219,7 @@
   </define>
 
   <define name="labeled-item-list-common-content">
-    <ref name="labeled-item-after-attribute"/>
+    <ref name="labeled-item-mark-suffix-attribute"/>
     <ref name="labeled-item-list-type-attribute"/>
     <ref name="list-common-content"/>
   </define>

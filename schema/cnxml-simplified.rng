@@ -2547,7 +2547,7 @@
         </attribute>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="after" a:defaultValue=""/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue=""/>
       </optional>
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="bullet-style" a:defaultValue="bullet">
@@ -2584,7 +2584,7 @@
         <attribute name="xml:lang"/>
       </optional>
       <optional>
-        <attribute name="before"/>
+        <attribute name="mark-prefix"/>
       </optional>
       <optional>
         <attribute name="type"/>
@@ -2622,7 +2622,7 @@
         </attribute>
       </optional>
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="after" a:defaultValue=""/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue=""/>
       </optional>
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="bullet-style" a:defaultValue="bullet">
@@ -2659,7 +2659,7 @@
         <attribute name="xml:lang"/>
       </optional>
       <optional>
-        <attribute name="before"/>
+        <attribute name="mark-prefix"/>
       </optional>
       <optional>
         <attribute name="type"/>
@@ -2692,7 +2692,7 @@
   <define name="enumerated-block-list">
     <element name="list">
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="after" a:defaultValue="."/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue="."/>
       </optional>
       <attribute name="list-type">
         <value>enumerated</value>
@@ -2731,7 +2731,7 @@
         <attribute name="xml:lang"/>
       </optional>
       <optional>
-        <attribute name="before"/>
+        <attribute name="mark-prefix"/>
       </optional>
       <optional>
         <attribute name="type"/>
@@ -2764,7 +2764,7 @@
   <define name="enumerated-inline-list">
     <element name="list">
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="after" a:defaultValue="."/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue="."/>
       </optional>
       <attribute name="list-type">
         <value>enumerated</value>
@@ -2803,7 +2803,7 @@
         <attribute name="xml:lang"/>
       </optional>
       <optional>
-        <attribute name="before"/>
+        <attribute name="mark-prefix"/>
       </optional>
       <optional>
         <attribute name="type"/>
@@ -2836,7 +2836,7 @@
   <define name="labeled-item-block-list">
     <element name="list">
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="after" a:defaultValue=":"/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue=":"/>
       </optional>
       <attribute name="list-type">
         <value>labeled-item</value>
@@ -2861,7 +2861,7 @@
         <attribute name="xml:lang"/>
       </optional>
       <optional>
-        <attribute name="before"/>
+        <attribute name="mark-prefix"/>
       </optional>
       <optional>
         <attribute name="type"/>
@@ -2894,7 +2894,7 @@
   <define name="labeled-item-inline-list">
     <element name="list">
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="after" a:defaultValue=":"/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue=":"/>
       </optional>
       <attribute name="list-type">
         <value>labeled-item</value>
@@ -2919,7 +2919,7 @@
         <attribute name="xml:lang"/>
       </optional>
       <optional>
-        <attribute name="before"/>
+        <attribute name="mark-prefix"/>
       </optional>
       <optional>
         <attribute name="type"/>
