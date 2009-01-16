@@ -1755,7 +1755,7 @@
         <xsl:attribute name="class">
           <xsl:choose>
             <xsl:when test="@list-type='labeled-item' or (@type='named-item' and $version='0.5')">labeled-item</xsl:when>
-            <xsl:when test="@before or @after or ($stepwise='1' and @list-type='enumerated')">other</xsl:when>
+            <xsl:when test="@mark-prefix or @mark-suffix or ($stepwise='1' and @list-type='enumerated')">other</xsl:when>
             <xsl:when test="@bullet-style='bullet' or 
                             (@list-type='bulleted' and not(@bullet-style)) or 
                             (not(@list-type) and not(@bullet-style))">bullet</xsl:when>
@@ -1778,8 +1778,8 @@
             </xsl:if>
             <xsl:if test="parent::cnx:list[(@bullet-style!='bullet' and @bullet-style!='open-circle' and @bullet-style!='none') or 
                                            @list-type='labeled-item' or 
-                                           @before or 
-                                           @after or 
+                                           @mark-prefix or 
+                                           @mark-suffix or 
                                            ($stepwise='1' and @list-type='enumerated')]">
               <xsl:call-template name="item-decoration" />
             </xsl:if>
@@ -1812,8 +1812,8 @@
     </span>
   </xsl:template>
 
-  <!-- Puts in @before, @after, <label> (for labeled-item lists), plus adds bullet or numbering where this can't be done by the 
-       browser due to the presence of @before, @after, or @display='inline' -->
+  <!-- Puts in @mark-prefix, @mark-suffix, <label> (for labeled-item lists), plus adds bullet or numbering where this can't be done by 
+       the browser due to the presence of @mark-prefix, @mark-suffix, or @display='inline' -->
   <xsl:template name="item-decoration">
     <xsl:variable name="stepwise">
       <xsl:call-template name="class-test">
@@ -1838,7 +1838,7 @@
         <xsl:text> </xsl:text>
       </xsl:if>
       <xsl:if test="not(parent::cnx:list[@list-type='labeled-item'] and (not(cnx:label) or cnx:label[not(node())]))">
-        <xsl:value-of select="parent::cnx:list/@before" />
+        <xsl:value-of select="parent::cnx:list/@mark-prefix" />
       </xsl:if>
       <xsl:if test="parent::cnx:list[not(@list-type='labeled-item' or @list-type='enumerated' or @bullet-style)]">
         <xsl:text>&#8226;</xsl:text>
@@ -1893,8 +1893,8 @@
       </xsl:if>
       <xsl:choose>
         <xsl:when test="parent::cnx:list[@list-type='labeled-item'] and not(cnx:label[node()])" />
-        <xsl:when test="parent::cnx:list[@after]">
-          <xsl:value-of select="parent::cnx:list/@after" />
+        <xsl:when test="parent::cnx:list[@mark-suffix]">
+          <xsl:value-of select="parent::cnx:list/@mark-suffix" />
         </xsl:when>
         <xsl:when test="parent::cnx:list[@list-type='enumerated']">
           <xsl:text>.</xsl:text>
