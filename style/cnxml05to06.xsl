@@ -232,7 +232,7 @@
     </xsl:variable>
     <xsl:if test="descendant::processing-instruction('mark') or 
                   preceding-sibling::processing-instruction('mark')">
-      <xsl:attribute name="after"><xsl:value-of select="$after"/></xsl:attribute>
+      <xsl:attribute name="mark-suffix"><xsl:value-of select="$after"/></xsl:attribute>
     </xsl:if>
   </xsl:template>
 
