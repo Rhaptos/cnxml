@@ -388,7 +388,7 @@
     <xsl:apply-templates />
   </xsl:template>
 
-  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:link[@src or @url][not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[not(node())]|cnx:codeblock[not(node())]|cnx:term[not(node())]|cnx:meaning[not(node())]|cnx:span[not(node())]|cnx:div[not(node())]|cnx:preformat[not(node())]|cnx:sup[not(node())]|cnx:sub[not(node())]">
+  <xsl:template match="cnx:name[not(node())]|cnx:title[not(node())]|cnx:link[@src or @url][not(node())]|cnx:emphasis[not(node())]|cnx:important[not(node())]|cnx:quote[not(node())]|cnx:foreign[not(node())]|cnx:codeline[not(node())]|cnx:code[(@display='inline' or @type='inline') and not(node())]|cnx:codeblock[not(node())]|cnx:term[not(node())]|cnx:meaning[not(node())]|cnx:span[not(node())]|cnx:div[not(node())]|cnx:preformat[not(node())]|cnx:sup[not(node())]|cnx:sub[not(node())]">
     <xsl:comment>empty <xsl:value-of select="local-name()" /> tag</xsl:comment>
   </xsl:template>
 
@@ -1004,7 +1004,10 @@
       <pre class="codeblock">
         <code>
           <xsl:apply-templates select="*[not(self::cnx:title|self::cnx:label|self::cnx:caption)]|text()"/>
-       </code>
+          <xsl:if test="not(node())">
+            <xsl:comment>empty code tag</xsl:comment>
+          </xsl:if>
+        </code>
       </pre>
       <xsl:if test="cnx:caption">
         <p class="code-caption">
