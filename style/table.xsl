@@ -70,18 +70,56 @@
 	        </xsl:choose>
 	      </xsl:if>
 	    </xsl:attribute>
-            <xsl:choose>
-              <xsl:when test="cnx:name[node()] or cnx:title[node()]">
-                <caption class="table-name">
-                  <xsl:apply-templates select="cnx:name|cnx:title" />
-                </caption>
-              </xsl:when>
-              <xsl:otherwise>
-                <caption align="bottom" class="table-caption">
-                  <xsl:call-template name="table-caption" />
-                </caption>
-              </xsl:otherwise>
-            </xsl:choose>
+            <xsl:if test="cnx:name[node()] or cnx:title[node()] or cnx:caption[node()] or not(cnx:label[not(node())])">
+              <caption align="bottom" class="table-text">
+                <xsl:if test="not(cnx:label[not(node())])">
+                  <span class="cnx_label">
+                    <xsl:choose>
+                      <xsl:when test="cnx:label">
+                        <xsl:apply-templates select="cnx:label" />
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:call-template name="gentext">
+                          <xsl:with-param name="key">Table</xsl:with-param>
+                          <xsl:with-param name="lang" select="/module/metadata/language" />
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:text> </xsl:text>
+                    <xsl:choose>
+                      <xsl:when test="@type">
+                        <xsl:variable name="type" select="@type" />
+                        <xsl:number level="any" count="cnx:table[@type=$type]" />
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:number level="any" count="cnx:table[not(@type)]" />
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:if test="cnx:name[node()] or cnx:title[node()] or cnx:caption[node()]">
+                      <xsl:text>: </xsl:text>
+                    </xsl:if>
+                  </span>
+                </xsl:if>
+                <xsl:apply-templates select="cnx:name|cnx:title" />
+                <xsl:if test="cnx:caption[node()]">
+                  <xsl:variable name="caption-element">
+                    <xsl:choose>
+                      <xsl:when test="cnx:name[node()] or cnx:title[node()]">div</xsl:when>
+                      <xsl:otherwise>span</xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
+                  <xsl:element name="{$caption-element}">
+                    <xsl:attribute name="class">table-caption</xsl:attribute>
+                    <xsl:if test="cnx:caption/@id">
+                      <xsl:attribute name="id">
+                        <xsl:value-of select="cnx:caption/@id" />
+                      </xsl:attribute>
+                    </xsl:if>
+                    <xsl:apply-templates select="cnx:caption" />
+                  </xsl:element>
+                </xsl:if>
+              </caption>
+            </xsl:if>
 	    <xsl:choose>
 	      <xsl:when test="count(cnx:tgroup) &gt; 1">
 		<tbody>
@@ -101,11 +139,6 @@
 	      </xsl:otherwise>
 	    </xsl:choose>
 	  </table>
-          <xsl:if test="cnx:name[node()] or cnx:title[node()]">
-            <p class="table-caption">
-              <xsl:call-template name="table-caption" />
-            </p>
-          </xsl:if>
 	</xsl:otherwise>
       </xsl:choose>
     </div>  
@@ -1082,45 +1115,6 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:value-of select="$ecol - $scol + 1" />
-  </xsl:template>
-
-
-  <!-- CAPTION inside TABLE -->
-  <xsl:template name="table-caption">
-    <xsl:if test="cnx:caption/@id">
-      <xsl:attribute name="id">
-        <xsl:value-of select="cnx:caption/@id" />
-      </xsl:attribute>
-    </xsl:if>
-    <xsl:if test="not(cnx:label[not(node())])">
-      <strong class="cnx_label">
-        <xsl:choose>
-          <xsl:when test="cnx:label">
-            <xsl:apply-templates select="cnx:label" />
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:call-template name="gentext">
-              <xsl:with-param name="key">Table</xsl:with-param>
-              <xsl:with-param name="lang" select="/module/metadata/language" />
-            </xsl:call-template>
-          </xsl:otherwise>
-        </xsl:choose>
-        <xsl:text> </xsl:text>
-        <xsl:choose>
-          <xsl:when test="@type">
-            <xsl:variable name="type" select="@type" />
-            <xsl:number level="any" count="cnx:table[@type=$type]" />
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:number level="any" count="cnx:table[not(@type)]" />
-          </xsl:otherwise>
-        </xsl:choose>
-        <xsl:if test="cnx:caption[node()]">
-          <xsl:text>: </xsl:text>
-        </xsl:if>
-      </strong>
-    </xsl:if>
-    <xsl:apply-templates select="cnx:caption" />
   </xsl:template>
 
 
