@@ -74,7 +74,7 @@
       <l:gentext key="viewingoldversion" text="You are viewing an old version of this document."/>
       <l:gentext key="latestversionhere" text="The latest version is available here."/>
       <l:gentext key="previewofwhenpublished" text=" This is a preview of how your module will appear when published"/>
-      <l:gentext key="assumingthatall" text="assuming that all "/>
+      <l:gentext key="assumingthatall" text=", assuming that all "/>
       <l:gentext key="pendingrolerequests" text="currently pending role requests"/>
       <l:gentext key="areaccepted" text=" are accepted"/>
       <l:gentext key="returntoediting" text="You must return to the editing interface to "/>
@@ -86,7 +86,7 @@
       <l:gentext key="latestpublishedversion" text="latest published version"/>
       <l:gentext key="hereanda" text=" here and a "/>
       <l:gentext key="listofchanges" text="list of changes"/>
-      <l:gentext key="here" text=" here."/>
+      <l:gentext key="hereperiod" text=" here."/>
       <l:gentext key="CollectionNavigation" text="Collection Navigation" />
       <l:gentext key="Previousmodule" text="&#171; Previous module"/>
       <l:gentext key="Nextmodule" text="Next module"/>
@@ -261,18 +261,19 @@
       <l:gentext key="Privatelenskey" text="Private lens key"/>
       <l:gentext key="Privatelensexplanation" text="Private lens: seen only by lens maker while logged on"/>
       <l:gentext key="Diagramoflenses" text="Diagram of lenses"/>
+      <l:gentext key="Notecolon" text="Note:" />
       <l:gentext key="NoMathMLSupport" text="Your browser doesn't currently support MathML. If you are using Microsoft Internet Explorer 6 or above, please install the required"/>
       <l:gentext key="MathMLPlayer" text="MathPlayer plugin"/>
-      <l:gentext key="FirefoxMozillaBrowsers" text="Firefox and other Mozilla browsers will display math without plugins, though they require an additional"/>
+      <l:gentext key="FirefoxMozillaBrowsers" text=". Firefox and other Mozilla browsers will display math without plugins, though they require an additional"/>
       <l:gentext key="MathematicsFonts" text="mathematics fonts package"/>
-      <l:gentext key="SafariAndChrome" text="Apple Safari and Google Chrome do not support MathML. Safari and Chrome will display the math, but it should not be considered correct.  Any browser can view the math in the"/>
+      <l:gentext key="SafariAndChrome" text=". Apple Safari and Google Chrome do not support MathML. Safari and Chrome will display the math, but it should not be considered correct.  Any browser can view the math in the"/>
       <l:gentext key="PrintVersion" text="Print (PDF) version"/>
-      <l:gentext key="SeeOur" text="See our"/>
+      <l:gentext key="SeeOur" text=". See our"/>
       <l:gentext key="BrowserSupport" text="browser support page"/>
-      <l:gentext key="AdditionalDetails" text="for additional details"/>
-      <l:gentext key="MathMLTest" text="A simple MathML test is below.  If the two MathML examples below are alike, your browser is MathML compatible"/>
-      <l:gentext key="Example1" text="Example 1"/>
-      <l:gentext key="Example2" text="Example 2"/>
+      <l:gentext key="AdditionalDetails" text="for additional details."/>
+      <l:gentext key="MathMLTest" text="A simple MathML test is below.  If the two MathML examples below are alike, your browser is MathML compatible."/>
+      <l:gentext key="Example1" text="Example 1:"/>
+      <l:gentext key="Example2" text="Example 2:"/>
       <l:gentext key="HideMessage" text="Hide this message"/>
 
       <!-- for editInPlace.xsl -->
