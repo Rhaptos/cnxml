@@ -86,13 +86,13 @@
                       </xsl:otherwise>
                     </xsl:choose>
                     <xsl:text> </xsl:text>
+                    <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
                     <xsl:choose>
-                      <xsl:when test="@type">
-                        <xsl:variable name="type" select="@type" />
-                        <xsl:number level="any" count="cnx:table[@type=$type]" />
+                      <xsl:when test="@type and $type!='table'">
+                        <xsl:number level="any" count="cnx:table[translate(@type,$upper,$lower)=$type]" />
                       </xsl:when>
                       <xsl:otherwise>
-                        <xsl:number level="any" count="cnx:table[not(@type)]" />
+                        <xsl:number level="any" count="cnx:table[not(@type) or translate(@type,$upper,$lower)='table']" />
                       </xsl:otherwise>
                     </xsl:choose>
                     <xsl:if test="cnx:name[node()] or cnx:title[node()] or cnx:caption[node()]">

@@ -182,19 +182,19 @@
                 <xsl:value-of select="ancestor::cnx:subfigure[1]/*[self::cnx:name or self::cnx:title]" />
               </xsl:when>
               <xsl:when test="not(ancestor::cnx:subfigure[1][cnx:label[not(node())]])">
+                <xsl:variable name="subfiguretype" select="translate(ancestor::cnx:subfigure[1]/@type,$upper,$lower)" />
                 <xsl:choose>
-                  <xsl:when test="ancestor::cnx:subfigure[1][@type!='']">
+                  <xsl:when test="ancestor::cnx:subfigure[1][@type and $subfiguretype!='subfigure']">
                     <xsl:if test="ancestor::cnx:subfigure[1][cnx:label]">
                       <xsl:value-of select="ancestor::cnx:subfigure[1]/cnx:label" />
                       <xsl:text> </xsl:text>
                     </xsl:if>
-                    <xsl:variable name="type" select="ancestor::cnx:subfigure[1]/@type" />
-                    <xsl:number level="any" count="cnx:subfigure[@type=$type]" />
+                    <xsl:number level="any" count="cnx:subfigure[translate(@type,$upper,$lower)=$subfiguretype]" />
                   </xsl:when>
                   <xsl:when test="ancestor::cnx:subfigure[1]/cnx:label">
                     <xsl:value-of select="ancestor::cnx:subfigure[1]/cnx:label" />
                     <xsl:text> </xsl:text>
-                    <xsl:number count="cnx:subfigure[not(@type) or @type='']" format="(a)" />
+                    <xsl:number count="cnx:subfigure[not(@type) or translate(@type,$upper,$lower)='subfigure']" format="(a)" />
                   </xsl:when>
                   <xsl:otherwise>
                     <!--Figure-->
@@ -203,16 +203,16 @@
                       <xsl:with-param name="lang" select="/module/metadata/language" />
                     </xsl:call-template>
                     <xsl:text> </xsl:text>
+                    <xsl:variable name="figuretype" select="translate(ancestor::cnx:figure[1]/@type,$upper,$lower)" />
                     <xsl:choose>
-                      <xsl:when test="ancestor::cnx:figure[1][@type!='']">
-                        <xsl:variable name="type" select="ancestor::cnx:figure[1]/@type" />
-                        <xsl:number level="any" count="cnx:figure[@type=$type]" />
+                      <xsl:when test="ancestor::cnx:figure[1][@type and $figuretype!='figure']">
+                        <xsl:number level="any" count="cnx:figure[translate(@type,$upper,$lower)=$figuretype]" />
                       </xsl:when>
                       <xsl:otherwise>
-                        <xsl:number level="any" count="cnx:figure[not(@type) or @type='']" />
+                        <xsl:number level="any" count="cnx:figure[not(@type) or translate(@type,$upper,$lower)='figure']" />
                       </xsl:otherwise>
                     </xsl:choose>
-                    <xsl:number count="cnx:subfigure[not(@type) or @type='']" format="(a)" />
+                    <xsl:number count="cnx:subfigure[not(@type) or translate(@type,$upper,$lower)='subfigure']" format="(a)" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:when>
@@ -240,13 +240,13 @@
                   </xsl:otherwise>
                 </xsl:choose>
                 <xsl:text> </xsl:text>
+                <xsl:variable name="figuretype" select="translate(ancestor::cnx:figure[1]/@type,$upper,$lower)" />
                 <xsl:choose>
-                  <xsl:when test="ancestor::cnx:figure[1][@type!='']">
-                    <xsl:variable name="type" select="ancestor::cnx:figure[1]/@type" />
-                    <xsl:number level="any" count="cnx:figure[@type=$type]" />
+                  <xsl:when test="ancestor::cnx:figure[1][@type and translate(@type,$upper,$lower)!='figure']">
+                    <xsl:number level="any" count="cnx:figure[translate(@type,$upper,$lower)=$figuretype]" />
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:number level="any" count="cnx:figure[not(@type) or @type='']" />
+                    <xsl:number level="any" count="cnx:figure[not(@type) or translate(@type,$upper,$lower)='figure']" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:otherwise>
