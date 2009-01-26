@@ -3,14 +3,16 @@
 
   <title>Example and Figure Test</title>
   <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <md:content-id>b00020</md:content-id>
+  <md:title>Example and Figure Test</md:title>
   <md:version>2.6</md:version>
   <md:created>2008/10/10</md:created>
   <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
   <md:authorlist>
     <md:author id="sk8">
       <md:firstname>Scott</md:firstname>
-      
       <md:surname>Kravitz</md:surname>
+      <md:fullname>Scott Kravitz</md:fullname>
       <md:email>sk8@rice.edu</md:email>
     </md:author>
   </md:authorlist>
@@ -18,18 +20,28 @@
   <md:maintainerlist>
     <md:maintainer id="sk8">
       <md:firstname>Scott</md:firstname>
-      
       <md:surname>Kravitz</md:surname>
+      <md:fullname>Scott Kravitz</md:fullname>
       <md:email>sk8@rice.edu</md:email>
     </md:maintainer>
     
     <md:maintainer id="lizzardg">
       <md:firstname>Elizabeth</md:firstname>
-      
       <md:surname>Gregory</md:surname>
+      <md:fullname>Elizabeth Gregory</md:fullname>
       <md:email>lizzardg@rice.edu</md:email>
     </md:maintainer>
   </md:maintainerlist>
+  
+  <md:license href="http://creativecommons.org/licenses/by/1.0"/>
+  <md:licensorlist>
+    <md:licensor id="sk8">
+      <md:firstname>Scott</md:firstname>
+      <md:surname>Kravitz</md:surname>
+      <md:fullname>Scott Kravitz</md:fullname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:licensor>
+  </md:licensorlist>
   
   <md:keywordlist>
     <md:keyword>Supertest</md:keyword>
@@ -37,19 +49,20 @@
   </md:keywordlist>
 
   <md:abstract/>
+  <md:language>en</md:language>
 </metadata>
 
 
 
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
     <para id='intro'>
-      Text elements must be children of media elements, not their media object children.
+      Text elements must have a mime-type, even when there is no @src.
     </para>
     <figure id='f1'>
       <label>Figure 1</label>
       <media id='med1' alt='A Good Song'>
-        <audio src='song.mp3' standby='Loading...' autoplay='false' loop='true' controller='true' volume='25'>
-          <text>This text doesn't belong here.</text>
+        <audio mime-type='MP3' src='song.mp3' standby='Loading...' autoplay='false' loop='true' controller='true' volume='25'>
+          <text>This text is missing an attribute.</text>
         </audio>
       </media>
       <caption>
@@ -59,7 +72,7 @@
     <figure id='f2'>
       <label>Figure 2</label>
       <media id='med2' alt='Watch the Movie'>
-        <video src='video.mov' standby='Loading...' autoplay='false' loop='true' controller='true' volume='34'/>
+        <video mime-type='MOV' src='video.mov' standby='Loading...' autoplay='false' loop='true' controller='true' volume='34'/>
       </media>
       <caption>
         This media element has a video file in it.
@@ -68,7 +81,7 @@
     <figure id='f3'>
       <label>Figure 3</label>
       <media id='med3' alt='A Fun Java Game'>
-        <java-applet archive='codehere.jar' code='Applet' name='This is not a fruit.'/>
+        <java-applet mime-type='JAR' archive='codehere.jar' code='Applet' name='This is not a fruit.'/>
       </media>
       <caption>
         This media element has a java applet in it.
@@ -77,10 +90,10 @@
     <figure id='f5'>
       <label>Figure 5</label>
       <media id='med5' alt='A LabView File'>
-       <labview src="LinearTransform.llb" viname="Linear Transformations.vi" version="8.0">
+       <labview mime-type='LLB' src="LinearTransform.llb" viname="Linear Transformations.vi" version="8.0">
        Demonstration of balancing ball algorithm. Please install the Labview 8 plugin; see module m2345 for instructions.
        </labview>
-       <text>Demonstration available online with Labview 8 plugin.</text>
+       <text mime-type='TXT'>Demonstration available online with Labview 8 plugin.</text>
       </media>
       <caption>
         This media element has a LabView file in it.
@@ -89,7 +102,7 @@
     <figure id='f6'>
       <label>Figure 6</label>
       <media id='med6' alt='A Document to be Downloaded'>
-       <download src="dwnldme.doc"/>
+       <download mime-type='DOC' src="dwnldme.doc"/>
       </media>
       <caption>
         This media element has a download element in it.

@@ -3,14 +3,16 @@
 
   <title>Example and Figure Test</title>
   <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <md:content-id>m00020</md:content-id>
+  <md:title>Example and Figure Test</md:title>
   <md:version>2.6</md:version>
   <md:created>2008/10/10</md:created>
   <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
   <md:authorlist>
     <md:author id="sk8">
       <md:firstname>Scott</md:firstname>
-      
       <md:surname>Kravitz</md:surname>
+      <md:fullname>Scott Kravitz</md:fullname>
       <md:email>sk8@rice.edu</md:email>
     </md:author>
   </md:authorlist>
@@ -18,18 +20,28 @@
   <md:maintainerlist>
     <md:maintainer id="sk8">
       <md:firstname>Scott</md:firstname>
-      
       <md:surname>Kravitz</md:surname>
+      <md:fullname>Scott Kravitz</md:fullname>
       <md:email>sk8@rice.edu</md:email>
     </md:maintainer>
     
     <md:maintainer id="lizzardg">
       <md:firstname>Elizabeth</md:firstname>
-      
       <md:surname>Gregory</md:surname>
+      <md:fullname>Elizabeth Gregory</md:fullname>
       <md:email>lizzardg@rice.edu</md:email>
     </md:maintainer>
   </md:maintainerlist>
+  
+  <md:license href="http://creativecommons.org/licenses/by/1.0"/>
+  <md:licensorlist>
+    <md:licensor id="sk8">
+      <md:firstname>Scott</md:firstname>
+      <md:surname>Kravitz</md:surname>
+      <md:fullname>Scott Kravitz</md:fullname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:licensor>
+  </md:licensorlist>
   
   <md:keywordlist>
     <md:keyword>Supertest</md:keyword>
@@ -37,6 +49,7 @@
   </md:keywordlist>
 
   <md:abstract/>
+  <md:language>en</md:language>
 </metadata>
 
 
@@ -78,7 +91,7 @@
        <flash src="http://www.youtube.com/v/IaNBLVHeS60&amp;hl=en&amp;fs=1" mime-type='FLASH' width="425" height="344">
          <image src="flashscreenshot.png" mime-type='PNG'/>
        </flash>
-       <text>Flash movie available online. <image src="flashscreenshot.png" mime-type='PNG'/></text>
+       <text mime-type='PNG' src="flashscreenshot.png">Flash movie available online.</text>
       </media>
       <caption>
         This media element has a flash file in it.
@@ -90,7 +103,7 @@
        <labview src="LinearTransform.llb" mime-type='LLB' viname="Linear Transformations.vi" version="8.0">
        Demonstration of balancing ball algorithm. Please install the Labview 8 plugin; see module m2345 for instructions.
        </labview>
-       <text>Demonstration available online with Labview 8 plugin.</text>
+       <text mime-type='PNG'>Demonstration available online with Labview 8 plugin.</text>
       </media>
       <caption>
         This media element has a LabView file in it.
