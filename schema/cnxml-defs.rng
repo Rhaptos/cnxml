@@ -2209,11 +2209,7 @@
       </optional>
       <optional>
         <attribute name="rotate">
-          <choice>
-            <value>top</value>
-            <value>middle</value>
-            <value>bottom</value>
-          </choice>
+          <ref name="yesorno"/>
         </attribute>
       </optional>
       <ref name="valign-attribute"/>

@@ -5790,11 +5790,9 @@
       </optional>
       <optional>
         <attribute name="rotate">
-          <choice>
-            <value>top</value>
-            <value>middle</value>
-            <value>bottom</value>
-          </choice>
+          <data type="integer">
+            <param name="minInclusive">0</param>
+          </data>
         </attribute>
       </optional>
       <optional>
