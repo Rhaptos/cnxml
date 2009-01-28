@@ -70,9 +70,16 @@
 	        </xsl:choose>
 	      </xsl:if>
 	    </xsl:attribute>
-            <xsl:if test="cnx:name[node()] or cnx:title[node()] or cnx:caption[node()] or not(cnx:label[not(node())])">
+            <xsl:if test="cnx:name[node()] or 
+                          cnx:title[node()] or 
+                          cnx:caption[node()] or 
+                          cnx:label[node()] or 
+                          (not(cnx:label[not(node())]) and 
+                           not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
               <caption align="bottom" class="table-text">
-                <xsl:if test="not(cnx:label[not(node())])">
+                <xsl:if test="cnx:label[node()] or 
+                              (not(cnx:label[not(node())]) and 
+                               not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
                   <span class="cnx_label">
                     <xsl:choose>
                       <xsl:when test="cnx:label">
@@ -85,16 +92,18 @@
                         </xsl:call-template>
                       </xsl:otherwise>
                     </xsl:choose>
-                    <xsl:text> </xsl:text>
-                    <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
-                    <xsl:choose>
-                      <xsl:when test="@type and $type!='table'">
-                        <xsl:number level="any" count="cnx:table[translate(@type,$upper,$lower)=$type]" />
-                      </xsl:when>
-                      <xsl:otherwise>
-                        <xsl:number level="any" count="cnx:table[not(@type) or translate(@type,$upper,$lower)='table']" />
-                      </xsl:otherwise>
-                    </xsl:choose>
+                    <xsl:if test="not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])">
+                      <xsl:text> </xsl:text>
+                      <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
+                      <xsl:choose>
+                        <xsl:when test="@type and $type!='table'">
+                          <xsl:number level="any" count="cnx:table[not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])][translate(@type,$upper,$lower)=$type]" />
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:number level="any" count="cnx:table[not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])][not(@type) or translate(@type,$upper,$lower)='table']" />
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:if>
                     <xsl:if test="cnx:name[node()] or cnx:title[node()] or cnx:caption[node()]">
                       <xsl:text>: </xsl:text>
                     </xsl:if>
