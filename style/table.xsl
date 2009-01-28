@@ -36,9 +36,16 @@
 	<!-- NEW TABLE -->
 	<xsl:otherwise>
 	  <table cellspacing="0" cellpadding="0" align="center">
-            <xsl:if test="processing-instruction('table-summary')">
+            <xsl:if test="@summary or processing-instruction('table-summary')">
               <xsl:attribute name="summary">
-                <xsl:value-of select="processing-instruction('table-summary')" />
+                <xsl:choose>
+                  <xsl:when test="@summary">
+                    <xsl:value-of select="@summary" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="processing-instruction('table-summary')" />
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:attribute>
             </xsl:if>
 	    <xsl:attribute name="style">
