@@ -3,14 +3,16 @@
 
   <title>Rule Test</title>
   <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <md:content-id>m00048</md:content-id>
+  <md:title>Rule Test</md:title>
   <md:version>2.6</md:version>
   <md:created>2008/10/10</md:created>
   <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
   <md:authorlist>
     <md:author id="sk8">
       <md:firstname>Scott</md:firstname>
-      
       <md:surname>Kravitz</md:surname>
+      <md:fullname>Scott Kravitz</md:fullname>
       <md:email>sk8@rice.edu</md:email>
     </md:author>
   </md:authorlist>
@@ -18,18 +20,28 @@
   <md:maintainerlist>
     <md:maintainer id="sk8">
       <md:firstname>Scott</md:firstname>
-      
       <md:surname>Kravitz</md:surname>
+      <md:fullname>Scott Kravitz</md:fullname>
       <md:email>sk8@rice.edu</md:email>
     </md:maintainer>
     
     <md:maintainer id="lizzardg">
       <md:firstname>Elizabeth</md:firstname>
-      
       <md:surname>Gregory</md:surname>
+      <md:fullname>Elizabeth Gregory</md:fullname>
       <md:email>lizzardg@rice.edu</md:email>
     </md:maintainer>
   </md:maintainerlist>
+  
+  <md:license href="http://creativecommons.org/licenses/by/1.0"/>
+  <md:licensorlist>
+    <md:licensor id="sk8">
+      <md:firstname>Scott</md:firstname>
+      <md:surname>Kravitz</md:surname>
+      <md:fullname>Scott Kravitz</md:fullname>
+      <md:email>sk8@rice.edu</md:email>
+    </md:licensor>
+  </md:licensorlist>
   
   <md:keywordlist>
     <md:keyword>Supertest</md:keyword>
@@ -37,6 +49,7 @@
   </md:keywordlist>
 
   <md:abstract/>
+  <md:language>en</md:language>
 </metadata>
 
 
