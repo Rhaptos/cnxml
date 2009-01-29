@@ -351,7 +351,6 @@
 	  <xsl:value-of select="@valign"/>
 	</xsl:attribute>
       </xsl:if>
-      <xsl:attribute name="class">entry</xsl:attribute>
       <xsl:call-template name="IdCheck"/>
       <!-- Set colsep and rowsep attributes with CSS using the style attribute.  Turn off the borders on the left and top of any 
 	   entry(tbl) because they are always ignored. -->
