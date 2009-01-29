@@ -36,9 +36,16 @@
 	<!-- NEW TABLE -->
 	<xsl:otherwise>
 	  <table cellspacing="0" cellpadding="0" align="center">
-            <xsl:if test="processing-instruction('table-summary')">
+            <xsl:if test="@summary or processing-instruction('table-summary')">
               <xsl:attribute name="summary">
-                <xsl:value-of select="processing-instruction('table-summary')" />
+                <xsl:choose>
+                  <xsl:when test="@summary">
+                    <xsl:value-of select="@summary" />
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:value-of select="processing-instruction('table-summary')" />
+                  </xsl:otherwise>
+                </xsl:choose>
               </xsl:attribute>
             </xsl:if>
 	    <xsl:attribute name="style">
@@ -70,14 +77,63 @@
 	        </xsl:choose>
 	      </xsl:if>
 	    </xsl:attribute>
-            <xsl:if test="cnx:name">
-              <caption class="table-name">
-                <xsl:apply-templates select="cnx:name" />
-              </caption>
-            </xsl:if>
-            <xsl:if test="cnx:caption and not(cnx:name)">
-              <caption align="bottom" class="table-caption">
-                <xsl:apply-templates select="cnx:caption" />
+            <xsl:if test="cnx:name[node()] or 
+                          cnx:title[node()] or 
+                          cnx:caption[node()] or 
+                          cnx:label[node()] or 
+                          (not(cnx:label[not(node())]) and 
+                           not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
+              <caption align="bottom" class="table-text">
+                <xsl:if test="cnx:label[node()] or 
+                              (not(cnx:label[not(node())]) and 
+                               not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
+                  <span class="cnx_label">
+                    <xsl:choose>
+                      <xsl:when test="cnx:label">
+                        <xsl:apply-templates select="cnx:label" />
+                      </xsl:when>
+                      <xsl:otherwise>
+                        <xsl:call-template name="gentext">
+                          <xsl:with-param name="key">Table</xsl:with-param>
+                          <xsl:with-param name="lang" select="/module/metadata/language" />
+                        </xsl:call-template>
+                      </xsl:otherwise>
+                    </xsl:choose>
+                    <xsl:if test="not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])">
+                      <xsl:text> </xsl:text>
+                      <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
+                      <xsl:choose>
+                        <xsl:when test="@type and $type!='table'">
+                          <xsl:number level="any" count="cnx:table[not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])][translate(@type,$upper,$lower)=$type]" />
+                        </xsl:when>
+                        <xsl:otherwise>
+                          <xsl:number level="any" count="cnx:table[not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])][not(@type) or translate(@type,$upper,$lower)='table']" />
+                        </xsl:otherwise>
+                      </xsl:choose>
+                    </xsl:if>
+                    <xsl:if test="cnx:name[node()] or cnx:title[node()] or cnx:caption[node()]">
+                      <xsl:text>: </xsl:text>
+                    </xsl:if>
+                  </span>
+                </xsl:if>
+                <xsl:apply-templates select="cnx:name|cnx:title" />
+                <xsl:if test="cnx:caption[node()]">
+                  <xsl:variable name="caption-element">
+                    <xsl:choose>
+                      <xsl:when test="cnx:name[node()] or cnx:title[node()]">div</xsl:when>
+                      <xsl:otherwise>span</xsl:otherwise>
+                    </xsl:choose>
+                  </xsl:variable>
+                  <xsl:element name="{$caption-element}">
+                    <xsl:attribute name="class">table-caption</xsl:attribute>
+                    <xsl:if test="cnx:caption/@id">
+                      <xsl:attribute name="id">
+                        <xsl:value-of select="cnx:caption/@id" />
+                      </xsl:attribute>
+                    </xsl:if>
+                    <xsl:apply-templates select="cnx:caption" />
+                  </xsl:element>
+                </xsl:if>
               </caption>
             </xsl:if>
 	    <xsl:choose>
@@ -99,11 +155,6 @@
 	      </xsl:otherwise>
 	    </xsl:choose>
 	  </table>
-          <xsl:if test="cnx:name and cnx:caption">
-            <p class="table-caption">
-              <xsl:apply-templates select="cnx:caption" />
-            </p>
-          </xsl:if>
 	</xsl:otherwise>
       </xsl:choose>
     </div>  
@@ -113,6 +164,7 @@
 
   <xsl:template match="cnx:tgroup">    
     <!-- Only bother to do this if there are colwidth attributes specified. -->
+    <xsl:call-template name='IdCheck'/>
     <xsl:if test="cnx:colspec/@colwidth or child::*/cnx:colspec/@colwidth">
       <colgroup>
 	<xsl:call-template name="col.maker" />
@@ -125,6 +177,7 @@
 
   <xsl:template match="cnx:entrytbl">
     <td class="entrytbl">
+      <xsl:call-template name='IdCheck'/>
       <xsl:attribute name="style">
 	<xsl:text>height: 100%; padding: 0 !important; border-left: 0 !important; border-top: 0 !important; </xsl:text>
 	<xsl:call-template name="style.param.determiner">
@@ -153,6 +206,7 @@
 
   <xsl:template match="cnx:thead|cnx:tfoot|cnx:tbody">
     <xsl:element name="{name(.)}">
+      <xsl:call-template name='IdCheck'/>
       <xsl:attribute name="valign">
 	<xsl:choose>
 	  <xsl:when test="@valign">
@@ -212,7 +266,13 @@
     <xsl:variable name="entry.colnum">
       <xsl:call-template name="entry.colnum" />
     </xsl:variable>
+    <xsl:variable name="row.header.class.or.not">
+      <xsl:call-template name="row.header.class.or.not">
+        <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+      </xsl:call-template>
+    </xsl:variable>
     <xsl:choose>
+      <xsl:when test="$row.header.class.or.not = '1'">th</xsl:when>
       <!-- nearest matching spanspec -->
       <xsl:when test="substring(ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname]/@namest,1,7) = 'header_'">th</xsl:when>
       <!-- nearest entrytbl/colspec or tgroup/colspec (where @colnum attributes are specified) -->
@@ -223,6 +283,54 @@
     </xsl:choose>
   </xsl:template>
   
+  <xsl:template name="row.header.class.or.not">
+    <xsl:param name="step" select="'entry'"/>
+    <xsl:param name="entry.colnum">1</xsl:param>
+    <xsl:variable name="provided-class">
+      <xsl:choose>
+        <xsl:when test="$step='entry'">
+          <xsl:value-of select="normalize-space(@class)"/>
+        </xsl:when>
+        <xsl:when test="$step='colspecstep1'">
+          <xsl:value-of select="normalize-space(ancestor::*[3]/cnx:colspec[@colnum=$entry.colnum]/@class)"/>
+        </xsl:when>
+        <xsl:when test="$step='colspecstep2'">
+          <xsl:value-of select="normalize-space(ancestor::*[3]/cnx:colspec[position()=$entry.colnum and not(@colnum)]/@class)"/>
+        </xsl:when>
+        <xsl:when test="$step='spanspec'">
+          <xsl:value-of select="normalize-space(ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname]/@class)"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="row.header.class.or.not">
+      <xsl:call-template name="class-test">
+        <xsl:with-param name="provided-class" select="$provided-class"/>
+        <xsl:with-param name="wanted-class" select="'rowheader'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:choose>
+      <xsl:when test="$row.header.class.or.not='1'">1</xsl:when>
+      <xsl:when test="$step='entry'">
+        <xsl:call-template name="row.header.class.or.not">
+          <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+          <xsl:with-param name="step" select="'colspecstep1'"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$step='colspecstep1'">
+        <xsl:call-template name="row.header.class.or.not">
+          <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+          <xsl:with-param name="step" select="'colspecstep2'"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:when test="$step='colspecstep2'">
+        <xsl:call-template name="row.header.class.or.not">
+          <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+          <xsl:with-param name="step" select="'spanspec'"/>
+        </xsl:call-template>
+      </xsl:when>
+      <xsl:otherwise>0</xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
   <xsl:template name="process.cell">
     <xsl:param name="cellgi"/>
@@ -1023,13 +1131,6 @@
       </xsl:choose>
     </xsl:variable>
     <xsl:value-of select="$ecol - $scol + 1" />
-  </xsl:template>
-
-
-  <!-- CAPTION inside TABLE -->
-  <xsl:template match="cnx:table/cnx:caption">
-    <xsl:call-template name='IdCheck'/>
-    <xsl:apply-templates />
   </xsl:template>
 
 
