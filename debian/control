@@ -21,12 +21,12 @@ Description: Connexions Markup Language common files (stylesheets)
  .
  Homepage: http://cnx.org/technology/cnxml/
 
-Package: connexions-cnxml-0.5
+Package: connexions-cnxml-0.6
 Architecture: all
 Depends: ${misc:Depends}, connexions-cnxml-common, connexions-mdml-0.4.5, connexions-qml-1.0
 Suggests: connexions-bibtexml, connexions-mathml, connexions-qml
 Provides: connexions-cnxml
-Description: Connexions Markup Language 0.5 Schema
+Description: Connexions Markup Language 0.6 Schema
  Connexions Markup Language (CNXML), an XML application for
  marking up educational texts. It is designed for use in the
  Connexions Project, but we are making it generally
