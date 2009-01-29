@@ -354,7 +354,11 @@
 
   <define name="start-value-attribute">
     <optional>
-      <attribute name="start-value"/>
+      <attribute name="start-value" a:defaultValue="1">
+        <data type="integer">
+          <param name="minInclusive">1</param>
+        </data>
+      </attribute>
     </optional>
   </define>
 

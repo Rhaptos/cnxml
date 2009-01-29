@@ -2711,7 +2711,11 @@
         </attribute>
       </optional>
       <optional>
-        <attribute name="start-value"/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="start-value" a:defaultValue="1">
+          <data type="integer">
+            <param name="minInclusive">1</param>
+          </data>
+        </attribute>
       </optional>
       <zeroOrMore>
         <attribute>
@@ -2783,7 +2787,11 @@
         </attribute>
       </optional>
       <optional>
-        <attribute name="start-value"/>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="start-value" a:defaultValue="1">
+          <data type="integer">
+            <param name="minInclusive">1</param>
+          </data>
+        </attribute>
       </optional>
       <zeroOrMore>
         <attribute>
