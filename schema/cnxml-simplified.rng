@@ -29,6 +29,8 @@
       <ref name="section"/>
       <ref name="rule"/>
       <ref name="definition"/>
+      <ref name="metadata"/>
+      <ref name="mdml-abstract"/>
     </choice>
   </start>
   <!--starting http://cnx.rice.edu/technology/mdml/schema/rng/0.4.5/mdml-defs.rng-->
@@ -5925,13 +5927,15 @@
   </define>
   <define name="simple-list">
     <element name="list">
-      <attribute name="list-type">
-        <choice>
-          <value>bulleted</value>
-          <value>enumerated</value>
-          <value>labeled-item</value>
-        </choice>
-      </attribute>
+      <optional>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="list-type" a:defaultValue="bulleted">
+          <choice>
+            <value>bulleted</value>
+            <value>enumerated</value>
+            <value>labeled-item</value>
+          </choice>
+        </attribute>
+      </optional>
       <optional>
         <choice>
           <attribute name="display">

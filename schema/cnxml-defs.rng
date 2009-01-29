@@ -253,13 +253,15 @@
   </define>
 
   <define name="list-type-attribute">
-    <attribute name="list-type">
-      <choice>
-        <value>bulleted</value>
-        <value>enumerated</value>
-        <value>labeled-item</value>
-      </choice>
-    </attribute>
+    <optional>
+      <attribute name="list-type" a:defaultValue="bulleted">
+        <choice>
+          <value>bulleted</value>
+          <value>enumerated</value>
+          <value>labeled-item</value>
+        </choice>
+      </attribute>
+    </optional>
   </define>
 
   <define name="bulleted-list-type-attribute">
