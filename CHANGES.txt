@@ -1,6 +1,23 @@
 cnxml-0.6 (p1)
-  - cnxml-0.6 (30 Jan 2009)
-    - FIXME: NEEDS CHANGELOG
+  - Major release: new version of CNXML. Changes include:
+    - implement canonical schema language in Relax NG instead of in DTD;
+    - provide a single schema for all CNXML 0.6, including support for MathML and QML;
+    - made content models of most elements more generic;
+    - add optional 'class' attribute to all elements;
+    - add elements 'div', 'span', 'preformat', 'label', 'sub', 'sup', 'newline', 'space';
+    - restructure 'media' element and add child elements for types of media: 'image', 'audio', 'video', 'labview', 'flash', 'java-applet', 'download', 'object';
+    - enhance author control over appearance of lists;
+    - give authors control over placement of exercise solutions;
+    - require 'id' attribute on more elements;
+    - accessibility enhancements:
+      - add 'alt' attribute on 'media' elements;
+      - add 'summary' attribute on 'table' elements;
+      - support 'rowheader' class on table cells;
+    - provide XSLT transformation to convert CNXML 0.5 modules to CNXML 0.6;
+    - generalize linking attributes on elements that entail hyperlinks;
+    - permit any namespaced attribute (except those in the CNXML namespace) on any element;
+    - give authors more control over the numbering of elements;
+    - let authors specify typeface attributes (e.g. italics, bold) in 'emphasis' and 'span';
 
 cnxml-0.5 (p24)
   - quickperf (30 Sept 2008)
