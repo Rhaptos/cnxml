@@ -1,4 +1,4 @@
-cnxml-0.5.25
+cnxml-0.6 (p1)
   - cnxml-0.6 (30 Jan 2008)
     - FIXME: NEEDS CHANGELOG
 
