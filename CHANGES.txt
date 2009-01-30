@@ -1,3 +1,7 @@
+cnxml-0.5 (p25)
+  - cnxml 0.6 (30 Jan 2009)
+    - cnxml 0.5 moves into its lengthy retirement
+
 cnxml-0.5 (p24)
   - quickperf (30 Sept 2008)
     - two entries for "Recently" and "Viewed" due to wrapping issues in portlet title
