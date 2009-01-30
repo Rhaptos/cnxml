@@ -1,3 +1,7 @@
+cnxml-0.5.25
+  - cnxml-0.6 (30 Jan 2008)
+    - FIXME: NEEDS CHANGELOG
+
 cnxml-0.5 (p24)
   - quickperf (30 Sept 2008)
     - two entries for "Recently" and "Viewed" due to wrapping issues in portlet title
