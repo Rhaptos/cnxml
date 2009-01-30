@@ -121,6 +121,10 @@
   </xsl:template>
 
   <xsl:template match="cnxml:note[@type='footnote']">
+    <xsl:call-template name="make-footnote"/>
+  </xsl:template>
+
+  <xsl:template name="make-footnote">
     <xsl:element name="footnote" namespace="http://cnx.rice.edu/cnxml">
       <xsl:apply-templates select="@id"/>
       <xsl:if test="not(@id)">
@@ -134,22 +138,29 @@
 
   <xsl:template match="cnxml:note">
     <xsl:variable name="type" select="normalize-space(@type)"/>
-    <xsl:copy>
-      <xsl:apply-templates select="@*"/>
-      <xsl:if test="not(@id)">
-        <xsl:attribute name="id">
-          <xsl:value-of select="generate-id()"/>
-        </xsl:attribute>
-      </xsl:if>
-      <xsl:if test="$type and $type != 'note' and $type != 'aside' and $type != 'warning' and $type != 'tip' and $type != 'important'">
-        <xsl:element name="label" namespace="http://cnx.rice.edu/cnxml">
-          <xsl:call-template name="uppercase-first-letter">
-            <xsl:with-param name="data" select="normalize-space(@type)"/>
-          </xsl:call-template>
-        </xsl:element>
-      </xsl:if>
-      <xsl:apply-templates/>
-    </xsl:copy>
+    <xsl:choose>
+      <xsl:when test="translate($type, $upper-alpha, $lower-alpha)='footnote'">
+        <xsl:call-template name="make-footnote"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy>
+          <xsl:apply-templates select="@*"/>
+          <xsl:if test="not(@id)">
+            <xsl:attribute name="id">
+              <xsl:value-of select="generate-id()"/>
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:if test="$type and $type != 'note' and $type != 'aside' and $type != 'warning' and $type != 'tip' and $type != 'important'">
+            <xsl:element name="label" namespace="http://cnx.rice.edu/cnxml">
+              <xsl:call-template name="uppercase-first-letter">
+                <xsl:with-param name="data" select="normalize-space(@type)"/>
+              </xsl:call-template>
+            </xsl:element>
+          </xsl:if>
+          <xsl:apply-templates/>
+        </xsl:copy>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="cnxml:rule">
