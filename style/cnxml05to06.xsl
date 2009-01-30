@@ -477,7 +477,6 @@
     <xsl:variable name="strength" select="normalize-space(@strength)"/>
     <xsl:variable name="document" select="normalize-space(@document)"/>
     <xsl:variable name="target" select="normalize-space(@target)"/>
-    <xsl:processing-instruction name="from-cnxn">document="<xsl:value-of select="@document"/>" target="<xsl:value-of select="@target"/>"</xsl:processing-instruction>
     <xsl:element name="link" namespace="http://cnx.rice.edu/cnxml">
       <xsl:if test="@document">
         <xsl:attribute name="document">
@@ -560,8 +559,6 @@
     </xsl:copy>
   </xsl:template>
 
-  <xsl:template match="processing-instruction('table-summary')"></xsl:template>
-
   <xsl:template match="cnxml:figure[cnxml:table]">
     <xsl:choose>
       <xsl:when test="$moduleid = 'm10221' or 
@@ -576,11 +573,6 @@
         </xsl:copy>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:if test="@id">
-          <xsl:processing-instruction name="figure-id">
-            <xsl:value-of select="@id"/>
-          </xsl:processing-instruction>
-        </xsl:if>
         <xsl:apply-templates select="cnxml:table"/>
       </xsl:otherwise>
     </xsl:choose>
@@ -1114,6 +1106,11 @@
 
   <xsl:template match="*">
     <xsl:apply-templates select="." mode="default-copy"/>
+  </xsl:template>
+
+  <xsl:template match="processing-instruction('mark')|
+                       processing-instruction('table-summary')|
+                       processing-instruction('solution_in_back')">
   </xsl:template>
 
   <xsl:template match="@*|text()|comment()|processing-instruction()">
