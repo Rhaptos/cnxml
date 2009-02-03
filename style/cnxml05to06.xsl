@@ -110,6 +110,7 @@
   <xsl:template match="@type">
     <xsl:choose>
       <xsl:when test="parent::cnxml:code[parent::cnxml:figure]"></xsl:when>
+      <xsl:when test="parent::cnxml:note or parent::cnxml:rule"><xsl:copy/></xsl:when>
       <xsl:when test=".='inline'">
         <xsl:attribute name="display">inline</xsl:attribute>
       </xsl:when>
