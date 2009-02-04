@@ -110,6 +110,7 @@
   <xsl:template match="@type">
     <xsl:choose>
       <xsl:when test="parent::cnxml:code[parent::cnxml:figure]"></xsl:when>
+      <xsl:when test="parent::cnxml:note or parent::cnxml:rule"><xsl:copy/></xsl:when>
       <xsl:when test=".='inline'">
         <xsl:attribute name="display">inline</xsl:attribute>
       </xsl:when>
@@ -489,6 +490,7 @@
     <xsl:variable name="document" select="normalize-space(@document)"/>
     <xsl:variable name="target" select="normalize-space(@target)"/>
     <xsl:element name="link" namespace="http://cnx.rice.edu/cnxml">
+      <xsl:apply-templates select="@id"/>
       <xsl:if test="@document">
         <xsl:attribute name="document">
           <xsl:value-of select="$document"/>
@@ -528,7 +530,6 @@
       <xsl:if test="not(@document) and not(@version) and not(@target)">
         <xsl:attribute name="url"></xsl:attribute>
       </xsl:if>
-      <xsl:attribute name="class">cnxn</xsl:attribute>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
