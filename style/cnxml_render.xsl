@@ -1103,9 +1103,9 @@
       </xsl:when>
       <xsl:otherwise>
         <div class="preformat">
+          <xsl:call-template name='IdCheck'/>
           <xsl:apply-templates select="cnx:title" />
-          <pre class="preformat">
-            <xsl:call-template name='IdCheck'/>
+          <pre class="preformatted">
             <xsl:if test="@display='none'">
               <xsl:attribute name="style">display: none</xsl:attribute>
             </xsl:if>
