@@ -325,6 +325,7 @@
       <xsl:apply-templates select="@*[not(name(.)='src')][not(name(.)='type')]"/>
       <xsl:if test="self::cnxml:quote">
         <xsl:attribute name="display">inline</xsl:attribute>
+        <xsl:attribute name="class">no-marks</xsl:attribute>
       </xsl:if>
       <xsl:call-template name="convert-link-src">
         <xsl:with-param name="src" select="normalize-space(@src)"/>
