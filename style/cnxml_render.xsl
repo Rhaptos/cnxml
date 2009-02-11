@@ -890,7 +890,19 @@
           <xsl:value-of select="$href" />
         </xsl:attribute>
       </xsl:if>
+      <xsl:variable name="no-marks">
+        <xsl:call-template name="class-test">
+          <xsl:with-param name="provided-class" select="normalize-space(@class)" />
+          <xsl:with-param name="wanted-class">no-marks</xsl:with-param>
+        </xsl:call-template>
+      </xsl:variable>
+      <xsl:if test="not($version='0.5') and $display='inline' and $no-marks!='1'">
+        <xsl:text>&#8220;</xsl:text>
+      </xsl:if>
       <xsl:apply-templates select="*[not(self::cnx:title|self::cnx:label)]|text()" />
+      <xsl:if test="not($version='0.5') and $display='inline' and $no-marks!='1'">
+        <xsl:text>&#8221;</xsl:text>
+      </xsl:if>
       <xsl:if test="$href!=''">
         <span class="quote-source">
           <xsl:text>[</xsl:text>
