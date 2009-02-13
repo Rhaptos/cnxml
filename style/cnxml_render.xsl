@@ -356,17 +356,21 @@
         <xsl:attribute name="class">section-header</xsl:attribute>
         <xsl:variable name="labeled-exercise" select="(parent::cnx:problem or parent::cnx:solution) and 
                                                       not(cnx:label[not(node())])" />
-        <xsl:apply-templates select="cnx:label" />
-        <xsl:if test="cnx:label[node()] and (cnx:title and not($labeled-exercise))">
-          <xsl:text>: </xsl:text>
+        <xsl:if test="cnx:label[node()] or $labeled-exercise">
+          <span class="cnx_label">
+            <xsl:apply-templates select="cnx:label" />
+            <xsl:if test="cnx:label[node()] and (cnx:title[node()] and not($labeled-exercise))">
+              <xsl:text>: </xsl:text>
+            </xsl:if>
+	    <xsl:if test="$labeled-exercise">
+	      <xsl:number level="any" count="cnx:exercise" format="1."/>
+              <xsl:number level="single" format="a) " />
+	    </xsl:if>
+          </span>
         </xsl:if>
-	<xsl:if test="$labeled-exercise">
-	  <xsl:number level="any" count="cnx:exercise" format="1."/>
-          <xsl:number level="single" format="a) " />
-	</xsl:if>
         <!-- for cnxml version 0.1 -->
         <xsl:if test="@name">
-          <strong>
+          <strong class="title">
             <xsl:value-of select="@name" />
             <xsl:if test="@name=''">
               <xsl:text> </xsl:text>
