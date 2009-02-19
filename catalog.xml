@@ -2,10 +2,12 @@
 <!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
 
-  <!-- CNXML DTDs -->
-  <public publicId="-//CNX//DTD CNXML 0.5//EN"  uri="schema/dtd/0.5/cnxml_plain.dtd"/>
-  <public publicId="-//CNX//DTD CNXML 0.5 plus MathML//EN"  uri="schema/dtd/0.5/cnxml_mathml.dtd"/>
-  <public publicId="-//CNX//DTD CNXML 0.5 plus QML//EN"  uri="schema/dtd/0.5/cnxml_qml.dtd"/>
-  <public publicId="-//CNX//DTD CNXML 0.5 plus MathML plus QML//EN"  uri="schema/dtd/0.5/cnxml_mathml_qml.dtd"/>
-  
+  <!-- SYSTEM Rewrite rules to access local copies -->
+  <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/cnxml/schema/dtd/0.6" rewritePrefix="schema/dtd/0.6"/>
+  <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/cnxml/schema/rng/0.6" rewritePrefix="schema/rng/0.6"/>
+  <rewriteSystem systemIdStartString="http://cnx.rice.edu/technology/cnxml/schema/xsd/0.6" rewritePrefix="schema/xsd/0.6"/>
+  <rewriteUri uriStartString="http://cnx.rice.edu/technology/cnxml/schema/dtd/0.6" rewritePrefix="schema/dtd/0.6"/>
+  <rewriteUri uriStartString="http://cnx.rice.edu/technology/cnxml/schema/rng/0.6" rewritePrefix="schema/rng/0.6"/>
+  <rewriteUri uriStartString="http://cnx.rice.edu/technology/cnxml/schema/xsd/0.6" rewritePrefix="schema/xsd/0.6"/>
+
 </catalog>

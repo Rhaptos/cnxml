@@ -7,7 +7,7 @@
   <xsl:param name="local.l10n.xml" select="document('')"/>
   <l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
     <l:l10n language="en" english-language-name="English">
-      <!-- for unibrowser.xsl -->
+      <!-- for cnxml_render.xsl -->
       <l:gentext key="subfigure" text="Subfigure"/>
       <l:gentext key="Subfigure" text="Subfigure"/>
       <l:gentext key="problem" text="Problem"/>
@@ -47,19 +47,30 @@
       <l:gentext key="Definition" text="Definition"/>
       <l:gentext key="Proof" text="Proof"/>
       <l:gentext key="MediaFile" text="Media File"/>
-      <l:gentext key="EPSImage" text="EPS Image"/>
       <l:gentext key="LabVIEWExample" text="LabVIEW Example"/>
       <l:gentext key="Download" text="Download"/>
       <l:gentext key="LabVIEWSource" text="LabVIEW Source"/>
       <l:gentext key="AudioFile" text="Audio File"/>
       <l:gentext key="MusicalExample" text="Musical Example"/>
-      <l:gentext key="ClickForSolution" text="Click for Solution"/>
-      <l:gentext key="HideSolution" text="Hide Solution"/>
+      <l:gentext key="Show" text="Show"/>
+      <l:gentext key="Hide" text="Hide"/>
       <l:gentext key="Solution" text="Solution"/>
       <l:gentext key="Diagnosis" text="Diagnosis"/>
-      <l:gentext key="ClickForDiagnosis" text="Click for Diagnosis"/>
-      <l:gentext key="HideDiagnosis" text="Hide Diagnosis"/>
       <l:gentext key="Footnotes" text="Footnotes"/>
+      <l:gentext key="warning" text="Warning"/>
+      <l:gentext key="important" text="Important"/>
+      <l:gentext key="aside" text="Aside"/>
+      <l:gentext key="tip" text="Tip"/>
+      <l:gentext key="Note" text="Note"/>
+      <l:gentext key="theorem" text="Theorem"/>
+      <l:gentext key="lemma" text="Lemma"/>
+      <l:gentext key="corollary" text="Corollary"/>
+      <l:gentext key="law" text="Law"/>
+      <l:gentext key="proposition" text="Proposition"/>
+      <l:gentext key="Rule" text="Rule"/>
+      <l:gentext key="Step" text="Step"/>
+      <l:gentext key="Listing" text="Listing"/>
+      <l:gentext key="citelink" text="link"/>
 
       <!-- for content_render.xsl -->
       <l:gentext key="Translators:" text="Translators:"/>
@@ -105,11 +116,9 @@
       <l:gentext key="Example links" text="Example links"/>
       <l:gentext key="Prerequisite links" text="Prerequisite links"/>
       <l:gentext key="Supplemental links" text="Supplemental links"/>
-      <l:gentext key="Verystronglink" text="Very strongly related link"/>
       <l:gentext key="Stronglink" text="Strongly related link"/>
       <l:gentext key="Relatedlink" text="Related link"/>
-      <l:gentext key="Distantlink" text="Distantly related link"/>
-      <l:gentext key="Verydistantlink" text="Very distantly related link"/>
+      <l:gentext key="Weaklink" text="Weakly related link"/>
       <l:gentext key="Downloadellipsis" text="Download PDF/ZIP..."/>
       <l:gentext key="Downloadcolon" text="Download:"/>
       <l:gentext key="ThePDFofthemodulecomma" text="The PDF of the module,"/>
@@ -282,6 +291,14 @@
       <l:gentext key="Brieflydescribeyourchanges" text="Briefly describe your changes:"/>
       <l:gentext key="Publish" text="Publish"/>
       <l:gentext key="Discard" text="Discard"/>
+
+      <!-- for qml.xsl -->
+      <l:gentext key="ProblemSet" text="Problem Set"/>
+      <l:gentext key="CheckAnswer" text="Check Answer"/>
+      <l:gentext key="ShowAnswer" text="Show Answer"/>
+      <l:gentext key="Hint" text="Hint"/>
+      <l:gentext key="Correct" text="Correct!"/>
+      <l:gentext key="Incorrect" text="Incorrect."/>
 
       <!-- Old pairs resurrected for use by old content_render template -->
       <l:gentext key="Aboutus" text="About us"/>
