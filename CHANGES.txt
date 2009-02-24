@@ -1,3 +1,9 @@
+cnxml-0.6.0.1
+  - cnxml-0.6-hot-fix, first set: Upconversion tweaks and bugfixes
+    - fix rule and note @types (#8213)
+    - make text/@mime-type optional (#8176)
+    - eliminate class="cnxn" from upgrade output
+
 cnxml-0.6 (p1)
   - Major release: new version of CNXML. Changes include:
     - implement canonical schema language in Relax NG instead of in DTD;
