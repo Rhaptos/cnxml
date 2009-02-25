@@ -569,6 +569,7 @@
             <!--<xsl:value-of select="local-name(key('id',$target))" />-->
             <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
             <xsl:choose>
+              <xsl:when test="self::bib:entry" />
               <xsl:when test="cnx:label[node()]">
                 <xsl:apply-templates select="cnx:label" />
               </xsl:when>
@@ -623,7 +624,12 @@
                                                 ancestor::cnx:footnote or
                                                 ancestor::cnx:text or
                                                 ancestor::cnx:longdesc])">
-            <xsl:text> </xsl:text>
+            <xsl:choose>
+              <xsl:when test="self::bib:entry">[</xsl:when>
+              <xsl:otherwise>
+                <xsl:text> </xsl:text>
+              </xsl:otherwise>
+            </xsl:choose>
             <xsl:choose>
               <xsl:when test="self::cnx:note and ($type='note' or not(@type))">
                 <xsl:number level="any" 
@@ -714,19 +720,20 @@
                                               (not(@type) or translate(@type,$upper,$lower)='example')]" />
               </xsl:when>
               <xsl:otherwise>
-                <xsl:variable name="element" select="local-name()" />
+                <xsl:variable name="element" select="name()" />
                 <xsl:choose>
                   <xsl:when test="$version='0.5'">
                     <xsl:number level="any" 
-                                count="*[local-name()=$element]" />
+                                count="*[name()=$element]" />
                   </xsl:when>
                   <xsl:otherwise>
                     <xsl:number level="any" 
-                                count="*[local-name()=$element][not(@type) or translate(@type,$upper,$lower)=$element]" />
+                                count="*[name()=$element][not(@type) or translate(@type,$upper,$lower)=$element]" />
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:otherwise>
             </xsl:choose>
+            <xsl:if test="self::bib:entry">]</xsl:if>
             </xsl:if>
           </xsl:for-each>
         </span>
