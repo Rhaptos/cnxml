@@ -285,7 +285,7 @@
   <!-- JAVA-APPLET (cnxml version 0.6) -->
   <xsl:template match="cnx:java-applet">
     <span class="media" id="{parent::cnx:media/@id}">
-      <applet code="{@src}">
+      <applet code="{@code}">
         <xsl:for-each select="@width|@height|@id|@codebase|@archive|@name">
           <xsl:attribute name="{name()}">
             <xsl:value-of select="." />
