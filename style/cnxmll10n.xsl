@@ -274,9 +274,9 @@
       <l:gentext key="NoMathMLSupport" text=" Your browser doesn't currently support MathML."/>
       <l:gentext key="IE6OrAbove" text=" If you are using Microsoft Internet Explorer 6 or above, please install the required"/>
       <l:gentext key="MathMLPlayer" text="MathPlayer plugin."/>
-      <l:gentext key="FirefoxMozillaBrowsers" text="Firefox and other Mozilla browsers will display mathml, though they require an additional"/>
+      <l:gentext key="FirefoxMozillaBrowsers" text="Firefox and other Mozilla browsers will display MathML, though they require an additional"/>
       <l:gentext key="MathematicsFonts" text="mathematics fonts package."/>
-      <l:gentext key="SafariAndChrome" text=" Apple Safari and Google Chrome do not support MathML. Safari and Chrome will attempt to display mathml, but it should not be considered correct. "/>
+      <l:gentext key="SafariAndChrome" text=" Apple Safari and Google Chrome do not support MathML. Safari and Chrome will attempt to display MathML, but it should not be considered correct. "/>
       <l:gentext key="AnyBrowser" text=" You can view the correct math in the "/>
       <l:gentext key="PrintVersion" text="Print (PDF) version"/>
       <l:gentext key="SeeOur" text=". See our"/>
