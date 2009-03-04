@@ -646,8 +646,8 @@
       </span>
       <a class="link" href="{@src}">
 	<xsl:choose>
-	  <xsl:when test="cnx:title">
-	    <i><xsl:apply-templates select="cnx:title" /></i>
+	  <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
+	    <i><xsl:value-of select="cnx:param[@name='title']/@value" /></i>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:value-of select="@src" />
