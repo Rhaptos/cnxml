@@ -304,9 +304,8 @@
           </xsl:attribute>
         </xsl:when>
         <!-- Block 'quote', 'pre', and 'code' get IDs always. -->
-        <xsl:when test="(((self::cnxml:quote or self::cnxml:preformat) and 
-                         (@type='block' or not(@type))) or
-                         self::cnxml:code/@type='block') and not(@id)">
+        <xsl:when test="((self::cnxml:preformat and (@type='block' or not(@type))) or 
+                        ((self::cnxml:quote or self::cnxml:code) and @type='block')) and not(@id)">
           <xsl:attribute name="id">
             <xsl:value-of select="generate-id()"/>
           </xsl:attribute>
@@ -326,6 +325,7 @@
       <xsl:apply-templates select="@*[not(name(.)='src')][not(name(.)='type')]"/>
       <xsl:if test="self::cnxml:quote">
         <xsl:attribute name="display">inline</xsl:attribute>
+        <xsl:attribute name="class">no-marks</xsl:attribute>
       </xsl:if>
       <xsl:call-template name="convert-link-src">
         <xsl:with-param name="src" select="normalize-space(@src)"/>

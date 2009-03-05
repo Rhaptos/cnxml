@@ -285,7 +285,7 @@
   <!-- JAVA-APPLET (cnxml version 0.6) -->
   <xsl:template match="cnx:java-applet">
     <span class="media" id="{parent::cnx:media/@id}">
-      <applet code="{@src}">
+      <applet code="{@code}">
         <xsl:for-each select="@width|@height|@id|@codebase|@archive|@name">
           <xsl:attribute name="{name()}">
             <xsl:value-of select="." />
@@ -646,8 +646,8 @@
       </span>
       <a class="link" href="{@src}">
 	<xsl:choose>
-	  <xsl:when test="cnx:title">
-	    <i><xsl:apply-templates select="cnx:title" /></i>
+	  <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
+	    <i><xsl:value-of select="cnx:param[@name='title']/@value" /></i>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:value-of select="@src" />

@@ -356,17 +356,21 @@
         <xsl:attribute name="class">section-header</xsl:attribute>
         <xsl:variable name="labeled-exercise" select="(parent::cnx:problem or parent::cnx:solution) and 
                                                       not(cnx:label[not(node())])" />
-        <xsl:apply-templates select="cnx:label" />
-        <xsl:if test="cnx:label[node()] and (cnx:title and not($labeled-exercise))">
-          <xsl:text>: </xsl:text>
+        <xsl:if test="cnx:label[node()] or $labeled-exercise">
+          <span class="cnx_label">
+            <xsl:apply-templates select="cnx:label" />
+            <xsl:if test="cnx:label[node()] and (cnx:title[node()] and not($labeled-exercise))">
+              <xsl:text>: </xsl:text>
+            </xsl:if>
+	    <xsl:if test="$labeled-exercise">
+	      <xsl:number level="any" count="cnx:exercise" format="1."/>
+              <xsl:number level="single" format="a) " />
+	    </xsl:if>
+          </span>
         </xsl:if>
-	<xsl:if test="$labeled-exercise">
-	  <xsl:number level="any" count="cnx:exercise" format="1."/>
-          <xsl:number level="single" format="a) " />
-	</xsl:if>
         <!-- for cnxml version 0.1 -->
         <xsl:if test="@name">
-          <strong>
+          <strong class="title">
             <xsl:value-of select="@name" />
             <xsl:if test="@name=''">
               <xsl:text> </xsl:text>
@@ -890,7 +894,19 @@
           <xsl:value-of select="$href" />
         </xsl:attribute>
       </xsl:if>
+      <xsl:variable name="no-marks">
+        <xsl:call-template name="class-test">
+          <xsl:with-param name="provided-class" select="normalize-space(@class)" />
+          <xsl:with-param name="wanted-class">no-marks</xsl:with-param>
+        </xsl:call-template>
+      </xsl:variable>
+      <xsl:if test="not($version='0.5') and $display='inline' and $no-marks!='1'">
+        <xsl:text>&#8220;</xsl:text>
+      </xsl:if>
       <xsl:apply-templates select="*[not(self::cnx:title|self::cnx:label)]|text()" />
+      <xsl:if test="not($version='0.5') and $display='inline' and $no-marks!='1'">
+        <xsl:text>&#8221;</xsl:text>
+      </xsl:if>
       <xsl:if test="$href!=''">
         <span class="quote-source">
           <xsl:text>[</xsl:text>
@@ -1103,9 +1119,9 @@
       </xsl:when>
       <xsl:otherwise>
         <div class="preformat">
+          <xsl:call-template name='IdCheck'/>
           <xsl:apply-templates select="cnx:title" />
-          <pre class="preformat">
-            <xsl:call-template name='IdCheck'/>
+          <pre class="preformatted">
             <xsl:if test="@display='none'">
               <xsl:attribute name="style">display: none</xsl:attribute>
             </xsl:if>
