@@ -278,14 +278,16 @@
       <l:gentext key="MathematicsFonts" text="mathematics fonts package."/>
       <l:gentext key="SafariAndChrome" text=" Apple Safari and Google Chrome do not support MathML. Safari and Chrome will attempt to display MathML, but it should not be considered correct. "/>
       <l:gentext key="AnyBrowser" text=" You can view the correct math in the "/>
-      <l:gentext key="PrintVersion" text="Print (PDF) version"/>
-      <l:gentext key="SeeOur" text=". See our"/>
+      <l:gentext key="PrintVersion" text="Print (PDF) version."/>
+      <l:gentext key="SeeOur" text="See our"/>
       <l:gentext key="BrowserSupport" text="browser support page"/>
       <l:gentext key="AdditionalDetails" text="for additional details."/>
-      <l:gentext key="MathMLTest" text="A simple MathML test is below.  If the two MathML examples below are alike, your browser is MathML compatible."/>
+      <l:gentext key="MathMLTest" text="Or compare the two sample Math snippets below. Example 1 is what you will see in your browser and Example 2 is the correct display of the MathML. If the two MathML examples below are alike, your browser is MathML compatible."/>
       <l:gentext key="Example1" text="Example 1:"/>
       <l:gentext key="Example2" text="Example 2:"/>
-      <l:gentext key="HideMessage" text="Hide this message"/>
+      <l:gentext key="HideMessage" text="MathML not correct, but hide this message"/>
+      <l:gentext key="DisplayFullMessage" text="Display full message"/>
+      <l:gentext key="MathMLCorrect" text="MathML displays correctly.  Hide this message."/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
