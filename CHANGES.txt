@@ -1,3 +1,12 @@
+  - cnxml-0.6-hot-fix, second set
+    - make <audio> implement title <param>s in the same way that 0.5 audio media do
+    - properly implemenet <java-applet> (look for @code instead of @src) (ticket:8452)
+    - change output of <section> <label>s to match other <label> outputs
+    - add curly quotes around inline <quote>, unless it has a "no-marks" class (which upconverted content will) (ticket:8256)
+    - don't add IDs to inline <quote> in upconversion (ticket:8058)
+    - fix problem with <preformat> rendering messing up EIP (ticket:8262)
+    - preserve <cnxn> ID in upconversion (ticket:8214) and drop debugging "cnxn" class
+
 cnxml-0.6.0.1
   - cnxml-0.6-hot-fix, first set: Upconversion tweaks and bugfixes
     - fix rule and note @types (#8213)
