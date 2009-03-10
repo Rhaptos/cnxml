@@ -273,16 +273,16 @@
       <l:gentext key="Notecolon" text="Note:" />
       <l:gentext key="NoMathMLSupport" text=" Your browser doesn't currently support MathML."/>
       <l:gentext key="IE6OrAbove" text=" Please install the required"/>
-      <l:gentext key="MathMLPlayer" text="MathPlayer plugin."/>
+      <l:gentext key="MathMLPlayer" text="MathPlayer plugin "/>
       <l:gentext key="ToViewMathML" text=" to view MathML correctly."/>
       <l:gentext key="FirefoxRequires" text="Firefox requires additional"/>
       <l:gentext key="ToDisplayMathML" text=" to display MathML correctly."/>
-      <l:gentext key="MathematicsFonts" text="mathematics fonts package."/>
+      <l:gentext key="MathematicsFonts" text="mathematics fonts "/>
       <l:gentext key="ChromeMsg" text=" Chrome will attempt to display MathML, but it should not be considered correct. "/>
       <l:gentext key="SafariMsg" text=" Safari will attempt to display MathML, but it should not be considered correct. "/>
       <l:gentext key="AnyBrowser" text=" You can always view the correct math in the "/>
       <l:gentext key="PrintVersion" text="PDF version."/>
-      <l:gentext key="SeeOur" text="See our"/>
+      <l:gentext key="SeeOur" text=" See our"/>
       <l:gentext key="BrowserSupport" text="browser support page"/>
       <l:gentext key="AdditionalDetails" text="for additional details."/>
       <l:gentext key="MathMLTest" text="Or compare the two sample Math snippets below. Example 1 is what you will see in your browser and Example 2 is the correct display of the MathML. If the two MathML examples below are alike, your browser is MathML compatible."/>
@@ -290,7 +290,7 @@
       <l:gentext key="Example2" text="Example 2:"/>
       <l:gentext key="HideExamples" text="( Hide examples )"/>
       <l:gentext key="ShowExamples" text="( Show MathML examples )"/>
-      <l:gentext key="DismissMessage" text="dismiss this message."/>
+      <l:gentext key="DismissMessage" text=" dismiss this message."/>
       <l:gentext key="TwoExamples" text="If the two examples below are mathematically the same, your browser is correctly displaying MathML, and you can"/>
 
       <!-- for editInPlace.xsl -->
