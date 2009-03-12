@@ -84,20 +84,21 @@
       <l:gentext key="Summary" text="Summary:"/>
       <l:gentext key="viewingoldversion" text="You are viewing an old version of this document."/>
       <l:gentext key="latestversionhere" text="The latest version is available here."/>
-      <l:gentext key="previewofwhenpublished" text=" This is a preview of how your module will appear when published"/>
-      <l:gentext key="assumingthatall" text="assuming that all "/>
+      <l:gentext key="Thisisapreview_start" text="This is a preview of how your module will appear when published"/>
+      <l:gentext key="Thisisapreview_finish" text="."/>
+      <l:gentext key="commaassumingthatall" text=", assuming that all"/>
       <l:gentext key="pendingrolerequests" text="currently pending role requests"/>
-      <l:gentext key="areaccepted" text=" are accepted"/>
-      <l:gentext key="returntoediting" text="You must return to the editing interface to "/>
+      <l:gentext key="areaccepted" text="are accepted"/>
+      <l:gentext key="returntoediting" text="You must return to the editing interface to"/>
       <l:gentext key="edit" text="edit"/>
-      <l:gentext key="or" text=" or "/>
+      <l:gentext key="or" text="or"/>
       <l:gentext key="publish" text="publish"/>
-      <l:gentext key="yourchanges" text=" your changes. "/>
-      <l:gentext key="youmayview" text="You may view the "/>
+      <l:gentext key="yourchanges" text="your changes."/>
+      <l:gentext key="youmayview" text="You may view the"/>
       <l:gentext key="latestpublishedversion" text="latest published version"/>
-      <l:gentext key="hereanda" text=" here and a "/>
+      <l:gentext key="hereanda" text="here and a"/>
       <l:gentext key="listofchanges" text="list of changes"/>
-      <l:gentext key="here" text=" here."/>
+      <l:gentext key="hereperiod" text="here."/>
       <l:gentext key="CollectionNavigation" text="Collection Navigation" />
       <l:gentext key="Previousmodule" text="&#171; Previous module"/>
       <l:gentext key="Nextmodule" text="Next module"/>
