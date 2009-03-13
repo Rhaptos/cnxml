@@ -272,7 +272,7 @@
       <l:gentext key="Privatelensexplanation" text="Private lens: seen only by lens maker while logged on"/>
       <l:gentext key="Diagramoflenses" text="Diagram of lenses"/>
       <l:gentext key="Notecolon" text="Note:" />
-      <l:gentext key="NoMathMLSupport" text="Your browser doesn't currently support MathML."/>
+      <l:gentext key="NoMathMLSupport" text="Your browser may not currently support MathML."/>
       <l:gentext key="IE6OrAbove" text="Please install the required"/>
       <l:gentext key="MathMLPlayer" text="MathPlayer plugin"/>
       <l:gentext key="ToViewMathML" text="to view MathML correctly."/>
