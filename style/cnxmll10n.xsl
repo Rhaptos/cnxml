@@ -299,6 +299,12 @@
       <l:gentext key="Morecoursesusingcontent" text="More collections using this content"/>
       <l:gentext key="TableofContents" text="Table of Contents"/>
 
+      <l:gentext key="TagsLabel" text="Tags:"/>
+      <l:gentext key="ApproveModule" text="Approve Module"/>
+      <l:gentext key="Approve" text="Approve"/>
+      <l:gentext key="AboutRating" text="About the rating system"/>
+      <l:gentext key="LoginRequired" text="login required"/>
+
 <!--
       <l:gentext key="Summer Sky" text="Summer Sky"/>
       <l:gentext key="Desert Scape" text="Desert Scape"/>
