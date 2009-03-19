@@ -1,3 +1,6 @@
+cnxml-0.6.0.3
+  - Mathml warning message for unsupported browsers
+
 cnxml-0.6.0.2
   - cnxml-0.6-hot-fix, third set (March 6, 2009)
     - make <audio> implement title <param>s in the same way as 0.5 audio media
