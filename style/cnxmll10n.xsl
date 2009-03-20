@@ -188,6 +188,7 @@
       <l:gentext key="parensquestion" text="(?)"/>
       <l:gentext key="questionmark" text="?"/>
       <l:gentext key="EndorsedBy" text="Endorsed by"/>
+      <l:gentext key="Endorsedthumbnail" text="Endorsed"/>
       <l:gentext key="Whatdoesendorsedbymean" text='What does "Endorsed by" mean'/>
       <l:gentext key="AffiliatedWith" text="Affiliated with"/>
       <l:gentext key="Whatdoesaffiliatedwithmean" text='What does "Affiliated with" mean'/>
