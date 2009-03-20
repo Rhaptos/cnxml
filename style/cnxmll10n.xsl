@@ -250,6 +250,8 @@
       <l:gentext key="Whatisinalenspara" text="Lens makers point to Connexions materials (modules and collections), creating a guide that includes their own comments and descriptive tags about the content."/>
       <l:gentext key="Whocancreatealens" text="Who can create a lens?"/>
       <l:gentext key="Whocancreatealenspara" text="Any individual Connexions member, a community, or a respected organization."/>
+      <l:gentext key="Whataretags" text="What are tags?"/>
+      <l:gentext key="Whataretagspara" text="Tags are descriptors added by lens makers to help label content, attaching a vocabulary that is meaningful in the context of the lens."/>
       <l:gentext key="WhatisMyFavorites" text="What is 'My Favorites'"/>
       <l:gentext key="MyFavoritesexplanation" text="'My Favorites' is a special kind of lens which you can use to bookmark modules and collections directly in Connexions. 'My Favorites' can only be seen by you, and collections saved in 'My Favorites' can remember the last module you were on. You need a Connexions account to use 'My Favorites'."/>
       <l:gentext key="Thiscontentisellipsis" text="This content is ..."/>
