@@ -264,6 +264,8 @@
       <l:gentext key="linktoseeallendorsed" text="link to see all content they endorse."/>
       <l:gentext key="linktoseeallaffiliated" text="link to see all content affiliated with them."/>
       <l:gentext key="linktoseeallselected" text="link to see all content selected in this lens."/>
+      <l:gentext key="icontodisplaytags" text="icon to display tags associated with this content."/>
+      <l:gentext key="lctags" text="tags"/>
       <l:gentext key="Skiptocontent" text="Skip to content"/>
       <l:gentext key="Skiptonavigation" text="Skip to navigation"/>
       <l:gentext key="Skiptocollectioninformation" text="Skip to collection information"/>
