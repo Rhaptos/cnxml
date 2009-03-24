@@ -199,6 +199,7 @@
       <l:gentext key="Alsointheselenses" text="Also in these lenses" />
       <l:gentext key="Tags" text="Tags"/>
       <l:gentext key="Whatisatag" text="What is a tag"/>
+      <l:gentext key="Edittags" text="Edit tags"/>
       <l:gentext key="Addtoellipsis" text="Add to ..."/>
       <l:gentext key="Addmoduleorcollectionto" text="Add either the module or the collection to:"/>
       <l:gentext key="Addmoduleto" text="Add the module to:"/>
