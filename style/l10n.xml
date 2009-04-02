@@ -1,0 +1,545 @@
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="af" english-language-name="Afrikaans">
+   <l:gentext key="Example" text="Voorbeeld"/>
+   <l:gentext key="Figure" text="Figuur"/>
+   <l:gentext key="Glossary" text="Woordlys"/>
+   <l:gentext key="GlossSeeAlso" text="WoordelysSienOok"/>
+   <l:gentext key="Reference" text="Verwysing"/>
+   <l:gentext key="Table" text="Tabel"/>
+   <l:gentext key="TableofContents" text="Inhoudsopgawe"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="am" english-language-name="Amharic">
+   <l:gentext key="Example" text="&#4616;&#4637;&#4659;&#4620;"/>
+   <l:gentext key="Figure" text="&#4637;&#4661;&#4621;"/>
+   <l:gentext key="Glossary" text="&#4840;&#4675;&#4619;&#4726;&#4733; &#4941;&#4730; &#4829;&#4653;&#4829;&#4653;"/>
+   <l:gentext key="GlossSeeAlso" text="&#8230;&#4757;&#4637; &#4773;&#4845;"/>
+   <l:gentext key="Reference" text="&#4635;&#4899;&#4672;&#4667;"/>
+   <l:gentext key="Table" text="&#4640;&#4757;&#4896;&#4648;&#4837;"/>
+   <l:gentext key="TableofContents" text="&#4635;&#4813;&#4907;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="ar" english-language-name="Arabic">
+   <l:gentext key="Example" text="&#1605;&#1579;&#1575;&#1604;"/>
+   <l:gentext key="Figure" text="&#1588;&#1603;&#1604;"/>
+   <l:gentext key="Glossary" text="&#1602;&#1575;&#1605;&#1608;&#1587; &#1575;&#1604;&#1605;&#1601;&#1585;&#1583;&#1575;&#1578;"/>
+   <l:gentext key="GlossSeeAlso" text="&#1575;&#1606;&#1592;&#1585; &#1571;&#1610;&#1590;&#1575;&#1611;"/>
+   <l:gentext key="Reference" text="&#1605;&#1585;&#1580;&#1593;"/>
+   <l:gentext key="Table" text="&#1580;&#1583;&#1608;&#1604;"/>
+   <l:gentext key="TableofContents" text="&#1602;&#1575;&#1574;&#1605;&#1577; &#1575;&#1604;&#1605;&#1581;&#1578;&#1608;&#1610;&#1575;&#1578;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="az" english-language-name="Azerbaijani">
+   <l:gentext key="Example" text="N&#252;mun&#601;"/>
+   <l:gentext key="Figure" text="Fiqur"/>
+   <l:gentext key="Glossary" text="L&#252;&#287;&#601;t"/>
+   <l:gentext key="GlossSeeAlso" text="El&#601;c&#601; D&#601; Bax"/>
+   <l:gentext key="Reference" text="Xat&#305;rlatma"/>
+   <l:gentext key="Table" text="C&#601;dv&#601;l"/>
+   <l:gentext key="TableofContents" text="M&#601;zmun"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="bg" english-language-name="Bulgarian">
+   <l:gentext key="Example" text="&#1055;&#1088;&#1080;&#1084;&#1077;&#1088;"/>
+   <l:gentext key="Figure" text="&#1060;&#1080;&#1075;&#1091;&#1088;&#1072;"/>
+   <l:gentext key="Glossary" text="&#1058;&#1077;&#1088;&#1084;&#1080;&#1085;&#1086;&#1083;&#1086;&#1075;&#1080;&#1095;&#1077;&#1085; &#1088;&#1077;&#1095;&#1085;&#1080;&#1082;"/>
+   <l:gentext key="GlossSeeAlso" text="&#1074;&#1078;."/>
+   <l:gentext key="Reference" text="&#1057;&#1087;&#1088;&#1072;&#1074;&#1086;&#1095;&#1085;&#1080;&#1082;"/>
+   <l:gentext key="Table" text="&#1058;&#1072;&#1073;&#1083;&#1080;&#1094;&#1072;"/>
+   <l:gentext key="TableofContents" text="&#1057;&#1098;&#1076;&#1098;&#1088;&#1078;&#1072;&#1085;&#1080;&#1077;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="bn" english-language-name="Bangla">
+   <l:gentext key="Example" text="&#2441;&#2470;&#2494;&#2489;&#2480;&#2467;"/>
+   <l:gentext key="Figure" text="&#2458;&#2495;&#2468;&#2509;&#2480;"/>
+   <l:gentext key="Glossary" text="&#2472;&#2495;&#2480;&#2509;&#2456;&#2472;&#2509;&#2463;"/>
+   <l:gentext key="GlossSeeAlso" text="&#2438;&#2480;&#2507; &#2470;&#2503;&#2454;&#2497;&#2472;"/>
+   <l:gentext key="Reference" text="&#2455;&#2509;&#2480;&#2472;&#2509;&#2469;&#2488;&#2498;&#2468;&#2509;&#2480;"/>
+   <l:gentext key="Table" text="&#2459;&#2453;"/>
+   <l:gentext key="TableofContents" text="&#2488;&#2498;&#2458;&#2495;&#2474;&#2468;&#2509;&#2480;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="bs" english-language-name="Bosnian">
+   <l:gentext key="Example" text="Primjer"/>
+   <l:gentext key="Figure" text="Slika"/>
+   <l:gentext key="Glossary" text="Glosar"/>
+   <l:gentext key="GlossSeeAlso" text="Vidi tako&#273;e"/>
+   <l:gentext key="Reference" text="Referenca"/>
+   <l:gentext key="Table" text="Tabela"/>
+   <l:gentext key="TableofContents" text="Sadr&#382;aj"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="ca" english-language-name="Catalan">
+   <l:gentext key="Example" text="Exemple"/>
+   <l:gentext key="Figure" text="Figura"/>
+   <l:gentext key="Glossary" text="Glossari"/>
+   <l:gentext key="GlossSeeAlso" text="Veure tamb&#233;"/>
+   <l:gentext key="Reference" text="Refer&#232;ncia"/>
+   <l:gentext key="Table" text="Taula"/>
+   <l:gentext key="TableofContents" text="Sumari"/>
+</l:l10n>
+
+<l:gentext key="Example" text="Příklad"/>
+<l:gentext key="Figure" text="Obrázek"/>
+<l:gentext key="Glossary" text="Slovník"/>
+<l:gentext key="GlossSeeAlso" text="Viz též"/>
+<l:gentext key="Reference" text="Odkaz"/>
+<l:gentext key="Table" text="Tabulka"/>
+<l:gentext key="TableofContents" text="Obsah"/>
+</l:l10n><l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="cy" english-language-name="Welsh">
+   <l:gentext key="Example" text="Enghraifft"/>
+   <l:gentext key="Figure" text="Ffigur"/>
+   <l:gentext key="Glossary" text="Geirfa"/>
+   <l:gentext key="GlossSeeAlso" text="Gweler Hefyd"/>
+   <l:gentext key="Reference" text="Cyfeiriad"/>
+   <l:gentext key="Table" text="Tabl"/>
+   <l:gentext key="TableofContents" text="Cynnwys"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="da" english-language-name="Danish">
+   <l:gentext key="Example" text="Eksempel"/>
+   <l:gentext key="Figure" text="Figur"/>
+   <l:gentext key="Glossary" text="Ordliste"/>
+   <l:gentext key="GlossSeeAlso" text="Se ogs&#229;"/>
+   <l:gentext key="Reference" text="Henvisning"/>
+   <l:gentext key="Table" text="Tabel"/>
+   <l:gentext key="TableofContents" text="Indholdsfortegnelse"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="de" english-language-name="German">
+   <l:gentext key="Example" text="Beispiel"/>
+   <l:gentext key="Figure" text="Abbildung"/>
+   <l:gentext key="Glossary" text="Glossar"/>
+   <l:gentext key="GlossSeeAlso" text="Siehe auch"/>
+   <l:gentext key="Reference" text="Verweis"/>
+   <l:gentext key="Table" text="Tabelle"/>
+   <l:gentext key="TableofContents" text="Inhaltsverzeichnis"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="el" english-language-name="Greek">
+   <l:gentext key="Example" text="&#928;&#945;&#961;&#940;&#948;&#949;&#953;&#947;&#956;&#945;"/>
+   <l:gentext key="Figure" text="&#931;&#967;&#942;&#956;&#945;"/>
+   <l:gentext key="Glossary" text="&#915;&#955;&#969;&#963;&#963;&#940;&#961;&#953;&#959;"/>
+   <l:gentext key="GlossSeeAlso" text="&#916;&#949;&#943;&#964;&#949; &#917;&#960;&#943;&#963;&#951;&#962;"/>
+   <l:gentext key="Reference" text="&#913;&#957;&#945;&#966;&#959;&#961;&#940;"/>
+   <l:gentext key="Table" text="&#928;&#943;&#957;&#945;&#954;&#945;&#962;"/>
+   <l:gentext key="TableofContents" text="&#928;&#943;&#957;&#945;&#954;&#945;&#962; &#928;&#949;&#961;&#953;&#949;&#967;&#959;&#956;&#941;&#957;&#969;&#957;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="en" english-language-name="English">
+   <l:gentext key="Example" text="Example"/>
+   <l:gentext key="example" text="Example"/>
+   <l:gentext key="Figure" text="Figure"/>
+   <l:gentext key="figure" text="Figure"/>
+   <l:gentext key="Glossary" text="Glossary"/>
+   <l:gentext key="glossary" text="Glossary"/>
+   <l:gentext key="GlossSeeAlso" text="See Also"/>
+   <l:gentext key="Reference" text="Reference"/>
+   <l:gentext key="reference" text="Reference"/>
+   <l:gentext key="table" text="Table"/>
+   <l:gentext key="Table" text="Table"/>
+   <l:gentext key="TableofContents" text="Table of Contents"/>
+</l:l10n>
+
+<l:gentext key="Example" text="Ekzemplo"/>
+<l:gentext key="Figure" text="Figuro"/>
+<l:gentext key="Glossary" text="Glosaro"/>
+<l:gentext key="GlossSeeAlso" text="Vidu ankaŭ"/>
+<l:gentext key="Reference" text="Referenco"/>
+<l:gentext key="Table" text="Tabelo"/>
+<l:gentext key="TableofContents" text="Enhavo"/>
+</l:l10n><l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="es" english-language-name="Spanish">
+   <l:gentext key="Example" text="Ejemplo"/>
+   <l:gentext key="Figure" text="Figura"/>
+   <l:gentext key="Glossary" text="Glosario"/>
+   <l:gentext key="GlossSeeAlso" text="Ver tambi&#233;n"/>
+   <l:gentext key="Reference" text="Referencia"/>
+   <l:gentext key="Table" text="Tabla"/>
+   <l:gentext key="TableofContents" text="Tabla de contenidos"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="et" english-language-name="Estonian">
+   <l:gentext key="Example" text="N&#228;ide"/>
+   <l:gentext key="Figure" text="Joonis"/>
+   <l:gentext key="Glossary" text="S&#245;nastik"/>
+   <l:gentext key="GlossSeeAlso" text="Vt. ka"/>
+   <l:gentext key="Reference" text="Viide"/>
+   <l:gentext key="Table" text="Tabel"/>
+   <l:gentext key="TableofContents" text="Sisukord"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="eu" english-language-name="Basque">
+   <l:gentext key="Example" text="Adibidea"/>
+   <l:gentext key="Figure" text="Irudia"/>
+   <l:gentext key="Glossary" text="Glosarioa"/>
+   <l:gentext key="GlossSeeAlso" text="Ikus baita ere"/>
+   <l:gentext key="Reference" text="Erreferentzia"/>
+   <l:gentext key="Table" text="Taula"/>
+   <l:gentext key="TableofContents" text="Edukien aurkibidea"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="fa" english-language-name="Farsi">
+   <l:gentext key="Example" text="&#1605;&#1579;&#1575;&#1604;"/>
+   <l:gentext key="Figure" text="&#1588;&#1603;&#1604;"/>
+   <l:gentext key="Glossary" text="&#1608;&#1575;&#1688;&#1607;&#8204;&#1606;&#1575;&#1605;&#1607;"/>
+   <l:gentext key="GlossSeeAlso" text="&#1607;&#1605;&#1670;&#1606;&#1740;&#1606; &#1576;&#1576;&#1740;&#1606;&#1583;"/>
+   <l:gentext key="Reference" text="&#1575;&#1585;&#1580;&#1575;&#1593;"/>
+   <l:gentext key="Table" text="&#1580;&#1583;&#1608;&#1604;"/>
+   <l:gentext key="TableofContents" text="&#1601;&#1607;&#1585;&#1587;&#1578;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="fi" english-language-name="Finnish">
+   <l:gentext key="Example" text="Esimerkki"/>
+   <l:gentext key="Figure" text="Kuva"/>
+   <l:gentext key="Glossary" text="Sanasto"/>
+   <l:gentext key="GlossSeeAlso" text="Katso my&#246;s"/>
+   <l:gentext key="Reference" text="L&#228;hdeluettelo"/>
+   <l:gentext key="Table" text="Taulu"/>
+   <l:gentext key="TableofContents" text="Sis&#228;llys"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="fr" english-language-name="French">
+   <l:gentext key="Example" text="Exemple"/>
+   <l:gentext key="Figure" text="Figure"/>
+   <l:gentext key="figure" text="Figure"/>
+   <l:gentext key="Glossary" text="Glossaire"/>
+   <l:gentext key="GlossSeeAlso" text="Voir aussi"/>
+   <l:gentext key="Reference" text="R&#233;f&#233;rence"/>
+   <l:gentext key="Table" text="Tableau"/>
+   <l:gentext key="TableofContents" text="Table des mati&#232;res"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="ga" english-language-name="Irish">
+   <l:gentext key="Example" text="Sampla"/>
+   <l:gentext key="Figure" text="L&#233;ar&#225;id"/>
+   <l:gentext key="Glossary" text="Gluais"/>
+   <l:gentext key="GlossSeeAlso" text="F&#233;ach Freisin"/>
+   <l:gentext key="Reference" text="Tagairt"/>
+   <l:gentext key="Table" text="T&#225;bla"/>
+   <l:gentext key="TableofContents" text="Cl&#225;r &#193;bhair"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="gu" english-language-name="Gujarati">
+   <l:gentext key="Example" text="&#2697;&#2726;&#2750;&#2745;&#2736;&#2723;"/>
+   <l:gentext key="Figure" text="&#2694;&#2709;&#2755;&#2724;&#2751;"/>
+   <l:gentext key="Glossary" text="&#2742;&#2732;&#2765;&#2726;&#2750;&#2741;&#2738;&#2752;"/>
+   <l:gentext key="GlossSeeAlso" text="&#2694;&#2730;&#2723;&#2716;&#2753;&#2707;"/>
+   <l:gentext key="Reference" text="&#2744;&#2690;&#2726;&#2736;&#2765;&#2733;"/>
+   <l:gentext key="Table" text="&#2709;&#2763;&#2743;&#2765;&#2719;&#2709;"/>
+   <l:gentext key="TableofContents" text="&#2741;&#2751;&#2743;&#2735;&#2744;&#2753;&#2714;&#2752;&#2709;&#2763;&#2743;&#2765;&#2719;&#2709;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="he" english-language-name="Hebrew">
+   <l:gentext key="Example" text="&#1491;&#1493;&#1490;&#1502;&#1492;"/>
+   <l:gentext key="Figure" text="&#1488;&#1497;&#1493;&#1512;"/>
+   <l:gentext key="Glossary" text="&#1502;&#1497;&#1500;&#1493;&#1503; &#1502;&#1493;&#1504;&#1495;&#1497;&#1501;"/>
+   <l:gentext key="GlossSeeAlso" text="&#1512;&#1488;&#1492; &#1490;&#1501;"/>
+   <l:gentext key="Reference" text="&#1502;&#1512;&#1488;&#1492; &#1502;&#1511;&#1493;&#1501;"/>
+   <l:gentext key="Table" text="&#1496;&#1489;&#1500;&#1492;"/>
+   <l:gentext key="TableofContents" text="&#1514;&#1493;&#1499;&#1503; &#1492;&#1506;&#1504;&#1497;&#1497;&#1504;&#1497;&#1501;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="hi" english-language-name="Hindi">
+   <l:gentext key="Example" text="&#2313;&#2342;&#2366;&#2361;&#2352;&#2339;"/>
+   <l:gentext key="Figure" text="&#2330;&#2367;&#2340;&#2381;&#2352;"/>
+   <l:gentext key="Glossary" text="&#2358;&#2348;&#2381;&#2342;&#2325;&#2379;&#2359;"/>
+   <l:gentext key="GlossSeeAlso" text="&#2311;&#2360;&#2375;&#2349;&#2368;&#2342;&#2375;&#2326;&#2375;&#2306;"/>
+   <l:gentext key="Reference" text="&#2360;&#2306;&#2342;&#2352;&#2381;&#2349;"/>
+   <l:gentext key="Table" text="&#2340;&#2366;&#2354;&#2367;&#2325;&#2366;"/>
+   <l:gentext key="TableofContents" text="&#2357;&#2367;&#2359;&#2351;-&#2360;&#2370;&#2330;&#2368;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="hr" english-language-name="Croatian">
+   <l:gentext key="Example" text="Primjer"/>
+   <l:gentext key="Figure" text="Slika"/>
+   <l:gentext key="Glossary" text="Rje&#269;nik"/>
+   <l:gentext key="GlossSeeAlso" text="Vidi i"/>
+   <l:gentext key="Reference" text="Referenca"/>
+   <l:gentext key="Table" text="Tablica"/>
+   <l:gentext key="TableofContents" text="Sadr&#382;aj"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="hu" english-language-name="Hungarian">
+   <l:gentext key="Example" text="P&#233;lda"/>
+   <l:gentext key="Figure" text="&#193;bra"/>
+   <l:gentext key="Glossary" text="Sz&#243;jegyz&#233;k"/>
+   <l:gentext key="GlossSeeAlso" text="L&#225;sd m&#233;g"/>
+   <l:gentext key="Reference" text="Referencia"/>
+   <l:gentext key="Table" text="T&#225;bl&#225;zat"/>
+   <l:gentext key="TableofContents" text="Tartalom"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="id" english-language-name="Indonesian">
+   <l:gentext key="Example" text="Teladan"/>
+   <l:gentext key="Figure" text="Gambar"/>
+   <l:gentext key="Glossary" text="Daftar Istilah"/>
+   <l:gentext key="GlossSeeAlso" text="Lihat Juga"/>
+   <l:gentext key="Reference" text="Referensi"/>
+   <l:gentext key="Table" text="Tabel"/>
+   <l:gentext key="TableofContents" text="Daftar Isi"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="it" english-language-name="Italian">
+   <l:gentext key="Example" text="Esempio"/>
+   <l:gentext key="Figure" text="Figura"/>
+   <l:gentext key="Glossary" text="Glossario"/>
+   <l:gentext key="GlossSeeAlso" text="Vedi Anche"/>
+   <l:gentext key="Reference" text="Riferimento"/>
+   <l:gentext key="Table" text="Tabella"/>
+   <l:gentext key="TableofContents" text="Sommario"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="ja" english-language-name="Japanese">
+   <l:gentext key="Example" text="&#20363;"/>
+   <l:gentext key="Figure" text="&#22259;"/>
+   <l:gentext key="Glossary" text="&#29992;&#35486;&#38598;"/>
+   <l:gentext key="GlossSeeAlso" text="&#21442;&#29031;"/>
+   <l:gentext key="Reference" text="&#21442;&#29031;"/>
+   <l:gentext key="Table" text="&#34920;"/>
+   <l:gentext key="TableofContents" text="&#30446;&#27425;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="kn" english-language-name="Kannada">
+   <l:gentext key="Example" text="&#3209;&#3238;&#3262;&#3257;&#3248;&#3235;&#3270;"/>
+   <l:gentext key="Figure" text="&#3226;&#3263;&#3236;&#3277;&#3248;"/>
+   <l:gentext key="Glossary" text="&#3242;&#3262;&#3248;&#3263;&#3245;&#3262;&#3255;&#3263;&#3221;&#3221;&#3275;&#3254;"/>
+   <l:gentext key="GlossSeeAlso" text="&#3207;&#3238;&#3240;&#3277;&#3240;&#3266; &#3256;&#3257; &#3240;&#3275;&#3233;&#3263;"/>
+   <l:gentext key="Reference" text="&#3209;&#3250;&#3277;&#3250;&#3271;&#3222;"/>
+   <l:gentext key="Table" text="&#3221;&#3275;&#3255;&#3277;&#3231;&#3221;"/>
+   <l:gentext key="TableofContents" text="&#3253;&#3263;&#3255;&#3247;&#3262;&#3240;&#3265;&#3221;&#3277;&#3248;&#3246;&#3235;&#3263;&#3221;&#3270;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="ko" english-language-name="Korean">
+   <l:gentext key="Example" text="&#50696;"/>
+   <l:gentext key="Figure" text="&#44536;&#47548;"/>
+   <l:gentext key="Glossary" text="&#50857;&#50612;&#54644;&#49444;"/>
+   <l:gentext key="GlossSeeAlso" text="&#45796;&#47480; &#49332;&#54196;&#48380; &#45236;&#50857;"/>
+   <l:gentext key="Reference" text="&#52280;&#44256;&#47928;&#54732;"/>
+   <l:gentext key="Table" text="&#54364;"/>
+   <l:gentext key="TableofContents" text="&#52264;&#47168;"/>
+</l:l10n>
+<!DOCTYPE l:i18n SYSTEM "l10n.dtd" [
+</l:i18n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="la" english-language-name="Latin">
+   <l:gentext key="Example" text="Exemplum"/>
+   <l:gentext key="Figure" text="Descriptio"/>
+   <l:gentext key="Glossary" text="Glossarium"/>
+   <l:gentext key="GlossSeeAlso" text="Cfr. autem"/>
+   <l:gentext key="Reference" text="Mentio"/>
+   <l:gentext key="Table" text="Tabula"/>
+   <l:gentext key="TableofContents" text="Index rerum notabilium"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="lt" english-language-name="Lithuanian">
+   <l:gentext key="Example" text="Pavyzdys"/>
+   <l:gentext key="Figure" text="Pav."/>
+   <l:gentext key="Glossary" text="Termin&#371; &#382;odynas"/>
+   <l:gentext key="GlossSeeAlso" text="Taip pat &#382;r."/>
+   <l:gentext key="Reference" text="Nuoroda"/>
+   <l:gentext key="Table" text="Lentel&#279;"/>
+   <l:gentext key="TableofContents" text="Turinys"/>
+</l:l10n>
+
+<l:gentext key="Example" text="Жишээ"/>
+<l:gentext key="Figure" text="Зураг"/>
+<l:gentext key="Glossary" text="Нэр томъёо"/>
+<l:gentext key="GlossSeeAlso" text="Бас харна уу"/>
+<l:gentext key="Reference" text="Ашигласан ном"/>
+<l:gentext key="Table" text="Хүснэгт"/>
+<l:gentext key="TableofContents" text="Гарчиг"/>
+</l:l10n><l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="nl" english-language-name="Dutch">
+   <l:gentext key="Example" text="Voorbeeld"/>
+   <l:gentext key="Figure" text="Figuur"/>
+   <l:gentext key="Glossary" text="Woordenlijst"/>
+   <l:gentext key="GlossSeeAlso" text="Zie ook"/>
+   <l:gentext key="Reference" text="Referentie"/>
+   <l:gentext key="Table" text="Tabel"/>
+   <l:gentext key="TableofContents" text="Inhoudsopgave"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="nn" english-language-name="Nynorsk">
+   <l:gentext key="Example" text="D&#248;me"/>
+   <l:gentext key="Figure" text="Figur"/>
+   <l:gentext key="Glossary" text="Ordliste"/>
+   <l:gentext key="GlossSeeAlso" text="Sj&#229; &#242;g"/>
+   <l:gentext key="Reference" text="Referanse"/>
+   <l:gentext key="Table" text="Tabell"/>
+   <l:gentext key="TableofContents" text="Innhald"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="no" english-language-name="Norwegian">
+   <l:gentext key="Example" text="Eksempel"/>
+   <l:gentext key="Figure" text="Figur"/>
+   <l:gentext key="Glossary" text="Ordliste"/>
+   <l:gentext key="GlossSeeAlso" text="Se Ogs&#229;"/>
+   <l:gentext key="Reference" text="Referanse"/>
+   <l:gentext key="Table" text="Tabell"/>
+   <l:gentext key="TableofContents" text="Innholdsfortegnelse"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="or" english-language-name="Oriya">
+   <l:gentext key="Example" text="&#2825;&#2854;&#2878;&#2873;&#2864;&#2851;"/>
+   <l:gentext key="Figure" text="&#2842;&#2879;&#2852;&#2893;&#2864;"/>
+   <l:gentext key="Glossary" text="&#2870;&#2860;&#2893;&#2854;&#2837;&#2891;&#2871;"/>
+   <l:gentext key="GlossSeeAlso" text="&#2831;&#2873;&#2878; &#2861;&#2879; &#2854;&#2887;&#2838;&#2856;&#2893;&#2852;&#2881;"/>
+   <l:gentext key="Reference" text="&#2872;&#2856;&#2893;&#2854;&#2864;&#2893;&#2861;"/>
+   <l:gentext key="Table" text="&#2872;&#2878;&#2864;&#2851;&#2880;"/>
+   <l:gentext key="TableofContents" text="&#2872;&#2882;&#2842;&#2880;&#2858;&#2852;&#2893;&#2864;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="pa" english-language-name="Punjabi">
+   <l:gentext key="Example" text="&#2569;&#2598;&#2622;&#2617;&#2608;&#2600;"/>
+   <l:gentext key="Figure" text="&#2586;&#2623;&#2673;&#2596;&#2608;"/>
+   <l:gentext key="Glossary" text="&#2614;&#2604;&#2598;&#2622;&#2613;&#2610;&#2624;"/>
+   <l:gentext key="GlossSeeAlso" text="&#2567;&#2617;&#2613;&#2624;&#2613;&#2631;&#2582;&#2635;"/>
+   <l:gentext key="Reference" text="&#2617;&#2613;&#2622;&#2610;&#2622;"/>
+   <l:gentext key="Table" text="&#2616;&#2622;&#2608;&#2595;&#2624;"/>
+   <l:gentext key="TableofContents" text="&#2605;&#2622;&#2583;&#2616;&#2622;&#2608;&#2595;&#2624;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="pl" english-language-name="Polish">
+   <l:gentext key="Example" text="Przyk&#322;ad"/>
+   <l:gentext key="Figure" text="Rysunek"/>
+   <l:gentext key="Glossary" text="Glossary"/>
+   <l:gentext key="glossary" text="Glossary"/>
+   <l:gentext key="GlossSeeAlso" text="Patrz te&#380;"/>
+   <l:gentext key="Reference" text="Materia&#322;y &#378;r&#243;d&#322;owe"/>
+   <l:gentext key="Table" text="Tabela"/>
+   <l:gentext key="TableofContents" text="Spis tre&#347;ci"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="pt_br" english-language-name="Portuguese (Brazil)">
+   <l:gentext key="Example" text="Exemplo"/>
+   <l:gentext key="Figure" text="Figura"/>
+   <l:gentext key="Glossary" text="Gloss&#225;rio"/>
+   <l:gentext key="GlossSeeAlso" text="Ver Tamb&#233;m"/>
+   <l:gentext key="Reference" text="Refer&#234;ncia"/>
+   <l:gentext key="Table" text="Tabela"/>
+   <l:gentext key="TableofContents" text="&#205;ndice"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="pt" english-language-name="Portuguese">
+   <l:gentext key="Example" text="Exemplo"/>
+   <l:gentext key="Figure" text="Figura"/>
+   <l:gentext key="Glossary" text="Gloss&#225;rio"/>
+   <l:gentext key="GlossSeeAlso" text="Ver Tamb&#233;m"/>
+   <l:gentext key="Reference" text="Refer&#234;ncia"/>
+   <l:gentext key="Table" text="Tabela"/>
+   <l:gentext key="TableofContents" text="&#205;ndice"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="ro" english-language-name="Romanian">
+   <l:gentext key="Example" text="Exemplu"/>
+   <l:gentext key="Figure" text="Fig."/>
+   <l:gentext key="Glossary" text="Glosar"/>
+   <l:gentext key="GlossSeeAlso" text="Vezi &#537;i"/>
+   <l:gentext key="Reference" text="Referin&#539;&#259;"/>
+   <l:gentext key="Table" text="Tabel"/>
+   <l:gentext key="TableofContents" text="Cuprins"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="ru" english-language-name="Russian">
+   <l:gentext key="Example" text="&#1055;&#1088;&#1080;&#1084;&#1077;&#1088;"/>
+   <l:gentext key="Figure" text="&#1056;&#1080;&#1089;&#1091;&#1085;&#1086;&#1082;"/>
+   <l:gentext key="Glossary" text="&#1043;&#1083;&#1086;&#1089;&#1089;&#1072;&#1088;&#1080;&#1081;"/>
+   <l:gentext key="GlossSeeAlso" text="&#1057;&#1084;. &#1090;&#1072;&#1082;&#1078;&#1077;"/>
+   <l:gentext key="Reference" text="&#1057;&#1089;&#1099;&#1083;&#1082;&#1072;"/>
+   <l:gentext key="Table" text="&#1058;&#1072;&#1073;&#1083;&#1080;&#1094;&#1072;"/>
+   <l:gentext key="TableofContents" text="&#1057;&#1086;&#1076;&#1077;&#1088;&#1078;&#1072;&#1085;&#1080;&#1077;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="sk" english-language-name="Slovak">
+   <l:gentext key="Example" text="Pr&#237;klad"/>
+   <l:gentext key="Figure" text="Obr&#225;zok"/>
+   <l:gentext key="Glossary" text="Slovn&#237;k"/>
+   <l:gentext key="GlossSeeAlso" text="Pozri tie&#382;"/>
+   <l:gentext key="Reference" text="Odkaz"/>
+   <l:gentext key="Table" text="Tabu&#318;ka"/>
+   <l:gentext key="TableofContents" text="Obsah"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="sl" english-language-name="Slovenian">
+   <l:gentext key="Example" text="Primer"/>
+   <l:gentext key="Figure" text="Slika"/>
+   <l:gentext key="Glossary" text="Slovar&#269;ek"/>
+   <l:gentext key="GlossSeeAlso" text="glej tudi"/>
+   <l:gentext key="Reference" text="Sklic"/>
+   <l:gentext key="Table" text="Tabela"/>
+   <l:gentext key="TableofContents" text="Kazalo"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="sq" english-language-name="Albanian">
+   <l:gentext key="Example" text="Shembull"/>
+   <l:gentext key="Figure" text="Figura"/>
+   <l:gentext key="Glossary" text="Fjalori"/>
+   <l:gentext key="GlossSeeAlso" text="Shiko Edhe"/>
+   <l:gentext key="Reference" text="Riferim"/>
+   <l:gentext key="Table" text="Tabela"/>
+   <l:gentext key="TableofContents" text="Tabela e p&#235;rmbajtjes"/>
+</l:l10n>
+
+<l:gentext key="Example" text="Primer"/>
+<l:gentext key="Figure" text="Slika"/>
+<l:gentext key="Glossary" text="Rečnik"/>
+<l:gentext key="GlossSeeAlso" text="Vidi takođe"/>
+<l:gentext key="Reference" text="Referenca"/>
+<l:gentext key="References" text="Reference"/>
+<l:gentext key="Table" text="Tabela"/>
+<l:gentext key="TableofContents" text="Sadržaj"/>
+</l:l10n>
+<l:gentext key="Example" text="Пример"/>
+<l:gentext key="Figure" text="Слика"/>
+<l:gentext key="Glossary" text="Речник"/>
+<l:gentext key="GlossSeeAlso" text="Види такође"/>
+<l:gentext key="Reference" text="Референца"/>
+<l:gentext key="Table" text="Табела"/>
+<l:gentext key="TableofContents" text="Садржај"/>
+</l:l10n><l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="sv" english-language-name="Swedish">
+   <l:gentext key="Example" text="Exempel"/>
+   <l:gentext key="Figure" text="Figur"/>
+   <l:gentext key="Glossary" text="Gloslista"/>
+   <l:gentext key="GlossSeeAlso" text="Se &#196;ven"/>
+   <l:gentext key="Reference" text="Referens"/>
+   <l:gentext key="Table" text="Tabell"/>
+   <l:gentext key="TableofContents" text="Inneh&#229;llsf&#246;rteckning"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="ta" english-language-name="Tamil">
+   <l:gentext key="Example" text="&#2953;&#2980;&#3006;&#2992;&#2979;&#2990;&#3021;"/>
+   <l:gentext key="Figure" text="&#2986;&#2975;&#2990;&#3021;"/>
+   <l:gentext key="Glossary" text="&#2949;&#2965;&#2992;&#3006;&#2980;&#3007;"/>
+   <l:gentext key="GlossSeeAlso" text="&#2951;&#2980;&#3016;&#2991;&#3009;&#2990;&#3021;&#2986;&#3006;&#2992;&#3021;&#2965;&#3021;&#2965;&#2997;&#3009;&#2990;&#3021;"/>
+   <l:gentext key="Reference" text="&#2965;&#3009;&#2993;&#3007;&#2986;&#3021;&#2986;&#3009;&#2965;&#2995;&#3021;"/>
+   <l:gentext key="Table" text="&#2949;&#2975;&#3021;&#2975;&#2997;&#2979;&#3016;"/>
+   <l:gentext key="TableofContents" text="&#2953;&#2995;&#3021;&#2995;&#2975;&#2965;&#3021;&#2965;&#2969;&#3021;&#2965;&#2995;&#3021;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="th" english-language-name="Thai">
+   <l:gentext key="Example" text="&#3605;&#3633;&#3623;&#3629;&#3618;&#3656;&#3634;&#3591;"/>
+   <l:gentext key="Figure" text="&#3619;&#3641;&#3611;"/>
+   <l:gentext key="Glossary" text="&#3629;&#3616;&#3636;&#3608;&#3634;&#3609;&#3624;&#3633;&#3614;&#3607;&#3660;"/>
+   <l:gentext key="GlossSeeAlso" text="&#3604;&#3641;&#3648;&#3614;&#3636;&#3656;&#3617;&#3648;&#3605;&#3636;&#3617;"/>
+   <l:gentext key="Reference" text="&#3627;&#3609;&#3633;&#3591;&#3626;&#3639;&#3629;&#3629;&#3657;&#3634;&#3591;&#3629;&#3636;&#3591;"/>
+   <l:gentext key="Table" text="&#3605;&#3634;&#3619;&#3634;&#3591;"/>
+   <l:gentext key="TableofContents" text="&#3626;&#3634;&#3619;&#3610;&#3633;&#3597;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="tl" english-language-name="Tagalog">
+   <l:gentext key="Example" text="Halimbawa"/>
+   <l:gentext key="Figure" text="Pigyur"/>
+   <l:gentext key="Glossary" text="Talahuguhanan"/>
+   <l:gentext key="GlossSeeAlso" text="Tingnan Din Ang"/>
+   <l:gentext key="Reference" text="Reperens"/>
+   <l:gentext key="Table" text="Talaan"/>
+   <l:gentext key="TableofContents" text="Talaan ng Nilalaman"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="tr" english-language-name="Turkish">
+   <l:gentext key="Example" text="&#214;rnek"/>
+   <l:gentext key="Figure" text="&#350;ekil"/>
+   <l:gentext key="Glossary" text="S&#246;zl&#252;k"/>
+   <l:gentext key="GlossSeeAlso" text="Bkz."/>
+   <l:gentext key="Reference" text="Referans"/>
+   <l:gentext key="Table" text="Tablo"/>
+   <l:gentext key="TableofContents" text="&#304;&#231;indekiler"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="uk" english-language-name="Ukrainian">
+   <l:gentext key="Example" text="&#1055;&#1088;&#1080;&#1082;&#1083;&#1072;&#1076;"/>
+   <l:gentext key="Figure" text="&#1056;&#1080;&#1089;&#1091;&#1085;&#1086;&#1082;"/>
+   <l:gentext key="Glossary" text="&#1043;&#1083;&#1086;&#1089;&#1072;&#1088;&#1110;&#1081;"/>
+   <l:gentext key="GlossSeeAlso" text="&#1044;&#1080;&#1074;. &#1090;&#1072;&#1082;&#1086;&#1078;"/>
+   <l:gentext key="Reference" text="&#1055;&#1086;&#1089;&#1080;&#1083;&#1072;&#1085;&#1085;&#1103;"/>
+   <l:gentext key="Table" text="&#1058;&#1072;&#1073;&#1083;&#1080;&#1094;&#1103;"/>
+   <l:gentext key="TableofContents" text="&#1047;&#1084;&#1110;&#1089;&#1090;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="vi" english-language-name="Vietnamese">
+   <l:gentext key="Example" text="V&#237; d&#7909;"/>
+   <l:gentext key="Figure" text="H&#236;nh"/>
+   <l:gentext key="Glossary" text="Thu&#7853;t ng&#7919;"/>
+   <l:gentext key="GlossSeeAlso" text="Xem th&#234;m"/>
+   <l:gentext key="Reference" text="Tham kh&#7843;o"/>
+   <l:gentext key="Table" text="B&#7843;ng"/>
+   <l:gentext key="TableofContents" text="M&#7909;c l&#7909;c"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="xh" english-language-name="Xhosa">
+   <l:gentext key="Example" text="Umzekelo"/>
+   <l:gentext key="Figure" text="Ulungu"/>
+   <l:gentext key="Glossary" text="Inkcazelo yamagama"/>
+   <l:gentext key="GlossSeeAlso" text="Bona Kwakhona"/>
+   <l:gentext key="Reference" text="Uthelekiso"/>
+   <l:gentext key="Table" text="Indlela Yokwenza Imigca"/>
+   <l:gentext key="TableofContents" text="Imigca Yemixholo"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="zh_cn" english-language-name="Chinese Simplified">
+   <l:gentext key="Example" text="&#20363;"/>
+   <l:gentext key="Figure" text="&#22270;"/>
+   <l:gentext key="Glossary" text="&#26415;&#35821;&#34920;"/>
+   <l:gentext key="GlossSeeAlso" text="&#21442;&#35265;"/>
+   <l:gentext key="Reference" text="&#21442;&#32771;"/>
+   <l:gentext key="Table" text="&#34920;"/>
+   <l:gentext key="TableofContents" text="&#30446;&#24405;"/>
+</l:l10n>
+<l:l10n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" language="zh_tw" english-language-name="Chinese (Taiwan)">
+   <l:gentext key="Example" text="&#31684;&#20363;"/>
+   <l:gentext key="Figure" text="&#22294;&#24418;"/>
+   <l:gentext key="Glossary" text="&#23567;&#36781;&#24409;"/>
+   <l:gentext key="GlossSeeAlso" text="&#21478;&#21443;&#35211;"/>
+   <l:gentext key="Reference" text="&#21443;&#32771;"/>
+   <l:gentext key="Table" text="&#34920;&#26684;"/>
+   <l:gentext key="TableofContents" text="&#20839;&#23481;&#30446;&#37636;"/>
+</l:l10n>
