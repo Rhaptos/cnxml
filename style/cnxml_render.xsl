@@ -1,5 +1,13 @@
 <?xml version="1.0"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cnx="http://cnx.rice.edu/cnxml" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:qml="http://cnx.rice.edu/qml/1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:mod="http://cnx.rice.edu/#moduleIds" xmlns:bib="http://bibtexml.sf.net/" version="1.0">
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:cnx="http://cnx.rice.edu/cnxml"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  xmlns:md="http://cnx.rice.edu/mdml/0.4"
+  xmlns:qml="http://cnx.rice.edu/qml/1.0"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:mod="http://cnx.rice.edu/#moduleIds"
+  xmlns:bib="http://bibtexml.sf.net/">
 
   <!-- Import identity transform first so it gets lowest priority -->
   <xsl:import href="ident.xsl"/>
@@ -42,8 +50,8 @@
       <xsl:otherwise>0.5</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyz&#xE4;&#xEB;&#xEF;&#xF6;&#xFC;&#xE1;&#xE9;&#xED;&#xF3;&#xFA;&#xE0;&#xE8;&#xEC;&#xF2;&#xF9;&#xE2;&#xEA;&#xEE;&#xF4;&#xFB;&#xE5;&#xF8;&#xE3;&#xF5;&#xE6;&#x153;&#xE7;&#x142;&#xF1;'"/>
-  <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ&#xC4;&#xCB;&#xCF;&#xD6;&#xDC;&#xC1;&#xC9;&#xCD;&#xD3;&#xDA;&#xC0;&#xC8;&#xCC;&#xD2;&#xD9;&#xC2;&#xCA;&#xCE;&#xD4;&#xDB;&#xC5;&#xD8;&#xC3;&#xD5;&#xC6;&#x152;&#xC7;&#x141;&#xD1;'"/>
+  <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyzäëïöüáéíóúàèìòùâêîôûåøãõæœçłñ'"/>
+  <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÄËÏÖÜÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÅØÃÕÆŒÇŁÑ'"/>
 
   <xsl:output omit-xml-declaration="yes" indent="yes"/>
 
