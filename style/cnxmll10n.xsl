@@ -84,20 +84,21 @@
       <l:gentext key="Summary" text="Summary:"/>
       <l:gentext key="viewingoldversion" text="You are viewing an old version of this document."/>
       <l:gentext key="latestversionhere" text="The latest version is available here."/>
-      <l:gentext key="previewofwhenpublished" text=" This is a preview of how your module will appear when published"/>
-      <l:gentext key="assumingthatall" text="assuming that all "/>
+      <l:gentext key="Thisisapreview_start" text="This is a preview of how your module will appear when published"/>
+      <l:gentext key="Thisisapreview_finish" text="."/>
+      <l:gentext key="commaassumingthatall" text=", assuming that all"/>
       <l:gentext key="pendingrolerequests" text="currently pending role requests"/>
-      <l:gentext key="areaccepted" text=" are accepted"/>
-      <l:gentext key="returntoediting" text="You must return to the editing interface to "/>
+      <l:gentext key="areaccepted" text="are accepted"/>
+      <l:gentext key="returntoediting" text="You must return to the editing interface to"/>
       <l:gentext key="edit" text="edit"/>
-      <l:gentext key="or" text=" or "/>
+      <l:gentext key="or" text="or"/>
       <l:gentext key="publish" text="publish"/>
-      <l:gentext key="yourchanges" text=" your changes. "/>
-      <l:gentext key="youmayview" text="You may view the "/>
+      <l:gentext key="yourchanges" text="your changes."/>
+      <l:gentext key="youmayview" text="You may view the"/>
       <l:gentext key="latestpublishedversion" text="latest published version"/>
-      <l:gentext key="hereanda" text=" here and a "/>
+      <l:gentext key="hereanda" text="here and a"/>
       <l:gentext key="listofchanges" text="list of changes"/>
-      <l:gentext key="here" text=" here."/>
+      <l:gentext key="hereperiod" text="here."/>
       <l:gentext key="CollectionNavigation" text="Collection Navigation" />
       <l:gentext key="Previousmodule" text="&#171; Previous module"/>
       <l:gentext key="Nextmodule" text="Next module"/>
@@ -277,6 +278,30 @@
       <l:gentext key="Privatelenskey" text="Private lens key"/>
       <l:gentext key="Privatelensexplanation" text="Private lens: seen only by lens maker while logged on"/>
       <l:gentext key="Diagramoflenses" text="Diagram of lenses"/>
+      <l:gentext key="Notecolon" text="Note:" />
+      <l:gentext key="NoMathMLSupport" text="Your browser may not currently support MathML."/>
+      <l:gentext key="IE6OrAbove" text="Please install the required"/>
+      <l:gentext key="MathMLPlayer" text="MathPlayer plugin"/>
+      <l:gentext key="ToViewMathML" text="to view MathML correctly."/>
+      <l:gentext key="FirefoxRequires" text="Firefox requires additional"/>
+      <l:gentext key="ToDisplayMathML" text=" to display MathML correctly."/>
+      <l:gentext key="MathematicsFonts" text="mathematics fonts"/>
+      <l:gentext key="ChromeMsg" text="Chrome will attempt to display MathML, but it should not be considered correct."/>
+      <l:gentext key="SafariMsg" text="Safari will attempt to display MathML, but it should not be considered correct."/>
+      <l:gentext key="AnyBrowser_part1" text="You can always view the correct math in the "/>
+      <l:gentext key="PrintVersion" text="PDF version"/>
+      <l:gentext key="AnyBrowser_part2" text="."/>
+      <l:gentext key="SeeOur" text=" See our"/>
+      <l:gentext key="BrowserSupport" text="browser support page"/>
+      <l:gentext key="AdditionalDetails" text="for additional details."/>
+      <l:gentext key="MathMLTest" text="Or compare the two sample Math snippets below. Example 1 is what you will see in your browser and Example 2 is the correct display of the MathML. If the two MathML examples below are alike, your browser is MathML compatible."/>
+      <l:gentext key="Example1" text="Example 1:"/>
+      <l:gentext key="Example2" text="Example 2:"/>
+      <l:gentext key="HideExamples" text="(Hide examples)"/>
+      <l:gentext key="ShowExamples" text="(Show MathML examples)"/>
+      <l:gentext key="TwoExamples_part1" text="If the two examples below are mathematically the same, your browser is correctly displaying MathML, and you can"/>
+      <l:gentext key="DismissMessage" text="dismiss this message"/>
+      <l:gentext key="TwoExamples_part2" text="."/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>

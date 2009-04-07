@@ -1,3 +1,9 @@
+connexions-cnxml (0.6.0.3-1) unstable; urgency=low
+
+  * Mathml browser lack-of-support message
+
+ -- Ross J. Reedstrom <reedstrm@cnx.org>  Wed, 18 Mar 2009 12:36:18 -0500
+
 connexions-cnxml (0.6.0.2-1) unstable; urgency=low
 
   * various bugfixes for media and some upconversion
