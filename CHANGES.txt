@@ -1,3 +1,5 @@
+  - Put the OER icon, message, and links in the footer (ticket:8592)
+
 cnxml-0.6.0.3
   - Mathml warning message for unsupported browsers
 
