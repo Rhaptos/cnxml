@@ -164,7 +164,7 @@
       <l:gentext key="EditInPlace" text="Edit-In-Place"/>
       <l:gentext key="Editthiscontent" text="Edit this content"/>
       <l:gentext key="authoronly" text=" (author only)"/>
-      <l:gentext key="Moreaboutthismodule" text="More about this module:"/>
+      <l:gentext key="Moreaboutthiscontentcolon" text="More about this content:"/>
       <l:gentext key="Metadata" text="Metadata"/>
       <l:gentext key="VersionHistory" text="Version History"/>
       <l:gentext key="Howto" text="How to"/>
