@@ -301,6 +301,10 @@
       <l:gentext key="TwoExamples_part1" text="If the two examples below are mathematically the same, your browser is correctly displaying MathML, and you can"/>
       <l:gentext key="DismissMessage" text="dismiss this message"/>
       <l:gentext key="TwoExamples_part2" text="."/>
+      <l:gentext key="TagsLabel" text="Tags:"/>
+      <l:gentext key="ApproveModule" text="Approve Module"/>
+      <l:gentext key="Approve" text="Approve"/>
+      <l:gentext key="AboutRating" text="About the rating system"/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
@@ -329,11 +333,6 @@
       <l:gentext key="Coursesusingcontent" text="Collections using this content"/>
       <l:gentext key="Morecoursesusingcontent" text="More collections using this content"/>
       <l:gentext key="TableofContents" text="Table of Contents"/>
-
-      <l:gentext key="TagsLabel" text="Tags:"/>
-      <l:gentext key="ApproveModule" text="Approve Module"/>
-      <l:gentext key="Approve" text="Approve"/>
-      <l:gentext key="AboutRating" text="About the rating system"/>
 
 <!--
       <l:gentext key="Summer Sky" text="Summer Sky"/>
