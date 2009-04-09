@@ -334,7 +334,6 @@
       <l:gentext key="ApproveModule" text="Approve Module"/>
       <l:gentext key="Approve" text="Approve"/>
       <l:gentext key="AboutRating" text="About the rating system"/>
-      <l:gentext key="LoginRequired" text="login required"/>
 
 <!--
       <l:gentext key="Summer Sky" text="Summer Sky"/>
