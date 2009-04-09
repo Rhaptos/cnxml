@@ -78,6 +78,14 @@
       <l:gentext key="Listing" text="Listing"/>
       <l:gentext key="citelink" text="link"/>
 
+      <!-- for content_render.xsl -->
+      <l:gentext key="Example links" text="Example links"/>
+      <l:gentext key="Prerequisite links" text="Prerequisite links"/>
+      <l:gentext key="Supplemental links" text="Supplemental links"/>
+      <l:gentext key="Stronglink" text="Strongly related link"/>
+      <l:gentext key="Relatedlink" text="Related link"/>
+      <l:gentext key="Weaklink" text="Weakly related link"/>
+
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
       <l:gentext key="Instructionstext" text="To edit text, click on an area with a white background. Warning: Reloading or leaving the page will discard any unpublished changes."/>
