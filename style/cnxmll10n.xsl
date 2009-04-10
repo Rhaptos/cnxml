@@ -164,7 +164,7 @@
       <l:gentext key="EditInPlace" text="Edit-In-Place"/>
       <l:gentext key="Editthiscontent" text="Edit this content"/>
       <l:gentext key="authoronly" text=" (author only)"/>
-      <l:gentext key="MoreAboutThisContent" text="More about this content: "/>
+      <l:gentext key="Moreaboutthiscontentcolon" text="More about this content:"/>
       <l:gentext key="Metadata" text="Metadata"/>
       <l:gentext key="VersionHistory" text="Version History"/>
       <l:gentext key="Howto" text="How to"/>
@@ -176,6 +176,9 @@
       <l:gentext key="comma" text=", "/>
       <l:gentext key="undera" text="under a"/>
       <l:gentext key="CreativeCommonsAttributionLicense" text="Creative Commons Attribution License"/>
+      <l:gentext key="commaandisan" text=", and is an"/>
+      <l:gentext key="OpenEducationalResource" text="Open Educational Resource"/>
+      <l:gentext key="OpenEducationalResourcesLogo" text="Open Educational Resources Logo"/>
       <l:gentext key="period" text=". "/>
       <l:gentext key="Lasteditedby" text="Last edited by"/>
       <l:gentext key="on" text="on"/>
