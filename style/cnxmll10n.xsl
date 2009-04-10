@@ -9,6 +9,7 @@
 >
 
   <!-- Begin section of translations for english text that appear in this file-->
+  <xsl:param name="output-l10n-keys" select="'0'"/>
   <xsl:param name="l10n.xml" select="document('l10n.xml')"/>
   <xsl:param name="local.l10n.xml" select="document('')"/>
   <l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
@@ -136,7 +137,9 @@
   
     <xsl:variable name="l10n.gentext"
                   select="($l10n.xml/l:i18n/l:l10n[@language=$lang]/l:gentext[@key=$key])[1]"/>
-  
+    <xsl:if test="$output-l10n-keys = '1'">
+      <xsl:message>l10n key: <xsl:value-of select="$key"/></xsl:message>
+    </xsl:if>
     <xsl:choose>
       <xsl:when test="$local.l10n.gentext">
         <xsl:value-of select="$local.l10n.gentext/@text"/>
