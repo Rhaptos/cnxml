@@ -3,7 +3,7 @@
 Apply content_render.xsl to a set of module_export_template files.
 Pass the l10n-debug parameter with a true value, so that the l10n 
   keys are output with <xsl:message>.
-Accumulate the keys, and output them in an XML format at the end.
+Accumulate the keys, and output them to stdout in an XML format at the end.
 Depends on lxml (http://codespeak.net/lxml/).
 Expects module_export_template files to be in directories named for 
   the module ID, e.g.:
