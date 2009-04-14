@@ -1,5 +1,5 @@
 #!/bin/sh
-# preinst for connexions-cnxml-common. Remove no longer needed diversion of l10n.xsl from docbook-xsl
+# postinst for connexions-cnxml-common. Remove no longer needed diversion of l10n.xsl from docbook-xsl
 
 set -e
 
