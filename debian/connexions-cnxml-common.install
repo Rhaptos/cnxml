@@ -1,2 +1,7 @@
-style/*.xsl usr/share/xml/cnxml/stylesheet
-l10n.xsl usr/share/xml/docbook/stylesheet/nwalsh/common/
+style/cnxml05to06.xsl usr/share/xml/cnxml/stylesheet
+style/cnxmll10n.xsl usr/share/xml/cnxml/stylesheet
+style/cnxml_render.xsl usr/share/xml/cnxml/stylesheet
+style/ident.xsl usr/share/xml/cnxml/stylesheet
+style/media.xsl usr/share/xml/cnxml/stylesheet
+style/table.xsl usr/share/xml/cnxml/stylesheet
+style/l10n.xml usr/share/xml/cnxml/stylesheet
