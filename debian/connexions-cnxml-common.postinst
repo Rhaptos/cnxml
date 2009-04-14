@@ -8,4 +8,6 @@ if [ "$1" = upgrade ] ; then
     --divert /usr/share/xml/docbook/stylesheet/nwalsh/common/l10n.xsl.docbook /usr/share/xml/docbook/stylesheet/nwalsh/common/l10n.xsl
 fi
 
+#DEBHELPER#
+
 exit 0
