@@ -1,17 +1,14 @@
-<?xml version='1.0'?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-		xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:cnx="http://cnx.rice.edu/cnxml"  
-                version='1.0'>
+<?xml version="1.0"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" xmlns:cnx="http://cnx.rice.edu/cnxml" version="1.0">
   
 
   <xsl:template match="cnx:table">
     <div class="table">
-      <xsl:call-template name='IdCheck'/>
+      <xsl:call-template name="IdCheck"/>
       <xsl:choose>
 	<!-- OLD TABLES -->
 	<xsl:when test="cnx:categories">
-          <xsl:apply-templates select="cnx:name" />
+          <xsl:apply-templates select="cnx:name"/>
 	  <table class="old-table" cellspacing="0" cellpadding="0" align="center" style="border: 1px solid !important; border-collapse: collapse;">
 	    <!--Outputs CATEGORY as headers.-->
 	    <tr>
@@ -40,10 +37,10 @@
               <xsl:attribute name="summary">
                 <xsl:choose>
                   <xsl:when test="@summary">
-                    <xsl:value-of select="@summary" />
+                    <xsl:value-of select="@summary"/>
                   </xsl:when>
                   <xsl:otherwise>
-                    <xsl:value-of select="processing-instruction('table-summary')" />
+                    <xsl:value-of select="processing-instruction('table-summary')"/>
                   </xsl:otherwise>
                 </xsl:choose>
               </xsl:attribute>
@@ -77,37 +74,30 @@
 	        </xsl:choose>
 	      </xsl:if>
 	    </xsl:attribute>
-            <xsl:if test="cnx:name[node()] or 
-                          cnx:title[node()] or 
-                          cnx:caption[node()] or 
-                          cnx:label[node()] or 
-                          (not(cnx:label[not(node())]) and 
-                           not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
+            <xsl:if test="cnx:name[node()] or                            cnx:title[node()] or                            cnx:caption[node()] or                            cnx:label[node()] or                            (not(cnx:label[not(node())]) and                             not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
               <caption align="bottom" class="table-text">
-                <xsl:if test="cnx:label[node()] or 
-                              (not(cnx:label[not(node())]) and 
-                               not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
+                <xsl:if test="cnx:label[node()] or                                (not(cnx:label[not(node())]) and                                 not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
                   <span class="cnx_label">
                     <xsl:choose>
                       <xsl:when test="cnx:label">
-                        <xsl:apply-templates select="cnx:label" />
+                        <xsl:apply-templates select="cnx:label"/>
                       </xsl:when>
                       <xsl:otherwise>
                         <xsl:call-template name="gentext">
                           <xsl:with-param name="key">Table</xsl:with-param>
-                          <xsl:with-param name="lang" select="/module/metadata/language" />
+                          <xsl:with-param name="lang" select="/module/metadata/language"/>
                         </xsl:call-template>
                       </xsl:otherwise>
                     </xsl:choose>
                     <xsl:if test="not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])">
                       <xsl:text> </xsl:text>
-                      <xsl:variable name="type" select="translate(@type,$upper,$lower)" />
+                      <xsl:variable name="type" select="translate(@type,$upper,$lower)"/>
                       <xsl:choose>
                         <xsl:when test="@type and $type!='table'">
-                          <xsl:number level="any" count="cnx:table[not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])][translate(@type,$upper,$lower)=$type]" />
+                          <xsl:number level="any" count="cnx:table[not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])][translate(@type,$upper,$lower)=$type]"/>
                         </xsl:when>
                         <xsl:otherwise>
-                          <xsl:number level="any" count="cnx:table[not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])][not(@type) or translate(@type,$upper,$lower)='table']" />
+                          <xsl:number level="any" count="cnx:table[not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure])][not(@type) or translate(@type,$upper,$lower)='table']"/>
                         </xsl:otherwise>
                       </xsl:choose>
                     </xsl:if>
@@ -116,7 +106,7 @@
                     </xsl:if>
                   </span>
                 </xsl:if>
-                <xsl:apply-templates select="cnx:name|cnx:title" />
+                <xsl:apply-templates select="cnx:name|cnx:title"/>
                 <xsl:if test="cnx:caption[node()]">
                   <xsl:variable name="caption-element">
                     <xsl:choose>
@@ -128,10 +118,10 @@
                     <xsl:attribute name="class">table-caption</xsl:attribute>
                     <xsl:if test="cnx:caption/@id">
                       <xsl:attribute name="id">
-                        <xsl:value-of select="cnx:caption/@id" />
+                        <xsl:value-of select="cnx:caption/@id"/>
                       </xsl:attribute>
                     </xsl:if>
-                    <xsl:apply-templates select="cnx:caption" />
+                    <xsl:apply-templates select="cnx:caption"/>
                   </xsl:element>
                 </xsl:if>
               </caption>
@@ -143,7 +133,7 @@
 		    <tr>
 		      <td style="padding: 0 !important; border: 0 !important">
 			<table cellspacing="0" cellpadding="0" width="100%" style="border: 0 !important; margin: 0 !important;">
-	    		  <xsl:apply-templates select="self::cnx:tgroup" />
+	    		  <xsl:apply-templates select="self::cnx:tgroup"/>
 			</table>
 		      </td>
 		    </tr>
@@ -151,7 +141,7 @@
 		</tbody>
 	      </xsl:when>
 	      <xsl:otherwise>
-		<xsl:apply-templates select="cnx:tgroup" />
+		<xsl:apply-templates select="cnx:tgroup"/>
 	      </xsl:otherwise>
 	    </xsl:choose>
 	  </table>
@@ -160,24 +150,24 @@
     </div>  
   </xsl:template>
 
-  <xsl:template match="cnx:colspec|cnx:spanspec" />
+  <xsl:template match="cnx:colspec|cnx:spanspec"/>
 
   <xsl:template match="cnx:tgroup">    
     <!-- Only bother to do this if there are colwidth attributes specified. -->
-    <xsl:call-template name='IdCheck'/>
+    <xsl:call-template name="IdCheck"/>
     <xsl:if test="cnx:colspec/@colwidth or child::*/cnx:colspec/@colwidth">
       <colgroup>
-	<xsl:call-template name="col.maker" />
+	<xsl:call-template name="col.maker"/>
       </colgroup>
     </xsl:if>
-    <xsl:apply-templates select="cnx:thead" />
-    <xsl:apply-templates select="cnx:tbody" />
-    <xsl:apply-templates select="cnx:tfoot" />
+    <xsl:apply-templates select="cnx:thead"/>
+    <xsl:apply-templates select="cnx:tbody"/>
+    <xsl:apply-templates select="cnx:tfoot"/>
   </xsl:template>
 
   <xsl:template match="cnx:entrytbl">
     <td class="entrytbl">
-      <xsl:call-template name='IdCheck'/>
+      <xsl:call-template name="IdCheck"/>
       <xsl:attribute name="style">
 	<xsl:text>height: 100%; padding: 0 !important; border-left: 0 !important; border-top: 0 !important; </xsl:text>
 	<xsl:call-template name="style.param.determiner">
@@ -189,14 +179,14 @@
       </xsl:attribute>
       <xsl:if test="(@namest and @nameend) or @spanname">
 	<xsl:attribute name="colspan">
-	  <xsl:call-template name="calculate.colspan" />
+	  <xsl:call-template name="calculate.colspan"/>
 	</xsl:attribute>
       </xsl:if>
       <table cellspacing="0" cellpadding="0" width="100%" style="height: 100%; border: 0 !important; margin: 0 !important;">
 	<!-- Only bother to do this if there are colwidth attributes specified. -->
 	<xsl:if test="cnx:colspec/@colwidth or child::*/cnx:colspec/@colwidth">
 	  <colgroup>
-	    <xsl:call-template name="col.maker" />
+	    <xsl:call-template name="col.maker"/>
 	  </colgroup>
 	</xsl:if>
 	<xsl:apply-templates/>
@@ -206,11 +196,11 @@
 
   <xsl:template match="cnx:thead|cnx:tfoot|cnx:tbody">
     <xsl:element name="{name(.)}">
-      <xsl:call-template name='IdCheck'/>
+      <xsl:call-template name="IdCheck"/>
       <xsl:attribute name="valign">
 	<xsl:choose>
 	  <xsl:when test="@valign">
-	    <xsl:value-of select="@valign" />
+	    <xsl:value-of select="@valign"/>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:choose>
@@ -251,24 +241,24 @@
   <xsl:template match="cnx:tbody/cnx:row/cnx:entry">
     <xsl:variable name="row.header.or.not">
       <xsl:call-template name="row.header.or.not">
-        <xsl:with-param name="entry" select="." />
+        <xsl:with-param name="entry" select="."/>
       </xsl:call-template>
     </xsl:variable>
     <xsl:call-template name="process.cell">
       <xsl:with-param name="cellgi">
-        <xsl:value-of select="$row.header.or.not" />
+        <xsl:value-of select="$row.header.or.not"/>
       </xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 
   <xsl:template name="row.header.or.not">
-    <xsl:param name="entry" select="." />
+    <xsl:param name="entry" select="."/>
     <xsl:variable name="entry.colnum">
-      <xsl:call-template name="entry.colnum" />
+      <xsl:call-template name="entry.colnum"/>
     </xsl:variable>
     <xsl:variable name="row.header.class.or.not">
       <xsl:call-template name="row.header.class.or.not">
-        <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+        <xsl:with-param name="entry.colnum" select="$entry.colnum"/>
       </xsl:call-template>
     </xsl:variable>
     <xsl:choose>
@@ -312,19 +302,19 @@
       <xsl:when test="$row.header.class.or.not='1'">1</xsl:when>
       <xsl:when test="$step='entry'">
         <xsl:call-template name="row.header.class.or.not">
-          <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+          <xsl:with-param name="entry.colnum" select="$entry.colnum"/>
           <xsl:with-param name="step" select="'colspecstep1'"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="$step='colspecstep1'">
         <xsl:call-template name="row.header.class.or.not">
-          <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+          <xsl:with-param name="entry.colnum" select="$entry.colnum"/>
           <xsl:with-param name="step" select="'colspecstep2'"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="$step='colspecstep2'">
         <xsl:call-template name="row.header.class.or.not">
-          <xsl:with-param name="entry.colnum" select="$entry.colnum" />
+          <xsl:with-param name="entry.colnum" select="$entry.colnum"/>
           <xsl:with-param name="step" select="'spanspec'"/>
         </xsl:call-template>
       </xsl:when>
@@ -343,7 +333,7 @@
       </xsl:if>
       <xsl:if test="(@namest and @nameend) or @spanname">
 	<xsl:attribute name="colspan">
-	  <xsl:call-template name="calculate.colspan" />
+	  <xsl:call-template name="calculate.colspan"/>
 	</xsl:attribute>
       </xsl:if>
       <xsl:if test="@valign">
@@ -362,13 +352,13 @@
 	<xsl:choose>
 	  <xsl:when test="not(following-sibling::*) or ancestor-or-self::*/@colsep='0' or ancestor::*/cnx:colspec/@colsep='0' or ancestor::*[3]/cnx:spanspec/@colsep='0'">
 	    <xsl:call-template name="style.param.determiner">
-	      <xsl:with-param name="style.name" select="'colsep'" />
+	      <xsl:with-param name="style.name" select="'colsep'"/>
 	    </xsl:call-template>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:call-template name="style.maker">
-	      <xsl:with-param name="style.name" select="'colsep'" />
-	      <xsl:with-param name="style.param" select="'1'" />
+	      <xsl:with-param name="style.name" select="'colsep'"/>
+	      <xsl:with-param name="style.param" select="'1'"/>
 	    </xsl:call-template>
 	  </xsl:otherwise>
 	</xsl:choose>
@@ -377,13 +367,13 @@
 	<xsl:choose>
 	  <xsl:when test="not(parent::cnx:row/following-sibling::cnx:row) or ancestor-or-self::*/@rowsep='0' or ancestor::*/cnx:colspec/@rowsep='0' or ancestor::*[3]/cnx:spanspec/@rowsep='0' or @morerows">
 	    <xsl:call-template name="style.param.determiner">
-	      <xsl:with-param name="style.name" select="'rowsep'" />
+	      <xsl:with-param name="style.name" select="'rowsep'"/>
 	    </xsl:call-template>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:call-template name="style.maker">
-	      <xsl:with-param name="style.name" select="'rowsep'" />
-	      <xsl:with-param name="style.param" select="'1'" />
+	      <xsl:with-param name="style.name" select="'rowsep'"/>
+	      <xsl:with-param name="style.param" select="'1'"/>
 	    </xsl:call-template>
 	  </xsl:otherwise>
 	</xsl:choose>
@@ -392,13 +382,13 @@
 	<xsl:choose>
 	  <xsl:when test="ancestor-or-self::*/@align!='left' or ancestor::*/cnx:colspec/@align!='left' or @spanname">
 	    <xsl:call-template name="style.param.determiner">
-	      <xsl:with-param name="style.name" select="'align'" />
+	      <xsl:with-param name="style.name" select="'align'"/>
             </xsl:call-template>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:call-template name="style.maker">
-	     <xsl:with-param name="style.name" select="'align'" />
-	      <xsl:with-param name="style.param" select="'left'" />
+	     <xsl:with-param name="style.name" select="'align'"/>
+	      <xsl:with-param name="style.param" select="'left'"/>
 	    </xsl:call-template>
 	  </xsl:otherwise>
 	</xsl:choose>
@@ -406,18 +396,18 @@
       <!-- Add any possible char and charoff attributes -->
       <xsl:if test="ancestor-or-self::*/@char or ancestor::*/cnx:colspec/@char or ancestor::*[3]/cnx:spanspec/@char">
 	<xsl:call-template name="style.param.determiner">
-	  <xsl:with-param name="style.name" select="'char'" />
+	  <xsl:with-param name="style.name" select="'char'"/>
 	</xsl:call-template>
       </xsl:if>
       <xsl:if test="ancestor-or-self::*/@charoff or ancestor::*/cnx:colspec/@charoff or ancestor::*[3]/cnx:spanspec/@charoff">
 	<xsl:call-template name="style.param.determiner">
-	  <xsl:with-param name="style.name" select="'charoff'" />
+	  <xsl:with-param name="style.name" select="'charoff'"/>
 	</xsl:call-template>
       </xsl:if>
 
       <xsl:choose>
 	<xsl:when test="count(node()) = 0">
-	  <xsl:text>&#160;</xsl:text>
+	  <xsl:text> </xsl:text>
 	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:apply-templates/>
@@ -432,102 +422,94 @@
        attributes > table attributes (if no intermediary entrybl), with pit stops first to turn borders off at the bottom and left of 
        the table's very last rows and columns, respectively.  If no attributes are found, the default values are provided. -->
   <xsl:template name="style.param.determiner">
-    <xsl:param name="style.name" />
+    <xsl:param name="style.name"/>
     <xsl:variable name="entry.colnum">
-      <xsl:call-template name="entry.colnum" />
+      <xsl:call-template name="entry.colnum"/>
     </xsl:variable>
     <xsl:choose>
       <!-- If there is not a subsequent row of columns in the table (or entrytbl, if currently located there), don't give entry(tbl) a 
 	   bottom border.  Watch out for the case where the current entry is not in the last row but stretches all the way down there 
 	   anyway via @morerows.  Additionally, watch out for cases where the current entry(tbl) is at the bottom of a tgroup, but 
 	   there are other tgroups that follow.  -->
-      <xsl:when test="$style.name='rowsep' and 
-		      (parent::cnx:row[not(following-sibling::cnx:row)]
-		        and not(ancestor::*[2][preceding-sibling::cnx:tfoot or self::cnx:thead] 
-				or (ancestor::cnx:tgroup[following-sibling::cnx:tgroup] and not(ancestor::cnx:entrytbl))) or
-		       @morerows=count(parent::cnx:row/following-sibling::cnx:row)
-		        and not(ancestor::*[2][preceding-sibling::cnx:tfoot or self::cnx:thead] 
-				or (ancestor::cnx:tgroup[following-sibling::cnx:tgroup] and not(ancestor::cnx:entrytbl))))">
+      <xsl:when test="$style.name='rowsep' and          (parent::cnx:row[not(following-sibling::cnx:row)]           and not(ancestor::*[2][preceding-sibling::cnx:tfoot or self::cnx:thead]      or (ancestor::cnx:tgroup[following-sibling::cnx:tgroup] and not(ancestor::cnx:entrytbl))) or          @morerows=count(parent::cnx:row/following-sibling::cnx:row)           and not(ancestor::*[2][preceding-sibling::cnx:tfoot or self::cnx:thead]      or (ancestor::cnx:tgroup[following-sibling::cnx:tgroup] and not(ancestor::cnx:entrytbl))))">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="'0'" />
-	  <xsl:with-param name="style.name" select="'rowsep'" />
+	  <xsl:with-param name="style.param" select="'0'"/>
+	  <xsl:with-param name="style.name" select="'rowsep'"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- If the right edge (essentially the entry.ending.colnum) of the current entry(tbl) is at the end of the row (and not just 
 	   bordering an entry from a previous row whose @morerows attribute makes it extend to the current entry(tbl)'s edge), don't 
 	   give it a border on the right. -->
-      <xsl:when test="$style.name='colsep' and 
-		      not(following-sibling::*) and 
-		      not(parent::cnx:row/preceding-sibling::cnx:row/cnx:entry[position()=last()][(@morerows + count(parent::cnx:row/preceding-sibling::cnx:row)) &gt;= count(current()/parent::cnx:row/preceding-sibling::cnx:row)])">
+      <xsl:when test="$style.name='colsep' and          not(following-sibling::*) and          not(parent::cnx:row/preceding-sibling::cnx:row/cnx:entry[position()=last()][(@morerows + count(parent::cnx:row/preceding-sibling::cnx:row)) &gt;= count(current()/parent::cnx:row/preceding-sibling::cnx:row)])">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="'0'" />
-	  <xsl:with-param name="style.name" select="'colsep'" />
+	  <xsl:with-param name="style.param" select="'0'"/>
+	  <xsl:with-param name="style.name" select="'colsep'"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- if entry has a colsep/rowsep/align/char/charoff attribute, use it -->
       <xsl:when test="attribute::*[name()=$style.name]">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="attribute::*[name()=$style.name]" />
-	  <xsl:with-param name="style.name" select="$style.name" />
+	  <xsl:with-param name="style.param" select="attribute::*[name()=$style.name]"/>
+	  <xsl:with-param name="style.name" select="$style.name"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- if nearest row has such an attribute, use it -->
       <xsl:when test="$style.name='rowsep' and parent::cnx:row/@rowsep">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="parent::cnx:row/@rowsep" />
-	  <xsl:with-param name="style.name" select="'rowsep'" />
+	  <xsl:with-param name="style.param" select="parent::cnx:row/@rowsep"/>
+	  <xsl:with-param name="style.name" select="'rowsep'"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- nearest thead/colspec or tfoot/colspec (notice these are not colspecs as children of tgroup or entrytbl)
 	   (where @colnum attributes are specified) -->
       <xsl:when test="ancestor::*[2]/cnx:colspec[@colnum=$entry.colnum]/attribute::*[name()=$style.name]">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="ancestor::*[2]/cnx:colspec[@colnum=$entry.colnum]/attribute::*[name()=$style.name]" /> 
-	  <xsl:with-param name="style.name" select="$style.name" />
+	  <xsl:with-param name="style.param" select="ancestor::*[2]/cnx:colspec[@colnum=$entry.colnum]/attribute::*[name()=$style.name]"/> 
+	  <xsl:with-param name="style.name" select="$style.name"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- nearest thead/colspec or tfoot/colspec (notice these are not tgroups as children of tgroup or entrytbl) 
 	   (where no @colnum attributes are specified and colspecs are instead ordered sequentially) -->
       <xsl:when test="ancestor::*[2]/cnx:colspec[position()=$entry.colnum and not(@colnum)]/attribute::*[name()=$style.name]">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="ancestor::*[2]/cnx:colspec[position()=$entry.colnum and not(@colnum)]/attribute::*[name()=$style.name]" />
-	  <xsl:with-param name="style.name" select="$style.name" />
+	  <xsl:with-param name="style.param" select="ancestor::*[2]/cnx:colspec[position()=$entry.colnum and not(@colnum)]/attribute::*[name()=$style.name]"/>
+	  <xsl:with-param name="style.name" select="$style.name"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- nearest matching spanspec (if a thead or tfoot have colspecs, however, the tgroup or entrytbl's colspecs are ignored) -->
       <xsl:when test="ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname]/attribute::*[name()=$style.name] and not(ancestor::*[2]/cnx:colspec)">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname]/attribute::*[name()=$style.name]" />
-	  <xsl:with-param name="style.name" select="$style.name" />
+	  <xsl:with-param name="style.param" select="ancestor::*[3]/cnx:spanspec[@spanname=current()/@spanname]/attribute::*[name()=$style.name]"/>
+	  <xsl:with-param name="style.name" select="$style.name"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- nearest entrytbl/colspec or tgroup/colspec (where @colnum attributes are specified) -->
       <xsl:when test="ancestor::*[3]/cnx:colspec[@colnum=$entry.colnum]/attribute::*[name()=$style.name] and not(ancestor::*[2]/cnx:colspec)">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="ancestor::*[3]/cnx:colspec[@colnum=$entry.colnum]/attribute::*[name()=$style.name]" />
-	  <xsl:with-param name="style.name" select="$style.name" />
+	  <xsl:with-param name="style.param" select="ancestor::*[3]/cnx:colspec[@colnum=$entry.colnum]/attribute::*[name()=$style.name]"/>
+	  <xsl:with-param name="style.name" select="$style.name"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- nearest entrytbl/colspec or tgroup/colspec (where no @colnum attributes are specified and colspecs are instead ordered sequentially) -->
       <xsl:when test="ancestor::*[3]/cnx:colspec[position()=$entry.colnum and not(@colnum)]/attribute::*[name()=$style.name] and not(ancestor::*[2]/cnx:colspec)">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="ancestor::*[3]/cnx:colspec[position()=$entry.colnum]/attribute::*[name()=$style.name]" />
-	  <xsl:with-param name="style.name" select="$style.name" />
+	  <xsl:with-param name="style.param" select="ancestor::*[3]/cnx:colspec[position()=$entry.colnum]/attribute::*[name()=$style.name]"/>
+	  <xsl:with-param name="style.name" select="$style.name"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- nearest entrytbl or tgroup -->
       <xsl:when test="ancestor::*[3]/attribute::*[name()=$style.name]">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="ancestor::*[3]/attribute::*[name()=$style.name]" />
-	  <xsl:with-param name="style.name" select="$style.name" />
+	  <xsl:with-param name="style.param" select="ancestor::*[3]/attribute::*[name()=$style.name]"/>
+	  <xsl:with-param name="style.name" select="$style.name"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- if table has a colsep/rowsep/align/char/charoff declaration, use it, unless current entry is in an entrytbl, in which case 
 	   table's attributes cannot be inherited -->
       <xsl:when test="ancestor::cnx:table/attribute::*[name()=$style.name] and not(ancestor::cnx:entrytbl)">
 	<xsl:call-template name="style.maker">
-	  <xsl:with-param name="style.param" select="ancestor::cnx:table/attribute::*[name()=$style.name]" />
-	  <xsl:with-param name="style.name" select="$style.name" />
+	  <xsl:with-param name="style.param" select="ancestor::cnx:table/attribute::*[name()=$style.name]"/>
+	  <xsl:with-param name="style.name" select="$style.name"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- for everything else, default to having a border if testing borders and left alignment if testing alignment (with the 
@@ -536,8 +518,8 @@
 	<xsl:choose>
 	  <xsl:when test="$style.name='rowsep' or $style.name='colsep'">
 	    <xsl:call-template name="style.maker">
-	      <xsl:with-param name="style.param" select="'1'" />
-	      <xsl:with-param name="style.name" select="$style.name" />
+	      <xsl:with-param name="style.param" select="'1'"/>
+	      <xsl:with-param name="style.name" select="$style.name"/>
 	    </xsl:call-template>
 	  </xsl:when>
 	  <xsl:when test="$style.name='align'">
@@ -545,14 +527,14 @@
 	      <!-- The spec says that the default alignment for spanspec-defined elements is center if not specified elsewhere -->
 	      <xsl:when test="@spanname and not(ancestor::*[2]/cnx:colspec)">
 		<xsl:call-template name="style.maker">
-		  <xsl:with-param name="style.param" select="'center'" />
-		  <xsl:with-param name="style.name" select="'align'" />
+		  <xsl:with-param name="style.param" select="'center'"/>
+		  <xsl:with-param name="style.name" select="'align'"/>
 		</xsl:call-template>
 	      </xsl:when>
 	      <xsl:otherwise>
 		<xsl:call-template name="style.maker">
-		  <xsl:with-param name="style.param" select="'left'" />
-		  <xsl:with-param name="style.name" select="'align'" />
+		  <xsl:with-param name="style.param" select="'left'"/>
+		  <xsl:with-param name="style.name" select="'align'"/>
 		</xsl:call-template>
 	      </xsl:otherwise>
 	    </xsl:choose>
@@ -561,8 +543,8 @@
 	       the default would be to just leave these things out. -->
 	  <xsl:when test="$style.name='char' or $style.name='charoff'">
 	    <xsl:call-template name="style.maker">
-	      <xsl:with-param name="style.param" select="'null'" />
-	      <xsl:with-param name="style.name" select="$style.name" />
+	      <xsl:with-param name="style.param" select="'null'"/>
+	      <xsl:with-param name="style.name" select="$style.name"/>
 	    </xsl:call-template>
 	  </xsl:when>
 	</xsl:choose>
@@ -574,8 +556,8 @@
        how those attributes were determined in style.param.determiner (or in the process.cell/cnx:entrytbl templates if the current 
        entry(tbl) didn't pass through style.param.determiner). -->
   <xsl:template name="style.maker">
-    <xsl:param name="style.name" />
-    <xsl:param name="style.param" />
+    <xsl:param name="style.name"/>
+    <xsl:param name="style.param"/>
     <xsl:choose>
       <xsl:when test="$style.name='colsep'">
 	<xsl:choose>
@@ -599,15 +581,15 @@
       </xsl:when>
       <xsl:when test="$style.name='align'">
 	<xsl:text>text-align: </xsl:text>
-	<xsl:value-of select="$style.param" />
+	<xsl:value-of select="$style.param"/>
 	<xsl:text> !important; </xsl:text>
       </xsl:when>
       <xsl:when test="$style.name='char' or $style.name='charoff'">
 	<xsl:choose>
-	  <xsl:when test="$style.param='null'" />
+	  <xsl:when test="$style.param='null'"/>
 	  <xsl:otherwise>
 	    <xsl:attribute name="{$style.name}">
-	      <xsl:value-of select="$style.param" />
+	      <xsl:value-of select="$style.param"/>
 	    </xsl:attribute>
 	  </xsl:otherwise>
 	</xsl:choose>
@@ -623,37 +605,37 @@
     <xsl:param name="entry" select="."/>
     <xsl:choose>
       <xsl:when test="$entry/ancestor::*[3]/cnx:spanspec[@spanname=$entry/@spanname] and not($entry/ancestor::*[2]/cnx:colspec)">
-	<xsl:variable name="namest" select="$entry/ancestor::*[3]/cnx:spanspec[@spanname=$entry/@spanname]/@namest" />
+	<xsl:variable name="namest" select="$entry/ancestor::*[3]/cnx:spanspec[@spanname=$entry/@spanname]/@namest"/>
 	<xsl:call-template name="colspec.colnum">
-	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$namest]" />
+	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$namest]"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:when test="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@namest]">
 	<xsl:call-template name="colspec.colnum">
-	  <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@namest]" />
+	  <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@namest]"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:when test="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@colname]">
 	<xsl:call-template name="colspec.colnum">
-	  <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@colname]" />
+	  <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@colname]"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:when test="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@namest] and not($entry/ancestor::*[2]/cnx:colspec)">
 	<xsl:call-template name="colspec.colnum">
-	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@namest]" />
+	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@namest]"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:when test="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@colname] and not($entry/ancestor::*[2]/cnx:colspec)">
 	<xsl:call-template name="colspec.colnum">
-	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@colname]" />
+	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@colname]"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:when test="count($entry/../*) = $entry/ancestor::*[3]/@cols">
-	<xsl:value-of select="count($entry/preceding-sibling::*) + 1" />
+	<xsl:value-of select="count($entry/preceding-sibling::*) + 1"/>
       </xsl:when>
       <xsl:when test="$entry/parent::cnx:row/preceding-sibling::cnx:row/cnx:entry[(@morerows + count(parent::cnx:row/preceding-sibling::cnx:row)) &gt;= count($entry/parent::cnx:row/preceding-sibling::cnx:row)]">
         <xsl:call-template name="morerows.check">
-          <xsl:with-param name="mc.entry" select="$entry" />
+          <xsl:with-param name="mc.entry" select="$entry"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="count($entry/preceding-sibling::*) = 0">1</xsl:when>
@@ -679,22 +661,22 @@
       </xsl:when>
       <xsl:when test="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@nameend]">
 	<xsl:call-template name="colspec.colnum">
-	  <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@nameend]" />
+	  <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@nameend]"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:when test="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@colname]">
 	<xsl:call-template name="colspec.colnum">
-	  <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@colname]" />
+	  <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$entry/@colname]"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:when test="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@nameend] and not($entry/ancestor::*[2]/cnx:colspec)">
 	<xsl:call-template name="colspec.colnum">
-	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@nameend]" />
+	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@nameend]"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:when test="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@colname] and not($entry/ancestor::*[2]/cnx:colspec)">
 	<xsl:call-template name="colspec.colnum">
-	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@colname]" />
+	  <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$entry/@colname]"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:when test="count($entry/preceding-sibling::*) = 0">1</xsl:when>
@@ -733,36 +715,35 @@
   -->
 
   <xsl:template name="morerows.check">
-    <xsl:param name="mc.entry" /> <!-- all passed params must be declared, even if they don't need a default -->
-    <xsl:param name="mc.first.part" select="';'" /> <!-- Used primarily for mc.cols.assignment below -->
-    <xsl:param name="mc.row.number.being.checked" select="'1'" /> <!-- Number of row we're in during testing (start at top) -->
-    <xsl:param name="mc.entry.number.being.checked" select="'1'" /> <!-- Number of column we're in during testing (start at left) -->
-    <xsl:param name="mc.cols.quantity" select="$mc.entry/ancestor::*[3]/@cols" />
+    <xsl:param name="mc.entry"/> <!-- all passed params must be declared, even if they don't need a default -->
+    <xsl:param name="mc.first.part" select="';'"/> <!-- Used primarily for mc.cols.assignment below -->
+    <xsl:param name="mc.row.number.being.checked" select="'1'"/> <!-- Number of row we're in during testing (start at top) -->
+    <xsl:param name="mc.entry.number.being.checked" select="'1'"/> <!-- Number of column we're in during testing (start at left) -->
+    <xsl:param name="mc.cols.quantity" select="$mc.entry/ancestor::*[3]/@cols"/>
     <xsl:param name="mc.cols"> <!-- A semi-colon separated string that shows us how many rows are being occupied by a particular 
 				     row's entries.  Start of by making it look something like this: ;0;0;0;0;...;0; -->
       <xsl:call-template name="mc.cols.initialization">
-	<xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
-	<xsl:with-param name="mc.cols" select="';'" />
+	<xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity"/>
+	<xsl:with-param name="mc.cols" select="';'"/>
       </xsl:call-template>
     </xsl:param>
     <!-- Start at the top left (because we have to start accounting for @morerows beginning there) until we make it down to the row 
 	 with the entry(tbl) whose colnum we're trying to determine. -->
     <xsl:choose>
-      <xsl:when test="generate-id($mc.entry/ancestor::*[2]/cnx:row[position()=$mc.row.number.being.checked]/child::*[position()=$mc.entry.number.being.checked]) 
-	              = generate-id($mc.entry)">
+      <xsl:when test="generate-id($mc.entry/ancestor::*[2]/cnx:row[position()=$mc.row.number.being.checked]/child::*[position()=$mc.entry.number.being.checked])                 = generate-id($mc.entry)">
 	<xsl:call-template name="mc.determine.colnum">
-	  <xsl:with-param name="mc.cols" select="$mc.cols" />
-	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
+	  <xsl:with-param name="mc.cols" select="$mc.cols"/>
+	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
 	<xsl:call-template name="mc.cols.assignment">
-	  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked" />
-	  <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked" />
-	  <xsl:with-param name="mc.entry" select="$mc.entry" />
-	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
-	  <xsl:with-param name="mc.cols" select="$mc.cols" />
-	  <xsl:with-param name="mc.first.part" select="$mc.first.part" />
+	  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked"/>
+	  <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked"/>
+	  <xsl:with-param name="mc.entry" select="$mc.entry"/>
+	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity"/>
+	  <xsl:with-param name="mc.cols" select="$mc.cols"/>
+	  <xsl:with-param name="mc.first.part" select="$mc.first.part"/>
 	</xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
@@ -770,32 +751,32 @@
 
   <xsl:template name="mc.cols.initialization">
     <!-- Say, for example, the tgroup has @cols equal to 4.  $mc.cols will look like this: ;0;0;0;0; -->
-    <xsl:param name="mci.iteration" select="'1'" />
-    <xsl:param name="mc.cols" />
-    <xsl:param name="mc.cols.quantity" />
+    <xsl:param name="mci.iteration" select="'1'"/>
+    <xsl:param name="mc.cols"/>
+    <xsl:param name="mc.cols.quantity"/>
     <xsl:choose>
       <xsl:when test="$mci.iteration &gt; $mc.cols.quantity">
-        <xsl:value-of select="$mc.cols" />
+        <xsl:value-of select="$mc.cols"/>
       </xsl:when>
       <xsl:otherwise>
         <xsl:call-template name="mc.cols.initialization">
-          <xsl:with-param name="mci.iteration" select="$mci.iteration + 1" />
-          <xsl:with-param name="mc.cols" select="concat($mc.cols,'0;')" />
-	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
+          <xsl:with-param name="mci.iteration" select="$mci.iteration + 1"/>
+          <xsl:with-param name="mc.cols" select="concat($mc.cols,'0;')"/>
+	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity"/>
        </xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
   <xsl:template name="mc.cols.assignment">
-    <xsl:param name="mc.cols" />
-    <xsl:param name="mc.first.part" />
+    <xsl:param name="mc.cols"/>
+    <xsl:param name="mc.first.part"/>
     <xsl:param name="mca.number.in.question">
       <xsl:choose>
 	<!-- If nobody has added an entry(tbl) who's colnum is greater than the @cols attribute, determine the number by removing the 
 	     "first part" from the mc.cols string, then taking the string before the first separator (';') -->
  	<xsl:when test="$mc.cols != $mc.first.part">
-          <xsl:value-of select="substring-before(substring-after($mc.cols,$mc.first.part),';')" />
+          <xsl:value-of select="substring-before(substring-after($mc.cols,$mc.first.part),';')"/>
 	</xsl:when>
 	<!-- Else, tack on another number to the string -->
 	<xsl:otherwise>0</xsl:otherwise>
@@ -806,22 +787,22 @@
 	<!-- If nobody has added an entry(tbl) who's colnum is greater than the @cols attribute, determine the "last part" by removing 
 	     the "first part" and "number in question" from the cols string -->
 	<xsl:when test="$mc.cols != $mc.first.part">
-	  <xsl:value-of select="substring-after($mc.cols,concat($mc.first.part,$mca.number.in.question))" />
+	  <xsl:value-of select="substring-after($mc.cols,concat($mc.first.part,$mca.number.in.question))"/>
 	</xsl:when>
 	<!-- Else, tack on another separator -->
 	<xsl:otherwise>;</xsl:otherwise>
       </xsl:choose>
     </xsl:param>
-    <xsl:param name="mc.cols.quantity" />
-    <xsl:param name="mc.entry" />
-    <xsl:param name="mc.entry.number.being.checked" />
-    <xsl:param name="mc.row.number.being.checked" />
-    <xsl:param name="mca.entry.being.checked" select="$mc.entry/ancestor::*[2]/cnx:row[position()=$mc.row.number.being.checked]/child::*[position()=$mc.entry.number.being.checked]" />
+    <xsl:param name="mc.cols.quantity"/>
+    <xsl:param name="mc.entry"/>
+    <xsl:param name="mc.entry.number.being.checked"/>
+    <xsl:param name="mc.row.number.being.checked"/>
+    <xsl:param name="mca.entry.being.checked" select="$mc.entry/ancestor::*[2]/cnx:row[position()=$mc.row.number.being.checked]/child::*[position()=$mc.entry.number.being.checked]"/>
     <xsl:param name="mca.rowspan">
       <xsl:choose>
       <!-- If there's a morerows attribute, the entry(tbl) spans the number of that attribute plus 1. -->
 	<xsl:when test="$mca.entry.being.checked/@morerows">
-	  <xsl:value-of select="$mca.entry.being.checked/@morerows + 1" />
+	  <xsl:value-of select="$mca.entry.being.checked/@morerows + 1"/>
 	</xsl:when>
 	<!-- If there's not a morerows attribute, the entry(tbl) only spans one row -->
 	<xsl:otherwise>1</xsl:otherwise>
@@ -832,7 +813,7 @@
  	<!-- If there entry(tbl) has a span, calculate how long it is -->
 	<xsl:when test="($mca.entry.being.checked/@namest and $mca.entry.being.checked/@nameend) or $mca.entry.being.checked/@spanname">
 	  <xsl:call-template name="calculate.colspan">
-	    <xsl:with-param name="entry" select="$mca.entry.being.checked" />
+	    <xsl:with-param name="entry" select="$mca.entry.being.checked"/>
 	  </xsl:call-template>
 	</xsl:when>
 	<!-- Otherwise, the entry(tbl) only spans one column -->
@@ -843,10 +824,10 @@
     <xsl:param name="mc.cols.quantity.test">
       <xsl:choose>
 	<xsl:when test="$mc.first.part = $mc.cols">
-	  <xsl:value-of select="$mc.cols.quantity + 1" />
+	  <xsl:value-of select="$mc.cols.quantity + 1"/>
 	</xsl:when>
 	<xsl:otherwise>
-	  <xsl:value-of select="$mc.cols.quantity" />
+	  <xsl:value-of select="$mc.cols.quantity"/>
 	</xsl:otherwise>
       </xsl:choose>
     </xsl:param>
@@ -856,12 +837,12 @@
 	   row or a morerows in the entry of a previous row. -->
       <xsl:when test="$mca.number.in.question != 0">
 	<xsl:call-template name="mc.cols.assignment">
-	  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked" />
-	  <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked" />
-	  <xsl:with-param name="mc.entry" select="$mc.entry" />
-	  <xsl:with-param name="mc.cols" select="$mc.cols" />
-	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
-	  <xsl:with-param name="mc.first.part" select="concat($mc.first.part,$mca.number.in.question,';')" />
+	  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked"/>
+	  <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked"/>
+	  <xsl:with-param name="mc.entry" select="$mc.entry"/>
+	  <xsl:with-param name="mc.cols" select="$mc.cols"/>
+	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity"/>
+	  <xsl:with-param name="mc.first.part" select="concat($mc.first.part,$mca.number.in.question,';')"/>
 	</xsl:call-template>
       </xsl:when>
       <!-- Otherwise, the entry being checked can fit there. -->
@@ -870,14 +851,14 @@
 	<!-- If the entry we're on in morerows.check has a colspan, also assign the other corresponding colnums. -->
 	  <xsl:when test="$mca.colspan &gt; 1">
 	    <xsl:call-template name="mc.cols.assignment">
-	      <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked" />
-	      <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked" />
-	      <xsl:with-param name="mc.entry" select="$mc.entry" />
-	      <xsl:with-param name="mca.colspan" select="$mca.colspan - 1" />
-	      <xsl:with-param name="mca.rowspan" select="$mca.rowspan" />
-	      <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity.test" />
-	      <xsl:with-param name="mc.cols" select="concat($mc.first.part,$mca.rowspan,$mca.last.part)" />
-	      <xsl:with-param name="mc.first.part" select="concat($mc.first.part,$mca.rowspan,';')" />
+	      <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked"/>
+	      <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked"/>
+	      <xsl:with-param name="mc.entry" select="$mc.entry"/>
+	      <xsl:with-param name="mca.colspan" select="$mca.colspan - 1"/>
+	      <xsl:with-param name="mca.rowspan" select="$mca.rowspan"/>
+	      <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity.test"/>
+	      <xsl:with-param name="mc.cols" select="concat($mc.first.part,$mca.rowspan,$mca.last.part)"/>
+	      <xsl:with-param name="mc.first.part" select="concat($mc.first.part,$mca.rowspan,';')"/>
 	    </xsl:call-template>
 	  </xsl:when>
 	  <!-- If the entry doesn't span cols, just assign the one colnum. -->
@@ -886,22 +867,22 @@
 	      <!-- If not at new row (there's a following-sibling entry(tbl)) -->
 	      <xsl:when test="boolean($mc.entry/ancestor::*[2]/cnx:row[position()=$mc.row.number.being.checked]/child::*[position()=$mc.entry.number.being.checked][following-sibling::*])">
 		<xsl:call-template name="morerows.check">
-		  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked" />
-		  <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked + 1" />
-		  <xsl:with-param name="mc.entry" select="$mc.entry" />
-		  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity.test" />
-		  <xsl:with-param name="mc.cols" select="concat($mc.first.part,$mca.rowspan,$mca.last.part)" />
-		  <xsl:with-param name="mc.first.part" select="concat($mc.first.part,$mca.rowspan,';')" />
+		  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked"/>
+		  <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked + 1"/>
+		  <xsl:with-param name="mc.entry" select="$mc.entry"/>
+		  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity.test"/>
+		  <xsl:with-param name="mc.cols" select="concat($mc.first.part,$mca.rowspan,$mca.last.part)"/>
+		  <xsl:with-param name="mc.first.part" select="concat($mc.first.part,$mca.rowspan,';')"/>
 		</xsl:call-template>
 	      </xsl:when>
 	      <!-- If at new row -->
 	      <xsl:otherwise>
 		<xsl:call-template name="mc.cols.reset">
-		  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked" />
-		  <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked" />
-		  <xsl:with-param name="mc.entry" select="$mc.entry" />
-		  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity.test" />
-		  <xsl:with-param name="mc.cols" select="concat($mc.first.part,$mca.rowspan,$mca.last.part)" />
+		  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked"/>
+		  <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked"/>
+		  <xsl:with-param name="mc.entry" select="$mc.entry"/>
+		  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity.test"/>
+		  <xsl:with-param name="mc.cols" select="concat($mc.first.part,$mca.rowspan,$mca.last.part)"/>
 		</xsl:call-template>
 	      </xsl:otherwise>
 	    </xsl:choose>
@@ -912,24 +893,24 @@
   </xsl:template>
 
   <xsl:template name="mc.cols.reset">
-    <xsl:param name="mc.cols" />
-    <xsl:param name="mcr.iteration" select="'1'" />
-    <xsl:param name="mcr.first.part" select="';'" />
-    <xsl:param name="mcr.number.in.question" select="substring-before(substring-after($mc.cols,$mcr.first.part),';')" />
-    <xsl:param name="mcr.last.part" select="substring-after($mc.cols,concat($mcr.first.part,$mcr.number.in.question))" />
-    <xsl:param name="mc.row.number.being.checked" />
-    <xsl:param name="mc.entry.number.being.checked" />
-    <xsl:param name="mc.entry" />
-    <xsl:param name="mc.cols.quantity" />
+    <xsl:param name="mc.cols"/>
+    <xsl:param name="mcr.iteration" select="'1'"/>
+    <xsl:param name="mcr.first.part" select="';'"/>
+    <xsl:param name="mcr.number.in.question" select="substring-before(substring-after($mc.cols,$mcr.first.part),';')"/>
+    <xsl:param name="mcr.last.part" select="substring-after($mc.cols,concat($mcr.first.part,$mcr.number.in.question))"/>
+    <xsl:param name="mc.row.number.being.checked"/>
+    <xsl:param name="mc.entry.number.being.checked"/>
+    <xsl:param name="mc.entry"/>
+    <xsl:param name="mc.cols.quantity"/>
     <!-- Go through each number and subtract 1 from it (unless it's somehow less than 1, in which case return 0). -->
     <xsl:choose>
       <xsl:when test="$mcr.iteration &gt; $mc.cols.quantity">
 	<xsl:call-template name="morerows.check">
-	  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked + 1" />
-	  <xsl:with-param name="mc.entry.number.being.checked" select="'1'" />
-	  <xsl:with-param name="mc.entry" select="$mc.entry" />
-	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
-	  <xsl:with-param name="mc.cols" select="$mc.cols" />
+	  <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked + 1"/>
+	  <xsl:with-param name="mc.entry.number.being.checked" select="'1'"/>
+	  <xsl:with-param name="mc.entry" select="$mc.entry"/>
+	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity"/>
+	  <xsl:with-param name="mc.cols" select="$mc.cols"/>
 	</xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
@@ -938,24 +919,24 @@
 	<xsl:choose>
 	  <xsl:when test="$mcr.number.in.question &lt; 1">
 	    <xsl:call-template name="mc.cols.reset">
-	      <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked" />
-	      <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked" />
-	      <xsl:with-param name="mc.entry" select="$mc.entry" />
-	      <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
-	      <xsl:with-param name="mc.cols" select="concat($mcr.first.part,0,$mcr.last.part)" />
-	      <xsl:with-param name="mcr.first.part" select="concat($mcr.first.part,'0;')" />
-	      <xsl:with-param name="mcr.iteration" select="$mcr.iteration + 1" />
+	      <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked"/>
+	      <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked"/>
+	      <xsl:with-param name="mc.entry" select="$mc.entry"/>
+	      <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity"/>
+	      <xsl:with-param name="mc.cols" select="concat($mcr.first.part,0,$mcr.last.part)"/>
+	      <xsl:with-param name="mcr.first.part" select="concat($mcr.first.part,'0;')"/>
+	      <xsl:with-param name="mcr.iteration" select="$mcr.iteration + 1"/>
 	    </xsl:call-template>
 	  </xsl:when>
 	  <xsl:otherwise>
 	    <xsl:call-template name="mc.cols.reset">
-	      <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked" />
-	      <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked" />
-	      <xsl:with-param name="mc.entry" select="$mc.entry" />
-	      <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
-	      <xsl:with-param name="mc.cols" select="concat($mcr.first.part,$mcr.number.in.question - 1,$mcr.last.part)" />
-	      <xsl:with-param name="mcr.first.part" select="concat($mcr.first.part,$mcr.number.in.question - 1,';')" />
-	      <xsl:with-param name="mcr.iteration" select="$mcr.iteration + 1" />
+	      <xsl:with-param name="mc.row.number.being.checked" select="$mc.row.number.being.checked"/>
+	      <xsl:with-param name="mc.entry.number.being.checked" select="$mc.entry.number.being.checked"/>
+	      <xsl:with-param name="mc.entry" select="$mc.entry"/>
+	      <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity"/>
+	      <xsl:with-param name="mc.cols" select="concat($mcr.first.part,$mcr.number.in.question - 1,$mcr.last.part)"/>
+	      <xsl:with-param name="mcr.first.part" select="concat($mcr.first.part,$mcr.number.in.question - 1,';')"/>
+	      <xsl:with-param name="mcr.iteration" select="$mcr.iteration + 1"/>
 	    </xsl:call-template>
 	  </xsl:otherwise>
 	</xsl:choose>
@@ -964,21 +945,21 @@
   </xsl:template>
 
   <xsl:template name="mc.determine.colnum">
-    <xsl:param name="mc.cols" />
-    <xsl:param name="mc.first.part" select="';'" />
-    <xsl:param name="mdc.iteration" select="'1'" />
-    <xsl:param name="mdc.number.in.question" select="substring-before(substring-after($mc.cols,$mc.first.part),';')" />
-    <xsl:param name="mc.cols.quantity" />
+    <xsl:param name="mc.cols"/>
+    <xsl:param name="mc.first.part" select="';'"/>
+    <xsl:param name="mdc.iteration" select="'1'"/>
+    <xsl:param name="mdc.number.in.question" select="substring-before(substring-after($mc.cols,$mc.first.part),';')"/>
+    <xsl:param name="mc.cols.quantity"/>
     <xsl:choose>
       <xsl:when test="($mdc.number.in.question = 0) or ($mdc.iteration &gt; $mc.cols.quantity)">
-	<xsl:value-of select="$mdc.iteration" />
+	<xsl:value-of select="$mdc.iteration"/>
       </xsl:when>
       <xsl:otherwise>
 	<xsl:call-template name="mc.determine.colnum">
-	  <xsl:with-param name="mc.first.part" select="concat($mc.first.part,$mdc.number.in.question,';')" />
-	  <xsl:with-param name="mc.cols" select="$mc.cols" />
-	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity" />
-	  <xsl:with-param name="mdc.iteration" select="$mdc.iteration + 1" />
+	  <xsl:with-param name="mc.first.part" select="concat($mc.first.part,$mdc.number.in.question,';')"/>
+	  <xsl:with-param name="mc.cols" select="$mc.cols"/>
+	  <xsl:with-param name="mc.cols.quantity" select="$mc.cols.quantity"/>
+	  <xsl:with-param name="mdc.iteration" select="$mdc.iteration + 1"/>
 	</xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
@@ -1005,48 +986,41 @@
 
 
   <xsl:template name="col.maker">
-    <xsl:param name="cm.iteration" select="'1'" />
+    <xsl:param name="cm.iteration" select="'1'"/>
       <!-- If thead or tfoot has a colspec with a colwidth attribute, it takes precedence ??? over a colwidth directly under a 
 	   tgroup or entrytbl.  Set this colwidth attribute as a param. -->
       <xsl:param name="colwidth">
       <xsl:choose>
 	<xsl:when test="child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth">
-	  <xsl:value-of select="child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth" />
+	  <xsl:value-of select="child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth"/>
 	</xsl:when>
 	<xsl:when test="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth">
-	  <xsl:value-of select="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth" />
+	  <xsl:value-of select="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))]/@colwidth"/>
 	</xsl:when>
       </xsl:choose>
     </xsl:param>
     <xsl:choose>
-      <xsl:when test="$cm.iteration &gt; @cols" />
+      <xsl:when test="$cm.iteration &gt; @cols"/>
       <xsl:otherwise>
 	<col>
 	  <!-- Do something if this particular column (matched by the colspec's colnum attribute) has an actual colwidth. -->
 	  <xsl:choose>
-	    <xsl:when test="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))][@colwidth!=''] or 
-			    child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))][@colwidth!='']">
+	    <xsl:when test="cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))][@colwidth!=''] or         child::*/cnx:colspec[(@colnum=$cm.iteration) or (position()=$cm.iteration and not(@colnum))][@colwidth!='']">
 	      <!-- If the colwidth is expressed in 'in', 'em', 'cm', 'pc', 'pi', 'mm', or 'ex', express this width with a style 
 		   attribute instead of a width attribute, since browsers can actually handle this. -->
 	      <xsl:choose>
-		<xsl:when test="contains($colwidth,'in') or 
-				contains($colwidth,'em') or 
-				contains($colwidth,'cm') or 
-				contains($colwidth,'pc') or 
-				contains($colwidth,'pi') or 
-				contains($colwidth,'mm') or 
-				contains($colwidth,'ex')">
+		<xsl:when test="contains($colwidth,'in') or      contains($colwidth,'em') or      contains($colwidth,'cm') or      contains($colwidth,'pc') or      contains($colwidth,'pi') or      contains($colwidth,'mm') or      contains($colwidth,'ex')">
 		  <xsl:attribute name="style">
 		    <xsl:text>width: </xsl:text>
 		    <!-- If 'pi' is used for 'picas' (as given in an example in the CALS spec) instead of 'pc' (as can be rendered by 
 			 browsers), change it to 'pc'. -->
 		    <xsl:choose>
 		      <xsl:when test="contains($colwidth,'pi')">
-			<xsl:value-of select="substring-before($colwidth,'pi')" />
+			<xsl:value-of select="substring-before($colwidth,'pi')"/>
 			<xsl:text>pc</xsl:text>
 		      </xsl:when>
 		      <xsl:otherwise>
-			<xsl:value-of select="$colwidth" />
+			<xsl:value-of select="$colwidth"/>
 		      </xsl:otherwise>
 		    </xsl:choose>
 		  </xsl:attribute>
@@ -1056,7 +1030,7 @@
 		     case of relative widths). -->
 		<xsl:otherwise>
 		  <xsl:attribute name="width">
-		    <xsl:value-of select="$colwidth" />
+		    <xsl:value-of select="$colwidth"/>
 		  </xsl:attribute>
 		</xsl:otherwise>
 	      </xsl:choose>
@@ -1072,7 +1046,7 @@
 	</col>
 	<!-- Go to the next column and make a col element for it, if it exists. -->
 	<xsl:call-template name="col.maker">
-	  <xsl:with-param name="cm.iteration" select="$cm.iteration + 1" />
+	  <xsl:with-param name="cm.iteration" select="$cm.iteration + 1"/>
 	</xsl:call-template>
       </xsl:otherwise>
     </xsl:choose>
@@ -1080,25 +1054,25 @@
 
 
   <xsl:template name="calculate.colspan">
-    <xsl:param name="entry" select="." />
-    <xsl:variable name="spanname" select="$entry/@spanname" />
+    <xsl:param name="entry" select="."/>
+    <xsl:variable name="spanname" select="$entry/@spanname"/>
     <xsl:variable name="namest">
       <xsl:choose>
 	<xsl:when test="$entry/@spanname and not($entry/ancestor::*[2]/cnx:colspec)">
-	  <xsl:value-of select="$entry/ancestor::*[3]/cnx:spanspec[@spanname=$spanname]/@namest" />
+	  <xsl:value-of select="$entry/ancestor::*[3]/cnx:spanspec[@spanname=$spanname]/@namest"/>
 	</xsl:when>
 	<xsl:otherwise>
-	  <xsl:value-of select="$entry/@namest" />
+	  <xsl:value-of select="$entry/@namest"/>
 	</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="nameend">
       <xsl:choose>
 	<xsl:when test="$entry/@spanname and not($entry/ancestor::*[2]/cnx:colspec)">
-	  <xsl:value-of select="$entry/ancestor::*[3]/cnx:spanspec[@spanname=$spanname]/@nameend" />
+	  <xsl:value-of select="$entry/ancestor::*[3]/cnx:spanspec[@spanname=$spanname]/@nameend"/>
 	</xsl:when>
 	<xsl:otherwise>
-	  <xsl:value-of select="$entry/@nameend" />
+	  <xsl:value-of select="$entry/@nameend"/>
 	</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
@@ -1106,12 +1080,12 @@
       <xsl:choose>
 	<xsl:when test="$entry/ancestor::*[2]/cnx:colspec">
 	  <xsl:call-template name="colspec.colnum">
-	    <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$namest]" />
+	    <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$namest]"/>
 	  </xsl:call-template>
 	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:call-template name="colspec.colnum">
-	    <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$namest]" />
+	    <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$namest]"/>
 	  </xsl:call-template>
 	</xsl:otherwise>
       </xsl:choose>
@@ -1120,19 +1094,18 @@
       <xsl:choose>
 	<xsl:when test="$entry/ancestor::*[2]/cnx:colspec">
 	  <xsl:call-template name="colspec.colnum">
-	    <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$nameend]" />
+	    <xsl:with-param name="colspec" select="$entry/ancestor::*[2]/cnx:colspec[@colname=$nameend]"/>
 	  </xsl:call-template>
 	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:call-template name="colspec.colnum">
-	    <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$nameend]" />
+	    <xsl:with-param name="colspec" select="$entry/ancestor::*[3]/cnx:colspec[@colname=$nameend]"/>
 	  </xsl:call-template>
 	</xsl:otherwise>
       </xsl:choose>
     </xsl:variable>
-    <xsl:value-of select="$ecol - $scol + 1" />
+    <xsl:value-of select="$ecol - $scol + 1"/>
   </xsl:template>
 
 
 </xsl:stylesheet>
-
