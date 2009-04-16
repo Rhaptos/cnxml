@@ -1,8 +1,8 @@
-connexions-cnxml (0.6.2-1devgentextxbegone) unstable; urgency=low
+connexions-cnxml (0.6.2-1) unstable; urgency=low
 
   * gentext minification
 
- -- Ross J. Reedstrom <reedstrm@cnx.org>  Tue, 14 Apr 2009 11:33:33 -0500
+ -- Jennifer A. Drummond <jenn@cnx.org>  Thu, 16 Apr 2009 09:31:34 -0500
 
 connexions-cnxml (0.6.1-1) unstable; urgency=low
 
