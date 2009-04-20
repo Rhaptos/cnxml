@@ -2,12 +2,12 @@ Source: connexions-cnxml
 Section: text
 Priority: optional
 Maintainer: Ross J. Reedstrom <reedstrm@cnx.org>
-Build-Depends: debhelper (>> 4.0.0)
+Build-Depends: debhelper (>> 4.0.0), docbook-xsl
 Standards-Version: 3.6.1.0
 
 Package: connexions-cnxml-common
 Architecture: all
-Depends: ${misc:Depends}, docbook-xsl
+Depends: ${misc:Depends}
 Description: Connexions Markup Language common files (stylesheets)
  Connexions Markup Language (CNXML), an XML application for
  marking up educational texts. It is designed for use in the

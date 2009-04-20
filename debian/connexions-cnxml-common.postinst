@@ -1,9 +1,9 @@
 #!/bin/sh
-# postrm for connexions-cnxml-common. Remove diversion of l10n.xsl from docbook-xsl
+# postinst for connexions-cnxml-common. Remove no longer needed diversion of l10n.xsl from docbook-xsl
 
 set -e
 
-if [ "$1" = remove ] ; then
+if [ "$1" = upgrade ] ; then
     dpkg-divert --remove --package connexions-cnxml-common --rename \
     --divert /usr/share/xml/docbook/stylesheet/nwalsh/common/l10n.xsl.docbook /usr/share/xml/docbook/stylesheet/nwalsh/common/l10n.xsl
 fi
