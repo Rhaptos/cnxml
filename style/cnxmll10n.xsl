@@ -86,10 +86,6 @@
       <l:gentext key="Stronglink" text="Strongly related link"/>
       <l:gentext key="Relatedlink" text="Related link"/>
       <l:gentext key="Weaklink" text="Weakly related link"/>
-      <l:gentext key="TagsLabel" text="Tags:"/>
-      <l:gentext key="ApproveModule" text="Approve Module"/>
-      <l:gentext key="Approve" text="Approve"/>
-      <l:gentext key="AboutRating" text="About the rating system"/>
 
       <!-- for editInPlace.xsl -->
       <l:gentext key="Instructions" text="Instructions: "/>
