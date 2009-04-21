@@ -1,3 +1,15 @@
+cnxml-0.6.2
+  - Modify localization system to improve performance ("gentext-be-gone", 4/16/09):
+    - create a version of the Docbook gentext elements containing
+      only the keys that we need;
+    - implement a reduced version of the Docbook 'gentext' template;
+    - add scripts to compute all gentext keys needed for a given set 
+      of module_export_template files, and to create a local l10n.xml
+      file from the Docbook files with only the needed keys.
+
+cnxml-0.6.1
+  - Put the OER icon, message, and links in the footer (ticket:8592)
+
 cnxml-0.6.0.3
   - Mathml warning message for unsupported browsers
 
