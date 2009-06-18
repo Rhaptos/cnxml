@@ -1,3 +1,7 @@
+cnxml-0.6.3
+  - Module Edit Workflow (DATE)
+    - DETAILS HERE
+
 cnxml-0.6.2
   - Modify localization system to improve performance ("gentext-be-gone", 4/16/09):
     - create a version of the Docbook gentext elements containing
