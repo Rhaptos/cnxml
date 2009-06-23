@@ -1,6 +1,6 @@
 cnxml-0.6.3
   - Module Edit Workflow (DATE)
-    - DETAILS HERE
+    - #4266: Output empty links to bibtex entries as bracketed numbers.
 
 cnxml-0.6.2
   - Modify localization system to improve performance ("gentext-be-gone", 4/16/09):
