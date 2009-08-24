@@ -24,26 +24,64 @@
     </choice>
   </start>
 
-  <include href="http://cnx.rice.edu/technology/mdml/schema/rng/0.4.5/mdml-defs.rng">
+  <include href="cnxml-abstract-defs.rng">
+    <define name="cnxml-abstract-common-attributes">
+      <ref name="common-attributes"/>
+    </define>
+    <define name="cnxml-abstract-list-type-attribute">
+      <ref name="list-type-attribute"/>
+    </define>
+    <define name="cnxml-abstract-display-attribute">
+      <ref name="display-attribute"/>
+    </define>
+  </include>
+
+  <define name="cnxml-abstract-text-extras" combine="choice">
+    <ref name="mathml-math"/>
+  </define>
+
+  <include href="http://cnx.rice.edu/technology/mdml/schema/rng/0.5/mdml-defs.rng">
     <define name="mdml-metadata">
       <notAllowed/>
     </define>
     <define name="mdml-abstract-content">
-      <choice>
-        <ref name="simple-para-content"/>
-        <oneOrMore>
-          <ref name="simple-para"/>
-        </oneOrMore>
-      </choice>
+      <ref name="cnxml-abstract-content"/>
+    </define>
+    <define name="mdml-common-attributes">
+      <ref name="common-attributes"/>
     </define>
     <define name="mdml-extended-attribution">
-      <element name="extended-attribution" ns="http://cnx.rice.edu/mdml/0.4">
+      <element name="extended-attribution" ns="http://cnx.rice.edu/mdml">
+        <ref name="mdml-common-attributes"/>
         <oneOrMore>
           <ref name="link-group"/>
         </oneOrMore>
       </element>
     </define>
+    <define name="mdml-derived-from">
+      <element name="derived-from" ns="http://cnx.rice.edu/mdml">
+        <choice>
+          <ref name="url-attribute"/>
+          <group>
+            <ref name="document-attribute"/>
+            <optional>
+              <ref name="version-attribute"/>
+            </optional>
+            <optional>
+              <ref name="repository-attribute"/>
+            </optional>
+          </group>
+        </choice>
+        <zeroOrMore>
+          <ref name="mdml-derived-from"/>
+        </zeroOrMore>
+      </element>
+    </define>
   </include>
+
+  <define name="repository-attribute">
+    <attribute name="repository"/>
+  </define>
 
   <define name="mathml-math">
     <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
