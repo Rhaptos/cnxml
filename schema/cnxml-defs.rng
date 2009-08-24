@@ -593,7 +593,7 @@
 
   <define name="cnxml-version">
     <attribute name="cnxml-version">
-      <value>0.6</value>
+      <value>0.7</value>
     </attribute>
   </define>
 
