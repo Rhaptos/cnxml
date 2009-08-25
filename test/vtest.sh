@@ -1,3 +1,3 @@
 #!/bin/sh
 
-jing.sh $1 */*.xml */*/*.xml | sed 's;^.*test/;;' > test.out
+jing.sh $1 */*.xml */*/*.xml | sed 's;^.*test/;;'
