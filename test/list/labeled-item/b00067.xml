@@ -1,47 +1,45 @@
 <?xml version="1.0"?>
 <document xmlns="http://cnx.rice.edu/cnxml" xmlns:cnxorg="http://cnx.rice.edu/system-info" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml" xmlns:q="http://cnx.rice.edu/qml/1.0" xmlns:bib="http://bibtexml.sf.net/" xmlns:cnxml="http://cnx.rice.edu/cnxml" id="m00067" module-id="m00067" cnxml-version="0.7">
-
   <title>Labeled-item List Test</title>
   <metadata mdml-version="0.5">
-  <md:content-id>b00067</md:content-id><md:repository>http://cnx.org/content</md:repository>
-  <md:title>Labeled-item List Test</md:title>
-  <md:version>2.6</md:version>
-  <md:created>2008/10/10</md:created>
-  <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
-  <md:actors><md:person userid="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:person><md:person userid="lizzardg">
-      <md:firstname>Elizabeth</md:firstname>
-      <md:surname>Gregory</md:surname>
-      <md:fullname>Elizabeth Gregory</md:fullname>
-      <md:email>lizzardg@rice.edu</md:email>
-    </md:person></md:actors><md:roles><md:role type="author">sk8</md:role><md:role type="maintainer">sk8 lizzardg</md:role><md:role type="licensor">sk8</md:role></md:roles>
-
-  
-  
-  <md:license href="http://creativecommons.org/licenses/by/1.0"/>
-  
-  
-  <md:keywordlist>
-    <md:keyword>Supertest</md:keyword>
-    <md:keyword>Schema</md:keyword>
-  </md:keywordlist>
-
-  <md:abstract/>
-  <md:language>en</md:language>
-</metadata>
-
-
-
+    <md:content-id>b00067</md:content-id>
+    <md:repository>http://cnx.org/content</md:repository>
+    <md:title>Labeled-item List Test</md:title>
+    <md:version>2.6</md:version>
+    <md:created>2008/10/10</md:created>
+    <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
+    <md:actors>
+      <md:person userid="sk8">
+        <md:firstname>Scott</md:firstname>
+        <md:surname>Kravitz</md:surname>
+        <md:fullname>Scott Kravitz</md:fullname>
+        <md:email>sk8@rice.edu</md:email>
+      </md:person>
+      <md:person userid="lizzardg">
+        <md:firstname>Elizabeth</md:firstname>
+        <md:surname>Gregory</md:surname>
+        <md:fullname>Elizabeth Gregory</md:fullname>
+        <md:email>lizzardg@rice.edu</md:email>
+      </md:person>
+    </md:actors>
+    <md:roles>
+      <md:role type="author">sk8</md:role>
+      <md:role type="maintainer">sk8 lizzardg</md:role>
+      <md:role type="licensor">sk8</md:role>
+    </md:roles>
+    <md:license url="http://creativecommons.org/licenses/by/1.0"/>
+    <md:keywordlist>
+      <md:keyword>Supertest</md:keyword>
+      <md:keyword>Schema</md:keyword>
+    </md:keywordlist>
+    <md:abstract/>
+    <md:language>en</md:language>
+  </metadata>
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
     <para id="p1">
       <list id="l1" list-type="labeled-item">
         <name>Disallowed</name>
-        <item>
-          <name>Disallowed</name>
+        <item><name>Disallowed</name>
           Name elements are no longer allowed as children of items or lists!
         </item>
       </list>
