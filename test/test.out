@@ -40,6 +40,7 @@ media/b00071.xml:42:15: error: unfinished element
 media/b00073.xml:40:62: error: bad value for attribute "display"
 media/b00074.xml:42:21: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
 media/b00075.xml:39:59: error: bad value for attribute "display"
+media/b00076.xml:48:60: error: bad value for attribute "for"
 para_div_section/b00034.xml:41:29: error: ID "duplicateID" has already been defined
 para_div_section/b00034.xml:39:28: error: first occurrence of ID "duplicateID"
 para_div_section/b00035.xml:39:32: error: element "label" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context

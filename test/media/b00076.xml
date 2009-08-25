@@ -44,8 +44,9 @@
           <div id="d1">Any div content can be put inside of longdesc elements.</div>
         </longdesc>
         <image src="zeus.png" mime-type="PNG" for="pdf"/>
-        <image src="zeus.jpg" mime-type="JPG" for="epub"/>
-        <image src="zeus.gif" mime-type="GIF" for="e-pub"/>
+        <!-- @for may not contain spaces. -->
+        <image src="zeus.jpg" mime-type="JPG" for="e pub"/>
+        <image src="zeus.gif" mime-type="GIF"/>
       </media>
     </para>
   </content>
