@@ -820,11 +820,16 @@
   <define name="metadata">
     <element name="metadata">
       <ref name="common-attributes"/>
+      <ref name="metadata-extra-attributes"/>
       <optional>
         <ref name="id-attribute"/>
       </optional>
       <ref name="metadata-content"/>
     </element>
+  </define>
+
+  <define name="metadata-extra-attributes">
+    <empty/>
   </define>
 
   <define name="featured-links">

@@ -126,6 +126,12 @@
     <ref name="mathml-math"/>
   </define>
 
+  <define name="metadata-extra-attributes" combine="interleave">
+    <attribute name="mdml-version">
+      <value>0.5</value>
+    </attribute>
+  </define>
+
   <define name="simple-para">
     <element name="para">
       <ref name="common-attributes"/>
