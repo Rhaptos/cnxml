@@ -1423,9 +1423,9 @@
       <ref name="longdesc"/>
     </optional>
     <ref name="media-object-class"/>
-    <optional>
+    <zeroOrMore>
       <ref name="media-object-class"/>
-    </optional>
+    </zeroOrMore>
   </define>
 
   <define name="inline-media">
