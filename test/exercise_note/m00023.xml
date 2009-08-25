@@ -1,47 +1,29 @@
 <?xml version="1.0"?>
-<document xmlns="http://cnx.rice.edu/cnxml" id="m00023" module-id="m00023" cnxml-version="0.6">
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:cnxorg="http://cnx.rice.edu/system-info" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml" xmlns:q="http://cnx.rice.edu/qml/1.0" xmlns:bib="http://bibtexml.sf.net/" xmlns:cnxml="http://cnx.rice.edu/cnxml" id="m00023" module-id="m00023" cnxml-version="0.7">
 
   <title>Exercise and Note Test</title>
-  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-  <md:content-id>m00023</md:content-id>
+  <metadata mdml-version="0.5">
+  <md:content-id>m00023</md:content-id><md:repository>http://cnx.org/content</md:repository>
   <md:title>Exercise and Note Test</md:title>
   <md:version>2.6</md:version>
   <md:created>2008/10/10</md:created>
   <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
-  <md:authorlist>
-    <md:author id="sk8">
+  <md:actors><md:person userid="sk8">
       <md:firstname>Scott</md:firstname>
       <md:surname>Kravitz</md:surname>
       <md:fullname>Scott Kravitz</md:fullname>
       <md:email>sk8@rice.edu</md:email>
-    </md:author>
-  </md:authorlist>
-
-  <md:maintainerlist>
-    <md:maintainer id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:maintainer>
-    
-    <md:maintainer id="lizzardg">
+    </md:person><md:person userid="lizzardg">
       <md:firstname>Elizabeth</md:firstname>
       <md:surname>Gregory</md:surname>
       <md:fullname>Elizabeth Gregory</md:fullname>
       <md:email>lizzardg@rice.edu</md:email>
-    </md:maintainer>
-  </md:maintainerlist>
+    </md:person></md:actors><md:roles><md:role type="author">sk8</md:role><md:role type="maintainer">sk8 lizzardg</md:role><md:role type="licensor">sk8</md:role></md:roles>
+
+  
   
   <md:license href="http://creativecommons.org/licenses/by/1.0"/>
-  <md:licensorlist>
-    <md:licensor id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:licensor>
-  </md:licensorlist>
+  
   
   <md:keywordlist>
     <md:keyword>Supertest</md:keyword>
@@ -54,22 +36,22 @@
 
 
 
-  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <exercise id='exe1' print-placement='here'>
-      <problem id='prob1'>
-        <para id='pp1'>
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
+    <exercise id="exe1" print-placement="here">
+      <problem id="prob1">
+        <para id="pp1">
           Will this exercise be validated?
         </para>
       </problem>
-      <solution id='sol1'>
-        <para id='solp1'>
+      <solution id="sol1">
+        <para id="solp1">
           Of course it will; it has the required problem element, as well as a solution.
         </para>
       </solution>
-      <commentary id='c1' class='intelligent'>
+      <commentary id="c1" class="intelligent">
         <label>Commentary 1</label>
         <title>Comments for the first exercise</title>
-        <div id='d1'>
+        <div id="d1">
           Any div content can go inside of commentary, in theory!
         </div>
       </commentary>

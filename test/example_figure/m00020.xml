@@ -1,47 +1,29 @@
 <?xml version="1.0"?>
-<document xmlns="http://cnx.rice.edu/cnxml" id="m00020" module-id="m00020" cnxml-version="0.6">
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:cnxorg="http://cnx.rice.edu/system-info" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml" xmlns:q="http://cnx.rice.edu/qml/1.0" xmlns:bib="http://bibtexml.sf.net/" xmlns:cnxml="http://cnx.rice.edu/cnxml" id="m00020" module-id="m00020" cnxml-version="0.7">
 
   <title>Example and Figure Test</title>
-  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-  <md:content-id>m00020</md:content-id>
+  <metadata mdml-version="0.5">
+  <md:content-id>m00020</md:content-id><md:repository>http://cnx.org/content</md:repository>
   <md:title>Example and Figure Test</md:title>
   <md:version>2.6</md:version>
   <md:created>2008/10/10</md:created>
   <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
-  <md:authorlist>
-    <md:author id="sk8">
+  <md:actors><md:person userid="sk8">
       <md:firstname>Scott</md:firstname>
       <md:surname>Kravitz</md:surname>
       <md:fullname>Scott Kravitz</md:fullname>
       <md:email>sk8@rice.edu</md:email>
-    </md:author>
-  </md:authorlist>
-
-  <md:maintainerlist>
-    <md:maintainer id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:maintainer>
-    
-    <md:maintainer id="lizzardg">
+    </md:person><md:person userid="lizzardg">
       <md:firstname>Elizabeth</md:firstname>
       <md:surname>Gregory</md:surname>
       <md:fullname>Elizabeth Gregory</md:fullname>
       <md:email>lizzardg@rice.edu</md:email>
-    </md:maintainer>
-  </md:maintainerlist>
+    </md:person></md:actors><md:roles><md:role type="author">sk8</md:role><md:role type="maintainer">sk8 lizzardg</md:role><md:role type="licensor">sk8</md:role></md:roles>
+
+  
   
   <md:license href="http://creativecommons.org/licenses/by/1.0"/>
-  <md:licensorlist>
-    <md:licensor id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:licensor>
-  </md:licensorlist>
+  
   
   <md:keywordlist>
     <md:keyword>Supertest</md:keyword>
@@ -54,65 +36,65 @@
 
 
 
-  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <para id='intro'>
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
+    <para id="intro">
       Figures can have all kinds of media objects in them.
     </para>
-    <figure id='f1'>
+    <figure id="f1">
       <label>Figure 1</label>
-      <media id='med1' alt='A Good Song'>
-        <audio src='song.mp3' mime-type='MP3' standby='Loading...' autoplay='false' loop='true' controller='true' volume='25'/>
+      <media id="med1" alt="A Good Song">
+        <audio src="song.mp3" mime-type="MP3" standby="Loading..." autoplay="false" loop="true" controller="true" volume="25"/>
       </media>
       <caption>
         This media element has an audio file in it.
       </caption>
     </figure>
-    <figure id='f2'>
+    <figure id="f2">
       <label>Figure 2</label>
-      <media id='med2' alt='Watch the Movie'>
-        <video src='video.mov' mime-type='MOV' standby='Loading...' autoplay='false' loop='true' controller='true' volume='34'/>
+      <media id="med2" alt="Watch the Movie">
+        <video src="video.mov" mime-type="MOV" standby="Loading..." autoplay="false" loop="true" controller="true" volume="34"/>
       </media>
       <caption>
         This media element has a video file in it.
       </caption>
     </figure>
-    <figure id='f3'>
+    <figure id="f3">
       <label>Figure 3</label>
-      <media id='med3' alt='A Fun Java Game'>
-        <java-applet mime-type='JAVA' archive='codehere.jar' code='Applet' name='This is not a fruit.'/>
+      <media id="med3" alt="A Fun Java Game">
+        <java-applet mime-type="JAVA" archive="codehere.jar" code="Applet" name="This is not a fruit."/>
       </media>
       <caption>
         This media element has a java applet in it.
       </caption>
     </figure>
-    <figure id='f4'>
+    <figure id="f4">
       <label>Figure 4</label>
-      <media id='med4' alt='A Flash Movie'>
-       <flash src="http://www.youtube.com/v/IaNBLVHeS60&amp;hl=en&amp;fs=1" mime-type='FLASH' width="425" height="344">
-         <image src="flashscreenshot.png" mime-type='PNG'/>
+      <media id="med4" alt="A Flash Movie">
+       <flash src="http://www.youtube.com/v/IaNBLVHeS60&amp;hl=en&amp;fs=1" mime-type="FLASH" width="425" height="344">
+         <image src="flashscreenshot.png" mime-type="PNG"/>
        </flash>
-       <text mime-type='PNG' src="flashscreenshot.png">Flash movie available online.</text>
+       <text mime-type="PNG" src="flashscreenshot.png">Flash movie available online.</text>
       </media>
       <caption>
         This media element has a flash file in it.
       </caption>
     </figure>
-    <figure id='f5'>
+    <figure id="f5">
       <label>Figure 5</label>
-      <media id='med5' alt='A LabView File'>
-       <labview src="LinearTransform.llb" mime-type='LLB' viname="Linear Transformations.vi" version="8.0">
+      <media id="med5" alt="A LabView File">
+       <labview src="LinearTransform.llb" mime-type="LLB" viname="Linear Transformations.vi" version="8.0">
        Demonstration of balancing ball algorithm. Please install the Labview 8 plugin; see module m2345 for instructions.
        </labview>
-       <text mime-type='PNG'>Demonstration available online with Labview 8 plugin.</text>
+       <text mime-type="PNG">Demonstration available online with Labview 8 plugin.</text>
       </media>
       <caption>
         This media element has a LabView file in it.
       </caption>
     </figure>
-    <figure id='f6'>
+    <figure id="f6">
       <label>Figure 6</label>
-      <media id='med6' alt='A Document to be Downloaded'>
-       <download src="dwnldme.doc" mime-type='DOC'/>
+      <media id="med6" alt="A Document to be Downloaded">
+       <download src="dwnldme.doc" mime-type="DOC"/>
       </media>
       <caption>
         This media element has a download element in it.

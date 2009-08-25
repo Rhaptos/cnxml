@@ -1,0 +1,113 @@
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00001.xml:40:74: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00002.xml:42:63: error: element "div" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00003.xml:41:60: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00004.xml:42:16: error: element "label" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00005.xml:40:47: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00006.xml:41:66: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00007.xml:40:66: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00008.xml:40:87: error: attribute "extra" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00009.xml:40:49: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/code/b00009.xml:41:48: error: element "example" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00010.xml:41:44: error: text not allowed here
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00010.xml:42:15: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00011.xml:41:13: error: unknown element "name" from namespace "http://cnx.rice.edu/cnxml"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00012.xml:40:29: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00013.xml:43:53: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00014.xml:42:42: error: element "example" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00015.xml:41:39: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00016.xml:45:34: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00016.xml:47:56: error: element "media" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00017.xml:47:33: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00018.xml:43:59: error: bad value for attribute "orient"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00019.xml:48:50: error: element "image" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00021.xml:53:115: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/example_figure/b00021.xml:60:90: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00022.xml:43:27: error: required elements missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00022.xml:57:27: error: element "problem" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00023.xml:54:30: error: element "section" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00024.xml:41:70: error: attribute "print-placement" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00025.xml:42:52: error: text not allowed here
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00025.xml:43:17: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00026.xml:43:54: error: element "exercise" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00027.xml:47:29: error: element "problem" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00028.xml:41:24: error: element "section" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00029.xml:40:57: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00030.xml:41:53: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00031.xml:40:36: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00032.xml:42:27: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/exercise_note/b00033.xml:41:38: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/b00070.xml:42:24: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/b00071.xml:43:15: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/b00072.xml:49:48: error: element "image" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/b00073.xml:41:62: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/b00074.xml:43:21: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/b00075.xml:40:59: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00034.xml:42:29: error: ID "duplicateID" has already been defined
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00034.xml:40:28: error: first occurrence of ID "duplicateID"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00035.xml:41:14: error: element "label" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00036.xml:40:12: error: element "content" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00036.xml:51:13: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00037.xml:45:16: error: element "label" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00038.xml:42:30: error: element "section" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00038.xml:43:19: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00039.xml:42:27: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00040.xml:41:40: error: text not allowed here
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00041.xml:42:26: error: element "section" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00041.xml:43:19: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00042.xml:41:15: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00043.xml:40:31: error: text not allowed here
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00044.xml:41:31: error: element "div" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/para_div_section/b00045.xml:40:52: error: attribute "asdf" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/rule/b00046.xml:41:23: error: required elements missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/rule/b00047.xml:42:19: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/rule/b00048.xml:47:15: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/rule/b00049.xml:42:57: error: text not allowed here
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/rule/b00049.xml:43:19: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/rule/b00050.xml:53:29: error: element "statement" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/rule/b00051.xml:44:18: error: element "label" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/bulleted/b00052.xml:40:67: error: attribute "number-style" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/bulleted/b00053.xml:40:77: error: attribute "start-value" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/bulleted/b00054.xml:42:12: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/bulleted/b00055.xml:43:29: error: element "item" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/bulleted/b00056.xml:40:59: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/bulleted/b00057.xml:44:30: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/enumerated/b00058.xml:40:61: error: attribute "sep-after" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/enumerated/b00059.xml:40:119: error: bad value for attribute "number-style"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/enumerated/b00060.xml:42:12: error: unfinished element
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/enumerated/b00061.xml:43:25: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/enumerated/b00062.xml:40:120: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/enumerated/b00062.xml:40:120: error: bad value for attribute "start-value"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/enumerated/b00063.xml:44:18: error: element "title" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/enumerated/m00059.xml:40:117: error: bad value for attribute "start-value"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/enumerated/m00062.xml:42:114: error: bad value for attribute "start-value"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/labeled-item/b00064.xml:40:59: error: attribute "after" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/labeled-item/b00065.xml:43:14: error: element "label" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/labeled-item/b00066.xml:42:16: error: element "title" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/labeled-item/b00067.xml:42:15: error: unknown element "name" from namespace "http://cnx.rice.edu/cnxml"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/labeled-item/b00067.xml:44:17: error: unknown element "name" from namespace "http://cnx.rice.edu/cnxml"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/labeled-item/b00068.xml:41:63: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/list/labeled-item/b00069.xml:42:76: error: attribute "before" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/audio-video/b00082.xml:42:59: error: bad value for attribute "volume"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/audio-video/b00083.xml:42:125: error: bad value for attribute "autoplay"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/audio-video/b00084.xml:42:111: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/download/b00094.xml:42:41: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/download/b00095.xml:42:73: error: attribute "code" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/download/b00096.xml:41:48: error: element "download" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/flash/b00088.xml:47:23: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/flash/b00089.xml:42:156: error: bad value for attribute "quality"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/flash/b00090.xml:42:163: error: bad value for attribute "bgcolor"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/image/b00076.xml:42:86: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/image/b00077.xml:43:42: error: bad value for attribute "display"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/image/b00078.xml:41:75: error: element "image" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/image/m00076.xml:43:23: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/java-applet/b00085.xml:42:48: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/java-applet/b00086.xml:42:83: error: attribute "standby" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/java-applet/b00087.xml:41:49: error: element "java-applet" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/labview/b00088.xml:42:106: error: bad value for attribute "version"
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/labview/b00089.xml:42:73: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/labview/b00090.xml:42:82: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/object/b00079.xml:42:43: error: required attributes missing
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/object/b00080.xml:42:72: error: attribute "thumbnail" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/object/b00081.xml:41:47: error: element "object" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/text/b00091.xml:42:43: error: attribute "loop" not allowed at this point; ignored
+/home/cbearden/svnfiles/devsets/collection-structure-redesign-1/cnxml/test/media/text/b00093.xml:42:29: error: element "text" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context

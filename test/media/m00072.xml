@@ -1,47 +1,29 @@
 <?xml version="1.0"?>
-<document xmlns="http://cnx.rice.edu/cnxml" id="m00072" module-id="m00072" cnxml-version="0.6">
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:cnxorg="http://cnx.rice.edu/system-info" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml" xmlns:q="http://cnx.rice.edu/qml/1.0" xmlns:bib="http://bibtexml.sf.net/" xmlns:cnxml="http://cnx.rice.edu/cnxml" id="m00072" module-id="m00072" cnxml-version="0.7">
 
   <title>Media Test</title>
-  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-  <md:content-id>m00072</md:content-id>
+  <metadata mdml-version="0.5">
+  <md:content-id>m00072</md:content-id><md:repository>http://cnx.org/content</md:repository>
   <md:title>Media Test</md:title>
   <md:version>2.6</md:version>
   <md:created>2008/10/10</md:created>
   <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
-  <md:authorlist>
-    <md:author id="sk8">
+  <md:actors><md:person userid="sk8">
       <md:firstname>Scott</md:firstname>
       <md:surname>Kravitz</md:surname>
       <md:fullname>Scott Kravitz</md:fullname>
       <md:email>sk8@rice.edu</md:email>
-    </md:author>
-  </md:authorlist>
-
-  <md:maintainerlist>
-    <md:maintainer id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:maintainer>
-    
-    <md:maintainer id="lizzardg">
+    </md:person><md:person userid="lizzardg">
       <md:firstname>Elizabeth</md:firstname>
       <md:surname>Gregory</md:surname>
       <md:fullname>Elizabeth Gregory</md:fullname>
       <md:email>lizzardg@rice.edu</md:email>
-    </md:maintainer>
-  </md:maintainerlist>
+    </md:person></md:actors><md:roles><md:role type="author">sk8</md:role><md:role type="maintainer">sk8 lizzardg</md:role><md:role type="licensor">sk8</md:role></md:roles>
+
+  
   
   <md:license href="http://creativecommons.org/licenses/by/1.0"/>
-  <md:licensorlist>
-    <md:licensor id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:licensor>
-  </md:licensorlist>
+  
   
   <md:keywordlist>
     <md:keyword>Supertest</md:keyword>
@@ -54,16 +36,16 @@
 
 
 
-  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <para id='p1'>
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
+    <para id="p1">
       This media element has every optional child element.
-      <media id='med1' alt='Image of Zeus'>
-        <longdesc class='description' id='long1'>
+      <media id="med1" alt="Image of Zeus">
+        <longdesc class="description" id="long1">
           <title>Titles shouldn't be allowed inside of longdesc elements, but they are...</title>
-          <div id='d1'>Any div content can be put inside of longdesc elements.</div>
+          <div id="d1">Any div content can be put inside of longdesc elements.</div>
         </longdesc>
-        <image src='zeus.png' mime-type='PNG'/>
-        <image src='zeus.jpg' mime-type='JPG'/>
+        <image src="zeus.png" mime-type="PNG"/>
+        <image src="zeus.jpg" mime-type="JPG"/>
       </media>
     </para>
   </content>
