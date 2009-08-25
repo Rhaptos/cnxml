@@ -37,7 +37,7 @@
   </metadata>
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
     <para id="p1">
-      Media elements cannot have more than two media object children!
+      Media elements may now have more than two media object children!
       <media id="med1" alt="Image of Zeus">
         <longdesc class="description" id="long1">
           <title>Titles shouldn't be allowed inside of longdesc elements, but they are...</title>

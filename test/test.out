@@ -19,7 +19,6 @@ example_figure/b00016.xml:44:34: error: required attributes missing
 example_figure/b00016.xml:46:56: error: element "media" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
 example_figure/b00017.xml:46:33: error: required attributes missing
 example_figure/b00018.xml:42:59: error: bad value for attribute "orient"
-example_figure/b00019.xml:47:50: error: element "image" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
 example_figure/b00021.xml:52:115: error: required attributes missing
 example_figure/b00021.xml:59:90: error: required attributes missing
 exercise_note/b00022.xml:42:27: error: required elements missing
@@ -38,7 +37,6 @@ exercise_note/b00032.xml:41:27: error: element "para" from namespace "http://cnx
 exercise_note/b00033.xml:40:38: error: bad value for attribute "display"
 media/b00070.xml:41:24: error: required attributes missing
 media/b00071.xml:42:15: error: unfinished element
-media/b00072.xml:48:48: error: element "image" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
 media/b00073.xml:40:62: error: bad value for attribute "display"
 media/b00074.xml:42:21: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
 media/b00075.xml:39:59: error: bad value for attribute "display"

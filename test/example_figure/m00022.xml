@@ -37,7 +37,7 @@
   </metadata>
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
     <para id="intro">
-      Figures can't have more than two media objects in them.
+      Figures may now have more than two media objects in them.
     </para>
     <figure id="f1">
       <label>Figure 1</label>
