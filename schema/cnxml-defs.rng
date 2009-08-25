@@ -394,6 +394,14 @@
     <attribute name="mime-type"/>
   </define>
 
+  <define name="for-attribute">
+    <attribute name="for">
+      <data type="string">
+        <param name="pattern">[\w\-]+</param>
+      </data>
+    </attribute>
+  </define>
+
   <define name="thumbnail-attribute">
     <attribute name="thumbnail"/>
   </define>
@@ -1497,6 +1505,9 @@
       <ref name="width-attribute"/>
     </optional>
     <ref name="mime-type-attribute"/>
+    <optional>
+      <ref name="for-attribute"/>
+    </optional>
     <optional>
       <ref name="longdesc"/>
     </optional>
