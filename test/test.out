@@ -35,6 +35,13 @@ exercise_note/b00030.xml:40:53: error: bad value for attribute "display"
 exercise_note/b00031.xml:39:36: error: bad value for attribute "display"
 exercise_note/b00032.xml:41:27: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
 exercise_note/b00033.xml:40:38: error: bad value for attribute "display"
+mdml/b00001.xml:51:14: error: unfinished element
+mdml/b00002.xml:51:14: error: unfinished element
+mdml/b00003.xml:14:17: error: unfinished element
+mdml/b00004.xml:42:37: error: attribute "id" not allowed at this point; ignored
+mdml/b00005.xml:13:20: error: unknown element "authorlist" from namespace "http://cnx.rice.edu/mdml"
+mdml/b00005.xml:46:14: error: unfinished element
+mdml/b00006.xml:8:24: error: unknown element "collection-url" from namespace "http://cnx.rice.edu/mdml"
 media/b00070.xml:41:24: error: required attributes missing
 media/b00071.xml:42:15: error: unfinished element
 media/b00073.xml:40:62: error: bad value for attribute "display"

@@ -1,0 +1,1007 @@
+<?xml version="1.0"?>
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:cnxorg="http://cnx.rice.edu/system-info" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml" xmlns:q="http://cnx.rice.edu/qml/1.0" xmlns:bib="http://bibtexml.sf.net/" xmlns:cnxml="http://cnx.rice.edu/cnxml" id="m0001" module-id="" cnxml-version="0.7">
+  <title>Signals Represent Information</title>
+  <metadata mdml-version="0.5">
+    <!-- WARNING! The 'metadata' section is read only. Do not edit below.
+       Changes to the metadata section in the source will not be saved. -->
+    <md:content-id>m0001</md:content-id>
+    <md:repository>http://cnx.org/content</md:repository>
+    <md:title>Signals Represent Information</md:title>
+    <md:version>2.27</md:version>
+    <md:created>2000/06/20</md:created>
+    <md:revised>2009/06/04 11:18:37.806 GMT-5</md:revised>
+    <md:actors>
+      <md:person userid="dhj">
+        <md:surname>Johnson</md:surname>
+        <md:firstname>Don</md:firstname>
+        <md:email>dhj@rice.edu</md:email>
+        <md:fullname>Don Johnson</md:fullname>
+      </md:person>
+      <md:person>
+        <md:email>rha@alumni.rice.edu</md:email>
+        <md:firstname>Roy</md:firstname>
+        <md:fullname>Roy Ha</md:fullname>
+        <md:surname>Ha</md:surname>
+      </md:person>
+      <md:organization userid="cnx">
+        <md:shortname>Connexions</md:shortname>
+        <md:email>cnx@cnx.org</md:email>
+        <md:homepage>cnx@cnx.org</md:homepage>
+        <md:fullname>Connexions</md:fullname>
+      </md:organization>
+    </md:actors>
+    <md:roles>
+      <md:role type="author">dhj</md:role>
+      <md:role type="maintainer">dhj rha</md:role>
+      <md:role type="licensor">dhj</md:role>
+    </md:roles>
+    <md:license url="http://creativecommons.org/licenses/by/1.0"/>
+    <md:keywordlist>
+      <md:keyword>analog signal</md:keyword>
+      <md:keyword>digital signal</md:keyword>
+      <md:keyword>information</md:keyword>
+      <md:keyword>signal</md:keyword>
+    </md:keywordlist>
+    <md:subjectlist>
+      <md:subject>Science and Technology</md:subject>
+    </md:subjectlist>
+    <md:abstract>@userid in person is not required.</md:abstract>
+    <md:language>en</md:language>
+    <!-- WARNING! The 'metadata' section is read only. Do not edit above.
+       Changes to the metadata section in the source will not be saved. -->
+  </metadata>
+  <content>
+    <para id="par2">
+      Whether analog or digital, information is represented by the
+      fundamental quantity in electrical engineering: the
+      <term>signal</term>.  Stated in mathematical terms, <emphasis>a
+      signal is merely a function</emphasis>.  Analog signals are
+      continuous-valued; digital signals are discrete-valued.  The
+      independent variable of the signal could be time (speech, for
+      example), space (images), or the integers (denoting the
+      sequencing of letters and numbers in the football score).
+    </para>
+    <section id="analog">
+      <title>Analog Signals</title>
+      <para id="par3"><emphasis>
+	  Analog signals are usually signals defined over
+	  continuous independent variable(s)</emphasis>. 
+	<link document="m0049" strength="2">Speech</link> 
+	is produced by your vocal cords exciting acoustic resonances
+	in your vocal tract.  The result is pressure waves propagating
+	in the air, and the speech signal thus corresponds to a
+	function having independent variables of space and time and a
+	value corresponding to air pressure:
+	<m:math display="inline"><m:apply><m:ci type="fn">s</m:ci><m:ci type="vector">x</m:ci><m:ci>t</m:ci></m:apply></m:math> 
+	(Here we use vector notation
+	<m:math display="inline"><m:ci type="vector">x</m:ci></m:math>
+	to denote spatial coordinates).  When you record someone
+	talking, you are evaluating the speech signal at a particular
+	spatial location,
+	<m:math display="inline"><m:apply><m:selector/><m:ci type="vector">x</m:ci><m:cn>0</m:cn></m:apply></m:math> say. An example of the resulting waveform
+	<m:math display="inline"><m:apply><m:ci type="fn">s</m:ci><m:apply><m:selector/><m:ci type="vector">x</m:ci><m:cn>0</m:cn></m:apply><m:ci>t</m:ci></m:apply></m:math>
+	is shown in 
+	<link target-id="speechexample" strength="2">this figure</link>.
+      </para>
+      <figure id="speechexample" orient="horizontal">
+        <title>Speech Example</title>
+        <media id="id1165109025165" alt="">
+          <image src="speechexample.png" mime-type="image/png"/>
+          <image for="pdf" src="speechexample.eps" mime-type="application/postscript"/>
+        </media>
+        <caption>
+	  A speech signal's amplitude relates to tiny air pressure
+	  variations. Shown is a recording of the vowel "e" (as in
+	  "speech").
+	</caption>
+      </figure>
+      <para id="par4">
+	Photographs are static, and are continuous-valued signals
+	defined over space.  Black-and-white images have only one value
+	at each point in space, which amounts to its optical reflection
+	properties.  In <link target-id="lena" strength="2"/>, an image is
+	shown, demonstrating that it (and all other images as well) are
+	functions of two independent spatial variables.
+      </para>
+      <figure id="lena" orient="horizontal">
+        <title>Lena</title>
+        <subfigure id="id1165112445962">
+          <media id="id1165109397168" alt="">
+            <image src="lena.png" mime-type="image/png"/>
+            <image for="pdf" src="lena.eps" mime-type="application/postscript"/>
+          </media>
+        </subfigure>
+        <subfigure id="id1165112704599">
+          <media id="id1165110487165" alt="">
+            <image src="lenamesh.png" mime-type="image/png"/>
+            <image for="pdf" src="lenamesh.eps" mime-type="application/postscript"/>
+          </media>
+        </subfigure>
+        <caption>
+	  On the left is the classic <emphasis>Lena</emphasis> image,
+	  which is used ubiquitously as a test image.  It contains
+	  straight and curved lines, complicated texture, and a face. On
+	  the right is a perspective display of the Lena image as a
+	  signal: a function of two spatial variables. The colors merely
+	  help show what signal values are about the same size. In this
+	  image, signal values range between 0 and 255; why is that?
+	</caption>
+      </figure>
+      <para id="par5">
+	Color images have values that express how reflectivity depends
+	on the optical spectrum.  Painters long ago found that mixing
+	together combinations of the so-called primary colors--red,
+	yellow and blue--can produce very realistic color images.
+	Thus, images today are usually thought of as having three
+	values at every point in space, but a different set of colors
+	is used: How much of red, <emphasis>green</emphasis> and blue
+	is present.  Mathematically, color pictures are
+	multivalued--vector-valued--signals:
+	<m:math display="inline"><m:apply><m:eq/><m:apply><m:ci type="fn">s</m:ci><m:ci type="vector">x</m:ci></m:apply><m:vector><m:apply><m:ci type="fn">r</m:ci><m:ci type="vector">x</m:ci></m:apply><m:apply><m:ci type="fn">g</m:ci><m:ci type="vector">x</m:ci></m:apply><m:apply><m:ci type="fn">b</m:ci><m:ci type="vector">x</m:ci></m:apply></m:vector></m:apply></m:math>.
+      </para>
+      <para id="par6">
+	Interesting cases abound where the analog signal depends not
+	on a continuous variable, such as time, but on a discrete
+	variable. For example, temperature readings taken every hour
+	have continuous--analog--values, but the signal's independent
+	variable is (essentially) the integers.
+      </para>
+    </section>
+    <section id="digital">
+      <title>Digital Signals</title>
+      <para id="par7">
+	The word "digital" means discrete-valued and implies the signal
+	has an integer-valued independent variable.  Digital information
+	includes numbers and symbols (characters typed on the keyboard,
+	for example).  Computers rely on the digital representation of
+	information to manipulate and transform information.  Symbols do
+	not have a numeric value, and each is represented by a unique
+	number.  The ASCII character code has the upper- and lowercase
+	characters, the numbers, punctuation marks, and various other
+	symbols represented by a seven-bit integer.
+
+	For example, the ASCII code represents the letter
+	<emphasis>a</emphasis> as the number
+	<m:math display="inline"><m:cn>97</m:cn></m:math> and the letter <emphasis>A</emphasis> as
+	<m:math display="inline"><m:cn>65</m:cn></m:math>.
+	<link target-id="fig1" strength="2"/> shows the
+	international convention on associating characters with
+	integers.
+      </para>
+      <table id="fig1" frame="all" summary="">
+        <title>ASCII Table</title>
+        <tgroup cols="16" align="left" colsep="1" rowsep="1">
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <colspec colwidth="*"/>
+          <tbody valign="top">
+            <row>
+              <entry>
+		  00
+		</entry>
+              <entry>
+		  nul
+		</entry>
+              <entry>
+		  01
+		</entry>
+              <entry>
+		  soh
+		</entry>
+              <entry>
+		  02
+		</entry>
+              <entry>
+		  stx
+		</entry>
+              <entry>
+		  03
+		</entry>
+              <entry>
+		  etx
+		</entry>
+              <entry>
+		  04
+		</entry>
+              <entry>
+		  eot
+		</entry>
+              <entry>
+		  05
+		</entry>
+              <entry>
+		  enq
+		</entry>
+              <entry>
+		  06
+		</entry>
+              <entry>
+		  ack
+		</entry>
+              <entry>
+		  07
+		</entry>
+              <entry>
+		  bel
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  08
+		</entry>
+              <entry>
+		  bs
+		</entry>
+              <entry>
+		  09
+		</entry>
+              <entry>
+		  ht
+		</entry>
+              <entry>
+		  0A
+		</entry>
+              <entry>
+		  nl
+		</entry>
+              <entry>
+		  0B
+		</entry>
+              <entry>
+		  vt
+		</entry>
+              <entry>
+		  0C
+		</entry>
+              <entry>
+		  np
+		</entry>
+              <entry>
+		  0D
+		</entry>
+              <entry>
+		  cr
+		</entry>
+              <entry>
+		  0E
+		</entry>
+              <entry>
+		  so
+		</entry>
+              <entry>
+		  0F
+		</entry>
+              <entry>
+		  si
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  10
+		</entry>
+              <entry>
+		  dle
+		</entry>
+              <entry>
+		  11
+		</entry>
+              <entry>
+		  dc1
+		</entry>
+              <entry>
+		  12
+		</entry>
+              <entry>
+		  dc2
+		</entry>
+              <entry>
+		  13
+		</entry>
+              <entry>
+		  dc3
+		</entry>
+              <entry>
+		  14
+		</entry>
+              <entry>
+		  dc4
+		</entry>
+              <entry>
+		  15
+		</entry>
+              <entry>
+		  nak
+		</entry>
+              <entry>
+		  16
+		</entry>
+              <entry>
+		  syn
+		</entry>
+              <entry>
+		  17
+		</entry>
+              <entry>
+		  etb
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  18
+		</entry>
+              <entry>
+		  car
+		</entry>
+              <entry>
+		  19
+		</entry>
+              <entry>
+		  em
+		</entry>
+              <entry>
+		  1A
+		</entry>
+              <entry>
+		  sub
+		</entry>
+              <entry>
+		  1B
+		</entry>
+              <entry>
+		  esc
+		</entry>
+              <entry>
+		  1C
+		</entry>
+              <entry>
+		  fs
+		</entry>
+              <entry>
+		  1D
+		</entry>
+              <entry>
+		  gs
+		</entry>
+              <entry>
+		  1E
+		</entry>
+              <entry>
+		  rs
+		</entry>
+              <entry>
+		  1F
+		</entry>
+              <entry>
+		  us
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  20
+		</entry>
+              <entry>
+		  sp
+		</entry>
+              <entry>
+		  21
+		</entry>
+              <entry>
+		  !
+		</entry>
+              <entry>
+		  22
+		</entry>
+              <entry>
+		  "
+		</entry>
+              <entry>
+		  23
+		</entry>
+              <entry>
+		  #
+		</entry>
+              <entry>
+		  24
+		</entry>
+              <entry>
+		  $
+		</entry>
+              <entry>
+		  25
+		</entry>
+              <entry>
+		  %
+		</entry>
+              <entry>
+		  26
+		</entry>
+              <entry>
+		  &amp;
+		</entry>
+              <entry>
+		  27
+		</entry>
+              <entry>
+		  '
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  28
+		</entry>
+              <entry>
+		  (
+		</entry>
+              <entry>
+		  29
+		</entry>
+              <entry>
+		  )
+		</entry>
+              <entry>
+		  2A
+		</entry>
+              <entry>
+		  *
+		</entry>
+              <entry>
+		  2B
+		</entry>
+              <entry>
+		  +
+		</entry>
+              <entry>
+		  2C
+		</entry>
+              <entry>
+		  ,
+		</entry>
+              <entry>
+		  2D
+		</entry>
+              <entry>
+		  -
+		</entry>
+              <entry>
+		  2E
+		</entry>
+              <entry>
+		  .
+		</entry>
+              <entry>
+		  2F
+		</entry>
+              <entry>
+		  /
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  30
+		</entry>
+              <entry>
+		  0
+		</entry>
+              <entry>
+		  31
+		</entry>
+              <entry>
+		  1
+		</entry>
+              <entry>
+		  32
+		</entry>
+              <entry>
+		  2
+		</entry>
+              <entry>
+		  33
+		</entry>
+              <entry>
+		  3
+		</entry>
+              <entry>
+		  34
+		</entry>
+              <entry>
+		  4
+		</entry>
+              <entry>
+		  35
+		</entry>
+              <entry>
+		  5
+		</entry>
+              <entry>
+		  36
+		</entry>
+              <entry>
+		  6
+		</entry>
+              <entry>
+		  37
+		</entry>
+              <entry>
+		  7
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  38
+		</entry>
+              <entry>
+		  8
+		</entry>
+              <entry>
+		  39
+		</entry>
+              <entry>
+		  9
+		</entry>
+              <entry>
+		  3A
+		</entry>
+              <entry>
+		  :
+		</entry>
+              <entry>
+		  3B
+		</entry>
+              <entry>
+		  ;
+		</entry>
+              <entry>
+		  3C
+		</entry>
+              <entry>
+		  &lt;
+		</entry>
+              <entry>
+		  3D
+		</entry>
+              <entry>
+		  =
+		</entry>
+              <entry>
+		  3E
+		</entry>
+              <entry>
+		  &gt;
+		</entry>
+              <entry>
+		  3F
+		</entry>
+              <entry>
+		  ?
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  40
+		</entry>
+              <entry>
+		  @
+		</entry>
+              <entry>
+		  41
+		</entry>
+              <entry>
+		  A
+		</entry>
+              <entry>
+		  42
+		</entry>
+              <entry>
+		  B
+		</entry>
+              <entry>
+		  43
+		</entry>
+              <entry>
+		  C
+		</entry>
+              <entry>
+		  44
+		</entry>
+              <entry>
+		  D
+		</entry>
+              <entry>
+		  45
+		</entry>
+              <entry>
+		  E
+		</entry>
+              <entry>
+		  46
+		</entry>
+              <entry>
+		  F
+		</entry>
+              <entry>
+		  47
+		</entry>
+              <entry>
+		  G
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  48
+		</entry>
+              <entry>
+		  H
+		</entry>
+              <entry>
+		  49
+		</entry>
+              <entry>
+		  I
+		</entry>
+              <entry>
+		  4A
+		</entry>
+              <entry>
+		  J
+		</entry>
+              <entry>
+		  4B
+		</entry>
+              <entry>
+		  K
+		</entry>
+              <entry>
+		  4C
+		</entry>
+              <entry>
+		  L
+		</entry>
+              <entry>
+		  4D
+		</entry>
+              <entry>
+		  M
+		</entry>
+              <entry>
+		  4E
+		</entry>
+              <entry>
+		  N
+		</entry>
+              <entry>
+		  4F
+		</entry>
+              <entry>
+		  0
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  50
+		</entry>
+              <entry>
+		  P
+		</entry>
+              <entry>
+		  51
+		</entry>
+              <entry>
+		  Q
+		</entry>
+              <entry>
+		  52
+		</entry>
+              <entry>
+		  R
+		</entry>
+              <entry>
+		  53
+		</entry>
+              <entry>
+		  S
+		</entry>
+              <entry>
+		  54
+		</entry>
+              <entry>
+		  T
+		</entry>
+              <entry>
+		  55
+		</entry>
+              <entry>
+		  U
+		</entry>
+              <entry>
+		  56
+		</entry>
+              <entry>
+		  V
+		</entry>
+              <entry>
+		  57
+		</entry>
+              <entry>
+		  W
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  58
+		</entry>
+              <entry>
+		  X
+		</entry>
+              <entry>
+		  59
+		</entry>
+              <entry>
+		  Y
+		</entry>
+              <entry>
+		  5A
+		</entry>
+              <entry>
+		  Z
+		</entry>
+              <entry>
+		  5B
+		</entry>
+              <entry>
+		  [
+		</entry>
+              <entry>
+		  5C
+		</entry>
+              <entry>
+		  \
+		</entry>
+              <entry>
+		  5D
+		</entry>
+              <entry>
+		  ]
+		</entry>
+              <entry>
+		  5E
+		</entry>
+              <entry>
+		  ^
+		</entry>
+              <entry>
+		  5F
+		</entry>
+              <entry>
+		  _
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  60
+		</entry>
+              <entry>
+		  '
+		</entry>
+              <entry>
+		  61
+		</entry>
+              <entry>
+		  a
+		</entry>
+              <entry>
+		  62
+		</entry>
+              <entry>
+		  b
+		</entry>
+              <entry>
+		  63
+		</entry>
+              <entry>
+		  c
+		</entry>
+              <entry>
+		  64
+		</entry>
+              <entry>
+		  d
+		</entry>
+              <entry>
+		  65
+		</entry>
+              <entry>
+		  e
+		</entry>
+              <entry>
+		  66
+		</entry>
+              <entry>
+		  f
+		</entry>
+              <entry>
+		  67
+		</entry>
+              <entry>
+		  g
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  68
+		</entry>
+              <entry>
+		  h
+		</entry>
+              <entry>
+		  69
+		</entry>
+              <entry>
+		  i
+		</entry>
+              <entry>
+		  6A
+		</entry>
+              <entry>
+		  j
+		</entry>
+              <entry>
+		  6B
+		</entry>
+              <entry>
+		  k
+		</entry>
+              <entry>
+		  6C
+		</entry>
+              <entry>
+		  l
+		</entry>
+              <entry>
+		  6D
+		</entry>
+              <entry>
+		  m
+		</entry>
+              <entry>
+		  6E
+		</entry>
+              <entry>
+		  n
+		</entry>
+              <entry>
+		  6F
+		</entry>
+              <entry>
+		  o
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  70
+		</entry>
+              <entry>
+		  p
+		</entry>
+              <entry>
+		  71
+		</entry>
+              <entry>
+		  q
+		</entry>
+              <entry>
+		  72
+		</entry>
+              <entry>
+		  r
+		</entry>
+              <entry>
+		  73
+		</entry>
+              <entry>
+		  s
+		</entry>
+              <entry>
+		  74
+		</entry>
+              <entry>
+		  t
+		</entry>
+              <entry>
+		  75
+		</entry>
+              <entry>
+		  u
+		</entry>
+              <entry>
+		  76
+		</entry>
+              <entry>
+		  v
+		</entry>
+              <entry>
+		  77
+		</entry>
+              <entry>
+		  w
+		</entry>
+            </row>
+            <row>
+              <entry>
+		  78
+		</entry>
+              <entry>
+		  x
+		</entry>
+              <entry>
+		  79
+		</entry>
+              <entry>
+		  y
+		</entry>
+              <entry>
+		  7A
+		</entry>
+              <entry>
+		  z
+		</entry>
+              <entry>
+		  7B
+		</entry>
+              <entry>
+		  {
+		</entry>
+              <entry>
+		  7C
+		</entry>
+              <entry>
+		  |
+		</entry>
+              <entry>
+		  7D
+		</entry>
+              <entry>
+		  }
+		</entry>
+              <entry>
+		  7E
+		</entry>
+              <entry>
+		  ~
+		</entry>
+              <entry>
+		  7F
+		</entry>
+              <entry>
+		  del
+		</entry>
+            </row>
+          </tbody>
+        </tgroup>
+        <caption>
+	  The ASCII translation table shows how standard keyboard
+	  characters are represented by integers.  In pairs of columns, this table displays
+	  first the so-called 7-bit code (how many characters in a seven-bit
+	  code?), then the character the number represents.  The numeric codes
+	  are represented in hexadecimal (base-16) notation.
+	  Mnemonic characters correspond to control characters, some of
+	  which may be familiar (like <emphasis>cr</emphasis> for
+	  carriage return) and some not (<emphasis>bel</emphasis> means
+	  a "bell").
+	</caption>
+      </table>
+    </section>
+  </content>
+</document>
