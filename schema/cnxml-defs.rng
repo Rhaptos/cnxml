@@ -1316,6 +1316,7 @@
       <optional>
         <ref name="code-lang-attribute"/>
       </optional>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="id-attribute"/>
       </optional>
