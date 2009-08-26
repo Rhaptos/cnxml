@@ -32,6 +32,21 @@
     </xsl:copy>
   </xsl:template>
 
+  <!-- Add @for="pdf" to second media object child of 'media'. -->
+  <xsl:template match="*[self::cnxml:object or self::cnxml:image or self::cnxml:audio or
+                         self::cnxml:video or self::cnxml:java-applet or self::cnxml:flash or
+                         self::cnxml:labview or self::cnxml:text or self::cnxml:download]
+                        [preceding-sibling::cnxml:object or preceding-sibling::cnxml:image or 
+                         preceding-sibling::cnxml:audio or preceding-sibling::cnxml:video or 
+                         preceding-sibling::cnxml:java-applet or preceding-sibling::cnxml:flash or 
+                         preceding-sibling::cnxml:labview or preceding-sibling::cnxml:text or 
+                         preceding-sibling::cnxml:download]">
+    <xsl:copy>
+      <xsl:attribute name="for">pdf</xsl:attribute>
+      <xsl:apply-templates select="node()|@*"/>
+    </xsl:copy>
+  </xsl:template>
+
   <!-- Bump CNXML version and ensure presence of needed namespaces. -->
   <xsl:template match="cnxml:document">
     <document xmlns="http://cnx.rice.edu/cnxml"
@@ -44,6 +59,18 @@
       <xsl:attribute name="cnxml-version">0.7</xsl:attribute>
       <xsl:apply-templates select="node()"/>
     </document>
+  </xsl:template>
+
+  <!-- Convert md4:parent-module to md:derived-from. -->
+  <xsl:template match="md4:parent-module">
+    <xsl:element name="md:derived-from">
+      <xsl:attribute name="url"><xsl:value-of select="@href"/></xsl:attribute>
+    </xsl:element>
+  </xsl:template>
+
+  <!-- Convert md4:license/@href to md:license/@url-->
+  <xsl:template match="md4:license/@href">
+    <xsl:attribute name="url"><xsl:value-of select="."/></xsl:attribute>
   </xsl:template>
 
   <!-- Add MDML version number to metadata element. -->
