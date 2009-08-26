@@ -1,4 +1,5 @@
 style/cnxml05to06.xsl usr/share/xml/cnxml/stylesheet
+style/cnxml06to07.xsl usr/share/xml/cnxml/stylesheet
 style/cnxmll10n.xsl usr/share/xml/cnxml/stylesheet
 style/cnxml_render.xsl usr/share/xml/cnxml/stylesheet
 style/ident.xsl usr/share/xml/cnxml/stylesheet
