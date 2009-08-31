@@ -1639,6 +1639,9 @@
       <optional>
         <ref name="src-attribute"/>
       </optional>
+      <optional>
+        <ref name="for-attribute"/>
+      </optional>
       <oneOrMore>
         <ref name="div-content-class"/>
       </oneOrMore>

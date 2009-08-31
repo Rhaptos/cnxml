@@ -89,12 +89,15 @@
     </xsl:element>
   </xsl:template>
 
-  <!-- Add repository element to metadata after content-id. -->
+  <!-- Add repository and content-url elements to metadata after content-id. -->
   <xsl:template match="md4:content-id">
     <xsl:element name="md:{local-name()}" namespace="http://cnx.rice.edu/mdml">
       <xsl:apply-templates select="node()|@*"/>
     </xsl:element>
     <xsl:element name="md:repository">http://cnx.org/content</xsl:element>
+    <xsl:element name="md:content-url">
+      <xsl:value-of select="concat('http://cnx.org/content/', string(.), '/', string(parent::*/md4:version), '/')"/>
+    </xsl:element>
   </xsl:template>
 
   <!-- Rework roles in MDML. -->
