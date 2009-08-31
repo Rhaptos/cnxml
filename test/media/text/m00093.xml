@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>m00093</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00093/2.6/</md:content-url>
     <md:title>Text Media Object Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -39,7 +40,7 @@
     <para id="p1">This text media object element has multiple div content children.</para>
     <media id="med1" display="block" alt="Containing Media Element">
       <video src="vid.mov" mime-type="MOV"/>
-      <text mime-type="TXT">
+      <text for="pdf" mime-type="TXT">
         <div id="d1">
           Div elements can be placed inside of text!
           <para id="p2">The contained elements can even have children of their own.</para></div>

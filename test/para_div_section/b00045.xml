@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>b00045</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/b00045/2.6/</md:content-url>
     <md:title>Upper Level Element Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -42,8 +43,7 @@
           Will the nesting never end?
           <para id="p1">
             The rowers keep on rowing, and they're certainly not showing any signs of slowing!
-          </para>
-        </div>
+          </para></div>
       </section>
     </section>
   </content>

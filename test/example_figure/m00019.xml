@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>m00019</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00019/2.6/</md:content-url>
     <md:title>Example and Figure Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -43,7 +44,7 @@
       <label>Figure 1</label>
       <media id="med1" alt="Unfulfilled Dreams">
         <image src="image2.jpg" thumbnail="Hidden message" mime-type="JPEG"/>
-        <image src="image1.png" mime-type="PNG"/>
+        <image for="pdf" src="image1.png" mime-type="PNG"/>
       </media>
       <caption>
         This media element has two images in it; one for online and one for print.

@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>b00093</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/b00093/2.6/</md:content-url>
     <md:title>Text Media Object Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -38,7 +39,6 @@
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
     <para id="p1">
       Text media object elements aren't allowed as children of anything except media, even though text nodes are allowed in many places.
-      <text mime-type="TXT">This object doesn't belong here...</text>
-    </para>
+      <text mime-type="TXT">This object doesn't belong here...</text></para>
   </content>
 </document>

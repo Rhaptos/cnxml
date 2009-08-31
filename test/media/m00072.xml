@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>m00072</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00072/2.6/</md:content-url>
     <md:title>Media Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -38,14 +39,6 @@
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
     <para id="p1">
       This media element has every optional child element.
-      <media id="med1" alt="Image of Zeus">
-        <longdesc class="description" id="long1">
-          <title>Titles shouldn't be allowed inside of longdesc elements, but they are...</title>
-          <div id="d1">Any div content can be put inside of longdesc elements.</div>
-        </longdesc>
-        <image src="zeus.png" mime-type="PNG"/>
-        <image src="zeus.jpg" mime-type="JPG"/>
-      </media>
-    </para>
+      <media id="med1" alt="Image of Zeus"><longdesc class="description" id="long1"><title>Titles shouldn't be allowed inside of longdesc elements, but they are...</title><div id="d1">Any div content can be put inside of longdesc elements.</div></longdesc><image src="zeus.png" mime-type="PNG"/><image for="pdf" src="zeus.jpg" mime-type="JPG"/></media></para>
   </content>
 </document>

@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>m00092</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00092/2.6/</md:content-url>
     <md:title>Text Media Object Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -39,7 +40,7 @@
     <para id="p1">This text media object element has every optional child attribute, and is used as a replacement in print for a video.</para>
     <media id="med1" display="block" alt="Containing Media Element">
       <video src="vid.mov" mime-type="MOV"/>
-      <text id="txt1" class="empty" height="20pt" width="10pt" longdesc="Text is good for the soul." src="victory.txt" mime-type="TXT"/>
+      <text for="pdf" id="txt1" class="empty" height="20pt" width="10pt" longdesc="Text is good for the soul." src="victory.txt" mime-type="TXT"/>
     </media>
   </content>
 </document>

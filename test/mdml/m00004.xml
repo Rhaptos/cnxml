@@ -6,6 +6,7 @@
        Changes to the metadata section in the source will not be saved. -->
     <md:content-id>m0001</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m0001/2.27/</md:content-url>
     <md:version>2.27</md:version>
     <md:title>Signals Represent Information</md:title>
     <md:created>2000/06/20</md:created>

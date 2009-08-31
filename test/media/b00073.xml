@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>b00073</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/b00073/2.6/</md:content-url>
     <md:title>Media Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -37,9 +38,6 @@
   </metadata>
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
     <para id="p1">The only valid values for the 'display' attribute are 'block', 'inline', and 'none'.
-      <media id="med1" display="non" alt="Image of an Apple">
-        <image mime-type="PNG" src="apple.png"/>
-      </media>
-    </para>
+      <media id="med1" display="non" alt="Image of an Apple"><image mime-type="PNG" src="apple.png"/></media></para>
   </content>
 </document>

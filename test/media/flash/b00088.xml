@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>m00088</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00088/2.6/</md:content-url>
     <md:title>Flash Element Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -41,7 +42,7 @@
       <flash mime-type="SWF" src="flash.swf" class="video" id="flash1" height="50pt" width="50pt">
         This text will appear in place of the applet.
       </flash>
-      <flash mime-type="SWF" src="flash.swf" longdesc="This flash video is hilarious!">
+      <flash for="pdf" mime-type="SWF" src="flash.swf" longdesc="This flash video is hilarious!">
         <param name="allowed" value="value"/>
         <para id="p2">Not allowed!</para>
       </flash>

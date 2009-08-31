@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>m00079</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00079/2.6/</md:content-url>
     <md:title>Media Object Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -41,7 +42,7 @@
       <object src="m00079.tex1" mime-type="TEX1" class="historical" id="img1" height="50pt" width="50pt">
         This text will appear in place of the object if necessary.
       </object>
-      <object src="m00079.tex" mime-type="TEX" longdesc="The LaTeX source file for this module.">
+      <object for="pdf" src="m00079.tex" mime-type="TEX" longdesc="The LaTeX source file for this module.">
         <param name="anything" value="something"/>
       </object>
     </media>

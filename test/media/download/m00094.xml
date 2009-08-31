@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>m00094</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00094/2.6/</md:content-url>
     <md:title>Download Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -41,7 +42,7 @@
       <download mime-type="PNG" src="http://www.games.com/image01.png" class="game" id="dwn1" height="50pt" width="50pt">
         This text will appear in place of the download object.
       </download>
-      <download mime-type="PNG" src="http://www.games.com/image07.png" longdesc="The downloadable image contains a hidden message.">
+      <download for="pdf" mime-type="PNG" src="http://www.games.com/image07.png" longdesc="The downloadable image contains a hidden message.">
         <param name="allowed" value="value"/>
       </download>
     </media>

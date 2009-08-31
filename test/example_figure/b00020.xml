@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>b00020</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/b00020/2.6/</md:content-url>
     <md:title>Example and Figure Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -74,7 +75,7 @@
         <labview mime-type="LLB" src="LinearTransform.llb" viname="Linear Transformations.vi" version="8.0">
        Demonstration of balancing ball algorithm. Please install the Labview 8 plugin; see module m2345 for instructions.
        </labview>
-        <text mime-type="TXT">Demonstration available online with Labview 8 plugin.</text>
+        <text for="pdf" mime-type="TXT">Demonstration available online with Labview 8 plugin.</text>
       </media>
       <caption>
         This media element has a LabView file in it.

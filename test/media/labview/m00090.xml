@@ -4,6 +4,7 @@
   <metadata mdml-version="0.5">
     <md:content-id>m00090</md:content-id>
     <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00090/2.6/</md:content-url>
     <md:title>Labview Test</md:title>
     <md:version>2.6</md:version>
     <md:created>2008/10/10</md:created>
@@ -39,7 +40,7 @@
     <para id="p1">The contained labview element will be replaced by an image in print.</para>
     <media id="med1" display="block" alt="Containing Media Element">
       <labview mime-type="LLB" src="LinearTransform.llb" viname="Linear Transformations.vi" version="7.0"/>
-      <image mime-type="PNG" src="replacement.png"/>
+      <image for="pdf" mime-type="PNG" src="replacement.png"/>
     </media>
   </content>
 </document>
