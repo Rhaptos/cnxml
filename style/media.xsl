@@ -11,7 +11,14 @@
         <xsl:call-template name="default-media"/>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="child::*[not(self::cnx:longdesc)][1]"/>
+        <xsl:choose>
+          <xsl:when test="child::*[not(self::cnx:longdesc) and not(@for)]">
+            <xsl:apply-templates select="child::*[not(self::cnx:longdesc) and not(@for)][1]"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-template select="child::*[not(self::cnx:longdesc)][1]"/>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
