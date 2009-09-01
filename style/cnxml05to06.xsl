@@ -34,7 +34,7 @@
 
   <xsl:template match="/*[local-name()='document']">
     <xsl:choose>
-      <xsl:when test="@cnxml-version='0.6'">
+      <xsl:when test="@cnxml-version='0.6' or @cnxml-version='0.7'">
         <xsl:copy-of select="."/>
       </xsl:when>
       <xsl:otherwise>
