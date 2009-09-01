@@ -30,249 +30,1253 @@
       <ref name="rule"/>
       <ref name="definition"/>
       <ref name="metadata"/>
-      <ref name="mdml-abstract"/>
     </choice>
   </start>
-  <!--starting http://cnx.rice.edu/technology/mdml/schema/rng/0.4.5/mdml-defs.rng-->
+  <!--starting cnxml-abstract-defs.rng-->
+  <!--included elements-->
+  <define name="cnxml-abstract-para">
+    <element name="para">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+          <ref name="cnxml-abstract-quote"/>
+          <ref name="cnxml-abstract-preformat"/>
+          <ref name="cnxml-abstract-list"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-emphasis">
+    <element name="emphasis">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-term">
+    <element name="term">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-foreign">
+    <element name="foreign">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-cite">
+    <element name="cite">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-span">
+    <element name="span">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-sup">
+    <element name="sup">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-sub">
+    <element name="sub">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-code">
+    <element name="code">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <optional>
+        <choice>
+          <attribute name="display">
+            <choice>
+              <value>block</value>
+              <value>none</value>
+            </choice>
+          </attribute>
+          <attribute name="display">
+            <choice>
+              <value>inline</value>
+              <value>none</value>
+            </choice>
+          </attribute>
+          <attribute name="display">
+            <value>none</value>
+          </attribute>
+        </choice>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-quote">
+    <element name="quote">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <optional>
+        <choice>
+          <attribute name="display">
+            <choice>
+              <value>block</value>
+              <value>none</value>
+            </choice>
+          </attribute>
+          <attribute name="display">
+            <choice>
+              <value>inline</value>
+              <value>none</value>
+            </choice>
+          </attribute>
+          <attribute name="display">
+            <value>none</value>
+          </attribute>
+        </choice>
+      </optional>
+      <choice>
+        <oneOrMore>
+          <choice>
+            <ref name="cnxml-abstract-para"/>
+            <ref name="cnxml-abstract-quote"/>
+            <ref name="cnxml-abstract-preformat"/>
+            <ref name="cnxml-abstract-list"/>
+          </choice>
+        </oneOrMore>
+        <oneOrMore>
+          <choice>
+            <ref name="cnxml-abstract-emphasis"/>
+            <ref name="cnxml-abstract-term"/>
+            <ref name="cnxml-abstract-foreign"/>
+            <ref name="cnxml-abstract-cite"/>
+            <ref name="cnxml-abstract-span"/>
+            <ref name="cnxml-abstract-sup"/>
+            <ref name="cnxml-abstract-sub"/>
+            <ref name="cnxml-abstract-code"/>
+            <notAllowed/>
+            <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+            <text/>
+            <ref name="cnxml-abstract-quote"/>
+            <ref name="cnxml-abstract-preformat"/>
+            <ref name="cnxml-abstract-list"/>
+          </choice>
+        </oneOrMore>
+      </choice>
+    </element>
+  </define>
+  <define name="cnxml-abstract-preformat">
+    <element name="preformat">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <optional>
+        <choice>
+          <attribute name="display">
+            <choice>
+              <value>block</value>
+              <value>none</value>
+            </choice>
+          </attribute>
+          <attribute name="display">
+            <choice>
+              <value>inline</value>
+              <value>none</value>
+            </choice>
+          </attribute>
+          <attribute name="display">
+            <value>none</value>
+          </attribute>
+        </choice>
+      </optional>
+      <choice>
+        <oneOrMore>
+          <choice>
+            <ref name="cnxml-abstract-para"/>
+            <ref name="cnxml-abstract-quote"/>
+            <ref name="cnxml-abstract-preformat"/>
+            <ref name="cnxml-abstract-list"/>
+          </choice>
+        </oneOrMore>
+        <oneOrMore>
+          <choice>
+            <ref name="cnxml-abstract-emphasis"/>
+            <ref name="cnxml-abstract-term"/>
+            <ref name="cnxml-abstract-foreign"/>
+            <ref name="cnxml-abstract-cite"/>
+            <ref name="cnxml-abstract-span"/>
+            <ref name="cnxml-abstract-sup"/>
+            <ref name="cnxml-abstract-sub"/>
+            <ref name="cnxml-abstract-code"/>
+            <notAllowed/>
+            <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+            <text/>
+            <ref name="cnxml-abstract-quote"/>
+            <ref name="cnxml-abstract-preformat"/>
+            <ref name="cnxml-abstract-list"/>
+          </choice>
+        </oneOrMore>
+      </choice>
+    </element>
+  </define>
+  <define name="cnxml-abstract-list">
+    <element name="list">
+      <optional>
+        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="list-type" a:defaultValue="bulleted">
+          <choice>
+            <value>bulleted</value>
+            <value>enumerated</value>
+            <value>labeled-item</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <choice>
+          <attribute name="display">
+            <choice>
+              <value>block</value>
+              <value>none</value>
+            </choice>
+          </attribute>
+          <attribute name="display">
+            <choice>
+              <value>inline</value>
+              <value>none</value>
+            </choice>
+          </attribute>
+          <attribute name="display">
+            <value>none</value>
+          </attribute>
+        </choice>
+      </optional>
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <ref name="cnxml-abstract-item"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="cnxml-abstract-item">
+    <element name="item">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="cnxml-abstract-emphasis"/>
+          <ref name="cnxml-abstract-term"/>
+          <ref name="cnxml-abstract-foreign"/>
+          <ref name="cnxml-abstract-cite"/>
+          <ref name="cnxml-abstract-span"/>
+          <ref name="cnxml-abstract-sup"/>
+          <ref name="cnxml-abstract-sub"/>
+          <ref name="cnxml-abstract-code"/>
+          <notAllowed/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+          <text/>
+          <ref name="cnxml-abstract-quote"/>
+          <ref name="cnxml-abstract-preformat"/>
+          <ref name="cnxml-abstract-list"/>
+        </choice>
+      </oneOrMore>
+    </element>
+  </define>
+  <!--the rest-->
+  <!--ending cnxml-abstract-defs.rng-->
+  <!--starting file:///usr/share/xml/mdml/schema/rng/0.5/mdml-defs.rng-->
   <!--included elements-->
   <define name="mdml-content-id">
     <element name="content-id">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <data type="NMTOKEN"/>
+    </element>
+  </define>
+  <define name="mdml-repository">
+    <element name="repository">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-content-url">
+    <element name="content-url">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
     </element>
   </define>
   <define name="mdml-title">
     <element name="title">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-version">
     <element name="version">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-short-title">
+    <element name="short-title">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-subtitle">
+    <element name="subtitle">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-created">
     <element name="created">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-revised">
     <element name="revised">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
-  <define name="mdml-authorlist">
-    <element name="authorlist">
+  <define name="mdml-homepage">
+    <element name="homepage">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-actors">
+    <element name="actors">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <oneOrMore>
-        <ref name="mdml-author"/>
+        <choice>
+          <ref name="mdml-person"/>
+          <ref name="mdml-organization"/>
+        </choice>
       </oneOrMore>
     </element>
   </define>
-  <define name="mdml-author">
-    <element name="author">
-      <attribute name="id">
-        <data type="NMTOKEN"/>
-      </attribute>
+  <define name="mdml-person">
+    <element name="person">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
       <optional>
-        <attribute name="homepage"/>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
       </optional>
       <optional>
-        <ref name="mdml-honorific"/>
+        <attribute name="xml:lang"/>
       </optional>
-      <ref name="mdml-firstname"/>
       <optional>
-        <ref name="mdml-othername"/>
+        <attribute name="userid"/>
       </optional>
-      <ref name="mdml-surname"/>
-      <optional>
-        <ref name="mdml-lineage"/>
-      </optional>
-      <ref name="mdml-fullname"/>
-      <optional>
-        <ref name="mdml-email"/>
-      </optional>
+      <interleave>
+        <optional>
+          <ref name="mdml-honorific"/>
+        </optional>
+        <ref name="mdml-firstname"/>
+        <optional>
+          <ref name="mdml-othername"/>
+        </optional>
+        <ref name="mdml-surname"/>
+        <optional>
+          <ref name="mdml-lineage"/>
+        </optional>
+        <ref name="mdml-fullname"/>
+        <optional>
+          <ref name="mdml-email"/>
+        </optional>
+        <optional>
+          <ref name="mdml-homepage"/>
+        </optional>
+      </interleave>
     </element>
   </define>
-  <define name="mdml-maintainerlist">
-    <element name="maintainerlist">
+  <define name="mdml-organization">
+    <element name="organization">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <optional>
+        <attribute name="userid"/>
+      </optional>
+      <interleave>
+        <ref name="mdml-fullname"/>
+        <ref name="mdml-shortname"/>
+        <optional>
+          <ref name="mdml-email"/>
+        </optional>
+        <optional>
+          <ref name="mdml-homepage"/>
+        </optional>
+      </interleave>
+    </element>
+  </define>
+  <define name="mdml-shortname">
+    <element name="shortname">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-roles">
+    <element name="roles">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <oneOrMore>
-        <ref name="mdml-maintainer"/>
+        <ref name="mdml-role"/>
       </oneOrMore>
     </element>
   </define>
-  <define name="mdml-maintainer">
-    <element name="maintainer">
-      <attribute name="id">
-        <data type="NMTOKEN"/>
-      </attribute>
+  <define name="mdml-role">
+    <element name="role">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
       <optional>
-        <attribute name="homepage"/>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
       </optional>
       <optional>
-        <ref name="mdml-honorific"/>
+        <attribute name="xml:lang"/>
       </optional>
-      <ref name="mdml-firstname"/>
-      <optional>
-        <ref name="mdml-othername"/>
-      </optional>
-      <ref name="mdml-surname"/>
-      <optional>
-        <ref name="mdml-lineage"/>
-      </optional>
-      <ref name="mdml-fullname"/>
-      <optional>
-        <ref name="mdml-email"/>
-      </optional>
-    </element>
-  </define>
-  <define name="mdml-editorlist">
-    <element name="editorlist">
-      <oneOrMore>
-        <ref name="mdml-editor"/>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="mdml-editor">
-    <element name="editor">
-      <attribute name="id">
-        <data type="NMTOKEN"/>
-      </attribute>
-      <optional>
-        <attribute name="homepage"/>
-      </optional>
-      <optional>
-        <ref name="mdml-honorific"/>
-      </optional>
-      <ref name="mdml-firstname"/>
-      <optional>
-        <ref name="mdml-othername"/>
-      </optional>
-      <ref name="mdml-surname"/>
-      <optional>
-        <ref name="mdml-lineage"/>
-      </optional>
-      <ref name="mdml-fullname"/>
-      <optional>
-        <ref name="mdml-email"/>
-      </optional>
-    </element>
-  </define>
-  <define name="mdml-translatorlist">
-    <element name="translatorlist">
-      <oneOrMore>
-        <ref name="mdml-translator"/>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="mdml-translator">
-    <element name="translator">
-      <attribute name="id">
-        <data type="NMTOKEN"/>
-      </attribute>
-      <optional>
-        <attribute name="homepage"/>
-      </optional>
-      <optional>
-        <ref name="mdml-honorific"/>
-      </optional>
-      <ref name="mdml-firstname"/>
-      <optional>
-        <ref name="mdml-othername"/>
-      </optional>
-      <ref name="mdml-surname"/>
-      <optional>
-        <ref name="mdml-lineage"/>
-      </optional>
-      <ref name="mdml-fullname"/>
-      <optional>
-        <ref name="mdml-email"/>
-      </optional>
+      <attribute name="type"/>
+      <text/>
     </element>
   </define>
   <define name="mdml-honorific">
     <element name="honorific">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-firstname">
     <element name="firstname">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-othername">
     <element name="othername">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-surname">
     <element name="surname">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-lineage">
     <element name="lineage">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-fullname">
     <element name="fullname">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-email">
     <element name="email">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-license">
     <element name="license">
-      <attribute name="href"/>
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <attribute name="url"/>
       <text/>
-    </element>
-  </define>
-  <define name="mdml-licensorlist">
-    <element name="licensorlist">
-      <oneOrMore>
-        <ref name="mdml-licensor"/>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="mdml-licensor">
-    <element name="licensor">
-      <attribute name="id">
-        <data type="NMTOKEN"/>
-      </attribute>
-      <optional>
-        <attribute name="homepage"/>
-      </optional>
-      <optional>
-        <ref name="mdml-honorific"/>
-      </optional>
-      <ref name="mdml-firstname"/>
-      <optional>
-        <ref name="mdml-othername"/>
-      </optional>
-      <ref name="mdml-surname"/>
-      <optional>
-        <ref name="mdml-lineage"/>
-      </optional>
-      <ref name="mdml-fullname"/>
-      <optional>
-        <ref name="mdml-email"/>
-      </optional>
-    </element>
-  </define>
-  <define name="mdml-parent-module">
-    <element name="parent-module">
-      <attribute name="href"/>
-      <ref name="mdml-content-id"/>
-      <ref name="mdml-title"/>
-      <ref name="mdml-authorlist"/>
-      <ref name="mdml-license"/>
-      <ref name="mdml-licensorlist"/>
     </element>
   </define>
   <define name="mdml-keywordlist">
     <element name="keywordlist">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <oneOrMore>
         <ref name="mdml-keyword"/>
       </oneOrMore>
@@ -280,11 +1284,49 @@
   </define>
   <define name="mdml-keyword">
     <element name="keyword">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-subjectlist">
     <element name="subjectlist">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <oneOrMore>
         <ref name="mdml-subject"/>
       </oneOrMore>
@@ -292,57 +1334,343 @@
   </define>
   <define name="mdml-subject">
     <element name="subject">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <optional>
+        <attribute name="source"/>
+      </optional>
+      <optional>
+        <attribute name="key"/>
+      </optional>
       <text/>
+    </element>
+  </define>
+  <define name="mdml-education-levellist">
+    <element name="education-levellist">
+      <oneOrMore>
+        <ref name="mdml-education-level"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="mdml-education-level">
+    <element name="education-level">
+      <optional>
+        <attribute name="source"/>
+      </optional>
+      <optional>
+        <attribute name="key"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-col-homepage">
+    <element name="homepage">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-institution">
+    <element name="institution">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-course-code">
+    <element name="course-code">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-instructor">
+    <element name="instructor">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <text/>
+    </element>
+  </define>
+  <define name="mdml-version-history">
+    <element name="version-history">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <attribute name="url"/>
+    </element>
+  </define>
+  <define name="mdml-ancillary">
+    <element name="ancillary">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
+      <attribute name="url"/>
     </element>
   </define>
   <define name="mdml-abstract">
     <element name="abstract">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <choice>
         <oneOrMore>
           <choice>
-            <ref name="emphasis"/>
-            <ref name="link"/>
-            <ref name="term"/>
-            <ref name="foreign"/>
-            <ref name="cite"/>
-            <ref name="span"/>
-            <ref name="sup"/>
-            <ref name="sub"/>
-            <ref name="inline-code"/>
-            <ref name="block-code"/>
-            <ref name="simple-quote"/>
-            <ref name="simple-preformat"/>
-            <ref name="simple-list"/>
-            <ref name="simple-item"/>
-            <text/>
+            <ref name="cnxml-abstract-para"/>
+            <ref name="cnxml-abstract-quote"/>
+            <ref name="cnxml-abstract-preformat"/>
+            <ref name="cnxml-abstract-list"/>
           </choice>
         </oneOrMore>
         <oneOrMore>
-          <ref name="simple-para"/>
+          <choice>
+            <ref name="cnxml-abstract-emphasis"/>
+            <ref name="cnxml-abstract-term"/>
+            <ref name="cnxml-abstract-foreign"/>
+            <ref name="cnxml-abstract-cite"/>
+            <ref name="cnxml-abstract-span"/>
+            <ref name="cnxml-abstract-sup"/>
+            <ref name="cnxml-abstract-sub"/>
+            <ref name="cnxml-abstract-code"/>
+            <notAllowed/>
+            <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
+            <text/>
+            <ref name="cnxml-abstract-quote"/>
+            <ref name="cnxml-abstract-preformat"/>
+            <ref name="cnxml-abstract-list"/>
+          </choice>
         </oneOrMore>
       </choice>
     </element>
   </define>
   <define name="mdml-language">
     <element name="language">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <define name="mdml-objectives">
     <element name="objectives">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <text/>
     </element>
   </define>
   <!--the rest-->
   <define name="mdml-extended-attribution">
-    <element name="extended-attribution" ns="http://cnx.rice.edu/mdml/0.4">
+    <element name="extended-attribution" ns="http://cnx.rice.edu/mdml">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <oneOrMore>
         <ref name="link-group"/>
       </oneOrMore>
     </element>
   </define>
-  <!--ending http://cnx.rice.edu/technology/mdml/schema/rng/0.4.5/mdml-defs.rng-->
-  <!--starting http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng-->
+  <define name="mdml-derived-from">
+    <element name="derived-from" ns="http://cnx.rice.edu/mdml">
+      <choice>
+        <attribute name="url"/>
+        <group>
+          <attribute name="document"/>
+          <optional>
+            <attribute name="version"/>
+          </optional>
+          <optional>
+            <attribute name="repository"/>
+          </optional>
+        </group>
+      </choice>
+      <zeroOrMore>
+        <ref name="mdml-derived-from"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <!--ending file:///usr/share/xml/mdml/schema/rng/0.5/mdml-defs.rng-->
+  <!--starting file:///usr/share/xml/qml/schema/rng/1.0/qml-defs.rng-->
   <!--included elements-->
   <define name="qml.problemset">
     <element name="problemset">
@@ -489,7 +1817,7 @@
     </element>
   </define>
   <!--the rest-->
-  <!--ending http://cnx.rice.edu/technology/qml/schema/rng/1.0/qml-defs.rng-->
+  <!--ending file:///usr/share/xml/qml/schema/rng/1.0/qml-defs.rng-->
   <!--starting cnxml-defs.rng-->
   <!--included elements-->
   <!--
@@ -554,7 +1882,7 @@
       </optional>
       <ref name="document-title"/>
       <attribute name="cnxml-version">
-        <value>0.6</value>
+        <value>0.7</value>
       </attribute>
       <attribute name="module-id"/>
       <optional>
@@ -568,7 +1896,7 @@
         <ref name="glossary"/>
       </optional>
       <optional>
-        <externalRef href="http://cnx.rice.edu/technology/bibtexml/schema/rng/1.0/bibtexml.rng"/>
+        <externalRef href="file:///usr/share/xml/bibtexml/schema/rng/1.0/bibtexml.rng"/>
       </optional>
     </element>
   </define>
@@ -593,45 +1921,69 @@
       <optional>
         <attribute name="xml:lang"/>
       </optional>
+      <interleave>
+        <empty/>
+        <attribute name="mdml-version">
+          <value>0.5</value>
+        </attribute>
+      </interleave>
       <optional>
         <attribute name="id">
           <data type="ID"/>
         </attribute>
       </optional>
-      <ref name="mdml-content-id"/>
-      <ref name="mdml-title"/>
-      <ref name="mdml-version"/>
-      <ref name="mdml-created"/>
-      <ref name="mdml-revised"/>
-      <ref name="mdml-authorlist"/>
-      <ref name="mdml-maintainerlist"/>
-      <optional>
-        <ref name="mdml-editorlist"/>
-      </optional>
-      <optional>
-        <ref name="mdml-translatorlist"/>
-      </optional>
-      <ref name="mdml-license"/>
-      <ref name="mdml-licensorlist"/>
-      <optional>
-        <ref name="mdml-extended-attribution"/>
-      </optional>
-      <optional>
-        <ref name="mdml-parent-module"/>
-      </optional>
-      <optional>
-        <ref name="mdml-keywordlist"/>
-      </optional>
-      <optional>
-        <ref name="mdml-subjectlist"/>
-      </optional>
-      <optional>
-        <ref name="mdml-abstract"/>
-      </optional>
-      <ref name="mdml-language"/>
-      <optional>
-        <ref name="mdml-objectives"/>
-      </optional>
+      <interleave>
+        <ref name="mdml-content-id"/>
+        <ref name="mdml-repository"/>
+        <ref name="mdml-content-url"/>
+        <ref name="mdml-title"/>
+        <optional>
+          <ref name="mdml-short-title"/>
+        </optional>
+        <optional>
+          <ref name="mdml-subtitle"/>
+        </optional>
+        <ref name="mdml-version"/>
+        <ref name="mdml-created"/>
+        <ref name="mdml-revised"/>
+        <ref name="mdml-actors"/>
+        <ref name="mdml-roles"/>
+        <ref name="mdml-license"/>
+        <optional>
+          <ref name="mdml-extended-attribution"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="mdml-derived-from"/>
+        </zeroOrMore>
+        <optional>
+          <ref name="mdml-keywordlist"/>
+        </optional>
+        <optional>
+          <ref name="mdml-subjectlist"/>
+        </optional>
+        <optional>
+          <ref name="mdml-education-levellist"/>
+        </optional>
+        <optional>
+          <ref name="mdml-abstract"/>
+        </optional>
+        <ref name="mdml-language"/>
+        <optional>
+          <ref name="mdml-objectives"/>
+        </optional>
+        <optional>
+          <ref name="mdml-col-homepage"/>
+        </optional>
+        <optional>
+          <ref name="mdml-institution"/>
+        </optional>
+        <optional>
+          <ref name="mdml-course-code"/>
+        </optional>
+        <optional>
+          <ref name="mdml-instructor"/>
+        </optional>
+      </interleave>
     </element>
   </define>
   <define name="featured-links">
@@ -879,7 +2231,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -959,7 +2311,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1035,7 +2387,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1090,7 +2442,7 @@
       <oneOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1160,7 +2512,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1243,7 +2595,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1403,7 +2755,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1486,7 +2838,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1560,7 +2912,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1670,7 +3022,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1736,7 +3088,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1819,7 +3171,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1873,7 +3225,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -1927,7 +3279,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -2026,7 +3378,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -2137,7 +3489,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -2220,7 +3572,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -2276,7 +3628,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -2355,7 +3707,7 @@
         <ref name="block-media"/>
         <ref name="inline-media"/>
         <text/>
-        <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+        <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
       </choice>
     </element>
   </define>
@@ -2419,7 +3771,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -2516,7 +3868,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -2992,7 +4344,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -3065,7 +4417,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -3104,6 +4456,9 @@
         <attribute name="lang"/>
       </optional>
       <optional>
+        <attribute name="type"/>
+      </optional>
+      <optional>
         <attribute name="id">
           <data type="ID"/>
         </attribute>
@@ -3130,7 +4485,7 @@
       <oneOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -3200,7 +4555,7 @@
       <oneOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -3363,7 +4718,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -3438,7 +4793,7 @@
         <ref name="text"/>
         <ref name="download"/>
       </choice>
-      <optional>
+      <zeroOrMore>
         <choice>
           <ref name="object"/>
           <ref name="image"/>
@@ -3450,7 +4805,7 @@
           <ref name="text"/>
           <ref name="download"/>
         </choice>
-      </optional>
+      </zeroOrMore>
     </element>
   </define>
   <define name="block-media">
@@ -3501,7 +4856,7 @@
         <ref name="text"/>
         <ref name="download"/>
       </choice>
-      <optional>
+      <zeroOrMore>
         <choice>
           <ref name="object"/>
           <ref name="image"/>
@@ -3513,7 +4868,7 @@
           <ref name="text"/>
           <ref name="download"/>
         </choice>
-      </optional>
+      </zeroOrMore>
     </element>
   </define>
   <define name="nodisplay-media">
@@ -3561,7 +4916,7 @@
         <ref name="text"/>
         <ref name="download"/>
       </choice>
-      <optional>
+      <zeroOrMore>
         <choice>
           <ref name="object"/>
           <ref name="image"/>
@@ -3573,7 +4928,7 @@
           <ref name="text"/>
           <ref name="download"/>
         </choice>
-      </optional>
+      </zeroOrMore>
     </element>
   </define>
   <define name="longdesc-element">
@@ -3609,7 +4964,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -3715,6 +5070,13 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
+        <attribute name="for">
+          <data type="string">
+            <param name="pattern">[\w\-]+</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
         <choice>
           <attribute name="longdesc"/>
           <ref name="longdesc-element"/>
@@ -3726,7 +5088,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -3790,6 +5152,13 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
+        <attribute name="for">
+          <data type="string">
+            <param name="pattern">[\w\-]+</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
         <choice>
           <attribute name="longdesc"/>
           <ref name="longdesc-element"/>
@@ -3801,7 +5170,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -3871,6 +5240,13 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
+        <attribute name="for">
+          <data type="string">
+            <param name="pattern">[\w\-]+</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
         <choice>
           <attribute name="longdesc"/>
           <ref name="longdesc-element"/>
@@ -3882,7 +5258,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -3983,6 +5359,13 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
+        <attribute name="for">
+          <data type="string">
+            <param name="pattern">[\w\-]+</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
         <choice>
           <attribute name="longdesc"/>
           <ref name="longdesc-element"/>
@@ -3994,7 +5377,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -4095,6 +5478,13 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
+        <attribute name="for">
+          <data type="string">
+            <param name="pattern">[\w\-]+</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
         <choice>
           <attribute name="longdesc"/>
           <ref name="longdesc-element"/>
@@ -4106,7 +5496,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -4182,6 +5572,13 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
+        <attribute name="for">
+          <data type="string">
+            <param name="pattern">[\w\-]+</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
         <choice>
           <attribute name="longdesc"/>
           <ref name="longdesc-element"/>
@@ -4193,7 +5590,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -4310,6 +5707,13 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
+        <attribute name="for">
+          <data type="string">
+            <param name="pattern">[\w\-]+</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
         <choice>
           <attribute name="longdesc"/>
           <ref name="longdesc-element"/>
@@ -4321,7 +5725,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -4406,11 +5810,18 @@
       <optional>
         <attribute name="src"/>
       </optional>
+      <optional>
+        <attribute name="for">
+          <data type="string">
+            <param name="pattern">[\w\-]+</param>
+          </data>
+        </attribute>
+      </optional>
       <oneOrMore>
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -4485,6 +5896,13 @@
       </optional>
       <attribute name="mime-type"/>
       <optional>
+        <attribute name="for">
+          <data type="string">
+            <param name="pattern">[\w\-]+</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
         <choice>
           <attribute name="longdesc"/>
           <ref name="longdesc-element"/>
@@ -4496,7 +5914,7 @@
       <zeroOrMore>
         <choice>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -4797,7 +6215,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -4916,7 +6334,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -5844,7 +7262,7 @@
         <choice>
           <ref name="para"/>
           <text/>
-          <externalRef href="http://cnx.rice.edu/technology/mathml/schema/rng/2.0/mathml2.rng"/>
+          <externalRef href="file:///usr/share/xml/mathml/schema/rng/2.0/mathml2.rng"/>
           <ref name="span"/>
           <ref name="term"/>
           <ref name="cite"/>
@@ -5887,303 +7305,4 @@
   </define>
   <!--the rest-->
   <!--ending cnxml-defs.rng-->
-  <define name="simple-para">
-    <element name="para">
-      <zeroOrMore>
-        <attribute>
-          <anyName>
-            <except>
-              <nsName ns=""/>
-              <nsName ns="http://cnx.rice.edu/cnxml"/>
-              <name>xml:lang</name>
-            </except>
-          </anyName>
-        </attribute>
-      </zeroOrMore>
-      <optional>
-        <attribute name="class">
-          <data type="token"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="xml:lang"/>
-      </optional>
-      <attribute name="id">
-        <data type="ID"/>
-      </attribute>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <choice>
-          <ref name="emphasis"/>
-          <ref name="link"/>
-          <ref name="term"/>
-          <ref name="foreign"/>
-          <ref name="cite"/>
-          <ref name="span"/>
-          <ref name="sup"/>
-          <ref name="sub"/>
-          <ref name="inline-code"/>
-          <ref name="block-code"/>
-          <ref name="simple-quote"/>
-          <ref name="simple-preformat"/>
-          <ref name="simple-list"/>
-          <ref name="simple-item"/>
-          <text/>
-        </choice>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="simple-list">
-    <element name="list">
-      <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="list-type" a:defaultValue="bulleted">
-          <choice>
-            <value>bulleted</value>
-            <value>enumerated</value>
-            <value>labeled-item</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
-        <choice>
-          <attribute name="display">
-            <choice>
-              <value>block</value>
-              <value>none</value>
-            </choice>
-          </attribute>
-          <attribute name="display">
-            <choice>
-              <value>inline</value>
-              <value>none</value>
-            </choice>
-          </attribute>
-          <attribute name="display">
-            <value>none</value>
-          </attribute>
-        </choice>
-      </optional>
-      <zeroOrMore>
-        <attribute>
-          <anyName>
-            <except>
-              <nsName ns=""/>
-              <nsName ns="http://cnx.rice.edu/cnxml"/>
-              <name>xml:lang</name>
-            </except>
-          </anyName>
-        </attribute>
-      </zeroOrMore>
-      <optional>
-        <attribute name="class">
-          <data type="token"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="xml:lang"/>
-      </optional>
-      <attribute name="id">
-        <data type="ID"/>
-      </attribute>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <oneOrMore>
-        <ref name="simple-item"/>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="simple-item">
-    <element name="item">
-      <zeroOrMore>
-        <attribute>
-          <anyName>
-            <except>
-              <nsName ns=""/>
-              <nsName ns="http://cnx.rice.edu/cnxml"/>
-              <name>xml:lang</name>
-            </except>
-          </anyName>
-        </attribute>
-      </zeroOrMore>
-      <optional>
-        <attribute name="class">
-          <data type="token"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="xml:lang"/>
-      </optional>
-      <optional>
-        <attribute name="id">
-          <data type="ID"/>
-        </attribute>
-      </optional>
-      <optional>
-        <ref name="label"/>
-      </optional>
-      <oneOrMore>
-        <choice>
-          <ref name="emphasis"/>
-          <ref name="link"/>
-          <ref name="term"/>
-          <ref name="foreign"/>
-          <ref name="cite"/>
-          <ref name="span"/>
-          <ref name="sup"/>
-          <ref name="sub"/>
-          <ref name="inline-code"/>
-          <ref name="block-code"/>
-          <ref name="simple-quote"/>
-          <ref name="simple-preformat"/>
-          <ref name="simple-list"/>
-          <ref name="simple-item"/>
-          <text/>
-        </choice>
-      </oneOrMore>
-    </element>
-  </define>
-  <define name="simple-quote">
-    <element name="quote">
-      <optional>
-        <choice>
-          <attribute name="display">
-            <choice>
-              <value>block</value>
-              <value>none</value>
-            </choice>
-          </attribute>
-          <attribute name="display">
-            <choice>
-              <value>inline</value>
-              <value>none</value>
-            </choice>
-          </attribute>
-          <attribute name="display">
-            <value>none</value>
-          </attribute>
-        </choice>
-      </optional>
-      <zeroOrMore>
-        <attribute>
-          <anyName>
-            <except>
-              <nsName ns=""/>
-              <nsName ns="http://cnx.rice.edu/cnxml"/>
-              <name>xml:lang</name>
-            </except>
-          </anyName>
-        </attribute>
-      </zeroOrMore>
-      <optional>
-        <attribute name="class">
-          <data type="token"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="xml:lang"/>
-      </optional>
-      <attribute name="id">
-        <data type="ID"/>
-      </attribute>
-      <optional>
-        <ref name="title"/>
-      </optional>
-      <choice>
-        <oneOrMore>
-          <choice>
-            <ref name="emphasis"/>
-            <ref name="link"/>
-            <ref name="term"/>
-            <ref name="foreign"/>
-            <ref name="cite"/>
-            <ref name="span"/>
-            <ref name="sup"/>
-            <ref name="sub"/>
-            <ref name="inline-code"/>
-            <ref name="block-code"/>
-            <ref name="simple-quote"/>
-            <ref name="simple-preformat"/>
-            <ref name="simple-list"/>
-            <ref name="simple-item"/>
-            <text/>
-          </choice>
-        </oneOrMore>
-        <oneOrMore>
-          <ref name="simple-para"/>
-        </oneOrMore>
-      </choice>
-    </element>
-  </define>
-  <define name="simple-preformat">
-    <element name="preformat">
-      <optional>
-        <choice>
-          <attribute name="display">
-            <choice>
-              <value>block</value>
-              <value>none</value>
-            </choice>
-          </attribute>
-          <attribute name="display">
-            <choice>
-              <value>inline</value>
-              <value>none</value>
-            </choice>
-          </attribute>
-          <attribute name="display">
-            <value>none</value>
-          </attribute>
-        </choice>
-      </optional>
-      <zeroOrMore>
-        <attribute>
-          <anyName>
-            <except>
-              <nsName ns=""/>
-              <nsName ns="http://cnx.rice.edu/cnxml"/>
-              <name>xml:lang</name>
-            </except>
-          </anyName>
-        </attribute>
-      </zeroOrMore>
-      <optional>
-        <attribute name="class">
-          <data type="token"/>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="xml:lang"/>
-      </optional>
-      <attribute name="id">
-        <data type="ID"/>
-      </attribute>
-      <choice>
-        <oneOrMore>
-          <choice>
-            <ref name="emphasis"/>
-            <ref name="link"/>
-            <ref name="term"/>
-            <ref name="foreign"/>
-            <ref name="cite"/>
-            <ref name="span"/>
-            <ref name="sup"/>
-            <ref name="sub"/>
-            <ref name="inline-code"/>
-            <ref name="block-code"/>
-            <ref name="simple-quote"/>
-            <ref name="simple-preformat"/>
-            <ref name="simple-list"/>
-            <ref name="simple-item"/>
-            <text/>
-          </choice>
-        </oneOrMore>
-        <oneOrMore>
-          <ref name="simple-para"/>
-        </oneOrMore>
-      </choice>
-    </element>
-  </define>
 </grammar>
