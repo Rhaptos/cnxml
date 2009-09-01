@@ -49,16 +49,26 @@
 
   <!-- Bump CNXML version and ensure presence of needed namespaces. -->
   <xsl:template match="cnxml:document">
-    <document xmlns="http://cnx.rice.edu/cnxml"
-              xmlns:cnxorg="http://cnx.rice.edu/system-info"
-              xmlns:m="http://www.w3.org/1998/Math/MathML"
-              xmlns:md="http://cnx.rice.edu/mdml"
-              xmlns:q="http://cnx.rice.edu/qml/1.0"
-              xmlns:bib="http://bibtexml.sf.net/">
-      <xsl:apply-templates select="@*"/>
-      <xsl:attribute name="cnxml-version">0.7</xsl:attribute>
-      <xsl:apply-templates select="node()"/>
-    </document>
+    <xsl:choose>
+      <xsl:when test="@cnxml-version='0.7'">
+        <xsl:copy-of select="."/>
+      </xsl:when>
+      <xsl:when test="@cnxml-version='0.6'">
+        <document xmlns="http://cnx.rice.edu/cnxml"
+                  xmlns:cnxorg="http://cnx.rice.edu/system-info"
+                  xmlns:m="http://www.w3.org/1998/Math/MathML"
+                  xmlns:md="http://cnx.rice.edu/mdml"
+                  xmlns:q="http://cnx.rice.edu/qml/1.0"
+                  xmlns:bib="http://bibtexml.sf.net/">
+          <xsl:apply-templates select="@*"/>
+          <xsl:attribute name="cnxml-version">0.7</xsl:attribute>
+          <xsl:apply-templates select="node()"/>
+        </document>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message terminate="yes">This module is neither 0.6 nor 0.7!</xsl:message>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <!-- Convert md4:parent-module to md:derived-from. -->
