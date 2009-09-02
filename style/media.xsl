@@ -19,7 +19,7 @@
             <xsl:apply-templates select="child::*[not(self::cnx:longdesc) and not(@for='pdf')][1]"/>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:apply-template select="child::*[not(self::cnx:longdesc)][1]"/>
+            <xsl:apply-templates select="child::*[not(self::cnx:longdesc)][1]"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:otherwise>
