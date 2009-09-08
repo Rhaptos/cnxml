@@ -3,39 +3,14 @@
   <start>
     <choice>
       <ref name="document"/>
-      <ref name="para"/>
-      <ref name="title"/>
-      <ref name="bulleted-block-list"/>
-      <ref name="enumerated-block-list"/>
-      <ref name="labeled-item-block-list"/>
-      <ref name="bulleted-inline-list"/>
-      <ref name="enumerated-inline-list"/>
-      <ref name="labeled-item-inline-list"/>
-      <ref name="equation"/>
-      <ref name="exercise"/>
-      <ref name="figure"/>
-      <ref name="inline-code"/>
-      <ref name="block-code"/>
-      <ref name="block-note"/>
-      <ref name="inline-note"/>
-      <ref name="example"/>
-      <ref name="table"/>
-      <ref name="bulleted-block-list"/>
-      <ref name="enumerated-block-list"/>
-      <ref name="labeled-item-block-list"/>
-      <ref name="bulleted-inline-list"/>
-      <ref name="enumerated-inline-list"/>
-      <ref name="labeled-item-inline-list"/>
-      <ref name="section"/>
-      <ref name="rule"/>
-      <ref name="definition"/>
-      <ref name="metadata"/>
     </choice>
   </start>
+  <!--starting cnxml-common-jing.rng-->
+  <!--included elements-->
   <!--starting cnxml-abstract-defs.rng-->
   <!--included elements-->
   <define name="cnxml-abstract-para">
-    <element name="para">
+    <element name="para" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -76,7 +51,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-emphasis">
-    <element name="emphasis">
+    <element name="emphasis" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -114,7 +89,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-term">
-    <element name="term">
+    <element name="term" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -152,7 +127,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-foreign">
-    <element name="foreign">
+    <element name="foreign" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -190,7 +165,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-cite">
-    <element name="cite">
+    <element name="cite" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -228,7 +203,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-span">
-    <element name="span">
+    <element name="span" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -266,7 +241,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-sup">
-    <element name="sup">
+    <element name="sup" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -304,7 +279,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-sub">
-    <element name="sub">
+    <element name="sub" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -342,7 +317,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-code">
-    <element name="code">
+    <element name="code" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -399,7 +374,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-quote">
-    <element name="quote">
+    <element name="quote" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -469,7 +444,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-preformat">
-    <element name="preformat">
+    <element name="preformat" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -539,7 +514,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-list">
-    <element name="list">
+    <element name="list" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="list-type" a:defaultValue="bulleted">
           <choice>
@@ -593,7 +568,7 @@
     </element>
   </define>
   <define name="cnxml-abstract-item">
-    <element name="item">
+    <element name="item" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -637,8 +612,8 @@
   <!--ending cnxml-abstract-defs.rng-->
   <!--starting file:///usr/share/xml/mdml/schema/rng/0.5/mdml-defs.rng-->
   <!--included elements-->
-  <define name="mdml-content-id">
-    <element name="content-id">
+  <define name="mdml-content-id" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="content-id" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -661,8 +636,8 @@
       <data type="NMTOKEN"/>
     </element>
   </define>
-  <define name="mdml-repository">
-    <element name="repository">
+  <define name="mdml-repository" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="repository" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -685,8 +660,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-content-url">
-    <element name="content-url">
+  <define name="mdml-content-url" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="content-url" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -709,8 +684,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-title">
-    <element name="title">
+  <define name="mdml-title" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="title" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -733,8 +708,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-version">
-    <element name="version">
+  <define name="mdml-version" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="version" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -757,8 +732,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-short-title">
-    <element name="short-title">
+  <define name="mdml-short-title" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="short-title" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -781,8 +756,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-subtitle">
-    <element name="subtitle">
+  <define name="mdml-subtitle" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="subtitle" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -805,8 +780,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-created">
-    <element name="created">
+  <define name="mdml-created" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="created" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -829,8 +804,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-revised">
-    <element name="revised">
+  <define name="mdml-revised" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="revised" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -853,8 +828,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-homepage">
-    <element name="homepage">
+  <define name="mdml-homepage" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="homepage" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -877,8 +852,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-actors">
-    <element name="actors">
+  <define name="mdml-actors" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="actors" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -906,8 +881,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="mdml-person">
-    <element name="person">
+  <define name="mdml-person" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="person" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -952,8 +927,8 @@
       </interleave>
     </element>
   </define>
-  <define name="mdml-organization">
-    <element name="organization">
+  <define name="mdml-organization" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="organization" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -988,8 +963,8 @@
       </interleave>
     </element>
   </define>
-  <define name="mdml-shortname">
-    <element name="shortname">
+  <define name="mdml-shortname" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="shortname" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1012,8 +987,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-roles">
-    <element name="roles">
+  <define name="mdml-roles" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="roles" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1038,8 +1013,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="mdml-role">
-    <element name="role">
+  <define name="mdml-role" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="role" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1063,8 +1038,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-honorific">
-    <element name="honorific">
+  <define name="mdml-honorific" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="honorific" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1087,8 +1062,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-firstname">
-    <element name="firstname">
+  <define name="mdml-firstname" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="firstname" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1111,8 +1086,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-othername">
-    <element name="othername">
+  <define name="mdml-othername" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="othername" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1135,8 +1110,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-surname">
-    <element name="surname">
+  <define name="mdml-surname" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="surname" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1159,8 +1134,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-lineage">
-    <element name="lineage">
+  <define name="mdml-lineage" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="lineage" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1183,8 +1158,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-fullname">
-    <element name="fullname">
+  <define name="mdml-fullname" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="fullname" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1207,8 +1182,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-email">
-    <element name="email">
+  <define name="mdml-email" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="email" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1231,8 +1206,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-license">
-    <element name="license">
+  <define name="mdml-license" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="license" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1256,8 +1231,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-keywordlist">
-    <element name="keywordlist">
+  <define name="mdml-keywordlist" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="keywordlist" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1282,8 +1257,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="mdml-keyword">
-    <element name="keyword">
+  <define name="mdml-keyword" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="keyword" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1306,8 +1281,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-subjectlist">
-    <element name="subjectlist">
+  <define name="mdml-subjectlist" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="subjectlist" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1332,8 +1307,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="mdml-subject">
-    <element name="subject">
+  <define name="mdml-subject" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="subject" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1362,15 +1337,15 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-education-levellist">
-    <element name="education-levellist">
+  <define name="mdml-education-levellist" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="education-levellist" ns="http://cnx.rice.edu/mdml">
       <oneOrMore>
         <ref name="mdml-education-level"/>
       </oneOrMore>
     </element>
   </define>
-  <define name="mdml-education-level">
-    <element name="education-level">
+  <define name="mdml-education-level" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="education-level" ns="http://cnx.rice.edu/mdml">
       <optional>
         <attribute name="source"/>
       </optional>
@@ -1380,8 +1355,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-col-homepage">
-    <element name="homepage">
+  <define name="mdml-col-homepage" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="homepage" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1404,8 +1379,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-institution">
-    <element name="institution">
+  <define name="mdml-institution" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="institution" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1428,8 +1403,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-course-code">
-    <element name="course-code">
+  <define name="mdml-course-code" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="course-code" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1452,8 +1427,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-instructor">
-    <element name="instructor">
+  <define name="mdml-instructor" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="instructor" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1476,8 +1451,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-version-history">
-    <element name="version-history">
+  <define name="mdml-version-history" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="version-history" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1500,8 +1475,8 @@
       <attribute name="url"/>
     </element>
   </define>
-  <define name="mdml-ancillary">
-    <element name="ancillary">
+  <define name="mdml-ancillary" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="ancillary" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1524,8 +1499,8 @@
       <attribute name="url"/>
     </element>
   </define>
-  <define name="mdml-abstract">
-    <element name="abstract">
+  <define name="mdml-abstract" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="abstract" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1575,8 +1550,8 @@
       </choice>
     </element>
   </define>
-  <define name="mdml-language">
-    <element name="language">
+  <define name="mdml-language" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="language" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1599,8 +1574,8 @@
       <text/>
     </element>
   </define>
-  <define name="mdml-objectives">
-    <element name="objectives">
+  <define name="mdml-objectives" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="objectives" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1672,8 +1647,8 @@
   <!--ending file:///usr/share/xml/mdml/schema/rng/0.5/mdml-defs.rng-->
   <!--starting file:///usr/share/xml/qml/schema/rng/1.0/qml-defs.rng-->
   <!--included elements-->
-  <define name="qml.problemset">
-    <element name="problemset">
+  <define name="qml.problemset" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="problemset" ns="http://cnx.rice.edu/qml/1.0">
       <optional>
         <attribute name="id">
           <data type="ID"/>
@@ -1684,8 +1659,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="qml.item">
-    <element name="item">
+  <define name="qml.item" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="item" ns="http://cnx.rice.edu/qml/1.0">
       <attribute name="id">
         <data type="ID"/>
       </attribute>
@@ -1715,8 +1690,8 @@
       </optional>
     </element>
   </define>
-  <define name="qml.question">
-    <element name="question">
+  <define name="qml.question" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="question" ns="http://cnx.rice.edu/qml/1.0">
       <zeroOrMore>
         <choice>
           <text/>
@@ -1727,8 +1702,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="qml.resource">
-    <element name="resource">
+  <define name="qml.resource" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="resource" ns="http://cnx.rice.edu/qml/1.0">
       <attribute name="uri"/>
       <optional>
         <attribute name="id">
@@ -1737,8 +1712,8 @@
       </optional>
     </element>
   </define>
-  <define name="qml.answer">
-    <element name="answer">
+  <define name="qml.answer" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="answer" ns="http://cnx.rice.edu/qml/1.0">
       <optional>
         <attribute name="id">
           <data type="ID"/>
@@ -1755,8 +1730,8 @@
       </optional>
     </element>
   </define>
-  <define name="qml.response">
-    <element name="response">
+  <define name="qml.response" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="response" ns="http://cnx.rice.edu/qml/1.0">
       <zeroOrMore>
         <choice>
           <text/>
@@ -1767,8 +1742,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="qml.feedback">
-    <element name="feedback">
+  <define name="qml.feedback" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="feedback" ns="http://cnx.rice.edu/qml/1.0">
       <optional>
         <attribute name="correct">
           <choice>
@@ -1787,8 +1762,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="qml.hint">
-    <element name="hint">
+  <define name="qml.hint" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="hint" ns="http://cnx.rice.edu/qml/1.0">
       <zeroOrMore>
         <choice>
           <text/>
@@ -1799,8 +1774,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="qml.key">
-    <element name="key">
+  <define name="qml.key" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="key" ns="http://cnx.rice.edu/qml/1.0">
       <optional>
         <attribute name="answer">
           <text/>
@@ -1841,8 +1816,8 @@
   <!--
     Element Definitions
 -->
-  <define name="anyElement">
-    <element>
+  <define name="anyElement" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element ns="http://cnx.rice.edu/cnxml">
       <anyName/>
       <zeroOrMore>
         <choice>
@@ -1855,8 +1830,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="document">
-    <element name="document">
+  <define name="document" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="document" ns="http://cnx.rice.edu/cnxml">
       <attribute name="id">
         <data type="ID"/>
       </attribute>
@@ -1900,8 +1875,8 @@
       </optional>
     </element>
   </define>
-  <define name="metadata">
-    <element name="metadata">
+  <define name="metadata" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="metadata" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -1986,8 +1961,8 @@
       </interleave>
     </element>
   </define>
-  <define name="featured-links">
-    <element name="featured-links">
+  <define name="featured-links" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="featured-links" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2017,8 +1992,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="link-group">
-    <element name="link-group">
+  <define name="link-group" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="link-group" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2059,8 +2034,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="content">
-    <element name="content">
+  <define name="content" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="content" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2112,8 +2087,8 @@
       </choice>
     </element>
   </define>
-  <define name="glossary">
-    <element name="glossary">
+  <define name="glossary" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="glossary" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2143,8 +2118,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="section">
-    <element name="section">
+  <define name="section" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="section" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2200,8 +2175,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="div">
-    <element name="div">
+  <define name="div" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="div" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2272,8 +2247,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="block-preformat">
-    <element name="preformat">
+  <define name="block-preformat" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="preformat" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2352,8 +2327,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="inline-preformat">
-    <element name="preformat">
+  <define name="inline-preformat" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="preformat" ns="http://cnx.rice.edu/cnxml">
       <attribute name="display">
         <choice>
           <value>inline</value>
@@ -2412,8 +2387,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="para">
-    <element name="para">
+  <define name="para" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="para" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2483,8 +2458,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="title">
-    <element name="title">
+  <define name="title" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="title" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2537,8 +2512,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="document-title">
-    <element name="title">
+  <define name="document-title" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="title" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2566,8 +2541,8 @@
       <text/>
     </element>
   </define>
-  <define name="label">
-    <element name="label">
+  <define name="label" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="label" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2620,8 +2595,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="newline">
-    <element name="newline">
+  <define name="newline" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="newline" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2667,8 +2642,8 @@
       </optional>
     </element>
   </define>
-  <define name="space">
-    <element name="space">
+  <define name="space" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="space" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -2714,8 +2689,8 @@
       </optional>
     </element>
   </define>
-  <define name="span">
-    <element name="span">
+  <define name="span" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="span" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="effect">
           <choice>
@@ -2780,8 +2755,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="cite">
-    <element name="cite">
+  <define name="cite" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="cite" ns="http://cnx.rice.edu/cnxml">
       <group>
         <optional>
           <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="window" a:defaultValue="replace">
@@ -2863,8 +2838,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="cite-title">
-    <element name="cite-title">
+  <define name="cite-title" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="cite-title" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="pub-type">
           <choice>
@@ -2937,8 +2912,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="link">
-    <element name="link">
+  <define name="link" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="link" ns="http://cnx.rice.edu/cnxml">
       <group>
         <optional>
           <attribute name="strength">
@@ -3047,8 +3022,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="emphasis">
-    <element name="emphasis">
+  <define name="emphasis" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="emphasis" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="effect">
           <choice>
@@ -3113,8 +3088,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="term">
-    <element name="term">
+  <define name="term" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="term" ns="http://cnx.rice.edu/cnxml">
       <group>
         <optional>
           <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="window" a:defaultValue="replace">
@@ -3196,8 +3171,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="sub">
-    <element name="sub">
+  <define name="sub" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="sub" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -3250,8 +3225,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="sup">
-    <element name="sup">
+  <define name="sup" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="sup" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -3304,8 +3279,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="block-quote">
-    <element name="quote">
+  <define name="block-quote" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="quote" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="display" a:defaultValue="block">
           <choice>
@@ -3419,8 +3394,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="inline-quote">
-    <element name="quote">
+  <define name="inline-quote" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="quote" ns="http://cnx.rice.edu/cnxml">
       <attribute name="display">
         <choice>
           <value>inline</value>
@@ -3514,8 +3489,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="foreign">
-    <element name="foreign">
+  <define name="foreign" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="foreign" ns="http://cnx.rice.edu/cnxml">
       <group>
         <optional>
           <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="window" a:defaultValue="replace">
@@ -3597,8 +3572,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="footnote">
-    <element name="footnote">
+  <define name="footnote" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="footnote" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -3670,8 +3645,8 @@
     </element>
   </define>
   <!-- FIXME: Do we want to continue to permit 'media' or text in 'equation'? -->
-  <define name="equation">
-    <element name="equation">
+  <define name="equation" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="equation" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -3711,8 +3686,8 @@
       </choice>
     </element>
   </define>
-  <define name="block-note">
-    <element name="note">
+  <define name="block-note" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="note" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="display" a:defaultValue="block">
           <choice>
@@ -3812,8 +3787,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="inline-note">
-    <element name="note">
+  <define name="inline-note" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="note" ns="http://cnx.rice.edu/cnxml">
       <attribute name="display">
         <choice>
           <value>inline</value>
@@ -3893,8 +3868,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="bulleted-block-list">
-    <element name="list">
+  <define name="bulleted-block-list" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="list" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="list-type" a:defaultValue="bulleted">
           <value>bulleted</value>
@@ -3968,8 +3943,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="bulleted-inline-list">
-    <element name="list">
+  <define name="bulleted-inline-list" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="list" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="list-type" a:defaultValue="bulleted">
           <value>bulleted</value>
@@ -4043,8 +4018,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="enumerated-block-list">
-    <element name="list">
+  <define name="enumerated-block-list" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="list" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue="."/>
       </optional>
@@ -4119,8 +4094,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="enumerated-inline-list">
-    <element name="list">
+  <define name="enumerated-inline-list" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="list" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue="."/>
       </optional>
@@ -4195,8 +4170,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="labeled-item-block-list">
-    <element name="list">
+  <define name="labeled-item-block-list" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="list" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue=":"/>
       </optional>
@@ -4253,8 +4228,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="labeled-item-inline-list">
-    <element name="list">
+  <define name="labeled-item-inline-list" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="list" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="mark-suffix" a:defaultValue=":"/>
       </optional>
@@ -4311,8 +4286,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="block-list-item">
-    <element name="item">
+  <define name="block-list-item" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="item" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -4385,8 +4360,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="inline-list-item">
-    <element name="item">
+  <define name="inline-list-item" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="item" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -4442,8 +4417,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="inline-code">
-    <element name="code">
+  <define name="inline-code" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="code" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="display" a:defaultValue="inline">
           <choice>
@@ -4510,8 +4485,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="block-code">
-    <element name="code">
+  <define name="block-code" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="code" ns="http://cnx.rice.edu/cnxml">
       <attribute name="display">
         <choice>
           <value>block</value>
@@ -4585,8 +4560,8 @@
   </define>
   <!-- NOTE: I have removed 'table' and 'code' as possible content for 
      'figure', but this decision can be revisited. -->
-  <define name="figure">
-    <element name="figure">
+  <define name="figure" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="figure" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -4644,8 +4619,8 @@
       </optional>
     </element>
   </define>
-  <define name="subfigure">
-    <element name="subfigure">
+  <define name="subfigure" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="subfigure" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -4689,8 +4664,8 @@
       </optional>
     </element>
   </define>
-  <define name="caption">
-    <element name="caption">
+  <define name="caption" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="caption" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -4743,8 +4718,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="inline-media">
-    <element name="media">
+  <define name="inline-media" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="media" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="display" a:defaultValue="inline">
           <choice>
@@ -4808,8 +4783,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="block-media">
-    <element name="media">
+  <define name="block-media" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="media" ns="http://cnx.rice.edu/cnxml">
       <attribute name="display">
         <choice>
           <value>block</value>
@@ -4871,8 +4846,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="nodisplay-media">
-    <element name="media">
+  <define name="nodisplay-media" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="media" ns="http://cnx.rice.edu/cnxml">
       <attribute name="display">
         <value>none</value>
       </attribute>
@@ -4931,8 +4906,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="longdesc-element">
-    <element name="longdesc">
+  <define name="longdesc-element" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="longdesc" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5005,8 +4980,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="param">
-    <element name="param">
+  <define name="param" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="param" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5036,8 +5011,8 @@
     </element>
   </define>
   <!-- @src must be handled per-element -->
-  <define name="object">
-    <element name="object">
+  <define name="object" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="object" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5118,8 +5093,8 @@
       <attribute name="src"/>
     </element>
   </define>
-  <define name="image">
-    <element name="image">
+  <define name="image" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="image" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5206,8 +5181,8 @@
       </optional>
     </element>
   </define>
-  <define name="audio">
-    <element name="audio">
+  <define name="audio" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="audio" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5325,8 +5300,8 @@
       </optional>
     </element>
   </define>
-  <define name="video">
-    <element name="video">
+  <define name="video" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="video" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5444,8 +5419,8 @@
       </optional>
     </element>
   </define>
-  <define name="java-applet">
-    <element name="java-applet">
+  <define name="java-applet" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="java-applet" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5538,8 +5513,8 @@
       </optional>
     </element>
   </define>
-  <define name="flash">
-    <element name="flash">
+  <define name="flash" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="flash" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5673,8 +5648,8 @@
       </optional>
     </element>
   </define>
-  <define name="labview">
-    <element name="labview">
+  <define name="labview" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="labview" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5763,8 +5738,8 @@
       </attribute>
     </element>
   </define>
-  <define name="text">
-    <element name="text">
+  <define name="text" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="text" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5862,8 +5837,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="download">
-    <element name="download">
+  <define name="download" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="download" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5944,8 +5919,8 @@
       <attribute name="src"/>
     </element>
   </define>
-  <define name="example">
-    <element name="example">
+  <define name="example" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="example" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6001,8 +5976,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="exercise">
-    <element name="exercise">
+  <define name="exercise" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="exercise" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6056,8 +6031,8 @@
       </choice>
     </element>
   </define>
-  <define name="problem">
-    <element name="problem">
+  <define name="problem" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="problem" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6113,8 +6088,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="solution">
-    <element name="solution">
+  <define name="solution" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="solution" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="print-placement">
           <choice>
@@ -6178,8 +6153,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="commentary">
-    <element name="commentary">
+  <define name="commentary" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="commentary" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6256,8 +6231,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="definition">
-    <element name="definition">
+  <define name="definition" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="definition" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6303,8 +6278,8 @@
       </choice>
     </element>
   </define>
-  <define name="meaning">
-    <element name="meaning">
+  <define name="meaning" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="meaning" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6375,8 +6350,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="seealso">
-    <element name="seealso">
+  <define name="seealso" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="seealso" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6421,8 +6396,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="rule">
-    <element name="rule">
+  <define name="rule" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="rule" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6475,8 +6450,8 @@
       </zeroOrMore>
     </element>
   </define>
-  <define name="statement">
-    <element name="statement">
+  <define name="statement" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="statement" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6532,8 +6507,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="proof">
-    <element name="proof">
+  <define name="proof" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="proof" ns="http://cnx.rice.edu/cnxml">
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -6592,8 +6567,8 @@
   <!-- 
     CALS Table Definitions
  -->
-  <define name="table">
-    <element name="table">
+  <define name="table" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="table" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="frame">
           <choice>
@@ -6692,8 +6667,8 @@
       </optional>
     </element>
   </define>
-  <define name="tgroup">
-    <element name="tgroup">
+  <define name="tgroup" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="tgroup" ns="http://cnx.rice.edu/cnxml">
       <attribute name="cols"/>
       <optional>
         <attribute name="tgroupstyle">
@@ -6770,8 +6745,8 @@
       <ref name="tbody"/>
     </element>
   </define>
-  <define name="colspec">
-    <element name="colspec">
+  <define name="colspec" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="colspec" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="colnum"/>
       </optional>
@@ -6838,8 +6813,8 @@
       </optional>
     </element>
   </define>
-  <define name="spanspec">
-    <element name="spanspec">
+  <define name="spanspec" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="spanspec" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="namest"/>
       </optional>
@@ -6907,8 +6882,8 @@
       </optional>
     </element>
   </define>
-  <define name="thead">
-    <element name="thead">
+  <define name="thead" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="thead" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="valign">
           <choice>
@@ -6950,8 +6925,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="tfoot">
-    <element name="tfoot">
+  <define name="tfoot" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="tfoot" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="valign">
           <choice>
@@ -6993,8 +6968,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="tbody">
-    <element name="tbody">
+  <define name="tbody" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="tbody" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="valign">
           <choice>
@@ -7033,8 +7008,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="row">
-    <element name="row">
+  <define name="row" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="row" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="rowsep">
           <data type="integer">
@@ -7083,8 +7058,8 @@
       </oneOrMore>
     </element>
   </define>
-  <define name="entrytbl">
-    <element name="entrytbl">
+  <define name="entrytbl" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="entrytbl" ns="http://cnx.rice.edu/cnxml">
       <attribute name="cols"/>
       <optional>
         <attribute name="tgroupstyle">
@@ -7170,8 +7145,8 @@
       <ref name="tbody"/>
     </element>
   </define>
-  <define name="entry">
-    <element name="entry">
+  <define name="entry" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+    <element name="entry" ns="http://cnx.rice.edu/cnxml">
       <optional>
         <attribute name="colname"/>
       </optional>
@@ -7305,4 +7280,6 @@
   </define>
   <!--the rest-->
   <!--ending cnxml-defs.rng-->
+  <!--the rest-->
+  <!--ending cnxml-common-jing.rng-->
 </grammar>
