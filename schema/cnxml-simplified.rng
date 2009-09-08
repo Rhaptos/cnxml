@@ -1339,6 +1339,25 @@
   </define>
   <define name="mdml-education-levellist" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
     <element name="education-levellist" ns="http://cnx.rice.edu/mdml">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <oneOrMore>
         <ref name="mdml-education-level"/>
       </oneOrMore>
@@ -1346,6 +1365,25 @@
   </define>
   <define name="mdml-education-level" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
     <element name="education-level" ns="http://cnx.rice.edu/mdml">
+      <zeroOrMore>
+        <attribute>
+          <anyName>
+            <except>
+              <nsName ns=""/>
+              <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <name>xml:lang</name>
+            </except>
+          </anyName>
+        </attribute>
+      </zeroOrMore>
+      <optional>
+        <attribute name="class">
+          <data type="token"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="xml:lang"/>
+      </optional>
       <optional>
         <attribute name="source"/>
       </optional>
@@ -1627,6 +1665,27 @@
   </define>
   <define name="mdml-derived-from">
     <element name="derived-from" ns="http://cnx.rice.edu/mdml">
+      <optional>
+        <zeroOrMore>
+          <attribute>
+            <anyName>
+              <except>
+                <nsName ns=""/>
+                <nsName ns="http://cnx.rice.edu/cnxml"/>
+                <name>xml:lang</name>
+              </except>
+            </anyName>
+          </attribute>
+        </zeroOrMore>
+        <optional>
+          <attribute name="class">
+            <data type="token"/>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="xml:lang"/>
+        </optional>
+      </optional>
       <choice>
         <attribute name="url"/>
         <group>
@@ -1910,7 +1969,9 @@
       <interleave>
         <ref name="mdml-content-id"/>
         <ref name="mdml-repository"/>
-        <ref name="mdml-content-url"/>
+        <optional>
+          <ref name="mdml-content-url"/>
+        </optional>
         <ref name="mdml-title"/>
         <optional>
           <ref name="mdml-short-title"/>
