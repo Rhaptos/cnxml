@@ -38,6 +38,9 @@
     </define>
     <define name="mdml-derived-from">
       <element name="derived-from" ns="http://cnx.rice.edu/mdml">
+        <optional>
+          <ref name="mdml-common-attributes"/>
+        </optional>
         <choice>
           <ref name="url-attribute"/>
           <group>
