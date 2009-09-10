@@ -17,6 +17,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -58,6 +60,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -96,6 +100,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -134,6 +140,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -172,6 +180,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -210,6 +220,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -248,6 +260,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -286,6 +300,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -324,6 +340,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -381,6 +399,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -451,6 +471,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -549,6 +571,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -575,6 +599,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -610,7 +636,7 @@
   </define>
   <!--the rest-->
   <!--ending cnxml-abstract-defs.rng-->
-  <!--starting file:///usr/share/xml/mdml/schema/rng/0.5/mdml-defs.rng-->
+  <!--starting ../../mdml/schema/mdml-defs.rng-->
   <!--included elements-->
   <define name="mdml-content-id" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
     <element name="content-id" ns="http://cnx.rice.edu/mdml">
@@ -620,6 +646,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -644,6 +672,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -668,6 +698,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -692,6 +724,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -716,6 +750,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -740,6 +776,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -764,6 +802,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -788,6 +828,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -812,6 +854,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -836,6 +880,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -860,6 +906,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -889,6 +937,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -935,6 +985,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -971,6 +1023,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -995,6 +1049,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1021,6 +1077,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1046,6 +1104,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1070,6 +1130,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1094,6 +1156,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1118,6 +1182,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1142,6 +1208,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1166,6 +1234,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1190,6 +1260,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1214,6 +1286,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1239,6 +1313,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1265,6 +1341,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1289,6 +1367,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1315,6 +1395,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1345,6 +1427,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1371,6 +1455,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1401,6 +1487,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1425,6 +1513,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1449,6 +1539,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1473,6 +1565,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1497,6 +1591,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1521,6 +1617,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1545,6 +1643,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1596,6 +1696,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1620,6 +1722,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1638,6 +1742,7 @@
   </define>
   <!--the rest-->
   <define name="mdml-extended-attribution">
+    <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">An element enabling authors to give attribution for roles not supported by the Rhaptos/Connexions roles system (roles like 'funder', 'sponsor').  Contains CNXML 'linkgroup' elements that contain 'link' elements naming and referring to those to whom attribution is being given.</cnxml:para>
     <element name="extended-attribution" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
@@ -1645,6 +1750,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1664,6 +1771,7 @@
     </element>
   </define>
   <define name="mdml-derived-from">
+    <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">An element to link to works from which the context work was derived.  It makes use of the attributes from CNXML 'link' to form references to the parent works.  Child 'derived-from' elements denote more remote ancestors of the document.</cnxml:para>
     <element name="derived-from" ns="http://cnx.rice.edu/mdml">
       <optional>
         <zeroOrMore>
@@ -1672,6 +1780,8 @@
               <except>
                 <nsName ns=""/>
                 <nsName ns="http://cnx.rice.edu/cnxml"/>
+                <nsName ns="http://cnx.rice.edu/collxml"/>
+                <nsName ns="http://cnx.rice.edu/system-info"/>
                 <name>xml:lang</name>
               </except>
             </anyName>
@@ -1686,6 +1796,11 @@
           <attribute name="xml:lang"/>
         </optional>
       </optional>
+      <optional>
+        <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">An attribute in the Connexions system-info namespace to express whether the 'derived-from' element to which it is attached contains the full chain of content parentage or just the immediate parents of the context document.  Supported values are:
+            <cnxml:list><cnxml:item>entire-chain</cnxml:item><cnxml:item>first-ancestor-only</cnxml:item></cnxml:list></cnxml:para>
+        <attribute name="implementation" ns="http://cnx.rice.edu/system-info"/>
+      </optional>
       <choice>
         <attribute name="url"/>
         <group>
@@ -1694,6 +1809,7 @@
             <attribute name="version"/>
           </optional>
           <optional>
+            <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">An attribute whose value is the URL of a repository containing the context object.</cnxml:para>
             <attribute name="repository"/>
           </optional>
         </group>
@@ -1703,7 +1819,7 @@
       </zeroOrMore>
     </element>
   </define>
-  <!--ending file:///usr/share/xml/mdml/schema/rng/0.5/mdml-defs.rng-->
+  <!--ending ../../mdml/schema/mdml-defs.rng-->
   <!--starting file:///usr/share/xml/qml/schema/rng/1.0/qml-defs.rng-->
   <!--included elements-->
   <define name="qml.problemset" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
@@ -1901,6 +2017,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -1942,6 +2060,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2030,6 +2150,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2061,6 +2183,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2103,6 +2227,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2156,6 +2282,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2187,6 +2315,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2244,6 +2374,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2316,6 +2448,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2402,6 +2536,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2456,6 +2592,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2527,6 +2665,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2581,6 +2721,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2610,6 +2752,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2664,6 +2808,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2711,6 +2857,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2770,6 +2918,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2853,6 +3003,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -2927,6 +3079,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3037,6 +3191,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3103,6 +3259,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3186,6 +3344,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3240,6 +3400,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3294,6 +3456,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3356,6 +3520,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3504,6 +3670,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3587,6 +3755,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3641,6 +3811,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3714,6 +3886,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3763,6 +3937,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3883,6 +4059,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -3960,6 +4138,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4035,6 +4215,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4111,6 +4293,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4187,6 +4371,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4245,6 +4431,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4303,6 +4491,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4355,6 +4545,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4429,6 +4621,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4505,6 +4699,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4560,6 +4756,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4629,6 +4827,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4688,6 +4888,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4733,6 +4935,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4795,6 +4999,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4858,6 +5064,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4918,6 +5126,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -4975,6 +5185,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5049,6 +5261,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5080,6 +5294,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5162,6 +5378,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5250,6 +5468,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5369,6 +5589,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5488,6 +5710,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5582,6 +5806,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5717,6 +5943,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5807,6 +6035,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5906,6 +6136,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -5988,6 +6220,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6045,6 +6279,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6100,6 +6336,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6165,6 +6403,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6222,6 +6462,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6300,6 +6542,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6347,6 +6591,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6419,6 +6665,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6465,6 +6713,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6519,6 +6769,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6576,6 +6828,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6701,6 +6955,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6773,6 +7029,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6854,6 +7112,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6923,6 +7183,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -6960,6 +7222,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -7003,6 +7267,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -7046,6 +7312,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -7093,6 +7361,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -7176,6 +7446,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
@@ -7276,6 +7548,8 @@
             <except>
               <nsName ns=""/>
               <nsName ns="http://cnx.rice.edu/cnxml"/>
+              <nsName ns="http://cnx.rice.edu/collxml"/>
+              <nsName ns="http://cnx.rice.edu/system-info"/>
               <name>xml:lang</name>
             </except>
           </anyName>
