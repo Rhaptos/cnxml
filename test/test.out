@@ -42,7 +42,6 @@ mdml/b00004.xml:43:37: error: attribute "id" not allowed at this point; ignored
 mdml/b00005.xml:13:20: error: unknown element "authorlist" from namespace "http://cnx.rice.edu/mdml"
 mdml/b00005.xml:46:14: error: unfinished element
 mdml/b00006.xml:8:24: error: unknown element "collection-url" from namespace "http://cnx.rice.edu/mdml"
-mdml/b00006.xml:53:14: error: unfinished element
 media/b00070.xml:42:24: error: required attributes missing
 media/b00071.xml:42:121: error: unfinished element
 media/b00073.xml:41:62: error: bad value for attribute "display"
