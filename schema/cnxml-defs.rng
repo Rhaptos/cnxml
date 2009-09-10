@@ -28,6 +28,8 @@
           <except>
             <nsName ns=""/>
             <nsName ns="http://cnx.rice.edu/cnxml"/>
+            <nsName ns="http://cnx.rice.edu/collxml"/>
+            <nsName ns="http://cnx.rice.edu/system-info"/>
             <name>xml:lang</name>
           </except>
         </anyName>
