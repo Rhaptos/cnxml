@@ -29,46 +29,24 @@
     <define name="mdml-common-attributes">
       <ref name="common-attributes"/>
     </define>
-    <define name="mdml-extended-attribution">
-      <cnxml:para>An element enabling authors to give attribution for roles not supported by the Rhaptos/Connexions roles system (roles like 'funder', 'sponsor').  Contains CNXML 'linkgroup' elements that contain 'link' elements naming and referring to those to whom attribution is being given.</cnxml:para>
-      <element name="extended-attribution" ns="http://cnx.rice.edu/mdml">
-        <ref name="mdml-common-attributes"/>
-        <oneOrMore>
-          <ref name="link-group"/>
-        </oneOrMore>
-      </element>
+    <define name="mdml-extended-attribution-content">
+      <oneOrMore>
+        <ref name="link-group"/>
+      </oneOrMore>
     </define>
-    <define name="mdml-derived-from">
-      <cnxml:para>An element to link to works from which the context work was derived.  It makes use of the attributes from CNXML 'link' to form references to the parent works.  Child 'derived-from' elements denote more remote ancestors of the document.</cnxml:para>
-      <element name="derived-from" ns="http://cnx.rice.edu/mdml">
-        <optional>
-          <ref name="mdml-common-attributes"/>
-        </optional>
-        <optional>
-          <cnxml:para>An attribute in the Connexions system-info namespace to express whether the 'derived-from' element to which it is attached contains the full chain of content parentage or just the immediate parents of the context document.  Supported values are:
-            <cnxml:list>
-              <cnxml:item>entire-chain</cnxml:item>
-              <cnxml:item>first-ancestor-only</cnxml:item>
-            </cnxml:list>
-          </cnxml:para>
-          <attribute name="implementation" ns="http://cnx.rice.edu/system-info"/>
-        </optional>
-        <choice>
-          <ref name="url-attribute"/>
-          <group>
-            <ref name="document-attribute"/>
-            <optional>
-              <ref name="version-attribute"/>
-            </optional>
-            <optional>
-              <ref name="repository-attribute"/>
-            </optional>
-          </group>
-        </choice>
-        <zeroOrMore>
-          <ref name="mdml-derived-from"/>
-        </zeroOrMore>
-      </element>
+    <define name="mdml-derived-from-content">
+      <choice>
+        <ref name="url-attribute"/>
+        <group>
+          <ref name="document-attribute"/>
+          <optional>
+            <ref name="version-attribute"/>
+          </optional>
+          <optional>
+            <ref name="repository-attribute"/>
+          </optional>
+        </group>
+      </choice>
     </define>
   </include>
 
