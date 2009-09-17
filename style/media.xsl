@@ -18,9 +18,6 @@
           <xsl:when test="child::*[not(self::cnx:longdesc) and not(@for='pdf')]">
             <xsl:apply-templates select="child::*[not(self::cnx:longdesc) and not(@for='pdf')][1]"/>
           </xsl:when>
-          <xsl:otherwise>
-            <xsl:apply-templates select="child::*[not(self::cnx:longdesc)][1]"/>
-          </xsl:otherwise>
         </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
