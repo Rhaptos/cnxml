@@ -541,7 +541,7 @@
     <attribute name="for">
       <choice>
         <value>online</value>
-        <value>print</value>
+        <value>pdf</value>
         <data type="NMTOKEN"/>
       </choice>
     </attribute>
