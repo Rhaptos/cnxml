@@ -1615,7 +1615,7 @@
   <define name="inline-media">
     <element name="media">
       <optional>
-        <ref name="display-inline-default-attribute"/>
+        <ref name="display-inline-attribute"/>
       </optional>
       <ref name="media-common-content"/>
     </element>

@@ -636,7 +636,7 @@
   </define>
   <!--the rest-->
   <!--ending cnxml-abstract-defs.rng-->
-  <!--starting ../../mdml/schema/mdml-defs.rng-->
+  <!--starting file:///usr/share/xml/mdml/schema/rng/0.5/mdml-defs.rng-->
   <!--included elements-->
   <define name="mdml-content-id" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
     <element name="content-id" ns="http://cnx.rice.edu/mdml">
@@ -1306,7 +1306,6 @@
     </element>
   </define>
   <define name="mdml-extended-attribution" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-    <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">An element enabling authors to give attribution for roles not supported by the Rhaptos/Connexions roles system (roles like 'funder', 'sponsor').</cnxml:para>
     <element name="extended-attribution" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
@@ -1329,7 +1328,6 @@
       <optional>
         <attribute name="xml:lang"/>
       </optional>
-      <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">Contains CNXML 'linkgroup' elements that contain 'link' elements naming and referring to those to whom attribution is being given.</cnxml:para>
       <oneOrMore>
         <ref name="link-group"/>
       </oneOrMore>
@@ -1614,7 +1612,6 @@
     </element>
   </define>
   <define name="mdml-derived-from" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-    <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">An element to link to works from which the context work was derived.</cnxml:para>
     <element name="derived-from" ns="http://cnx.rice.edu/mdml">
       <zeroOrMore>
         <attribute>
@@ -1638,12 +1635,8 @@
         <attribute name="xml:lang"/>
       </optional>
       <optional>
-        <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">An attribute in the Connexions system-info namespace to express whether the 'derived-from' element to which it is attached contains the full chain of content parentage or just the immediate parents of the context document.  Supported values are:
-          <cnxml:list><cnxml:item>entire-chain</cnxml:item><cnxml:item>first-ancestor-only</cnxml:item></cnxml:list></cnxml:para>
         <attribute name="implementation" ns="http://cnx.rice.edu/system-info"/>
       </optional>
-      <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">Child 'derived-from' elements denote more remote ancestors of the document.</cnxml:para>
-      <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">Makes use of the attributes from CNXML 'link' to form references to the parent works.</cnxml:para>
       <choice>
         <attribute name="url"/>
         <group>
@@ -1652,7 +1645,6 @@
             <attribute name="version"/>
           </optional>
           <optional>
-            <cnxml:para xmlns:cnxml="http://cnx.rice.edu/cnxml">An attribute whose value is the URL of a repository containing the context object.</cnxml:para>
             <attribute name="repository"/>
           </optional>
         </group>
@@ -1820,7 +1812,7 @@
     </element>
   </define>
   <!--the rest-->
-  <!--ending ../../mdml/schema/mdml-defs.rng-->
+  <!--ending file:///usr/share/xml/mdml/schema/rng/0.5/mdml-defs.rng-->
   <!--starting file:///usr/share/xml/qml/schema/rng/1.0/qml-defs.rng-->
   <!--included elements-->
   <define name="qml.problemset" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
@@ -1975,14 +1967,15 @@
     Attribute Definitions
 -->
   <!-- We enumerate supported values, but any text values are accepted. -->
-  <!-- May be revised to have values of 1-5 -->
-  <!-- Attributes pattern for 'link' element.  Require at least one 
-       attribute that points to a link target: either @url, or at 
-       least one of the old cnxn-style linking attributes (@document, 
-       @targetid, or @resource).  It takes a little effort to make 
+  <div/>
+  <!-- Attributes pattern for 'link' element.  Require at least one
+       attribute that points to a link target: either @url, or at
+       least one of the old cnxn-style linking attributes (@document,
+       @targetid, or @resource).  It takes a little effort to make
        this pattern unambiguous.  -->
-  <!-- For linking elements other than 'link'.  Here we can afford to 
+  <!-- For linking elements other than 'link'.  Here we can afford to
        make each attribute optional, so no problems with ambiguity.  -->
+  <div/>
   <!--
     Content Classes
 -->
@@ -4818,7 +4811,7 @@
       </optional>
     </element>
   </define>
-  <!-- NOTE: I have removed 'table' and 'code' as possible content for 
+  <!-- NOTE: I have removed 'table' and 'code' as possible content for
      'figure', but this decision can be revisited. -->
   <define name="figure" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
     <element name="figure" ns="http://cnx.rice.edu/cnxml">
@@ -4987,7 +4980,7 @@
   <define name="inline-media" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
     <element name="media" ns="http://cnx.rice.edu/cnxml">
       <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="display" a:defaultValue="inline">
+        <attribute name="display">
           <choice>
             <value>inline</value>
             <value>none</value>
@@ -5053,12 +5046,15 @@
   </define>
   <define name="block-media" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
     <element name="media" ns="http://cnx.rice.edu/cnxml">
-      <attribute name="display">
-        <choice>
-          <value>block</value>
-          <value>none</value>
-        </choice>
-      </attribute>
+      <optional>
+        <attribute name="display">
+          <choice>
+            <value>block</value>
+            <value>inline</value>
+            <value>none</value>
+          </choice>
+        </attribute>
+      </optional>
       <zeroOrMore>
         <attribute>
           <anyName>
@@ -5324,9 +5320,11 @@
       <attribute name="mime-type"/>
       <optional>
         <attribute name="for">
-          <data type="string">
-            <param name="pattern">[\w\-]+</param>
-          </data>
+          <choice>
+            <value>online</value>
+            <value>pdf</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
       <optional>
@@ -5408,9 +5406,11 @@
       <attribute name="mime-type"/>
       <optional>
         <attribute name="for">
-          <data type="string">
-            <param name="pattern">[\w\-]+</param>
-          </data>
+          <choice>
+            <value>online</value>
+            <value>pdf</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
       <optional>
@@ -5498,9 +5498,11 @@
       <attribute name="mime-type"/>
       <optional>
         <attribute name="for">
-          <data type="string">
-            <param name="pattern">[\w\-]+</param>
-          </data>
+          <choice>
+            <value>online</value>
+            <value>pdf</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
       <optional>
@@ -5619,9 +5621,11 @@
       <attribute name="mime-type"/>
       <optional>
         <attribute name="for">
-          <data type="string">
-            <param name="pattern">[\w\-]+</param>
-          </data>
+          <choice>
+            <value>online</value>
+            <value>pdf</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
       <optional>
@@ -5740,9 +5744,11 @@
       <attribute name="mime-type"/>
       <optional>
         <attribute name="for">
-          <data type="string">
-            <param name="pattern">[\w\-]+</param>
-          </data>
+          <choice>
+            <value>online</value>
+            <value>pdf</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
       <optional>
@@ -5836,9 +5842,11 @@
       <attribute name="mime-type"/>
       <optional>
         <attribute name="for">
-          <data type="string">
-            <param name="pattern">[\w\-]+</param>
-          </data>
+          <choice>
+            <value>online</value>
+            <value>pdf</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
       <optional>
@@ -5973,9 +5981,11 @@
       <attribute name="mime-type"/>
       <optional>
         <attribute name="for">
-          <data type="string">
-            <param name="pattern">[\w\-]+</param>
-          </data>
+          <choice>
+            <value>online</value>
+            <value>pdf</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
       <optional>
@@ -6079,9 +6089,11 @@
       </optional>
       <optional>
         <attribute name="for">
-          <data type="string">
-            <param name="pattern">[\w\-]+</param>
-          </data>
+          <choice>
+            <value>online</value>
+            <value>pdf</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
       <oneOrMore>
@@ -6166,9 +6178,11 @@
       <attribute name="mime-type"/>
       <optional>
         <attribute name="for">
-          <data type="string">
-            <param name="pattern">[\w\-]+</param>
-          </data>
+          <choice>
+            <value>online</value>
+            <value>pdf</value>
+            <data type="NMTOKEN"/>
+          </choice>
         </attribute>
       </optional>
       <optional>
@@ -6880,7 +6894,7 @@
       </oneOrMore>
     </element>
   </define>
-  <!-- 
+  <!--
     CALS Table Definitions
  -->
   <define name="table" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
