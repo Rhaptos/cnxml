@@ -44,6 +44,21 @@ mdml/b00005.xml:46:14: error: unfinished element
 mdml/b00006.xml:8:24: error: unknown element "collection-url" from namespace "http://cnx.rice.edu/mdml"
 media/b00070.xml:42:24: error: required attributes missing
 media/b00071.xml:42:121: error: unfinished element
+media/b00072.xml:43:56: error: bad value for attribute "display"
+media/b00072.xml:48:55: error: bad value for attribute "display"
+media/b00072.xml:53:55: error: bad value for attribute "display"
+media/b00072.xml:58:54: error: bad value for attribute "display"
+media/b00072.xml:63:61: error: bad value for attribute "display"
+media/b00072.xml:68:59: error: bad value for attribute "display"
+media/b00072.xml:73:54: error: bad value for attribute "display"
+media/b00072.xml:78:56: error: bad value for attribute "display"
+media/b00072.xml:83:55: error: bad value for attribute "display"
+media/b00072.xml:88:55: error: bad value for attribute "display"
+media/b00072.xml:93:62: error: bad value for attribute "display"
+media/b00072.xml:98:60: error: bad value for attribute "display"
+media/b00072.xml:103:58: error: bad value for attribute "display"
+media/b00072.xml:108:61: error: bad value for attribute "display"
+media/b00072.xml:113:68: error: bad value for attribute "display"
 media/b00073.xml:41:62: error: bad value for attribute "display"
 media/b00074.xml:43:21: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
 media/b00076.xml:49:60: error: bad value for attribute "for"
