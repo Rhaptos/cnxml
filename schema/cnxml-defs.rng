@@ -127,6 +127,18 @@
       </optional>
     </define>
 
+    <define name="display-any-attribute">
+      <optional>
+        <attribute name="display">
+          <choice>
+            <value>block</value>
+            <value>inline</value>
+            <value>none</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>
+
     <define name="display-inline-attribute">
       <attribute name="display">
         <choice>
@@ -1602,14 +1614,16 @@
 
   <define name="inline-media">
     <element name="media">
-      <ref name="display-inline-default-attribute"/>
+      <optional>
+        <ref name="display-inline-default-attribute"/>
+      </optional>
       <ref name="media-common-content"/>
     </element>
   </define>
 
   <define name="block-media">
     <element name="media">
-      <ref name="display-block-attribute"/>
+      <ref name="display-any-attribute"/>
       <ref name="media-common-content"/>
     </element>
   </define>
