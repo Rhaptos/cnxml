@@ -1,8 +1,8 @@
-connexions-cnxml (0.7-1~test14) unstable; urgency=low
+connexions-cnxml (0.7-1~test15) unstable; urgency=low
 
   * Collection Structure Redesign
   * Create CNXML 0.7
-  * Dev release 14.
+  * Dev release 15.
 
  -- Charles F. Bearden <cbearden@cnx.org>  Mon, 17 Aug 2009 12:20:47 -0500
 
