@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                xmlns:cnxml="http://cnx.rice.edu/cnxml"
                 xmlns:exsl="http://exslt.org/common"
                 extension-element-prefixes="exsl"
                 exclude-result-prefixes="rng"
@@ -69,6 +70,8 @@
     <xsl:comment>ending <xsl:value-of select="@href"/></xsl:comment>
   </xsl:template>
 
+  <xsl:template match="cnxml:*" mode="includes-1"/>
+
   <xsl:template match="rng:include|rng:include/rng:grammar" mode="includes-2">
     <!--<xsl:copy>
       <xsl:apply-templates select="node()|@*" mode="includes-2"/>
@@ -81,7 +84,11 @@
     <xsl:variable name="ancestor-include" select="ancestor::rng:include[1]"/>
     <xsl:if test="not(following-sibling::rng:define[@name=$name])">
       <xsl:copy>
-        <xsl:apply-templates select="node()|@*" mode="includes-2"/>
+        <xsl:apply-templates select="@*" mode="includes-2"/>
+        <xsl:if test="not(@datatypeLibrary) and descendant::rng:data[@type]">
+          <xsl:apply-templates select="ancestor::*[@datatypeLibrary][1]/@datatypeLibrary" mode="includes-2"/>
+        </xsl:if>
+        <xsl:apply-templates select="node()" mode="includes-2"/>
       </xsl:copy>
     </xsl:if>
   </xsl:template>
