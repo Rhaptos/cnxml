@@ -8,7 +8,10 @@
       <ref name="common-attributes"/>
     </define>
     <define name="cnxml-abstract-list-type-attribute">
-      <ref name="list-type-attribute"/>
+      <choice>
+        <ref name="bulleted-list-type-attribute"/>
+        <ref name="enumerated-list-type-attribute"/>
+      </choice>
     </define>
     <define name="cnxml-abstract-display-attribute">
       <ref name="display-attribute"/>
