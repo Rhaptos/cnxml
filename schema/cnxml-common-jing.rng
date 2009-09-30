@@ -5,7 +5,7 @@
 
   <include href="cnxml-abstract-defs.rng">
     <define name="cnxml-abstract-common-attributes">
-      <ref name="common-attributes"/>
+      <ref name="common-attributes-noclass"/>
     </define>
     <define name="cnxml-abstract-list-type-attribute">
       <choice>

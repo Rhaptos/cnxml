@@ -801,13 +801,17 @@
     </optional>
   </define>
 
-  <define name="common-attributes">
+  <define name="common-attributes-noclass">
     <ref name="foreign-namespaced-attribute"/>
     <optional>
-      <ref name="class-attribute"/>
-    </optional>
-    <optional>
       <attribute name="xml:lang"/>
+    </optional>
+  </define>
+
+  <define name="common-attributes">
+    <ref name="common-attributes-noclass"/>
+    <optional>
+      <ref name="class-attribute"/>
     </optional>
   </define>
 
