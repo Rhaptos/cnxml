@@ -537,15 +537,16 @@
   </define>
   <define name="cnxml-abstract-list">
     <element name="list" ns="http://cnx.rice.edu/cnxml">
-      <optional>
-        <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="list-type" a:defaultValue="bulleted">
-          <choice>
+      <choice>
+        <optional>
+          <attribute xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" name="list-type" a:defaultValue="bulleted">
             <value>bulleted</value>
-            <value>enumerated</value>
-            <value>labeled-item</value>
-          </choice>
+          </attribute>
+        </optional>
+        <attribute name="list-type">
+          <value>enumerated</value>
         </attribute>
-      </optional>
+      </choice>
       <optional>
         <choice>
           <attribute name="display">
