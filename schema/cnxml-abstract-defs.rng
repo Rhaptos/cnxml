@@ -3,15 +3,12 @@
          ns="http://cnx.rice.edu/cnxml">
 
   <define name="cnxml-abstract-content">
-    <choice>
-      <oneOrMore>
-        <choice>
-          <ref name="cnxml-abstract-para"/>
-          <ref name="cnxml-abstract-block-class"/>
-        </choice>
-      </oneOrMore>
-      <ref name="cnxml-abstract-para-content"/>
-    </choice>
+    <oneOrMore>
+      <choice>
+        <ref name="cnxml-abstract-para"/>
+        <ref name="cnxml-abstract-para-content"/>
+      </choice>
+    </oneOrMore>
   </define>
 
   <define name="cnxml-abstract-para">
