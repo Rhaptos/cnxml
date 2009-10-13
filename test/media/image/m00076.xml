@@ -40,7 +40,7 @@
     <para id="p1">The contained image elements have every media object common attribute and child element.</para>
     <media id="med1" display="block" alt="Image of Zeus">
       <image src="zeus.png" mime-type="PNG" class="historical" id="img1" height="50pt" width="50pt">
-        <para id="p2">This text will appear in place of the image if necessary.</para>
+        This text will appear in place of the image if necessary.
       </image>
       <image for="pdf" src="zeus.jpg" mime-type="JPG" longdesc="Zeus is heavily displeased by the lack of burnt offerings at the temple.">
         <param name="height" value="40pt"/>
