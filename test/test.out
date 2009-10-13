@@ -100,8 +100,7 @@ list/enumerated/b00061.xml:43:25: error: element "para" from namespace "http://c
 list/enumerated/b00062.xml:40:118: error: bad value for attribute "display"
 list/enumerated/b00062.xml:40:118: error: bad value for attribute "start-value"
 list/enumerated/b00063.xml:44:18: error: element "title" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
-list/enumerated/m00059.xml:40:117: error: bad value for attribute "start-value"
-list/enumerated/m00062.xml:42:114: error: bad value for attribute "start-value"
+list/enumerated/b00064.xml:40:117: error: bad value for attribute "start-value"
 list/labeled-item/b00064.xml:40:59: error: attribute "after" not allowed at this point; ignored
 list/labeled-item/b00065.xml:43:14: error: element "label" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
 list/labeled-item/b00066.xml:41:20: error: element "title" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
@@ -121,7 +120,6 @@ media/flash/b00090.xml:42:163: error: bad value for attribute "bgcolor"
 media/image/b00076.xml:42:86: error: required attributes missing
 media/image/b00077.xml:43:42: error: bad value for attribute "display"
 media/image/b00078.xml:41:75: error: element "image" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
-media/image/m00076.xml:43:23: error: element "para" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
 media/java-applet/b00085.xml:42:48: error: required attributes missing
 media/java-applet/b00086.xml:42:83: error: attribute "standby" not allowed at this point; ignored
 media/java-applet/b00087.xml:41:49: error: element "java-applet" from namespace "http://cnx.rice.edu/cnxml" not allowed in this context
