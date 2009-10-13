@@ -37,7 +37,7 @@
     <md:language>en</md:language>
   </metadata>
   <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
-    <list id="l1" display="block" list-type="enumerated" mark-suffix=")" number-style="upper-alpha" start-value="B">
+    <list id="l1" display="block" list-type="enumerated" mark-suffix=")" number-style="upper-alpha" start-value="2">
       <item>This list has all the optional enumerated list attributes.</item>
     </list>
   </content>
