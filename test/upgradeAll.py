@@ -1,4 +1,9 @@
 #!/usr/bin/python
+"""
+Apply transform for CNXML 0.6 to 0.7 upgrade to all files in this dir 
+and its subdir matching the regular expression (presumed to be the 
+test docs).
+"""
 
 import os
 import re
