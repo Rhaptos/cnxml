@@ -20,3 +20,15 @@ To install:
 
     * Run the included 'install.sh' command.  You may need to perform
       this as root.
+
+For external developers:
+
+    * For non-debian systems use the Jing files in the correct locations.
+    * For debian developers, install the catalog using the debian/ directory.
+    
+To run the tests:
+
+    * ./test/vtest.sh [schema-file]
+      Runs on every file in the xml/ and */xml/ dirs and prints all error messages to stdout
+      test/test.out contains the output of the tests using the rng file in SVN
+      Example: ./test/vtest.sh ./schema/cnxml-jing.rng > ./test/test.out && svn st ./test/test.out

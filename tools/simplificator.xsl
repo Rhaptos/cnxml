@@ -13,6 +13,9 @@
   <xsl:key name="ref-by-name" match="rng:ref" use="@name"/>
 
   <xsl:template match="/">
+    <xsl:comment>Automatically generated from tools/simplificator.xsl .</xsl:comment>
+    <xsl:comment>Used for human consumption (all nested refs are resolved)</xsl:comment>
+    
     <!-- Grab input schema file. -->
     <xsl:variable name="input-doc">
       <xsl:copy-of select="."/>

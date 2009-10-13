@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
+<!-- Automatically generated from tools/simplificator.xsl .
+Used for human consumption (all nested refs are resolved) -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0" ns="http://cnx.rice.edu/cnxml">
   <start>
     <choice>

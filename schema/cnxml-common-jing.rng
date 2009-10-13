@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Same as cnxml-common.rng except for the @hrefs -->
+
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
          xmlns:cnxml="http://cnx.rice.edu/cnxml"
          ns="http://cnx.rice.edu/cnxml">
@@ -21,7 +23,7 @@
   <define name="cnxml-abstract-text-extras" combine="choice">
     <ref name="mathml-math"/>
   </define>
-
+<!-- Make these relative -->
   <include href="file:///usr/share/xml/mdml/schema/rng/0.5/mdml-defs.rng">
     <define name="mdml-metadata">
       <notAllowed/>
