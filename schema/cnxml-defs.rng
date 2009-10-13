@@ -46,16 +46,8 @@
   <define name="effect-attribute">
     <cnxml:para class="description">An attribute whose value specifies a display property for the content of the element to which the attribute is attached.</cnxml:para>
     <cnxml:para class="content">Content is text with no spaces (NMTOKEN).</cnxml:para>
-    <cnxml:list class="supported-values">
-      <cnxml:title>Supported values:</cnxml:title>
-      <cnxml:item>bold</cnxml:item>
-      <cnxml:item>italics</cnxml:item>
-      <cnxml:item>underline</cnxml:item>
-      <cnxml:item>normal</cnxml:item>
-      <cnxml:item>smallcaps</cnxml:item>
-    </cnxml:list>
     <attribute name="effect">
-      <choice>
+      <choice cnxml:class="supported-values">
         <value>bold</value>
         <value>italics</value>
         <value>underline</value>
@@ -86,14 +78,9 @@
 
     <define name="display-block-default-attribute">
       <cnxml:para class="description">An attribute that specifies how a parent element in a block-only context displays with respect to the flow of content. A value of 'block' causes the parent element to be set off from preceding and following text with vertical space; a value of 'none' causes the element not to be rendered.</cnxml:para>
-      <cnxml:list class="possible-values">
-        <cnxml:title>Possible values:</cnxml:title>
-        <cnxml:item>block (default)</cnxml:item>
-        <cnxml:item>none</cnxml:item>
-      </cnxml:list>
       <optional>
         <attribute name="display" a:defaultValue="block">
-          <choice>
+          <choice cnxml:class="possible-values">
             <value>block</value>
             <value>none</value>
           </choice>
@@ -103,13 +90,8 @@
 
     <define name="display-block-attribute">
       <cnxml:para class="description">An attribute that specifies how a parent element in a block-only context displays with respect to the flow of content. A value of 'block' causes the parent element to be set off from preceding and following text with vertical space; a value of 'none' causes the element not to be rendered.</cnxml:para>
-      <cnxml:list class="possible-values">
-        <cnxml:title>Possible values:</cnxml:title>
-        <cnxml:item>block (default)</cnxml:item>
-        <cnxml:item>none</cnxml:item>
-      </cnxml:list>
       <attribute name="display">
-        <choice>
+        <choice cnxml:class="possible-values">
           <value>block</value>
           <value>none</value>
         </choice>
@@ -165,14 +147,8 @@
 
   <define name="strength-attribute">
     <cnxml:para class="description">An attribute that indicates how strongly related the parent 'link' element is to the content in which it occurs.</cnxml:para>
-    <cnxml:list class="possible-values">
-      <cnxml:title>Possible values:</cnxml:title>
-      <cnxml:item>1</cnxml:item>
-      <cnxml:item>2</cnxml:item>
-      <cnxml:item>3 (strongest)</cnxml:item>
-    </cnxml:list>
     <attribute name="strength">
-      <choice>
+      <choice cnxml:class="possible-values">
         <value>1</value>
         <value>2</value>
         <value>3</value>
@@ -182,14 +158,9 @@
 
   <define name="window-attribute">
     <cnxml:para class="description">An attribute that instructs the browser either to replace the current window with the link target, or to open the link target in a new window, when the parent 'link' element is activated.</cnxml:para>
-    <cnxml:list class="possible-values">
-      <cnxml:title>Possible values:</cnxml:title>
-      <cnxml:item>replace (default)</cnxml:item>
-      <cnxml:item>new</cnxml:item>
-    </cnxml:list>
     <optional>
       <attribute name="window" a:defaultValue="replace">
-        <choice>
+        <choice cnxml:class="possible-values">
           <value>replace</value>
           <value>new</value>
         </choice>
@@ -308,17 +279,9 @@
   <define name="note-type-attribute">
     <cnxml:para class="description">An attribute that controls the automatically generated label for the parent 'note' element.</cnxml:para>
     <cnxml:para class="content">Content is text, except the case-insensitive string 'footnote' (Relax NG).</cnxml:para>
-    <cnxml:list class="supported-values">
-      <cnxml:title>Supported values:</cnxml:title>
-      <cnxml:item>note</cnxml:item>
-      <cnxml:item>aside</cnxml:item>
-      <cnxml:item>warning</cnxml:item>
-      <cnxml:item>tip</cnxml:item>
-      <cnxml:item>important</cnxml:item>
-    </cnxml:list>
     <optional>
       <attribute name="type" a:defaultValue="note">
-        <choice>
+        <choice cnxml:class="supported-values">
           <value>note</value>
           <value>aside</value>
           <value>warning</value>
@@ -380,20 +343,9 @@
   <define name="bullet-style-attribute">
     <cnxml:para class="description">An attribute that specifies the symbol to use for the bullets in the parent 'list' element's 'item' children.  May occur only on 'list' elements with a 'list-type' of 'bulleted'.</cnxml:para>
     <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
-    <cnxml:list class="supported-values">
-      <cnxml:title>Supported values:</cnxml:title>
-      <cnxml:item>bullet (default)</cnxml:item>
-      <cnxml:item>open-circle</cnxml:item>
-      <cnxml:item>pilcrow</cnxml:item>
-      <cnxml:item>rpilcrow</cnxml:item>
-      <cnxml:item>asterisk</cnxml:item>
-      <cnxml:item>dash</cnxml:item>
-      <cnxml:item>section</cnxml:item>
-      <cnxml:item>none</cnxml:item>
-    </cnxml:list>
     <optional>
       <attribute name="bullet-style" a:defaultValue="bullet">
-        <choice>
+        <choice cnxml:class="supported-values">
           <value>bullet</value>
           <value>open-circle</value>
           <value>pilcrow</value>
@@ -410,17 +362,9 @@
 
   <define name="number-style-attribute">
     <cnxml:para class="description">An attribute that style of number to use for the enumerations in the parent 'list' element's 'item' children.  May occur only on 'list' elements with a 'list-type' of 'enumerated'.</cnxml:para>
-    <cnxml:list class="possible-values">
-      <cnxml:title>Possible values:</cnxml:title>
-      <cnxml:item>arabic (default)</cnxml:item>
-      <cnxml:item>upper-alpha</cnxml:item>
-      <cnxml:item>lower-alpha</cnxml:item>
-      <cnxml:item>upper-roman</cnxml:item>
-      <cnxml:item>lower-roman</cnxml:item>
-    </cnxml:list>
     <optional>
       <attribute name="number-style" a:defaultValue="arabic">
-        <choice>
+        <choice cnxml:class="possible-values">
           <value>arabic</value>
           <value>upper-alpha</value>
           <value>lower-alpha</value>
@@ -545,13 +489,8 @@
   <define name="for-attribute">
     <cnxml:para class="description">An attribute whose value specifies the output format for which the parent media object is intended.</cnxml:para>
     <cnxml:para class="content">Content is text (NMTOKEN).</cnxml:para>
-    <cnxml:list class="supported-values">
-      <cnxml:title>Supported values</cnxml:title>
-      <cnxml:item>online</cnxml:item>
-      <cnxml:item>print</cnxml:item>
-    </cnxml:list>
     <attribute name="for">
-      <choice>
+      <choice cnxml:class="supported-values">
         <value>online</value>
         <value>pdf</value>
         <data type="NMTOKEN"/>
@@ -695,25 +634,8 @@
 
   <define name="pub-type">
     <cnxml:para class="description">An attribute that denotes the type of publication being cited by the parent 'cite-title' element.</cnxml:para>
-    <cnxml:list class="possible-values">
-      <cnxml:title>Possible values:</cnxml:title>
-      <cnxml:item>article</cnxml:item>
-      <cnxml:item>book</cnxml:item>
-      <cnxml:item>booklet</cnxml:item>
-      <cnxml:item>conference</cnxml:item>
-      <cnxml:item>inbook</cnxml:item>
-      <cnxml:item>incollection</cnxml:item>
-      <cnxml:item>inproceedings</cnxml:item>
-      <cnxml:item>manual</cnxml:item>
-      <cnxml:item>mastersthesis</cnxml:item>
-      <cnxml:item>misc</cnxml:item>
-      <cnxml:item>phdthesis</cnxml:item>
-      <cnxml:item>proceedings</cnxml:item>
-      <cnxml:item>techreport</cnxml:item>
-      <cnxml:item>unpublished</cnxml:item>
-    </cnxml:list>
     <attribute name="pub-type">
-      <choice>
+      <choice cnxml:class="possible-values">
         <value>article</value>
         <value>book</value>
         <value>booklet</value>
