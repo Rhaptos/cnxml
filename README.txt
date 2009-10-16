@@ -6,29 +6,27 @@ Connexions Packaging of CNXML
 
   - This package includes:
 
-    * DTD, XML Schema, and RelaxNG definitions of CNXML as defined at
-      http://cnx.rice.edu/technology/cnxml/0.5/spec/
+    * RelaxNG definition of CNXML 0.7
+
+    * XSLT stylesheets to convert CNXML 0.5 to 0.6, and CNXML 0.6 to 0.7
 
     * XSL stylesheets to convert to HTML including CALS table support
       from the DocBook XSL Stylesheets
 
-    * Customizations for Altova's XMLSpy and Authentic editors
-
     * XML and SGML Catalog files
-
-To install:
-
-    * Run the included 'install.sh' command.  You may need to perform
-      this as root.
 
 For external developers:
 
-    * For non-debian systems use the Jing files in the correct locations.
-    * For debian developers, install the catalog using the debian/ directory.
+    * Developers on systems other than Debian derivates should use 
+      the cnxml-jing.rng schema files, which point to component 
+      schema files with relative paths on the local filesystem
+    * Debian developers can build .deb packages of CNXML with 
+      dpkg-buildpackage – installing the .debs will update the XML
+      catalog with schema file locations.
     
 To run the tests:
 
     * ./test/vtest.sh [schema-file]
-      Runs on every file in the xml/ and */xml/ dirs and prints all error messages to stdout
+      Runs on every file whose name ends with the '.xml' extension in sub- and sub-subdirectories of the working directory, and prints all error messages to stdout
       test/test.out contains the output of the tests using the rng file in SVN
       Example: ./test/vtest.sh ./schema/cnxml-jing.rng > ./test/test.out && svn st ./test/test.out
