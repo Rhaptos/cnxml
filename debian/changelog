@@ -1,10 +1,9 @@
-connexions-cnxml (0.7-1~test16) unstable; urgency=low
+connexions-cnxml (0.7-1) unstable; urgency=low
 
   * Collection Structure Redesign
   * Create CNXML 0.7
-  * Dev release 16.
 
- -- Charles F. Bearden <cbearden@cnx.org>  Mon, 17 Aug 2009 12:20:47 -0500
+ -- Charles F. Bearden <cbearden@cnx.org>  Tue, 20 Oct 2009 15:35:42 -0500
 
 connexions-cnxml (0.6.3-1) unstable; urgency=low
 

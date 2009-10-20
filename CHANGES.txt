@@ -1,4 +1,5 @@
-  - CNXML 0.7 / collection-structure-redesign-1
+cnxml-0.7
+  - collection-structure-redesign-1 (DATE)
     - permit more than two media object children of 'media', with the 'for' 
       attribute to indicate the output medium for which the media object is 
       intended ('online' and 'pdf' supported at present)
