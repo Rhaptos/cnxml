@@ -2,6 +2,7 @@
 
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         xmlns:cnxml="http://cnx.rice.edu/cnxml"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"
          ns="http://cnx.rice.edu/cnxml">
 
@@ -10,24 +11,30 @@
 -->
 
   <define name="id-attribute">
+    <cnxml:para class="description">An attribute of the ID type, whose value must be unique within the module document.</cnxml:para>
     <attribute name="id">
       <data type="ID"/>
     </attribute>
   </define>
 
   <define name="class-attribute">
+    <cnxml:para class="description">An attribute whose values authors may use to augment the semantics of the element to which it is applied.</cnxml:para>
+    <cnxml:para class="content">Content: a space-separated list of text nodes (Relax NG 'token').</cnxml:para>
     <attribute name="class">
       <data type="token"/>
     </attribute>
   </define>
 
   <define name="foreign-namespaced-attribute">
+    <cnxml:para class="description">Any attribute except (1) one not in a namespace; (2) one in the CNXML, CollXML, or Connexions system-info namespaces; and (3) @xml:lang.</cnxml:para>
     <zeroOrMore>
       <attribute>
         <anyName>
           <except>
             <nsName ns=""/>
             <nsName ns="http://cnx.rice.edu/cnxml"/>
+            <nsName ns="http://cnx.rice.edu/collxml"/>
+            <nsName ns="http://cnx.rice.edu/system-info"/>
             <name>xml:lang</name>
           </except>
         </anyName>
@@ -37,8 +44,10 @@
 
   <!-- We enumerate supported values, but any text values are accepted. -->
   <define name="effect-attribute">
+    <cnxml:para class="description">An attribute whose value specifies a display property for the content of the element to which the attribute is attached.</cnxml:para>
+    <cnxml:para class="content">Content is text with no spaces (NMTOKEN).</cnxml:para>
     <attribute name="effect">
-      <choice>
+      <choice cnxml:class="supported-values">
         <value>bold</value>
         <value>italics</value>
         <value>underline</value>
@@ -49,72 +58,97 @@
     </attribute>
   </define>
 
-  <define name="display-attribute">
-    <optional>
-      <choice>
-        <ref name="display-block-attribute"/>
-        <ref name="display-inline-attribute"/>
-        <ref name="display-none-attribute"/>
-      </choice>
-    </optional>
-  </define>
-
-  <define name="display-block-default-attribute">
-    <optional>
-      <attribute name="display" a:defaultValue="block">
+  <div>
+    <cnxml:para class="description">An attribute that specifies how its parent element displays with respect to the flow of content. A value of 'block' causes the parent element to be set off from preceding and following text with vertical space; a value of 'inline' causes the parent element to be displayed continuously with any preceding and following content that is also 'inline'; a value of 'none' causes the element not to be rendered.</cnxml:para>
+    <cnxml:list class="possible-values">
+      <cnxml:title>Possible values:</cnxml:title>
+      <cnxml:item>block</cnxml:item>
+      <cnxml:item>inline</cnxml:item>
+      <cnxml:item>none</cnxml:item>
+    </cnxml:list>
+    <define name="display-attribute">
+      <optional>
         <choice>
+          <ref name="display-block-attribute"/>
+          <ref name="display-inline-attribute"/>
+          <ref name="display-none-attribute"/>
+        </choice>
+      </optional>
+    </define>
+
+    <define name="display-block-default-attribute">
+      <cnxml:para class="description">An attribute that specifies how a parent element in a block-only context displays with respect to the flow of content. A value of 'block' causes the parent element to be set off from preceding and following text with vertical space; a value of 'none' causes the element not to be rendered.</cnxml:para>
+      <optional>
+        <attribute name="display" a:defaultValue="block">
+          <choice cnxml:class="possible-values">
+            <value>block</value>
+            <value>none</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>
+
+    <define name="display-block-attribute">
+      <cnxml:para class="description">An attribute that specifies how a parent element in a block-only context displays with respect to the flow of content. A value of 'block' causes the parent element to be set off from preceding and following text with vertical space; a value of 'none' causes the element not to be rendered.</cnxml:para>
+      <attribute name="display">
+        <choice cnxml:class="possible-values">
           <value>block</value>
           <value>none</value>
         </choice>
       </attribute>
-    </optional>
-  </define>
+    </define>
 
-  <define name="display-block-attribute">
-    <attribute name="display">
-      <choice>
-        <value>block</value>
-        <value>none</value>
-      </choice>
-    </attribute>
-  </define>
+    <define name="display-inline-default-attribute">
+      <optional>
+        <attribute name="display" a:defaultValue="inline">
+          <choice>
+            <value>inline</value>
+            <value>none</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>
 
-  <define name="display-inline-default-attribute">
-    <optional>
-      <attribute name="display" a:defaultValue="inline">
+    <define name="display-any-attribute">
+      <optional>
+        <attribute name="display">
+          <choice>
+            <value>block</value>
+            <value>inline</value>
+            <value>none</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>
+
+    <define name="display-inline-attribute">
+      <attribute name="display">
         <choice>
           <value>inline</value>
           <value>none</value>
         </choice>
       </attribute>
-    </optional>
-  </define>
+    </define>
 
-  <define name="display-inline-attribute">
-    <attribute name="display">
-      <choice>
-        <value>inline</value>
+    <define name="display-none-attribute">
+      <attribute name="display">
         <value>none</value>
-      </choice>
-    </attribute>
-  </define>
-
-  <define name="display-none-attribute">
-    <attribute name="display">
-      <value>none</value>
-    </attribute>
-  </define>
+      </attribute>
+    </define>
+  </div>
 
   <define name="type-attribute">
+    <cnxml:para class="description">An attribute whose value affects the numbering of its parent element.  Numbered elements are numbered with elements having the same element name and 'type' value.  Elements have a default 'type' identical to their element name.  Thus, a 'definition' with a type of 'lemma' will not be numbered in the same sequence with 'definition' elements having the default 'type' value.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <optional>
       <attribute name="type"/>
     </optional>
   </define>
 
-  <!-- May be revised to have values of 1-5 -->
   <define name="strength-attribute">
+    <cnxml:para class="description">An attribute that indicates how strongly related the parent 'link' element is to the content in which it occurs.</cnxml:para>
     <attribute name="strength">
-      <choice>
+      <choice cnxml:class="possible-values">
         <value>1</value>
         <value>2</value>
         <value>3</value>
@@ -123,9 +157,10 @@
   </define>
 
   <define name="window-attribute">
+    <cnxml:para class="description">An attribute that instructs the browser either to replace the current window with the link target, or to open the link target in a new window, when the parent 'link' element is activated.</cnxml:para>
     <optional>
       <attribute name="window" a:defaultValue="replace">
-        <choice>
+        <choice cnxml:class="possible-values">
           <value>replace</value>
           <value>new</value>
         </choice>
@@ -134,29 +169,39 @@
   </define>
 
   <define name="url-attribute">
+    <cnxml:para class="description">An attribute containing the URL of the resource the parent link points to.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <attribute name="url"/>
   </define>
 
   <define name="document-attribute">
+    <cnxml:para class="description">An attribute containing the module or collection ID of the learning object the parent link points to.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <attribute name="document"/>
   </define>
 
   <define name="version-attribute">
+    <cnxml:para class="description">An attribute containing the version number of the learning object the parent link points to.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <attribute name="version"/>
   </define>
 
   <define name="targetid-attribute">
+    <cnxml:para class="description">An attribute containing the XML element ID of the element the parent link points to.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <attribute name="target-id"/>
   </define>
 
   <define name="resource-attribute">
+    <cnxml:para class="description">An attribute containing the XML element ID of the element the parent link points to.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <attribute name="resource"/>
   </define>
 
-  <!-- Attributes pattern for 'link' element.  Require at least one 
-       attribute that points to a link target: either @url, or at 
-       least one of the old cnxn-style linking attributes (@document, 
-       @targetid, or @resource).  It takes a little effort to make 
+  <!-- Attributes pattern for 'link' element.  Require at least one
+       attribute that points to a link target: either @url, or at
+       least one of the old cnxn-style linking attributes (@document,
+       @targetid, or @resource).  It takes a little effort to make
        this pattern unambiguous.  -->
   <define name="link-attributes">
     <group>
@@ -204,7 +249,7 @@
     </group>
   </define>
 
-  <!-- For linking elements other than 'link'.  Here we can afford to 
+  <!-- For linking elements other than 'link'.  Here we can afford to
        make each attribute optional, so no problems with ambiguity.  -->
   <define name="linking-attributes">
     <group>
@@ -232,9 +277,11 @@
   </define>
 
   <define name="note-type-attribute">
+    <cnxml:para class="description">An attribute that controls the automatically generated label for the parent 'note' element.</cnxml:para>
+    <cnxml:para class="content">Content is text, except the case-insensitive string 'footnote' (Relax NG).</cnxml:para>
     <optional>
       <attribute name="type" a:defaultValue="note">
-        <choice>
+        <choice cnxml:class="supported-values">
           <value>note</value>
           <value>aside</value>
           <value>warning</value>
@@ -252,42 +299,53 @@
     </optional>
   </define>
 
-  <define name="list-type-attribute">
-    <optional>
-      <attribute name="list-type" a:defaultValue="bulleted">
-        <choice>
+  <div>
+    <cnxml:para class="description">An attribute whether the list's items should be rendered with bullets, enumerations, or labels as the item marks.</cnxml:para>
+    <cnxml:list class="possible-values">
+      <cnxml:title>Possible values:</cnxml:title>
+      <cnxml:item>bulleted</cnxml:item>
+      <cnxml:item>enumerated</cnxml:item>
+      <cnxml:item>labeled-item</cnxml:item>
+    </cnxml:list>
+    <define name="list-type-attribute">
+      <optional>
+        <attribute name="list-type" a:defaultValue="bulleted">
+          <choice>
+            <value>bulleted</value>
+            <value>enumerated</value>
+            <value>labeled-item</value>
+          </choice>
+        </attribute>
+      </optional>
+    </define>
+
+    <define name="bulleted-list-type-attribute">
+      <optional>
+        <attribute name="list-type" a:defaultValue="bulleted">
           <value>bulleted</value>
-          <value>enumerated</value>
-          <value>labeled-item</value>
-        </choice>
+        </attribute>
+      </optional>
+    </define>
+
+    <define name="enumerated-list-type-attribute">
+      <attribute name="list-type">
+        <value>enumerated</value>
       </attribute>
-    </optional>
-  </define>
+    </define>
 
-  <define name="bulleted-list-type-attribute">
-    <optional>
-      <attribute name="list-type" a:defaultValue="bulleted">
-        <value>bulleted</value>
+    <define name="labeled-item-list-type-attribute">
+      <attribute name="list-type">
+        <value>labeled-item</value>
       </attribute>
-    </optional>
-  </define>
-
-  <define name="enumerated-list-type-attribute">
-    <attribute name="list-type">
-      <value>enumerated</value>
-    </attribute>
-  </define>
-
-  <define name="labeled-item-list-type-attribute">
-    <attribute name="list-type">
-      <value>labeled-item</value>
-    </attribute>
-  </define>
+    </define>
+  </div>
 
   <define name="bullet-style-attribute">
+    <cnxml:para class="description">An attribute that specifies the symbol to use for the bullets in the parent 'list' element's 'item' children.  May occur only on 'list' elements with a 'list-type' of 'bulleted'.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <optional>
       <attribute name="bullet-style" a:defaultValue="bullet">
-        <choice>
+        <choice cnxml:class="supported-values">
           <value>bullet</value>
           <value>open-circle</value>
           <value>pilcrow</value>
@@ -303,9 +361,10 @@
   </define>
 
   <define name="number-style-attribute">
+    <cnxml:para class="description">An attribute that style of number to use for the enumerations in the parent 'list' element's 'item' children.  May occur only on 'list' elements with a 'list-type' of 'enumerated'.</cnxml:para>
     <optional>
       <attribute name="number-style" a:defaultValue="arabic">
-        <choice>
+        <choice cnxml:class="possible-values">
           <value>arabic</value>
           <value>upper-alpha</value>
           <value>lower-alpha</value>
@@ -317,42 +376,63 @@
   </define>
 
   <define name="mark-prefix-attribute">
+    <cnxml:para class="description">An attribute that specifies characters that should appear beforethe marks of the 'item' children of the parent 'list' element.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
+    <cnxml:para class="default-value">Default is the empty string.</cnxml:para>
     <optional>
       <attribute name="mark-prefix"/>
     </optional>
   </define>
 
   <define name="mark-suffix-attribute">
+    <cnxml:para class="description">An attribute that specifies characters that should appear after the marks and before the content of the 'item' children of the parent 'list' element for lists whose 'list-type' attribute is 'enumerated'.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
+    <cnxml:para class="default-value">Default is the period '.'.</cnxml:para>
     <optional>
       <attribute name="mark-suffix" a:defaultValue="."/>
     </optional>
   </define>
 
   <define name="bulleted-mark-suffix-attribute">
+    <cnxml:para class="description">An attribute that specifies characters that should appear after the marks and before the content of the 'item' children of the parent 'list' element for lists whose 'list-type' attribute is 'bulleted'.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
+    <cnxml:para class="default-value">Default is the empty string.</cnxml:para>
     <optional>
       <attribute name="mark-suffix" a:defaultValue=""/>
     </optional>
   </define>
 
   <define name="labeled-item-mark-suffix-attribute">
+    <cnxml:para class="description">An attribute that specifies characters that should appear after the marks and before the content of the 'item' children of the parent 'list' element for lists whose 'list-type' attribute is 'labeled-item'.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
+    <cnxml:para class="default-value">Default is the colon ':'.</cnxml:para>
     <optional>
       <attribute name="mark-suffix" a:defaultValue=":"/>
     </optional>
   </define>
 
   <define name="block-item-sep-attribute">
+    <cnxml:para class="description">An attribute that specifies characters that should appear at the end of list items in 'list' elements whose 'list-type' attribute is 'block'.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
+    <cnxml:para class="default-value">Default is the empty string.</cnxml:para>
     <optional>
       <attribute name="item-sep"/>
     </optional>
   </define>
 
   <define name="inline-item-sep-attribute">
+    <cnxml:para class="description">An attribute that specifies characters that should appear at the end of list items in 'list' elements whose 'list-type' attribute is 'inline'.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
+    <cnxml:para class="default-value">Default is the semicolon ';'.</cnxml:para>
     <optional>
       <attribute name="item-sep" a:defaultValue=";"/>
     </optional>
   </define>
 
   <define name="start-value-attribute">
+    <cnxml:para class="description">An attribute that specifies the starting value of the enumerations of 'item' children of 'list' elements whose 'list-type' attribute is 'enumerated'.</cnxml:para>
+    <cnxml:para class="content">Content is an integer >= 0 (XSD datatype).</cnxml:para>
+    <cnxml:para class="default-value">Default is 1.</cnxml:para>
     <optional>
       <attribute name="start-value" a:defaultValue="1">
         <data type="integer">
@@ -363,14 +443,20 @@
   </define>
 
   <define name="code-lang-attribute">
+    <cnxml:para class="description">An attribute whose value denotes the computer language of the code in the parent code element.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <attribute name="lang"/>
   </define>
 
   <define name="alt-attribute">
+    <cnxml:para class="description">An attribute whose value specifies alternate text for user agents that cannot display images and other audiovisual media.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <attribute name="alt"/>
   </define>
 
   <define name="longdesc-attribute">
+    <cnxml:para class="description">An attribute whose value specifies a longer description of the parent media object as a supplement to the alternate text in the 'alt' attribute.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG).</cnxml:para>
     <attribute name="longdesc"/>
   </define>
 
@@ -383,15 +469,33 @@
   </define>
 
   <define name="print-width-attribute">
+    <cnxml:para class="description">An attribute whose value specifies an absolute or proportional width for the parent media object when it is rendered in print.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG). Authors should supply a number followed by a two-letter abbreviation for units of length as used in LaTeX (e.g. <cnxml:list display="inline" item-sep=", " bullet-style="none"><cnxml:item>'cm'</cnxml:item><cnxml:item>'mm'</cnxml:item><cnxml:item>'in'</cnxml:item><cnxml:item>'pt'</cnxml:item><cnxml:item>'em'</cnxml:item><cnxml:item>'pc'</cnxml:item></cnxml:list>), or by a percent sign '%' for proportional scaling.</cnxml:para>
     <attribute name="print-width"/>
   </define>
 
   <define name="src-attribute">
+    <cnxml:para class="description">An attribute whose value specifies a URL or filesystem path to the media object represented by the parent media object element.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG). Authors should supply a filesystem or URL path.</cnxml:para>
     <attribute name="src"/>
   </define>
 
   <define name="mime-type-attribute">
+    <cnxml:para class="description">An attribute whose value specifies the type of media object represented by the parent media object element.</cnxml:para>
+    <cnxml:para class="content">Content is text (Relax NG). Authors should supply a value from the IANA registry of MIME media types.</cnxml:para>
     <attribute name="mime-type"/>
+  </define>
+
+  <define name="for-attribute">
+    <cnxml:para class="description">An attribute whose value specifies the output format for which the parent media object is intended.</cnxml:para>
+    <cnxml:para class="content">Content is text (NMTOKEN).</cnxml:para>
+    <attribute name="for">
+      <choice cnxml:class="supported-values">
+        <value>online</value>
+        <value>pdf</value>
+        <data type="NMTOKEN"/>
+      </choice>
+    </attribute>
   </define>
 
   <define name="thumbnail-attribute">
@@ -529,8 +633,9 @@
   </define>
 
   <define name="pub-type">
+    <cnxml:para class="description">An attribute that denotes the type of publication being cited by the parent 'cite-title' element.</cnxml:para>
     <attribute name="pub-type">
-      <choice>
+      <choice cnxml:class="possible-values">
         <value>article</value>
         <value>book</value>
         <value>booklet</value>
@@ -593,7 +698,7 @@
 
   <define name="cnxml-version">
     <attribute name="cnxml-version">
-      <value>0.6</value>
+      <value>0.7</value>
     </attribute>
   </define>
 
@@ -618,13 +723,17 @@
     </optional>
   </define>
 
-  <define name="common-attributes">
+  <define name="common-attributes-noclass">
     <ref name="foreign-namespaced-attribute"/>
     <optional>
-      <ref name="class-attribute"/>
-    </optional>
-    <optional>
       <attribute name="xml:lang"/>
+    </optional>
+  </define>
+
+  <define name="common-attributes">
+    <ref name="common-attributes-noclass"/>
+    <optional>
+      <ref name="class-attribute"/>
     </optional>
   </define>
 
@@ -820,11 +929,16 @@
   <define name="metadata">
     <element name="metadata">
       <ref name="common-attributes"/>
+      <ref name="metadata-extra-attributes"/>
       <optional>
         <ref name="id-attribute"/>
       </optional>
       <ref name="metadata-content"/>
     </element>
+  </define>
+
+  <define name="metadata-extra-attributes">
+    <empty/>
   </define>
 
   <define name="featured-links">
@@ -1303,6 +1417,7 @@
       <optional>
         <ref name="code-lang-attribute"/>
       </optional>
+      <ref name="type-attribute"/>
       <optional>
         <ref name="id-attribute"/>
       </optional>
@@ -1344,7 +1459,7 @@
     </choice>
   </define>
 
-<!-- NOTE: I have removed 'table' and 'code' as possible content for 
+<!-- NOTE: I have removed 'table' and 'code' as possible content for
      'figure', but this decision can be revisited. -->
   <define name="figure">
     <element name="figure">
@@ -1418,21 +1533,23 @@
       <ref name="longdesc"/>
     </optional>
     <ref name="media-object-class"/>
-    <optional>
+    <zeroOrMore>
       <ref name="media-object-class"/>
-    </optional>
+    </zeroOrMore>
   </define>
 
   <define name="inline-media">
     <element name="media">
-      <ref name="display-inline-default-attribute"/>
+      <optional>
+        <ref name="display-inline-attribute"/>
+      </optional>
       <ref name="media-common-content"/>
     </element>
   </define>
 
   <define name="block-media">
     <element name="media">
-      <ref name="display-block-attribute"/>
+      <ref name="display-any-attribute"/>
       <ref name="media-common-content"/>
     </element>
   </define>
@@ -1492,6 +1609,9 @@
       <ref name="width-attribute"/>
     </optional>
     <ref name="mime-type-attribute"/>
+    <optional>
+      <ref name="for-attribute"/>
+    </optional>
     <optional>
       <ref name="longdesc"/>
     </optional>
@@ -1621,6 +1741,9 @@
       </zeroOrMore>
       <optional>
         <ref name="src-attribute"/>
+      </optional>
+      <optional>
+        <ref name="for-attribute"/>
       </optional>
       <oneOrMore>
         <ref name="div-content-class"/>
@@ -1787,7 +1910,7 @@
     </element>
   </define>
 
-<!-- 
+<!--
     CALS Table Definitions
  -->
 

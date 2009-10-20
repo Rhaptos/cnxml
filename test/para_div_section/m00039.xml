@@ -1,68 +1,50 @@
 <?xml version="1.0"?>
-<document xmlns="http://cnx.rice.edu/cnxml" id="m00039" module-id="m00039" cnxml-version="0.6">
-
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:cnxorg="http://cnx.rice.edu/system-info" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml" xmlns:q="http://cnx.rice.edu/qml/1.0" xmlns:bib="http://bibtexml.sf.net/" xmlns:cnxml="http://cnx.rice.edu/cnxml" id="m00039" module-id="m00039" cnxml-version="0.7">
   <title>Upper Level Element Test</title>
-  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-  <md:content-id>m00039</md:content-id>
-  <md:title>Upper Level Element Test</md:title>
-  <md:version>2.6</md:version>
-  <md:created>2008/10/10</md:created>
-  <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
-  <md:authorlist>
-    <md:author id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:author>
-  </md:authorlist>
-
-  <md:maintainerlist>
-    <md:maintainer id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:maintainer>
-    
-    <md:maintainer id="lizzardg">
-      <md:firstname>Elizabeth</md:firstname>
-      <md:surname>Gregory</md:surname>
-      <md:fullname>Elizabeth Gregory</md:fullname>
-      <md:email>lizzardg@rice.edu</md:email>
-    </md:maintainer>
-  </md:maintainerlist>
-  
-  <md:license href="http://creativecommons.org/licenses/by/1.0"/>
-  <md:licensorlist>
-    <md:licensor id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:licensor>
-  </md:licensorlist>
-  
-  <md:keywordlist>
-    <md:keyword>Supertest</md:keyword>
-    <md:keyword>Schema</md:keyword>
-  </md:keywordlist>
-
-  <md:abstract/>
-  <md:language>en</md:language>
-</metadata>
-
-
-
-  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
+  <metadata mdml-version="0.5">
+    <md:content-id>m00039</md:content-id>
+    <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00039/2.6/</md:content-url>
+    <md:title>Upper Level Element Test</md:title>
+    <md:version>2.6</md:version>
+    <md:created>2008/10/10</md:created>
+    <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
+    <md:actors>
+      <md:person userid="sk8">
+        <md:firstname>Scott</md:firstname>
+        <md:surname>Kravitz</md:surname>
+        <md:fullname>Scott Kravitz</md:fullname>
+        <md:email>sk8@rice.edu</md:email>
+      </md:person>
+      <md:person userid="lizzardg">
+        <md:firstname>Elizabeth</md:firstname>
+        <md:surname>Gregory</md:surname>
+        <md:fullname>Elizabeth Gregory</md:fullname>
+        <md:email>lizzardg@rice.edu</md:email>
+      </md:person>
+    </md:actors>
+    <md:roles>
+      <md:role type="author">sk8</md:role>
+      <md:role type="maintainer">sk8 lizzardg</md:role>
+      <md:role type="licensor">sk8</md:role>
+    </md:roles>
+    <md:license url="http://creativecommons.org/licenses/by/1.0"/>
+    <md:keywordlist>
+      <md:keyword>Supertest</md:keyword>
+      <md:keyword>Schema</md:keyword>
+    </md:keywordlist>
+    <md:abstract/>
+    <md:language>en</md:language>
+  </metadata>
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
     <section id="manyelements">
-      <para id='p1'>
+      <para id="p1">
         The original.
       </para>
-      <para id='p2'>
+      <para id="p2">
         1 times better than p1.
       </para>
-      <para id='p3'>
+      <para id="p3">
         1 times better than p2.
       </para>
     </section>

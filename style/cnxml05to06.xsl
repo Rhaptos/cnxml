@@ -37,7 +37,7 @@
       <xsl:when test="@cnxml-version='0.6'">
         <xsl:copy-of select="."/>
       </xsl:when>
-      <xsl:otherwise>
+      <xsl:when test="not(@cnxml-version)">
         <document xmlns="http://cnx.rice.edu/cnxml" 
                   xmlns:m="http://www.w3.org/1998/Math/MathML"
                   xmlns:md="http://cnx.rice.edu/mdml/0.4"
@@ -48,6 +48,9 @@
           <xsl:attribute name="cnxml-version">0.6</xsl:attribute>
           <xsl:apply-templates/>
         </document>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message terminate="yes">This module is neither 0.5 nor 0.6!</xsl:message>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

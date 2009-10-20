@@ -1,96 +1,78 @@
 <?xml version="1.0"?>
-<document xmlns="http://cnx.rice.edu/cnxml" id="m00013" module-id="m00013" cnxml-version="0.6">
-
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:cnxorg="http://cnx.rice.edu/system-info" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:md="http://cnx.rice.edu/mdml" xmlns:q="http://cnx.rice.edu/qml/1.0" xmlns:bib="http://bibtexml.sf.net/" xmlns:cnxml="http://cnx.rice.edu/cnxml" id="m00013" module-id="m00013" cnxml-version="0.7">
   <title>Example and Figure Test</title>
-  <metadata xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-  <md:content-id>m00013</md:content-id>
-  <md:title>Example and Figure Test</md:title>
-  <md:version>2.6</md:version>
-  <md:created>2008/10/10</md:created>
-  <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
-  <md:authorlist>
-    <md:author id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:author>
-  </md:authorlist>
-
-  <md:maintainerlist>
-    <md:maintainer id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:maintainer>
-    
-    <md:maintainer id="lizzardg">
-      <md:firstname>Elizabeth</md:firstname>
-      <md:surname>Gregory</md:surname>
-      <md:fullname>Elizabeth Gregory</md:fullname>
-      <md:email>lizzardg@rice.edu</md:email>
-    </md:maintainer>
-  </md:maintainerlist>
-  
-  <md:license href="http://creativecommons.org/licenses/by/1.0"/>
-  <md:licensorlist>
-    <md:licensor id="sk8">
-      <md:firstname>Scott</md:firstname>
-      <md:surname>Kravitz</md:surname>
-      <md:fullname>Scott Kravitz</md:fullname>
-      <md:email>sk8@rice.edu</md:email>
-    </md:licensor>
-  </md:licensorlist>
-  
-  <md:keywordlist>
-    <md:keyword>Supertest</md:keyword>
-    <md:keyword>Schema</md:keyword>
-  </md:keywordlist>
-
-  <md:abstract/>
-  <md:language>en</md:language>
-</metadata>
-
-
-
-  <content xmlns:md="http://cnx.rice.edu/mdml/0.4" xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:bib="http://bibtexml.sf.net/">
-    <example id='ex1' class='classy'>
+  <metadata mdml-version="0.5">
+    <md:content-id>m00013</md:content-id>
+    <md:repository>http://cnx.org/content</md:repository>
+    <md:content-url>http://cnx.org/content/m00013/2.6/</md:content-url>
+    <md:title>Example and Figure Test</md:title>
+    <md:version>2.6</md:version>
+    <md:created>2008/10/10</md:created>
+    <md:revised>2008/10/10 14:03:12.771 GMT-5</md:revised>
+    <md:actors>
+      <md:person userid="sk8">
+        <md:firstname>Scott</md:firstname>
+        <md:surname>Kravitz</md:surname>
+        <md:fullname>Scott Kravitz</md:fullname>
+        <md:email>sk8@rice.edu</md:email>
+      </md:person>
+      <md:person userid="lizzardg">
+        <md:firstname>Elizabeth</md:firstname>
+        <md:surname>Gregory</md:surname>
+        <md:fullname>Elizabeth Gregory</md:fullname>
+        <md:email>lizzardg@rice.edu</md:email>
+      </md:person>
+    </md:actors>
+    <md:roles>
+      <md:role type="author">sk8</md:role>
+      <md:role type="maintainer">sk8 lizzardg</md:role>
+      <md:role type="licensor">sk8</md:role>
+    </md:roles>
+    <md:license url="http://creativecommons.org/licenses/by/1.0"/>
+    <md:keywordlist>
+      <md:keyword>Supertest</md:keyword>
+      <md:keyword>Schema</md:keyword>
+    </md:keywordlist>
+    <md:abstract/>
+    <md:language>en</md:language>
+  </metadata>
+  <content xmlns:md="http://cnx.rice.edu/mdml/0.4">
+    <example id="ex1" class="classy">
       <label>This is the label for <emphasis>Example 1</emphasis>.</label>
       <title>This example contains every block element other than example.</title>
-      <div id='d1'>
+      <div id="d1">
         Divs can be in examples.
       </div>
-      <definition id='def1'>
+      <definition id="def1">
         <term>Defineme</term>
-        <meaning id='m1'>Something that should be defined.</meaning>
+        <meaning id="m1">Something that should be defined.</meaning>
       </definition>
-      <figure id='f1'>
-        <media id='med1' alt='Unfulfilled Dreams'>
-          <image src='image1.png' mime-type='PNG'/>
+      <figure id="f1">
+        <media id="med1" alt="Unfulfilled Dreams">
+          <image src="image1.png" mime-type="PNG"/>
         </media>
       </figure>
-      <code id='c1' display='block'>
+      <code id="c1" display="block">
         Console.WriteLn('This is block code.');
       </code>
-      <preformat id='pre1' display='block'>
+      <preformat id="pre1" display="block">
         Don't format this, 
         kthnx.
       </preformat>
-      <quote id='q1' display='block'>
+      <quote id="q1" display="block">
         Life is a joke. Make lemonade.
       </quote>
-      <note id='n1' type='warning' display='block'>
+      <note id="n1" type="warning" display="block">
         Examples can contain notes.
       </note>
-      <media id='med2' alt='Unfulfilled Dreams' display='block'>
-        <image src='image1.png' mime-type='PNG'/>
+      <media id="med2" alt="Unfulfilled Dreams" display="block">
+        <image src="image1.png" mime-type="PNG"/>
       </media>
-      <list id='l1' display='block'>
+      <list id="l1" display="block">
         <item>This list only has one item; it's hardly even a list.</item>
       </list>
-      <table id='t1' summary='2x2 Table'>
-        <tgroup cols='2'>
+      <table id="t1" summary="2x2 Table">
+        <tgroup cols="2">
           <tbody>
             <row>
               <entry>1</entry>
@@ -103,24 +85,24 @@
           </tbody>
         </tgroup>
       </table>
-      <rule id='r1'>
-        <statement id='stat1'>
-          <para id='sp1'>
+      <rule id="r1">
+        <statement id="stat1">
+          <para id="sp1">
             Always obey the rules. Also, never mention Fight Club.
           </para>
         </statement>
       </rule>
-      <equation id='eq1'>
+      <equation id="eq1">
         This equation is just text, but 1+1=2, for reference.
       </equation>
-      <exercise id='exe1'>
-        <problem id='prob1'>
-          <para id='pp1'>
+      <exercise id="exe1">
+        <problem id="prob1">
+          <para id="pp1">
             How can you even begin to test every possible permutation for the CNXML elements?
           </para>
         </problem>
-        <solution id='sol1'>
-          <para id='solp1'>
+        <solution id="sol1">
+          <para id="solp1">
             Start by realizing that only the more common permutations can be tested for.
           </para>
         </solution>

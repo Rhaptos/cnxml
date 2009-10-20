@@ -1,4 +1,0 @@
-local;catalog.xml;/usr/share/xml/cnxml/catalog-0.6.xml
-
-root-and-package;system;http://cnx.rice.edu/technology/cnxml/schema/rng/0.6;/usr/share/xml/cnxml/catalog-0.6.xml
-root-and-package;uri;http://cnx.rice.edu/technology/cnxml/schema/rng/0.6;/usr/share/xml/cnxml/catalog-0.6.xml

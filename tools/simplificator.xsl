@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:rng="http://relaxng.org/ns/structure/1.0"
+                xmlns:cnxml="http://cnx.rice.edu/cnxml"
                 xmlns:exsl="http://exslt.org/common"
                 extension-element-prefixes="exsl"
                 exclude-result-prefixes="rng"
@@ -12,6 +13,9 @@
   <xsl:key name="ref-by-name" match="rng:ref" use="@name"/>
 
   <xsl:template match="/">
+    <xsl:comment>Automatically generated from tools/simplificator.xsl .</xsl:comment>
+    <xsl:comment>Used for human consumption (all nested refs are resolved)</xsl:comment>
+    
     <!-- Grab input schema file. -->
     <xsl:variable name="input-doc">
       <xsl:copy-of select="."/>
@@ -46,7 +50,14 @@
 
   <xsl:template match="node()|@*" mode="includes-1">
     <xsl:copy>
-      <xsl:apply-templates select="node()|@*" mode="includes-1"/>
+      <xsl:apply-templates select="@*" mode="includes-1"/>
+      <xsl:if test="self::rng:element and not(@ns)">
+        <xsl:copy-of select="ancestor::rng:*[@ns][1]/@ns"/>
+      </xsl:if>
+      <xsl:if test="self::rng:define and not(@datatypeLibrary)">
+        <xsl:copy-of select="ancestor::rng:*[@ns][1]/@datatypeLibrary"/>
+      </xsl:if>
+      <xsl:apply-templates select="node()" mode="includes-1"/>
     </xsl:copy>
   </xsl:template>
 
@@ -62,6 +73,8 @@
     <xsl:comment>ending <xsl:value-of select="@href"/></xsl:comment>
   </xsl:template>
 
+  <xsl:template match="cnxml:*" mode="includes-1"/>
+
   <xsl:template match="rng:include|rng:include/rng:grammar" mode="includes-2">
     <!--<xsl:copy>
       <xsl:apply-templates select="node()|@*" mode="includes-2"/>
@@ -74,7 +87,11 @@
     <xsl:variable name="ancestor-include" select="ancestor::rng:include[1]"/>
     <xsl:if test="not(following-sibling::rng:define[@name=$name])">
       <xsl:copy>
-        <xsl:apply-templates select="node()|@*" mode="includes-2"/>
+        <xsl:apply-templates select="@*" mode="includes-2"/>
+        <xsl:if test="not(@datatypeLibrary) and descendant::rng:data[@type]">
+          <xsl:apply-templates select="ancestor::*[@datatypeLibrary][1]/@datatypeLibrary" mode="includes-2"/>
+        </xsl:if>
+        <xsl:apply-templates select="node()" mode="includes-2"/>
       </xsl:copy>
     </xsl:if>
   </xsl:template>
@@ -149,6 +166,10 @@
     <xsl:copy>
       <xsl:apply-templates select="node()|@*" mode="flatten"/>
     </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="rng:optional[count(*) = 0]" mode="flatten">
+    <xsl:comment>disposing of an empty 'optional' element</xsl:comment>
   </xsl:template>
 
 </xsl:stylesheet>

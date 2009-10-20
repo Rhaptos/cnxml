@@ -9,6 +9,6 @@ OVERRIDE YES
 
 -- CNX Project DTDs --
 
-PUBLIC "-//CNX//DTD CNXML 0.6//EN"                                              /usr/share/xml/cnxml/schema/dtd/0.6/cnxml_plain.dtd
-PUBLIC "-//CNX//DTD CNXML 0.6 plus MathML//EN"                                  /usr/share/xml/cnxml/schema/dtd/0.6/cnxml_mathml.dtd
-PUBLIC "-//CNX//DTD CNXML 0.6 plus MathML plus QML//EN"                         /usr/share/xml/cnxml/schema/dtd/0.6/cnxml_mathml_qml.dtd
+PUBLIC "-//CNX//DTD CNXML 0.7//EN"                                              /usr/share/xml/cnxml/schema/dtd/0.7/cnxml_plain.dtd
+PUBLIC "-//CNX//DTD CNXML 0.7 plus MathML//EN"                                  /usr/share/xml/cnxml/schema/dtd/0.7/cnxml_mathml.dtd
+PUBLIC "-//CNX//DTD CNXML 0.7 plus MathML plus QML//EN"                         /usr/share/xml/cnxml/schema/dtd/0.7/cnxml_mathml_qml.dtd
