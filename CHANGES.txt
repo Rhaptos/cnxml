@@ -1,13 +1,16 @@
-  - Major release: new version of CNXML.  Changes include:
+  - CNXML 0.7 / collection-structure-redesign-1
     - permit more than two media object children of 'media', with the 'for' 
       attribute to indicate the output medium for which the media object is 
       intended ('online' and 'pdf' supported at present)
+    - add MDML version number to 'metadata' element
+    - use new MDML version to match ColXML
     - begin integrating language documentation in the schema
     - add test routine and update test cases for new language version 
     - improve RNG simplificator.xsl so that it produces a monolithic schema that validates correctly
-    - add MDML version number to 'metadata' element
     - create separate schema for validating fragments for EIP and abstracts
-    - add stylesheet for converting CNXML 0.6 to 0.7  
+    - add stylesheet for converting CNXML 0.6 to 0.7
+    - LICENSE.txt added
+    
 
 cnxml-0.6.3
   - Module Edit Workflow (DATE)
