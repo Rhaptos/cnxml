@@ -575,7 +575,7 @@
           <param name="{name()}" value="{.}"/>
         </xsl:for-each>
         <xsl:if test="@flash-vars">
-          <param name="FlashVars" value="@flash-vars"/>
+          <param name="FlashVars" value="{@flash-vars}"/>
         </xsl:if>
         <xsl:for-each select="cnx:param">
           <param name="{@name}" value="{@value}"/>
