@@ -273,7 +273,9 @@
           <xsl:with-param name="lang" select="/module/metadata/language"/>
         </xsl:call-template>
       </h2>
-      <xsl:apply-templates/>
+      <div class="glossary-contents">
+        <xsl:apply-templates/>
+      </div>
     </div>
   </xsl:template>
 
@@ -355,7 +357,9 @@
           <xsl:text> </xsl:text>
         </xsl:if>
       </xsl:element>
-      <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:name|self::cnx:title)]"/>
+      <div class="section-contents">
+        <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:name|self::cnx:title)]"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -1169,7 +1173,9 @@
           <xsl:call-template name="note-label"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()"/>
+      <div class="note-contents">
+        <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -1257,7 +1263,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      <div class="example-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -1539,7 +1547,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      <div class="rule-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -1868,7 +1878,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]|text()"/>
+      <div class="equation-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]|text()"/>
+      </div>
       <xsl:choose>
         <xsl:when test="cnx:label[not(node())]"/>
         <xsl:otherwise>
@@ -2132,7 +2144,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      <div class="exercise-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -2162,7 +2176,13 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]|text()"/>
+      <div>
+        <xsl:attribute name="class">
+          <xsl:value-of select="local-name()"/>
+          <xsl:text>-contents</xsl:text>
+        </xsl:attribute>
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]|text()"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -2226,7 +2246,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      <div class="solution-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      </div>
     </div>
     <div class="solution-toggles">
       <xsl:attribute name="style">
