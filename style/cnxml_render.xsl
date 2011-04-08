@@ -2099,7 +2099,13 @@
   <!--EXERCISE-->
   <!--Uses Javascript code at the top.-->
   <xsl:template match="cnx:exercise">
-    <div class="exercise">
+    <div>
+      <xsl:attribute name="class">
+        <xsl:text>exercise</xsl:text>
+        <xsl:if test="translate(@type,$upper,$lower) = 'check-understanding'">
+          <xsl:text> check-understanding</xsl:text>
+        </xsl:if>
+      </xsl:attribute>
       <xsl:call-template name="IdCheck"/>
       <xsl:if test="$case-diagnosis = '0' and (cnx:name or cnx:title or not(cnx:label[not(node())]))">
         <xsl:variable name="level-number">
