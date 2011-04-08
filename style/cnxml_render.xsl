@@ -2206,12 +2206,15 @@
     <xsl:variable name="solution-number">
       <xsl:number count="cnx:solution"/>
     </xsl:variable>
+    <xsl:variable name="solution-type" select="translate(@type,$upper,$lower)"/>
     <xsl:variable name="solution-letter">
       <xsl:choose>
-        <xsl:when test="count(parent::cnx:exercise/cnx:solution) &gt; 1">
-          <xsl:number count="cnx:solution" format=" A"/>
+        <xsl:when test="count(parent::cnx:exercise/cnx:solution[translate(@type,$upper,$lower) = $solution-type]) &gt; 1">
+          <xsl:number count="cnx:solution[translate(@type,$upper,$lower) = $solution-type]" format=" A"/>
         </xsl:when>
-        <xsl:otherwise/>
+        <xsl:when test="count(parent::cnx:exercise/cnx:solution[translate(@type,$upper,$lower) = 'solution' or not(@type)]) &gt; 1">
+          <xsl:number count="cnx:solution[translate(@type,$upper,$lower) = 'solution' or not(@type)]" format=" A"/>
+        </xsl:when>
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="solution-string">
