@@ -1158,7 +1158,13 @@
 
   <!-- Block note -->
   <xsl:template name="make-block-note">
-    <div class="note">
+    <div>
+      <xsl:attribute name="class">
+        <xsl:text>note</xsl:text>
+        <xsl:if test="translate(@type,$upper,$lower) = 'tip'">
+          <xsl:text> tip</xsl:text>
+        </xsl:if>
+      </xsl:attribute>
       <xsl:if test="@display='none'">
         <xsl:attribute name="style">display: none</xsl:attribute>
       </xsl:if>
