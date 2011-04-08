@@ -1159,10 +1159,12 @@
   <!-- Block note -->
   <xsl:template name="make-block-note">
     <div>
+      <xsl:variable name="type" select="translate(@type,$upper,$lower)"/>
       <xsl:attribute name="class">
         <xsl:text>note</xsl:text>
-        <xsl:if test="translate(@type,$upper,$lower) = 'tip'">
-          <xsl:text> tip</xsl:text>
+        <xsl:if test="$type = 'tip' or $type = 'concept-check'">
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="$type"/>
         </xsl:if>
       </xsl:attribute>
       <xsl:if test="@display='none'">
