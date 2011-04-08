@@ -956,7 +956,7 @@
         </code>
       </pre>
       <xsl:if test="cnx:caption">
-        <p class="code-caption">
+        <p class="code-caption caption">
           <xsl:if test="cnx:caption[@id]">
             <xsl:attribute name="id">
               <xsl:value-of select="cnx:caption/@id"/>
@@ -974,7 +974,7 @@
       <xsl:call-template name="IdCheck"/>
       <table border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
         <xsl:if test="cnx:caption or not(cnx:label[not(node())])">
-          <caption align="bottom" class="code-caption">
+          <caption align="bottom" class="code-caption caption">
             <xsl:if test="cnx:caption[@id]">
               <xsl:attribute name="id">
                 <xsl:value-of select="cnx:caption/@id"/>
@@ -2023,6 +2023,7 @@
           <xsl:when test="parent::cnx:figure">horizontal-subfigure-caption</xsl:when>
           <xsl:otherwise>figure-caption</xsl:otherwise>
         </xsl:choose>
+        <xsl:text> caption</xsl:text>
       </xsl:attribute>
       <xsl:if test="$captionelement='caption'">
         <xsl:attribute name="align">bottom</xsl:attribute>
