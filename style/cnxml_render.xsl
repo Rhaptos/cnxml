@@ -52,6 +52,8 @@
   </xsl:variable>
   <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyzäëïöüáéíóúàèìòùâêîôûåøãõæœçłñ'"/>
   <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÄËÏÖÜÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÅØÃÕÆŒÇŁÑ'"/>
+  <xsl:param name="modern-textbook" select="0"/>
+  <xsl:param name="intro-module" select="0"/>
 
   <xsl:output omit-xml-declaration="yes" indent="yes"/>
 
@@ -1914,7 +1916,11 @@
   </xsl:template>
 
   <!-- Suppress splash image for 'Modern Textbook' style in flow (call it out-of-flow via 'extract-splash' mode in content_render.xsl instead). -->
-  <xsl:template match="cnx:figure[@class='splash'][1]"/>
+  <xsl:template match="cnx:figure[@class='splash'][1]">
+    <xsl:if test="not($intro-module='1' and $modern-textbook)">
+      <xsl:call-template name="figure"/>
+    </xsl:if>
+  </xsl:template>
   <xsl:template match="cnx:figure" mode="extract-splash">
     <xsl:call-template name="figure"/>
   </xsl:template>
