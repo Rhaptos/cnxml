@@ -1910,6 +1910,17 @@
 
   <!-- FIGURE -->
   <xsl:template match="cnx:figure">
+    <xsl:call-template name="figure"/>
+  </xsl:template>
+
+  <!-- Suppress splash image for 'Modern Textbook' style in flow (call it out-of-flow via 'extract-splash' mode in content_render.xsl instead). -->
+  <xsl:template match="cnx:figure[@class='splash'][1]"/>
+  <xsl:template match="cnx:figure" mode="extract-splash">
+    <xsl:call-template name="figure"/>
+  </xsl:template>
+
+  <!-- Actually process FIGURE output here. -->
+  <xsl:template name="figure">
     <div class="figure">
       <xsl:call-template name="IdCheck"/>
       <table border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
