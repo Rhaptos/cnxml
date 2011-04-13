@@ -1915,14 +1915,11 @@
     <xsl:call-template name="figure"/>
   </xsl:template>
 
-  <!-- Suppress splash image for 'Modern Textbook' style in flow (call it out-of-flow via 'extract-splash' mode in content_render.xsl instead). -->
-  <xsl:template match="cnx:figure[@class='splash'][1]">
+  <!-- Suppress splash image for 'Modern Textbook' style in flow (process it in content_render.xsl instead). -->
+  <xsl:template match="cnx:figure[@class='splash' and cnx:media/cnx:image[not(@for='pdf')]][1]">
     <xsl:if test="not($intro-module='1' and $modern-textbook)">
       <xsl:call-template name="figure"/>
     </xsl:if>
-  </xsl:template>
-  <xsl:template match="cnx:figure" mode="extract-splash">
-    <xsl:call-template name="figure"/>
   </xsl:template>
 
   <!-- Actually process FIGURE output here. -->
