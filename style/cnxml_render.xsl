@@ -2027,12 +2027,12 @@
 
   <!-- CAPTION -->
   <xsl:template name="caption">
-    <xsl:variable name="captionelement">
+    <xsl:param name="captionelement">
       <xsl:choose>
         <xsl:when test="parent::cnx:figure">th</xsl:when>
         <xsl:otherwise>caption</xsl:otherwise>
       </xsl:choose>
-    </xsl:variable>
+    </xsl:param>
     <xsl:element name="{$captionelement}">
       <xsl:if test="cnx:caption[@id]">
         <xsl:attribute name="id">
