@@ -68,7 +68,28 @@
 
   <!-- HOW MANY SECTION-LIKE ANCESTORS (for determining header levels) -->
   <xsl:template name="level-count">
-    <xsl:variable name="level-number" select="count(ancestor::cnx:section|                                 ancestor::qml:problemset|                                 ancestor::qml:item[parent::qml:problemset]|                                 ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:rule[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|                                 ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:quote[not(@display='inline')][cnx:title or cnx:label[node()]]|                                 ancestor::cnx:code[cnx:title or cnx:label[node()]][not(@class!='listing')]|                                 ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|                                 ancestor::cnx:commentary[cnx:name or cnx:title or cnx:label[node()]]|                                 ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:glossary|                                 ancestor::cnx:para[cnx:name or cnx:title]|                                 ancestor::cnx:div[cnx:title]|                                 ancestor::cnx:note[not(@display='inline')][                                                    cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))                                                   ]|                                 ancestor::cnx:list[not((@type='inline' and $version='0.5') or @display='inline')][                                                    cnx:name or cnx:title                                                   ])"/>
+    <xsl:variable name="level-number" select="count(ancestor::cnx:section|
+                                                    ancestor::qml:problemset|
+                                                    ancestor::qml:item[parent::qml:problemset]|
+                                                    ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                                    ancestor::cnx:rule[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                                    ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|
+                                                    ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                                    ancestor::cnx:quote[not(@display='inline')][cnx:title or cnx:label[node()]]|
+                                                    ancestor::cnx:code[cnx:title or cnx:label[node()]][not(@class!='listing')]|
+                                                    ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                                    ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|
+                                                    ancestor::cnx:commentary[cnx:name or cnx:title or cnx:label[node()]]|
+                                                    ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                                    ancestor::cnx:glossary|
+                                                    ancestor::cnx:para[cnx:name or cnx:title]|
+                                                    ancestor::cnx:div[cnx:title]|
+                                                    ancestor::cnx:note[not(@display='inline')][
+                                                                       cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))
+                                                                      ]|
+                                                    ancestor::cnx:list[not((@type='inline' and $version='0.5') or @display='inline')][
+                                                                       cnx:name or cnx:title
+                                                                      ])"/>
     <xsl:choose>
       <xsl:when test="$level-number &lt; 4">
         <xsl:value-of select="$level-number + 2"/>
