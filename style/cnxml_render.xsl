@@ -247,6 +247,41 @@
       <!-- Transform all of the content except glossary and bib. -->
       <xsl:apply-templates select="*[not(self::cnx:glossary|self::bib:file)]"/>
 
+      <!-- "Conceptual Questions" area for "Modern Textbook" -->
+      <xsl:if test="$modern-textbook and 
+                    (descendant::cnx:section[@class='conceptual-questions'] or 
+                     descendant::cnx:exercise[@class='conceptual-questions'])">
+        <div id="conceptual-questions">
+          <h2 class="conceptual-questions-header">
+            <!-- FIXME: internationalize me. -->
+            <xsl:text>Conceptual Questions</xsl:text>
+          </h2>
+          <div id="conceptual-questions-contents">
+            <xsl:for-each select="descendant::cnx:section[@class='conceptual-questions']|
+                                  descendant::cnx:exercise[@class='conceptual-questions']">
+              <xsl:apply-templates select="self::*" mode="move-to-end"/>
+            </xsl:for-each>
+          </div>
+        </div>
+      </xsl:if>
+
+      <!-- "Problems & Exercises" area for "Modern Textbook" -->
+      <xsl:if test="$modern-textbook and 
+                    (descendant::cnx:section[@class='problems-exercises'] or 
+                     descendant::cnx:exercise[@class='problems-exercises'])">
+        <div id="problems-exercises">
+          <h2 class="problems-exercises-header">
+            <!-- FIXME: internationalize me. -->
+            <xsl:text>Problems &amp; Exercises</xsl:text>
+          </h2>
+          <div id="problems-exercises-contents">
+            <xsl:for-each select="descendant::cnx:section[@class='problems-exercises']|
+                                  descendant::cnx:exercise[@class='problems-exercises']">
+              <xsl:apply-templates select="self::*" mode="move-to-end"/>
+            </xsl:for-each>
+          </div>
+        </div>
+      </xsl:if>
 
       <!-- FOOTNOTEs -->
       <xsl:if test="descendant::cnx:note[translate(@type,$upper,$lower)='footnote'] or descendant::cnx:footnote">
@@ -342,8 +377,24 @@
   <!-- METADATA and other non-displayed elements -->
   <xsl:template match="cnx:metadata|cnx:authorlist|cnx:maintainerlist|cnx:keywordlist|cnx:abstract|cnx:objectives|cnx:featured-links|cnx:link-group"/>
 
-  <!--SECTION-->
+  <!-- SECTION -->
   <xsl:template match="cnx:section">
+    <xsl:call-template name="section"/>
+  </xsl:template>
+
+  <!-- Suppress "Conceptual Questions" and "Problems and Exercises" sections in flow ("Modern Textbook") -->
+  <xsl:template match="cnx:section[@class='conceptual-questions' or 
+                                   @class='problems-exercises']">
+    <xsl:if test="not($modern-textbook)">
+      <xsl:call-template name="section"/>
+    </xsl:if>
+  </xsl:template>
+  <xsl:template match="cnx:section" mode="move-to-end">
+     <xsl:call-template name="section"/>
+  </xsl:template>
+
+  <!-- Actually process SECTION ouput here -->
+  <xsl:template name="section">
     <div class="section">
       <xsl:call-template name="IdCheck"/>
       <xsl:variable name="level-number">
@@ -2131,9 +2182,24 @@
     <xsl:apply-templates/>
   </xsl:template>
   
-  <!--EXERCISE-->
-  <!--Uses Javascript code at the top.-->
+  <!-- EXERCISE -->
   <xsl:template match="cnx:exercise">
+    <xsl:call-template name="exercise"/>
+  </xsl:template>
+
+  <!-- Suppress "Conceptual Questions" and "Problems and Exercises" exercises in flow ("Modern Textbook") -->
+  <xsl:template match="cnx:exercise[@class='conceptual-questions' or 
+                                    @class='problems-exercises']">
+    <xsl:if test="not($modern-textbook)">
+      <xsl:call-template name="exercise"/>
+    </xsl:if>
+  </xsl:template>
+  <xsl:template match="cnx:exercise" mode="move-to-end">
+     <xsl:call-template name="exercise"/>
+  </xsl:template>
+
+  <!-- Actually process EXERCISE ouput here -->
+  <xsl:template name="exercise">
     <div>
       <xsl:attribute name="class">
         <xsl:text>exercise</xsl:text>
