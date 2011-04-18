@@ -68,35 +68,68 @@
 
   <!-- HOW MANY SECTION-LIKE ANCESTORS (for determining header levels) -->
   <xsl:template name="level-count">
-    <xsl:variable name="level-number" select="count(ancestor::cnx:section|
-                                                    ancestor::qml:problemset|
-                                                    ancestor::qml:item[parent::qml:problemset]|
-                                                    ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|
-                                                    ancestor::cnx:rule[cnx:name or cnx:title or not(cnx:label[not(node())])]|
-                                                    ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|
-                                                    ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|
-                                                    ancestor::cnx:quote[not(@display='inline')][cnx:title or cnx:label[node()]]|
-                                                    ancestor::cnx:code[cnx:title or cnx:label[node()]][not(@class!='listing')]|
-                                                    ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|
-                                                    ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|
-                                                    ancestor::cnx:commentary[cnx:name or cnx:title or cnx:label[node()]]|
-                                                    ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|
-                                                    ancestor::cnx:glossary|
-                                                    ancestor::cnx:para[cnx:name or cnx:title]|
-                                                    ancestor::cnx:div[cnx:title]|
-                                                    ancestor::cnx:note[not(@display='inline')][
-                                                                       cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))
-                                                                      ]|
-                                                    ancestor::cnx:list[not((@type='inline' and $version='0.5') or @display='inline')][
-                                                                       cnx:name or cnx:title
-                                                                      ])"/>
+    <xsl:variable name="level-number">
+      <xsl:call-template name="level-count-ancestors"/>
+    </xsl:variable>
+    <!-- If we're in 'Modern Textbook', subtract the section-like ancestors above the nearest 
+         section or exercise with a class of 'conceptual-questions' or 'problems-exercises'. -->
+    <xsl:variable name="modern-textbook-adjustment">
+      <xsl:choose>
+        <xsl:when test="$modern-textbook">
+          <xsl:variable name="modern-textbook-adjustment-ancestors">
+            <xsl:for-each select="ancestor-or-self::*[(self::cnx:section or self::cnx:exercise) and 
+                                                      (normalize-space(@class)='conceptual-questions' or 
+                                                       normalize-space(@class)='problems-exercises' or 
+                                                       starts-with(normalize-space(@class),'conceptual-questions ') or 
+                                                       starts-with(normalize-space(@class),'problems-exercises ') or 
+                                                       contains(@class,' conceptual-questions ') or 
+                                                       contains(@class,' problems-exercises ') or 
+                                                       substring(normalize-space(@class),string-length(normalize-space(@class))-20)=' conceptual-questions' or 
+                                                       substring(normalize-space(@class),string-length(normalize-space(@class))-18)=' problems-exercises'
+                                                      )][1]">
+              <xsl:call-template name="level-count-ancestors"/>
+            </xsl:for-each>
+          </xsl:variable>
+          <xsl:choose>
+            <xsl:when test="string(number($modern-textbook-adjustment-ancestors))='NaN'">0</xsl:when>
+            <xsl:otherwise>
+              <xsl:value-of select="$modern-textbook-adjustment-ancestors - 1"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:when>
+        <xsl:otherwise>0</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="adjusted-number" select="$level-number - $modern-textbook-adjustment"/>
     <xsl:choose>
-      <xsl:when test="$level-number &lt; 4">
-        <xsl:value-of select="$level-number + 2"/>
+      <xsl:when test="$adjusted-number &lt; 4">
+        <xsl:value-of select="$adjusted-number + 2"/>
       </xsl:when>
       <!-- There is no h7 element in HTML -->
       <xsl:otherwise>6</xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="level-count-ancestors">
+    <xsl:value-of select="count(ancestor::cnx:section|
+                                ancestor::qml:problemset|
+                                ancestor::qml:item[parent::qml:problemset]|
+                                ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:rule[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:quote[not(@display='inline')][cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:code[cnx:title or cnx:label[node()]][not(@class!='listing')]|
+                                ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:commentary[cnx:name or cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:glossary|
+                                ancestor::cnx:para[cnx:name or cnx:title]|
+                                ancestor::cnx:div[cnx:title]|
+                                ancestor::cnx:note[not(@display='inline')][cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))]|
+                                ancestor::cnx:list[not((@type='inline' and $version='0.5') or @display='inline')][cnx:name or cnx:title]
+                                )"/>
   </xsl:template>
 
   <!-- Declare a key for the id attribute since we may not be loading
