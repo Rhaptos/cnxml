@@ -282,16 +282,12 @@
 
       <!-- "Conceptual Questions" area for "Modern Textbook" -->
       <xsl:if test="$modern-textbook and 
-                    (descendant::cnx:section[@class='conceptual-questions' or 
-                                             starts-with(@class,'conceptual-questions ') or 
-                                             contains(@class,' conceptual-questions ') or 
-                                             substring(@class,string-length(@class)-20)=' conceptual-questions'
-                                            ] or 
-                     descendant::cnx:exercise[@class='conceptual-questions' or 
-                                              starts-with(@class,'conceptual-questions ') or 
-                                              contains(@class,' conceptual-questions ') or 
-                                              substring(@class,string-length(@class)-20)=' conceptual-questions'
-                                             ]
+                    (descendant::*[(self::cnx:section or self::cnx:exercise) and 
+                                   (normalize-space(@class)='conceptual-questions' or 
+                                    starts-with(normalize-space(@class),'conceptual-questions ') or 
+                                    contains(@class,' conceptual-questions ') or 
+                                    substring(normalize-space(@class),string-length(normalize-space(@class))-20)=' conceptual-questions'
+                                   )]
                     )">
         <div id="conceptual-questions" class="section">
           <h2 class="conceptual-questions-header section-header">
@@ -299,16 +295,12 @@
             <xsl:text>Conceptual Questions</xsl:text>
           </h2>
           <div id="conceptual-questions-contents">
-            <xsl:for-each select="descendant::cnx:section[@class='conceptual-questions' or 
-                                                          starts-with(@class,'conceptual-questions ') or 
-                                                          contains(@class,' conceptual-questions ') or 
-                                                          substring(@class,string-length(@class)-20)=' conceptual-questions'
-                                                         ]|
-                                  descendant::cnx:exercise[@class='conceptual-questions' or 
-                                                           starts-with(@class,'conceptual-questions ') or 
-                                                           contains(@class,' conceptual-questions ') or 
-                                                           substring(@class,string-length(@class)-20)=' conceptual-questions'
-                                                          ]">
+            <xsl:for-each select="descendant::*[(self::cnx:section or self::cnx:exercise) and 
+                                                (normalize-space(@class)='conceptual-questions' or 
+                                                 starts-with(normalize-space(@class),'conceptual-questions ') or 
+                                                 contains(@class,' conceptual-questions ') or 
+                                                 substring(normalize-space(@class),string-length(normalize-space(@class))-20)=' conceptual-questions'
+                                                )]">
               <xsl:apply-templates select="self::*" mode="move-to-end"/>
             </xsl:for-each>
           </div>
@@ -317,16 +309,12 @@
 
       <!-- "Problems & Exercises" area for "Modern Textbook" -->
       <xsl:if test="$modern-textbook and 
-                    (descendant::cnx:section[@class='problems-exercises' or
-                                             starts-with(@class,'problems-exercises ') or 
-                                             contains(@class,' problems-exercises ') or 
-                                             substring(@class,string-length(@class)-18)=' problems-exercises'
-                                            ] or 
-                     descendant::cnx:exercise[@class='problems-exercises' or 
-                                              starts-with(@class,'problems-exericses ') or 
-                                              contains(@class,' problems-exercises ') or 
-                                              substring(@class,string-length(@class)-18)=' problems-exercises'
-                                             ]
+                    (descendant::*[(self::cnx:section or self::cnx:exercise) and 
+                                   (normalize-space(@class)='problems-exercises' or 
+                                    starts-with(normalize-space(@class),'problems-exercises ') or 
+                                    contains(@class,' problems-exercises ') or 
+                                    substring(normalize-space(@class),string-length(normalize-space(@class))-18)=' problems-exercises'
+                                   )]
                     )">
         <div id="problems-exercises" class="section">
           <h2 class="problems-exercises-header section-header">
@@ -334,16 +322,12 @@
             <xsl:text>Problems &amp; Exercises</xsl:text>
           </h2>
           <div id="problems-exercises-contents">
-            <xsl:for-each select="descendant::cnx:section[@class='problems-exercises' or 
-                                                          starts-with(@class,'problems-exercises ') or 
-                                                          contains(@class,' problems-exercises ') or 
-                                                          substring(@class,string-length(@class)-18)=' problems-exercises'
-                                                         ]|
-                                  descendant::cnx:exercise[@class='problems-exercises' or 
-                                                           starts-with(@class,'problems-exericses ') or 
-                                                           contains(@class,' problems-exercises ') or 
-                                                           substring(@class,string-length(@class)-18)=' problems-exercises'
-                                                          ]">
+            <xsl:for-each select="descendant::*[(self::cnx:section or self::cnx:exercise) and 
+                                                (normalize-space(@class)='problems-exercises' or 
+                                                 starts-with(normalize-space(@class),'problems-exercises ') or 
+                                                 contains(@class,' problems-exercises ') or 
+                                                 substring(normalize-space(@class),string-length(normalize-space(@class))-18)=' problems-exercises'
+                                                )]">
               <xsl:apply-templates select="self::*" mode="move-to-end"/>
             </xsl:for-each>
           </div>
