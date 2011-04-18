@@ -249,16 +249,33 @@
 
       <!-- "Conceptual Questions" area for "Modern Textbook" -->
       <xsl:if test="$modern-textbook and 
-                    (descendant::cnx:section[@class='conceptual-questions'] or 
-                     descendant::cnx:exercise[@class='conceptual-questions'])">
-        <div id="conceptual-questions">
-          <h2 class="conceptual-questions-header">
+                    (descendant::cnx:section[@class='conceptual-questions' or 
+                                             starts-with(@class,'conceptual-questions ') or 
+                                             contains(@class,' conceptual-questions ') or 
+                                             substring(@class,string-length(@class)-20)=' conceptual-questions'
+                                            ] or 
+                     descendant::cnx:exercise[@class='conceptual-questions' or 
+                                              starts-with(@class,'conceptual-questions ') or 
+                                              contains(@class,' conceptual-questions ') or 
+                                              substring(@class,string-length(@class)-20)=' conceptual-questions'
+                                             ]
+                    )">
+        <div id="conceptual-questions" class="section">
+          <h2 class="conceptual-questions-header section-header">
             <!-- FIXME: internationalize me. -->
             <xsl:text>Conceptual Questions</xsl:text>
           </h2>
           <div id="conceptual-questions-contents">
-            <xsl:for-each select="descendant::cnx:section[@class='conceptual-questions']|
-                                  descendant::cnx:exercise[@class='conceptual-questions']">
+            <xsl:for-each select="descendant::cnx:section[@class='conceptual-questions' or 
+                                                          starts-with(@class,'conceptual-questions ') or 
+                                                          contains(@class,' conceptual-questions ') or 
+                                                          substring(@class,string-length(@class)-20)=' conceptual-questions'
+                                                         ]|
+                                  descendant::cnx:exercise[@class='conceptual-questions' or 
+                                                           starts-with(@class,'conceptual-questions ') or 
+                                                           contains(@class,' conceptual-questions ') or 
+                                                           substring(@class,string-length(@class)-20)=' conceptual-questions'
+                                                          ]">
               <xsl:apply-templates select="self::*" mode="move-to-end"/>
             </xsl:for-each>
           </div>
@@ -267,16 +284,33 @@
 
       <!-- "Problems & Exercises" area for "Modern Textbook" -->
       <xsl:if test="$modern-textbook and 
-                    (descendant::cnx:section[@class='problems-exercises'] or 
-                     descendant::cnx:exercise[@class='problems-exercises'])">
-        <div id="problems-exercises">
-          <h2 class="problems-exercises-header">
+                    (descendant::cnx:section[@class='problems-exercises' or
+                                             starts-with(@class,'problems-exercises ') or 
+                                             contains(@class,' problems-exercises ') or 
+                                             substring(@class,string-length(@class)-18)=' problems-exercises'
+                                            ] or 
+                     descendant::cnx:exercise[@class='problems-exercises' or 
+                                              starts-with(@class,'problems-exericses ') or 
+                                              contains(@class,' problems-exercises ') or 
+                                              substring(@class,string-length(@class)-18)=' problems-exercises'
+                                             ]
+                    )">
+        <div id="problems-exercises" class="section">
+          <h2 class="problems-exercises-header section-header">
             <!-- FIXME: internationalize me. -->
             <xsl:text>Problems &amp; Exercises</xsl:text>
           </h2>
           <div id="problems-exercises-contents">
-            <xsl:for-each select="descendant::cnx:section[@class='problems-exercises']|
-                                  descendant::cnx:exercise[@class='problems-exercises']">
+            <xsl:for-each select="descendant::cnx:section[@class='problems-exercises' or 
+                                                          starts-with(@class,'problems-exercises ') or 
+                                                          contains(@class,' problems-exercises ') or 
+                                                          substring(@class,string-length(@class)-18)=' problems-exercises'
+                                                         ]|
+                                  descendant::cnx:exercise[@class='problems-exercises' or 
+                                                           starts-with(@class,'problems-exericses ') or 
+                                                           contains(@class,' problems-exercises ') or 
+                                                           substring(@class,string-length(@class)-18)=' problems-exercises'
+                                                          ]">
               <xsl:apply-templates select="self::*" mode="move-to-end"/>
             </xsl:for-each>
           </div>
@@ -379,16 +413,33 @@
 
   <!-- SECTION -->
   <xsl:template match="cnx:section">
-    <xsl:call-template name="section"/>
+    <xsl:choose>
+      <!-- If we're in 'Modern Textbook', decide whether or not to suppress the section in the flow. -->
+      <xsl:when test="$modern-textbook">
+        <xsl:variable name="conceptual-questions">
+          <xsl:call-template name="class-test">
+            <xsl:with-param name="provided-class" select="normalize-space(@class)"/>
+            <xsl:with-param name="wanted-class">conceptual-questions</xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="problems-exercises">
+          <xsl:call-template name="class-test">
+            <xsl:with-param name="provided-class" select="normalize-space(@class)"/>
+            <xsl:with-param name="wanted-class">problems-exercises</xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="$conceptual-questions!='1' and $problems-exercises!='1'">
+          <xsl:call-template name="section"/>
+        </xsl:if>
+      </xsl:when>
+      <!-- If not in 'Modern Textbook' just output as normal -->
+      <xsl:otherwise>
+        <xsl:call-template name="section"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
-  <!-- Suppress "Conceptual Questions" and "Problems and Exercises" sections in flow ("Modern Textbook") -->
-  <xsl:template match="cnx:section[@class='conceptual-questions' or 
-                                   @class='problems-exercises']">
-    <xsl:if test="not($modern-textbook)">
-      <xsl:call-template name="section"/>
-    </xsl:if>
-  </xsl:template>
+  <!-- Process special 'Modern Textbook' sections here via the move-to-end mode, applied outside of the flow. -->
   <xsl:template match="cnx:section" mode="move-to-end">
      <xsl:call-template name="section"/>
   </xsl:template>
@@ -2184,16 +2235,33 @@
   
   <!-- EXERCISE -->
   <xsl:template match="cnx:exercise">
-    <xsl:call-template name="exercise"/>
+    <xsl:choose>
+      <!-- If we're in 'Modern Textbook', decide whether or not to suppress the exercise in the flow. -->
+      <xsl:when test="$modern-textbook">
+        <xsl:variable name="conceptual-questions">
+          <xsl:call-template name="class-test">
+            <xsl:with-param name="provided-class" select="normalize-space(@class)"/>
+            <xsl:with-param name="wanted-class">conceptual-questions</xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="problems-exercises">
+          <xsl:call-template name="class-test">
+            <xsl:with-param name="provided-class" select="normalize-space(@class)"/>
+            <xsl:with-param name="wanted-class">problems-exercises</xsl:with-param>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:if test="$conceptual-questions!='1' and $problems-exercises!='1'">
+          <xsl:call-template name="exercise"/>
+        </xsl:if>
+      </xsl:when>
+      <!-- If not in 'Modern Textbook' just output as normal -->
+      <xsl:otherwise>
+        <xsl:call-template name="exercise"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
-  <!-- Suppress "Conceptual Questions" and "Problems and Exercises" exercises in flow ("Modern Textbook") -->
-  <xsl:template match="cnx:exercise[@class='conceptual-questions' or 
-                                    @class='problems-exercises']">
-    <xsl:if test="not($modern-textbook)">
-      <xsl:call-template name="exercise"/>
-    </xsl:if>
-  </xsl:template>
+  <!-- Process special 'Modern Textbook' exercises here via the move-to-end mode, applied outside of the flow. -->
   <xsl:template match="cnx:exercise" mode="move-to-end">
      <xsl:call-template name="exercise"/>
   </xsl:template>
