@@ -72,39 +72,9 @@
     <xsl:variable name="level-number">
       <xsl:call-template name="level-count-ancestors"/>
     </xsl:variable>
-    <!-- If we're in 'Modern Textbook', subtract the section-like ancestors above the nearest 
-         section or exercise with a class of 'conceptual-questions' or 'problems-exercises'. -->
-    <xsl:variable name="modern-textbook-adjustment">
-      <xsl:choose>
-        <xsl:when test="$modern-textbook">
-          <xsl:variable name="modern-textbook-adjustment-ancestors">
-            <xsl:for-each select="ancestor-or-self::*[(self::cnx:section or self::cnx:exercise) and 
-                                                      (normalize-space(@class)='conceptual-questions' or 
-                                                       normalize-space(@class)='problems-exercises' or 
-                                                       starts-with(normalize-space(@class),'conceptual-questions ') or 
-                                                       starts-with(normalize-space(@class),'problems-exercises ') or 
-                                                       contains(@class,' conceptual-questions ') or 
-                                                       contains(@class,' problems-exercises ') or 
-                                                       substring(normalize-space(@class),string-length(normalize-space(@class))-20)=' conceptual-questions' or 
-                                                       substring(normalize-space(@class),string-length(normalize-space(@class))-18)=' problems-exercises'
-                                                      )][1]">
-              <xsl:call-template name="level-count-ancestors"/>
-            </xsl:for-each>
-          </xsl:variable>
-          <xsl:choose>
-            <xsl:when test="string(number($modern-textbook-adjustment-ancestors))='NaN'">0</xsl:when>
-            <xsl:otherwise>
-              <xsl:value-of select="$modern-textbook-adjustment-ancestors - 1"/>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:when>
-        <xsl:otherwise>0</xsl:otherwise>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="adjusted-number" select="$level-number - $modern-textbook-adjustment"/>
     <xsl:choose>
-      <xsl:when test="$adjusted-number &lt; 4">
-        <xsl:value-of select="$adjusted-number + 2"/>
+      <xsl:when test="$level-number &lt; 4">
+        <xsl:value-of select="$level-number + 2"/>
       </xsl:when>
       <!-- There is no h7 element in HTML -->
       <xsl:otherwise>6</xsl:otherwise>
@@ -281,60 +251,6 @@
       <!-- Transform all of the content except glossary and bib. -->
       <xsl:apply-templates select="*[not(self::cnx:glossary|self::bib:file)]"/>
 
-      <!-- "Conceptual Questions" area for "Modern Textbook" -->
-      <xsl:if test="$modern-textbook and 
-                    (descendant::*[(self::cnx:section or self::cnx:exercise) and 
-                                   (normalize-space(@class)='conceptual-questions' or 
-                                    starts-with(normalize-space(@class),'conceptual-questions ') or 
-                                    contains(@class,' conceptual-questions ') or 
-                                    substring(normalize-space(@class),string-length(normalize-space(@class))-20)=' conceptual-questions'
-                                   )]
-                    )">
-        <div id="conceptual-questions" class="section">
-          <h2 class="conceptual-questions-header section-header">
-            <!-- FIXME: internationalize me. -->
-            <xsl:text>Conceptual Questions</xsl:text>
-          </h2>
-          <div id="conceptual-questions-contents">
-            <xsl:for-each select="descendant::*[(self::cnx:section or self::cnx:exercise) and 
-                                                (normalize-space(@class)='conceptual-questions' or 
-                                                 starts-with(normalize-space(@class),'conceptual-questions ') or 
-                                                 contains(@class,' conceptual-questions ') or 
-                                                 substring(normalize-space(@class),string-length(normalize-space(@class))-20)=' conceptual-questions'
-                                                )]">
-              <xsl:apply-templates select="self::*" mode="move-to-end"/>
-            </xsl:for-each>
-          </div>
-        </div>
-      </xsl:if>
-
-      <!-- "Problems & Exercises" area for "Modern Textbook" -->
-      <xsl:if test="$modern-textbook and 
-                    (descendant::*[(self::cnx:section or self::cnx:exercise) and 
-                                   (normalize-space(@class)='problems-exercises' or 
-                                    starts-with(normalize-space(@class),'problems-exercises ') or 
-                                    contains(@class,' problems-exercises ') or 
-                                    substring(normalize-space(@class),string-length(normalize-space(@class))-18)=' problems-exercises'
-                                   )]
-                    )">
-        <div id="problems-exercises" class="section">
-          <h2 class="problems-exercises-header section-header">
-            <!-- FIXME: internationalize me. -->
-            <xsl:text>Problems &amp; Exercises</xsl:text>
-          </h2>
-          <div id="problems-exercises-contents">
-            <xsl:for-each select="descendant::*[(self::cnx:section or self::cnx:exercise) and 
-                                                (normalize-space(@class)='problems-exercises' or 
-                                                 starts-with(normalize-space(@class),'problems-exercises ') or 
-                                                 contains(@class,' problems-exercises ') or 
-                                                 substring(normalize-space(@class),string-length(normalize-space(@class))-18)=' problems-exercises'
-                                                )]">
-              <xsl:apply-templates select="self::*" mode="move-to-end"/>
-            </xsl:for-each>
-          </div>
-        </div>
-      </xsl:if>
-
       <!-- FOOTNOTEs -->
       <xsl:if test="descendant::cnx:note[translate(@type,$upper,$lower)='footnote'] or descendant::cnx:footnote">
         <div class="footnotes">
@@ -429,41 +345,8 @@
   <!-- METADATA and other non-displayed elements -->
   <xsl:template match="cnx:metadata|cnx:authorlist|cnx:maintainerlist|cnx:keywordlist|cnx:abstract|cnx:objectives|cnx:featured-links|cnx:link-group"/>
 
-  <!-- SECTION -->
-  <xsl:template match="cnx:section">
-    <xsl:choose>
-      <!-- If we're in 'Modern Textbook', decide whether or not to suppress the section in the flow. -->
-      <xsl:when test="$modern-textbook">
-        <xsl:variable name="conceptual-questions">
-          <xsl:call-template name="class-test">
-            <xsl:with-param name="provided-class" select="normalize-space(@class)"/>
-            <xsl:with-param name="wanted-class">conceptual-questions</xsl:with-param>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="problems-exercises">
-          <xsl:call-template name="class-test">
-            <xsl:with-param name="provided-class" select="normalize-space(@class)"/>
-            <xsl:with-param name="wanted-class">problems-exercises</xsl:with-param>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:if test="$conceptual-questions!='1' and $problems-exercises!='1'">
-          <xsl:call-template name="section"/>
-        </xsl:if>
-      </xsl:when>
-      <!-- If not in 'Modern Textbook' just output as normal -->
-      <xsl:otherwise>
-        <xsl:call-template name="section"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
-  <!-- Process special 'Modern Textbook' sections here via the move-to-end mode, applied outside of the flow. -->
-  <xsl:template match="cnx:section" mode="move-to-end">
-     <xsl:call-template name="section"/>
-  </xsl:template>
-
   <!-- Actually process SECTION ouput here -->
-  <xsl:template name="section">
+  <xsl:template match="cnx:section">
     <div class="section">
       <xsl:call-template name="IdCheck"/>
       <xsl:variable name="level-number">
@@ -2251,41 +2134,8 @@
     <xsl:apply-templates/>
   </xsl:template>
   
-  <!-- EXERCISE -->
-  <xsl:template match="cnx:exercise">
-    <xsl:choose>
-      <!-- If we're in 'Modern Textbook', decide whether or not to suppress the exercise in the flow. -->
-      <xsl:when test="$modern-textbook">
-        <xsl:variable name="conceptual-questions">
-          <xsl:call-template name="class-test">
-            <xsl:with-param name="provided-class" select="normalize-space(@class)"/>
-            <xsl:with-param name="wanted-class">conceptual-questions</xsl:with-param>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:variable name="problems-exercises">
-          <xsl:call-template name="class-test">
-            <xsl:with-param name="provided-class" select="normalize-space(@class)"/>
-            <xsl:with-param name="wanted-class">problems-exercises</xsl:with-param>
-          </xsl:call-template>
-        </xsl:variable>
-        <xsl:if test="$conceptual-questions!='1' and $problems-exercises!='1'">
-          <xsl:call-template name="exercise"/>
-        </xsl:if>
-      </xsl:when>
-      <!-- If not in 'Modern Textbook' just output as normal -->
-      <xsl:otherwise>
-        <xsl:call-template name="exercise"/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
-
-  <!-- Process special 'Modern Textbook' exercises here via the move-to-end mode, applied outside of the flow. -->
-  <xsl:template match="cnx:exercise" mode="move-to-end">
-     <xsl:call-template name="exercise"/>
-  </xsl:template>
-
   <!-- Actually process EXERCISE ouput here -->
-  <xsl:template name="exercise">
+  <xsl:template match="cnx:exercise">
     <div>
       <xsl:attribute name="class">
         <xsl:text>exercise</xsl:text>
