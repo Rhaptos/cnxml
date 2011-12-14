@@ -651,7 +651,7 @@
     </span>
   </xsl:template>
 
-  <!-- MEDIA of type: AUDIO (cnxml version 0.5 and below) -->
+  <!-- MEDIA of type: Non-MP3 AUDIO (cnxml version 0.5 and below) -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
     <div class="media">
       <xsl:call-template name="IdCheck"/>
@@ -663,14 +663,21 @@
           <xsl:with-param name="lang" select="/module/metadata/language"/>
         </xsl:call-template>:
       </span>
-      <a class="cnxn" href="{@src}">
-        <xsl:call-template name="composer-title-comments"/>
+      <a class="link" href="{@src}">
+	<xsl:choose>
+	  <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
+	    <i><xsl:value-of select="cnx:param[@name='title']/@value"/></i>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:value-of select="@src"/>
+	  </xsl:otherwise>
+	</xsl:choose>
       </a>
       </span>
     </div>
   </xsl:template>
 
-  <!-- AUDIO (cnxml version 0.6+) -->
+  <!-- Non-MP3 AUDIO (cnxml version 0.6+) -->
   <xsl:template match="cnx:audio"> 
     <span class="media">
       <xsl:call-template name="ParentMediaIdCheck"/>
@@ -684,11 +691,58 @@
           <xsl:with-param name="lang" select="/module/metadata/language"/>
         </xsl:call-template>:
       </span>
-      <a class="cnxn" href="{@src}">
-        <xsl:call-template name="composer-title-comments"/>
+      <a class="link" href="{@src}">
+	<xsl:choose>
+	  <xsl:when test="cnx:param[@name='title' and normalize-space(@value) != '']">
+	    <i><xsl:value-of select="cnx:param[@name='title']/@value"/></i>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:value-of select="@src"/>
+	  </xsl:otherwise>
+	</xsl:choose>
       </a>
     </span>
     </span>       
+  </xsl:template>
+
+  <!-- MEDIA of type: MP3 AUDIO (Tony Brandt) (cnxml version 0.5 and below) -->
+  <!-- Note that the there is an override of this template in content_render.xsl (RhaptosContent) -->
+  <xsl:template match="cnx:media[@type='audio/mpeg']">
+    <div class="media audio">
+      <xsl:call-template name="IdCheck"/>
+      <span class="cnx_label">
+        <!--Musical Example:-->
+        <xsl:call-template name="gentext">
+          <xsl:with-param name="key">MusicalExample</xsl:with-param>
+          <xsl:with-param name="lang" select="/module/metadata/language"/>
+        </xsl:call-template>:
+      </span>
+      <a class="cnxn" href="{@src}">
+        <xsl:call-template name="composer-title-comments"/>
+      </a>
+    </div>       
+  </xsl:template>
+
+  <!-- MP3 AUDIO (Tony Brandt) (cnxml version 0.6+) -->
+  <!-- Note that the there is an override of this template in content_render.xsl (RhaptosContent) -->
+  <xsl:template match="cnx:audio[@mime-type='audio/mpeg']">
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
+      <span class="audio">
+        <xsl:call-template name="IdCheck"/>
+        <span class="cnx_label">
+          <!--Musical Example:-->
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">MusicalExample</xsl:with-param>
+            <xsl:with-param name="lang" select="/module/metadata/language"/>
+          </xsl:call-template>:
+        </span>
+        <a class="cnxn" href="{@src}">
+          <xsl:call-template name="composer-title-comments"/>
+        </a>
+      </span>
+    </span>
   </xsl:template>
 
   <!-- COMPOSER, TITLE and COMMENTS template -->
