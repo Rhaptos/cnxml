@@ -75,7 +75,7 @@
 	      </xsl:if>
 	    </xsl:attribute>
             <xsl:if test="cnx:name[node()] or                            cnx:title[node()] or                            cnx:caption[node()] or                            cnx:label[node()] or                            (not(cnx:label[not(node())]) and                             not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
-              <caption align="bottom" class="table-text">
+              <caption align="bottom" class="table-text caption">
                 <xsl:if test="cnx:label[node()] or                                (not(cnx:label[not(node())]) and                                 not(ancestor::*[1][self::cnx:figure or self::cnx:subfigure]))">
                   <span class="cnx_label">
                     <xsl:choose>

@@ -52,6 +52,9 @@
   </xsl:variable>
   <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyzäëïöüáéíóúàèìòùâêîôûåøãõæœçłñ'"/>
   <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÄËÏÖÜÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÅØÃÕÆŒÇŁÑ'"/>
+  <xsl:param name="printstyle" select="''"/>
+  <xsl:param name="modern-textbook" select="$printstyle='modern-textbook'"/>
+  <xsl:param name="intro-module" select="0"/>
 
   <xsl:output omit-xml-declaration="yes" indent="yes"/>
 
@@ -66,7 +69,9 @@
 
   <!-- HOW MANY SECTION-LIKE ANCESTORS (for determining header levels) -->
   <xsl:template name="level-count">
-    <xsl:variable name="level-number" select="count(ancestor::cnx:section|                                 ancestor::qml:problemset|                                 ancestor::qml:item[parent::qml:problemset]|                                 ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:rule[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|                                 ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:quote[not(@display='inline')][cnx:title or cnx:label[node()]]|                                 ancestor::cnx:code[cnx:title or cnx:label[node()]][not(@class!='listing')]|                                 ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|                                 ancestor::cnx:commentary[cnx:name or cnx:title or cnx:label[node()]]|                                 ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|                                 ancestor::cnx:glossary|                                 ancestor::cnx:para[cnx:name or cnx:title]|                                 ancestor::cnx:div[cnx:title]|                                 ancestor::cnx:note[not(@display='inline')][                                                    cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))                                                   ]|                                 ancestor::cnx:list[not((@type='inline' and $version='0.5') or @display='inline')][                                                    cnx:name or cnx:title                                                   ])"/>
+    <xsl:variable name="level-number">
+      <xsl:call-template name="level-count-ancestors"/>
+    </xsl:variable>
     <xsl:choose>
       <xsl:when test="$level-number &lt; 4">
         <xsl:value-of select="$level-number + 2"/>
@@ -74,6 +79,28 @@
       <!-- There is no h7 element in HTML -->
       <xsl:otherwise>6</xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <xsl:template name="level-count-ancestors">
+    <xsl:value-of select="count(ancestor::cnx:section|
+                                ancestor::qml:problemset|
+                                ancestor::qml:item[parent::qml:problemset]|
+                                ancestor::cnx:example[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:rule[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:statement[cnx:name or cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:proof[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:quote[not(@display='inline')][cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:code[cnx:title or cnx:label[node()]][not(@class!='listing')]|
+                                ancestor::cnx:exercise[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:problem[cnx:name or cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:commentary[cnx:name or cnx:title or cnx:label[node()]]|
+                                ancestor::cnx:solution[cnx:name or cnx:title or not(cnx:label[not(node())])]|
+                                ancestor::cnx:glossary|
+                                ancestor::cnx:para[cnx:name or cnx:title]|
+                                ancestor::cnx:div[cnx:title]|
+                                ancestor::cnx:note[not(@display='inline')][cnx:title or cnx:label[node()] or ((@type!='' or not(@type)) and not(cnx:label))]|
+                                ancestor::cnx:list[not((@type='inline' and $version='0.5') or @display='inline')][cnx:name or cnx:title]
+                                )"/>
   </xsl:template>
 
   <!-- Declare a key for the id attribute since we may not be loading
@@ -224,7 +251,6 @@
       <!-- Transform all of the content except glossary and bib. -->
       <xsl:apply-templates select="*[not(self::cnx:glossary|self::bib:file)]"/>
 
-
       <!-- FOOTNOTEs -->
       <xsl:if test="descendant::cnx:note[translate(@type,$upper,$lower)='footnote'] or descendant::cnx:footnote">
         <div class="footnotes">
@@ -273,7 +299,9 @@
           <xsl:with-param name="lang" select="/module/metadata/language"/>
         </xsl:call-template>
       </h2>
-      <xsl:apply-templates/>
+      <div class="glossary-contents">
+        <xsl:apply-templates/>
+      </div>
     </div>
   </xsl:template>
 
@@ -317,7 +345,7 @@
   <!-- METADATA and other non-displayed elements -->
   <xsl:template match="cnx:metadata|cnx:authorlist|cnx:maintainerlist|cnx:keywordlist|cnx:abstract|cnx:objectives|cnx:featured-links|cnx:link-group"/>
 
-  <!--SECTION-->
+  <!-- Actually process SECTION ouput here -->
   <xsl:template match="cnx:section">
     <div class="section">
       <xsl:call-template name="IdCheck"/>
@@ -355,7 +383,9 @@
           <xsl:text> </xsl:text>
         </xsl:if>
       </xsl:element>
-      <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:name|self::cnx:title)]"/>
+      <div class="section-contents">
+        <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:name|self::cnx:title)]"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -952,7 +982,7 @@
         </code>
       </pre>
       <xsl:if test="cnx:caption">
-        <p class="code-caption">
+        <p class="code-caption caption">
           <xsl:if test="cnx:caption[@id]">
             <xsl:attribute name="id">
               <xsl:value-of select="cnx:caption/@id"/>
@@ -970,7 +1000,7 @@
       <xsl:call-template name="IdCheck"/>
       <table border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
         <xsl:if test="cnx:caption or not(cnx:label[not(node())])">
-          <caption align="bottom" class="code-caption">
+          <caption align="bottom" class="code-caption caption">
             <xsl:if test="cnx:caption[@id]">
               <xsl:attribute name="id">
                 <xsl:value-of select="cnx:caption/@id"/>
@@ -1154,7 +1184,15 @@
 
   <!-- Block note -->
   <xsl:template name="make-block-note">
-    <div class="note">
+    <div>
+      <xsl:variable name="type" select="translate(@type,$upper,$lower)"/>
+      <xsl:attribute name="class">
+        <xsl:text>note</xsl:text>
+        <xsl:if test="$type = 'tip' or $type = 'concept-check'">
+          <xsl:text> </xsl:text>
+          <xsl:value-of select="$type"/>
+        </xsl:if>
+      </xsl:attribute>
       <xsl:if test="@display='none'">
         <xsl:attribute name="style">display: none</xsl:attribute>
       </xsl:if>
@@ -1169,7 +1207,9 @@
           <xsl:call-template name="note-label"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()"/>
+      <div class="note-contents">
+        <xsl:apply-templates select="*[not(self::cnx:label|self::cnx:title)]|text()"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -1257,7 +1297,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      <div class="example-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -1539,7 +1581,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      <div class="rule-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -1868,7 +1912,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]|text()"/>
+      <div class="equation-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]|text()"/>
+      </div>
       <xsl:choose>
         <xsl:when test="cnx:label[not(node())]"/>
         <xsl:otherwise>
@@ -1890,6 +1936,18 @@
 
   <!-- FIGURE -->
   <xsl:template match="cnx:figure">
+    <xsl:call-template name="figure"/>
+  </xsl:template>
+
+  <!-- Suppress splash image for 'Modern Textbook' style in flow (process it in content_render.xsl instead). -->
+  <xsl:template match="cnx:figure[@class='splash' and cnx:media/cnx:image[not(@for='pdf')]][1]">
+    <xsl:if test="not($intro-module='1' and $modern-textbook)">
+      <xsl:call-template name="figure"/>
+    </xsl:if>
+  </xsl:template>
+
+  <!-- Actually process FIGURE output here. -->
+  <xsl:template name="figure">
     <div class="figure">
       <xsl:call-template name="IdCheck"/>
       <table border="0" cellpadding="0" cellspacing="0" align="center" width="50%">
@@ -1993,12 +2051,12 @@
 
   <!-- CAPTION -->
   <xsl:template name="caption">
-    <xsl:variable name="captionelement">
+    <xsl:param name="captionelement">
       <xsl:choose>
         <xsl:when test="parent::cnx:figure">th</xsl:when>
         <xsl:otherwise>caption</xsl:otherwise>
       </xsl:choose>
-    </xsl:variable>
+    </xsl:param>
     <xsl:element name="{$captionelement}">
       <xsl:if test="cnx:caption[@id]">
         <xsl:attribute name="id">
@@ -2011,6 +2069,7 @@
           <xsl:when test="parent::cnx:figure">horizontal-subfigure-caption</xsl:when>
           <xsl:otherwise>figure-caption</xsl:otherwise>
         </xsl:choose>
+        <xsl:text> caption</xsl:text>
       </xsl:attribute>
       <xsl:if test="$captionelement='caption'">
         <xsl:attribute name="align">bottom</xsl:attribute>
@@ -2075,10 +2134,15 @@
     <xsl:apply-templates/>
   </xsl:template>
   
-  <!--EXERCISE-->
-  <!--Uses Javascript code at the top.-->
+  <!-- Actually process EXERCISE ouput here -->
   <xsl:template match="cnx:exercise">
-    <div class="exercise">
+    <div>
+      <xsl:attribute name="class">
+        <xsl:text>exercise</xsl:text>
+        <xsl:if test="translate(@type,$upper,$lower) = 'check-understanding'">
+          <xsl:text> check-understanding</xsl:text>
+        </xsl:if>
+      </xsl:attribute>
       <xsl:call-template name="IdCheck"/>
       <xsl:if test="$case-diagnosis = '0' and (cnx:name or cnx:title or not(cnx:label[not(node())]))">
         <xsl:variable name="level-number">
@@ -2132,7 +2196,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      <div class="exercise-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -2162,7 +2228,13 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]|text()"/>
+      <div>
+        <xsl:attribute name="class">
+          <xsl:value-of select="local-name()"/>
+          <xsl:text>-contents</xsl:text>
+        </xsl:attribute>
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]|text()"/>
+      </div>
     </div>
   </xsl:template>
 
@@ -2171,12 +2243,15 @@
     <xsl:variable name="solution-number">
       <xsl:number count="cnx:solution"/>
     </xsl:variable>
+    <xsl:variable name="solution-type" select="translate(@type,$upper,$lower)"/>
     <xsl:variable name="solution-letter">
       <xsl:choose>
-        <xsl:when test="count(parent::cnx:exercise/cnx:solution) &gt; 1">
-          <xsl:number count="cnx:solution" format=" A"/>
+        <xsl:when test="count(parent::cnx:exercise/cnx:solution[translate(@type,$upper,$lower) = $solution-type]) &gt; 1">
+          <xsl:number count="cnx:solution[translate(@type,$upper,$lower) = $solution-type]" format=" A"/>
         </xsl:when>
-        <xsl:otherwise/>
+        <xsl:when test="count(parent::cnx:exercise/cnx:solution[translate(@type,$upper,$lower) = 'solution' or not(@type)]) &gt; 1">
+          <xsl:number count="cnx:solution[translate(@type,$upper,$lower) = 'solution' or not(@type)]" format=" A"/>
+        </xsl:when>
       </xsl:choose>
     </xsl:variable>
     <xsl:variable name="solution-string">
@@ -2226,7 +2301,9 @@
           <xsl:apply-templates select="cnx:name|cnx:title"/>
         </xsl:element>
       </xsl:if>
-      <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      <div class="solution-contents">
+        <xsl:apply-templates select="*[not(self::cnx:name|self::cnx:title|self::cnx:label)]"/>
+      </div>
     </div>
     <div class="solution-toggles">
       <xsl:attribute name="style">
