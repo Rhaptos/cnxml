@@ -53,7 +53,7 @@
   <xsl:variable name="lower" select="'abcdefghijklmnopqrstuvwxyzäëïöüáéíóúàèìòùâêîôûåøãõæœçłñ'"/>
   <xsl:variable name="upper" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZÄËÏÖÜÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÅØÃÕÆŒÇŁÑ'"/>
   <xsl:param name="printstyle" select="''"/>
-  <xsl:param name="modern-textbook" select="$printstyle='modern-textbook'"/>
+  <xsl:param name="modern-textbook" select="$printstyle!=''"/>
   <xsl:param name="intro-module" select="0"/>
 
   <xsl:output omit-xml-declaration="yes" indent="yes"/>

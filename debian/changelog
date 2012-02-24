@@ -1,3 +1,9 @@
+connexions-cnxml (0.7.1-1) unstable; urgency=low
+
+  * modern textbook style
+
+ -- Ross J. Reedstrom <reedstrm@cnx.org>  Fri, 24 Feb 2012 15:52:26 -0600
+
 connexions-cnxml (0.7-1) unstable; urgency=low
 
   * Collection Structure Redesign
