@@ -195,7 +195,7 @@
   </xsl:template>
 
   <xsl:template match="cnx:thead|cnx:tfoot|cnx:tbody">
-    <xsl:element name="cnx:{local-name(.)}">
+    <xsl:element name="{local-name(.)}">
       <xsl:call-template name="IdCheck"/>
       <xsl:attribute name="valign">
 	<xsl:choose>
