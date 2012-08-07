@@ -651,6 +651,22 @@
     </span>
   </xsl:template>
 
+  <!-- iFrame (cnxml version 0.8+) -->
+  <xsl:template match="cnx:iframe">
+    <span class="media">
+      <xsl:call-template name="ParentMediaIdCheck"/>
+      <xsl:call-template name="DisplayCheck"/>
+      <iframe src="{@src}">
+        <xsl:call-template name="IdCheck"/>
+        <xsl:for-each select="@width|@height">
+          <xsl:attribute name="{name()}">
+            <xsl:value-of select="."/>
+          </xsl:attribute>
+          </xsl:for-each>
+      </iframe>
+    </span>
+  </xsl:template>
+
   <!-- MEDIA of type: Non-MP3 AUDIO (cnxml version 0.5 and below) -->
   <xsl:template match="cnx:media[starts-with(@type,'audio')]"> 
     <div class="media">

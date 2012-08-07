@@ -1,3 +1,9 @@
+connexions-cnxml (0.7.2-1) unstable; urgency=low
+
+  *  iframes (ssssh!)
+
+ -- Ross J. Reedstrom <reedstrm@cnx.org>  Tue, 07 Aug 2012 15:12:18 -0500
+
 connexions-cnxml (0.7.1-1) unstable; urgency=low
 
   * modern textbook style
