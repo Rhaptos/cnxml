@@ -1,0 +1,10 @@
+local;schema/0.7/catalog.xml;/usr/share/xml/cnxml/catalog-0.7.xml
+local;schema/0.8/catalog.xml;/usr/share/xml/cnxml/catalog-0.8.xml
+local;schema/any/catalog.xml;/usr/share/xml/cnxml/catalog-any.xml
+
+root-and-package;system;http://cnx.rice.edu/technology/cnxml/schema/rng/0.7;/usr/share/xml/cnxml/catalog-0.7.xml
+root-and-package;uri;http://cnx.rice.edu/technology/cnxml/schema/rng/0.7;/usr/share/xml/cnxml/catalog-0.7.xml
+root-and-package;system;http://cnx.rice.edu/technology/cnxml/schema/rng/0.8;/usr/share/xml/cnxml/catalog-0.8.xml
+root-and-package;uri;http://cnx.rice.edu/technology/cnxml/schema/rng/0.8;/usr/share/xml/cnxml/catalog-0.8.xml
+root-and-package;system;http://cnx.rice.edu/technology/cnxml/schema/rng/any;/usr/share/xml/cnxml/catalog-any.xml
+root-and-package;uri;http://cnx.rice.edu/technology/cnxml/schema/rng/any;/usr/share/xml/cnxml/catalog-any.xml
