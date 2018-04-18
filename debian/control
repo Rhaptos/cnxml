@@ -1,7 +1,7 @@
 Source: connexions-cnxml
 Section: text
 Priority: optional
-Maintainer: Charles F. Bearden <cbearden@cnx.org>
+Maintainer: Ross J. Reedstrom <reedstrm@cnx.org>
 Build-Depends: debhelper (>> 4.0.0), docbook-xsl
 Standards-Version: 3.6.1.0
 
