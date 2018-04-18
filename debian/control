@@ -26,6 +26,7 @@ Architecture: all
 Depends: ${misc:Depends}, connexions-cnxml-common, connexions-mdml-0.5, connexions-qml-1.0
 Suggests: connexions-bibtexml, connexions-mathml, connexions-qml
 Provides: connexions-cnxml
+Conflicts: connexions-cnxml-any
 Description: Connexions Markup Language 0.7 Schema
  Connexions Markup Language (CNXML), an XML application for
  marking up educational texts. It is designed for use in the
@@ -44,6 +45,7 @@ Architecture: all
 Depends: ${misc:Depends}, connexions-cnxml-common, connexions-mdml-0.5, connexions-qml-1.0
 Suggests: connexions-bibtexml, connexions-mathml, connexions-qml
 Provides: connexions-cnxml
+Conflicts: connexions-cnxml-0.7
 Replaces: connexions-cnxml-0.7
 Description: Connexions Markup Language 0.7/0.8 Schema
  Connexions Markup Language (CNXML), an XML application for
